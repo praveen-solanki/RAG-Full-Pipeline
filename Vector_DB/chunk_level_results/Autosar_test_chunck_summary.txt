@@ -1,0 +1,147 @@
+
+====================================================================================================
+COMPREHENSIVE EVALUATION RESULTS
+====================================================================================================
+
+📊 OVERVIEW:
+   Evaluation Mode: CHUNK
+   Total Questions: 95
+   Total Time: 20.15 minutes
+   Avg Time/Question: 12.72 seconds
+   Timestamp: 2026-03-04 23:50:18
+
+----------------------------------------------------------------------------------------------------
+OVERALL PERFORMANCE
+----------------------------------------------------------------------------------------------------
+
+✅ SUCCESS RATE: 69.47% (66/95)
+
+🎯 MEAN RECIPROCAL RANK: 0.5032
+
+📍 PRECISION @ K:
+   P@ 1: 0.4000 ± 0.4899 (min: 0.0000, max: 1.0000)
+   P@ 3: 0.1965 ± 0.1640 (min: 0.0000, max: 0.3333)
+   P@ 5: 0.1305 ± 0.0952 (min: 0.0000, max: 0.2000)
+   P@10: 0.0695 ± 0.0461 (min: 0.0000, max: 0.1000)
+
+📊 NDCG @ K:
+   NDCG@ 1: 0.4000
+   NDCG@ 3: 0.5099
+   NDCG@ 5: 0.5366
+   NDCG@10: 0.5501
+
+----------------------------------------------------------------------------------------------------
+LATENCY STATISTICS
+----------------------------------------------------------------------------------------------------
+
+   Mean:   9990.03 ms
+   Median: 9919.73 ms
+   Std:    587.18 ms
+   Min:    9269.90 ms
+   Max:    14913.75 ms
+   P95:    10492.53 ms
+   P99:    10993.77 ms
+
+----------------------------------------------------------------------------------------------------
+PERFORMANCE BY QUESTION TYPE
+----------------------------------------------------------------------------------------------------
+
+Type               Count    Success        MRR        P@5
+----------------------------------------------------------------------------------------------------
+causal                 4   100.00%     0.7500     0.2000
+comparison            12    91.67%     0.6250     0.1667
+cross-page             3   100.00%     1.0000     0.2000
+definition             9    77.78%     0.5679     0.1333
+definition|causal        2   100.00%     1.0000     0.2000
+definition|multi-hop        2   100.00%     0.6667     0.2000
+list                   4     0.00%     0.0000     0.0000
+list|causal            2     0.00%     0.0000     0.0000
+list|numerical         1   100.00%     0.2000     0.2000
+lookup                 2     0.00%     0.0000     0.0000
+multi-hop             38    71.05%     0.5283     0.1316
+multi-hop|definition        1     0.00%     0.0000     0.0000
+parameter_extraction        4     0.00%     0.0000     0.0000
+relationship           4   100.00%     0.3333     0.2000
+requirement_tracing        2   100.00%     1.0000     0.2000
+single-hop             5    60.00%     0.4500     0.1200
+
+----------------------------------------------------------------------------------------------------
+PERFORMANCE BY DIFFICULTY
+----------------------------------------------------------------------------------------------------
+
+Difficulty         Count    Success        MRR        P@5
+----------------------------------------------------------------------------------------------------
+easy                   9    33.33%     0.2500     0.0667
+hard                  11    81.82%     0.5303     0.1636
+hardest                2   100.00%     1.0000     0.2000
+medium                73    71.23%     0.5167     0.1315
+
+----------------------------------------------------------------------------------------------------
+PERFORMANCE BY DOCUMENT
+----------------------------------------------------------------------------------------------------
+
+Document                                              Qs    Success        MRR
+----------------------------------------------------------------------------------------------------
+Specification of Raw Data Stream.pdf                  10    90.00%     0.6850
+Adaptive Platform Machine Configuration.pdf           10    90.00%     0.5333
+Requirements on Operating System Interface.pdf         4    75.00%     0.6250
+General Specification of Transformers.pdf             10    70.00%     0.4533
+AUTOSAR Layered Software Architecture.pdf             10    70.00%     0.5833
+Technical Report on Operating System Tracing In...     3    66.67%     0.6667
+Utilization of Crypto Services.pdf                     9    66.67%     0.3704
+Explanation of Service-Oriented Vehicle Diagnos...     9    66.67%     0.5679
+Explanation of Sensor Interfaces.pdf                   8    62.50%     0.4554
+Specification of Firewall for Adaptive Platform...    10    60.00%     0.5333
+TroubleShooting Manual_IndraCs upto MPx18Vrs [E...     6    50.00%     0.2639
+TroubleShooting Manual_IndraDrive upto MPx08 [E...     6    50.00%     0.2917
+
+----------------------------------------------------------------------------------------------------
+FAILURE ANALYSIS
+----------------------------------------------------------------------------------------------------
+
+   Total Failures: 29 (30.53%)
+
+   Failures by Type:
+      multi-hop: 11
+      list: 4
+      parameter_extraction: 4
+      definition: 2
+      single-hop: 2
+      list|causal: 2
+      lookup: 2
+      comparison: 1
+      multi-hop|definition: 1
+
+   Failures by Difficulty:
+      medium: 21
+      easy: 6
+      hard: 2
+
+   Sample Failed Queries:
+
+   1. Question: What is the purpose of the ARTI API and at which level of the operating system is it intended to be used?
+      Expected: Technical Report on Operating System Tracing Interface.pdf
+      Got Top-3: AUTOSAR_SWS_ClassicPlatformARTI.pdf, Technical Report on Operating System Tracing Interface.pdf, AUTOSAR_SWS_ClassicPlatformARTI.pdf
+      Type: multi-hop, Difficulty: medium
+
+   2. Question: What is the maximum number of transformers that can be connected in a chain, and what limitation causes this constraint?
+      Expected: General Specification of Transformers.pdf
+      Got Top-3: General Specification of Transformers.pdf, AUTOSAR_SRS_Transformer.pdf, General Specification of Transformers.pdf
+      Type: multi-hop, Difficulty: medium
+
+   3. Question: What is the significance of the error code E_SAFETY_INVALID_SEQ (0x42) and how does it differ from E_SAFETY_INVALID_REP (0x41)?
+      Expected: General Specification of Transformers.pdf
+      Got Top-3: General Specification of Transformers.pdf, TroubleShooting Manual_IndraDrive upto MPx08 [Ed 08].pdf, General Specification of Transformers.pdf
+      Type: comparison, Difficulty: medium
+
+   4. Question: How does the configuration parameter XfrmInstanceId in the EcucModuleDef for transformers differ from other parameters, and what is its purpose?
+      Expected: General Specification of Transformers.pdf
+      Got Top-3: General Specification of Transformers.pdf, General Specification of Transformers.pdf, AUTOSAR_SWS_COMBasedTransformer.pdf
+      Type: definition, Difficulty: medium
+
+   5. Question: What significant change was made to the document in the R22-11 release, and how does it relate to security?
+      Expected: Utilization of Crypto Services.pdf
+      Got Top-3: AUTOSAR Layered Software Architecture.pdf, AUTOSAR_SWS_ChineseV2XSecurity.pdf, AUTOSAR Layered Software Architecture.pdf
+      Type: multi-hop, Difficulty: medium
+
+====================================================================================================
