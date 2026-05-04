@@ -1,0 +1,32 @@
+{
+  "target": 3000,
+  "overgen_ratio": 2.0,
+  "overgen_ratio_multihop": 3.5,
+  "distribution": {
+    "single_hop_specific": 0.0,
+    "single_hop_abstract": 0.0,
+    "multi_hop_specific": 0.5,
+    "multi_hop_abstract": 0.5
+  },
+  "type_targets": {
+    "single_hop_specific": 0,
+    "single_hop_abstract": 0,
+    "multi_hop_specific": 1500,
+    "multi_hop_abstract": 1500
+  },
+  "max_retries_per_type": 5,
+  "personas": [
+    "autosar_integrator",
+    "tier1_developer",
+    "functional_safety_engineer",
+    "application_sw_engineer"
+  ],
+  "generator_model": "Qwen/Qwen2.5-72B-Instruct-AWQ",
+  "vllm_url": "http://localhost:8011/v1",
+  "q_temperature": 0.3,
+  "a_temperature": 0.0,
+  "seed": 42,
+  "batch_size": 4,
+  "min_context_chars": 200,
+  "min_per_pdf": 15
+}
