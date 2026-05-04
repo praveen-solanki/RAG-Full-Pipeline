@@ -1,0 +1,397 @@
+[
+  {
+    "total_page_number": 86
+  },
+  {
+    "total_token": 39970
+  },
+  {
+    "toc_content": "General Specification of Transformers\nAUTOSAR CP R25-11\nTable of Contents\n1 Introduction and functional overview 7\n2 Acronyms and Abbreviations 8\n3 Related documentation 9\n3.1 Input documents : 9\n3.2 Related standards and norms : 10\n3.3 Related specification : 10\n4 Constraints and assumptions 11\n4.1 Limitations : 11\n4.2 Applicability to car domains : 11\n5 Dependencies to other modules 12\n5.1 File structure : 12\n5.1.1 Code file structure : 12\n5.1.2 Header file structure : 12\n6 Requirements Tracing 13\n7 Functional Specification 15\n7.1 Buffer Handling : 21\n7.2 Transformer Classes : 22\n7.2.1 Serializer : 23\n7.2.2 Safety : 23\n7.2.3 Security : 24\n7.2.4 Custom : 24\n7.3 Error Handling : 24\n7.3.1 Errors of Serializer Transformers : 26\n7.3.2 Errors of Safety Transformers : 27\n7.3.3 Errors of Security Transformers : 28\n7.3.4 Errors of Custom Transformers : 29\n7.4 Error Classification : 29\n7.4.1 Development Errors : 29\n7.4.2 Runtime Errors : 29\n7.4.3 Production Errors : 29\n7.4.4 Extended Production Errors : 30\n7.4.4.1 XFRM_E_MALFORMED_MESSAGE : 30\n7.5 Error Notification : 30\n8 API specification 31\n8.1 Imported types : 31\n8.2 Type definitions : 31\n8.3 Function definitions : 32\n4 of 86 Document ID 658: AUTOSAR_CP_ASWS_TransformerGeneralGeneral Specification of Transformers\nAUTOSAR CP R25-11\n8.3.1 <Mip>_ExtractProtocolHeaderFields : 33\n8.3.2 <Mip>_<transformerId> : 34\n8.3.3 <Mip>_Inv_<transformerId> : 41\n8.3.4 <Mip>_Init : 47\n8.3.5 <Mip>_DeInit : 48\n8.3.6 <Mip>_GetVersionInfo : 49\n8.4 Callback notifications : 50\n8.5 Scheduled functions : 50\n8.6 Expected interfaces : 50\n9 Sequence diagrams 51\n10 Configuration specification 52\n10.1How to read this chapter : 52\n10.2Containers and configuration parameters : 52\n10.2.1 XfrmGeneral : 54\n10.2.2 XfrmImplementationMapping : 55\n10.2.3 XfrmSignal : 61\n10.2.4 XfrmDemEventParameterRefs : 63\nA Referenced Meta Classes 65\nB Change history of AUTOSAR traceable items 82\nB.1 Traceable item history of this document according to AUTOSAR Release\nR23-11 : 82\nB.1.1 Added Specification Items in R23-11 : 82\nB.1.2 Changed Specification Items in R23-11 : 82\nB.1.3 Deleted Specification Items in R23-11 : 82\nB.2 Traceable item history of this document according to AUTOSAR Release\nR24-11 : 83\nB.2.1 Added Specification Items in R24-11 : 83\nB.2.2 Changed Specification Items in R24-11 : 83\nB.2.3 Deleted Specification Items in R24-11 : 83\nB.2.4 Added Constraints in R24-11 : 83\nB.2.5 Changed Constraints in R24-11 : 83\nB.2.6 Deleted Constraints in R24-11 : 83\nB.3 Traceable item history of this document according to AUTOSAR Release\nR25-11 : 84\nB.3.1 Added Specification Items in R25-11 : 84\nB.3.2 Changed Specification Items in R25-11 : 84\nB.3.3 Deleted Specification Items in R25-11 : 84\nB.3.4 Added Constraints in R25-11 : 84\nB.3.5 Changed Constraints in R25-11 : 85\nB.3.6 Deleted Constraints in R25-11 : 85\n5 of 86 Document ID 658: AUTOSAR_CP_ASWS_TransformerGeneral",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'page': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 8}, {'structure': '3', 'title': 'Related documentation', 'page': 9}, {'structure': '3.1', 'title': 'Input documents', 'page': 9}, {'structure': '3.2', 'title': 'Related standards and norms', 'page': 10}, {'structure': '3.3', 'title': 'Related specification', 'page': 10}, {'structure': '4', 'title': 'Constraints and assumptions', 'page': 11}, {'structure': '4.1', 'title': 'Limitations', 'page': 11}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 11}, {'structure': '5', 'title': 'Dependencies to other modules', 'page': 12}, {'structure': '5.1', 'title': 'File structure', 'page': 12}, {'structure': '5.1.1', 'title': 'Code file structure', 'page': 12}, {'structure': '5.1.2', 'title': 'Header file structure', 'page': 12}, {'structure': '6', 'title': 'Requirements Tracing', 'page': 13}, {'structure': '7', 'title': 'Functional Specification', 'page': 15}, {'structure': '7.1', 'title': 'Buffer Handling', 'page': 21}, {'structure': '7.2', 'title': 'Transformer Classes', 'page': 22}, {'structure': '7.2.1', 'title': 'Serializer', 'page': 23}, {'structure': '7.2.2', 'title': 'Safety', 'page': 23}, {'structure': '7.2.3', 'title': 'Security', 'page': 24}, {'structure': '7.2.4', 'title': 'Custom', 'page': 24}, {'structure': '7.3', 'title': 'Error Handling', 'page': 24}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'page': 26}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'page': 27}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'page': 28}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'page': 29}, {'structure': '7.4', 'title': 'Error Classification', 'page': 29}, {'structure': '7.4.1', 'title': 'Development Errors', 'page': 29}, {'structure': '7.4.2', 'title': 'Runtime Errors', 'page': 29}, {'structure': '7.4.3', 'title': 'Production Errors', 'page': 29}, {'structure': '7.4.4', 'title': 'Extended Production Errors', 'page': 30}, {'structure': '7.4.4.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'page': 30}, {'structure': '7.5', 'title': 'Error Notification', 'page': 30}, {'structure': '8', 'title': 'API specification', 'page': 31}, {'structure': '8.1', 'title': 'Imported types', 'page': 31}, {'structure': '8.2', 'title': 'Type definitions', 'page': 31}, {'structure': '8.3', 'title': 'Function definitions', 'page': 32}, {'structure': '8.3.1', 'title': '<Mip>_ExtractProtocolHeaderFields', 'page': 33}, {'structure': '8.3.2', 'title': '<Mip>_<transformerId>', 'page': 34}, {'structure': '8.3.3', 'title': '<Mip>_Inv_<transformerId>', 'page': 41}, {'structure': '8.3.4', 'title': '<Mip>_Init', 'page': 47}, {'structure': '8.3.5', 'title': '<Mip>_DeInit', 'page': 48}, {'structure': '8.3.6', 'title': '<Mip>_GetVersionInfo', 'page': 49}, {'structure': '8.4', 'title': 'Callback notifications', 'page': 50}, {'structure': '8.5', 'title': 'Scheduled functions', 'page': 50}, {'structure': '8.6', 'title': 'Expected interfaces', 'page': 50}, {'structure': '9', 'title': 'Sequence diagrams', 'page': 51}, {'structure': '10', 'title': 'Configuration specification', 'page': 52}, {'structure': '10.1', 'title': 'How to read this chapter', 'page': 52}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'page': 52}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'page': 54}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'page': 55}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'page': 61}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'page': 63}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'page': 65}, {'structure': 'B', 'title': 'Change history of AUTOSAR traceable items', 'page': 82}, {'structure': 'B.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R23-11', 'page': 82}, {'structure': 'B.1.1', 'title': 'Added Specification Items in R23-11', 'page': 82}, {'structure': 'B.1.2', 'title': 'Changed Specification Items in R23-11', 'page': 82}, {'structure': 'B.1.3', 'title': 'Deleted Specification Items in R23-11', 'page': 82}, {'structure': 'B.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'page': 83}, {'structure': 'B.2.1', 'title': 'Added Specification Items in R24-11', 'page': 83}, {'structure': 'B.2.2', 'title': 'Changed Specification Items in R24-11', 'page': 83}, {'structure': 'B.2.3', 'title': 'Deleted Specification Items in R24-11', 'page': 83}, {'structure': 'B.2.4', 'title': 'Added Constraints in R24-11', 'page': 83}, {'structure': 'B.2.5', 'title': 'Changed Constraints in R24-11', 'page': 83}, {'structure': 'B.2.6', 'title': 'Deleted Constraints in R24-11', 'page': 83}, {'structure': 'B.3', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'page': 84}, {'structure': 'B.3.1', 'title': 'Added Specification Items in R25-11', 'page': 84}, {'structure': 'B.3.2', 'title': 'Changed Specification Items in R25-11', 'page': 84}, {'structure': 'B.3.3', 'title': 'Deleted Specification Items in R25-11', 'page': 84}, {'structure': 'B.3.4', 'title': 'Added Constraints in R25-11', 'page': 84}, {'structure': 'B.3.5', 'title': 'Changed Constraints in R25-11', 'page': 85}, {'structure': 'B.3.6', 'title': 'Deleted Constraints in R25-11', 'page': 85}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Related documentation', 'physical_index': '<physical_index_9>'}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': '<physical_index_9>'}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_10>'}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': '<physical_index_10>'}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_11>'}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': '<physical_index_11>'}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': '<physical_index_11>'}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': '<physical_index_12>'}, {'structure': '5.1', 'title': 'File structure', 'physical_index': '<physical_index_12>'}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': '<physical_index_12>'}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': '<physical_index_12>'}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_13>'}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': '<physical_index_15>'}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': '<physical_index_21>'}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': '<physical_index_22>'}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': '<physical_index_23>'}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': '<physical_index_23>'}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': '<physical_index_24>'}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': '<physical_index_24>'}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': '<physical_index_24>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 9}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 9}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 10}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 10}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 11}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 11}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 11}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 12}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 12}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 12}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 12}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 13}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 15}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 21}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 22}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 23}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 23}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 24}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 24}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 24}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction and functional overview', 'page': 7, 'physical_index': 7}, {'title': 'Acronyms and Abbreviations', 'page': 8, 'physical_index': 8}, {'title': 'Related documentation', 'page': 9, 'physical_index': 9}, {'title': 'Input documents', 'page': 9, 'physical_index': 9}, {'title': 'Related standards and norms', 'page': 10, 'physical_index': 10}, {'title': 'Related specification', 'page': 10, 'physical_index': 10}, {'title': 'Constraints and assumptions', 'page': 11, 'physical_index': 11}, {'title': 'Limitations', 'page': 11, 'physical_index': 11}, {'title': 'Applicability to car domains', 'page': 11, 'physical_index': 11}, {'title': 'Dependencies to other modules', 'page': 12, 'physical_index': 12}, {'title': 'File structure', 'page': 12, 'physical_index': 12}, {'title': 'Code file structure', 'page': 12, 'physical_index': 12}, {'title': 'Header file structure', 'page': 12, 'physical_index': 12}, {'title': 'Requirements Tracing', 'page': 13, 'physical_index': 13}, {'title': 'Functional Specification', 'page': 15, 'physical_index': 15}, {'title': 'Buffer Handling', 'page': 21, 'physical_index': 21}, {'title': 'Transformer Classes', 'page': 22, 'physical_index': 22}, {'title': 'Serializer', 'page': 23, 'physical_index': 23}, {'title': 'Safety', 'page': 23, 'physical_index': 23}, {'title': 'Security', 'page': 24, 'physical_index': 24}, {'title': 'Custom', 'page': 24, 'physical_index': 24}, {'title': 'Error Handling', 'page': 24, 'physical_index': 24}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 9}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 9}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 10}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 10}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 11}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 11}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 11}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 12}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 12}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 12}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 12}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 13}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 15}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 21}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 22}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 23}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 23}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 24}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 24}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 24}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': 26}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': 27}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': 28}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': 29}, {'structure': '7.4', 'title': 'Error Classification', 'physical_index': 29}, {'structure': '7.4.1', 'title': 'Development Errors', 'physical_index': 29}, {'structure': '7.4.2', 'title': 'Runtime Errors', 'physical_index': 29}, {'structure': '7.4.3', 'title': 'Production Errors', 'physical_index': 29}, {'structure': '7.4.4', 'title': 'Extended Production Errors', 'physical_index': 30}, {'structure': '7.4.4.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 30}, {'structure': '7.5', 'title': 'Error Notification', 'physical_index': 30}, {'structure': '8', 'title': 'API specification', 'physical_index': 31}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': 31}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': 31}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': 32}, {'structure': '8.3.1', 'title': '<Mip>_ExtractProtocolHeaderFields', 'physical_index': 33}, {'structure': '8.3.2', 'title': '<Mip>_<transformerId>', 'physical_index': 34}, {'structure': '8.3.3', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': 41}, {'structure': '8.3.4', 'title': '<Mip>_Init', 'physical_index': 47}, {'structure': '8.3.5', 'title': '<Mip>_DeInit', 'physical_index': 48}, {'structure': '8.3.6', 'title': '<Mip>_GetVersionInfo', 'physical_index': 49}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': 50}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': 50}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': 50}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': 51}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': 52}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': 52}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': 52}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': 54}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': 55}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': 61}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': 63}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': 65}, {'structure': 'B', 'title': 'Change history of AUTOSAR traceable items', 'physical_index': 82}, {'structure': 'B.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R23-11', 'physical_index': 82}, {'structure': 'B.1.1', 'title': 'Added Specification Items in R23-11', 'physical_index': 82}, {'structure': 'B.1.2', 'title': 'Changed Specification Items in R23-11', 'physical_index': 82}, {'structure': 'B.1.3', 'title': 'Deleted Specification Items in R23-11', 'physical_index': 82}, {'structure': 'B.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'physical_index': 83}, {'structure': 'B.2.1', 'title': 'Added Specification Items in R24-11', 'physical_index': 83}, {'structure': 'B.2.2', 'title': 'Changed Specification Items in R24-11', 'physical_index': 83}, {'structure': 'B.2.3', 'title': 'Deleted Specification Items in R24-11', 'physical_index': 83}, {'structure': 'B.2.4', 'title': 'Added Constraints in R24-11', 'physical_index': 83}, {'structure': 'B.2.5', 'title': 'Changed Constraints in R24-11', 'physical_index': 83}, {'structure': 'B.2.6', 'title': 'Deleted Constraints in R24-11', 'physical_index': 83}, {'structure': 'B.3', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'physical_index': 84}, {'structure': 'B.3.1', 'title': 'Added Specification Items in R25-11', 'physical_index': 84}, {'structure': 'B.3.2', 'title': 'Changed Specification Items in R25-11', 'physical_index': 84}, {'structure': 'B.3.3', 'title': 'Deleted Specification Items in R25-11', 'physical_index': 84}, {'structure': 'B.3.4', 'title': 'Added Constraints in R25-11', 'physical_index': 84}, {'structure': 'B.3.5', 'title': 'Changed Constraints in R25-11', 'physical_index': 85}, {'structure': 'B.3.6', 'title': 'Deleted Constraints in R25-11', 'physical_index': 85}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 9}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 9}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 10}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 10}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 11}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 11}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 11}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 12}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 12}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 12}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 12}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 13}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 15}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 21}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 22}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 23}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 23}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 24}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 24}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 24}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': 26}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': 27}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': 28}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': 29}, {'structure': '7.4', 'title': 'Error Classification', 'physical_index': 29}, {'structure': '7.4.1', 'title': 'Development Errors', 'physical_index': 29}, {'structure': '7.4.2', 'title': 'Runtime Errors', 'physical_index': 29}, {'structure': '7.4.3', 'title': 'Production Errors', 'physical_index': 29}, {'structure': '7.4.4', 'title': 'Extended Production Errors', 'physical_index': 30}, {'structure': '7.4.4.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 30}, {'structure': '7.5', 'title': 'Error Notification', 'physical_index': 30}, {'structure': '8', 'title': 'API specification', 'physical_index': 31}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': 31}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': 31}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': 32}, {'structure': '8.3.1', 'title': '<Mip>_ExtractProtocolHeaderFields', 'physical_index': 33}, {'structure': '8.3.2', 'title': '<Mip>_<transformerId>', 'physical_index': 34}, {'structure': '8.3.3', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': 41}, {'structure': '8.3.4', 'title': '<Mip>_Init', 'physical_index': 47}, {'structure': '8.3.5', 'title': '<Mip>_DeInit', 'physical_index': 48}, {'structure': '8.3.6', 'title': '<Mip>_GetVersionInfo', 'physical_index': 49}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': 50}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': 50}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': 50}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': 51}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': 52}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': 52}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': 52}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': 54}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': 55}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': 61}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': 63}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': 65}, {'structure': 'B', 'title': 'Change history of AUTOSAR traceable items', 'physical_index': 82}, {'structure': 'B.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R23-11', 'physical_index': 82}, {'structure': 'B.1.1', 'title': 'Added Specification Items in R23-11', 'physical_index': 82}, {'structure': 'B.1.2', 'title': 'Changed Specification Items in R23-11', 'physical_index': 82}, {'structure': 'B.1.3', 'title': 'Deleted Specification Items in R23-11', 'physical_index': 82}, {'structure': 'B.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'physical_index': 83}, {'structure': 'B.2.1', 'title': 'Added Specification Items in R24-11', 'physical_index': 83}, {'structure': 'B.2.2', 'title': 'Changed Specification Items in R24-11', 'physical_index': 83}, {'structure': 'B.2.3', 'title': 'Deleted Specification Items in R24-11', 'physical_index': 83}, {'structure': 'B.2.4', 'title': 'Added Constraints in R24-11', 'physical_index': 83}, {'structure': 'B.2.5', 'title': 'Changed Constraints in R24-11', 'physical_index': 83}, {'structure': 'B.2.6', 'title': 'Deleted Constraints in R24-11', 'physical_index': 83}, {'structure': 'B.3', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'physical_index': 84}, {'structure': 'B.3.1', 'title': 'Added Specification Items in R25-11', 'physical_index': 84}, {'structure': 'B.3.2', 'title': 'Changed Specification Items in R25-11', 'physical_index': 84}, {'structure': 'B.3.3', 'title': 'Deleted Specification Items in R25-11', 'physical_index': 84}, {'structure': 'B.3.4', 'title': 'Added Constraints in R25-11', 'physical_index': 84}, {'structure': 'B.3.5', 'title': 'Changed Constraints in R25-11', 'physical_index': 85}, {'structure': 'B.3.6', 'title': 'Deleted Constraints in R25-11', 'physical_index': 85}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.21621621621621623,
+    "incorrect_results": [
+      {
+        "list_index": 7,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 11
+      },
+      {
+        "list_index": 8,
+        "answer": "no",
+        "title": "Applicability to car domains",
+        "page_number": 11
+      },
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "Dependencies to other modules",
+        "page_number": 12
+      },
+      {
+        "list_index": 10,
+        "answer": "no",
+        "title": "File structure",
+        "page_number": 12
+      },
+      {
+        "list_index": 11,
+        "answer": "no",
+        "title": "Code file structure",
+        "page_number": 12
+      },
+      {
+        "list_index": 12,
+        "answer": "no",
+        "title": "Header file structure",
+        "page_number": 12
+      },
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "Requirements Tracing",
+        "page_number": 13
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "Functional Specification",
+        "page_number": 15
+      },
+      {
+        "list_index": 15,
+        "answer": "no",
+        "title": "Buffer Handling",
+        "page_number": 21
+      },
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "Transformer Classes",
+        "page_number": 22
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "Serializer",
+        "page_number": 23
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "Safety",
+        "page_number": 23
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "Security",
+        "page_number": 24
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Custom",
+        "page_number": 24
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 24
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Errors of Serializer Transformers",
+        "page_number": 26
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Errors of Safety Transformers",
+        "page_number": 27
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Errors of Security Transformers",
+        "page_number": 28
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Errors of Custom Transformers",
+        "page_number": 29
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Error Classification",
+        "page_number": 29
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Development Errors",
+        "page_number": 29
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Runtime Errors",
+        "page_number": 29
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Production Errors",
+        "page_number": 29
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Extended Production Errors",
+        "page_number": 30
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "XFRM_E_MALFORMED_MESSAGE",
+        "page_number": 30
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Error Notification",
+        "page_number": 30
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "API specification",
+        "page_number": 31
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Imported types",
+        "page_number": 31
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Type definitions",
+        "page_number": 31
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Function definitions",
+        "page_number": 32
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "<Mip>_ExtractProtocolHeaderFields",
+        "page_number": 33
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "<Mip>_<transformerId>",
+        "page_number": 34
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "<Mip>_Inv_<transformerId>",
+        "page_number": 41
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "<Mip>_Init",
+        "page_number": 47
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "<Mip>_DeInit",
+        "page_number": 48
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "<Mip>_GetVersionInfo",
+        "page_number": 49
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Callback notifications",
+        "page_number": 50
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Scheduled functions",
+        "page_number": 50
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Expected interfaces",
+        "page_number": 50
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Sequence diagrams",
+        "page_number": 51
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Configuration specification",
+        "page_number": 52
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "How to read this chapter",
+        "page_number": 52
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Containers and configuration parameters",
+        "page_number": 52
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "XfrmGeneral",
+        "page_number": 54
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "XfrmImplementationMapping",
+        "page_number": 55
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "XfrmSignal",
+        "page_number": 61
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "XfrmDemEventParameterRefs",
+        "page_number": 63
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Referenced Meta Classes",
+        "page_number": 65
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Change history of AUTOSAR traceable items",
+        "page_number": 82
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Traceable item history of this document according to AUTOSAR Release R23-11",
+        "page_number": 82
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Added Specification Items in R23-11",
+        "page_number": 82
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Changed Specification Items in R23-11",
+        "page_number": 82
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Deleted Specification Items in R23-11",
+        "page_number": 82
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Traceable item history of this document according to AUTOSAR Release R24-11",
+        "page_number": 83
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Added Specification Items in R24-11",
+        "page_number": 83
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Deleted Constraints in R24-11",
+        "page_number": 83
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Traceable item history of this document according to AUTOSAR Release R25-11",
+        "page_number": 84
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Added Specification Items in R25-11",
+        "page_number": 84
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction and functional overview', 'page': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 8}, {'structure': '3', 'title': 'Related documentation', 'page': 9}, {'structure': '3.1', 'title': 'Input documents', 'page': 9}, {'structure': '3.2', 'title': 'Related standards and norms', 'page': 10}, {'structure': '3.3', 'title': 'Related specification', 'page': 10}, {'structure': '4', 'title': 'Constraints and assumptions', 'page': 11}, {'structure': '4.1', 'title': 'Limitations', 'page': 11}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 11}, {'structure': '5', 'title': 'Dependencies to other modules', 'page': 12}, {'structure': '5.1', 'title': 'File structure', 'page': 12}, {'structure': '5.1.1', 'title': 'Code file structure', 'page': 12}, {'structure': '5.1.2', 'title': 'Header file structure', 'page': 12}, {'structure': '6', 'title': 'Requirements Tracing', 'page': 13}, {'structure': '7', 'title': 'Functional Specification', 'page': 15}, {'structure': '7.1', 'title': 'Buffer Handling', 'page': 21}, {'structure': '7.2', 'title': 'Transformer Classes', 'page': 22}, {'structure': '7.2.1', 'title': 'Serializer', 'page': 23}, {'structure': '7.2.2', 'title': 'Safety', 'page': 23}, {'structure': '7.2.3', 'title': 'Security', 'page': 24}, {'structure': '7.2.4', 'title': 'Custom', 'page': 24}, {'structure': '7.3', 'title': 'Error Handling', 'page': 24}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'page': 26}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'page': 27}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'page': 28}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'page': 29}, {'structure': '7.4', 'title': 'Error Classification', 'page': 29}, {'structure': '7.4.1', 'title': 'Development Errors', 'page': 29}, {'structure': '7.4.2', 'title': 'Runtime Errors', 'page': 29}, {'structure': '7.4.3', 'title': 'Production Errors', 'page': 29}, {'structure': '7.4.4', 'title': 'Extended Production Errors', 'page': 30}, {'structure': '7.4.4.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'page': 30}, {'structure': '7.5', 'title': 'Error Notification', 'page': 30}, {'structure': '8', 'title': 'API specification', 'page': 31}, {'structure': '8.1', 'title': 'Imported types', 'page': 31}, {'structure': '8.2', 'title': 'Type definitions', 'page': 31}, {'structure': '8.3', 'title': 'Function definitions', 'page': 32}, {'structure': '8.3.1', 'title': '<Mip>_ExtractProtocolHeaderFields', 'page': 33}, {'structure': '8.3.2', 'title': '<Mip>_<transformerId>', 'page': 34}, {'structure': '8.3.3', 'title': '<Mip>_Inv_<transformerId>', 'page': 41}, {'structure': '8.3.4', 'title': '<Mip>_Init', 'page': 47}, {'structure': '8.3.5', 'title': '<Mip>_DeInit', 'page': 48}, {'structure': '8.3.6', 'title': '<Mip>_GetVersionInfo', 'page': 49}, {'structure': '8.4', 'title': 'Callback notifications', 'page': 50}, {'structure': '8.5', 'title': 'Scheduled functions', 'page': 50}, {'structure': '8.6', 'title': 'Expected interfaces', 'page': 50}, {'structure': '9', 'title': 'Sequence diagrams', 'page': 51}, {'structure': '10', 'title': 'Configuration specification', 'page': 52}, {'structure': '10.1', 'title': 'How to read this chapter', 'page': 52}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'page': 52}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'page': 54}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'page': 55}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'page': 61}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'page': 63}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'page': 65}, {'structure': 'B', 'title': 'Change history of AUTOSAR traceable items', 'page': 82}, {'structure': 'B.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R23-11', 'page': 82}, {'structure': 'B.1.1', 'title': 'Added Specification Items in R23-11', 'page': 82}, {'structure': 'B.1.2', 'title': 'Changed Specification Items in R23-11', 'page': 82}, {'structure': 'B.1.3', 'title': 'Deleted Specification Items in R23-11', 'page': 82}, {'structure': 'B.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'page': 83}, {'structure': 'B.2.1', 'title': 'Added Specification Items in R24-11', 'page': 83}, {'structure': 'B.2.2', 'title': 'Changed Specification Items in R24-11', 'page': 83}, {'structure': 'B.2.3', 'title': 'Deleted Specification Items in R24-11', 'page': 83}, {'structure': 'B.2.4', 'title': 'Added Constraints in R24-11', 'page': 83}, {'structure': 'B.2.5', 'title': 'Changed Constraints in R24-11', 'page': 83}, {'structure': 'B.2.6', 'title': 'Deleted Constraints in R24-11', 'page': 83}, {'structure': 'B.3', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'page': 84}, {'structure': 'B.3.1', 'title': 'Added Specification Items in R25-11', 'page': 84}, {'structure': 'B.3.2', 'title': 'Changed Specification Items in R25-11', 'page': 84}, {'structure': 'B.3.3', 'title': 'Deleted Specification Items in R25-11', 'page': 84}, {'structure': 'B.3.4', 'title': 'Added Constraints in R25-11', 'page': 84}, {'structure': 'B.3.5', 'title': 'Changed Constraints in R25-11', 'page': 85}, {'structure': 'B.3.6', 'title': 'Deleted Constraints in R25-11', 'page': 85}]"
+  },
+  {
+    "message": "len(group_texts): 3"
+  }
+]

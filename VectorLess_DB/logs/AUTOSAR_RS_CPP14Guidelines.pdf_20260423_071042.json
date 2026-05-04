@@ -1,0 +1,2128 @@
+[
+  {
+    "total_page_number": 510
+  },
+  {
+    "total_token": 264619
+  },
+  {
+    "toc_content": "Guidelines for the use of the C++14 language in\ncritical and safety-related systems\nAUTOSAR AP Release 18-10\nContents\n1 Background 9\n2 The vision 10\n2.1 Rationale for the production of AUTOSAR C++14 : 10\n2.2 Objectives of AUTOSAR C++14 : 10\n3 Scope 12\n3.1 Allowed features of C++ language : 12\n3.2 Limitations : 14\n4 Using AUTOSAR C++14 16\n5 Introduction to the rules 17\n5.1 Rule classification : 17\n5.1.1 Rule classification according to compatibility with MISRA . . 17\n5.1.2 Rule classification according to obligation level : 17\n5.1.3 Rule classification according to enforcement by static analysis 17\n5.1.4 Rule classification according to allocated target : 18\n5.2 Organization of rules : 18\n5.3 Exceptions to the rules : 18\n5.4 Redundancy in the rules : 18\n5.5 Presentation of rules : 19\n5.6 Understanding the issue references : 19\n5.7 Scope of rules : 19\n6 AUTOSAR C++14 coding rules 20\n6.0 Language independent issues : 20\n6.0.1 Unnecessary constructs : 20\n6.0.2 Storage : 29\n6.0.3 Runtime failures : 29\n6.0.4 Arithmetic : 30\n6.1 General : 33\n6.1.1 Scope : 33\n6.1.2 Normative references : 36\n6.1.4 Implementation compliance : 36\n6.2 Lexical conventions : 37\n6.2.3 Character sets : 37\n6.2.5 Alternative tokens : 38\n6.2.7 Comments : 40\n6.2.8 Header names : 43\n6.2.10 Identifiers : 44\n6.2.11 Keywords : 49\n6.2.13 Literals : 49\n6.3 Basic concepts : 54\n4 of 510\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 839: AUTOSAR_RS_CPP14GuidelinesGuidelines for the use of the C++14 language in\ncritical and safety-related systems\nAUTOSAR AP Release 18-10\n6.3.1 Declarations and definitions : 54\n6.3.2 One Definition Rule : 59\n6.3.3 Scope : 60\n6.3.4 Name lookup : 64\n6.3.8 Object lifetime : 64\n6.3.9 Types : 67\n6.4 Standard conversions : 68\n6.4.5 Integral promotions : 68\n6.4.7 Integral conversion : 71\n6.4.10 Pointer conversions : 73\n6.5 Expressions : 74\n6.5.0 General : 74\n6.5.1 Primary expression : 87\n6.5.2 Postfix expressions : 95\n6.5.3 Unary expressions : 104\n6.5.5 Pointer-to-member : 108\n6.5.6 Multiplicative operators : 110\n6.5.8 Shift operators : 111\n6.5.10 Equality operators : 111\n6.5.14 Logical AND operator : 112\n6.5.16 Conditional operator : 112\n6.5.18 Assignment and compound assignment operation : 113\n6.5.19 Comma operator : 113\n6.5.20 Constant expression : 113\n6.6 Statements : 113\n6.6.2 Expression statement : 113\n6.6.3 Compound statement or block : 117\n6.6.4 Selection statements : 118\n6.6.5 Iteration statements : 120\n6.6.6 Jump statements : 125\n6.7 Declaration : 127\n6.7.1 Specifiers : 127\n6.7.2 Enumeration declaration : 137\n6.7.3 Namespaces : 142\n6.7.4 The asm declaration : 145\n6.7.5 Linkage specification : 147\n6.7.6 Attributes : 151\n6.8 Declarators : 152\n6.8.0 General : 152\n6.8.2 Ambiguity resolution : 152\n6.8.3 Meaning of declarators : 153\n6.8.4 Function definitions : 153\n6.8.5 Initializers : 171\n6.9 Classes : 179\n6.9.3 Member function : 179\n6.9.5 Unions : 182\n5 of 510\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 839: AUTOSAR_RS_CPP14GuidelinesGuidelines for the use of the C++14 language in\ncritical and safety-related systems\nAUTOSAR AP Release 18-10\n6.9.6 Bit-fields : 183\n6.10 Derived Classes : 186\n6.10.0 General : 186\n6.10.1 Multiple base Classes : 187\n6.10.2 Member name lookup : 189\n6.10.3 Virtual functions : 190\n6.10.4 Abstract Classes : 196\n6.11 Member access control : 197\n6.11.0 General : 197\n6.11.3 Friends : 200\n6.12 Special member functions : 201\n6.12.0 General : 201\n6.12.1 Constructors : 206\n6.12.4 Destructors : 213\n6.12.6 Initialization : 216\n6.12.7 Construction and destructions : 217\n6.12.8 Copying and moving class objects : 220\n6.13 Overloading : 232\n6.13.1 Overloadable declarations : 232\n6.13.2 Declaration matching : 235\n6.13.3 Overload resolution : 238\n6.13.5 Overloaded operators : 239\n6.13.6 Build-in operators : 245\n6.14 Templates : 246\n6.14.0 General : 246\n6.14.1 Template parameters : 246\n6.14.5 Template declarations : 248\n6.14.6 Name resolution : 252\n6.14.7 Template instantiation and specialization : 253\n6.14.8 Function template specializations : 256\n6.15 Exception handling : 258\n6.15.0 General : 260\n6.15.1 Throwing an exception : 276\n6.15.2 Constructors and destructors : 287\n6.15.3 Handling an exception : 291\n6.15.4 Exception specifications : 301\n6.15.5 Special functions : 309\n6.16 Preprocessing directives : 318\n6.16.0 General : 318\n6.16.1 Conditional inclusion : 321\n6.16.2 Source file inclusion : 321\n6.16.3 Macro replacement : 324\n6.16.6 Error directive : 325\n6.16.7 Pragma directive : 326\n6.17 Library introduction - partial : 326\n6.17.1 General : 326\n6 of 510\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 839: AUTOSAR_RS_CPP14GuidelinesGuidelines for the use of the C++14 language in\ncritical and safety-related systems\nAUTOSAR AP Release 18-10\n6.17.2 The C standard library : 328\n6.17.3 Definitions : 330\n6.17.6 Library-wide requirements : 330\n6.18 Language support library - partial : 332\n6.18.0 General : 332\n6.18.1 Types : 335\n6.18.2 Implementation properties : 341\n6.18.5 Dynamic memory management : 341\n6.18.9 Other runtime support : 356\n6.19 Diagnostics library - partial : 360\n6.19.4 Error numbers : 360\n6.20 General utilities library - partial : 360\n6.20.8 Smart pointers : 360\n6.21 Strings library : 369\n6.21.8 Null-terminated sequence utilities : 369\n6.23 Containers library - partial : 370\n6.23.1 General : 370\n6.25 Algorithms library : 372\n6.25.1 General : 372\n6.25.4 Sorting and related operations : 375\n6.26.5 Random number generation : 376\n6.27 Input/output library - partial : 378\n6.27.1 General : 378\n7 References 383\nA Allocation of rules to work products 385\nA.1 Rules allocated to architecture : 385\nA.2 Rules allocated to design : 386\nA.3 Rules allocated to toolchain : 387\nA.4 Rules allocated to infrastructure : 388\nA.5 Rules allocated to analysis : 388\nA.6 Rules allocated to hardware : 388\nA.7 Rules allocated to management : 388\nA.8 Rules allocated to verification : 388\nA.9 Rules allocated to implementation : 388\nB Traceability to existing standards 400\nB.1 Traceability to MISRA C++:2008 : 401\nB.2 Traceability to HIC++ v4.0 : 420\nB.3 Traceability to JSF : 432\nB.4 Traceability to SEI CERT C++ : 450\nB.5 Traceability to C++ Core Guidelines : 462\nB.6 Traceability to ISO 26262 : 495\nC Glossary 503\n7 of 510\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 839: AUTOSAR_RS_CPP14GuidelinesGuidelines for the use of the C++14 language in\ncritical and safety-related systems\nAUTOSAR AP Release 18-10\nD Changelog 509\nD.1 Release 17-10 : 509\nD.2 Release 18-03 : 509\nD.3 Release 18-10 : 510\n8 of 510\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 839: AUTOSAR_RS_CPP14Guidelines",
+    "toc_page_list": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Background', 'page': 9}, {'structure': '2', 'title': 'The vision', 'page': 10}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'page': 10}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'page': 10}, {'structure': '3', 'title': 'Scope', 'page': 12}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'page': 12}, {'structure': '3.2', 'title': 'Limitations', 'page': 14}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'page': 16}, {'structure': '5', 'title': 'Introduction to the rules', 'page': 17}, {'structure': '5.1', 'title': 'Rule classification', 'page': 17}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'page': 17}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'page': 17}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'page': 17}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'page': 18}, {'structure': '5.2', 'title': 'Organization of rules', 'page': 18}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'page': 18}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'page': 18}, {'structure': '5.5', 'title': 'Presentation of rules', 'page': 19}, {'structure': '5.6', 'title': 'Understanding the issue references', 'page': 19}, {'structure': '5.7', 'title': 'Scope of rules', 'page': 19}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'page': 20}, {'structure': '6.0', 'title': 'Language independent issues', 'page': 20}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'page': 20}, {'structure': '6.0.2', 'title': 'Storage', 'page': 29}, {'structure': '6.0.3', 'title': 'Runtime failures', 'page': 29}, {'structure': '6.0.4', 'title': 'Arithmetic', 'page': 30}, {'structure': '6.1', 'title': 'General', 'page': 33}, {'structure': '6.1.1', 'title': 'Scope', 'page': 33}, {'structure': '6.1.2', 'title': 'Normative references', 'page': 36}, {'structure': '6.1.4', 'title': 'Implementation compliance', 'page': 36}, {'structure': '6.2', 'title': 'Lexical conventions', 'page': 37}, {'structure': '6.2.3', 'title': 'Character sets', 'page': 37}, {'structure': '6.2.5', 'title': 'Alternative tokens', 'page': 38}, {'structure': '6.2.7', 'title': 'Comments', 'page': 40}, {'structure': '6.2.8', 'title': 'Header names', 'page': 43}, {'structure': '6.2.10', 'title': 'Identifiers', 'page': 44}, {'structure': '6.2.11', 'title': 'Keywords', 'page': 49}, {'structure': '6.2.13', 'title': 'Literals', 'page': 49}, {'structure': '6.3', 'title': 'Basic concepts', 'page': 54}, {'structure': '6.3.1', 'title': 'Declarations and definitions', 'page': 54}, {'structure': '6.3.2', 'title': 'One Definition Rule', 'page': 59}, {'structure': '6.3.3', 'title': 'Scope', 'page': 60}, {'structure': '6.3.4', 'title': 'Name lookup', 'page': 64}, {'structure': '6.3.8', 'title': 'Object lifetime', 'page': 64}, {'structure': '6.3.9', 'title': 'Types', 'page': 67}, {'structure': '6.4', 'title': 'Standard conversions', 'page': 68}, {'structure': '6.4.5', 'title': 'Integral promotions', 'page': 68}, {'structure': '6.4.7', 'title': 'Integral conversion', 'page': 71}, {'structure': '6.4.10', 'title': 'Pointer conversions', 'page': 73}, {'structure': '6.5', 'title': 'Expressions', 'page': 74}, {'structure': '6.5.0', 'title': 'General', 'page': 74}, {'structure': '6.5.1', 'title': 'Primary expression', 'page': 87}, {'structure': '6.5.2', 'title': 'Postfix expressions', 'page': 95}, {'structure': '6.5.3', 'title': 'Unary expressions', 'page': 104}, {'structure': '6.5.5', 'title': 'Pointer-to-member', 'page': 108}, {'structure': '6.5.6', 'title': 'Multiplicative operators', 'page': 110}, {'structure': '6.5.8', 'title': 'Shift operators', 'page': 111}, {'structure': '6.5.10', 'title': 'Equality operators', 'page': 111}, {'structure': '6.5.14', 'title': 'Logical AND operator', 'page': 112}, {'structure': '6.5.16', 'title': 'Conditional operator', 'page': 112}, {'structure': '6.5.18', 'title': 'Assignment and compound assignment operation', 'page': 113}, {'structure': '6.5.19', 'title': 'Comma operator', 'page': 113}, {'structure': '6.5.20', 'title': 'Constant expression', 'page': 113}, {'structure': '6.6', 'title': 'Statements', 'page': 113}, {'structure': '6.6.2', 'title': 'Expression statement', 'page': 113}, {'structure': '6.6.3', 'title': 'Compound statement or block', 'page': 117}, {'structure': '6.6.4', 'title': 'Selection statements', 'page': 118}, {'structure': '6.6.5', 'title': 'Iteration statements', 'page': 120}, {'structure': '6.6.6', 'title': 'Jump statements', 'page': 125}, {'structure': '6.7', 'title': 'Declaration', 'page': 127}, {'structure': '6.7.1', 'title': 'Specifiers', 'page': 127}, {'structure': '6.7.2', 'title': 'Enumeration declaration', 'page': 137}, {'structure': '6.7.3', 'title': 'Namespaces', 'page': 142}, {'structure': '6.7.4', 'title': 'The asm declaration', 'page': 145}, {'structure': '6.7.5', 'title': 'Linkage specification', 'page': 147}, {'structure': '6.7.6', 'title': 'Attributes', 'page': 151}, {'structure': '6.8', 'title': 'Declarators', 'page': 152}, {'structure': '6.8.0', 'title': 'General', 'page': 152}, {'structure': '6.8.2', 'title': 'Ambiguity resolution', 'page': 152}, {'structure': '6.8.3', 'title': 'Meaning of declarators', 'page': 153}, {'structure': '6.8.4', 'title': 'Function definitions', 'page': 153}, {'structure': '6.8.5', 'title': 'Initializers', 'page': 171}, {'structure': '6.9', 'title': 'Classes', 'page': 179}, {'structure': '6.9.3', 'title': 'Member function', 'page': 179}, {'structure': '6.9.5', 'title': 'Unions', 'page': 182}, {'structure': '6.9.6', 'title': 'Bit-fields', 'page': 183}, {'structure': '6.10', 'title': 'Derived Classes', 'page': 186}, {'structure': '6.10.0', 'title': 'General', 'page': 186}, {'structure': '6.10.1', 'title': 'Multiple base Classes', 'page': 187}, {'structure': '6.10.2', 'title': 'Member name lookup', 'page': 189}, {'structure': '6.10.3', 'title': 'Virtual functions', 'page': 190}, {'structure': '6.10.4', 'title': 'Abstract Classes', 'page': 196}, {'structure': '6.11', 'title': 'Member access control', 'page': 197}, {'structure': '6.11.0', 'title': 'General', 'page': 197}, {'structure': '6.11.3', 'title': 'Friends', 'page': 200}, {'structure': '6.12', 'title': 'Special member functions', 'page': 201}, {'structure': '6.12.0', 'title': 'General', 'page': 201}, {'structure': '6.12.1', 'title': 'Constructors', 'page': 206}, {'structure': '6.12.4', 'title': 'Destructors', 'page': 213}, {'structure': '6.12.6', 'title': 'Initialization', 'page': 216}, {'structure': '6.12.7', 'title': 'Construction and destructions', 'page': 217}, {'structure': '6.12.8', 'title': 'Copying and moving class objects', 'page': 220}, {'structure': '6.13', 'title': 'Overloading', 'page': 232}, {'structure': '6.13.1', 'title': 'Overloadable declarations', 'page': 232}, {'structure': '6.13.2', 'title': 'Declaration matching', 'page': 235}, {'structure': '6.13.3', 'title': 'Overload resolution', 'page': 238}, {'structure': '6.13.5', 'title': 'Overloaded operators', 'page': 239}, {'structure': '6.13.6', 'title': 'Build-in operators', 'page': 245}, {'structure': '6.14', 'title': 'Templates', 'page': 246}, {'structure': '6.14.0', 'title': 'General', 'page': 246}, {'structure': '6.14.1', 'title': 'Template parameters', 'page': 246}, {'structure': '6.14.5', 'title': 'Template declarations', 'page': 248}, {'structure': '6.14.6', 'title': 'Name resolution', 'page': 252}, {'structure': '6.14.7', 'title': 'Template instantiation and specialization', 'page': 253}, {'structure': '6.14.8', 'title': 'Function template specializations', 'page': 256}, {'structure': '6.15', 'title': 'Exception handling', 'page': 258}, {'structure': '6.15.0', 'title': 'General', 'page': 260}, {'structure': '6.15.1', 'title': 'Throwing an exception', 'page': 276}, {'structure': '6.15.2', 'title': 'Constructors and destructors', 'page': 287}, {'structure': '6.15.3', 'title': 'Handling an exception', 'page': 291}, {'structure': '6.15.4', 'title': 'Exception specifications', 'page': 301}, {'structure': '6.15.5', 'title': 'Special functions', 'page': 309}, {'structure': '6.16', 'title': 'Preprocessing directives', 'page': 318}, {'structure': '6.16.0', 'title': 'General', 'page': 318}, {'structure': '6.16.1', 'title': 'Conditional inclusion', 'page': 321}, {'structure': '6.16.2', 'title': 'Source file inclusion', 'page': 321}, {'structure': '6.16.3', 'title': 'Macro replacement', 'page': 324}, {'structure': '6.16.6', 'title': 'Error directive', 'page': 325}, {'structure': '6.16.7', 'title': 'Pragma directive', 'page': 326}, {'structure': '6.17', 'title': 'Library introduction - partial', 'page': 326}, {'structure': '6.17.1', 'title': 'General', 'page': 326}, {'structure': '6.17.2', 'title': 'The C standard library', 'page': 328}, {'structure': '6.17.3', 'title': 'Definitions', 'page': 330}, {'structure': '6.17.6', 'title': 'Library-wide requirements', 'page': 330}, {'structure': '6.18', 'title': 'Language support library - partial', 'page': 332}, {'structure': '6.18.0', 'title': 'General', 'page': 332}, {'structure': '6.18.1', 'title': 'Types', 'page': 335}, {'structure': '6.18.2', 'title': 'Implementation properties', 'page': 341}, {'structure': '6.18.5', 'title': 'Dynamic memory management', 'page': 341}, {'structure': '6.18.9', 'title': 'Other runtime support', 'page': 356}, {'structure': '6.19', 'title': 'Diagnostics library - partial', 'page': 360}, {'structure': '6.19.4', 'title': 'Error numbers', 'page': 360}, {'structure': '6.20', 'title': 'General utilities library - partial', 'page': 360}, {'structure': '6.20.8', 'title': 'Smart pointers', 'page': 360}, {'structure': '6.21', 'title': 'Strings library', 'page': 369}, {'structure': '6.21.8', 'title': 'Null-terminated sequence utilities', 'page': 369}, {'structure': '6.23', 'title': 'Containers library - partial', 'page': 370}, {'structure': '6.23.1', 'title': 'General', 'page': 370}, {'structure': '6.25', 'title': 'Algorithms library', 'page': 372}, {'structure': '6.25.1', 'title': 'General', 'page': 372}, {'structure': '6.25.4', 'title': 'Sorting and related operations', 'page': 375}, {'structure': '6.26.5', 'title': 'Random number generation', 'page': 376}, {'structure': '6.27', 'title': 'Input/output library - partial', 'page': 378}, {'structure': '6.27.1', 'title': 'General', 'page': 378}, {'structure': '7', 'title': 'References', 'page': 383}, {'structure': 'A', 'title': 'Allocation of rules to work products', 'page': 385}, {'structure': 'A.1', 'title': 'Rules allocated to architecture', 'page': 385}, {'structure': 'A.2', 'title': 'Rules allocated to design', 'page': 386}, {'structure': 'A.3', 'title': 'Rules allocated to toolchain', 'page': 387}, {'structure': 'A.4', 'title': 'Rules allocated to infrastructure', 'page': 388}, {'structure': 'A.5', 'title': 'Rules allocated to analysis', 'page': 388}, {'structure': 'A.6', 'title': 'Rules allocated to hardware', 'page': 388}, {'structure': 'A.7', 'title': 'Rules allocated to management', 'page': 388}, {'structure': 'A.8', 'title': 'Rules allocated to verification', 'page': 388}, {'structure': 'A.9', 'title': 'Rules allocated to implementation', 'page': 388}, {'structure': 'B', 'title': 'Traceability to existing standards', 'page': 400}, {'structure': 'B.1', 'title': 'Traceability to MISRA C++:2008', 'page': 401}, {'structure': 'B.2', 'title': 'Traceability to HIC++ v4.0', 'page': 420}, {'structure': 'B.3', 'title': 'Traceability to JSF', 'page': 432}, {'structure': 'B.4', 'title': 'Traceability to SEI CERT C++', 'page': 450}, {'structure': 'B.5', 'title': 'Traceability to C++ Core Guidelines', 'page': 462}, {'structure': 'B.6', 'title': 'Traceability to ISO 26262', 'page': 495}, {'structure': 'C', 'title': 'Glossary', 'page': 503}, {'structure': 'D', 'title': 'Changelog', 'page': 509}, {'structure': 'D.1', 'title': 'Release 17-10', 'page': 509}, {'structure': 'D.2', 'title': 'Release 18-03', 'page': 509}, {'structure': 'D.3', 'title': 'Release 18-10', 'page': 510}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Background', 'physical_index': '<physical_index_9>'}, {'structure': '2', 'title': 'The vision', 'physical_index': '<physical_index_10>'}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'physical_index': '<physical_index_10>'}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'Scope', 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'physical_index': '<physical_index_12>'}, {'structure': '3.2', 'title': 'Limitations', 'physical_index': '<physical_index_14>'}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'physical_index': '<physical_index_16>'}, {'structure': '5', 'title': 'Introduction to the rules', 'physical_index': '<physical_index_17>'}, {'structure': '5.1', 'title': 'Rule classification', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'physical_index': '<physical_index_18>'}, {'structure': '5.2', 'title': 'Organization of rules', 'physical_index': '<physical_index_18>'}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'physical_index': '<physical_index_18>'}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'physical_index': '<physical_index_18>'}, {'structure': '5.5', 'title': 'Presentation of rules', 'physical_index': '<physical_index_19>'}, {'structure': '5.6', 'title': 'Understanding the issue references', 'physical_index': '<physical_index_19>'}, {'structure': '5.7', 'title': 'Scope of rules', 'physical_index': '<physical_index_19>'}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'physical_index': '<physical_index_20>'}, {'structure': '6.0', 'title': 'Language independent issues', 'physical_index': '<physical_index_20>'}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'physical_index': '<physical_index_20>'}, {'structure': '6.0.2', 'title': 'Storage', 'physical_index': '<physical_index_29>'}, {'structure': '6.0.3', 'title': 'Runtime failures', 'physical_index': '<physical_index_29>'}, {'structure': '6.0.4', 'title': 'Arithmetic', 'physical_index': '<physical_index_30>'}, {'structure': '6.1', 'title': 'General', 'physical_index': '<physical_index_33>'}, {'structure': '6.1.1', 'title': 'Scope', 'physical_index': '<physical_index_33>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Background', 'physical_index': 9}, {'structure': '2', 'title': 'The vision', 'physical_index': 10}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'physical_index': 10}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'physical_index': 10}, {'structure': '3', 'title': 'Scope', 'physical_index': 12}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'physical_index': 12}, {'structure': '3.2', 'title': 'Limitations', 'physical_index': 14}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'physical_index': 16}, {'structure': '5', 'title': 'Introduction to the rules', 'physical_index': 17}, {'structure': '5.1', 'title': 'Rule classification', 'physical_index': 17}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'physical_index': 17}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'physical_index': 17}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'physical_index': 17}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'physical_index': 18}, {'structure': '5.2', 'title': 'Organization of rules', 'physical_index': 18}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'physical_index': 18}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'physical_index': 18}, {'structure': '5.5', 'title': 'Presentation of rules', 'physical_index': 19}, {'structure': '5.6', 'title': 'Understanding the issue references', 'physical_index': 19}, {'structure': '5.7', 'title': 'Scope of rules', 'physical_index': 19}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'physical_index': 20}, {'structure': '6.0', 'title': 'Language independent issues', 'physical_index': 20}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'physical_index': 20}, {'structure': '6.0.2', 'title': 'Storage', 'physical_index': 29}, {'structure': '6.0.3', 'title': 'Runtime failures', 'physical_index': 29}, {'structure': '6.0.4', 'title': 'Arithmetic', 'physical_index': 30}, {'structure': '6.1', 'title': 'General', 'physical_index': 33}, {'structure': '6.1.1', 'title': 'Scope', 'physical_index': 33}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Background', 'page': 9, 'physical_index': 9}, {'title': 'The vision', 'page': 10, 'physical_index': 10}, {'title': 'Rationale for the production of AUTOSAR C++14', 'page': 10, 'physical_index': 10}, {'title': 'Objectives of AUTOSAR C++14', 'page': 10, 'physical_index': 10}, {'title': 'Scope', 'page': 12, 'physical_index': 12}, {'title': 'Scope', 'page': 33, 'physical_index': 12}, {'title': 'Scope', 'page': 60, 'physical_index': 12}, {'title': 'Allowed features of C++ language', 'page': 12, 'physical_index': 12}, {'title': 'Limitations', 'page': 14, 'physical_index': 14}, {'title': 'Using AUTOSAR C++14', 'page': 16, 'physical_index': 16}, {'title': 'Introduction to the rules', 'page': 17, 'physical_index': 17}, {'title': 'Rule classification', 'page': 17, 'physical_index': 17}, {'title': 'Rule classification according to compatibility with MISRA', 'page': 17, 'physical_index': 17}, {'title': 'Rule classification according to obligation level', 'page': 17, 'physical_index': 17}, {'title': 'Rule classification according to enforcement by static analysis', 'page': 17, 'physical_index': 17}, {'title': 'Rule classification according to allocated target', 'page': 18, 'physical_index': 18}, {'title': 'Organization of rules', 'page': 18, 'physical_index': 18}, {'title': 'Exceptions to the rules', 'page': 18, 'physical_index': 18}, {'title': 'Redundancy in the rules', 'page': 18, 'physical_index': 18}, {'title': 'Presentation of rules', 'page': 19, 'physical_index': 19}, {'title': 'Understanding the issue references', 'page': 19, 'physical_index': 19}, {'title': 'Scope of rules', 'page': 19, 'physical_index': 19}, {'title': 'AUTOSAR C++14 coding rules', 'page': 20, 'physical_index': 20}, {'title': 'Language independent issues', 'page': 20, 'physical_index': 20}, {'title': 'Unnecessary constructs', 'page': 20, 'physical_index': 20}, {'title': 'Storage', 'page': 29, 'physical_index': 29}, {'title': 'Runtime failures', 'page': 29, 'physical_index': 29}, {'title': 'Arithmetic', 'page': 30, 'physical_index': 30}, {'title': 'General', 'page': 33, 'physical_index': 33}, {'title': 'General', 'page': 74, 'physical_index': 33}, {'title': 'General', 'page': 152, 'physical_index': 33}, {'title': 'General', 'page': 186, 'physical_index': 33}, {'title': 'General', 'page': 197, 'physical_index': 33}, {'title': 'General', 'page': 201, 'physical_index': 33}, {'title': 'General', 'page': 246, 'physical_index': 33}, {'title': 'General', 'page': 260, 'physical_index': 33}, {'title': 'General', 'page': 318, 'physical_index': 33}, {'title': 'General', 'page': 326, 'physical_index': 33}, {'title': 'General', 'page': 332, 'physical_index': 33}, {'title': 'General', 'page': 370, 'physical_index': 33}, {'title': 'General', 'page': 372, 'physical_index': 33}, {'title': 'General', 'page': 378, 'physical_index': 33}, {'title': 'Scope', 'page': 12, 'physical_index': 33}, {'title': 'Scope', 'page': 33, 'physical_index': 33}, {'title': 'Scope', 'page': 60, 'physical_index': 33}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Background', 'physical_index': 9}, {'structure': '2', 'title': 'The vision', 'physical_index': 10}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'physical_index': 10}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'physical_index': 10}, {'structure': '3', 'title': 'Scope', 'physical_index': 12}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'physical_index': 12}, {'structure': '3.2', 'title': 'Limitations', 'physical_index': 14}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'physical_index': 16}, {'structure': '5', 'title': 'Introduction to the rules', 'physical_index': 17}, {'structure': '5.1', 'title': 'Rule classification', 'physical_index': 17}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'physical_index': 17}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'physical_index': 17}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'physical_index': 17}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'physical_index': 18}, {'structure': '5.2', 'title': 'Organization of rules', 'physical_index': 18}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'physical_index': 18}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'physical_index': 18}, {'structure': '5.5', 'title': 'Presentation of rules', 'physical_index': 19}, {'structure': '5.6', 'title': 'Understanding the issue references', 'physical_index': 19}, {'structure': '5.7', 'title': 'Scope of rules', 'physical_index': 19}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'physical_index': 20}, {'structure': '6.0', 'title': 'Language independent issues', 'physical_index': 20}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'physical_index': 20}, {'structure': '6.0.2', 'title': 'Storage', 'physical_index': 29}, {'structure': '6.0.3', 'title': 'Runtime failures', 'physical_index': 29}, {'structure': '6.0.4', 'title': 'Arithmetic', 'physical_index': 30}, {'structure': '6.1', 'title': 'General', 'physical_index': 33}, {'structure': '6.1.1', 'title': 'Scope', 'physical_index': 33}, {'structure': '6.1.2', 'title': 'Normative references', 'physical_index': 36}, {'structure': '6.1.4', 'title': 'Implementation compliance', 'physical_index': 36}, {'structure': '6.2', 'title': 'Lexical conventions', 'physical_index': 37}, {'structure': '6.2.3', 'title': 'Character sets', 'physical_index': 37}, {'structure': '6.2.5', 'title': 'Alternative tokens', 'physical_index': 38}, {'structure': '6.2.7', 'title': 'Comments', 'physical_index': 40}, {'structure': '6.2.8', 'title': 'Header names', 'physical_index': 43}, {'structure': '6.2.10', 'title': 'Identifiers', 'physical_index': 44}, {'structure': '6.2.11', 'title': 'Keywords', 'physical_index': 49}, {'structure': '6.2.13', 'title': 'Literals', 'physical_index': 49}, {'structure': '6.3', 'title': 'Basic concepts', 'physical_index': 54}, {'structure': '6.3.1', 'title': 'Declarations and definitions', 'physical_index': 54}, {'structure': '6.3.2', 'title': 'One Definition Rule', 'physical_index': 59}, {'structure': '6.3.3', 'title': 'Scope', 'physical_index': 60}, {'structure': '6.3.4', 'title': 'Name lookup', 'physical_index': 64}, {'structure': '6.3.8', 'title': 'Object lifetime', 'physical_index': 64}, {'structure': '6.3.9', 'title': 'Types', 'physical_index': 67}, {'structure': '6.4', 'title': 'Standard conversions', 'physical_index': 68}, {'structure': '6.4.5', 'title': 'Integral promotions', 'physical_index': 68}, {'structure': '6.4.7', 'title': 'Integral conversion', 'physical_index': 71}, {'structure': '6.4.10', 'title': 'Pointer conversions', 'physical_index': 73}, {'structure': '6.5', 'title': 'Expressions', 'physical_index': 74}, {'structure': '6.5.0', 'title': 'General', 'physical_index': 74}, {'structure': '6.5.1', 'title': 'Primary expression', 'physical_index': 87}, {'structure': '6.5.2', 'title': 'Postfix expressions', 'physical_index': 95}, {'structure': '6.5.3', 'title': 'Unary expressions', 'physical_index': 104}, {'structure': '6.5.5', 'title': 'Pointer-to-member', 'physical_index': 108}, {'structure': '6.5.6', 'title': 'Multiplicative operators', 'physical_index': 110}, {'structure': '6.5.8', 'title': 'Shift operators', 'physical_index': 111}, {'structure': '6.5.10', 'title': 'Equality operators', 'physical_index': 111}, {'structure': '6.5.14', 'title': 'Logical AND operator', 'physical_index': 112}, {'structure': '6.5.16', 'title': 'Conditional operator', 'physical_index': 112}, {'structure': '6.5.18', 'title': 'Assignment and compound assignment operation', 'physical_index': 113}, {'structure': '6.5.19', 'title': 'Comma operator', 'physical_index': 113}, {'structure': '6.5.20', 'title': 'Constant expression', 'physical_index': 113}, {'structure': '6.6', 'title': 'Statements', 'physical_index': 113}, {'structure': '6.6.2', 'title': 'Expression statement', 'physical_index': 113}, {'structure': '6.6.3', 'title': 'Compound statement or block', 'physical_index': 117}, {'structure': '6.6.4', 'title': 'Selection statements', 'physical_index': 118}, {'structure': '6.6.5', 'title': 'Iteration statements', 'physical_index': 120}, {'structure': '6.6.6', 'title': 'Jump statements', 'physical_index': 125}, {'structure': '6.7', 'title': 'Declaration', 'physical_index': 127}, {'structure': '6.7.1', 'title': 'Specifiers', 'physical_index': 127}, {'structure': '6.7.2', 'title': 'Enumeration declaration', 'physical_index': 137}, {'structure': '6.7.3', 'title': 'Namespaces', 'physical_index': 142}, {'structure': '6.7.4', 'title': 'The asm declaration', 'physical_index': 145}, {'structure': '6.7.5', 'title': 'Linkage specification', 'physical_index': 147}, {'structure': '6.7.6', 'title': 'Attributes', 'physical_index': 151}, {'structure': '6.8', 'title': 'Declarators', 'physical_index': 152}, {'structure': '6.8.0', 'title': 'General', 'physical_index': 152}, {'structure': '6.8.2', 'title': 'Ambiguity resolution', 'physical_index': 152}, {'structure': '6.8.3', 'title': 'Meaning of declarators', 'physical_index': 153}, {'structure': '6.8.4', 'title': 'Function definitions', 'physical_index': 153}, {'structure': '6.8.5', 'title': 'Initializers', 'physical_index': 171}, {'structure': '6.9', 'title': 'Classes', 'physical_index': 179}, {'structure': '6.9.3', 'title': 'Member function', 'physical_index': 179}, {'structure': '6.9.5', 'title': 'Unions', 'physical_index': 182}, {'structure': '6.9.6', 'title': 'Bit-fields', 'physical_index': 183}, {'structure': '6.10', 'title': 'Derived Classes', 'physical_index': 186}, {'structure': '6.10.0', 'title': 'General', 'physical_index': 186}, {'structure': '6.10.1', 'title': 'Multiple base Classes', 'physical_index': 187}, {'structure': '6.10.2', 'title': 'Member name lookup', 'physical_index': 189}, {'structure': '6.10.3', 'title': 'Virtual functions', 'physical_index': 190}, {'structure': '6.10.4', 'title': 'Abstract Classes', 'physical_index': 196}, {'structure': '6.11', 'title': 'Member access control', 'physical_index': 197}, {'structure': '6.11.0', 'title': 'General', 'physical_index': 197}, {'structure': '6.11.3', 'title': 'Friends', 'physical_index': 200}, {'structure': '6.12', 'title': 'Special member functions', 'physical_index': 201}, {'structure': '6.12.0', 'title': 'General', 'physical_index': 201}, {'structure': '6.12.1', 'title': 'Constructors', 'physical_index': 206}, {'structure': '6.12.4', 'title': 'Destructors', 'physical_index': 213}, {'structure': '6.12.6', 'title': 'Initialization', 'physical_index': 216}, {'structure': '6.12.7', 'title': 'Construction and destructions', 'physical_index': 217}, {'structure': '6.12.8', 'title': 'Copying and moving class objects', 'physical_index': 220}, {'structure': '6.13', 'title': 'Overloading', 'physical_index': 232}, {'structure': '6.13.1', 'title': 'Overloadable declarations', 'physical_index': 232}, {'structure': '6.13.2', 'title': 'Declaration matching', 'physical_index': 235}, {'structure': '6.13.3', 'title': 'Overload resolution', 'physical_index': 238}, {'structure': '6.13.5', 'title': 'Overloaded operators', 'physical_index': 239}, {'structure': '6.13.6', 'title': 'Build-in operators', 'physical_index': 245}, {'structure': '6.14', 'title': 'Templates', 'physical_index': 246}, {'structure': '6.14.0', 'title': 'General', 'physical_index': 246}, {'structure': '6.14.1', 'title': 'Template parameters', 'physical_index': 246}, {'structure': '6.14.5', 'title': 'Template declarations', 'physical_index': 248}, {'structure': '6.14.6', 'title': 'Name resolution', 'physical_index': 252}, {'structure': '6.14.7', 'title': 'Template instantiation and specialization', 'physical_index': 253}, {'structure': '6.14.8', 'title': 'Function template specializations', 'physical_index': 256}, {'structure': '6.15', 'title': 'Exception handling', 'physical_index': 258}, {'structure': '6.15.0', 'title': 'General', 'physical_index': 260}, {'structure': '6.15.1', 'title': 'Throwing an exception', 'physical_index': 276}, {'structure': '6.15.2', 'title': 'Constructors and destructors', 'physical_index': 287}, {'structure': '6.15.3', 'title': 'Handling an exception', 'physical_index': 291}, {'structure': '6.15.4', 'title': 'Exception specifications', 'physical_index': 301}, {'structure': '6.15.5', 'title': 'Special functions', 'physical_index': 309}, {'structure': '6.16', 'title': 'Preprocessing directives', 'physical_index': 318}, {'structure': '6.16.0', 'title': 'General', 'physical_index': 318}, {'structure': '6.16.1', 'title': 'Conditional inclusion', 'physical_index': 321}, {'structure': '6.16.2', 'title': 'Source file inclusion', 'physical_index': 321}, {'structure': '6.16.3', 'title': 'Macro replacement', 'physical_index': 324}, {'structure': '6.16.6', 'title': 'Error directive', 'physical_index': 325}, {'structure': '6.16.7', 'title': 'Pragma directive', 'physical_index': 326}, {'structure': '6.17', 'title': 'Library introduction - partial', 'physical_index': 326}, {'structure': '6.17.1', 'title': 'General', 'physical_index': 326}, {'structure': '6.17.2', 'title': 'The C standard library', 'physical_index': 328}, {'structure': '6.17.3', 'title': 'Definitions', 'physical_index': 330}, {'structure': '6.17.6', 'title': 'Library-wide requirements', 'physical_index': 330}, {'structure': '6.18', 'title': 'Language support library - partial', 'physical_index': 332}, {'structure': '6.18.0', 'title': 'General', 'physical_index': 332}, {'structure': '6.18.1', 'title': 'Types', 'physical_index': 335}, {'structure': '6.18.2', 'title': 'Implementation properties', 'physical_index': 341}, {'structure': '6.18.5', 'title': 'Dynamic memory management', 'physical_index': 341}, {'structure': '6.18.9', 'title': 'Other runtime support', 'physical_index': 356}, {'structure': '6.19', 'title': 'Diagnostics library - partial', 'physical_index': 360}, {'structure': '6.19.4', 'title': 'Error numbers', 'physical_index': 360}, {'structure': '6.20', 'title': 'General utilities library - partial', 'physical_index': 360}, {'structure': '6.20.8', 'title': 'Smart pointers', 'physical_index': 360}, {'structure': '6.21', 'title': 'Strings library', 'physical_index': 369}, {'structure': '6.21.8', 'title': 'Null-terminated sequence utilities', 'physical_index': 369}, {'structure': '6.23', 'title': 'Containers library - partial', 'physical_index': 370}, {'structure': '6.23.1', 'title': 'General', 'physical_index': 370}, {'structure': '6.25', 'title': 'Algorithms library', 'physical_index': 372}, {'structure': '6.25.1', 'title': 'General', 'physical_index': 372}, {'structure': '6.25.4', 'title': 'Sorting and related operations', 'physical_index': 375}, {'structure': '6.26.5', 'title': 'Random number generation', 'physical_index': 376}, {'structure': '6.27', 'title': 'Input/output library - partial', 'physical_index': 378}, {'structure': '6.27.1', 'title': 'General', 'physical_index': 378}, {'structure': '7', 'title': 'References', 'physical_index': 383}, {'structure': 'A', 'title': 'Allocation of rules to work products', 'physical_index': 385}, {'structure': 'A.1', 'title': 'Rules allocated to architecture', 'physical_index': 385}, {'structure': 'A.2', 'title': 'Rules allocated to design', 'physical_index': 386}, {'structure': 'A.3', 'title': 'Rules allocated to toolchain', 'physical_index': 387}, {'structure': 'A.4', 'title': 'Rules allocated to infrastructure', 'physical_index': 388}, {'structure': 'A.5', 'title': 'Rules allocated to analysis', 'physical_index': 388}, {'structure': 'A.6', 'title': 'Rules allocated to hardware', 'physical_index': 388}, {'structure': 'A.7', 'title': 'Rules allocated to management', 'physical_index': 388}, {'structure': 'A.8', 'title': 'Rules allocated to verification', 'physical_index': 388}, {'structure': 'A.9', 'title': 'Rules allocated to implementation', 'physical_index': 388}, {'structure': 'B', 'title': 'Traceability to existing standards', 'physical_index': 400}, {'structure': 'B.1', 'title': 'Traceability to MISRA C++:2008', 'physical_index': 401}, {'structure': 'B.2', 'title': 'Traceability to HIC++ v4.0', 'physical_index': 420}, {'structure': 'B.3', 'title': 'Traceability to JSF', 'physical_index': 432}, {'structure': 'B.4', 'title': 'Traceability to SEI CERT C++', 'physical_index': 450}, {'structure': 'B.5', 'title': 'Traceability to C++ Core Guidelines', 'physical_index': 462}, {'structure': 'B.6', 'title': 'Traceability to ISO 26262', 'physical_index': 495}, {'structure': 'C', 'title': 'Glossary', 'physical_index': 503}, {'structure': 'D', 'title': 'Changelog', 'physical_index': 509}, {'structure': 'D.1', 'title': 'Release 17-10', 'physical_index': 509}, {'structure': 'D.2', 'title': 'Release 18-03', 'physical_index': 509}, {'structure': 'D.3', 'title': 'Release 18-10', 'physical_index': 510}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Background', 'physical_index': 9}, {'structure': '2', 'title': 'The vision', 'physical_index': 10}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'physical_index': 10}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'physical_index': 10}, {'structure': '3', 'title': 'Scope', 'physical_index': 12}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'physical_index': 12}, {'structure': '3.2', 'title': 'Limitations', 'physical_index': 14}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'physical_index': 16}, {'structure': '5', 'title': 'Introduction to the rules', 'physical_index': 17}, {'structure': '5.1', 'title': 'Rule classification', 'physical_index': 17}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'physical_index': 17}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'physical_index': 17}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'physical_index': 17}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'physical_index': 18}, {'structure': '5.2', 'title': 'Organization of rules', 'physical_index': 18}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'physical_index': 18}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'physical_index': 18}, {'structure': '5.5', 'title': 'Presentation of rules', 'physical_index': 19}, {'structure': '5.6', 'title': 'Understanding the issue references', 'physical_index': 19}, {'structure': '5.7', 'title': 'Scope of rules', 'physical_index': 19}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'physical_index': 20}, {'structure': '6.0', 'title': 'Language independent issues', 'physical_index': 20}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'physical_index': 20}, {'structure': '6.0.2', 'title': 'Storage', 'physical_index': 29}, {'structure': '6.0.3', 'title': 'Runtime failures', 'physical_index': 29}, {'structure': '6.0.4', 'title': 'Arithmetic', 'physical_index': 30}, {'structure': '6.1', 'title': 'General', 'physical_index': 33}, {'structure': '6.1.1', 'title': 'Scope', 'physical_index': 33}, {'structure': '6.1.2', 'title': 'Normative references', 'physical_index': 36}, {'structure': '6.1.4', 'title': 'Implementation compliance', 'physical_index': 36}, {'structure': '6.2', 'title': 'Lexical conventions', 'physical_index': 37}, {'structure': '6.2.3', 'title': 'Character sets', 'physical_index': 37}, {'structure': '6.2.5', 'title': 'Alternative tokens', 'physical_index': 38}, {'structure': '6.2.7', 'title': 'Comments', 'physical_index': 40}, {'structure': '6.2.8', 'title': 'Header names', 'physical_index': 43}, {'structure': '6.2.10', 'title': 'Identifiers', 'physical_index': 44}, {'structure': '6.2.11', 'title': 'Keywords', 'physical_index': 49}, {'structure': '6.2.13', 'title': 'Literals', 'physical_index': 49}, {'structure': '6.3', 'title': 'Basic concepts', 'physical_index': 54}, {'structure': '6.3.1', 'title': 'Declarations and definitions', 'physical_index': 54}, {'structure': '6.3.2', 'title': 'One Definition Rule', 'physical_index': 59}, {'structure': '6.3.3', 'title': 'Scope', 'physical_index': 60}, {'structure': '6.3.4', 'title': 'Name lookup', 'physical_index': 64}, {'structure': '6.3.8', 'title': 'Object lifetime', 'physical_index': 64}, {'structure': '6.3.9', 'title': 'Types', 'physical_index': 67}, {'structure': '6.4', 'title': 'Standard conversions', 'physical_index': 68}, {'structure': '6.4.5', 'title': 'Integral promotions', 'physical_index': 68}, {'structure': '6.4.7', 'title': 'Integral conversion', 'physical_index': 71}, {'structure': '6.4.10', 'title': 'Pointer conversions', 'physical_index': 73}, {'structure': '6.5', 'title': 'Expressions', 'physical_index': 74}, {'structure': '6.5.0', 'title': 'General', 'physical_index': 74}, {'structure': '6.5.1', 'title': 'Primary expression', 'physical_index': 87}, {'structure': '6.5.2', 'title': 'Postfix expressions', 'physical_index': 95}, {'structure': '6.5.3', 'title': 'Unary expressions', 'physical_index': 104}, {'structure': '6.5.5', 'title': 'Pointer-to-member', 'physical_index': 108}, {'structure': '6.5.6', 'title': 'Multiplicative operators', 'physical_index': 110}, {'structure': '6.5.8', 'title': 'Shift operators', 'physical_index': 111}, {'structure': '6.5.10', 'title': 'Equality operators', 'physical_index': 111}, {'structure': '6.5.14', 'title': 'Logical AND operator', 'physical_index': 112}, {'structure': '6.5.16', 'title': 'Conditional operator', 'physical_index': 112}, {'structure': '6.5.18', 'title': 'Assignment and compound assignment operation', 'physical_index': 113}, {'structure': '6.5.19', 'title': 'Comma operator', 'physical_index': 113}, {'structure': '6.5.20', 'title': 'Constant expression', 'physical_index': 113}, {'structure': '6.6', 'title': 'Statements', 'physical_index': 113}, {'structure': '6.6.2', 'title': 'Expression statement', 'physical_index': 113}, {'structure': '6.6.3', 'title': 'Compound statement or block', 'physical_index': 117}, {'structure': '6.6.4', 'title': 'Selection statements', 'physical_index': 118}, {'structure': '6.6.5', 'title': 'Iteration statements', 'physical_index': 120}, {'structure': '6.6.6', 'title': 'Jump statements', 'physical_index': 125}, {'structure': '6.7', 'title': 'Declaration', 'physical_index': 127}, {'structure': '6.7.1', 'title': 'Specifiers', 'physical_index': 127}, {'structure': '6.7.2', 'title': 'Enumeration declaration', 'physical_index': 137}, {'structure': '6.7.3', 'title': 'Namespaces', 'physical_index': 142}, {'structure': '6.7.4', 'title': 'The asm declaration', 'physical_index': 145}, {'structure': '6.7.5', 'title': 'Linkage specification', 'physical_index': 147}, {'structure': '6.7.6', 'title': 'Attributes', 'physical_index': 151}, {'structure': '6.8', 'title': 'Declarators', 'physical_index': 152}, {'structure': '6.8.0', 'title': 'General', 'physical_index': 152}, {'structure': '6.8.2', 'title': 'Ambiguity resolution', 'physical_index': 152}, {'structure': '6.8.3', 'title': 'Meaning of declarators', 'physical_index': 153}, {'structure': '6.8.4', 'title': 'Function definitions', 'physical_index': 153}, {'structure': '6.8.5', 'title': 'Initializers', 'physical_index': 171}, {'structure': '6.9', 'title': 'Classes', 'physical_index': 179}, {'structure': '6.9.3', 'title': 'Member function', 'physical_index': 179}, {'structure': '6.9.5', 'title': 'Unions', 'physical_index': 182}, {'structure': '6.9.6', 'title': 'Bit-fields', 'physical_index': 183}, {'structure': '6.10', 'title': 'Derived Classes', 'physical_index': 186}, {'structure': '6.10.0', 'title': 'General', 'physical_index': 186}, {'structure': '6.10.1', 'title': 'Multiple base Classes', 'physical_index': 187}, {'structure': '6.10.2', 'title': 'Member name lookup', 'physical_index': 189}, {'structure': '6.10.3', 'title': 'Virtual functions', 'physical_index': 190}, {'structure': '6.10.4', 'title': 'Abstract Classes', 'physical_index': 196}, {'structure': '6.11', 'title': 'Member access control', 'physical_index': 197}, {'structure': '6.11.0', 'title': 'General', 'physical_index': 197}, {'structure': '6.11.3', 'title': 'Friends', 'physical_index': 200}, {'structure': '6.12', 'title': 'Special member functions', 'physical_index': 201}, {'structure': '6.12.0', 'title': 'General', 'physical_index': 201}, {'structure': '6.12.1', 'title': 'Constructors', 'physical_index': 206}, {'structure': '6.12.4', 'title': 'Destructors', 'physical_index': 213}, {'structure': '6.12.6', 'title': 'Initialization', 'physical_index': 216}, {'structure': '6.12.7', 'title': 'Construction and destructions', 'physical_index': 217}, {'structure': '6.12.8', 'title': 'Copying and moving class objects', 'physical_index': 220}, {'structure': '6.13', 'title': 'Overloading', 'physical_index': 232}, {'structure': '6.13.1', 'title': 'Overloadable declarations', 'physical_index': 232}, {'structure': '6.13.2', 'title': 'Declaration matching', 'physical_index': 235}, {'structure': '6.13.3', 'title': 'Overload resolution', 'physical_index': 238}, {'structure': '6.13.5', 'title': 'Overloaded operators', 'physical_index': 239}, {'structure': '6.13.6', 'title': 'Build-in operators', 'physical_index': 245}, {'structure': '6.14', 'title': 'Templates', 'physical_index': 246}, {'structure': '6.14.0', 'title': 'General', 'physical_index': 246}, {'structure': '6.14.1', 'title': 'Template parameters', 'physical_index': 246}, {'structure': '6.14.5', 'title': 'Template declarations', 'physical_index': 248}, {'structure': '6.14.6', 'title': 'Name resolution', 'physical_index': 252}, {'structure': '6.14.7', 'title': 'Template instantiation and specialization', 'physical_index': 253}, {'structure': '6.14.8', 'title': 'Function template specializations', 'physical_index': 256}, {'structure': '6.15', 'title': 'Exception handling', 'physical_index': 258}, {'structure': '6.15.0', 'title': 'General', 'physical_index': 260}, {'structure': '6.15.1', 'title': 'Throwing an exception', 'physical_index': 276}, {'structure': '6.15.2', 'title': 'Constructors and destructors', 'physical_index': 287}, {'structure': '6.15.3', 'title': 'Handling an exception', 'physical_index': 291}, {'structure': '6.15.4', 'title': 'Exception specifications', 'physical_index': 301}, {'structure': '6.15.5', 'title': 'Special functions', 'physical_index': 309}, {'structure': '6.16', 'title': 'Preprocessing directives', 'physical_index': 318}, {'structure': '6.16.0', 'title': 'General', 'physical_index': 318}, {'structure': '6.16.1', 'title': 'Conditional inclusion', 'physical_index': 321}, {'structure': '6.16.2', 'title': 'Source file inclusion', 'physical_index': 321}, {'structure': '6.16.3', 'title': 'Macro replacement', 'physical_index': 324}, {'structure': '6.16.6', 'title': 'Error directive', 'physical_index': 325}, {'structure': '6.16.7', 'title': 'Pragma directive', 'physical_index': 326}, {'structure': '6.17', 'title': 'Library introduction - partial', 'physical_index': 326}, {'structure': '6.17.1', 'title': 'General', 'physical_index': 326}, {'structure': '6.17.2', 'title': 'The C standard library', 'physical_index': 328}, {'structure': '6.17.3', 'title': 'Definitions', 'physical_index': 330}, {'structure': '6.17.6', 'title': 'Library-wide requirements', 'physical_index': 330}, {'structure': '6.18', 'title': 'Language support library - partial', 'physical_index': 332}, {'structure': '6.18.0', 'title': 'General', 'physical_index': 332}, {'structure': '6.18.1', 'title': 'Types', 'physical_index': 335}, {'structure': '6.18.2', 'title': 'Implementation properties', 'physical_index': 341}, {'structure': '6.18.5', 'title': 'Dynamic memory management', 'physical_index': 341}, {'structure': '6.18.9', 'title': 'Other runtime support', 'physical_index': 356}, {'structure': '6.19', 'title': 'Diagnostics library - partial', 'physical_index': 360}, {'structure': '6.19.4', 'title': 'Error numbers', 'physical_index': 360}, {'structure': '6.20', 'title': 'General utilities library - partial', 'physical_index': 360}, {'structure': '6.20.8', 'title': 'Smart pointers', 'physical_index': 360}, {'structure': '6.21', 'title': 'Strings library', 'physical_index': 369}, {'structure': '6.21.8', 'title': 'Null-terminated sequence utilities', 'physical_index': 369}, {'structure': '6.23', 'title': 'Containers library - partial', 'physical_index': 370}, {'structure': '6.23.1', 'title': 'General', 'physical_index': 370}, {'structure': '6.25', 'title': 'Algorithms library', 'physical_index': 372}, {'structure': '6.25.1', 'title': 'General', 'physical_index': 372}, {'structure': '6.25.4', 'title': 'Sorting and related operations', 'physical_index': 375}, {'structure': '6.26.5', 'title': 'Random number generation', 'physical_index': 376}, {'structure': '6.27', 'title': 'Input/output library - partial', 'physical_index': 378}, {'structure': '6.27.1', 'title': 'General', 'physical_index': 378}, {'structure': '7', 'title': 'References', 'physical_index': 383}, {'structure': 'A', 'title': 'Allocation of rules to work products', 'physical_index': 385}, {'structure': 'A.1', 'title': 'Rules allocated to architecture', 'physical_index': 385}, {'structure': 'A.2', 'title': 'Rules allocated to design', 'physical_index': 386}, {'structure': 'A.3', 'title': 'Rules allocated to toolchain', 'physical_index': 387}, {'structure': 'A.4', 'title': 'Rules allocated to infrastructure', 'physical_index': 388}, {'structure': 'A.5', 'title': 'Rules allocated to analysis', 'physical_index': 388}, {'structure': 'A.6', 'title': 'Rules allocated to hardware', 'physical_index': 388}, {'structure': 'A.7', 'title': 'Rules allocated to management', 'physical_index': 388}, {'structure': 'A.8', 'title': 'Rules allocated to verification', 'physical_index': 388}, {'structure': 'A.9', 'title': 'Rules allocated to implementation', 'physical_index': 388}, {'structure': 'B', 'title': 'Traceability to existing standards', 'physical_index': 400}, {'structure': 'B.1', 'title': 'Traceability to MISRA C++:2008', 'physical_index': 401}, {'structure': 'B.2', 'title': 'Traceability to HIC++ v4.0', 'physical_index': 420}, {'structure': 'B.3', 'title': 'Traceability to JSF', 'physical_index': 432}, {'structure': 'B.4', 'title': 'Traceability to SEI CERT C++', 'physical_index': 450}, {'structure': 'B.5', 'title': 'Traceability to C++ Core Guidelines', 'physical_index': 462}, {'structure': 'B.6', 'title': 'Traceability to ISO 26262', 'physical_index': 495}, {'structure': 'C', 'title': 'Glossary', 'physical_index': 503}, {'structure': 'D', 'title': 'Changelog', 'physical_index': 509}, {'structure': 'D.1', 'title': 'Release 17-10', 'physical_index': 509}, {'structure': 'D.2', 'title': 'Release 18-03', 'physical_index': 509}, {'structure': 'D.3', 'title': 'Release 18-10', 'physical_index': 510}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.14689265536723164,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "AUTOSAR C++14 coding rules",
+        "page_number": 20
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Language independent issues",
+        "page_number": 20
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Unnecessary constructs",
+        "page_number": 20
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Storage",
+        "page_number": 29
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Runtime failures",
+        "page_number": 29
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Arithmetic",
+        "page_number": 30
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "General",
+        "page_number": 33
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Scope",
+        "page_number": 33
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Normative references",
+        "page_number": 36
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Implementation compliance",
+        "page_number": 36
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Lexical conventions",
+        "page_number": 37
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Character sets",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Alternative tokens",
+        "page_number": 38
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Comments",
+        "page_number": 40
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Header names",
+        "page_number": 43
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Identifiers",
+        "page_number": 44
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Keywords",
+        "page_number": 49
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Literals",
+        "page_number": 49
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Basic concepts",
+        "page_number": 54
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Declarations and definitions",
+        "page_number": 54
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "One Definition Rule",
+        "page_number": 59
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Scope",
+        "page_number": 60
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Name lookup",
+        "page_number": 64
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Object lifetime",
+        "page_number": 64
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Types",
+        "page_number": 67
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Standard conversions",
+        "page_number": 68
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Integral promotions",
+        "page_number": 68
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Integral conversion",
+        "page_number": 71
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Pointer conversions",
+        "page_number": 73
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Expressions",
+        "page_number": 74
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "General",
+        "page_number": 74
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Primary expression",
+        "page_number": 87
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Postfix expressions",
+        "page_number": 95
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Unary expressions",
+        "page_number": 104
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Pointer-to-member",
+        "page_number": 108
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Multiplicative operators",
+        "page_number": 110
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Shift operators",
+        "page_number": 111
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Equality operators",
+        "page_number": 111
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Logical AND operator",
+        "page_number": 112
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Conditional operator",
+        "page_number": 112
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Assignment and compound assignment operation",
+        "page_number": 113
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Comma operator",
+        "page_number": 113
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Constant expression",
+        "page_number": 113
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Statements",
+        "page_number": 113
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Expression statement",
+        "page_number": 113
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Compound statement or block",
+        "page_number": 117
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Selection statements",
+        "page_number": 118
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Iteration statements",
+        "page_number": 120
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Jump statements",
+        "page_number": 125
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Declaration",
+        "page_number": 127
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Specifiers",
+        "page_number": 127
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Enumeration declaration",
+        "page_number": 137
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Namespaces",
+        "page_number": 142
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "The asm declaration",
+        "page_number": 145
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Linkage specification",
+        "page_number": 147
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Attributes",
+        "page_number": 151
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Declarators",
+        "page_number": 152
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "General",
+        "page_number": 152
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Ambiguity resolution",
+        "page_number": 152
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Meaning of declarators",
+        "page_number": 153
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Function definitions",
+        "page_number": 153
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Initializers",
+        "page_number": 171
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Classes",
+        "page_number": 179
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Member function",
+        "page_number": 179
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Unions",
+        "page_number": 182
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Bit-fields",
+        "page_number": 183
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Derived Classes",
+        "page_number": 186
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "General",
+        "page_number": 186
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Multiple base Classes",
+        "page_number": 187
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Member name lookup",
+        "page_number": 189
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Virtual functions",
+        "page_number": 190
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Abstract Classes",
+        "page_number": 196
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Member access control",
+        "page_number": 197
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "General",
+        "page_number": 197
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Friends",
+        "page_number": 200
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Special member functions",
+        "page_number": 201
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "General",
+        "page_number": 201
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Constructors",
+        "page_number": 206
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Destructors",
+        "page_number": 213
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Initialization",
+        "page_number": 216
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Construction and destructions",
+        "page_number": 217
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Copying and moving class objects",
+        "page_number": 220
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Overloading",
+        "page_number": 232
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Overloadable declarations",
+        "page_number": 232
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Declaration matching",
+        "page_number": 235
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Overload resolution",
+        "page_number": 238
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "Overloaded operators",
+        "page_number": 239
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Build-in operators",
+        "page_number": 245
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "Templates",
+        "page_number": 246
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "General",
+        "page_number": 246
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "Template parameters",
+        "page_number": 246
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "Template declarations",
+        "page_number": 248
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "Name resolution",
+        "page_number": 252
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Template instantiation and specialization",
+        "page_number": 253
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Function template specializations",
+        "page_number": 256
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "Exception handling",
+        "page_number": 258
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "General",
+        "page_number": 260
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "Throwing an exception",
+        "page_number": 276
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "Constructors and destructors",
+        "page_number": 287
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Handling an exception",
+        "page_number": 291
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "Exception specifications",
+        "page_number": 301
+      },
+      {
+        "list_index": 121,
+        "answer": "no",
+        "title": "Special functions",
+        "page_number": 309
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "Preprocessing directives",
+        "page_number": 318
+      },
+      {
+        "list_index": 123,
+        "answer": "no",
+        "title": "General",
+        "page_number": 318
+      },
+      {
+        "list_index": 124,
+        "answer": "no",
+        "title": "Conditional inclusion",
+        "page_number": 321
+      },
+      {
+        "list_index": 125,
+        "answer": "no",
+        "title": "Source file inclusion",
+        "page_number": 321
+      },
+      {
+        "list_index": 126,
+        "answer": "no",
+        "title": "Macro replacement",
+        "page_number": 324
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "Error directive",
+        "page_number": 325
+      },
+      {
+        "list_index": 128,
+        "answer": "no",
+        "title": "Pragma directive",
+        "page_number": 326
+      },
+      {
+        "list_index": 129,
+        "answer": "no",
+        "title": "Library introduction - partial",
+        "page_number": 326
+      },
+      {
+        "list_index": 130,
+        "answer": "no",
+        "title": "General",
+        "page_number": 326
+      },
+      {
+        "list_index": 131,
+        "answer": "no",
+        "title": "The C standard library",
+        "page_number": 328
+      },
+      {
+        "list_index": 132,
+        "answer": "no",
+        "title": "Definitions",
+        "page_number": 330
+      },
+      {
+        "list_index": 133,
+        "answer": "no",
+        "title": "Library-wide requirements",
+        "page_number": 330
+      },
+      {
+        "list_index": 134,
+        "answer": "no",
+        "title": "Language support library - partial",
+        "page_number": 332
+      },
+      {
+        "list_index": 135,
+        "answer": "no",
+        "title": "General",
+        "page_number": 332
+      },
+      {
+        "list_index": 136,
+        "answer": "no",
+        "title": "Types",
+        "page_number": 335
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "Implementation properties",
+        "page_number": 341
+      },
+      {
+        "list_index": 138,
+        "answer": "no",
+        "title": "Dynamic memory management",
+        "page_number": 341
+      },
+      {
+        "list_index": 139,
+        "answer": "no",
+        "title": "Other runtime support",
+        "page_number": 356
+      },
+      {
+        "list_index": 140,
+        "answer": "no",
+        "title": "Diagnostics library - partial",
+        "page_number": 360
+      },
+      {
+        "list_index": 141,
+        "answer": "no",
+        "title": "Error numbers",
+        "page_number": 360
+      },
+      {
+        "list_index": 142,
+        "answer": "no",
+        "title": "General utilities library - partial",
+        "page_number": 360
+      },
+      {
+        "list_index": 143,
+        "answer": "no",
+        "title": "Smart pointers",
+        "page_number": 360
+      },
+      {
+        "list_index": 144,
+        "answer": "no",
+        "title": "Strings library",
+        "page_number": 369
+      },
+      {
+        "list_index": 145,
+        "answer": "no",
+        "title": "Null-terminated sequence utilities",
+        "page_number": 369
+      },
+      {
+        "list_index": 146,
+        "answer": "no",
+        "title": "Containers library - partial",
+        "page_number": 370
+      },
+      {
+        "list_index": 147,
+        "answer": "no",
+        "title": "General",
+        "page_number": 370
+      },
+      {
+        "list_index": 148,
+        "answer": "no",
+        "title": "Algorithms library",
+        "page_number": 372
+      },
+      {
+        "list_index": 149,
+        "answer": "no",
+        "title": "General",
+        "page_number": 372
+      },
+      {
+        "list_index": 150,
+        "answer": "no",
+        "title": "Sorting and related operations",
+        "page_number": 375
+      },
+      {
+        "list_index": 151,
+        "answer": "no",
+        "title": "Random number generation",
+        "page_number": 376
+      },
+      {
+        "list_index": 152,
+        "answer": "no",
+        "title": "Input/output library - partial",
+        "page_number": 378
+      },
+      {
+        "list_index": 153,
+        "answer": "no",
+        "title": "General",
+        "page_number": 378
+      },
+      {
+        "list_index": 154,
+        "answer": "no",
+        "title": "References",
+        "page_number": 383
+      },
+      {
+        "list_index": 155,
+        "answer": "no",
+        "title": "Allocation of rules to work products",
+        "page_number": 385
+      },
+      {
+        "list_index": 156,
+        "answer": "no",
+        "title": "Rules allocated to architecture",
+        "page_number": 385
+      },
+      {
+        "list_index": 157,
+        "answer": "no",
+        "title": "Rules allocated to design",
+        "page_number": 386
+      },
+      {
+        "list_index": 158,
+        "answer": "no",
+        "title": "Rules allocated to toolchain",
+        "page_number": 387
+      },
+      {
+        "list_index": 159,
+        "answer": "no",
+        "title": "Rules allocated to infrastructure",
+        "page_number": 388
+      },
+      {
+        "list_index": 160,
+        "answer": "no",
+        "title": "Rules allocated to analysis",
+        "page_number": 388
+      },
+      {
+        "list_index": 161,
+        "answer": "no",
+        "title": "Rules allocated to hardware",
+        "page_number": 388
+      },
+      {
+        "list_index": 162,
+        "answer": "no",
+        "title": "Rules allocated to management",
+        "page_number": 388
+      },
+      {
+        "list_index": 163,
+        "answer": "no",
+        "title": "Rules allocated to verification",
+        "page_number": 388
+      },
+      {
+        "list_index": 164,
+        "answer": "no",
+        "title": "Rules allocated to implementation",
+        "page_number": 388
+      },
+      {
+        "list_index": 165,
+        "answer": "no",
+        "title": "Traceability to existing standards",
+        "page_number": 400
+      },
+      {
+        "list_index": 169,
+        "answer": "no",
+        "title": "Traceability to SEI CERT C++",
+        "page_number": 450
+      },
+      {
+        "list_index": 170,
+        "answer": "no",
+        "title": "Traceability to C++ Core Guidelines",
+        "page_number": 462
+      },
+      {
+        "list_index": 171,
+        "answer": "no",
+        "title": "Traceability to ISO 26262",
+        "page_number": 495
+      },
+      {
+        "list_index": 172,
+        "answer": "no",
+        "title": "Glossary",
+        "page_number": 503
+      },
+      {
+        "list_index": 174,
+        "answer": "no",
+        "title": "Release 17-10",
+        "page_number": 509
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Background', 'page': 9}, {'structure': '2', 'title': 'The vision', 'page': 10}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'page': 10}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'page': 10}, {'structure': '3', 'title': 'Scope', 'page': 12}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'page': 12}, {'structure': '3.2', 'title': 'Limitations', 'page': 14}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'page': 16}, {'structure': '5', 'title': 'Introduction to the rules', 'page': 17}, {'structure': '5.1', 'title': 'Rule classification', 'page': 17}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'page': 17}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'page': 17}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'page': 17}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'page': 18}, {'structure': '5.2', 'title': 'Organization of rules', 'page': 18}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'page': 18}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'page': 18}, {'structure': '5.5', 'title': 'Presentation of rules', 'page': 19}, {'structure': '5.6', 'title': 'Understanding the issue references', 'page': 19}, {'structure': '5.7', 'title': 'Scope of rules', 'page': 19}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'page': 20}, {'structure': '6.0', 'title': 'Language independent issues', 'page': 20}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'page': 20}, {'structure': '6.0.2', 'title': 'Storage', 'page': 29}, {'structure': '6.0.3', 'title': 'Runtime failures', 'page': 29}, {'structure': '6.0.4', 'title': 'Arithmetic', 'page': 30}, {'structure': '6.1', 'title': 'General', 'page': 33}, {'structure': '6.1.1', 'title': 'Scope', 'page': 33}, {'structure': '6.1.2', 'title': 'Normative references', 'page': 36}, {'structure': '6.1.4', 'title': 'Implementation compliance', 'page': 36}, {'structure': '6.2', 'title': 'Lexical conventions', 'page': 37}, {'structure': '6.2.3', 'title': 'Character sets', 'page': 37}, {'structure': '6.2.5', 'title': 'Alternative tokens', 'page': 38}, {'structure': '6.2.7', 'title': 'Comments', 'page': 40}, {'structure': '6.2.8', 'title': 'Header names', 'page': 43}, {'structure': '6.2.10', 'title': 'Identifiers', 'page': 44}, {'structure': '6.2.11', 'title': 'Keywords', 'page': 49}, {'structure': '6.2.13', 'title': 'Literals', 'page': 49}, {'structure': '6.3', 'title': 'Basic concepts', 'page': 54}, {'structure': '6.3.1', 'title': 'Declarations and definitions', 'page': 54}, {'structure': '6.3.2', 'title': 'One Definition Rule', 'page': 59}, {'structure': '6.3.3', 'title': 'Scope', 'page': 60}, {'structure': '6.3.4', 'title': 'Name lookup', 'page': 64}, {'structure': '6.3.8', 'title': 'Object lifetime', 'page': 64}, {'structure': '6.3.9', 'title': 'Types', 'page': 67}, {'structure': '6.4', 'title': 'Standard conversions', 'page': 68}, {'structure': '6.4.5', 'title': 'Integral promotions', 'page': 68}, {'structure': '6.4.7', 'title': 'Integral conversion', 'page': 71}, {'structure': '6.4.10', 'title': 'Pointer conversions', 'page': 73}, {'structure': '6.5', 'title': 'Expressions', 'page': 74}, {'structure': '6.5.0', 'title': 'General', 'page': 74}, {'structure': '6.5.1', 'title': 'Primary expression', 'page': 87}, {'structure': '6.5.2', 'title': 'Postfix expressions', 'page': 95}, {'structure': '6.5.3', 'title': 'Unary expressions', 'page': 104}, {'structure': '6.5.5', 'title': 'Pointer-to-member', 'page': 108}, {'structure': '6.5.6', 'title': 'Multiplicative operators', 'page': 110}, {'structure': '6.5.8', 'title': 'Shift operators', 'page': 111}, {'structure': '6.5.10', 'title': 'Equality operators', 'page': 111}, {'structure': '6.5.14', 'title': 'Logical AND operator', 'page': 112}, {'structure': '6.5.16', 'title': 'Conditional operator', 'page': 112}, {'structure': '6.5.18', 'title': 'Assignment and compound assignment operation', 'page': 113}, {'structure': '6.5.19', 'title': 'Comma operator', 'page': 113}, {'structure': '6.5.20', 'title': 'Constant expression', 'page': 113}, {'structure': '6.6', 'title': 'Statements', 'page': 113}, {'structure': '6.6.2', 'title': 'Expression statement', 'page': 113}, {'structure': '6.6.3', 'title': 'Compound statement or block', 'page': 117}, {'structure': '6.6.4', 'title': 'Selection statements', 'page': 118}, {'structure': '6.6.5', 'title': 'Iteration statements', 'page': 120}, {'structure': '6.6.6', 'title': 'Jump statements', 'page': 125}, {'structure': '6.7', 'title': 'Declaration', 'page': 127}, {'structure': '6.7.1', 'title': 'Specifiers', 'page': 127}, {'structure': '6.7.2', 'title': 'Enumeration declaration', 'page': 137}, {'structure': '6.7.3', 'title': 'Namespaces', 'page': 142}, {'structure': '6.7.4', 'title': 'The asm declaration', 'page': 145}, {'structure': '6.7.5', 'title': 'Linkage specification', 'page': 147}, {'structure': '6.7.6', 'title': 'Attributes', 'page': 151}, {'structure': '6.8', 'title': 'Declarators', 'page': 152}, {'structure': '6.8.0', 'title': 'General', 'page': 152}, {'structure': '6.8.2', 'title': 'Ambiguity resolution', 'page': 152}, {'structure': '6.8.3', 'title': 'Meaning of declarators', 'page': 153}, {'structure': '6.8.4', 'title': 'Function definitions', 'page': 153}, {'structure': '6.8.5', 'title': 'Initializers', 'page': 171}, {'structure': '6.9', 'title': 'Classes', 'page': 179}, {'structure': '6.9.3', 'title': 'Member function', 'page': 179}, {'structure': '6.9.5', 'title': 'Unions', 'page': 182}, {'structure': '6.9.6', 'title': 'Bit-fields', 'page': 183}, {'structure': '6.10', 'title': 'Derived Classes', 'page': 186}, {'structure': '6.10.0', 'title': 'General', 'page': 186}, {'structure': '6.10.1', 'title': 'Multiple base Classes', 'page': 187}, {'structure': '6.10.2', 'title': 'Member name lookup', 'page': 189}, {'structure': '6.10.3', 'title': 'Virtual functions', 'page': 190}, {'structure': '6.10.4', 'title': 'Abstract Classes', 'page': 196}, {'structure': '6.11', 'title': 'Member access control', 'page': 197}, {'structure': '6.11.0', 'title': 'General', 'page': 197}, {'structure': '6.11.3', 'title': 'Friends', 'page': 200}, {'structure': '6.12', 'title': 'Special member functions', 'page': 201}, {'structure': '6.12.0', 'title': 'General', 'page': 201}, {'structure': '6.12.1', 'title': 'Constructors', 'page': 206}, {'structure': '6.12.4', 'title': 'Destructors', 'page': 213}, {'structure': '6.12.6', 'title': 'Initialization', 'page': 216}, {'structure': '6.12.7', 'title': 'Construction and destructions', 'page': 217}, {'structure': '6.12.8', 'title': 'Copying and moving class objects', 'page': 220}, {'structure': '6.13', 'title': 'Overloading', 'page': 232}, {'structure': '6.13.1', 'title': 'Overloadable declarations', 'page': 232}, {'structure': '6.13.2', 'title': 'Declaration matching', 'page': 235}, {'structure': '6.13.3', 'title': 'Overload resolution', 'page': 238}, {'structure': '6.13.5', 'title': 'Overloaded operators', 'page': 239}, {'structure': '6.13.6', 'title': 'Build-in operators', 'page': 245}, {'structure': '6.14', 'title': 'Templates', 'page': 246}, {'structure': '6.14.0', 'title': 'General', 'page': 246}, {'structure': '6.14.1', 'title': 'Template parameters', 'page': 246}, {'structure': '6.14.5', 'title': 'Template declarations', 'page': 248}, {'structure': '6.14.6', 'title': 'Name resolution', 'page': 252}, {'structure': '6.14.7', 'title': 'Template instantiation and specialization', 'page': 253}, {'structure': '6.14.8', 'title': 'Function template specializations', 'page': 256}, {'structure': '6.15', 'title': 'Exception handling', 'page': 258}, {'structure': '6.15.0', 'title': 'General', 'page': 260}, {'structure': '6.15.1', 'title': 'Throwing an exception', 'page': 276}, {'structure': '6.15.2', 'title': 'Constructors and destructors', 'page': 287}, {'structure': '6.15.3', 'title': 'Handling an exception', 'page': 291}, {'structure': '6.15.4', 'title': 'Exception specifications', 'page': 301}, {'structure': '6.15.5', 'title': 'Special functions', 'page': 309}, {'structure': '6.16', 'title': 'Preprocessing directives', 'page': 318}, {'structure': '6.16.0', 'title': 'General', 'page': 318}, {'structure': '6.16.1', 'title': 'Conditional inclusion', 'page': 321}, {'structure': '6.16.2', 'title': 'Source file inclusion', 'page': 321}, {'structure': '6.16.3', 'title': 'Macro replacement', 'page': 324}, {'structure': '6.16.6', 'title': 'Error directive', 'page': 325}, {'structure': '6.16.7', 'title': 'Pragma directive', 'page': 326}, {'structure': '6.17', 'title': 'Library introduction - partial', 'page': 326}, {'structure': '6.17.1', 'title': 'General', 'page': 326}, {'structure': '6.17.2', 'title': 'The C standard library', 'page': 328}, {'structure': '6.17.3', 'title': 'Definitions', 'page': 330}, {'structure': '6.17.6', 'title': 'Library-wide requirements', 'page': 330}, {'structure': '6.18', 'title': 'Language support library - partial', 'page': 332}, {'structure': '6.18.0', 'title': 'General', 'page': 332}, {'structure': '6.18.1', 'title': 'Types', 'page': 335}, {'structure': '6.18.2', 'title': 'Implementation properties', 'page': 341}, {'structure': '6.18.5', 'title': 'Dynamic memory management', 'page': 341}, {'structure': '6.18.9', 'title': 'Other runtime support', 'page': 356}, {'structure': '6.19', 'title': 'Diagnostics library - partial', 'page': 360}, {'structure': '6.19.4', 'title': 'Error numbers', 'page': 360}, {'structure': '6.20', 'title': 'General utilities library - partial', 'page': 360}, {'structure': '6.20.8', 'title': 'Smart pointers', 'page': 360}, {'structure': '6.21', 'title': 'Strings library', 'page': 369}, {'structure': '6.21.8', 'title': 'Null-terminated sequence utilities', 'page': 369}, {'structure': '6.23', 'title': 'Containers library - partial', 'page': 370}, {'structure': '6.23.1', 'title': 'General', 'page': 370}, {'structure': '6.25', 'title': 'Algorithms library', 'page': 372}, {'structure': '6.25.1', 'title': 'General', 'page': 372}, {'structure': '6.25.4', 'title': 'Sorting and related operations', 'page': 375}, {'structure': '6.26.5', 'title': 'Random number generation', 'page': 376}, {'structure': '6.27', 'title': 'Input/output library - partial', 'page': 378}, {'structure': '6.27.1', 'title': 'General', 'page': 378}, {'structure': '7', 'title': 'References', 'page': 383}, {'structure': 'A', 'title': 'Allocation of rules to work products', 'page': 385}, {'structure': 'A.1', 'title': 'Rules allocated to architecture', 'page': 385}, {'structure': 'A.2', 'title': 'Rules allocated to design', 'page': 386}, {'structure': 'A.3', 'title': 'Rules allocated to toolchain', 'page': 387}, {'structure': 'A.4', 'title': 'Rules allocated to infrastructure', 'page': 388}, {'structure': 'A.5', 'title': 'Rules allocated to analysis', 'page': 388}, {'structure': 'A.6', 'title': 'Rules allocated to hardware', 'page': 388}, {'structure': 'A.7', 'title': 'Rules allocated to management', 'page': 388}, {'structure': 'A.8', 'title': 'Rules allocated to verification', 'page': 388}, {'structure': 'A.9', 'title': 'Rules allocated to implementation', 'page': 388}, {'structure': 'B', 'title': 'Traceability to existing standards', 'page': 400}, {'structure': 'B.1', 'title': 'Traceability to MISRA C++:2008', 'page': 401}, {'structure': 'B.2', 'title': 'Traceability to HIC++ v4.0', 'page': 420}, {'structure': 'B.3', 'title': 'Traceability to JSF', 'page': 432}, {'structure': 'B.4', 'title': 'Traceability to SEI CERT C++', 'page': 450}, {'structure': 'B.5', 'title': 'Traceability to C++ Core Guidelines', 'page': 462}, {'structure': 'B.6', 'title': 'Traceability to ISO 26262', 'page': 495}, {'structure': 'C', 'title': 'Glossary', 'page': 503}, {'structure': 'D', 'title': 'Changelog', 'page': 509}, {'structure': 'D.1', 'title': 'Release 17-10', 'page': 509}, {'structure': 'D.2', 'title': 'Release 18-03', 'page': 509}, {'structure': 'D.3', 'title': 'Release 18-10', 'page': 510}]"
+  },
+  {
+    "message": "len(group_texts): 26"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Guidelines for the use of the C++14 language in critical and safety-related systems', 'physical_index': '<physical_index_507>'}, {'structure': '1.1', 'title': 'Fundamental types', 'physical_index': '<physical_index_507>'}, {'structure': '1.2', 'title': 'Scalar types', 'physical_index': '<physical_index_507>'}, {'structure': '1.3', 'title': 'glvalue', 'physical_index': '<physical_index_507>'}, {'structure': '1.4', 'title': 'xvalue', 'physical_index': '<physical_index_507>'}, {'structure': '1.5', 'title': 'prvalue', 'physical_index': '<physical_index_507>'}, {'structure': '1.6', 'title': 'rvalue', 'physical_index': '<physical_index_507>'}, {'structure': '1.7', 'title': 'lvalue', 'physical_index': '<physical_index_507>'}, {'structure': '1.8', 'title': 'Implicitly-defined default constructor', 'physical_index': '<physical_index_507>'}, {'structure': '1.9', 'title': 'Implicitly-defined copy constructor', 'physical_index': '<physical_index_507>'}, {'structure': '1.10', 'title': 'Implicitly-defined move constructor', 'physical_index': '<physical_index_507>'}, {'structure': '1.11', 'title': 'Implicitly-defined copy assignment operator', 'physical_index': '<physical_index_507>'}, {'structure': '1.12', 'title': 'Implicitly-defined move assignment operator', 'physical_index': '<physical_index_507>'}, {'structure': '1.13', 'title': 'Implicitly-defined destructor', 'physical_index': '<physical_index_508>'}, {'structure': '1.14', 'title': 'Is-a relationship', 'physical_index': '<physical_index_508>'}, {'structure': '1.15', 'title': 'Has-a relationship', 'physical_index': '<physical_index_508>'}, {'structure': '1.16', 'title': 'Single point of exit', 'physical_index': '<physical_index_508>'}, {'structure': '2', 'title': 'D Changelog', 'physical_index': '<physical_index_509>'}, {'structure': '2.1', 'title': 'Release 17-10', 'physical_index': '<physical_index_509>'}, {'structure': '2.2', 'title': 'Release 18-03', 'physical_index': '<physical_index_509>'}, {'structure': '2.3', 'title': 'Release 18-10', 'physical_index': '<physical_index_510>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Guidelines for the use of the C++14 language in critical and safety-related systems', 'physical_index': 507}, {'structure': '1.1', 'title': 'Fundamental types', 'physical_index': 507}, {'structure': '1.2', 'title': 'Scalar types', 'physical_index': 507}, {'structure': '1.3', 'title': 'glvalue', 'physical_index': 507}, {'structure': '1.4', 'title': 'xvalue', 'physical_index': 507}, {'structure': '1.5', 'title': 'prvalue', 'physical_index': 507}, {'structure': '1.6', 'title': 'rvalue', 'physical_index': 507}, {'structure': '1.7', 'title': 'lvalue', 'physical_index': 507}, {'structure': '1.8', 'title': 'Implicitly-defined default constructor', 'physical_index': 507}, {'structure': '1.9', 'title': 'Implicitly-defined copy constructor', 'physical_index': 507}, {'structure': '1.10', 'title': 'Implicitly-defined move constructor', 'physical_index': 507}, {'structure': '1.11', 'title': 'Implicitly-defined copy assignment operator', 'physical_index': 507}, {'structure': '1.12', 'title': 'Implicitly-defined move assignment operator', 'physical_index': 507}, {'structure': '1.13', 'title': 'Implicitly-defined destructor', 'physical_index': 508}, {'structure': '1.14', 'title': 'Is-a relationship', 'physical_index': 508}, {'structure': '1.15', 'title': 'Has-a relationship', 'physical_index': 508}, {'structure': '1.16', 'title': 'Single point of exit', 'physical_index': 508}, {'structure': '2', 'title': 'D Changelog', 'physical_index': 509}, {'structure': '2.1', 'title': 'Release 17-10', 'physical_index': 509}, {'structure': '2.2', 'title': 'Release 18-03', 'physical_index': 509}, {'structure': '2.3', 'title': 'Release 18-10', 'physical_index': 510}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.9523809523809523,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Release 18-10",
+        "page_number": 510
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 20, 'title': 'Release 18-10', 'prev_correct': 509, 'next_correct': 510}]"
+  },
+  {
+    "message": "invalid_results: []"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Implicitly-defined default constructor' appears in the page_text, but it is not the first content. There are several paragraphs and definitions before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Implicitly-defined move constructor' appears in the page_text, but it is not the first content. There are several other sections and definitions listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Implicitly-defined move assignment operator' appears in the page_text, but it is not the first content. There are several other sections and definitions listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Implicitly-defined copy constructor' appears in the page_text, but it is not at the beginning. There are several other contents and definitions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Implicitly-defined copy assignment operator' appears in the page_text, but it is not the first content. There are several other sections and definitions listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Guidelines for the use of the C++14 language in critical and safety-related systems' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'prvalue' is found in the page_text, but it is not at the very beginning. There are several lines of text before the section title 'prvalue'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'rvalue' is found within the page_text, but it is not at the very beginning. There are several lines of text before the term 'rvalue' is mentioned.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'glvalue' is found in the page_text, but it is not at the very beginning. There are other contents before it, such as information about fundamental types and scalar types.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Scalar types' appears in the page_text, but it is not the first content. There are other contents before it, such as information about fundamental types and C++ built-in types.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' does not appear at the beginning of the given page_text. The page_text starts with document metadata and change history, which indicates that the 'Preface' section is not the first content.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Is-a relationship' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including information about implicitly-defined destructors and other guidelines.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'lvalue' is found in the page_text, but it is not at the very beginning. There are other contents before it, such as definitions for glvalue, xvalue, prvalue, and rvalue.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'xvalue' is found in the page_text, but it is not at the very beginning. There are other contents before it, such as definitions for 'glvalue', 'prvalue', and 'rvalue'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Fundamental types' appears in the page_text, but it is not the first content. There are other contents (like 'Guidelines for the use of the C++14 language in critical and safety-related systems AUTOSAR AP Release 18-10') before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'D Changelog' is present in the page_text, but it is not the first content. There are other contents before it, such as 'Guidelines for the use of the C++14 language in critical and safety-related systems AUTOSAR AP Release 18-10'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Single point of exit' appears in the page_text, but it is not the first content. There are several paragraphs and a table before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Has-a relationship' appears in the page_text, but it is not the first content. There are other contents before it, such as information about implicitly-defined destructors and is-a relationships.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Implicitly-defined destructor' appears in the page_text, but it is not the first content. There are other contents such as 'Guidelines for the use of the C++14 language in critical and safety-related systems AUTOSAR AP Release 18-10' before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Release 17-10' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Guidelines for the use of the C++14 language in critical and safety-related systems', 'AUTOSAR AP Release 18-10', and 'D Changelog'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "len(group_texts): 26"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Background', 'physical_index': '<physical_index_9>'}, {'structure': '2', 'title': 'The vision', 'physical_index': '<physical_index_10>'}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'physical_index': '<physical_index_10>'}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Scope', 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'physical_index': '<physical_index_12>'}, {'structure': '3.2', 'title': 'Limitations', 'physical_index': '<physical_index_14>'}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'physical_index': '<physical_index_16>'}, {'structure': '5', 'title': 'Introduction to the rules', 'physical_index': '<physical_index_17>'}, {'structure': '5.1', 'title': 'Rule classification', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'physical_index': '<physical_index_17>'}, {'structure': '5.2', 'title': 'Organization of rules', 'physical_index': '<physical_index_17>'}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'physical_index': '<physical_index_18>'}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'physical_index': '<physical_index_18>'}, {'structure': '5.5', 'title': 'Presentation of rules', 'physical_index': '<physical_index_19>'}, {'structure': '5.6', 'title': 'Understanding the issue references', 'physical_index': '<physical_index_19>'}, {'structure': '5.7', 'title': 'Scope of rules', 'physical_index': '<physical_index_19>'}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'physical_index': '<physical_index_20>'}, {'structure': '6.0', 'title': 'Language independent issues', 'physical_index': '<physical_index_20>'}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'physical_index': '<physical_index_20>'}, {'structure': '6.0.2', 'title': 'Storage', 'physical_index': '<physical_index_29>'}, {'structure': '6.0.3', 'title': 'Runtime failures', 'physical_index': '<physical_index_29>'}, {'structure': '6.0.4', 'title': 'Arithmetic', 'physical_index': '<physical_index_30>'}, {'structure': '6.1', 'title': 'General', 'physical_index': '<physical_index_33>'}, {'structure': '6.1.1', 'title': 'Scope', 'physical_index': '<physical_index_33>'}, {'structure': '6.1.2', 'title': 'Normative references', 'physical_index': '<physical_index_36>'}, {'structure': '6.1.4', 'title': 'Implementation compliance', 'physical_index': '<physical_index_36>'}, {'structure': '6.2', 'title': 'Lexical conventions', 'physical_index': '<physical_index_37>'}, {'structure': '6.2.3', 'title': 'Character sets', 'physical_index': '<physical_index_37>'}, {'structure': '6.2.5', 'title': 'Alternative tokens', 'physical_index': '<physical_index_38>'}, {'structure': '6.2.7', 'title': 'Comments', 'physical_index': '<physical_index_40>'}, {'structure': '6.2.8', 'title': 'Header names', 'physical_index': '<physical_index_43>'}, {'structure': '6.2.10', 'title': 'Identifiers', 'physical_index': '<physical_index_44>'}, {'structure': '6.2.10.1', 'title': 'Identifiers declared in an inner scope shall not hide an identifier declared in an outer scope', 'physical_index': '<physical_index_45>'}, {'structure': '6.2.10.2', 'title': 'A class or enumeration name shall not be hidden by a variable, function, or enumerator declaration in the same scope', 'physical_index': '<physical_index_46>'}, {'structure': '6.2.10.3', 'title': 'The identifier name of a non-member object with static storage duration or static function shall not be reused within a namespace', 'physical_index': '<physical_index_47>'}, {'structure': '6.2.10.4', 'title': 'An identifier name of a function with static storage duration or a non-member object with external or internal linkage should not be reused', 'physical_index': '<physical_index_48>'}, {'structure': '6.2.11', 'title': 'Keywords', 'physical_index': '<physical_index_49>'}, {'structure': '6.2.11.1', 'title': 'Volatile keyword shall not be used', 'physical_index': '<physical_index_49>'}, {'structure': '6.2.13', 'title': 'Literals', 'physical_index': '<physical_index_50>'}, {'structure': '6.2.13.1', 'title': 'Only those escape sequences that are defined in ISO/IEC 14882:2014 shall be used', 'physical_index': '<physical_index_50>'}, {'structure': '6.2.13.2', 'title': 'String literals with different encoding prefixes shall not be concatenated', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.13.3', 'title': 'Type wchar_t shall not be used', 'physical_index': '<physical_index_53>'}, {'structure': '6.2.13.4', 'title': 'String literals shall not be assigned to non-constant pointers', 'physical_index': '<physical_index_54>'}, {'structure': '6.2.13.5', 'title': 'Hexadecimal constants should be upper case', 'physical_index': '<physical_index_55>'}, {'structure': '6.2.13.6', 'title': 'Universal character names shall be used only inside character or string literals', 'physical_index': '<physical_index_56>'}, {'structure': '6.3', 'title': 'Basic concepts', 'physical_index': '<physical_index_57>'}, {'structure': '6.3.1', 'title': 'Declarations and definitions', 'physical_index': '<physical_index_57>'}, {'structure': '6.3.1.1', 'title': 'It shall be possible to include any header file in multiple translation units without violating the One Definition Rule', 'physical_index': '<physical_index_57>'}, {'structure': '6.3.1.2', 'title': 'Header files, that are defined locally in the project, shall have a file name extension of one of: \".h\", \".hpp\" or \".hxx\"', 'physical_index': '<physical_index_58>'}, {'structure': '6.3.1.3', 'title': 'Implementation files, that are defined locally in the project, should have a file name extension of \".cpp\"', 'physical_index': '<physical_index_59>'}, {'structure': '6.3.1.4', 'title': 'When an array with external linkage is declared, its size shall be stated explicitly', 'physical_index': '<physical_index_60>'}, {'structure': '6.3.1.5', 'title': 'A function definition shall only be placed in a class definition if (1) the function is intended to be inlined (2) it is a member function template (3) it is a member function of a class template', 'physical_index': '<physical_index_61>'}, {'structure': '6.3.1.6', 'title': 'Trivial accessor and mutator functions should be inlined', 'physical_index': '<physical_index_62>'}, {'structure': '6.3.2', 'title': 'One Definition Rule', 'physical_index': '<physical_index_63>'}, {'structure': '6.3.3', 'title': 'Scope', 'physical_index': '<physical_index_64>'}, {'structure': '6.3.3.1', 'title': 'Objects or functions with external linkage (including members of named namespaces) shall be declared in a header file', 'physical_index': '<physical_index_64>'}, {'structure': '6.3.3.2', 'title': 'Static and thread-local objects shall be constant-initialized', 'physical_index': '<physical_index_65>'}, {'structure': '6.3.4', 'title': 'Name lookup', 'physical_index': '<physical_index_66>'}, {'structure': '6.3.8', 'title': 'Object lifetime', 'physical_index': '<physical_index_67>'}, {'structure': '6.3.8.1', 'title': 'An object shall not be accessed outside of its lifetime', 'physical_index': '<physical_index_67>'}, {'structure': '6.3.9', 'title': 'Types', 'physical_index': '<physical_index_68>'}, {'structure': '6.3.9.1', 'title': 'Fixed width integer types from <cstdint>, indicating the size and signedness, shall be used in place of the basic numerical types', 'physical_index': '<physical_index_68>'}, {'structure': '6.4', 'title': 'Standard conversions', 'physical_index': '<physical_index_69>'}, {'structure': '6.4.5', 'title': 'Integral promotions', 'physical_index': '<physical_index_70>'}, {'structure': '6.4.5.1', 'title': 'Expressions with type bool shall not be used as operands to built-in operators other than the assignment operator =, the logical operators &&, ||, !, the equality operators == and !=, the unary & operator, and the conditional operator', 'physical_index': '<physical_index_70>'}, {'structure': '6.4.5.2', 'title': 'Expressions with type enum or enum class shall not be used as operands to built-in and overloaded operators other than the subscript operator [], the assignment operator =, the equality operators == and !=, the unary & operator, and the relational operators <, <=, >, >=', 'physical_index': '<physical_index_70>'}, {'structure': '6.4.7', 'title': 'Integral conversion', 'physical_index': '<physical_index_72>'}, {'structure': '6.4.10', 'title': 'Pointer conversions', 'physical_index': '<physical_index_73>'}, {'structure': '6.5', 'title': 'Expressions', 'physical_index': '<physical_index_74>'}, {'structure': '6.5.0', 'title': 'General', 'physical_index': '<physical_index_74>'}, {'structure': '6.5.1', 'title': 'Primary expression', 'physical_index': '<physical_index_87>'}, {'structure': '6.5.2', 'title': 'Postfix expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.3', 'title': 'Unary expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.4', 'title': 'Cast expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.5', 'title': 'Multiplicative expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.6', 'title': 'Additive expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.7', 'title': 'Shift expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.8', 'title': 'Relational expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.9', 'title': 'Equality expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.10', 'title': 'And expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.11', 'title': 'Exclusive or expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.12', 'title': 'Inclusive or expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.13', 'title': 'Logical and expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.14', 'title': 'Logical or expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.15', 'title': 'Conditional expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.16', 'title': 'Assignment expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.5.17', 'title': 'Comma expressions', 'physical_index': '<physical_index_120>'}, {'structure': '6.6', 'title': 'Statements', 'physical_index': '<physical_index_120>'}, {'structure': '6.6.1', 'title': 'Labeled statements', 'physical_index': '<physical_index_120>'}, {'structure': '6.6.2', 'title': 'Expression statements', 'physical_index': '<physical_index_120>'}, {'structure': '6.6.3', 'title': 'Compound statements', 'physical_index': '<physical_index_120>'}, {'structure': '6.6.4', 'title': 'Selection statements', 'physical_index': '<physical_index_120>'}, {'structure': '6.6.5', 'title': 'Iteration statements', 'physical_index': '<physical_index_120>'}, {'structure': '6.6.6', 'title': 'Jump statements', 'physical_index': '<physical_index_126>'}, {'structure': '6.7', 'title': 'Declarations', 'physical_index': '<physical_index_127>'}, {'structure': '6.7.1', 'title': 'Specifiers', 'physical_index': '<physical_index_127>'}, {'structure': '6.7.2', 'title': 'Enumeration declaration', 'physical_index': '<physical_index_137>'}, {'structure': '6.7.3', 'title': 'Namespaces', 'physical_index': '<physical_index_143>'}, {'structure': '6.7.4', 'title': 'The asm declaration', 'physical_index': '<physical_index_145>'}, {'structure': '6.7.5', 'title': 'Linkage specifications', 'physical_index': '<physical_index_146>'}, {'structure': '6.7.6', 'title': 'Attributes', 'physical_index': '<physical_index_146>'}, {'structure': '6.7.7', 'title': 'Alignment specifiers', 'physical_index': '<physical_index_147>'}, {'structure': '6.7.8', 'title': 'Declarators', 'physical_index': '<physical_index_147>'}, {'structure': '6.7.9', 'title': 'Initializers', 'physical_index': '<physical_index_147>'}, {'structure': '6.7.10', 'title': 'Static assertions', 'physical_index': '<physical_index_147>'}, {'structure': '6.8', 'title': 'Classes', 'physical_index': '<physical_index_147>'}, {'structure': '6.8.1', 'title': 'Class members', 'physical_index': '<physical_index_147>'}, {'structure': '6.8.2', 'title': 'Constructors and destructors', 'physical_index': '<physical_index_149>'}, {'structure': '6.8.3', 'title': 'Special member functions', 'physical_index': '<physical_index_151>'}, {'structure': '6.8.4', 'title': 'Member access control', 'physical_index': '<physical_index_152>'}, {'structure': '6.8.5', 'title': 'Virtual functions', 'physical_index': '<physical_index_152>'}, {'structure': '6.8.6', 'title': 'Nesting of classes', 'physical_index': '<physical_index_153>'}, {'structure': '6.9', 'title': 'Derived classes', 'physical_index': '<physical_index_153>'}, {'structure': '6.9.1', 'title': 'Base class access', 'physical_index': '<physical_index_153>'}, {'structure': '6.9.2', 'title': 'Virtual base classes', 'physical_index': '<physical_index_153>'}, {'structure': '6.9.3', 'title': 'Multiple inheritance', 'physical_index': '<physical_index_153>'}, {'structure': '6.9.4', 'title': 'Ambiguities in multiple inheritance', 'physical_index': '<physical_index_153>'}, {'structure': '6.10', 'title': 'Special member functions', 'physical_index': '<physical_index_153>'}, {'structure': '6.10.1', 'title': 'Copy constructor', 'physical_index': '<physical_index_153>'}, {'structure': '6.10.2', 'title': 'Move constructor', 'physical_index': '<physical_index_153>'}, {'structure': '6.10.3', 'title': 'Copy assignment operator', 'physical_index': '<physical_index_153>'}, {'structure': '6.10.4', 'title': 'Move assignment operator', 'physical_index': '<physical_index_153>'}, {'structure': '6.10.5', 'title': 'Destructor', 'physical_index': '<physical_index_153>'}, {'structure': '6.11', 'title': 'Overloading', 'physical_index': '<physical_index_153>'}, {'structure': '6.11.1', 'title': 'Function overloading', 'physical_index': '<physical_index_153>'}, {'structure': '6.11.2', 'title': 'Operator overloading', 'physical_index': '<physical_index_153>'}, {'structure': '6.11.3', 'title': 'Conversion functions', 'physical_index': '<physical_index_153>'}, {'structure': '6.12', 'title': 'Templates', 'physical_index': '<physical_index_153>'}, {'structure': '6.12.1', 'title': 'Template parameters', 'physical_index': '<physical_index_153>'}, {'structure': '6.12.2', 'title': 'Template arguments', 'physical_index': '<physical_index_153>'}, {'structure': '6.12.3', 'title': 'Template specialization', 'physical_index': '<physical_index_153>'}, {'structure': '6.12.4', 'title': 'Template instantiation', 'physical_index': '<physical_index_153>'}, {'structure': '6.13', 'title': 'Exception handling', 'physical_index': '<physical_index_153>'}, {'structure': '6.13.1', 'title': 'Try blocks', 'physical_index': '<physical_index_153>'}, {'structure': '6.13.2', 'title': 'Throw expressions', 'physical_index': '<physical_index_153>'}, {'structure': '6.13.3', 'title': 'Exception specifications', 'physical_index': '<physical_index_153>'}, {'structure': '6.13.4', 'title': 'Dynamic exception specifications', 'physical_index': '<physical_index_153>'}, {'structure': '6.13.5', 'title': 'Noexcept specifications', 'physical_index': '<physical_index_153>'}, {'structure': '6.14', 'title': 'Preprocessor directives', 'physical_index': '<physical_index_153>'}, {'structure': '6.14.1', 'title': 'Macro replacement', 'physical_index': '<physical_index_153>'}, {'structure': '6.14.2', 'title': 'Source file inclusion', 'physical_index': '<physical_index_153>'}, {'structure': '6.14.3', 'title': 'Line control', 'physical_index': '<physical_index_153>'}, {'structure': '6.14.4', 'title': 'Error directive', 'physical_index': '<physical_index_153>'}, {'structure': '6.14.5', 'title': 'Pragma directive', 'physical_index': '<physical_index_153>'}, {'structure': '6.15', 'title': 'Library facilities', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.1', 'title': 'General', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.2', 'title': 'Strings library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.3', 'title': 'Containers library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.4', 'title': 'Algorithms library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.5', 'title': 'Iterators library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.6', 'title': 'Numerics library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.7', 'title': 'Localization library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.8', 'title': 'Regular expressions library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.9', 'title': 'Atomic operations library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.10', 'title': 'Thread support library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.11', 'title': 'Filesystem library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.12', 'title': 'Time library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.13', 'title': 'Memory library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.14', 'title': 'Utility library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.15', 'title': 'Input/output library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.16', 'title': 'Concurrency support library', 'physical_index': '<physical_index_153>'}, {'structure': '6.15.17', 'title': 'C library', 'physical_index': '<physical_index_153>'}, {'structure': '6.16', 'title': 'Appendices', 'physical_index': '<physical_index_153>'}, {'structure': '6.16.1', 'title': 'Appendix A: Normative references', 'physical_index': '<physical_index_153>'}, {'structure': '6.16.2', 'title': 'Appendix B: Informative references', 'physical_index': '<physical_index_153>'}, {'structure': '6.16.3', 'title': 'Appendix C: Glossary', 'physical_index': '<physical_index_153>'}, {'structure': '6.16.4', 'title': 'Appendix D: Index', 'physical_index': '<physical_index_153>'}, {'structure': '1g', 'title': 'suitability for software modification6 - Implemented A8-4-14, A10-0-1, A10-0-2, A10-4-1 Recommending constructs that increase software reusability, eliminate redundancy and hide implementation details.', 'physical_index': '<physical_index_501>'}, {'structure': '1h', 'title': 'testability 6 - Implemented A1-2-1, A1-4-1, A3-3-2 Requirements on: testing error information if this is generated, using code metrics which will increase code quality and modularity. Restrictions on constructs that obscure code maintainability. Suggestions on how to perform extensive testing.', 'physical_index': '<physical_index_501>'}, {'structure': '1a', 'title': 'Walk-through 8 - Not applicable Process of system examination to reveal discrepancies between a specification and implementation is out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': '<physical_index_501>'}, {'structure': '1b', 'title': 'Inspection 8 - Not applicable Structured processes (at any level of rigour) of revealing defects in developed software components are out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': '<physical_index_501>'}, {'structure': '1c', 'title': 'Semi-formal verification 8 - Not applicable Aspects of proving the correctness of a program basing on an abstract model are out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': '<physical_index_501>'}, {'structure': '1d', 'title': 'Formal verification 8 - Not applicable Aspects of proving the correctness of a program basing on an abstract model are out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': '<physical_index_501>'}, {'structure': '1e', 'title': 'Control flow analysis 7 - Partially implemented M0-1-1, M0-1-2, M0-1-8, M0-1-9, M0-1-10, A0-1-3 Available are rules oriented on finding suspect areas of code (e.g. inaccessible code, infeasible paths), but analysis of directed program graph (from the definition from paragraph C.5.9 [19]) is out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': '<physical_index_501>'}, {'structure': '1f', 'title': 'Data flow analysis 6 - Implemented M0-1-3, M0-1-4, A0-1-1, A0-1-4, A0-1-5, A0-1-6, A8-5-0 Available are rules oriented on analysis of sequences of creating, referencing and deleting variables.', 'physical_index': '<physical_index_502>'}, {'structure': '1g', 'title': 'Static code analysis 6 - Implemented All automated rules included in AUTOSAR C++14 Coding Guidelines are enforceable by means of static code analysis.', 'physical_index': '<physical_index_502>'}, {'structure': '1h', 'title': 'Semantic code analysis 8 - Not applicable Mathematical source code analysis by use of an abstract representation of possible values is out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': '<physical_index_502>'}, {'structure': 'C', 'title': 'Glossary', 'physical_index': '<physical_index_503>'}, {'structure': 'C.1', 'title': 'Real-time application (RTA) A real-time application is a program that guarantees response within defined time constraints. The latency must be less than a defined value, usually measured in seconds or milliseconds. Whether or not a given application program qualifies as an RTA depends on the worst-case execution time (WCET) - the maximum length of time a defined task requires on a given hardware platform.', 'physical_index': '<physical_index_503>'}, {'structure': 'C.2', 'title': 'MISRA Motor Industry Software Reliability Association.', 'physical_index': '<physical_index_503>'}, {'structure': 'C.3', 'title': 'HIC++ High Integrity C++ Coding Standard.', 'physical_index': '<physical_index_503>'}, {'structure': 'C.4', 'title': 'cvalue expression An expression that should not undergo further conversions, either implicitly or explicitly, is called a cvalue expression.', 'physical_index': '<physical_index_503>'}, {'structure': 'C.5', 'title': 'Ownership Ownership of a resource means that the resource\u2019s lifetime is fully managed by the single class instance or tied with the class instance lifetime. See also: chapter 6.18.5', 'physical_index': '<physical_index_503>'}, {'structure': 'C.6', 'title': 'One definition rule The rule states that: There shall be one and only one definition of any variable, function, class type, enumeration type, or template in a translation unit. Some of these may have multiple declarations, but only one definition is allowed. There shall be one and only one definition of every non-inline function or variable that is odr-used in the entire program. An inline function definition is required in every translation unit where it is odr-used. There shall be one and only one definition of a class in any translation unit where the class is used in a way that requires it to be complete. There can be more than one definition of any class, enumeration type, inline function with external linkage, class template, non-static function template, static data member of a class template, member function of a class template, partial template specialization in a program, as long as all of the following is true: each definition consists of the same sequence of tokens (typically, appears in the same header file) name lookup from within each definition finds the same entities (after overload-resolution), except that constants with internal or no linkage may refer to different objects as long as they are not ODR-used and have the same values in every definition. overloaded operators, including conversion, allocation, and deallocation functions refer to the same function from each definition (unless referring to one defined within the definition) the language linkage is the same (e.g. the include file isn\u2019t inside an extern \u201cC\u201d block) the three rules above apply to every default argument used in each definition if the definition is for a class with an implicitly-declared constructor, every translation unit where it is odr-used must call the same constructor for the base and members if the definition is for a template, then all these requirements apply to both names at the point of definition and dependent names at the point of instantiation If all these requirements are satisfied, the program behaves as if there is only one definition in the entire program. Otherwise, the behavior is undefined.', 'physical_index': '<physical_index_504>'}, {'structure': 'C.7', 'title': 'ODR-use An object is odr-used if its address is taken, or a reference is bound to it. A function is odr-used if a function call to it is made or its address is taken.', 'physical_index': '<physical_index_504>'}, {'structure': 'C.8', 'title': 'POD Type POD (Plain Old Data) type is the type that is compatible with types used in the C programming language, can be manipulated using C library functions, and can be exchanged with C libraries directly in its binary form.', 'physical_index': '<physical_index_505>'}, {'structure': 'C.9', 'title': 'Trivially Copyable Class A class (C++ Language Standard [3], chapter 9): where each copy constructor, move constructor, copy assignment operator, move assigment operator is either deleted or trivial that has at least one non-deleted copy constructor, move constructor, copy assignment operator, or move assignment operator, and that has a trivial, non-deleted destructor', 'physical_index': '<physical_index_505>'}, {'structure': 'C.10', 'title': 'Standard-Layout Class A class that (C++ Language Standard [3], chapter 9): has no non-static data members of type non-standard-layout class (or array of such types) or reference has no virtual functions and no virtual base classes has the same access control for all non-static data members has no non-standard-layout base classes has at most one base class subobject of any given type has all non-static data members and bit-fields in the class and its base classes first declared in the same class has no element of the set M(X) of types as a base class where M(X) is defined as follows: If X is a non-union class type, the set M(X) is empty if X has no (possibly inherited) non-static data members; otherwise, it consists of the type of the first non-static data member of X (where said member may be an anonymous union), X0, and the elements of M(X0). If X is a union type, the set M(X) is the union of all M(Ui) and the set containing all Ui, where each Ui is the type of the i-th non-static data member of X. If X is a non-class type, the set M(X) is empty.', 'physical_index': '<physical_index_505>'}, {'structure': 'C.11', 'title': 'Dataflow Anomaly The state of a variable at a point in a program can be described using the following terms: Undefined (U): The value of the variable is indeterminate. Referenced (R): The variable is used in some way (e.g. in an expression). Defined (D): The variable is explicitly initialized or assigned a value. Given the above, the following dataflow anomalies can be defined: UR dataflow anomaly: Variable not assigned a value before the specified use (this may result in undefined behavior). DU dataflow anomaly: Variable is assigned a value that is never subsequently used. DD dataflow anomaly: Variable is assigned a value twice with no intermediate use.', 'physical_index': '<physical_index_506>'}, {'structure': 'C.12', 'title': 'Dead Code Dead code (also known as redundant code) consists of evaluated expressions whose removal would not affect the output program.', 'physical_index': '<physical_index_506>'}, {'structure': 'C.13', 'title': 'Unreachable Code Unreachable code is code to which there is no syntactic (control flow) path, e.g. a function which is never called, either directly or indirectly.', 'physical_index': '<physical_index_506>'}, {'structure': 'C.14', 'title': 'Diamond Problem The \u201cdiamond problem\u201d is an ambiguity that arises when two classes B and C inherit from A, and class D inherits from both B and C. If there is a method provided by class A, that is overridden in both B and C and D does not override it, then there is an ambiguity which version of the method does D actually inherit. See: Wikipedia.org for more details.', 'physical_index': '<physical_index_506>'}, {'structure': 'C.15', 'title': 'Interface class An interface class is a class which has following properties: if there are any, all member functions are public pure virtual if there are any, all data members are public static constexpr', 'physical_index': '<physical_index_506>'}, {'structure': 'C.16', 'title': 'Extended precision format The IEEE Standard for Floating-Point Arithmetic (IEEE 754) specifies extended precision formats, that are recommended for allowing a greater precision format than that provided by the basic formats. For an extended format the exponent range must be as great as that of the next wider basic format. For instance, 64-bit extended precision binary number must have an \u201cexponent max\u201d of at least 16383, which is equal to \u201cexponent max\u201d of 128-bit binary floating-point. The 80-bit extended format meets this requirement.', 'physical_index': '<physical_index_506>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Background', 'physical_index': 9}, {'structure': '2', 'title': 'The vision', 'physical_index': 10}, {'structure': '2.1', 'title': 'Rationale for the production of AUTOSAR C++14', 'physical_index': 10}, {'structure': '2.2', 'title': 'Objectives of AUTOSAR C++14', 'physical_index': 11}, {'structure': '3', 'title': 'Scope', 'physical_index': 12}, {'structure': '3.1', 'title': 'Allowed features of C++ language', 'physical_index': 12}, {'structure': '3.2', 'title': 'Limitations', 'physical_index': 14}, {'structure': '4', 'title': 'Using AUTOSAR C++14', 'physical_index': 16}, {'structure': '5', 'title': 'Introduction to the rules', 'physical_index': 17}, {'structure': '5.1', 'title': 'Rule classification', 'physical_index': 17}, {'structure': '5.1.1', 'title': 'Rule classification according to compatibility with MISRA', 'physical_index': 17}, {'structure': '5.1.2', 'title': 'Rule classification according to obligation level', 'physical_index': 17}, {'structure': '5.1.3', 'title': 'Rule classification according to enforcement by static analysis', 'physical_index': 17}, {'structure': '5.1.4', 'title': 'Rule classification according to allocated target', 'physical_index': 17}, {'structure': '5.2', 'title': 'Organization of rules', 'physical_index': 17}, {'structure': '5.3', 'title': 'Exceptions to the rules', 'physical_index': 18}, {'structure': '5.4', 'title': 'Redundancy in the rules', 'physical_index': 18}, {'structure': '5.5', 'title': 'Presentation of rules', 'physical_index': 19}, {'structure': '5.6', 'title': 'Understanding the issue references', 'physical_index': 19}, {'structure': '5.7', 'title': 'Scope of rules', 'physical_index': 19}, {'structure': '6', 'title': 'AUTOSAR C++14 coding rules', 'physical_index': 20}, {'structure': '6.0', 'title': 'Language independent issues', 'physical_index': 20}, {'structure': '6.0.1', 'title': 'Unnecessary constructs', 'physical_index': 20}, {'structure': '6.0.2', 'title': 'Storage', 'physical_index': 29}, {'structure': '6.0.3', 'title': 'Runtime failures', 'physical_index': 29}, {'structure': '6.0.4', 'title': 'Arithmetic', 'physical_index': 30}, {'structure': '6.1', 'title': 'General', 'physical_index': 33}, {'structure': '6.1.1', 'title': 'Scope', 'physical_index': 33}, {'structure': '6.1.2', 'title': 'Normative references', 'physical_index': 36}, {'structure': '6.1.4', 'title': 'Implementation compliance', 'physical_index': 36}, {'structure': '6.2', 'title': 'Lexical conventions', 'physical_index': 37}, {'structure': '6.2.3', 'title': 'Character sets', 'physical_index': 37}, {'structure': '6.2.5', 'title': 'Alternative tokens', 'physical_index': 38}, {'structure': '6.2.7', 'title': 'Comments', 'physical_index': 40}, {'structure': '6.2.8', 'title': 'Header names', 'physical_index': 43}, {'structure': '6.2.10', 'title': 'Identifiers', 'physical_index': 44}, {'structure': '6.2.10.1', 'title': 'Identifiers declared in an inner scope shall not hide an identifier declared in an outer scope', 'physical_index': 45}, {'structure': '6.2.10.2', 'title': 'A class or enumeration name shall not be hidden by a variable, function, or enumerator declaration in the same scope', 'physical_index': 46}, {'structure': '6.2.10.3', 'title': 'The identifier name of a non-member object with static storage duration or static function shall not be reused within a namespace', 'physical_index': 47}, {'structure': '6.2.10.4', 'title': 'An identifier name of a function with static storage duration or a non-member object with external or internal linkage should not be reused', 'physical_index': 48}, {'structure': '6.2.11', 'title': 'Keywords', 'physical_index': 49}, {'structure': '6.2.11.1', 'title': 'Volatile keyword shall not be used', 'physical_index': 49}, {'structure': '6.2.13', 'title': 'Literals', 'physical_index': 50}, {'structure': '6.2.13.1', 'title': 'Only those escape sequences that are defined in ISO/IEC 14882:2014 shall be used', 'physical_index': 50}, {'structure': '6.2.13.2', 'title': 'String literals with different encoding prefixes shall not be concatenated', 'physical_index': 52}, {'structure': '6.2.13.3', 'title': 'Type wchar_t shall not be used', 'physical_index': 53}, {'structure': '6.2.13.4', 'title': 'String literals shall not be assigned to non-constant pointers', 'physical_index': 54}, {'structure': '6.2.13.5', 'title': 'Hexadecimal constants should be upper case', 'physical_index': 55}, {'structure': '6.2.13.6', 'title': 'Universal character names shall be used only inside character or string literals', 'physical_index': 56}, {'structure': '6.3', 'title': 'Basic concepts', 'physical_index': 57}, {'structure': '6.3.1', 'title': 'Declarations and definitions', 'physical_index': 57}, {'structure': '6.3.1.1', 'title': 'It shall be possible to include any header file in multiple translation units without violating the One Definition Rule', 'physical_index': 57}, {'structure': '6.3.1.2', 'title': 'Header files, that are defined locally in the project, shall have a file name extension of one of: \".h\", \".hpp\" or \".hxx\"', 'physical_index': 58}, {'structure': '6.3.1.3', 'title': 'Implementation files, that are defined locally in the project, should have a file name extension of \".cpp\"', 'physical_index': 59}, {'structure': '6.3.1.4', 'title': 'When an array with external linkage is declared, its size shall be stated explicitly', 'physical_index': 60}, {'structure': '6.3.1.5', 'title': 'A function definition shall only be placed in a class definition if (1) the function is intended to be inlined (2) it is a member function template (3) it is a member function of a class template', 'physical_index': 61}, {'structure': '6.3.1.6', 'title': 'Trivial accessor and mutator functions should be inlined', 'physical_index': 62}, {'structure': '6.3.2', 'title': 'One Definition Rule', 'physical_index': 63}, {'structure': '6.3.3', 'title': 'Scope', 'physical_index': 64}, {'structure': '6.3.3.1', 'title': 'Objects or functions with external linkage (including members of named namespaces) shall be declared in a header file', 'physical_index': 64}, {'structure': '6.3.3.2', 'title': 'Static and thread-local objects shall be constant-initialized', 'physical_index': 65}, {'structure': '6.3.4', 'title': 'Name lookup', 'physical_index': 66}, {'structure': '6.3.8', 'title': 'Object lifetime', 'physical_index': 67}, {'structure': '6.3.8.1', 'title': 'An object shall not be accessed outside of its lifetime', 'physical_index': 67}, {'structure': '6.3.9', 'title': 'Types', 'physical_index': 68}, {'structure': '6.3.9.1', 'title': 'Fixed width integer types from <cstdint>, indicating the size and signedness, shall be used in place of the basic numerical types', 'physical_index': 68}, {'structure': '6.4', 'title': 'Standard conversions', 'physical_index': 69}, {'structure': '6.4.5', 'title': 'Integral promotions', 'physical_index': 70}, {'structure': '6.4.5.1', 'title': 'Expressions with type bool shall not be used as operands to built-in operators other than the assignment operator =, the logical operators &&, ||, !, the equality operators == and !=, the unary & operator, and the conditional operator', 'physical_index': 70}, {'structure': '6.4.5.2', 'title': 'Expressions with type enum or enum class shall not be used as operands to built-in and overloaded operators other than the subscript operator [], the assignment operator =, the equality operators == and !=, the unary & operator, and the relational operators <, <=, >, >=', 'physical_index': 70}, {'structure': '6.4.7', 'title': 'Integral conversion', 'physical_index': 72}, {'structure': '6.4.10', 'title': 'Pointer conversions', 'physical_index': 73}, {'structure': '6.5', 'title': 'Expressions', 'physical_index': 74}, {'structure': '6.5.0', 'title': 'General', 'physical_index': 74}, {'structure': '6.5.1', 'title': 'Primary expression', 'physical_index': 87}, {'structure': '6.5.2', 'title': 'Postfix expressions', 'physical_index': 120}, {'structure': '6.5.3', 'title': 'Unary expressions', 'physical_index': 120}, {'structure': '6.5.4', 'title': 'Cast expressions', 'physical_index': 120}, {'structure': '6.5.5', 'title': 'Multiplicative expressions', 'physical_index': 120}, {'structure': '6.5.6', 'title': 'Additive expressions', 'physical_index': 120}, {'structure': '6.5.7', 'title': 'Shift expressions', 'physical_index': 120}, {'structure': '6.5.8', 'title': 'Relational expressions', 'physical_index': 120}, {'structure': '6.5.9', 'title': 'Equality expressions', 'physical_index': 120}, {'structure': '6.5.10', 'title': 'And expressions', 'physical_index': 120}, {'structure': '6.5.11', 'title': 'Exclusive or expressions', 'physical_index': 120}, {'structure': '6.5.12', 'title': 'Inclusive or expressions', 'physical_index': 120}, {'structure': '6.5.13', 'title': 'Logical and expressions', 'physical_index': 120}, {'structure': '6.5.14', 'title': 'Logical or expressions', 'physical_index': 120}, {'structure': '6.5.15', 'title': 'Conditional expressions', 'physical_index': 120}, {'structure': '6.5.16', 'title': 'Assignment expressions', 'physical_index': 120}, {'structure': '6.5.17', 'title': 'Comma expressions', 'physical_index': 120}, {'structure': '6.6', 'title': 'Statements', 'physical_index': 120}, {'structure': '6.6.1', 'title': 'Labeled statements', 'physical_index': 120}, {'structure': '6.6.2', 'title': 'Expression statements', 'physical_index': 120}, {'structure': '6.6.3', 'title': 'Compound statements', 'physical_index': 120}, {'structure': '6.6.4', 'title': 'Selection statements', 'physical_index': 120}, {'structure': '6.6.5', 'title': 'Iteration statements', 'physical_index': 120}, {'structure': '6.6.6', 'title': 'Jump statements', 'physical_index': 126}, {'structure': '6.7', 'title': 'Declarations', 'physical_index': 127}, {'structure': '6.7.1', 'title': 'Specifiers', 'physical_index': 127}, {'structure': '6.7.2', 'title': 'Enumeration declaration', 'physical_index': 137}, {'structure': '6.7.3', 'title': 'Namespaces', 'physical_index': 143}, {'structure': '6.7.4', 'title': 'The asm declaration', 'physical_index': 145}, {'structure': '6.7.5', 'title': 'Linkage specifications', 'physical_index': 146}, {'structure': '6.7.6', 'title': 'Attributes', 'physical_index': 146}, {'structure': '6.7.7', 'title': 'Alignment specifiers', 'physical_index': 147}, {'structure': '6.7.8', 'title': 'Declarators', 'physical_index': 147}, {'structure': '6.7.9', 'title': 'Initializers', 'physical_index': 147}, {'structure': '6.7.10', 'title': 'Static assertions', 'physical_index': 147}, {'structure': '6.8', 'title': 'Classes', 'physical_index': 147}, {'structure': '6.8.1', 'title': 'Class members', 'physical_index': 147}, {'structure': '6.8.2', 'title': 'Constructors and destructors', 'physical_index': 149}, {'structure': '6.8.3', 'title': 'Special member functions', 'physical_index': 151}, {'structure': '6.8.4', 'title': 'Member access control', 'physical_index': 152}, {'structure': '6.8.5', 'title': 'Virtual functions', 'physical_index': 152}, {'structure': '6.8.6', 'title': 'Nesting of classes', 'physical_index': 153}, {'structure': '6.9', 'title': 'Derived classes', 'physical_index': 153}, {'structure': '6.9.1', 'title': 'Base class access', 'physical_index': 153}, {'structure': '6.9.2', 'title': 'Virtual base classes', 'physical_index': 153}, {'structure': '6.9.3', 'title': 'Multiple inheritance', 'physical_index': 153}, {'structure': '6.9.4', 'title': 'Ambiguities in multiple inheritance', 'physical_index': 153}, {'structure': '6.10', 'title': 'Special member functions', 'physical_index': 153}, {'structure': '6.10.1', 'title': 'Copy constructor', 'physical_index': 153}, {'structure': '6.10.2', 'title': 'Move constructor', 'physical_index': 153}, {'structure': '6.10.3', 'title': 'Copy assignment operator', 'physical_index': 153}, {'structure': '6.10.4', 'title': 'Move assignment operator', 'physical_index': 153}, {'structure': '6.10.5', 'title': 'Destructor', 'physical_index': 153}, {'structure': '6.11', 'title': 'Overloading', 'physical_index': 153}, {'structure': '6.11.1', 'title': 'Function overloading', 'physical_index': 153}, {'structure': '6.11.2', 'title': 'Operator overloading', 'physical_index': 153}, {'structure': '6.11.3', 'title': 'Conversion functions', 'physical_index': 153}, {'structure': '6.12', 'title': 'Templates', 'physical_index': 153}, {'structure': '6.12.1', 'title': 'Template parameters', 'physical_index': 153}, {'structure': '6.12.2', 'title': 'Template arguments', 'physical_index': 153}, {'structure': '6.12.3', 'title': 'Template specialization', 'physical_index': 153}, {'structure': '6.12.4', 'title': 'Template instantiation', 'physical_index': 153}, {'structure': '6.13', 'title': 'Exception handling', 'physical_index': 153}, {'structure': '6.13.1', 'title': 'Try blocks', 'physical_index': 153}, {'structure': '6.13.2', 'title': 'Throw expressions', 'physical_index': 153}, {'structure': '6.13.3', 'title': 'Exception specifications', 'physical_index': 153}, {'structure': '6.13.4', 'title': 'Dynamic exception specifications', 'physical_index': 153}, {'structure': '6.13.5', 'title': 'Noexcept specifications', 'physical_index': 153}, {'structure': '6.14', 'title': 'Preprocessor directives', 'physical_index': 153}, {'structure': '6.14.1', 'title': 'Macro replacement', 'physical_index': 153}, {'structure': '6.14.2', 'title': 'Source file inclusion', 'physical_index': 153}, {'structure': '6.14.3', 'title': 'Line control', 'physical_index': 153}, {'structure': '6.14.4', 'title': 'Error directive', 'physical_index': 153}, {'structure': '6.14.5', 'title': 'Pragma directive', 'physical_index': 153}, {'structure': '6.15', 'title': 'Library facilities', 'physical_index': 153}, {'structure': '6.15.1', 'title': 'General', 'physical_index': 153}, {'structure': '6.15.2', 'title': 'Strings library', 'physical_index': 153}, {'structure': '6.15.3', 'title': 'Containers library', 'physical_index': 153}, {'structure': '6.15.4', 'title': 'Algorithms library', 'physical_index': 153}, {'structure': '6.15.5', 'title': 'Iterators library', 'physical_index': 153}, {'structure': '6.15.6', 'title': 'Numerics library', 'physical_index': 153}, {'structure': '6.15.7', 'title': 'Localization library', 'physical_index': 153}, {'structure': '6.15.8', 'title': 'Regular expressions library', 'physical_index': 153}, {'structure': '6.15.9', 'title': 'Atomic operations library', 'physical_index': 153}, {'structure': '6.15.10', 'title': 'Thread support library', 'physical_index': 153}, {'structure': '6.15.11', 'title': 'Filesystem library', 'physical_index': 153}, {'structure': '6.15.12', 'title': 'Time library', 'physical_index': 153}, {'structure': '6.15.13', 'title': 'Memory library', 'physical_index': 153}, {'structure': '6.15.14', 'title': 'Utility library', 'physical_index': 153}, {'structure': '6.15.15', 'title': 'Input/output library', 'physical_index': 153}, {'structure': '6.15.16', 'title': 'Concurrency support library', 'physical_index': 153}, {'structure': '6.15.17', 'title': 'C library', 'physical_index': 153}, {'structure': '6.16', 'title': 'Appendices', 'physical_index': 153}, {'structure': '6.16.1', 'title': 'Appendix A: Normative references', 'physical_index': 153}, {'structure': '6.16.2', 'title': 'Appendix B: Informative references', 'physical_index': 153}, {'structure': '6.16.3', 'title': 'Appendix C: Glossary', 'physical_index': 153}, {'structure': '6.16.4', 'title': 'Appendix D: Index', 'physical_index': 153}, {'structure': '1g', 'title': 'suitability for software modification6 - Implemented A8-4-14, A10-0-1, A10-0-2, A10-4-1 Recommending constructs that increase software reusability, eliminate redundancy and hide implementation details.', 'physical_index': 501}, {'structure': '1h', 'title': 'testability 6 - Implemented A1-2-1, A1-4-1, A3-3-2 Requirements on: testing error information if this is generated, using code metrics which will increase code quality and modularity. Restrictions on constructs that obscure code maintainability. Suggestions on how to perform extensive testing.', 'physical_index': 501}, {'structure': '1a', 'title': 'Walk-through 8 - Not applicable Process of system examination to reveal discrepancies between a specification and implementation is out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': 501}, {'structure': '1b', 'title': 'Inspection 8 - Not applicable Structured processes (at any level of rigour) of revealing defects in developed software components are out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': 501}, {'structure': '1c', 'title': 'Semi-formal verification 8 - Not applicable Aspects of proving the correctness of a program basing on an abstract model are out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': 501}, {'structure': '1d', 'title': 'Formal verification 8 - Not applicable Aspects of proving the correctness of a program basing on an abstract model are out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': 501}, {'structure': '1e', 'title': 'Control flow analysis 7 - Partially implemented M0-1-1, M0-1-2, M0-1-8, M0-1-9, M0-1-10, A0-1-3 Available are rules oriented on finding suspect areas of code (e.g. inaccessible code, infeasible paths), but analysis of directed program graph (from the definition from paragraph C.5.9 [19]) is out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': 501}, {'structure': '1f', 'title': 'Data flow analysis 6 - Implemented M0-1-3, M0-1-4, A0-1-1, A0-1-4, A0-1-5, A0-1-6, A8-5-0 Available are rules oriented on analysis of sequences of creating, referencing and deleting variables.', 'physical_index': 502}, {'structure': '1g', 'title': 'Static code analysis 6 - Implemented All automated rules included in AUTOSAR C++14 Coding Guidelines are enforceable by means of static code analysis.', 'physical_index': 502}, {'structure': '1h', 'title': 'Semantic code analysis 8 - Not applicable Mathematical source code analysis by use of an abstract representation of possible values is out of scope of AUTOSAR C++14 Coding Guidelines.', 'physical_index': 502}, {'structure': 'C', 'title': 'Glossary', 'physical_index': 503}, {'structure': 'C.1', 'title': 'Real-time application (RTA) A real-time application is a program that guarantees response within defined time constraints. The latency must be less than a defined value, usually measured in seconds or milliseconds. Whether or not a given application program qualifies as an RTA depends on the worst-case execution time (WCET) - the maximum length of time a defined task requires on a given hardware platform.', 'physical_index': 503}, {'structure': 'C.2', 'title': 'MISRA Motor Industry Software Reliability Association.', 'physical_index': 503}, {'structure': 'C.3', 'title': 'HIC++ High Integrity C++ Coding Standard.', 'physical_index': 503}, {'structure': 'C.4', 'title': 'cvalue expression An expression that should not undergo further conversions, either implicitly or explicitly, is called a cvalue expression.', 'physical_index': 503}, {'structure': 'C.5', 'title': 'Ownership Ownership of a resource means that the resource\u2019s lifetime is fully managed by the single class instance or tied with the class instance lifetime. See also: chapter 6.18.5', 'physical_index': 503}, {'structure': 'C.6', 'title': 'One definition rule The rule states that: There shall be one and only one definition of any variable, function, class type, enumeration type, or template in a translation unit. Some of these may have multiple declarations, but only one definition is allowed. There shall be one and only one definition of every non-inline function or variable that is odr-used in the entire program. An inline function definition is required in every translation unit where it is odr-used. There shall be one and only one definition of a class in any translation unit where the class is used in a way that requires it to be complete. There can be more than one definition of any class, enumeration type, inline function with external linkage, class template, non-static function template, static data member of a class template, member function of a class template, partial template specialization in a program, as long as all of the following is true: each definition consists of the same sequence of tokens (typically, appears in the same header file) name lookup from within each definition finds the same entities (after overload-resolution), except that constants with internal or no linkage may refer to different objects as long as they are not ODR-used and have the same values in every definition. overloaded operators, including conversion, allocation, and deallocation functions refer to the same function from each definition (unless referring to one defined within the definition) the language linkage is the same (e.g. the include file isn\u2019t inside an extern \u201cC\u201d block) the three rules above apply to every default argument used in each definition if the definition is for a class with an implicitly-declared constructor, every translation unit where it is odr-used must call the same constructor for the base and members if the definition is for a template, then all these requirements apply to both names at the point of definition and dependent names at the point of instantiation If all these requirements are satisfied, the program behaves as if there is only one definition in the entire program. Otherwise, the behavior is undefined.', 'physical_index': 504}, {'structure': 'C.7', 'title': 'ODR-use An object is odr-used if its address is taken, or a reference is bound to it. A function is odr-used if a function call to it is made or its address is taken.', 'physical_index': 504}, {'structure': 'C.8', 'title': 'POD Type POD (Plain Old Data) type is the type that is compatible with types used in the C programming language, can be manipulated using C library functions, and can be exchanged with C libraries directly in its binary form.', 'physical_index': 505}, {'structure': 'C.9', 'title': 'Trivially Copyable Class A class (C++ Language Standard [3], chapter 9): where each copy constructor, move constructor, copy assignment operator, move assigment operator is either deleted or trivial that has at least one non-deleted copy constructor, move constructor, copy assignment operator, or move assignment operator, and that has a trivial, non-deleted destructor', 'physical_index': 505}, {'structure': 'C.10', 'title': 'Standard-Layout Class A class that (C++ Language Standard [3], chapter 9): has no non-static data members of type non-standard-layout class (or array of such types) or reference has no virtual functions and no virtual base classes has the same access control for all non-static data members has no non-standard-layout base classes has at most one base class subobject of any given type has all non-static data members and bit-fields in the class and its base classes first declared in the same class has no element of the set M(X) of types as a base class where M(X) is defined as follows: If X is a non-union class type, the set M(X) is empty if X has no (possibly inherited) non-static data members; otherwise, it consists of the type of the first non-static data member of X (where said member may be an anonymous union), X0, and the elements of M(X0). If X is a union type, the set M(X) is the union of all M(Ui) and the set containing all Ui, where each Ui is the type of the i-th non-static data member of X. If X is a non-class type, the set M(X) is empty.', 'physical_index': 505}, {'structure': 'C.11', 'title': 'Dataflow Anomaly The state of a variable at a point in a program can be described using the following terms: Undefined (U): The value of the variable is indeterminate. Referenced (R): The variable is used in some way (e.g. in an expression). Defined (D): The variable is explicitly initialized or assigned a value. Given the above, the following dataflow anomalies can be defined: UR dataflow anomaly: Variable not assigned a value before the specified use (this may result in undefined behavior). DU dataflow anomaly: Variable is assigned a value that is never subsequently used. DD dataflow anomaly: Variable is assigned a value twice with no intermediate use.', 'physical_index': 506}, {'structure': 'C.12', 'title': 'Dead Code Dead code (also known as redundant code) consists of evaluated expressions whose removal would not affect the output program.', 'physical_index': 506}, {'structure': 'C.13', 'title': 'Unreachable Code Unreachable code is code to which there is no syntactic (control flow) path, e.g. a function which is never called, either directly or indirectly.', 'physical_index': 506}, {'structure': 'C.14', 'title': 'Diamond Problem The \u201cdiamond problem\u201d is an ambiguity that arises when two classes B and C inherit from A, and class D inherits from both B and C. If there is a method provided by class A, that is overridden in both B and C and D does not override it, then there is an ambiguity which version of the method does D actually inherit. See: Wikipedia.org for more details.', 'physical_index': 506}, {'structure': 'C.15', 'title': 'Interface class An interface class is a class which has following properties: if there are any, all member functions are public pure virtual if there are any, all data members are public static constexpr', 'physical_index': 506}, {'structure': 'C.16', 'title': 'Extended precision format The IEEE Standard for Floating-Point Arithmetic (IEEE 754) specifies extended precision formats, that are recommended for allowing a greater precision format than that provided by the basic formats. For an extended format the exponent range must be as great as that of the next wider basic format. For instance, 64-bit extended precision binary number must have an \u201cexponent max\u201d of at least 16383, which is equal to \u201cexponent max\u201d of 128-bit binary floating-point. The 80-bit extended format meets this requirement.', 'physical_index': 506}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.10606060606060606,
+    "incorrect_results": [
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Objectives of AUTOSAR C++14",
+        "page_number": 11
+      },
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "Rule classification according to allocated target",
+        "page_number": 17
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "Organization of rules",
+        "page_number": 17
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "AUTOSAR C++14 coding rules",
+        "page_number": 20
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Language independent issues",
+        "page_number": 20
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Unnecessary constructs",
+        "page_number": 20
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Storage",
+        "page_number": 29
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Runtime failures",
+        "page_number": 29
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Arithmetic",
+        "page_number": 30
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "General",
+        "page_number": 33
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Scope",
+        "page_number": 33
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Normative references",
+        "page_number": 36
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Implementation compliance",
+        "page_number": 36
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Lexical conventions",
+        "page_number": 37
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Character sets",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Alternative tokens",
+        "page_number": 38
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Comments",
+        "page_number": 40
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Header names",
+        "page_number": 43
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Identifiers",
+        "page_number": 44
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Identifiers declared in an inner scope shall not hide an identifier declared in an outer scope",
+        "page_number": 45
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "A class or enumeration name shall not be hidden by a variable, function, or enumerator declaration in the same scope",
+        "page_number": 46
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "The identifier name of a non-member object with static storage duration or static function shall not be reused within a namespace",
+        "page_number": 47
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "An identifier name of a function with static storage duration or a non-member object with external or internal linkage should not be reused",
+        "page_number": 48
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Keywords",
+        "page_number": 49
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Volatile keyword shall not be used",
+        "page_number": 49
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Literals",
+        "page_number": 50
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Only those escape sequences that are defined in ISO/IEC 14882:2014 shall be used",
+        "page_number": 50
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "String literals with different encoding prefixes shall not be concatenated",
+        "page_number": 52
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Type wchar_t shall not be used",
+        "page_number": 53
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "String literals shall not be assigned to non-constant pointers",
+        "page_number": 54
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Hexadecimal constants should be upper case",
+        "page_number": 55
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Universal character names shall be used only inside character or string literals",
+        "page_number": 56
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Basic concepts",
+        "page_number": 57
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Declarations and definitions",
+        "page_number": 57
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "It shall be possible to include any header file in multiple translation units without violating the One Definition Rule",
+        "page_number": 57
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Header files, that are defined locally in the project, shall have a file name extension of one of: \".h\", \".hpp\" or \".hxx\"",
+        "page_number": 58
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Implementation files, that are defined locally in the project, should have a file name extension of \".cpp\"",
+        "page_number": 59
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "When an array with external linkage is declared, its size shall be stated explicitly",
+        "page_number": 60
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "A function definition shall only be placed in a class definition if (1) the function is intended to be inlined (2) it is a member function template (3) it is a member function of a class template",
+        "page_number": 61
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Trivial accessor and mutator functions should be inlined",
+        "page_number": 62
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "One Definition Rule",
+        "page_number": 63
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Scope",
+        "page_number": 64
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Objects or functions with external linkage (including members of named namespaces) shall be declared in a header file",
+        "page_number": 64
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Static and thread-local objects shall be constant-initialized",
+        "page_number": 65
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Name lookup",
+        "page_number": 66
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Object lifetime",
+        "page_number": 67
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "An object shall not be accessed outside of its lifetime",
+        "page_number": 67
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Types",
+        "page_number": 68
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Fixed width integer types from <cstdint>, indicating the size and signedness, shall be used in place of the basic numerical types",
+        "page_number": 68
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Standard conversions",
+        "page_number": 69
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Integral promotions",
+        "page_number": 70
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Expressions with type bool shall not be used as operands to built-in operators other than the assignment operator =, the logical operators &&, ||, !, the equality operators == and !=, the unary & operator, and the conditional operator",
+        "page_number": 70
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Expressions with type enum or enum class shall not be used as operands to built-in and overloaded operators other than the subscript operator [], the assignment operator =, the equality operators == and !=, the unary & operator, and the relational operators <, <=, >, >=",
+        "page_number": 70
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Integral conversion",
+        "page_number": 72
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Pointer conversions",
+        "page_number": 73
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Expressions",
+        "page_number": 74
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "General",
+        "page_number": 74
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Primary expression",
+        "page_number": 87
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Postfix expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Unary expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Cast expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Multiplicative expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Additive expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Shift expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Relational expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Equality expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "And expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Exclusive or expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Inclusive or expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Logical and expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Logical or expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Conditional expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Assignment expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Comma expressions",
+        "page_number": 120
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Statements",
+        "page_number": 120
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Labeled statements",
+        "page_number": 120
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Expression statements",
+        "page_number": 120
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Compound statements",
+        "page_number": 120
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Selection statements",
+        "page_number": 120
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Iteration statements",
+        "page_number": 120
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Jump statements",
+        "page_number": 126
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Declarations",
+        "page_number": 127
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Specifiers",
+        "page_number": 127
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Enumeration declaration",
+        "page_number": 137
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Namespaces",
+        "page_number": 143
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "The asm declaration",
+        "page_number": 145
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Linkage specifications",
+        "page_number": 146
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Attributes",
+        "page_number": 146
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Alignment specifiers",
+        "page_number": 147
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "Declarators",
+        "page_number": 147
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Initializers",
+        "page_number": 147
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "Static assertions",
+        "page_number": 147
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "Classes",
+        "page_number": 147
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "Class members",
+        "page_number": 147
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "Constructors and destructors",
+        "page_number": 149
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "Special member functions",
+        "page_number": 151
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Member access control",
+        "page_number": 152
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Virtual functions",
+        "page_number": 152
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "Nesting of classes",
+        "page_number": 153
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "Derived classes",
+        "page_number": 153
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "Base class access",
+        "page_number": 153
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "Virtual base classes",
+        "page_number": 153
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Multiple inheritance",
+        "page_number": 153
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "Ambiguities in multiple inheritance",
+        "page_number": 153
+      },
+      {
+        "list_index": 121,
+        "answer": "no",
+        "title": "Special member functions",
+        "page_number": 153
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "Copy constructor",
+        "page_number": 153
+      },
+      {
+        "list_index": 123,
+        "answer": "no",
+        "title": "Move constructor",
+        "page_number": 153
+      },
+      {
+        "list_index": 124,
+        "answer": "no",
+        "title": "Copy assignment operator",
+        "page_number": 153
+      },
+      {
+        "list_index": 125,
+        "answer": "no",
+        "title": "Move assignment operator",
+        "page_number": 153
+      },
+      {
+        "list_index": 126,
+        "answer": "no",
+        "title": "Destructor",
+        "page_number": 153
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "Overloading",
+        "page_number": 153
+      },
+      {
+        "list_index": 128,
+        "answer": "no",
+        "title": "Function overloading",
+        "page_number": 153
+      },
+      {
+        "list_index": 129,
+        "answer": "no",
+        "title": "Operator overloading",
+        "page_number": 153
+      },
+      {
+        "list_index": 130,
+        "answer": "no",
+        "title": "Conversion functions",
+        "page_number": 153
+      },
+      {
+        "list_index": 131,
+        "answer": "no",
+        "title": "Templates",
+        "page_number": 153
+      },
+      {
+        "list_index": 132,
+        "answer": "no",
+        "title": "Template parameters",
+        "page_number": 153
+      },
+      {
+        "list_index": 133,
+        "answer": "no",
+        "title": "Template arguments",
+        "page_number": 153
+      },
+      {
+        "list_index": 134,
+        "answer": "no",
+        "title": "Template specialization",
+        "page_number": 153
+      },
+      {
+        "list_index": 135,
+        "answer": "no",
+        "title": "Template instantiation",
+        "page_number": 153
+      },
+      {
+        "list_index": 136,
+        "answer": "no",
+        "title": "Exception handling",
+        "page_number": 153
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "Try blocks",
+        "page_number": 153
+      },
+      {
+        "list_index": 138,
+        "answer": "no",
+        "title": "Throw expressions",
+        "page_number": 153
+      },
+      {
+        "list_index": 139,
+        "answer": "no",
+        "title": "Exception specifications",
+        "page_number": 153
+      },
+      {
+        "list_index": 140,
+        "answer": "no",
+        "title": "Dynamic exception specifications",
+        "page_number": 153
+      },
+      {
+        "list_index": 141,
+        "answer": "no",
+        "title": "Noexcept specifications",
+        "page_number": 153
+      },
+      {
+        "list_index": 142,
+        "answer": "no",
+        "title": "Preprocessor directives",
+        "page_number": 153
+      },
+      {
+        "list_index": 143,
+        "answer": "no",
+        "title": "Macro replacement",
+        "page_number": 153
+      },
+      {
+        "list_index": 144,
+        "answer": "no",
+        "title": "Source file inclusion",
+        "page_number": 153
+      },
+      {
+        "list_index": 145,
+        "answer": "no",
+        "title": "Line control",
+        "page_number": 153
+      },
+      {
+        "list_index": 146,
+        "answer": "no",
+        "title": "Error directive",
+        "page_number": 153
+      },
+      {
+        "list_index": 147,
+        "answer": "no",
+        "title": "Pragma directive",
+        "page_number": 153
+      },
+      {
+        "list_index": 148,
+        "answer": "no",
+        "title": "Library facilities",
+        "page_number": 153
+      },
+      {
+        "list_index": 149,
+        "answer": "no",
+        "title": "General",
+        "page_number": 153
+      },
+      {
+        "list_index": 150,
+        "answer": "no",
+        "title": "Strings library",
+        "page_number": 153
+      },
+      {
+        "list_index": 151,
+        "answer": "no",
+        "title": "Containers library",
+        "page_number": 153
+      },
+      {
+        "list_index": 152,
+        "answer": "no",
+        "title": "Algorithms library",
+        "page_number": 153
+      },
+      {
+        "list_index": 153,
+        "answer": "no",
+        "title": "Iterators library",
+        "page_number": 153
+      },
+      {
+        "list_index": 154,
+        "answer": "no",
+        "title": "Numerics library",
+        "page_number": 153
+      },
+      {
+        "list_index": 155,
+        "answer": "no",
+        "title": "Localization library",
+        "page_number": 153
+      },
+      {
+        "list_index": 156,
+        "answer": "no",
+        "title": "Regular expressions library",
+        "page_number": 153
+      },
+      {
+        "list_index": 157,
+        "answer": "no",
+        "title": "Atomic operations library",
+        "page_number": 153
+      },
+      {
+        "list_index": 158,
+        "answer": "no",
+        "title": "Thread support library",
+        "page_number": 153
+      },
+      {
+        "list_index": 159,
+        "answer": "no",
+        "title": "Filesystem library",
+        "page_number": 153
+      },
+      {
+        "list_index": 160,
+        "answer": "no",
+        "title": "Time library",
+        "page_number": 153
+      },
+      {
+        "list_index": 161,
+        "answer": "no",
+        "title": "Memory library",
+        "page_number": 153
+      },
+      {
+        "list_index": 162,
+        "answer": "no",
+        "title": "Utility library",
+        "page_number": 153
+      },
+      {
+        "list_index": 163,
+        "answer": "no",
+        "title": "Input/output library",
+        "page_number": 153
+      },
+      {
+        "list_index": 164,
+        "answer": "no",
+        "title": "Concurrency support library",
+        "page_number": 153
+      },
+      {
+        "list_index": 165,
+        "answer": "no",
+        "title": "C library",
+        "page_number": 153
+      },
+      {
+        "list_index": 166,
+        "answer": "no",
+        "title": "Appendices",
+        "page_number": 153
+      },
+      {
+        "list_index": 167,
+        "answer": "no",
+        "title": "Appendix A: Normative references",
+        "page_number": 153
+      },
+      {
+        "list_index": 168,
+        "answer": "no",
+        "title": "Appendix B: Informative references",
+        "page_number": 153
+      },
+      {
+        "list_index": 169,
+        "answer": "no",
+        "title": "Appendix C: Glossary",
+        "page_number": 153
+      },
+      {
+        "list_index": 170,
+        "answer": "no",
+        "title": "Appendix D: Index",
+        "page_number": 153
+      },
+      {
+        "list_index": 171,
+        "answer": "no",
+        "title": "suitability for software modification6 - Implemented A8-4-14, A10-0-1, A10-0-2, A10-4-1 Recommending constructs that increase software reusability, eliminate redundancy and hide implementation details.",
+        "page_number": 501
+      },
+      {
+        "list_index": 172,
+        "answer": "no",
+        "title": "testability 6 - Implemented A1-2-1, A1-4-1, A3-3-2 Requirements on: testing error information if this is generated, using code metrics which will increase code quality and modularity. Restrictions on constructs that obscure code maintainability. Suggestions on how to perform extensive testing.",
+        "page_number": 501
+      },
+      {
+        "list_index": 173,
+        "answer": "no",
+        "title": "Walk-through 8 - Not applicable Process of system examination to reveal discrepancies between a specification and implementation is out of scope of AUTOSAR C++14 Coding Guidelines.",
+        "page_number": 501
+      },
+      {
+        "list_index": 174,
+        "answer": "no",
+        "title": "Inspection 8 - Not applicable Structured processes (at any level of rigour) of revealing defects in developed software components are out of scope of AUTOSAR C++14 Coding Guidelines.",
+        "page_number": 501
+      },
+      {
+        "list_index": 175,
+        "answer": "no",
+        "title": "Semi-formal verification 8 - Not applicable Aspects of proving the correctness of a program basing on an abstract model are out of scope of AUTOSAR C++14 Coding Guidelines.",
+        "page_number": 501
+      },
+      {
+        "list_index": 176,
+        "answer": "no",
+        "title": "Formal verification 8 - Not applicable Aspects of proving the correctness of a program basing on an abstract model are out of scope of AUTOSAR C++14 Coding Guidelines.",
+        "page_number": 501
+      },
+      {
+        "list_index": 177,
+        "answer": "no",
+        "title": "Control flow analysis 7 - Partially implemented M0-1-1, M0-1-2, M0-1-8, M0-1-9, M0-1-10, A0-1-3 Available are rules oriented on finding suspect areas of code (e.g. inaccessible code, infeasible paths), but analysis of directed program graph (from the definition from paragraph C.5.9 [19]) is out of scope of AUTOSAR C++14 Coding Guidelines.",
+        "page_number": 501
+      },
+      {
+        "list_index": 178,
+        "answer": "no",
+        "title": "Data flow analysis 6 - Implemented M0-1-3, M0-1-4, A0-1-1, A0-1-4, A0-1-5, A0-1-6, A8-5-0 Available are rules oriented on analysis of sequences of creating, referencing and deleting variables.",
+        "page_number": 502
+      },
+      {
+        "list_index": 179,
+        "answer": "no",
+        "title": "Static code analysis 6 - Implemented All automated rules included in AUTOSAR C++14 Coding Guidelines are enforceable by means of static code analysis.",
+        "page_number": 502
+      },
+      {
+        "list_index": 180,
+        "answer": "no",
+        "title": "Semantic code analysis 8 - Not applicable Mathematical source code analysis by use of an abstract representation of possible values is out of scope of AUTOSAR C++14 Coding Guidelines.",
+        "page_number": 502
+      },
+      {
+        "list_index": 181,
+        "answer": "no",
+        "title": "Glossary",
+        "page_number": 503
+      },
+      {
+        "list_index": 182,
+        "answer": "no",
+        "title": "Real-time application (RTA) A real-time application is a program that guarantees response within defined time constraints. The latency must be less than a defined value, usually measured in seconds or milliseconds. Whether or not a given application program qualifies as an RTA depends on the worst-case execution time (WCET) - the maximum length of time a defined task requires on a given hardware platform.",
+        "page_number": 503
+      },
+      {
+        "list_index": 183,
+        "answer": "no",
+        "title": "MISRA Motor Industry Software Reliability Association.",
+        "page_number": 503
+      },
+      {
+        "list_index": 184,
+        "answer": "no",
+        "title": "HIC++ High Integrity C++ Coding Standard.",
+        "page_number": 503
+      },
+      {
+        "list_index": 185,
+        "answer": "no",
+        "title": "cvalue expression An expression that should not undergo further conversions, either implicitly or explicitly, is called a cvalue expression.",
+        "page_number": 503
+      },
+      {
+        "list_index": 186,
+        "answer": "no",
+        "title": "Ownership Ownership of a resource means that the resource\u2019s lifetime is fully managed by the single class instance or tied with the class instance lifetime. See also: chapter 6.18.5",
+        "page_number": 503
+      },
+      {
+        "list_index": 187,
+        "answer": "no",
+        "title": "One definition rule The rule states that: There shall be one and only one definition of any variable, function, class type, enumeration type, or template in a translation unit. Some of these may have multiple declarations, but only one definition is allowed. There shall be one and only one definition of every non-inline function or variable that is odr-used in the entire program. An inline function definition is required in every translation unit where it is odr-used. There shall be one and only one definition of a class in any translation unit where the class is used in a way that requires it to be complete. There can be more than one definition of any class, enumeration type, inline function with external linkage, class template, non-static function template, static data member of a class template, member function of a class template, partial template specialization in a program, as long as all of the following is true: each definition consists of the same sequence of tokens (typically, appears in the same header file) name lookup from within each definition finds the same entities (after overload-resolution), except that constants with internal or no linkage may refer to different objects as long as they are not ODR-used and have the same values in every definition. overloaded operators, including conversion, allocation, and deallocation functions refer to the same function from each definition (unless referring to one defined within the definition) the language linkage is the same (e.g. the include file isn\u2019t inside an extern \u201cC\u201d block) the three rules above apply to every default argument used in each definition if the definition is for a class with an implicitly-declared constructor, every translation unit where it is odr-used must call the same constructor for the base and members if the definition is for a template, then all these requirements apply to both names at the point of definition and dependent names at the point of instantiation If all these requirements are satisfied, the program behaves as if there is only one definition in the entire program. Otherwise, the behavior is undefined.",
+        "page_number": 504
+      },
+      {
+        "list_index": 188,
+        "answer": "no",
+        "title": "ODR-use An object is odr-used if its address is taken, or a reference is bound to it. A function is odr-used if a function call to it is made or its address is taken.",
+        "page_number": 504
+      },
+      {
+        "list_index": 189,
+        "answer": "no",
+        "title": "POD Type POD (Plain Old Data) type is the type that is compatible with types used in the C programming language, can be manipulated using C library functions, and can be exchanged with C libraries directly in its binary form.",
+        "page_number": 505
+      },
+      {
+        "list_index": 191,
+        "answer": "no",
+        "title": "Standard-Layout Class A class that (C++ Language Standard [3], chapter 9): has no non-static data members of type non-standard-layout class (or array of such types) or reference has no virtual functions and no virtual base classes has the same access control for all non-static data members has no non-standard-layout base classes has at most one base class subobject of any given type has all non-static data members and bit-fields in the class and its base classes first declared in the same class has no element of the set M(X) of types as a base class where M(X) is defined as follows: If X is a non-union class type, the set M(X) is empty if X has no (possibly inherited) non-static data members; otherwise, it consists of the type of the first non-static data member of X (where said member may be an anonymous union), X0, and the elements of M(X0). If X is a union type, the set M(X) is the union of all M(Ui) and the set containing all Ui, where each Ui is the type of the i-th non-static data member of X. If X is a non-class type, the set M(X) is empty.",
+        "page_number": 505
+      },
+      {
+        "list_index": 192,
+        "answer": "no",
+        "title": "Dataflow Anomaly The state of a variable at a point in a program can be described using the following terms: Undefined (U): The value of the variable is indeterminate. Referenced (R): The variable is used in some way (e.g. in an expression). Defined (D): The variable is explicitly initialized or assigned a value. Given the above, the following dataflow anomalies can be defined: UR dataflow anomaly: Variable not assigned a value before the specified use (this may result in undefined behavior). DU dataflow anomaly: Variable is assigned a value that is never subsequently used. DD dataflow anomaly: Variable is assigned a value twice with no intermediate use.",
+        "page_number": 506
+      },
+      {
+        "list_index": 194,
+        "answer": "no",
+        "title": "Unreachable Code Unreachable code is code to which there is no syntactic (control flow) path, e.g. a function which is never called, either directly or indirectly.",
+        "page_number": 506
+      },
+      {
+        "list_index": 195,
+        "answer": "no",
+        "title": "Diamond Problem The \u201cdiamond problem\u201d is an ambiguity that arises when two classes B and C inherit from A, and class D inherits from both B and C. If there is a method provided by class A, that is overridden in both B and C and D does not override it, then there is an ambiguity which version of the method does D actually inherit. See: Wikipedia.org for more details.",
+        "page_number": 506
+      }
+    ]
+  }
+]

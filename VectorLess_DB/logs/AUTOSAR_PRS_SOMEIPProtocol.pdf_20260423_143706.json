@@ -1,0 +1,216 @@
+[
+  {
+    "total_page_number": 66
+  },
+  {
+    "total_token": 31845
+  },
+  {
+    "toc_content": "SOME/IP Protocol Specification\nAUTOSAR FO Release 1.5.0\nTable of Contents\n1 Introduction and overview 5\n1.1 Protocol purpose and objectives : 5\n1.2 Applicability of the protocol : 5\n1.2.1 Constraints and assumptions : 5\n1.2.2 Limitations : 6\n1.3 Dependencies : 6\n1.4 Document Structure : 6\n2 Protocol Requirements 7\n2.1 Requirements Traceability : 7\n3 Acronyms and Abbreviations 15\n4 Protocol specification 17\n4.1 Specification of SOME/IP on wire-format (Serialization) : 17\n4.1.1 Header : 17\n4.1.1.1 Message ID [32 Bit] : 19\n4.1.1.2 Length [32 Bit] : 19\n4.1.1.3 Request ID [32 Bit] : 19\n4.1.1.4 Protocol Version [8 Bit] : 21\n4.1.1.5 Interface Version [8 Bit] : 21\n4.1.1.6 Message Type [8 Bit] : 22\n4.1.1.7 Return Code [8 Bit] : 22\n4.1.1.8 Payload [variable size] : 23\n4.1.2 Event, Field and Eventgroup : 23\n4.1.3 Endianess : 24\n4.1.4 Serialization of Data Structures : 24\n4.1.4.1 Basic Datatypes : 25\n4.1.4.2 Structured Datatypes (structs) : 26\n4.1.4.3 Structured Datatypes and Arguments with Identifier\nand optional members : 27\n4.1.4.4 Strings : 34\n4.1.4.5 Arrays (fixed length) : 36\n4.1.4.6 Dynamic Length Arrays : 37\n4.1.4.7 Enumeration : 39\n4.1.4.8 Bitfield : 39\n4.1.4.9 Union / Variant : 39\n4.2 Specification of SOME/IP Protocol : 41\n4.2.1 Transport Protocol Bindings : 41\n4.2.1.1 UDP Binding : 42\n4.2.1.2 TCP Binding : 42\n4.2.1.3 Multiple Service-Instances : 44\n4.2.1.4 Transporting large SOME/IP messages of UDP\n(SOME/IP-TP) : 45\n3 of 66\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 696: AUTOSAR_PRS_SOMEIPProtocolSOME/IP Protocol Specification\nAUTOSAR FO Release 1.5.0\n4.2.2 Request/Response Communication : 51\n4.2.3 Fire&Forget Communication : 52\n4.2.4 Notification Events : 53\n4.2.4.1 Strategy for sending notifications : 54\n4.2.5 Fields : 54\n4.2.6 Error Handling : 55\n4.2.6.1 Return Code : 56\n4.2.6.2 Error Message : 56\n4.2.6.3 Error Processing Overview : 57\n4.2.6.4 Communication Errors and Handling of Communica-\ntion Errors : 59\n4.3 Compatibility Rules for Interface Version : 59\n5 Configuration Parameters 63\n6 Protocol usage and guidelines 64\n6.1 Choosing the transport protocol : 64\n6.2 Transporting CAN and FlexRay Frames : 64\n6.3 Insert Padding for structs : 65\n7 References 66\n4 of 66\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 696: AUTOSAR_PRS_SOMEIPProtocol",
+    "toc_page_list": [
+      2,
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and overview', 'page': 5}, {'structure': '1.1', 'title': 'Protocol purpose and objectives', 'page': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'page': 5}, {'structure': '1.2.1', 'title': 'Constraints and assumptions', 'page': 5}, {'structure': '1.2.2', 'title': 'Limitations', 'page': 6}, {'structure': '1.3', 'title': 'Dependencies', 'page': 6}, {'structure': '1.4', 'title': 'Document Structure', 'page': 6}, {'structure': '2', 'title': 'Protocol Requirements', 'page': 7}, {'structure': '2.1', 'title': 'Requirements Traceability', 'page': 7}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'page': 15}, {'structure': '4', 'title': 'Protocol specification', 'page': 17}, {'structure': '4.1', 'title': 'Specification of SOME/IP on wire-format (Serialization)', 'page': 17}, {'structure': '4.1.1', 'title': 'Header', 'page': 17}, {'structure': '4.1.1.1', 'title': 'Message ID [32 Bit]', 'page': 19}, {'structure': '4.1.1.2', 'title': 'Length [32 Bit]', 'page': 19}, {'structure': '4.1.1.3', 'title': 'Request ID [32 Bit]', 'page': 19}, {'structure': '4.1.1.4', 'title': 'Protocol Version [8 Bit]', 'page': 21}, {'structure': '4.1.1.5', 'title': 'Interface Version [8 Bit]', 'page': 21}, {'structure': '4.1.1.6', 'title': 'Message Type [8 Bit]', 'page': 22}, {'structure': '4.1.1.7', 'title': 'Return Code [8 Bit]', 'page': 22}, {'structure': '4.1.1.8', 'title': 'Payload [variable size]', 'page': 23}, {'structure': '4.1.2', 'title': 'Event, Field and Eventgroup', 'page': 23}, {'structure': '4.1.3', 'title': 'Endianess', 'page': 24}, {'structure': '4.1.4', 'title': 'Serialization of Data Structures', 'page': 24}, {'structure': '4.1.4.1', 'title': 'Basic Datatypes', 'page': 25}, {'structure': '4.1.4.2', 'title': 'Structured Datatypes (structs)', 'page': 26}, {'structure': '4.1.4.3', 'title': 'Structured Datatypes and Arguments with Identifier and optional members', 'page': 27}, {'structure': '4.1.4.4', 'title': 'Strings', 'page': 34}, {'structure': '4.1.4.5', 'title': 'Arrays (fixed length)', 'page': 36}, {'structure': '4.1.4.6', 'title': 'Dynamic Length Arrays', 'page': 37}, {'structure': '4.1.4.7', 'title': 'Enumeration', 'page': 39}, {'structure': '4.1.4.8', 'title': 'Bitfield', 'page': 39}, {'structure': '4.1.4.9', 'title': 'Union / Variant', 'page': 39}, {'structure': '4.2', 'title': 'Specification of SOME/IP Protocol', 'page': 41}, {'structure': '4.2.1', 'title': 'Transport Protocol Bindings', 'page': 41}, {'structure': '4.2.1.1', 'title': 'UDP Binding', 'page': 42}, {'structure': '4.2.1.2', 'title': 'TCP Binding', 'page': 42}, {'structure': '4.2.1.3', 'title': 'Multiple Service-Instances', 'page': 44}, {'structure': '4.2.1.4', 'title': 'Transporting large SOME/IP messages of UDP (SOME/IP-TP)', 'page': 45}, {'structure': '4.2.2', 'title': 'Request/Response Communication', 'page': 51}, {'structure': '4.2.3', 'title': 'Fire&Forget Communication', 'page': 52}, {'structure': '4.2.4', 'title': 'Notification Events', 'page': 53}, {'structure': '4.2.4.1', 'title': 'Strategy for sending notifications', 'page': 54}, {'structure': '4.2.5', 'title': 'Fields', 'page': 54}, {'structure': '4.2.6', 'title': 'Error Handling', 'page': 55}, {'structure': '4.2.6.1', 'title': 'Return Code', 'page': 56}, {'structure': '4.2.6.2', 'title': 'Error Message', 'page': 56}, {'structure': '4.2.6.3', 'title': 'Error Processing Overview', 'page': 57}, {'structure': '4.2.6.4', 'title': 'Communication Errors and Handling of Communication Errors', 'page': 59}, {'structure': '4.3', 'title': 'Compatibility Rules for Interface Version', 'page': 59}, {'structure': '5', 'title': 'Configuration Parameters', 'page': 63}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'page': 64}, {'structure': '6.1', 'title': 'Choosing the transport protocol', 'page': 64}, {'structure': '6.2', 'title': 'Transporting CAN and FlexRay Frames', 'page': 64}, {'structure': '6.3', 'title': 'Insert Padding for structs', 'page': 65}, {'structure': '7', 'title': 'References', 'page': 66}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': '<physical_index_5>'}, {'structure': '1.1', 'title': 'Protocol purpose and objectives', 'physical_index': '<physical_index_5>'}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': '<physical_index_5>'}, {'structure': '1.2.1', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_5>'}, {'structure': '1.2.2', 'title': 'Limitations', 'physical_index': '<physical_index_6>'}, {'structure': '1.3', 'title': 'Dependencies', 'physical_index': '<physical_index_6>'}, {'structure': '1.4', 'title': 'Document Structure', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Protocol Requirements', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Requirements Traceability', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_15>'}, {'structure': '4', 'title': 'Protocol specification', 'physical_index': '<physical_index_17>'}, {'structure': '4.1', 'title': 'Specification of SOME/IP on wire-format (Serialization)', 'physical_index': '<physical_index_17>'}, {'structure': '4.1.1', 'title': 'Header', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.1.1', 'title': 'Message ID [32 Bit]', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.1.2', 'title': 'Length [32 Bit]', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.1.3', 'title': 'Request ID [32 Bit]', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.1.4', 'title': 'Protocol Version [8 Bit]', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.1.5', 'title': 'Interface Version [8 Bit]', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.1.6', 'title': 'Message Type [8 Bit]', 'physical_index': '<physical_index_22>'}, {'structure': '4.1.1.7', 'title': 'Return Code [8 Bit]', 'physical_index': '<physical_index_22>'}, {'structure': '4.1.1.8', 'title': 'Payload [variable size]', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.2', 'title': 'Event, Field and Eventgroup', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.3', 'title': 'Endianess', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.4', 'title': 'Serialization of Data Structures', 'physical_index': '<physical_index_25>'}, {'structure': '4.1.4.1', 'title': 'Basic Datatypes', 'physical_index': '<physical_index_25>'}, {'structure': '4.1.4.2', 'title': 'Structured Datatypes (structs)', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.4.3', 'title': 'Structured Datatypes and Arguments with Identifier and optional members', 'physical_index': '<physical_index_27>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Protocol purpose and objectives', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 5}, {'structure': '1.2.1', 'title': 'Constraints and assumptions', 'physical_index': 5}, {'structure': '1.2.2', 'title': 'Limitations', 'physical_index': 6}, {'structure': '1.3', 'title': 'Dependencies', 'physical_index': 6}, {'structure': '1.4', 'title': 'Document Structure', 'physical_index': 6}, {'structure': '2', 'title': 'Protocol Requirements', 'physical_index': 7}, {'structure': '2.1', 'title': 'Requirements Traceability', 'physical_index': 7}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': 15}, {'structure': '4', 'title': 'Protocol specification', 'physical_index': 17}, {'structure': '4.1', 'title': 'Specification of SOME/IP on wire-format (Serialization)', 'physical_index': 17}, {'structure': '4.1.1', 'title': 'Header', 'physical_index': 18}, {'structure': '4.1.1.1', 'title': 'Message ID [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.2', 'title': 'Length [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.3', 'title': 'Request ID [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.4', 'title': 'Protocol Version [8 Bit]', 'physical_index': 21}, {'structure': '4.1.1.5', 'title': 'Interface Version [8 Bit]', 'physical_index': 21}, {'structure': '4.1.1.6', 'title': 'Message Type [8 Bit]', 'physical_index': 22}, {'structure': '4.1.1.7', 'title': 'Return Code [8 Bit]', 'physical_index': 22}, {'structure': '4.1.1.8', 'title': 'Payload [variable size]', 'physical_index': 23}, {'structure': '4.1.2', 'title': 'Event, Field and Eventgroup', 'physical_index': 23}, {'structure': '4.1.3', 'title': 'Endianess', 'physical_index': 24}, {'structure': '4.1.4', 'title': 'Serialization of Data Structures', 'physical_index': 25}, {'structure': '4.1.4.1', 'title': 'Basic Datatypes', 'physical_index': 25}, {'structure': '4.1.4.2', 'title': 'Structured Datatypes (structs)', 'physical_index': 26}, {'structure': '4.1.4.3', 'title': 'Structured Datatypes and Arguments with Identifier and optional members', 'physical_index': 27}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction and overview', 'page': 5, 'physical_index': 5}, {'title': 'Protocol purpose and objectives', 'page': 5, 'physical_index': 5}, {'title': 'Applicability of the protocol', 'page': 5, 'physical_index': 5}, {'title': 'Constraints and assumptions', 'page': 5, 'physical_index': 5}, {'title': 'Limitations', 'page': 6, 'physical_index': 6}, {'title': 'Dependencies', 'page': 6, 'physical_index': 6}, {'title': 'Document Structure', 'page': 6, 'physical_index': 6}, {'title': 'Protocol Requirements', 'page': 7, 'physical_index': 7}, {'title': 'Requirements Traceability', 'page': 7, 'physical_index': 7}, {'title': 'Acronyms and Abbreviations', 'page': 15, 'physical_index': 15}, {'title': 'Protocol specification', 'page': 17, 'physical_index': 17}, {'title': 'Specification of SOME/IP on wire-format (Serialization)', 'page': 17, 'physical_index': 17}, {'title': 'Header', 'page': 17, 'physical_index': 18}, {'title': 'Message ID [32 Bit]', 'page': 19, 'physical_index': 19}, {'title': 'Length [32 Bit]', 'page': 19, 'physical_index': 19}, {'title': 'Request ID [32 Bit]', 'page': 19, 'physical_index': 19}, {'title': 'Protocol Version [8 Bit]', 'page': 21, 'physical_index': 21}, {'title': 'Interface Version [8 Bit]', 'page': 21, 'physical_index': 21}, {'title': 'Message Type [8 Bit]', 'page': 22, 'physical_index': 22}, {'title': 'Return Code [8 Bit]', 'page': 22, 'physical_index': 22}, {'title': 'Payload [variable size]', 'page': 23, 'physical_index': 23}, {'title': 'Event, Field and Eventgroup', 'page': 23, 'physical_index': 23}, {'title': 'Endianess', 'page': 24, 'physical_index': 24}, {'title': 'Serialization of Data Structures', 'page': 24, 'physical_index': 25}, {'title': 'Basic Datatypes', 'page': 25, 'physical_index': 25}, {'title': 'Structured Datatypes (structs)', 'page': 26, 'physical_index': 26}, {'title': 'Structured Datatypes and Arguments with Identifier and optional members', 'page': 27, 'physical_index': 27}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Protocol purpose and objectives', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 5}, {'structure': '1.2.1', 'title': 'Constraints and assumptions', 'physical_index': 5}, {'structure': '1.2.2', 'title': 'Limitations', 'physical_index': 6}, {'structure': '1.3', 'title': 'Dependencies', 'physical_index': 6}, {'structure': '1.4', 'title': 'Document Structure', 'physical_index': 6}, {'structure': '2', 'title': 'Protocol Requirements', 'physical_index': 7}, {'structure': '2.1', 'title': 'Requirements Traceability', 'physical_index': 7}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': 15}, {'structure': '4', 'title': 'Protocol specification', 'physical_index': 17}, {'structure': '4.1', 'title': 'Specification of SOME/IP on wire-format (Serialization)', 'physical_index': 17}, {'structure': '4.1.1', 'title': 'Header', 'physical_index': 17}, {'structure': '4.1.1.1', 'title': 'Message ID [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.2', 'title': 'Length [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.3', 'title': 'Request ID [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.4', 'title': 'Protocol Version [8 Bit]', 'physical_index': 21}, {'structure': '4.1.1.5', 'title': 'Interface Version [8 Bit]', 'physical_index': 21}, {'structure': '4.1.1.6', 'title': 'Message Type [8 Bit]', 'physical_index': 22}, {'structure': '4.1.1.7', 'title': 'Return Code [8 Bit]', 'physical_index': 22}, {'structure': '4.1.1.8', 'title': 'Payload [variable size]', 'physical_index': 23}, {'structure': '4.1.2', 'title': 'Event, Field and Eventgroup', 'physical_index': 23}, {'structure': '4.1.3', 'title': 'Endianess', 'physical_index': 24}, {'structure': '4.1.4', 'title': 'Serialization of Data Structures', 'physical_index': 24}, {'structure': '4.1.4.1', 'title': 'Basic Datatypes', 'physical_index': 25}, {'structure': '4.1.4.2', 'title': 'Structured Datatypes (structs)', 'physical_index': 26}, {'structure': '4.1.4.3', 'title': 'Structured Datatypes and Arguments with Identifier and optional members', 'physical_index': 27}, {'structure': '4.1.4.4', 'title': 'Strings', 'physical_index': 34}, {'structure': '4.1.4.5', 'title': 'Arrays (fixed length)', 'physical_index': 36}, {'structure': '4.1.4.6', 'title': 'Dynamic Length Arrays', 'physical_index': 37}, {'structure': '4.1.4.7', 'title': 'Enumeration', 'physical_index': 39}, {'structure': '4.1.4.8', 'title': 'Bitfield', 'physical_index': 39}, {'structure': '4.1.4.9', 'title': 'Union / Variant', 'physical_index': 39}, {'structure': '4.2', 'title': 'Specification of SOME/IP Protocol', 'physical_index': 41}, {'structure': '4.2.1', 'title': 'Transport Protocol Bindings', 'physical_index': 41}, {'structure': '4.2.1.1', 'title': 'UDP Binding', 'physical_index': 42}, {'structure': '4.2.1.2', 'title': 'TCP Binding', 'physical_index': 42}, {'structure': '4.2.1.3', 'title': 'Multiple Service-Instances', 'physical_index': 44}, {'structure': '4.2.1.4', 'title': 'Transporting large SOME/IP messages of UDP (SOME/IP-TP)', 'physical_index': 45}, {'structure': '4.2.2', 'title': 'Request/Response Communication', 'physical_index': 51}, {'structure': '4.2.3', 'title': 'Fire&Forget Communication', 'physical_index': 52}, {'structure': '4.2.4', 'title': 'Notification Events', 'physical_index': 53}, {'structure': '4.2.4.1', 'title': 'Strategy for sending notifications', 'physical_index': 54}, {'structure': '4.2.5', 'title': 'Fields', 'physical_index': 54}, {'structure': '4.2.6', 'title': 'Error Handling', 'physical_index': 55}, {'structure': '4.2.6.1', 'title': 'Return Code', 'physical_index': 56}, {'structure': '4.2.6.2', 'title': 'Error Message', 'physical_index': 56}, {'structure': '4.2.6.3', 'title': 'Error Processing Overview', 'physical_index': 57}, {'structure': '4.2.6.4', 'title': 'Communication Errors and Handling of Communication Errors', 'physical_index': 59}, {'structure': '4.3', 'title': 'Compatibility Rules for Interface Version', 'physical_index': 59}, {'structure': '5', 'title': 'Configuration Parameters', 'physical_index': 63}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': 64}, {'structure': '6.1', 'title': 'Choosing the transport protocol', 'physical_index': 64}, {'structure': '6.2', 'title': 'Transporting CAN and FlexRay Frames', 'physical_index': 64}, {'structure': '6.3', 'title': 'Insert Padding for structs', 'physical_index': 65}, {'structure': '7', 'title': 'References', 'physical_index': 66}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Protocol purpose and objectives', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 5}, {'structure': '1.2.1', 'title': 'Constraints and assumptions', 'physical_index': 5}, {'structure': '1.2.2', 'title': 'Limitations', 'physical_index': 6}, {'structure': '1.3', 'title': 'Dependencies', 'physical_index': 6}, {'structure': '1.4', 'title': 'Document Structure', 'physical_index': 6}, {'structure': '2', 'title': 'Protocol Requirements', 'physical_index': 7}, {'structure': '2.1', 'title': 'Requirements Traceability', 'physical_index': 7}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': 15}, {'structure': '4', 'title': 'Protocol specification', 'physical_index': 17}, {'structure': '4.1', 'title': 'Specification of SOME/IP on wire-format (Serialization)', 'physical_index': 17}, {'structure': '4.1.1', 'title': 'Header', 'physical_index': 17}, {'structure': '4.1.1.1', 'title': 'Message ID [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.2', 'title': 'Length [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.3', 'title': 'Request ID [32 Bit]', 'physical_index': 19}, {'structure': '4.1.1.4', 'title': 'Protocol Version [8 Bit]', 'physical_index': 21}, {'structure': '4.1.1.5', 'title': 'Interface Version [8 Bit]', 'physical_index': 21}, {'structure': '4.1.1.6', 'title': 'Message Type [8 Bit]', 'physical_index': 22}, {'structure': '4.1.1.7', 'title': 'Return Code [8 Bit]', 'physical_index': 22}, {'structure': '4.1.1.8', 'title': 'Payload [variable size]', 'physical_index': 23}, {'structure': '4.1.2', 'title': 'Event, Field and Eventgroup', 'physical_index': 23}, {'structure': '4.1.3', 'title': 'Endianess', 'physical_index': 24}, {'structure': '4.1.4', 'title': 'Serialization of Data Structures', 'physical_index': 24}, {'structure': '4.1.4.1', 'title': 'Basic Datatypes', 'physical_index': 25}, {'structure': '4.1.4.2', 'title': 'Structured Datatypes (structs)', 'physical_index': 26}, {'structure': '4.1.4.3', 'title': 'Structured Datatypes and Arguments with Identifier and optional members', 'physical_index': 27}, {'structure': '4.1.4.4', 'title': 'Strings', 'physical_index': 34}, {'structure': '4.1.4.5', 'title': 'Arrays (fixed length)', 'physical_index': 36}, {'structure': '4.1.4.6', 'title': 'Dynamic Length Arrays', 'physical_index': 37}, {'structure': '4.1.4.7', 'title': 'Enumeration', 'physical_index': 39}, {'structure': '4.1.4.8', 'title': 'Bitfield', 'physical_index': 39}, {'structure': '4.1.4.9', 'title': 'Union / Variant', 'physical_index': 39}, {'structure': '4.2', 'title': 'Specification of SOME/IP Protocol', 'physical_index': 41}, {'structure': '4.2.1', 'title': 'Transport Protocol Bindings', 'physical_index': 41}, {'structure': '4.2.1.1', 'title': 'UDP Binding', 'physical_index': 42}, {'structure': '4.2.1.2', 'title': 'TCP Binding', 'physical_index': 42}, {'structure': '4.2.1.3', 'title': 'Multiple Service-Instances', 'physical_index': 44}, {'structure': '4.2.1.4', 'title': 'Transporting large SOME/IP messages of UDP (SOME/IP-TP)', 'physical_index': 45}, {'structure': '4.2.2', 'title': 'Request/Response Communication', 'physical_index': 51}, {'structure': '4.2.3', 'title': 'Fire&Forget Communication', 'physical_index': 52}, {'structure': '4.2.4', 'title': 'Notification Events', 'physical_index': 53}, {'structure': '4.2.4.1', 'title': 'Strategy for sending notifications', 'physical_index': 54}, {'structure': '4.2.5', 'title': 'Fields', 'physical_index': 54}, {'structure': '4.2.6', 'title': 'Error Handling', 'physical_index': 55}, {'structure': '4.2.6.1', 'title': 'Return Code', 'physical_index': 56}, {'structure': '4.2.6.2', 'title': 'Error Message', 'physical_index': 56}, {'structure': '4.2.6.3', 'title': 'Error Processing Overview', 'physical_index': 57}, {'structure': '4.2.6.4', 'title': 'Communication Errors and Handling of Communication Errors', 'physical_index': 59}, {'structure': '4.3', 'title': 'Compatibility Rules for Interface Version', 'physical_index': 59}, {'structure': '5', 'title': 'Configuration Parameters', 'physical_index': 63}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': 64}, {'structure': '6.1', 'title': 'Choosing the transport protocol', 'physical_index': 64}, {'structure': '6.2', 'title': 'Transporting CAN and FlexRay Frames', 'physical_index': 64}, {'structure': '6.3', 'title': 'Insert Padding for structs', 'physical_index': 65}, {'structure': '7', 'title': 'References', 'physical_index': 66}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 1.0,
+    "incorrect_results": []
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction and overview' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Document Structure' appears in the page_text, but it is not the first content. There are several other sections and text before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Header' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Constraints and assumptions' appears in the page_text, but it is not the first content. There are several paragraphs and sub-sections before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Applicability of the protocol' appears in the page_text, but it is not the first content. There are several paragraphs and a subsection before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' does not appear at the beginning of the given page_text. The page_text starts with document metadata and change history, which precedes any section titles.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '1.1 Protocol purpose and objectives' appears in the page_text, but it is not the first content. There is text before it, including the introduction and overview of the protocol.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Requirements Traceability' is found in the page_text, but it is not the first content. There are other contents (like the document title and section number) before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interface Version [8 Bit]' is found in the page_text, but it is not at the very beginning. There are several paragraphs and another section ('Protocol Version [8 Bit]') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Specification of SOME/IP on wire-format (Serialization)' appears in the page_text, but it is not the first content. There are several paragraphs and a section number (4.1) before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Protocol Requirements' is found at the beginning of the page_text, after some introductory text. However, since there is content before the section title, it does not start at the very beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Length [32 Bit]' is found in the page_text, but it is not at the very beginning. There are other contents before this section title, including information about the Message ID [32 Bit].\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Dependencies' is found in the page_text, but it is not the first content. There are several paragraphs and a sub-section (1.2.2 Limitations) before the section title '1.3 Dependencies'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Acronyms and Abbreviations' appears after some introductory text, specifically 'SOME/IP Protocol Specification AUTOSAR FO Release 1.5.0'. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Limitations' appears in the page_text, but it is not the first content. There are other contents before it, such as the title 'SOME/IP Protocol Specification' and some text from section 1.2.1.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Protocol specification' is found at the beginning of the page_text, ignoring spaces and case differences. The text starts with 'SOME/IP Protocol Specification AUTOSAR FO Release 1.5.0 4 Protocol specification', where '4 Protocol specification' matches the given section title.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Protocol Version [8 Bit]' appears in the page_text, but it is not the first content. There are several lines of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Message ID [32 Bit]' appears after some introductory text about the document and version information. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Payload [variable size]' appears after some introductory text about message types and their allowed return codes. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Request ID [32 Bit]' appears in the page_text, but it is not at the very beginning. There are other contents before this section title, including information about the Message ID and the Length fields.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event, Field and Eventgroup' appears in the page_text, but it is not the first content. There are several paragraphs and a table before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Message Type [8 Bit]' is found at the beginning of the page_text, after some introductory text. However, the introductory text is not part of the section itself, so the section effectively starts with its title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Basic Datatypes' appears in the page_text, but it is not the first content. There are several lines of text and figures before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Return Code [8 Bit]' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before this section title, including information about the Message Type [8 Bit].\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Structured Datatypes (structs)' appears after several lines of text about basic data types and byte order. Therefore, it does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Arrays (fixed length)' appears in the page_text, but it is not the first content. There are several paragraphs and specifications before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Structured Datatypes and Arguments with Identifier and optional members' appears in the page_text, but it is not the first content. There are several paragraphs and specifications listed before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Serialization of Data Structures' appears in the page_text, but it is not the first content. There are other sections and text before it, such as '4.1.3 Endianess'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Dynamic Length Arrays' appears in the page_text, but it is not the first content. There are several paragraphs and figures about static arrays and multidimensional arrays before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Strings' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title '4.1.4.4 Strings'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Endianess' is preceded by other content in the page_text, specifically 'SOME/IP Protocol Specification AUTOSAR FO Release 1.5.0'. Therefore, the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Enumeration' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Bitfield' appears in the page_text, but it is not the first content. There are several paragraphs and another section title ('Enumeration') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Union / Variant' appears in the page_text, but it is not at the very beginning. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Transport Protocol Bindings' appears in the page_text, but it is not the first content. There are several paragraphs and tables before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'TCP Binding' appears in the page_text, but it is not at the very beginning. There are several paragraphs and another section ('UDP Binding') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Multiple Service-Instances' appears in the page_text, but it is not the first content. There are several lines of text and figures before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'UDP Binding' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including a rationale and some specifications.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Fire&Forget Communication' appears in the page_text, but it is not the first content. There are several paragraphs and specifications before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Request/Response Communication' appears in the page_text, but it is not at the very beginning. There are several paragraphs and specifications listed before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Notification Events' appears in the page_text, but it is not the first content. There are several lines of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Fields' does not appear at the beginning of the page_text. There is a significant amount of text before the section title 'Fields'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Strategy for sending notifications' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Error Handling' appears in the page_text, but it is not at the very beginning. There are several lines of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Error Message' appears in the page_text, but it is not at the very beginning. There is content before it, including details about the Return Codes.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Specification of SOME/IP Protocol' appears in the page_text, but it is not at the very beginning. There are other contents before this section title, such as 'SOME/IP Protocol Specification AUTOSAR FO Release 1.5.0' and some technical details.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Return Code' appears in the page_text, but it is not the first content. There are other contents before the section title, such as the protocol specification details and other fields.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Transporting large SOME/IP messages of UDP (SOME/IP-TP)' is found at the beginning of the page_text, after some introductory text. However, the introductory text is not part of the section itself, so the section does indeed start at the beginning of the page_text.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Error Processing Overview' is found in the page_text, but it is not the first content. There are several paragraphs and specifications listed before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Compatibility Rules for Interface Version' appears in the page_text, but it is not the first content. There are several paragraphs and a figure before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Communication Errors and Handling of Communication Errors' appears after some introductory text in the page_text, which includes the document title and version information. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Protocol usage and guidelines' appears after some introductory text and a section number (6) in the page_text. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Choosing the transport protocol' appears after some introductory text and a section number (6.1) in the page_text. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Insert Padding for structs' appears in the page_text, but it is not the first content. There are other contents (like the document title and version) before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Transporting CAN and FlexRay Frames' appears in the page_text, but it is not at the beginning. There are several paragraphs and another section title ('Choosing the transport protocol') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configuration Parameters' appears in the page_text, but it is not the first content. There are other texts before it, such as 'SOME/IP Protocol Specification AUTOSAR FO Release 1.5.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'References' appears in the page_text, but it is not the first content. There are other contents before it, such as 'SOME/IP Protocol Specification AUTOSAR FO Release 1.5.0'.\", 'start_begin': 'no'}"
+  }
+]

@@ -1,0 +1,204 @@
+[
+  {
+    "total_page_number": 162
+  },
+  {
+    "total_token": 40065
+  },
+  {
+    "toc_content": "- AUTOSAR Confidential - \nTable of contents  \n1.Architecture  \n1.Overview of Software Layers  \n2.Content of Software Layers  \n3.Content of Software Layers in Multi -Core Systems  \n4.Content of Software Layers in Mixed -Critical Systems  \n5.Overview of Modules  \n6.Interfaces  \n1.General  \n2.Interaction of Layers (Examples)  \n2.Configuration  \n3.Integration and Runtime Aspects  \nDocument ID 053 : AUTOSAR_EXP_LayeredSoftwareArchitecture  17 page  id: 94jt4  ",
+    "toc_page_list": [
+      6
+    ],
+    "page_index_given_in_toc": "no"
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Architecture', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Overview of Software Layers', 'physical_index': '<physical_index_10>'}, {'structure': '1.2', 'title': 'Content of Software Layers', 'physical_index': '<physical_index_26>'}, {'structure': '1.3', 'title': 'Content of Software Layers in Multi -Core Systems', 'physical_index': '<physical_index_55>'}, {'structure': '1.4', 'title': 'Content of Software Layers in Mixed -Critical Systems', 'physical_index': '<physical_index_60>'}, {'structure': '1.5', 'title': 'Overview of Modules', 'physical_index': '<physical_index_63>'}, {'structure': '1.6', 'title': 'Interfaces', 'physical_index': '<physical_index_68>'}, {'structure': '2', 'title': 'Configuration', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Integration and Runtime Aspects', 'physical_index': '<physical_index_7>'}, {'structure': '1.6.1', 'title': 'General', 'physical_index': '<physical_index_68>'}, {'structure': '1.6.2', 'title': 'Interaction of Layers (Examples)', 'physical_index': '<physical_index_76>'}, {'structure': '2.1', 'title': 'Pre-compile time (1)', 'physical_index': '<physical_index_93>'}, {'structure': '2.2', 'title': 'Pre-compile time (2)', 'physical_index': '<physical_index_94>'}, {'structure': '2.3', 'title': 'Pre-compile time (3)', 'physical_index': '<physical_index_95>'}, {'structure': '2.4', 'title': 'Link time (1)', 'physical_index': '<physical_index_96>'}, {'structure': '2.5', 'title': 'Link time (2)', 'physical_index': '<physical_index_97>'}, {'structure': '2.6', 'title': 'Link time (3)', 'physical_index': '<physical_index_98>'}, {'structure': '2.7', 'title': 'Post -build time (1)', 'physical_index': '<physical_index_99>'}, {'structure': '2.8', 'title': 'Post -build time (2)', 'physical_index': '<physical_index_100>'}, {'structure': '2.9', 'title': 'Post -build time (3)', 'physical_index': '<physical_index_101>'}, {'structure': '2.10', 'title': 'Variants', 'physical_index': '<physical_index_102>'}, {'structure': '2.11', 'title': 'Memory Layout Example: Post -build configuration', 'physical_index': '<physical_index_103>'}, {'structure': '2.12', 'title': 'Memory Layout Example: Multiple configuration sets', 'physical_index': '<physical_index_104>'}, {'structure': '3.1', 'title': 'Mapping of Runnables', 'physical_index': '<physical_index_106>'}, {'structure': '3.2', 'title': 'Partitioning', 'physical_index': '<physical_index_108>'}, {'structure': '3.3', 'title': 'Scheduling', 'physical_index': '<physical_index_114>'}, {'structure': '3.4', 'title': 'Mode Management', 'physical_index': '<physical_index_125>'}, {'structure': '3.5', 'title': 'Error Handling, Reporting and Diagnostic', 'physical_index': '<physical_index_130>'}, {'structure': '3.5.1', 'title': 'Error Classification (1)', 'physical_index': '<physical_index_130>'}, {'structure': '3.5.2', 'title': 'Error Classification (2)', 'physical_index': '<physical_index_131>'}, {'structure': '3.5.3', 'title': 'Error Reporting \u2013 Alternatives', 'physical_index': '<physical_index_132>'}, {'structure': '3.5.4', 'title': 'Mechanism in relation to AUTOSAR layers and system life time', 'physical_index': '<physical_index_133>'}, {'structure': '3.5.5', 'title': 'Error Reporting via API', 'physical_index': '<physical_index_134>'}, {'structure': '3.5.6', 'title': 'Error Reporting \u2013 Introduction', 'physical_index': '<physical_index_135>'}, {'structure': '3.5.7', 'title': 'Diagnostic Event Manager \u2013 Diagnostic Error Reporting', 'physical_index': '<physical_index_136>'}, {'structure': '3.5.8', 'title': 'Default Error Tracer \u2013 Example: Development Error Reporting', 'physical_index': '<physical_index_137>'}, {'structure': '3.5.9', 'title': 'Diagnostic Log and Trace (1)', 'physical_index': '<physical_index_138>'}, {'structure': '3.5.10', 'title': 'Diagnostic Log and Trace (2)', 'physical_index': '<physical_index_139>'}, {'structure': '3.5.11', 'title': 'Diagnostic Log and Trace (3)', 'physical_index': '<physical_index_140>'}, {'structure': '3.6', 'title': 'Measurement and Calibration', 'physical_index': '<physical_index_142>'}, {'structure': '3.7', 'title': 'Functional Safety', 'physical_index': '<physical_index_146>'}, {'structure': '3.8', 'title': 'Security', 'physical_index': '<physical_index_149>'}, {'structure': '3.9', 'title': 'Energy Management', 'physical_index': '<physical_index_151>'}, {'structure': '3.9.1', 'title': 'Introduction', 'physical_index': '<physical_index_151>'}, {'structure': '3.9.2', 'title': 'Partial Networking', 'physical_index': '<physical_index_152>'}, {'structure': '3.9.3', 'title': 'Conceptual terms', 'physical_index': '<physical_index_153>'}, {'structure': '3.9.4', 'title': 'Restrictions', 'physical_index': '<physical_index_154>'}, {'structure': '3.9.5', 'title': 'Mapping of Virtual Function Cluster to Partial Network Cluster', 'physical_index': '<physical_index_155>'}, {'structure': '3.9.6', 'title': 'Involved modules \u2013 Solution for CAN', 'physical_index': '<physical_index_156>'}, {'structure': '3.9.7', 'title': 'Pretended Networking', 'physical_index': '<physical_index_157>'}, {'structure': '3.9.8', 'title': 'Restrictions', 'physical_index': '<physical_index_158>'}, {'structure': '3.9.9', 'title': 'Involved modules \u2013 Solution for I/O Drivers', 'physical_index': '<physical_index_159>'}, {'structure': '3.9.10', 'title': 'Restrictions', 'physical_index': '<physical_index_160>'}, {'structure': '3.10', 'title': 'Global Time Synchronization', 'physical_index': '<physical_index_162>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Architecture', 'physical_index': 7}, {'structure': '1.1', 'title': 'Overview of Software Layers', 'physical_index': 10}, {'structure': '1.2', 'title': 'Content of Software Layers', 'physical_index': 26}, {'structure': '1.3', 'title': 'Content of Software Layers in Multi -Core Systems', 'physical_index': 55}, {'structure': '1.4', 'title': 'Content of Software Layers in Mixed -Critical Systems', 'physical_index': 60}, {'structure': '1.5', 'title': 'Overview of Modules', 'physical_index': 63}, {'structure': '1.6', 'title': 'Interfaces', 'physical_index': 68}, {'structure': '2', 'title': 'Configuration', 'physical_index': 7}, {'structure': '3', 'title': 'Integration and Runtime Aspects', 'physical_index': 7}, {'structure': '1.6.1', 'title': 'General', 'physical_index': 68}, {'structure': '1.6.2', 'title': 'Interaction of Layers (Examples)', 'physical_index': 76}, {'structure': '2.1', 'title': 'Pre-compile time (1)', 'physical_index': 93}, {'structure': '2.2', 'title': 'Pre-compile time (2)', 'physical_index': 94}, {'structure': '2.3', 'title': 'Pre-compile time (3)', 'physical_index': 95}, {'structure': '2.4', 'title': 'Link time (1)', 'physical_index': 96}, {'structure': '2.5', 'title': 'Link time (2)', 'physical_index': 97}, {'structure': '2.6', 'title': 'Link time (3)', 'physical_index': 98}, {'structure': '2.7', 'title': 'Post -build time (1)', 'physical_index': 99}, {'structure': '2.8', 'title': 'Post -build time (2)', 'physical_index': 100}, {'structure': '2.9', 'title': 'Post -build time (3)', 'physical_index': 101}, {'structure': '2.10', 'title': 'Variants', 'physical_index': 102}, {'structure': '2.11', 'title': 'Memory Layout Example: Post -build configuration', 'physical_index': 103}, {'structure': '2.12', 'title': 'Memory Layout Example: Multiple configuration sets', 'physical_index': 104}, {'structure': '3.1', 'title': 'Mapping of Runnables', 'physical_index': 106}, {'structure': '3.2', 'title': 'Partitioning', 'physical_index': 108}, {'structure': '3.3', 'title': 'Scheduling', 'physical_index': 114}, {'structure': '3.4', 'title': 'Mode Management', 'physical_index': 125}, {'structure': '3.5', 'title': 'Error Handling, Reporting and Diagnostic', 'physical_index': 130}, {'structure': '3.5.1', 'title': 'Error Classification (1)', 'physical_index': 130}, {'structure': '3.5.2', 'title': 'Error Classification (2)', 'physical_index': 131}, {'structure': '3.5.3', 'title': 'Error Reporting \u2013 Alternatives', 'physical_index': 132}, {'structure': '3.5.4', 'title': 'Mechanism in relation to AUTOSAR layers and system life time', 'physical_index': 133}, {'structure': '3.5.5', 'title': 'Error Reporting via API', 'physical_index': 134}, {'structure': '3.5.6', 'title': 'Error Reporting \u2013 Introduction', 'physical_index': 135}, {'structure': '3.5.7', 'title': 'Diagnostic Event Manager \u2013 Diagnostic Error Reporting', 'physical_index': 136}, {'structure': '3.5.8', 'title': 'Default Error Tracer \u2013 Example: Development Error Reporting', 'physical_index': 137}, {'structure': '3.5.9', 'title': 'Diagnostic Log and Trace (1)', 'physical_index': 138}, {'structure': '3.5.10', 'title': 'Diagnostic Log and Trace (2)', 'physical_index': 139}, {'structure': '3.5.11', 'title': 'Diagnostic Log and Trace (3)', 'physical_index': 140}, {'structure': '3.6', 'title': 'Measurement and Calibration', 'physical_index': 142}, {'structure': '3.7', 'title': 'Functional Safety', 'physical_index': 146}, {'structure': '3.8', 'title': 'Security', 'physical_index': 149}, {'structure': '3.9', 'title': 'Energy Management', 'physical_index': 151}, {'structure': '3.9.1', 'title': 'Introduction', 'physical_index': 151}, {'structure': '3.9.2', 'title': 'Partial Networking', 'physical_index': 152}, {'structure': '3.9.3', 'title': 'Conceptual terms', 'physical_index': 153}, {'structure': '3.9.4', 'title': 'Restrictions', 'physical_index': 154}, {'structure': '3.9.5', 'title': 'Mapping of Virtual Function Cluster to Partial Network Cluster', 'physical_index': 155}, {'structure': '3.9.6', 'title': 'Involved modules \u2013 Solution for CAN', 'physical_index': 156}, {'structure': '3.9.7', 'title': 'Pretended Networking', 'physical_index': 157}, {'structure': '3.9.8', 'title': 'Restrictions', 'physical_index': 158}, {'structure': '3.9.9', 'title': 'Involved modules \u2013 Solution for I/O Drivers', 'physical_index': 159}, {'structure': '3.9.10', 'title': 'Restrictions', 'physical_index': 160}, {'structure': '3.10', 'title': 'Global Time Synchronization', 'physical_index': 162}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.46296296296296297,
+    "incorrect_results": [
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Content of Software Layers in Multi -Core Systems",
+        "page_number": 55
+      },
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Content of Software Layers in Mixed -Critical Systems",
+        "page_number": 60
+      },
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "General",
+        "page_number": 68
+      },
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "Link time (3)",
+        "page_number": 98
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "Post -build time (1)",
+        "page_number": 99
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "Post -build time (2)",
+        "page_number": 100
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "Post -build time (3)",
+        "page_number": 101
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Variants",
+        "page_number": 102
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Memory Layout Example: Post -build configuration",
+        "page_number": 103
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Memory Layout Example: Multiple configuration sets",
+        "page_number": 104
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Mapping of Runnables",
+        "page_number": 106
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Partitioning",
+        "page_number": 108
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Scheduling",
+        "page_number": 114
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Mode Management",
+        "page_number": 125
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Error Handling, Reporting and Diagnostic",
+        "page_number": 130
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Error Classification (1)",
+        "page_number": 130
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Error Classification (2)",
+        "page_number": 131
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Error Reporting \u2013 Alternatives",
+        "page_number": 132
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Mechanism in relation to AUTOSAR layers and system life time",
+        "page_number": 133
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Error Reporting via API",
+        "page_number": 134
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Error Reporting \u2013 Introduction",
+        "page_number": 135
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Diagnostic Event Manager \u2013 Diagnostic Error Reporting",
+        "page_number": 136
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Default Error Tracer \u2013 Example: Development Error Reporting",
+        "page_number": 137
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Diagnostic Log and Trace (1)",
+        "page_number": 138
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Diagnostic Log and Trace (2)",
+        "page_number": 139
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Diagnostic Log and Trace (3)",
+        "page_number": 140
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Functional Safety",
+        "page_number": 146
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Security",
+        "page_number": 149
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Partial Networking",
+        "page_number": 152
+      }
+    ]
+  }
+]

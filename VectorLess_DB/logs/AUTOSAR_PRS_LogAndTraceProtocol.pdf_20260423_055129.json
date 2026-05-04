@@ -1,0 +1,958 @@
+[
+  {
+    "total_page_number": 69
+  },
+  {
+    "total_token": 31064
+  },
+  {
+    "toc_content": " Log and Trace Protocol Specification  \nAUTOSAR FO Release 1.5.0  \n \n3 of 69 Document ID 787: AUTOSAR_PRS_ LogAndTraceProtocol  \n  - AUTOSAR confidential - \nTable of Contents  \n \n1 Introduction and overview  :  :  :   5 \n1.1 Purpose  :  :  :  :   5 \n1.2 Applicability of the protocol  :  :  :   6 \n1.2.1  Safety and security considerations  :  :   6 \n1.2.2  Constraints and assumptions  :  :  .. 6 \n1.2.3  Limitations  :  :  :   6 \n1.3 Dependencies to other protocol layers  :  :   6 \n1.4 Dependencies to the Application Layer  :  :   7 \n2 Use Cases  :  :  :  :   8 \n2.1.1  Use Case general logging with Dlt  :  :   8 \n2.1.2  Use Case tracing of VFB  :  :  :   9 \n2.1.3  Use Case runtime configuration of Dlt  :  :   10 \n2.1.4  Use Case non -verbose mode  :  :   11 \n3 Requirements trace ability  :  :  :   12 \n4 Acronyms and abbreviations :  :  :   14 \n4.1 Term and definition  :  :  :   15 \n5 Protocol specification  :  :  :   16 \n5.1 Message format  :  :  :   16 \n5.1.1  Header format  :  :  :   16 \n5.1.2  Body/Payload format  :  :  :   23 \n5.1.3  Data Types  :  :  :   32 \n5.2 Message types  :  :  :   44 \n5.2.1  Data Messages  :  :  :   44 \n5.2.2  Control Messages  :  :  :   44 \n5.3 Services / Commands  :  :  :   44 \n5.3.1  Set Log Level  :  :  :   45 \n5.3.2  Set Trace Status  :  :  :   46 \n5.3.3  Get Log Info  :  :  :   47 \n5.3.4  Get Default Log Level  :  :  :   49 \n5.3.5  Store Configuration  :  :  :   49 \n5.3.6  Reset to Factory Default  :  :  :   50 \n5.3.7  SetMessageFilt ering  :  :  :   50 \n5.3.8  Set Default LogLevel  :  :  :   50 \n5.3.9  Set Default Trace Status  :  :  :  51 \n5.3.10  Get ECU Software Version  :  :  .... 52 \n5.3.11  Get Default T race Status  :  :  :  53 \n5.3.12  Get LogChannel Names  :  :  :   53 \n5.3.13  Get Trace Status  :  :  :   54 \n5.3.14  Set LogChannel Assignment  :  :  . 54 \n5.3.15  Set LogChan nel Threshold  :  :  .... 55 \n5.3.16  Get LogChannel Threshold  :  :  ... 55 \n5.3.17  BufferOverflowNotification  :  :  :  56 \n5.3.18  SyncTimeStamp  :  :  :   57  Log and Trace Protocol Specification  \nAUTOSAR FO Release 1.5.0  \n \n4 of 69 Document ID 787: AUTOSAR_PRS_ LogAndTraceProtocol  \n  - AUTOSAR confidential - \n5.3.19  Call SWC Injection  :  :  :   58 \n5.3.20  DLT Commands (deprecated)  :  :   59 \n5.4 External Client / Tool  :  :  :   60 \n5.4.1  Extensions for storing in a database/file  :  :   60 \n5.5 Sequences (lower layer)  :  :  :   61 \n5.5.1  States  :  :  :  :  61 \n5.5.2  Control flow / Transitions  :  :  :  62 \n5.6 Error Handling  :  :  :   65 \n5.6.1  Error messages  :  :  :   65 \n5.6.2  Error resolution  :  :  :   66 \n6 Protocol usage and guidelines  :  :  :   67 \n7 Configuration specification  :  :  :   68 \n7.1 Dlt Header  :  :  :  :  68 \n7.1.1  Header Type  :  :  :   68 \n7.2 Dlt Extended Header  :  :  :   68 \n7.2.1  Message Info  :  :  :   68 \n7.3 Published Information  :  :  :   69 \n ",
+    "toc_page_list": [
+      2,
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and overview', 'page': 5}, {'structure': '1.1', 'title': 'Purpose', 'page': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'page': 6}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'page': 6}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'page': 6}, {'structure': '1.2.3', 'title': 'Limitations', 'page': 6}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'page': 6}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'page': 7}, {'structure': '2', 'title': 'Use Cases', 'page': 8}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'page': 8}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'page': 9}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'page': 10}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'page': 11}, {'structure': '3', 'title': 'Requirements trace ability', 'page': 12}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'page': 14}, {'structure': '4.1', 'title': 'Term and definition', 'page': 15}, {'structure': '5', 'title': 'Protocol specification', 'page': 16}, {'structure': '5.1', 'title': 'Message format', 'page': 16}, {'structure': '5.1.1', 'title': 'Header format', 'page': 16}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'page': 23}, {'structure': '5.1.3', 'title': 'Data Types', 'page': 32}, {'structure': '5.2', 'title': 'Message types', 'page': 44}, {'structure': '5.2.1', 'title': 'Data Messages', 'page': 44}, {'structure': '5.2.2', 'title': 'Control Messages', 'page': 44}, {'structure': '5.3', 'title': 'Services / Commands', 'page': 44}, {'structure': '5.3.1', 'title': 'Set Log Level', 'page': 45}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'page': 46}, {'structure': '5.3.3', 'title': 'Get Log Info', 'page': 47}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'page': 49}, {'structure': '5.3.5', 'title': 'Store Configuration', 'page': 49}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'page': 50}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'page': 50}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'page': 50}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'page': 51}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'page': 52}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'page': 53}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'page': 53}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'page': 54}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'page': 54}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'page': 55}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'page': 55}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'page': 56}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'page': 57}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'page': 58}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'page': 59}, {'structure': '5.4', 'title': 'External Client / Tool', 'page': 60}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'page': 60}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'page': 61}, {'structure': '5.5.1', 'title': 'States', 'page': 61}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'page': 62}, {'structure': '5.6', 'title': 'Error Handling', 'page': 65}, {'structure': '5.6.1', 'title': 'Error messages', 'page': 65}, {'structure': '5.6.2', 'title': 'Error resolution', 'page': 66}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'page': 67}, {'structure': '7', 'title': 'Configuration specification', 'page': 68}, {'structure': '7.1', 'title': 'Dlt Header', 'page': 68}, {'structure': '7.1.1', 'title': 'Header Type', 'page': 68}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'page': 68}, {'structure': '7.2.1', 'title': 'Message Info', 'page': 68}, {'structure': '7.3', 'title': 'Published Information', 'page': 69}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': '<physical_index_5>'}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': '<physical_index_6>'}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': '<physical_index_6>'}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_6>'}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': '<physical_index_6>'}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': '<physical_index_6>'}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Use Cases', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': '<physical_index_9>'}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': '<physical_index_10>'}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Requirements trace ability', 'physical_index': '<physical_index_12>'}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': '<physical_index_15>'}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': '<physical_index_16>'}, {'structure': '5.1', 'title': 'Message format', 'physical_index': '<physical_index_16>'}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': '<physical_index_16>'}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': '<physical_index_32>'}, {'structure': '5.2', 'title': 'Message types', 'physical_index': '<physical_index_44>'}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': '<physical_index_44>'}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': '<physical_index_44>'}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': '<physical_index_44>'}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': '<physical_index_45>'}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': '<physical_index_46>'}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': '<physical_index_47>'}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': '<physical_index_51>'}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': '<physical_index_52>'}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': '<physical_index_56>'}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': '<physical_index_57>'}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': '<physical_index_58>'}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': '<physical_index_59>'}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': '<physical_index_60>'}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': '<physical_index_60>'}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': '<physical_index_61>'}, {'structure': '5.5.1', 'title': 'States', 'physical_index': '<physical_index_61>'}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': '<physical_index_62>'}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': '<physical_index_65>'}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': '<physical_index_65>'}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': '<physical_index_66>'}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': '<physical_index_67>'}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': '<physical_index_68>'}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': '<physical_index_68>'}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': '<physical_index_68>'}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': '<physical_index_68>'}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': '<physical_index_68>'}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': '<physical_index_69>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 6}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': 6}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': 6}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': 6}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': 6}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': 7}, {'structure': '2', 'title': 'Use Cases', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': 9}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': 10}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements trace ability', 'physical_index': 12}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': 14}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': 15}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': 16}, {'structure': '5.1', 'title': 'Message format', 'physical_index': 16}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': 16}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': 23}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': 32}, {'structure': '5.2', 'title': 'Message types', 'physical_index': 44}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': 44}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': 44}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': 44}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': 45}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': 46}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': 47}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': 49}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': 49}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': 50}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': 50}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': 50}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': 51}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': 52}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': 53}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': 53}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': 54}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': 54}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': 56}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': 57}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': 58}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': 59}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': 60}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': 60}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': 61}, {'structure': '5.5.1', 'title': 'States', 'physical_index': 61}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': 62}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': 65}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': 65}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': 66}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': 67}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': 68}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': 68}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': 68}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': 68}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': 68}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': 69}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction and overview', 'page': 5, 'physical_index': 5}, {'title': 'Purpose', 'page': 5, 'physical_index': 5}, {'title': 'Applicability of the protocol', 'page': 6, 'physical_index': 6}, {'title': 'Safety and security considerations', 'page': 6, 'physical_index': 6}, {'title': 'Constraints and assumptions', 'page': 6, 'physical_index': 6}, {'title': 'Limitations', 'page': 6, 'physical_index': 6}, {'title': 'Dependencies to other protocol layers', 'page': 6, 'physical_index': 6}, {'title': 'Dependencies to the Application Layer', 'page': 7, 'physical_index': 7}, {'title': 'Use Cases', 'page': 8, 'physical_index': 8}, {'title': 'Use Case general logging with Dlt', 'page': 8, 'physical_index': 8}, {'title': 'Use Case tracing of VFB', 'page': 9, 'physical_index': 9}, {'title': 'Use Case runtime configuration of Dlt', 'page': 10, 'physical_index': 10}, {'title': 'Use Case non-verbose mode', 'page': 11, 'physical_index': 11}, {'title': 'Requirements trace ability', 'page': 12, 'physical_index': 12}, {'title': 'Acronyms and abbreviations', 'page': 14, 'physical_index': 14}, {'title': 'Term and definition', 'page': 15, 'physical_index': 15}, {'title': 'Protocol specification', 'page': 16, 'physical_index': 16}, {'title': 'Message format', 'page': 16, 'physical_index': 16}, {'title': 'Header format', 'page': 16, 'physical_index': 16}, {'title': 'Body/Payload format', 'page': 23, 'physical_index': 23}, {'title': 'Data Types', 'page': 32, 'physical_index': 32}, {'title': 'Message types', 'page': 44, 'physical_index': 44}, {'title': 'Data Messages', 'page': 44, 'physical_index': 44}, {'title': 'Control Messages', 'page': 44, 'physical_index': 44}, {'title': 'Services / Commands', 'page': 44, 'physical_index': 44}, {'title': 'Set Log Level', 'page': 45, 'physical_index': 45}, {'title': 'Set Trace Status', 'page': 46, 'physical_index': 46}, {'title': 'Get Log Info', 'page': 47, 'physical_index': 47}, {'title': 'Get Default Log Level', 'page': 49, 'physical_index': 49}, {'title': 'Store Configuration', 'page': 49, 'physical_index': 49}, {'title': 'Reset to Factory Default', 'page': 50, 'physical_index': 50}, {'title': 'SetMessageFiltering', 'page': 50, 'physical_index': 50}, {'title': 'Set Default LogLevel', 'page': 50, 'physical_index': 50}, {'title': 'Set Default Trace Status', 'page': 51, 'physical_index': 51}, {'title': 'Get ECU Software Version', 'page': 52, 'physical_index': 52}, {'title': 'Get Default Trace Status', 'page': 53, 'physical_index': 53}, {'title': 'Get LogChannel Names', 'page': 53, 'physical_index': 53}, {'title': 'Get Trace Status', 'page': 54, 'physical_index': 54}, {'title': 'Set LogChannel Assignment', 'page': 54, 'physical_index': 54}, {'title': 'Set LogChannel Threshold', 'page': 55, 'physical_index': 55}, {'title': 'Get LogChannel Threshold', 'page': 55, 'physical_index': 55}, {'title': 'BufferOverflowNotification', 'page': 56, 'physical_index': 56}, {'title': 'SyncTimeStamp', 'page': 57, 'physical_index': 57}, {'title': 'Call SWC Injection', 'page': 58, 'physical_index': 58}, {'title': 'DLT Commands (deprecated)', 'page': 59, 'physical_index': 59}, {'title': 'External Client / Tool', 'page': 60, 'physical_index': 60}, {'title': 'Extensions for storing in a database/file', 'page': 60, 'physical_index': 60}, {'title': 'Sequences (lower layer)', 'page': 61, 'physical_index': 61}, {'title': 'States', 'page': 61, 'physical_index': 61}, {'title': 'Control flow / Transitions', 'page': 62, 'physical_index': 62}, {'title': 'Error Handling', 'page': 65, 'physical_index': 65}, {'title': 'Error messages', 'page': 65, 'physical_index': 65}, {'title': 'Error resolution', 'page': 66, 'physical_index': 66}, {'title': 'Protocol usage and guidelines', 'page': 67, 'physical_index': 67}, {'title': 'Configuration specification', 'page': 68, 'physical_index': 68}, {'title': 'Dlt Header', 'page': 68, 'physical_index': 68}, {'title': 'Header Type', 'page': 68, 'physical_index': 68}, {'title': 'Dlt Extended Header', 'page': 68, 'physical_index': 68}, {'title': 'Message Info', 'page': 68, 'physical_index': 68}, {'title': 'Published Information', 'page': 69, 'physical_index': 69}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 6}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': 6}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': 6}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': 6}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': 6}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': 7}, {'structure': '2', 'title': 'Use Cases', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': 9}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': 10}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements trace ability', 'physical_index': 12}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': 14}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': 15}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': 16}, {'structure': '5.1', 'title': 'Message format', 'physical_index': 16}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': 16}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': 23}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': 32}, {'structure': '5.2', 'title': 'Message types', 'physical_index': 44}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': 44}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': 44}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': 44}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': 45}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': 46}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': 47}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': 49}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': 49}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': 50}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': 50}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': 50}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': 51}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': 52}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': 53}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': 53}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': 54}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': 54}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': 56}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': 57}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': 58}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': 59}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': 60}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': 60}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': 61}, {'structure': '5.5.1', 'title': 'States', 'physical_index': 61}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': 62}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': 65}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': 65}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': 66}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': 67}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': 68}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': 68}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': 68}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': 68}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': 68}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': 69}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 6}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': 6}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': 6}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': 6}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': 6}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': 7}, {'structure': '2', 'title': 'Use Cases', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': 9}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': 10}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements trace ability', 'physical_index': 12}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': 14}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': 15}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': 16}, {'structure': '5.1', 'title': 'Message format', 'physical_index': 16}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': 16}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': 23}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': 32}, {'structure': '5.2', 'title': 'Message types', 'physical_index': 44}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': 44}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': 44}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': 44}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': 45}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': 46}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': 47}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': 49}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': 49}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': 50}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': 50}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': 50}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': 51}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': 52}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': 53}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': 53}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': 54}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': 54}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': 56}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': 57}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': 58}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': 59}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': 60}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': 60}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': 61}, {'structure': '5.5.1', 'title': 'States', 'physical_index': 61}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': 62}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': 65}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': 65}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': 66}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': 67}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': 68}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': 68}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': 68}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': 68}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': 68}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': 69}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.43333333333333335,
+    "incorrect_results": [
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Message types",
+        "page_number": 44
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Data Messages",
+        "page_number": 44
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Control Messages",
+        "page_number": 44
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Services / Commands",
+        "page_number": 44
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Set Log Level",
+        "page_number": 45
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Set Trace Status",
+        "page_number": 46
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Get Log Info",
+        "page_number": 47
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Get Default Log Level",
+        "page_number": 49
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Store Configuration",
+        "page_number": 49
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Reset to Factory Default",
+        "page_number": 50
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "SetMessageFiltering",
+        "page_number": 50
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Set Default LogLevel",
+        "page_number": 50
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Set Default Trace Status",
+        "page_number": 51
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Get ECU Software Version",
+        "page_number": 52
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Get Default Trace Status",
+        "page_number": 53
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Get LogChannel Names",
+        "page_number": 53
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Get Trace Status",
+        "page_number": 54
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Set LogChannel Assignment",
+        "page_number": 54
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Set LogChannel Threshold",
+        "page_number": 55
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Get LogChannel Threshold",
+        "page_number": 55
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "BufferOverflowNotification",
+        "page_number": 56
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "SyncTimeStamp",
+        "page_number": 57
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Call SWC Injection",
+        "page_number": 58
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "DLT Commands (deprecated)",
+        "page_number": 59
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "External Client / Tool",
+        "page_number": 60
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Extensions for storing in a database/file",
+        "page_number": 60
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Sequences (lower layer)",
+        "page_number": 61
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "States",
+        "page_number": 61
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Control flow / Transitions",
+        "page_number": 62
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 65
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Error messages",
+        "page_number": 65
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Error resolution",
+        "page_number": 66
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Protocol usage and guidelines",
+        "page_number": 67
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Dlt Header",
+        "page_number": 68
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction and overview', 'page': 5}, {'structure': '1.1', 'title': 'Purpose', 'page': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'page': 6}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'page': 6}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'page': 6}, {'structure': '1.2.3', 'title': 'Limitations', 'page': 6}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'page': 6}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'page': 7}, {'structure': '2', 'title': 'Use Cases', 'page': 8}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'page': 8}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'page': 9}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'page': 10}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'page': 11}, {'structure': '3', 'title': 'Requirements trace ability', 'page': 12}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'page': 14}, {'structure': '4.1', 'title': 'Term and definition', 'page': 15}, {'structure': '5', 'title': 'Protocol specification', 'page': 16}, {'structure': '5.1', 'title': 'Message format', 'page': 16}, {'structure': '5.1.1', 'title': 'Header format', 'page': 16}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'page': 23}, {'structure': '5.1.3', 'title': 'Data Types', 'page': 32}, {'structure': '5.2', 'title': 'Message types', 'page': 44}, {'structure': '5.2.1', 'title': 'Data Messages', 'page': 44}, {'structure': '5.2.2', 'title': 'Control Messages', 'page': 44}, {'structure': '5.3', 'title': 'Services / Commands', 'page': 44}, {'structure': '5.3.1', 'title': 'Set Log Level', 'page': 45}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'page': 46}, {'structure': '5.3.3', 'title': 'Get Log Info', 'page': 47}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'page': 49}, {'structure': '5.3.5', 'title': 'Store Configuration', 'page': 49}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'page': 50}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'page': 50}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'page': 50}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'page': 51}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'page': 52}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'page': 53}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'page': 53}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'page': 54}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'page': 54}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'page': 55}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'page': 55}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'page': 56}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'page': 57}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'page': 58}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'page': 59}, {'structure': '5.4', 'title': 'External Client / Tool', 'page': 60}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'page': 60}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'page': 61}, {'structure': '5.5.1', 'title': 'States', 'page': 61}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'page': 62}, {'structure': '5.6', 'title': 'Error Handling', 'page': 65}, {'structure': '5.6.1', 'title': 'Error messages', 'page': 65}, {'structure': '5.6.2', 'title': 'Error resolution', 'page': 66}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'page': 67}, {'structure': '7', 'title': 'Configuration specification', 'page': 68}, {'structure': '7.1', 'title': 'Dlt Header', 'page': 68}, {'structure': '7.1.1', 'title': 'Header Type', 'page': 68}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'page': 68}, {'structure': '7.2.1', 'title': 'Message Info', 'page': 68}, {'structure': '7.3', 'title': 'Published Information', 'page': 69}]"
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': '<physical_index_5>'}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': '<physical_index_5>'}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': '<physical_index_5>'}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_5>'}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': '<physical_index_5>'}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': '<physical_index_5>'}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Use Cases', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': '<physical_index_9>'}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': '<physical_index_10>'}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Requirements trace ability', 'physical_index': '<physical_index_12>'}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': '<physical_index_15>'}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': '<physical_index_16>'}, {'structure': '5.1', 'title': 'Message format', 'physical_index': '<physical_index_16>'}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': '<physical_index_16>'}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': '<physical_index_22>'}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': '<physical_index_29>'}, {'structure': '5.2', 'title': 'Message types', 'physical_index': '<physical_index_40>'}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': '<physical_index_40>'}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': '<physical_index_40>'}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': '<physical_index_40>'}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': '<physical_index_45>'}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': '<physical_index_46>'}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': '<physical_index_47>'}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': '<physical_index_51>'}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': '<physical_index_52>'}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': '<physical_index_52>'}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': '<physical_index_56>'}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': '<physical_index_57>'}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': '<physical_index_58>'}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': '<physical_index_59>'}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': '<physical_index_60>'}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': '<physical_index_60>'}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': '<physical_index_61>'}, {'structure': '5.5.1', 'title': 'States', 'physical_index': '<physical_index_61>'}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': '<physical_index_62>'}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': '<physical_index_65>'}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': '<physical_index_65>'}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': '<physical_index_66>'}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': '<physical_index_67>'}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': '<physical_index_68>'}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': '<physical_index_68>'}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': '<physical_index_68>'}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': '<physical_index_68>'}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': '<physical_index_68>'}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': '<physical_index_69>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 5}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': 5}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': 5}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': 5}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': 5}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': 5}, {'structure': '2', 'title': 'Use Cases', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': 9}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': 10}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements trace ability', 'physical_index': 12}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': 14}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': 15}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': 16}, {'structure': '5.1', 'title': 'Message format', 'physical_index': 16}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': 16}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': 22}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': 29}, {'structure': '5.2', 'title': 'Message types', 'physical_index': 40}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': 40}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': 40}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': 40}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': 45}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': 46}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': 47}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': 49}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': 49}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': 50}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': 50}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': 51}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': 52}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': 52}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': 53}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': 53}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': 54}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': 54}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': 56}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': 57}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': 58}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': 59}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': 60}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': 60}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': 61}, {'structure': '5.5.1', 'title': 'States', 'physical_index': 61}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': 62}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': 65}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': 65}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': 66}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': 67}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': 68}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': 68}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': 68}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': 68}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': 68}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': 69}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3,
+    "incorrect_results": [
+      {
+        "list_index": 2,
+        "answer": "no",
+        "title": "Applicability of the protocol",
+        "page_number": 5
+      },
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Safety and security considerations",
+        "page_number": 5
+      },
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Constraints and assumptions",
+        "page_number": 5
+      },
+      {
+        "list_index": 5,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 5
+      },
+      {
+        "list_index": 6,
+        "answer": "no",
+        "title": "Dependencies to other protocol layers",
+        "page_number": 5
+      },
+      {
+        "list_index": 7,
+        "answer": "no",
+        "title": "Dependencies to the Application Layer",
+        "page_number": 5
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "Body/Payload format",
+        "page_number": 22
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Data Types",
+        "page_number": 29
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Message types",
+        "page_number": 40
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Data Messages",
+        "page_number": 40
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Control Messages",
+        "page_number": 40
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Services / Commands",
+        "page_number": 40
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Set Log Level",
+        "page_number": 45
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Set Trace Status",
+        "page_number": 46
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Get Log Info",
+        "page_number": 47
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Get Default Log Level",
+        "page_number": 49
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Store Configuration",
+        "page_number": 49
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Reset to Factory Default",
+        "page_number": 50
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "SetMessageFiltering",
+        "page_number": 50
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Set Default LogLevel",
+        "page_number": 51
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Set Default Trace Status",
+        "page_number": 52
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Get ECU Software Version",
+        "page_number": 52
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Get Default Trace Status",
+        "page_number": 53
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Get LogChannel Names",
+        "page_number": 53
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Get Trace Status",
+        "page_number": 54
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Set LogChannel Assignment",
+        "page_number": 54
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Set LogChannel Threshold",
+        "page_number": 55
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Get LogChannel Threshold",
+        "page_number": 55
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "BufferOverflowNotification",
+        "page_number": 56
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "SyncTimeStamp",
+        "page_number": 57
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Call SWC Injection",
+        "page_number": 58
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "DLT Commands (deprecated)",
+        "page_number": 59
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "External Client / Tool",
+        "page_number": 60
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Extensions for storing in a database/file",
+        "page_number": 60
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Sequences (lower layer)",
+        "page_number": 61
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "States",
+        "page_number": 61
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 65
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Error messages",
+        "page_number": 65
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Error resolution",
+        "page_number": 66
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Protocol usage and guidelines",
+        "page_number": 67
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Configuration specification",
+        "page_number": 68
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Message Info",
+        "page_number": 68
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': '<physical_index_5>'}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': '<physical_index_6>'}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': '<physical_index_6>'}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_6>'}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': '<physical_index_6>'}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': '<physical_index_6>'}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Use Cases', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': '<physical_index_9>'}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': '<physical_index_10>'}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Requirements traceability', 'physical_index': '<physical_index_12>'}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': '<physical_index_15>'}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': '<physical_index_16>'}, {'structure': '5.1', 'title': 'Message format', 'physical_index': '<physical_index_16>'}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': '<physical_index_16>'}, {'structure': '5.1.1.1', 'title': 'Standard Header', 'physical_index': '<physical_index_16>'}, {'structure': '5.1.1.1.1', 'title': 'Header Type', 'physical_index': '<physical_index_17>'}, {'structure': '5.1.1.1.2', 'title': 'Message Counter', 'physical_index': '<physical_index_18>'}, {'structure': '5.1.1.1.3', 'title': 'Length', 'physical_index': '<physical_index_18>'}, {'structure': '5.1.1.1.4', 'title': 'The optional ECU ID', 'physical_index': '<physical_index_19>'}, {'structure': '5.1.1.1.5', 'title': 'Session ID', 'physical_index': '<physical_index_19>'}, {'structure': '5.1.1.1.6', 'title': 'Timestamp', 'physical_index': '<physical_index_19>'}, {'structure': '5.1.1.2', 'title': 'Extended Header', 'physical_index': '<physical_index_20>'}, {'structure': '5.1.1.2.1', 'title': 'Message Info', 'physical_index': '<physical_index_21>'}, {'structure': '5.1.1.2.2', 'title': 'Number of Arguments', 'physical_index': '<physical_index_22>'}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': '<physical_index_32>'}, {'structure': '5.2', 'title': 'Message types', 'physical_index': '<physical_index_44>'}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': '<physical_index_44>'}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': '<physical_index_44>'}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': '<physical_index_44>'}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': '<physical_index_45>'}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': '<physical_index_46>'}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': '<physical_index_47>'}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': '<physical_index_51>'}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': '<physical_index_52>'}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': '<physical_index_56>'}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': '<physical_index_57>'}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': '<physical_index_58>'}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': '<physical_index_59>'}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': '<physical_index_60>'}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': '<physical_index_60>'}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': '<physical_index_61>'}, {'structure': '5.5.1', 'title': 'States', 'physical_index': '<physical_index_61>'}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': '<physical_index_62>'}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': '<physical_index_65>'}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': '<physical_index_65>'}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': '<physical_index_66>'}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': '<physical_index_67>'}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': '<physical_index_68>'}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': '<physical_index_68>'}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': '<physical_index_68>'}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': '<physical_index_68>'}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': '<physical_index_68>'}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': '<physical_index_69>'}, {'structure': '5.1.1.2.2.1', 'title': 'Message Type Info for Dlt Log Message', 'physical_index': '<physical_index_22>'}, {'structure': '5.1.1.2.2.2', 'title': 'Message Type Info for Dlt Trace Message', 'physical_index': '<physical_index_22>'}, {'structure': '5.1.1.2.2.3', 'title': 'Message Type Info for Dlt Network Message', 'physical_index': '<physical_index_22>'}, {'structure': '5.1.1.2.2.4', 'title': 'Message Type Info for Dlt Control Message', 'physical_index': '<physical_index_22>'}, {'structure': '5.1.1.2.3', 'title': 'Application ID', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.1.2.4', 'title': 'Context ID', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.2.1', 'title': 'Non-Verbose Mode', 'physical_index': '<physical_index_24>'}, {'structure': '5.1.2.1.1', 'title': 'Assembly of Non-Static Data', 'physical_index': '<physical_index_25>'}, {'structure': '5.1.2.1.2', 'title': 'Description Format for transmitted Data', 'physical_index': '<physical_index_26>'}, {'structure': '5.1.2.2', 'title': 'Verbose Mode', 'physical_index': '<physical_index_29>'}, {'structure': '5.1.2.2.1', 'title': 'Dlt Message Format in General', 'physical_index': '<physical_index_29>'}, {'structure': '5.1.2.2.2', 'title': 'Data Payload', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.2.2.3', 'title': 'Type Info', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.3.1', 'title': 'Bits Type Length (TYLE)', 'physical_index': '<physical_index_32>'}, {'structure': '5.1.3.2', 'title': 'Bit Variable Info (VARI)', 'physical_index': '<physical_index_32>'}, {'structure': '5.1.3.3', 'title': 'Bit Fixed Point (FIXP)', 'physical_index': '<physical_index_33>'}, {'structure': '5.1.3.4', 'title': 'Bits String Coding (SCOD)', 'physical_index': '<physical_index_33>'}, {'structure': '5.1.3.5', 'title': 'Type Bool (BOOL)', 'physical_index': '<physical_index_34>'}, {'structure': '5.1.3.6', 'title': 'Type Signed (SINT) and Type Unsigned (UINT)', 'physical_index': '<physical_index_35>'}, {'structure': '5.1.3.7', 'title': 'Type Float (FLOA)', 'physical_index': '<physical_index_36>'}, {'structure': '5.1.3.8', 'title': 'Type String (STRG)', 'physical_index': '<physical_index_37>'}, {'structure': '5.1.3.9', 'title': 'Type Array (ARAY)', 'physical_index': '<physical_index_38>'}, {'structure': '5.1.3.10', 'title': 'Type Struct (STRU)', 'physical_index': '<physical_index_39>'}, {'structure': '5.1.3.11', 'title': 'Type Raw (RAWD)', 'physical_index': '<physical_index_40>'}, {'structure': '5.1.3.12', 'title': 'Type Trace Info (TRAI)', 'physical_index': '<physical_index_41>'}, {'structure': '5.1.3.13', 'title': 'Example of representation of natural data type argument', 'physical_index': '<physical_index_42>'}, {'structure': '5.1.3.14', 'title': 'Recommended arguments', 'physical_index': '<physical_index_43>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction and overview', 'physical_index': 5}, {'structure': '1.1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '1.2', 'title': 'Applicability of the protocol', 'physical_index': 6}, {'structure': '1.2.1', 'title': 'Safety and security considerations', 'physical_index': 6}, {'structure': '1.2.2', 'title': 'Constraints and assumptions', 'physical_index': 6}, {'structure': '1.2.3', 'title': 'Limitations', 'physical_index': 6}, {'structure': '1.3', 'title': 'Dependencies to other protocol layers', 'physical_index': 6}, {'structure': '1.4', 'title': 'Dependencies to the Application Layer', 'physical_index': 7}, {'structure': '2', 'title': 'Use Cases', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Use Case general logging with Dlt', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Use Case tracing of VFB', 'physical_index': 9}, {'structure': '2.1.3', 'title': 'Use Case runtime configuration of Dlt', 'physical_index': 10}, {'structure': '2.1.4', 'title': 'Use Case non-verbose mode', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements traceability', 'physical_index': 12}, {'structure': '4', 'title': 'Acronyms and abbreviations', 'physical_index': 14}, {'structure': '4.1', 'title': 'Term and definition', 'physical_index': 15}, {'structure': '5', 'title': 'Protocol specification', 'physical_index': 16}, {'structure': '5.1', 'title': 'Message format', 'physical_index': 16}, {'structure': '5.1.1', 'title': 'Header format', 'physical_index': 16}, {'structure': '5.1.1.1', 'title': 'Standard Header', 'physical_index': 16}, {'structure': '5.1.1.1.1', 'title': 'Header Type', 'physical_index': 17}, {'structure': '5.1.1.1.2', 'title': 'Message Counter', 'physical_index': 18}, {'structure': '5.1.1.1.3', 'title': 'Length', 'physical_index': 18}, {'structure': '5.1.1.1.4', 'title': 'The optional ECU ID', 'physical_index': 19}, {'structure': '5.1.1.1.5', 'title': 'Session ID', 'physical_index': 19}, {'structure': '5.1.1.1.6', 'title': 'Timestamp', 'physical_index': 19}, {'structure': '5.1.1.2', 'title': 'Extended Header', 'physical_index': 20}, {'structure': '5.1.1.2.1', 'title': 'Message Info', 'physical_index': 21}, {'structure': '5.1.1.2.2', 'title': 'Number of Arguments', 'physical_index': 22}, {'structure': '5.1.2', 'title': 'Body/Payload format', 'physical_index': 23}, {'structure': '5.1.3', 'title': 'Data Types', 'physical_index': 32}, {'structure': '5.2', 'title': 'Message types', 'physical_index': 44}, {'structure': '5.2.1', 'title': 'Data Messages', 'physical_index': 44}, {'structure': '5.2.2', 'title': 'Control Messages', 'physical_index': 44}, {'structure': '5.3', 'title': 'Services / Commands', 'physical_index': 44}, {'structure': '5.3.1', 'title': 'Set Log Level', 'physical_index': 45}, {'structure': '5.3.2', 'title': 'Set Trace Status', 'physical_index': 46}, {'structure': '5.3.3', 'title': 'Get Log Info', 'physical_index': 47}, {'structure': '5.3.4', 'title': 'Get Default Log Level', 'physical_index': 49}, {'structure': '5.3.5', 'title': 'Store Configuration', 'physical_index': 49}, {'structure': '5.3.6', 'title': 'Reset to Factory Default', 'physical_index': 50}, {'structure': '5.3.7', 'title': 'SetMessageFiltering', 'physical_index': 50}, {'structure': '5.3.8', 'title': 'Set Default LogLevel', 'physical_index': 50}, {'structure': '5.3.9', 'title': 'Set Default Trace Status', 'physical_index': 51}, {'structure': '5.3.10', 'title': 'Get ECU Software Version', 'physical_index': 52}, {'structure': '5.3.11', 'title': 'Get Default Trace Status', 'physical_index': 53}, {'structure': '5.3.12', 'title': 'Get LogChannel Names', 'physical_index': 53}, {'structure': '5.3.13', 'title': 'Get Trace Status', 'physical_index': 54}, {'structure': '5.3.14', 'title': 'Set LogChannel Assignment', 'physical_index': 54}, {'structure': '5.3.15', 'title': 'Set LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.16', 'title': 'Get LogChannel Threshold', 'physical_index': 55}, {'structure': '5.3.17', 'title': 'BufferOverflowNotification', 'physical_index': 56}, {'structure': '5.3.18', 'title': 'SyncTimeStamp', 'physical_index': 57}, {'structure': '5.3.19', 'title': 'Call SWC Injection', 'physical_index': 58}, {'structure': '5.3.20', 'title': 'DLT Commands (deprecated)', 'physical_index': 59}, {'structure': '5.4', 'title': 'External Client / Tool', 'physical_index': 60}, {'structure': '5.4.1', 'title': 'Extensions for storing in a database/file', 'physical_index': 60}, {'structure': '5.5', 'title': 'Sequences (lower layer)', 'physical_index': 61}, {'structure': '5.5.1', 'title': 'States', 'physical_index': 61}, {'structure': '5.5.2', 'title': 'Control flow / Transitions', 'physical_index': 62}, {'structure': '5.6', 'title': 'Error Handling', 'physical_index': 65}, {'structure': '5.6.1', 'title': 'Error messages', 'physical_index': 65}, {'structure': '5.6.2', 'title': 'Error resolution', 'physical_index': 66}, {'structure': '6', 'title': 'Protocol usage and guidelines', 'physical_index': 67}, {'structure': '7', 'title': 'Configuration specification', 'physical_index': 68}, {'structure': '7.1', 'title': 'Dlt Header', 'physical_index': 68}, {'structure': '7.1.1', 'title': 'Header Type', 'physical_index': 68}, {'structure': '7.2', 'title': 'Dlt Extended Header', 'physical_index': 68}, {'structure': '7.2.1', 'title': 'Message Info', 'physical_index': 68}, {'structure': '7.3', 'title': 'Published Information', 'physical_index': 69}, {'structure': '5.1.1.2.2.1', 'title': 'Message Type Info for Dlt Log Message', 'physical_index': 22}, {'structure': '5.1.1.2.2.2', 'title': 'Message Type Info for Dlt Trace Message', 'physical_index': 22}, {'structure': '5.1.1.2.2.3', 'title': 'Message Type Info for Dlt Network Message', 'physical_index': 22}, {'structure': '5.1.1.2.2.4', 'title': 'Message Type Info for Dlt Control Message', 'physical_index': 22}, {'structure': '5.1.1.2.3', 'title': 'Application ID', 'physical_index': 23}, {'structure': '5.1.1.2.4', 'title': 'Context ID', 'physical_index': 23}, {'structure': '5.1.2.1', 'title': 'Non-Verbose Mode', 'physical_index': 24}, {'structure': '5.1.2.1.1', 'title': 'Assembly of Non-Static Data', 'physical_index': 25}, {'structure': '5.1.2.1.2', 'title': 'Description Format for transmitted Data', 'physical_index': 26}, {'structure': '5.1.2.2', 'title': 'Verbose Mode', 'physical_index': 29}, {'structure': '5.1.2.2.1', 'title': 'Dlt Message Format in General', 'physical_index': 29}, {'structure': '5.1.2.2.2', 'title': 'Data Payload', 'physical_index': 30}, {'structure': '5.1.2.2.3', 'title': 'Type Info', 'physical_index': 30}, {'structure': '5.1.3.1', 'title': 'Bits Type Length (TYLE)', 'physical_index': 32}, {'structure': '5.1.3.2', 'title': 'Bit Variable Info (VARI)', 'physical_index': 32}, {'structure': '5.1.3.3', 'title': 'Bit Fixed Point (FIXP)', 'physical_index': 33}, {'structure': '5.1.3.4', 'title': 'Bits String Coding (SCOD)', 'physical_index': 33}, {'structure': '5.1.3.5', 'title': 'Type Bool (BOOL)', 'physical_index': 34}, {'structure': '5.1.3.6', 'title': 'Type Signed (SINT) and Type Unsigned (UINT)', 'physical_index': 35}, {'structure': '5.1.3.7', 'title': 'Type Float (FLOA)', 'physical_index': 36}, {'structure': '5.1.3.8', 'title': 'Type String (STRG)', 'physical_index': 37}, {'structure': '5.1.3.9', 'title': 'Type Array (ARAY)', 'physical_index': 38}, {'structure': '5.1.3.10', 'title': 'Type Struct (STRU)', 'physical_index': 39}, {'structure': '5.1.3.11', 'title': 'Type Raw (RAWD)', 'physical_index': 40}, {'structure': '5.1.3.12', 'title': 'Type Trace Info (TRAI)', 'physical_index': 41}, {'structure': '5.1.3.13', 'title': 'Example of representation of natural data type argument', 'physical_index': 42}, {'structure': '5.1.3.14', 'title': 'Recommended arguments', 'physical_index': 43}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.26804123711340205,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Header Type",
+        "page_number": 17
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Message Counter",
+        "page_number": 18
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Length",
+        "page_number": 18
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "The optional ECU ID",
+        "page_number": 19
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Session ID",
+        "page_number": 19
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Timestamp",
+        "page_number": 19
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Extended Header",
+        "page_number": 20
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Message Info",
+        "page_number": 21
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Number of Arguments",
+        "page_number": 22
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Body/Payload format",
+        "page_number": 23
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Data Types",
+        "page_number": 32
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Message types",
+        "page_number": 44
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Data Messages",
+        "page_number": 44
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Control Messages",
+        "page_number": 44
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Services / Commands",
+        "page_number": 44
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Set Log Level",
+        "page_number": 45
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Set Trace Status",
+        "page_number": 46
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Get Log Info",
+        "page_number": 47
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Get Default Log Level",
+        "page_number": 49
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Store Configuration",
+        "page_number": 49
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Reset to Factory Default",
+        "page_number": 50
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "SetMessageFiltering",
+        "page_number": 50
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Set Default LogLevel",
+        "page_number": 50
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Set Default Trace Status",
+        "page_number": 51
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Get ECU Software Version",
+        "page_number": 52
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Get Default Trace Status",
+        "page_number": 53
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Get LogChannel Names",
+        "page_number": 53
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Get Trace Status",
+        "page_number": 54
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Set LogChannel Assignment",
+        "page_number": 54
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Set LogChannel Threshold",
+        "page_number": 55
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Get LogChannel Threshold",
+        "page_number": 55
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "BufferOverflowNotification",
+        "page_number": 56
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "SyncTimeStamp",
+        "page_number": 57
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Call SWC Injection",
+        "page_number": 58
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "DLT Commands (deprecated)",
+        "page_number": 59
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "External Client / Tool",
+        "page_number": 60
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Extensions for storing in a database/file",
+        "page_number": 60
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Sequences (lower layer)",
+        "page_number": 61
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "States",
+        "page_number": 61
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Control flow / Transitions",
+        "page_number": 62
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 65
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Error messages",
+        "page_number": 65
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Error resolution",
+        "page_number": 66
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Protocol usage and guidelines",
+        "page_number": 67
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Configuration specification",
+        "page_number": 68
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Dlt Header",
+        "page_number": 68
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Header Type",
+        "page_number": 68
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Dlt Extended Header",
+        "page_number": 68
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Message Info",
+        "page_number": 68
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Published Information",
+        "page_number": 69
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Message Type Info for Dlt Log Message",
+        "page_number": 22
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Message Type Info for Dlt Trace Message",
+        "page_number": 22
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Message Type Info for Dlt Network Message",
+        "page_number": 22
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Message Type Info for Dlt Control Message",
+        "page_number": 22
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Application ID",
+        "page_number": 23
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Context ID",
+        "page_number": 23
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Non-Verbose Mode",
+        "page_number": 24
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Assembly of Non-Static Data",
+        "page_number": 25
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Description Format for transmitted Data",
+        "page_number": 26
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Verbose Mode",
+        "page_number": 29
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Dlt Message Format in General",
+        "page_number": 29
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Data Payload",
+        "page_number": 30
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Type Info",
+        "page_number": 30
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Bits Type Length (TYLE)",
+        "page_number": 32
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Bit Variable Info (VARI)",
+        "page_number": 32
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Bit Fixed Point (FIXP)",
+        "page_number": 33
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Type Array (ARAY)",
+        "page_number": 38
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Type Struct (STRU)",
+        "page_number": 39
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Type Raw (RAWD)",
+        "page_number": 40
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Example of representation of natural data type argument",
+        "page_number": 42
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Recommended arguments",
+        "page_number": 43
+      }
+    ]
+  }
+]

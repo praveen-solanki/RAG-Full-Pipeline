@@ -1,0 +1,538 @@
+[
+  {
+    "total_page_number": 33
+  },
+  {
+    "total_token": 13845
+  },
+  {
+    "toc_content": "Requirements on ECU Configuration\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Scope of this document 8\n1.1 Document Conventions : 9\n2 Related Documentationn 10\n2.1 Input Documents : 10\n2.2 Specification Documents : 10\n2.3 Abbreviations : 10\n3 Requirements Tracing 11\n4 Requirements on ECU Configuration 12\n4.1 Requirements on the Template : 12\n[RS_ECUC_00032] ECU Configuration Description shall be the root for\nthe whole configuration information of an ECU : 12\n[RS_ECUC_00072] Support for referencing from dependent containers 12\n[RS_ECUC_00050] Specify ECU Configuration Parameter Definition . . 13\n[RS_ECUC_00055] Support standardization of mandatory and optional\nconfiguration parameters : 13\n[RS_ECUC_00070] Support mandatory and optional containers . . . . 14\n[RS_ECUC_00043] Duplication free description : 14\n[RS_ECUC_00002] Support of vendor-specific ECU Configuration Pa-\nrameters : 15\n[RS_ECUC_00046] Support definition of configuration class : 15\n[RS_ECUC_00012] One description mechanism for different configura-\ntion classes : 16\n[RS_ECUC_00049] ECU Configuration description shall be tool\nprocess-able : 16\n[RS_ECUC_00065] Development according to the AUTOSAR Generic\nStructure Template document : 17\n[RS_ECUC_00066] Transformation of ECUC model according to the\nAUTOSAR XML Schema Production Rules : 17\n[RS_ECUC_00018] Extension handling : 17\n[RS_ECUC_00074] Support Sequential ECU Configuration : 18\n[RS_ECUC_00025] Compatible with iterative design : 18\n[RS_ECUC_00078] Variable existence of container on value side . . . . 19\n[RS_ECUC_00079] Variable existence of value : 19\n[RS_ECUC_00080] Variable value : 19\n[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Config-\nuration Parameter definition : 20\n[RS_ECUC_00083] Variable default value in ECU Configuration Param-\neter definition : 20\n[RS_ECUC_00084] Variable min and max ranges in ECU Configuration\nParameter definition : 20\n4 of 33\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 085: AUTOSAR_RS_ECUConfigurationRequirements on ECU Configuration\nAUTOSAR CP Release 4.4.0\n[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming\nconventions for public symbols: 21\n4.2 Requirements from the clients of the ECUC : 21\n[RS_ECUC_00047] Pre-compile time configuration of BSW : 21\n[RS_ECUC_00048] Link time configuration of BSW : 21\n[RS_ECUC_00008] Post-build time configuration of BSW : 22\n[RS_ECUC_00085] Handling different configuration variants at post-\nbuild time : 22\n[RS_ECUC_00039] Support configuration of BSW : 22\n[RS_ECUC_00015] Configuration of multiple instances of BSW modules 23\n[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Mod-\nule implementation : 23\n[RS_ECUC_00068] Mapping of software sections to memory : 24\n[RS_ECUC_00040] Support configuration of RTE : 24\n[RS_ECUC_00076] Support the configuration of which AUTOSAR Ser-\nvices are available on a specific ECU : 24\n4.3 Requirements from Software Components : 25\n[RS_ECUC_00041] Support AUTOSAR SW-Component integration . . 25\n[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW\nComponents : 25\n[RS_ECUC_00016] Execution order of runnable entities within one OS\ntask : 26\n4.4 Requirements on the Configuration Parameter Definition : 26\n[RS_ECUC_00071] Support for Generic Configuration Editor : 26\n4.5 Process requirements : 27\n[RS_ECUC_00029] Identify mechanisms not criteria : 27\n[RS_ECUC_00030] Clarify configuration terminology : 27\n4.6 External Requirements : 27\n[RS_ECUC_00057] Memory needs of BSW modules : 27\n[RS_ECUC_00036] Identify un-initialized resources: 28\n[RS_ECUC_00056] Identify conflicting usage of micro controller registers 28\n[RS_ECUC_00062] Configuration option to initialize unused memory . . 29\n5 Change History 30\n5.1 Change History for AUTOSAR R4.0.1 against R3.1.5 : 30\n5.1.1 Added Traceables in R4.0.1 : 30\n5.1.2 Changed Traceables in R4.0.1 : 30\n5.1.3 Deleted Traceables in R4.0.1 : 30\n5.2 Change History for AUTOSAR R4.0.3 against R4.0.1 : 31\n5.2.1 Added Traceables in 4.2.1 : 31\n5.2.2 Changed Traceables in R4.0.3 : 31\n5.2.3 Deleted Traceables in 4.2.1 : 31\n5.3 Change History for AUTOSAR R4.1.1 against R4.0.3 : 31\n5.4 Change History for AUTOSAR R4.1.2 against R4.1.1 : 31\n5.5 Change History for AUTOSAR R4.1.3 against R4.1.2 : 31\n5.6 Change History for AUTOSAR R4.2.1 against R4.1.3 : 32\n5 of 33\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 085: AUTOSAR_RS_ECUConfigurationRequirements on ECU Configuration\nAUTOSAR CP Release 4.4.0\n5.6.1 Added Traceables in 4.2.1 : 32\n5.6.2 Changed Traceables in 4.2.1 : 32\n5.6.3 Deleted Traceables in 4.2.1 : 32\n5.7 Change History for AUTOSAR R4.2.2 against R4.2.1 : 32\n5.8 Change History for AUTOSAR R4.3.0 against R4.2.2 : 32\n5.8.1 Added Traceables in 4.3.0 : 32\n5.8.2 Changed Traceables in 4.3.0 : 32\n5.8.3 Deleted Traceables in 4.3.0 : 33\n5.9 Change History for AUTOSAR R4.3.1 against R4.3.0 : 33\n5.9.1 Added Traceables in 4.3.1 : 33\n5.9.2 Changed Traceables in 4.3.1 : 33\n5.9.3 Deleted Traceables in 4.3.1 : 33\n5.10 Change History for AUTOSAR R4.4.0 against R4.3.1 : 33\n5.10.1 Added Traceables in 4.4.0 : 33\n5.10.2 Changed Traceables in 4.4.0 : 33\n5.10.3 Deleted Traceables in 4.4.0 : 33\nReferences\n[1] Methodology\nAUTOSAR_TR_Methodology\n[2] Standardization Template\nAUTOSAR_TPS_StandardizationTemplate\n[3] General Requirements on Basic Software Modules\nAUTOSAR_SRS_BSWGeneral\n[4] Requirements on Runtime Environment\nAUTOSAR_SRS_RTE\n[5] Glossary\nAUTOSAR_TR_Glossary\n[6] Generic Structure Template\nAUTOSAR_TPS_GenericStructureTemplate\n[7] XML Schema Production Rules\nAUTOSAR_TPS_XMLSchemaProductionRules\n[8] Specification of ECU Configuration\nAUTOSAR_TPS_ECUConfiguration\n[9] Specification of ECU Configuration Parameters (XML)\nAUTOSAR_MOD_ECUConfigurationParameters\n[10] Requirements on Standardization Template\nAUTOSAR_RS_StandardizationTemplate\n6 of 33\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 085: AUTOSAR_RS_ECUConfiguration",
+    "toc_page_list": [
+      3,
+      4,
+      5
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'page': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'page': 9}, {'structure': '2', 'title': 'Related Documentation', 'page': 10}, {'structure': '2.1', 'title': 'Input Documents', 'page': 10}, {'structure': '2.2', 'title': 'Specification Documents', 'page': 10}, {'structure': '2.3', 'title': 'Abbreviations', 'page': 10}, {'structure': '3', 'title': 'Requirements Tracing', 'page': 11}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'page': 12}, {'structure': '4.1', 'title': 'Requirements on the Template', 'page': 12}, {'structure': None, 'title': '[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU', 'page': 12}, {'structure': None, 'title': '[RS_ECUC_00072] Support for referencing from dependent containers', 'page': 12}, {'structure': None, 'title': '[RS_ECUC_00050] Specify ECU Configuration Parameter Definition', 'page': 13}, {'structure': None, 'title': '[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters', 'page': 13}, {'structure': None, 'title': '[RS_ECUC_00070] Support mandatory and optional containers', 'page': 14}, {'structure': None, 'title': '[RS_ECUC_00043] Duplication free description', 'page': 14}, {'structure': None, 'title': '[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters', 'page': 15}, {'structure': None, 'title': '[RS_ECUC_00046] Support definition of configuration class', 'page': 15}, {'structure': None, 'title': '[RS_ECUC_00012] One description mechanism for different configuration classes', 'page': 16}, {'structure': None, 'title': '[RS_ECUC_00049] ECU Configuration description shall be tool process-able', 'page': 16}, {'structure': None, 'title': '[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document', 'page': 17}, {'structure': None, 'title': '[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules', 'page': 17}, {'structure': None, 'title': '[RS_ECUC_00018] Extension handling', 'page': 17}, {'structure': None, 'title': '[RS_ECUC_00074] Support Sequential ECU Configuration', 'page': 18}, {'structure': None, 'title': '[RS_ECUC_00025] Compatible with iterative design', 'page': 18}, {'structure': None, 'title': '[RS_ECUC_00078] Variable existence of container on value side', 'page': 19}, {'structure': None, 'title': '[RS_ECUC_00079] Variable existence of value', 'page': 19}, {'structure': None, 'title': '[RS_ECUC_00080] Variable value', 'page': 19}, {'structure': None, 'title': '[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition', 'page': 20}, {'structure': None, 'title': '[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition', 'page': 20}, {'structure': None, 'title': '[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition', 'page': 20}, {'structure': None, 'title': '[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols', 'page': 21}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'page': 21}, {'structure': None, 'title': '[RS_ECUC_00047] Pre-compile time configuration of BSW', 'page': 21}, {'structure': None, 'title': '[RS_ECUC_00048] Link time configuration of BSW', 'page': 21}, {'structure': None, 'title': '[RS_ECUC_00008] Post-build time configuration of BSW', 'page': 22}, {'structure': None, 'title': '[RS_ECUC_00085] Handling different configuration variants at post-build time', 'page': 22}, {'structure': None, 'title': '[RS_ECUC_00039] Support configuration of BSW', 'page': 22}, {'structure': None, 'title': '[RS_ECUC_00015] Configuration of multiple instances of BSW modules', 'page': 23}, {'structure': None, 'title': '[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation', 'page': 23}, {'structure': None, 'title': '[RS_ECUC_00068] Mapping of software sections to memory', 'page': 24}, {'structure': None, 'title': '[RS_ECUC_00040] Support configuration of RTE', 'page': 24}, {'structure': None, 'title': '[RS_ECUC_00076] Support the configuration of which AUTOSAR Services are available on a specific ECU', 'page': 24}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'page': 25}, {'structure': None, 'title': '[RS_ECUC_00041] Support AUTOSAR SW-Component integration', 'page': 25}, {'structure': None, 'title': '[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components', 'page': 25}, {'structure': None, 'title': '[RS_ECUC_00016] Execution order of runnable entities within one OS task', 'page': 26}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'page': 26}, {'structure': None, 'title': '[RS_ECUC_00071] Support for Generic Configuration Editor', 'page': 26}, {'structure': '4.5', 'title': 'Process requirements', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00029] Identify mechanisms not criteria', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00030] Clarify configuration terminology', 'page': 27}, {'structure': '4.6', 'title': 'External Requirements', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00057] Memory needs of BSW modules', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00036] Identify un-initialized resources', 'page': 28}, {'structure': None, 'title': '[RS_ECUC_00056] Identify conflicting usage of micro controller registers', 'page': 28}, {'structure': None, 'title': '[RS_ECUC_00062] Configuration option to initialize unused memory', 'page': 29}, {'structure': '5', 'title': 'Change History', 'page': 30}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'page': 30}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'page': 30}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'page': 30}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'page': 30}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'page': 31}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'page': 31}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'page': 31}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'page': 31}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'page': 31}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'page': 31}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'page': 31}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'page': 32}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.2.1', 'page': 32}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.2.1', 'page': 32}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.2.1', 'page': 32}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'page': 32}, {'structure': '5.8', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'page': 32}, {'structure': '5.8.1', 'title': 'Added Traceables in 4.3.0', 'page': 32}, {'structure': '5.8.2', 'title': 'Changed Traceables in 4.3.0', 'page': 32}, {'structure': '5.8.3', 'title': 'Deleted Traceables in 4.3.0', 'page': 33}, {'structure': '5.9', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'page': 33}, {'structure': '5.9.1', 'title': 'Added Traceables in 4.3.1', 'page': 33}, {'structure': '5.9.2', 'title': 'Changed Traceables in 4.3.1', 'page': 33}, {'structure': '5.9.3', 'title': 'Deleted Traceables in 4.3.1', 'page': 33}, {'structure': '5.10', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'page': 33}, {'structure': '5.10.1', 'title': 'Added Traceables in 4.4.0', 'page': 33}, {'structure': '5.10.2', 'title': 'Changed Traceables in 4.4.0', 'page': 33}, {'structure': '5.10.3', 'title': 'Deleted Traceables in 4.4.0', 'page': 33}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': '<physical_index_9>'}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': '<physical_index_10>'}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': '<physical_index_10>'}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': '<physical_index_10>'}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_11>'}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'physical_index': '<physical_index_12>'}, {'structure': '4.1', 'title': 'Requirements on the Template', 'physical_index': '<physical_index_12>'}, {'structure': None, 'title': '[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU', 'physical_index': '<physical_index_12>'}, {'structure': None, 'title': '[RS_ECUC_00072] Support for referencing from dependent containers', 'physical_index': '<physical_index_12>'}, {'structure': None, 'title': '[RS_ECUC_00050] Specify ECU Configuration Parameter Definition', 'physical_index': '<physical_index_13>'}, {'structure': None, 'title': '[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters', 'physical_index': '<physical_index_13>'}, {'structure': None, 'title': '[RS_ECUC_00070] Support mandatory and optional containers', 'physical_index': '<physical_index_14>'}, {'structure': None, 'title': '[RS_ECUC_00043] Duplication free description', 'physical_index': '<physical_index_14>'}, {'structure': None, 'title': '[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters', 'physical_index': '<physical_index_15>'}, {'structure': None, 'title': '[RS_ECUC_00046] Support definition of configuration class', 'physical_index': '<physical_index_15>'}, {'structure': None, 'title': '[RS_ECUC_00012] One description mechanism for different configuration classes', 'physical_index': '<physical_index_16>'}, {'structure': None, 'title': '[RS_ECUC_00049] ECU Configuration description shall be tool process-able', 'physical_index': '<physical_index_16>'}, {'structure': None, 'title': '[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document', 'physical_index': '<physical_index_17>'}, {'structure': None, 'title': '[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules', 'physical_index': '<physical_index_17>'}, {'structure': None, 'title': '[RS_ECUC_00018] Extension handling', 'physical_index': '<physical_index_17>'}, {'structure': None, 'title': '[RS_ECUC_00074] Support Sequential ECU Configuration', 'physical_index': '<physical_index_18>'}, {'structure': None, 'title': '[RS_ECUC_00025] Compatible with iterative design', 'physical_index': '<physical_index_18>'}, {'structure': None, 'title': '[RS_ECUC_00078] Variable existence of container on value side', 'physical_index': '<physical_index_19>'}, {'structure': None, 'title': '[RS_ECUC_00079] Variable existence of value', 'physical_index': '<physical_index_19>'}, {'structure': None, 'title': '[RS_ECUC_00080] Variable value', 'physical_index': '<physical_index_19>'}, {'structure': None, 'title': '[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition', 'physical_index': '<physical_index_20>'}, {'structure': None, 'title': '[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition', 'physical_index': '<physical_index_20>'}, {'structure': None, 'title': '[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition', 'physical_index': '<physical_index_20>'}, {'structure': None, 'title': '[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols', 'physical_index': '<physical_index_21>'}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'physical_index': '<physical_index_21>'}, {'structure': None, 'title': '[RS_ECUC_00047] Pre-compile time configuration of BSW', 'physical_index': '<physical_index_21>'}, {'structure': None, 'title': '[RS_ECUC_00048] Link time configuration of BSW', 'physical_index': '<physical_index_21>'}, {'structure': None, 'title': '[RS_ECUC_00008] Post-build time configuration of BSW', 'physical_index': '<physical_index_22>'}, {'structure': None, 'title': '[RS_ECUC_00085] Handling different configuration variants at post-build time', 'physical_index': '<physical_index_22>'}, {'structure': None, 'title': '[RS_ECUC_00039] Support configuration of BSW', 'physical_index': '<physical_index_22>'}, {'structure': None, 'title': '[RS_ECUC_00015] Configuration of multiple instances of BSW modules', 'physical_index': '<physical_index_23>'}, {'structure': None, 'title': '[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation', 'physical_index': '<physical_index_23>'}, {'structure': None, 'title': '[RS_ECUC_00068] Mapping of software sections to memory', 'physical_index': '<physical_index_24>'}, {'structure': None, 'title': '[RS_ECUC_00040] Support configuration of RTE', 'physical_index': '<physical_index_24>'}, {'structure': None, 'title': '[RS_ECUC_00076] Support the configuration of which AUTOSAR Services are available on a specific ECU', 'physical_index': '<physical_index_24>'}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'physical_index': '<physical_index_25>'}, {'structure': None, 'title': '[RS_ECUC_00041] Support AUTOSAR SW-Component integration', 'physical_index': '<physical_index_25>'}, {'structure': None, 'title': '[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components', 'physical_index': '<physical_index_25>'}, {'structure': None, 'title': '[RS_ECUC_00016] Execution order of runnable entities within one OS task', 'physical_index': '<physical_index_26>'}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'physical_index': '<physical_index_26>'}, {'structure': None, 'title': '[RS_ECUC_00071] Support for Generic Configuration Editor', 'physical_index': '<physical_index_26>'}, {'structure': '4.5', 'title': 'Process requirements', 'physical_index': '<physical_index_27>'}, {'structure': None, 'title': '[RS_ECUC_00029] Identify mechanisms not criteria', 'physical_index': '<physical_index_27>'}, {'structure': None, 'title': '[RS_ECUC_00030] Clarify configuration terminology', 'physical_index': '<physical_index_27>'}, {'structure': '4.6', 'title': 'External Requirements', 'physical_index': '<physical_index_27>'}, {'structure': None, 'title': '[RS_ECUC_00057] Memory needs of BSW modules', 'physical_index': '<physical_index_27>'}, {'structure': None, 'title': '[RS_ECUC_00036] Identify un-initialized resources', 'physical_index': '<physical_index_28>'}, {'structure': None, 'title': '[RS_ECUC_00056] Identify conflicting usage of micro controller registers', 'physical_index': '<physical_index_28>'}, {'structure': None, 'title': '[RS_ECUC_00062] Configuration option to initialize unused memory', 'physical_index': '<physical_index_29>'}, {'structure': '5', 'title': 'Change History', 'physical_index': '<physical_index_30>'}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'physical_index': '<physical_index_30>'}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': '<physical_index_31>'}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': '<physical_index_31>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': 10}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 10}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 10}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 10}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'physical_index': 12}, {'structure': '4.1', 'title': 'Requirements on the Template', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00072] Support for referencing from dependent containers', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00050] Specify ECU Configuration Parameter Definition', 'physical_index': 13}, {'structure': None, 'title': '[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters', 'physical_index': 13}, {'structure': None, 'title': '[RS_ECUC_00070] Support mandatory and optional containers', 'physical_index': 14}, {'structure': None, 'title': '[RS_ECUC_00043] Duplication free description', 'physical_index': 14}, {'structure': None, 'title': '[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters', 'physical_index': 15}, {'structure': None, 'title': '[RS_ECUC_00046] Support definition of configuration class', 'physical_index': 15}, {'structure': None, 'title': '[RS_ECUC_00012] One description mechanism for different configuration classes', 'physical_index': 16}, {'structure': None, 'title': '[RS_ECUC_00049] ECU Configuration description shall be tool process-able', 'physical_index': 16}, {'structure': None, 'title': '[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00018] Extension handling', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00074] Support Sequential ECU Configuration', 'physical_index': 18}, {'structure': None, 'title': '[RS_ECUC_00025] Compatible with iterative design', 'physical_index': 18}, {'structure': None, 'title': '[RS_ECUC_00078] Variable existence of container on value side', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00079] Variable existence of value', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00080] Variable value', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols', 'physical_index': 21}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00047] Pre-compile time configuration of BSW', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00048] Link time configuration of BSW', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00008] Post-build time configuration of BSW', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00085] Handling different configuration variants at post-build time', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00039] Support configuration of BSW', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00015] Configuration of multiple instances of BSW modules', 'physical_index': 23}, {'structure': None, 'title': '[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation', 'physical_index': 23}, {'structure': None, 'title': '[RS_ECUC_00068] Mapping of software sections to memory', 'physical_index': 24}, {'structure': None, 'title': '[RS_ECUC_00040] Support configuration of RTE', 'physical_index': 24}, {'structure': None, 'title': '[RS_ECUC_00076] Support the configuration of which AUTOSAR Services are available on a specific ECU', 'physical_index': 24}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00041] Support AUTOSAR SW-Component integration', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00016] Execution order of runnable entities within one OS task', 'physical_index': 26}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'physical_index': 26}, {'structure': None, 'title': '[RS_ECUC_00071] Support for Generic Configuration Editor', 'physical_index': 26}, {'structure': '4.5', 'title': 'Process requirements', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00029] Identify mechanisms not criteria', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00030] Clarify configuration terminology', 'physical_index': 27}, {'structure': '4.6', 'title': 'External Requirements', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00057] Memory needs of BSW modules', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00036] Identify un-initialized resources', 'physical_index': 28}, {'structure': None, 'title': '[RS_ECUC_00056] Identify conflicting usage of micro controller registers', 'physical_index': 28}, {'structure': None, 'title': '[RS_ECUC_00062] Configuration option to initialize unused memory', 'physical_index': 29}, {'structure': '5', 'title': 'Change History', 'physical_index': 30}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': 30}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'physical_index': 31}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 31}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 31}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 31}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Scope of this document', 'page': 8, 'physical_index': 8}, {'title': 'Document Conventions', 'page': 9, 'physical_index': 9}, {'title': 'Related Documentation', 'page': 10, 'physical_index': 10}, {'title': 'Input Documents', 'page': 10, 'physical_index': 10}, {'title': 'Specification Documents', 'page': 10, 'physical_index': 10}, {'title': 'Abbreviations', 'page': 10, 'physical_index': 10}, {'title': 'Requirements Tracing', 'page': 11, 'physical_index': 11}, {'title': 'Requirements on ECU Configuration', 'page': 12, 'physical_index': 12}, {'title': 'Requirements on the Template', 'page': 12, 'physical_index': 12}, {'title': '[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU', 'page': 12, 'physical_index': 12}, {'title': '[RS_ECUC_00072] Support for referencing from dependent containers', 'page': 12, 'physical_index': 12}, {'title': '[RS_ECUC_00050] Specify ECU Configuration Parameter Definition', 'page': 13, 'physical_index': 13}, {'title': '[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters', 'page': 13, 'physical_index': 13}, {'title': '[RS_ECUC_00070] Support mandatory and optional containers', 'page': 14, 'physical_index': 14}, {'title': '[RS_ECUC_00043] Duplication free description', 'page': 14, 'physical_index': 14}, {'title': '[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters', 'page': 15, 'physical_index': 15}, {'title': '[RS_ECUC_00046] Support definition of configuration class', 'page': 15, 'physical_index': 15}, {'title': '[RS_ECUC_00012] One description mechanism for different configuration classes', 'page': 16, 'physical_index': 16}, {'title': '[RS_ECUC_00049] ECU Configuration description shall be tool process-able', 'page': 16, 'physical_index': 16}, {'title': '[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document', 'page': 17, 'physical_index': 17}, {'title': '[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules', 'page': 17, 'physical_index': 17}, {'title': '[RS_ECUC_00018] Extension handling', 'page': 17, 'physical_index': 17}, {'title': '[RS_ECUC_00074] Support Sequential ECU Configuration', 'page': 18, 'physical_index': 18}, {'title': '[RS_ECUC_00025] Compatible with iterative design', 'page': 18, 'physical_index': 18}, {'title': '[RS_ECUC_00078] Variable existence of container on value side', 'page': 19, 'physical_index': 19}, {'title': '[RS_ECUC_00079] Variable existence of value', 'page': 19, 'physical_index': 19}, {'title': '[RS_ECUC_00080] Variable value', 'page': 19, 'physical_index': 19}, {'title': '[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition', 'page': 20, 'physical_index': 20}, {'title': '[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition', 'page': 20, 'physical_index': 20}, {'title': '[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition', 'page': 20, 'physical_index': 20}, {'title': '[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols', 'page': 21, 'physical_index': 21}, {'title': 'Requirements from the clients of the ECUC', 'page': 21, 'physical_index': 21}, {'title': '[RS_ECUC_00047] Pre-compile time configuration of BSW', 'page': 21, 'physical_index': 21}, {'title': '[RS_ECUC_00048] Link time configuration of BSW', 'page': 21, 'physical_index': 21}, {'title': '[RS_ECUC_00008] Post-build time configuration of BSW', 'page': 22, 'physical_index': 22}, {'title': '[RS_ECUC_00085] Handling different configuration variants at post-build time', 'page': 22, 'physical_index': 22}, {'title': '[RS_ECUC_00039] Support configuration of BSW', 'page': 22, 'physical_index': 22}, {'title': '[RS_ECUC_00015] Configuration of multiple instances of BSW modules', 'page': 23, 'physical_index': 23}, {'title': '[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation', 'page': 23, 'physical_index': 23}, {'title': '[RS_ECUC_00068] Mapping of software sections to memory', 'page': 24, 'physical_index': 24}, {'title': '[RS_ECUC_00040] Support configuration of RTE', 'page': 24, 'physical_index': 24}, {'title': '[RS_ECUC_00076] Support the configuration of which AUTOSAR Services are available on a specific ECU', 'page': 24, 'physical_index': 24}, {'title': 'Requirements from Software Components', 'page': 25, 'physical_index': 25}, {'title': '[RS_ECUC_00041] Support AUTOSAR SW-Component integration', 'page': 25, 'physical_index': 25}, {'title': '[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components', 'page': 25, 'physical_index': 25}, {'title': '[RS_ECUC_00016] Execution order of runnable entities within one OS task', 'page': 26, 'physical_index': 26}, {'title': 'Requirements on the Configuration Parameter Definition', 'page': 26, 'physical_index': 26}, {'title': '[RS_ECUC_00071] Support for Generic Configuration Editor', 'page': 26, 'physical_index': 26}, {'title': 'Process requirements', 'page': 27, 'physical_index': 27}, {'title': '[RS_ECUC_00029] Identify mechanisms not criteria', 'page': 27, 'physical_index': 27}, {'title': '[RS_ECUC_00030] Clarify configuration terminology', 'page': 27, 'physical_index': 27}, {'title': 'External Requirements', 'page': 27, 'physical_index': 27}, {'title': '[RS_ECUC_00057] Memory needs of BSW modules', 'page': 27, 'physical_index': 27}, {'title': '[RS_ECUC_00036] Identify un-initialized resources', 'page': 28, 'physical_index': 28}, {'title': '[RS_ECUC_00056] Identify conflicting usage of micro controller registers', 'page': 28, 'physical_index': 28}, {'title': '[RS_ECUC_00062] Configuration option to initialize unused memory', 'page': 29, 'physical_index': 29}, {'title': 'Change History', 'page': 30, 'physical_index': 30}, {'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'page': 30, 'physical_index': 30}, {'title': 'Added Traceables in R4.0.1', 'page': 30, 'physical_index': 30}, {'title': 'Changed Traceables in R4.0.1', 'page': 30, 'physical_index': 30}, {'title': 'Deleted Traceables in R4.0.1', 'page': 30, 'physical_index': 30}, {'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'page': 31, 'physical_index': 31}, {'title': 'Added Traceables in 4.2.1', 'page': 31, 'physical_index': 31}, {'title': 'Added Traceables in 4.2.1', 'page': 32, 'physical_index': 31}, {'title': 'Changed Traceables in R4.0.3', 'page': 31, 'physical_index': 31}, {'title': 'Deleted Traceables in 4.2.1', 'page': 31, 'physical_index': 31}, {'title': 'Deleted Traceables in 4.2.1', 'page': 32, 'physical_index': 31}, {'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'page': 31, 'physical_index': 31}, {'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'page': 31, 'physical_index': 31}, {'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'page': 31, 'physical_index': 31}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': 10}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 10}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 10}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 10}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'physical_index': 12}, {'structure': '4.1', 'title': 'Requirements on the Template', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00072] Support for referencing from dependent containers', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00050] Specify ECU Configuration Parameter Definition', 'physical_index': 13}, {'structure': None, 'title': '[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters', 'physical_index': 13}, {'structure': None, 'title': '[RS_ECUC_00070] Support mandatory and optional containers', 'physical_index': 14}, {'structure': None, 'title': '[RS_ECUC_00043] Duplication free description', 'physical_index': 14}, {'structure': None, 'title': '[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters', 'physical_index': 15}, {'structure': None, 'title': '[RS_ECUC_00046] Support definition of configuration class', 'physical_index': 15}, {'structure': None, 'title': '[RS_ECUC_00012] One description mechanism for different configuration classes', 'physical_index': 16}, {'structure': None, 'title': '[RS_ECUC_00049] ECU Configuration description shall be tool process-able', 'physical_index': 16}, {'structure': None, 'title': '[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00018] Extension handling', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00074] Support Sequential ECU Configuration', 'physical_index': 18}, {'structure': None, 'title': '[RS_ECUC_00025] Compatible with iterative design', 'physical_index': 18}, {'structure': None, 'title': '[RS_ECUC_00078] Variable existence of container on value side', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00079] Variable existence of value', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00080] Variable value', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols', 'physical_index': 21}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00047] Pre-compile time configuration of BSW', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00048] Link time configuration of BSW', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00008] Post-build time configuration of BSW', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00085] Handling different configuration variants at post-build time', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00039] Support configuration of BSW', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00015] Configuration of multiple instances of BSW modules', 'physical_index': 23}, {'structure': None, 'title': '[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation', 'physical_index': 23}, {'structure': None, 'title': '[RS_ECUC_00068] Mapping of software sections to memory', 'physical_index': 24}, {'structure': None, 'title': '[RS_ECUC_00040] Support configuration of RTE', 'physical_index': 24}, {'structure': None, 'title': '[RS_ECUC_00076] Support the configuration of which AUTOSAR Services are available on a specific ECU', 'physical_index': 24}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00041] Support AUTOSAR SW-Component integration', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00016] Execution order of runnable entities within one OS task', 'physical_index': 26}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'physical_index': 26}, {'structure': None, 'title': '[RS_ECUC_00071] Support for Generic Configuration Editor', 'physical_index': 26}, {'structure': '4.5', 'title': 'Process requirements', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00029] Identify mechanisms not criteria', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00030] Clarify configuration terminology', 'physical_index': 27}, {'structure': '4.6', 'title': 'External Requirements', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00057] Memory needs of BSW modules', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00036] Identify un-initialized resources', 'physical_index': 28}, {'structure': None, 'title': '[RS_ECUC_00056] Identify conflicting usage of micro controller registers', 'physical_index': 28}, {'structure': None, 'title': '[RS_ECUC_00062] Configuration option to initialize unused memory', 'physical_index': 29}, {'structure': '5', 'title': 'Change History', 'physical_index': 30}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': 30}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'physical_index': 31}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 31}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 31}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 31}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 32}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 32}, {'structure': '5.8', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 32}, {'structure': '5.8.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': 32}, {'structure': '5.8.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': 32}, {'structure': '5.8.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': 33}, {'structure': '5.9', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 33}, {'structure': '5.9.1', 'title': 'Added Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.9.2', 'title': 'Changed Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.9.3', 'title': 'Deleted Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.10', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 33}, {'structure': '5.10.1', 'title': 'Added Traceables in 4.4.0', 'physical_index': 33}, {'structure': '5.10.2', 'title': 'Changed Traceables in 4.4.0', 'physical_index': 33}, {'structure': '5.10.3', 'title': 'Deleted Traceables in 4.4.0', 'physical_index': 33}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': 10}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 10}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 10}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 10}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'physical_index': 12}, {'structure': '4.1', 'title': 'Requirements on the Template', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00072] Support for referencing from dependent containers', 'physical_index': 12}, {'structure': None, 'title': '[RS_ECUC_00050] Specify ECU Configuration Parameter Definition', 'physical_index': 13}, {'structure': None, 'title': '[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters', 'physical_index': 13}, {'structure': None, 'title': '[RS_ECUC_00070] Support mandatory and optional containers', 'physical_index': 14}, {'structure': None, 'title': '[RS_ECUC_00043] Duplication free description', 'physical_index': 14}, {'structure': None, 'title': '[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters', 'physical_index': 15}, {'structure': None, 'title': '[RS_ECUC_00046] Support definition of configuration class', 'physical_index': 15}, {'structure': None, 'title': '[RS_ECUC_00012] One description mechanism for different configuration classes', 'physical_index': 16}, {'structure': None, 'title': '[RS_ECUC_00049] ECU Configuration description shall be tool process-able', 'physical_index': 16}, {'structure': None, 'title': '[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00018] Extension handling', 'physical_index': 17}, {'structure': None, 'title': '[RS_ECUC_00074] Support Sequential ECU Configuration', 'physical_index': 18}, {'structure': None, 'title': '[RS_ECUC_00025] Compatible with iterative design', 'physical_index': 18}, {'structure': None, 'title': '[RS_ECUC_00078] Variable existence of container on value side', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00079] Variable existence of value', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00080] Variable value', 'physical_index': 19}, {'structure': None, 'title': '[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition', 'physical_index': 20}, {'structure': None, 'title': '[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols', 'physical_index': 21}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00047] Pre-compile time configuration of BSW', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00048] Link time configuration of BSW', 'physical_index': 21}, {'structure': None, 'title': '[RS_ECUC_00008] Post-build time configuration of BSW', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00085] Handling different configuration variants at post-build time', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00039] Support configuration of BSW', 'physical_index': 22}, {'structure': None, 'title': '[RS_ECUC_00015] Configuration of multiple instances of BSW modules', 'physical_index': 23}, {'structure': None, 'title': '[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation', 'physical_index': 23}, {'structure': None, 'title': '[RS_ECUC_00068] Mapping of software sections to memory', 'physical_index': 24}, {'structure': None, 'title': '[RS_ECUC_00040] Support configuration of RTE', 'physical_index': 24}, {'structure': None, 'title': '[RS_ECUC_00076] Support the configuration of which AUTOSAR Services are available on a specific ECU', 'physical_index': 24}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00041] Support AUTOSAR SW-Component integration', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components', 'physical_index': 25}, {'structure': None, 'title': '[RS_ECUC_00016] Execution order of runnable entities within one OS task', 'physical_index': 26}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'physical_index': 26}, {'structure': None, 'title': '[RS_ECUC_00071] Support for Generic Configuration Editor', 'physical_index': 26}, {'structure': '4.5', 'title': 'Process requirements', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00029] Identify mechanisms not criteria', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00030] Clarify configuration terminology', 'physical_index': 27}, {'structure': '4.6', 'title': 'External Requirements', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00057] Memory needs of BSW modules', 'physical_index': 27}, {'structure': None, 'title': '[RS_ECUC_00036] Identify un-initialized resources', 'physical_index': 28}, {'structure': None, 'title': '[RS_ECUC_00056] Identify conflicting usage of micro controller registers', 'physical_index': 28}, {'structure': None, 'title': '[RS_ECUC_00062] Configuration option to initialize unused memory', 'physical_index': 29}, {'structure': '5', 'title': 'Change History', 'physical_index': 30}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': 30}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'physical_index': 31}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 31}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 31}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 31}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 32}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 32}, {'structure': '5.8', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 32}, {'structure': '5.8.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': 32}, {'structure': '5.8.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': 32}, {'structure': '5.8.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': 33}, {'structure': '5.9', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 33}, {'structure': '5.9.1', 'title': 'Added Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.9.2', 'title': 'Changed Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.9.3', 'title': 'Deleted Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.10', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 33}, {'structure': '5.10.1', 'title': 'Added Traceables in 4.4.0', 'physical_index': 33}, {'structure': '5.10.2', 'title': 'Changed Traceables in 4.4.0', 'physical_index': 33}, {'structure': '5.10.3', 'title': 'Deleted Traceables in 4.4.0', 'physical_index': 33}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3058823529411765,
+    "incorrect_results": [
+      {
+        "list_index": 8,
+        "answer": "no",
+        "title": "Requirements on the Template",
+        "page_number": 12
+      },
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU",
+        "page_number": 12
+      },
+      {
+        "list_index": 10,
+        "answer": "no",
+        "title": "[RS_ECUC_00072] Support for referencing from dependent containers",
+        "page_number": 12
+      },
+      {
+        "list_index": 11,
+        "answer": "no",
+        "title": "[RS_ECUC_00050] Specify ECU Configuration Parameter Definition",
+        "page_number": 13
+      },
+      {
+        "list_index": 12,
+        "answer": "no",
+        "title": "[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters",
+        "page_number": 13
+      },
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "[RS_ECUC_00070] Support mandatory and optional containers",
+        "page_number": 14
+      },
+      {
+        "list_index": 15,
+        "answer": "no",
+        "title": "[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters",
+        "page_number": 15
+      },
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "[RS_ECUC_00046] Support definition of configuration class",
+        "page_number": 15
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "[RS_ECUC_00012] One description mechanism for different configuration classes",
+        "page_number": 16
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "[RS_ECUC_00049] ECU Configuration description shall be tool process-able",
+        "page_number": 16
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document",
+        "page_number": 17
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules",
+        "page_number": 17
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "[RS_ECUC_00018] Extension handling",
+        "page_number": 17
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "[RS_ECUC_00074] Support Sequential ECU Configuration",
+        "page_number": 18
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "[RS_ECUC_00025] Compatible with iterative design",
+        "page_number": 18
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "[RS_ECUC_00078] Variable existence of container on value side",
+        "page_number": 19
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "[RS_ECUC_00079] Variable existence of value",
+        "page_number": 19
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "[RS_ECUC_00080] Variable value",
+        "page_number": 19
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition",
+        "page_number": 20
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition",
+        "page_number": 20
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition",
+        "page_number": 20
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols",
+        "page_number": 21
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Requirements from the clients of the ECUC",
+        "page_number": 21
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "[RS_ECUC_00047] Pre-compile time configuration of BSW",
+        "page_number": 21
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "[RS_ECUC_00048] Link time configuration of BSW",
+        "page_number": 21
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "[RS_ECUC_00008] Post-build time configuration of BSW",
+        "page_number": 22
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "[RS_ECUC_00085] Handling different configuration variants at post-build time",
+        "page_number": 22
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "[RS_ECUC_00039] Support configuration of BSW",
+        "page_number": 22
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "[RS_ECUC_00015] Configuration of multiple instances of BSW modules",
+        "page_number": 23
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation",
+        "page_number": 23
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "[RS_ECUC_00068] Mapping of software sections to memory",
+        "page_number": 24
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "[RS_ECUC_00040] Support configuration of RTE",
+        "page_number": 24
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Requirements from Software Components",
+        "page_number": 25
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "[RS_ECUC_00041] Support AUTOSAR SW-Component integration",
+        "page_number": 25
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components",
+        "page_number": 25
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "[RS_ECUC_00016] Execution order of runnable entities within one OS task",
+        "page_number": 26
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Requirements on the Configuration Parameter Definition",
+        "page_number": 26
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "[RS_ECUC_00071] Support for Generic Configuration Editor",
+        "page_number": 26
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Process requirements",
+        "page_number": 27
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "[RS_ECUC_00029] Identify mechanisms not criteria",
+        "page_number": 27
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "[RS_ECUC_00057] Memory needs of BSW modules",
+        "page_number": 27
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "[RS_ECUC_00036] Identify un-initialized resources",
+        "page_number": 28
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "[RS_ECUC_00056] Identify conflicting usage of micro controller registers",
+        "page_number": 28
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "[RS_ECUC_00062] Configuration option to initialize unused memory",
+        "page_number": 29
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Change History",
+        "page_number": 30
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.0.1 against R3.1.5",
+        "page_number": 30
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Added Traceables in R4.0.1",
+        "page_number": 30
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Changed Traceables in R4.0.1",
+        "page_number": 30
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Deleted Traceables in R4.0.1",
+        "page_number": 30
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.0.3 against R4.0.1",
+        "page_number": 31
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.1",
+        "page_number": 31
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.1 against R4.0.3",
+        "page_number": 31
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.3 against R4.1.2",
+        "page_number": 31
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.1 against R4.1.3",
+        "page_number": 32
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Changed Traceables in 4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.2 against R4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.0 against R4.2.2",
+        "page_number": 32
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Scope of this document', 'page': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'page': 9}, {'structure': '2', 'title': 'Related Documentation', 'page': 10}, {'structure': '2.1', 'title': 'Input Documents', 'page': 10}, {'structure': '2.2', 'title': 'Specification Documents', 'page': 10}, {'structure': '2.3', 'title': 'Abbreviations', 'page': 10}, {'structure': '3', 'title': 'Requirements Tracing', 'page': 11}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'page': 12}, {'structure': '4.1', 'title': 'Requirements on the Template', 'page': 12}, {'structure': None, 'title': '[RS_ECUC_00032] ECU Configuration Description shall be the root for the whole configuration information of an ECU', 'page': 12}, {'structure': None, 'title': '[RS_ECUC_00072] Support for referencing from dependent containers', 'page': 12}, {'structure': None, 'title': '[RS_ECUC_00050] Specify ECU Configuration Parameter Definition', 'page': 13}, {'structure': None, 'title': '[RS_ECUC_00055] Support standardization of mandatory and optional configuration parameters', 'page': 13}, {'structure': None, 'title': '[RS_ECUC_00070] Support mandatory and optional containers', 'page': 14}, {'structure': None, 'title': '[RS_ECUC_00043] Duplication free description', 'page': 14}, {'structure': None, 'title': '[RS_ECUC_00002] Support of vendor-specific ECU Configuration Parameters', 'page': 15}, {'structure': None, 'title': '[RS_ECUC_00046] Support definition of configuration class', 'page': 15}, {'structure': None, 'title': '[RS_ECUC_00012] One description mechanism for different configuration classes', 'page': 16}, {'structure': None, 'title': '[RS_ECUC_00049] ECU Configuration description shall be tool process-able', 'page': 16}, {'structure': None, 'title': '[RS_ECUC_00065] Development according to the AUTOSAR Generic Structure Template document', 'page': 17}, {'structure': None, 'title': '[RS_ECUC_00066] Transformation of ECUC model according to the AUTOSAR XML Schema Production Rules', 'page': 17}, {'structure': None, 'title': '[RS_ECUC_00018] Extension handling', 'page': 17}, {'structure': None, 'title': '[RS_ECUC_00074] Support Sequential ECU Configuration', 'page': 18}, {'structure': None, 'title': '[RS_ECUC_00025] Compatible with iterative design', 'page': 18}, {'structure': None, 'title': '[RS_ECUC_00078] Variable existence of container on value side', 'page': 19}, {'structure': None, 'title': '[RS_ECUC_00079] Variable existence of value', 'page': 19}, {'structure': None, 'title': '[RS_ECUC_00080] Variable value', 'page': 19}, {'structure': None, 'title': '[RS_ECUC_00082] Variable lower and upper multiplicity in ECU Configuration Parameter definition', 'page': 20}, {'structure': None, 'title': '[RS_ECUC_00083] Variable default value in ECU Configuration Parameter definition', 'page': 20}, {'structure': None, 'title': '[RS_ECUC_00084] Variable min and max ranges in ECU Configuration Parameter definition', 'page': 20}, {'structure': None, 'title': '[RS_ECUC_00086] The TPS_ECUConfiguration shall provide naming conventions for public symbols', 'page': 21}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'page': 21}, {'structure': None, 'title': '[RS_ECUC_00047] Pre-compile time configuration of BSW', 'page': 21}, {'structure': None, 'title': '[RS_ECUC_00048] Link time configuration of BSW', 'page': 21}, {'structure': None, 'title': '[RS_ECUC_00008] Post-build time configuration of BSW', 'page': 22}, {'structure': None, 'title': '[RS_ECUC_00085] Handling different configuration variants at post-build time', 'page': 22}, {'structure': None, 'title': '[RS_ECUC_00039] Support configuration of BSW', 'page': 22}, {'structure': None, 'title': '[RS_ECUC_00015] Configuration of multiple instances of BSW modules', 'page': 23}, {'structure': None, 'title': '[RS_ECUC_00021] Select AUTOSAR SW Component and BSW Module implementation', 'page': 23}, {'structure': None, 'title': '[RS_ECUC_00068] Mapping of software sections to memory', 'page': 24}, {'structure': None, 'title': '[RS_ECUC_00040] Support configuration of RTE', 'page': 24}, {'structure': None, 'title': '[RS_ECUC_00076] Support the configuration of which AUTOSAR Services are available on a specific ECU', 'page': 24}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'page': 25}, {'structure': None, 'title': '[RS_ECUC_00041] Support AUTOSAR SW-Component integration', 'page': 25}, {'structure': None, 'title': '[RS_ECUC_00073] Support Service Configuration of AUTOSAR SW Components', 'page': 25}, {'structure': None, 'title': '[RS_ECUC_00016] Execution order of runnable entities within one OS task', 'page': 26}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'page': 26}, {'structure': None, 'title': '[RS_ECUC_00071] Support for Generic Configuration Editor', 'page': 26}, {'structure': '4.5', 'title': 'Process requirements', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00029] Identify mechanisms not criteria', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00030] Clarify configuration terminology', 'page': 27}, {'structure': '4.6', 'title': 'External Requirements', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00057] Memory needs of BSW modules', 'page': 27}, {'structure': None, 'title': '[RS_ECUC_00036] Identify un-initialized resources', 'page': 28}, {'structure': None, 'title': '[RS_ECUC_00056] Identify conflicting usage of micro controller registers', 'page': 28}, {'structure': None, 'title': '[RS_ECUC_00062] Configuration option to initialize unused memory', 'page': 29}, {'structure': '5', 'title': 'Change History', 'page': 30}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'page': 30}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'page': 30}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'page': 30}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'page': 30}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'page': 31}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'page': 31}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'page': 31}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'page': 31}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'page': 31}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'page': 31}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'page': 31}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'page': 32}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.2.1', 'page': 32}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.2.1', 'page': 32}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.2.1', 'page': 32}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'page': 32}, {'structure': '5.8', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'page': 32}, {'structure': '5.8.1', 'title': 'Added Traceables in 4.3.0', 'page': 32}, {'structure': '5.8.2', 'title': 'Changed Traceables in 4.3.0', 'page': 32}, {'structure': '5.8.3', 'title': 'Deleted Traceables in 4.3.0', 'page': 33}, {'structure': '5.9', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'page': 33}, {'structure': '5.9.1', 'title': 'Added Traceables in 4.3.1', 'page': 33}, {'structure': '5.9.2', 'title': 'Changed Traceables in 4.3.1', 'page': 33}, {'structure': '5.9.3', 'title': 'Deleted Traceables in 4.3.1', 'page': 33}, {'structure': '5.10', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'page': 33}, {'structure': '5.10.1', 'title': 'Added Traceables in 4.4.0', 'page': 33}, {'structure': '5.10.2', 'title': 'Changed Traceables in 4.4.0', 'page': 33}, {'structure': '5.10.3', 'title': 'Deleted Traceables in 4.4.0', 'page': 33}]"
+  },
+  {
+    "message": "len(group_texts): 1"
+  },
+  {
+    "message": "add_page_number_to_toc: {}"
+  },
+  {
+    "message": "convert_physical_index_to_int: {}"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0,
+    "incorrect_results": []
+  },
+  {
+    "message": "len(group_texts): 1"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': '<physical_index_9>'}, {'structure': '2', 'title': 'Related Documentationn', 'physical_index': '<physical_index_10>'}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': '<physical_index_10>'}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': '<physical_index_10>'}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_11>'}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'physical_index': '<physical_index_12>'}, {'structure': '4.1', 'title': 'Requirements on the Template', 'physical_index': '<physical_index_12>'}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'physical_index': '<physical_index_21>'}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'physical_index': '<physical_index_25>'}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'physical_index': '<physical_index_26>'}, {'structure': '4.5', 'title': 'Process requirements', 'physical_index': '<physical_index_27>'}, {'structure': '4.6', 'title': 'External Requirements', 'physical_index': '<physical_index_28>'}, {'structure': '5', 'title': 'Change History', 'physical_index': '<physical_index_30>'}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': '<physical_index_30>'}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'physical_index': '<physical_index_30>'}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': '<physical_index_31>'}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': '<physical_index_31>'}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': '<physical_index_31>'}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': '<physical_index_32>'}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': '<physical_index_32>'}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.2.1', 'physical_index': '<physical_index_32>'}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': '<physical_index_32>'}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': '<physical_index_32>'}, {'structure': '5.8', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': '<physical_index_32>'}, {'structure': '5.8.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': '<physical_index_32>'}, {'structure': '5.8.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': '<physical_index_32>'}, {'structure': '5.8.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': '<physical_index_32>'}, {'structure': '5.9', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': '<physical_index_33>'}, {'structure': '5.9.1', 'title': 'Added Traceables in 4.3.1', 'physical_index': '<physical_index_33>'}, {'structure': '5.9.2', 'title': 'Changed Traceables in 4.3.1', 'physical_index': '<physical_index_33>'}, {'structure': '5.9.3', 'title': 'Deleted Traceables in 4.3.1', 'physical_index': '<physical_index_33>'}, {'structure': '5.10', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': '<physical_index_33>'}, {'structure': '5.10.1', 'title': 'Added Traceables in 4.4.0', 'physical_index': '<physical_index_33>'}, {'structure': '5.10.2', 'title': 'Changed Traceables in 4.4.0', 'physical_index': '<physical_index_33>'}, {'structure': '5.10.3', 'title': 'Deleted Traceables in 4.4.0', 'physical_index': '<physical_index_33>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '2', 'title': 'Related Documentationn', 'physical_index': 10}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 10}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 10}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 10}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements on ECU Configuration', 'physical_index': 12}, {'structure': '4.1', 'title': 'Requirements on the Template', 'physical_index': 12}, {'structure': '4.2', 'title': 'Requirements from the clients of the ECUC', 'physical_index': 21}, {'structure': '4.3', 'title': 'Requirements from Software Components', 'physical_index': 25}, {'structure': '4.4', 'title': 'Requirements on the Configuration Parameter Definition', 'physical_index': 26}, {'structure': '4.5', 'title': 'Process requirements', 'physical_index': 27}, {'structure': '4.6', 'title': 'External Requirements', 'physical_index': 28}, {'structure': '5', 'title': 'Change History', 'physical_index': 30}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': 30}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.1.3', 'title': 'Deleted Traceables in R4.0.1', 'physical_index': 30}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'Changed Traceables in R4.0.3', 'physical_index': 31}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 31}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 31}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 31}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 31}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 32}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 32}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 32}, {'structure': '5.8', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 32}, {'structure': '5.8.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': 32}, {'structure': '5.8.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': 32}, {'structure': '5.8.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': 32}, {'structure': '5.9', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 33}, {'structure': '5.9.1', 'title': 'Added Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.9.2', 'title': 'Changed Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.9.3', 'title': 'Deleted Traceables in 4.3.1', 'physical_index': 33}, {'structure': '5.10', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 33}, {'structure': '5.10.1', 'title': 'Added Traceables in 4.4.0', 'physical_index': 33}, {'structure': '5.10.2', 'title': 'Changed Traceables in 4.4.0', 'physical_index': 33}, {'structure': '5.10.3', 'title': 'Deleted Traceables in 4.4.0', 'physical_index': 33}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.5813953488372093,
+    "incorrect_results": [
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "External Requirements",
+        "page_number": 28
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.1",
+        "page_number": 31
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Changed Traceables in R4.0.3",
+        "page_number": 31
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.2.1",
+        "page_number": 31
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.1 against R4.0.3",
+        "page_number": 31
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.2 against R4.1.1",
+        "page_number": 31
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.3 against R4.1.2",
+        "page_number": 31
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.1 against R4.1.3",
+        "page_number": 32
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Changed Traceables in 4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.2 against R4.2.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.0 against R4.2.2",
+        "page_number": 32
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.3.0",
+        "page_number": 32
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.1 against R4.3.0",
+        "page_number": 33
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Added Traceables in 4.4.0",
+        "page_number": 33
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Changed Traceables in 4.4.0",
+        "page_number": 33
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.4.0",
+        "page_number": 33
+      }
+    ]
+  }
+]

@@ -1,0 +1,153 @@
+[
+  {
+    "total_page_number": 22
+  },
+  {
+    "total_token": 9225
+  },
+  {
+    "toc_content": "Explanation of Interrupt Handling within AUTOSAR  \nAUTOSAR CP Release 4.4.0    \n \n3 of 22 Document ID 307: AUTOSAR_EXP_InterruptHandlingExplanation  \n- AUTOSAR confidential - \nTable of Contents  \n \n1 Introduction and purpose of document  :  :   4 \n2 Acronyms and abbreviations  :  :  :   5 \n3 Related documentation :  :  :   6 \n3.1 Input documents  :  :  :   6 \n3.2 Related standards and norms  :  :  :  6 \n4 Summary of Interrupt Configuration  :  :  .... 7 \n5 Overview of Interrupt Operation  :  :  :   9 \n5.1 Distinction between cat1 and cat2 interrupts  :  :   9 \n6 Steps in the operation of interrupts  :  :  .... 11 \n6.1 Handling cat1 interrupts  :  :  :   11 \n6.1.1  Initial state  :  :  :   11 \n6.1.2  When the hardware requests an interrupt  :  :   11 \n6.2 Handling cat2 interrupts  :  :  :   13 \n6.2.1  Initial state  :  :  :   13 \n6.2.2  When the hardware requests an interrupt  :  :   13 \n7 Conf iguration of Interrupts  :  :  :   15 \n7.1 Device Driver configuration and code  :  :   15 \n7.1.1  Placement of Interrupt Handlers  :  :   16 \n7.2 OS configuration  :  :  :   16 \n7.3 BSW Scheduler configuratio n :  :  :  17 \n7.3.1  TASK for main functions  :  :  :  17 \n7.3.2  Other TASKs in the stack  :  :  :  18 \n7.3.3  Critical sections  :  :  :   18 \n7.3.4  Summary  :  :  :   20 \n8 Recommen dations for the use of cat1 interrupts  :  :   21 \n8.1.1  Communication between adjacent modules using cat1 interrupts  :   21 \n8.1.2  Trust  :  :  :  :  22 \n \n ",
+    "toc_page_list": [
+      2
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and purpose of document', 'page': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'page': 5}, {'structure': '3', 'title': 'Related documentation', 'page': 6}, {'structure': '3.1', 'title': 'Input documents', 'page': 6}, {'structure': '3.2', 'title': 'Related standards and norms', 'page': 6}, {'structure': '4', 'title': 'Summary of Interrupt Configuration', 'page': 7}, {'structure': '5', 'title': 'Overview of Interrupt Operation', 'page': 9}, {'structure': '5.1', 'title': 'Distinction between cat1 and cat2 interrupts', 'page': 9}, {'structure': '6', 'title': 'Steps in the operation of interrupts', 'page': 11}, {'structure': '6.1', 'title': 'Handling cat1 interrupts', 'page': 11}, {'structure': '6.1.1', 'title': 'Initial state', 'page': 11}, {'structure': '6.1.2', 'title': 'When the hardware requests an interrupt', 'page': 11}, {'structure': '6.2', 'title': 'Handling cat2 interrupts', 'page': 13}, {'structure': '6.2.1', 'title': 'Initial state', 'page': 13}, {'structure': '6.2.2', 'title': 'When the hardware requests an interrupt', 'page': 13}, {'structure': '7', 'title': 'Configuration of Interrupts', 'page': 15}, {'structure': '7.1', 'title': 'Device Driver configuration and code', 'page': 15}, {'structure': '7.1.1', 'title': 'Placement of Interrupt Handlers', 'page': 16}, {'structure': '7.2', 'title': 'OS configuration', 'page': 16}, {'structure': '7.3', 'title': 'BSW Scheduler configuration', 'page': 17}, {'structure': '7.3.1', 'title': 'TASK for main functions', 'page': 17}, {'structure': '7.3.2', 'title': 'Other TASKs in the stack', 'page': 18}, {'structure': '7.3.3', 'title': 'Critical sections', 'page': 18}, {'structure': '7.3.4', 'title': 'Summary', 'page': 20}, {'structure': '8', 'title': 'Recommendations for the use of cat1 interrupts', 'page': 21}, {'structure': '8.1.1', 'title': 'Communication between adjacent modules using cat1 interrupts', 'page': 21}, {'structure': '8.1.2', 'title': 'Trust', 'page': 22}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and purpose of document', 'physical_index': '<physical_index_4>'}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_5>'}, {'structure': '3', 'title': 'Related documentation', 'physical_index': '<physical_index_6>'}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': '<physical_index_6>'}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_6>'}, {'structure': '4', 'title': 'Summary of Interrupt Configuration', 'physical_index': '<physical_index_7>'}, {'structure': '5', 'title': 'Overview of Interrupt Operation', 'physical_index': '<physical_index_9>'}, {'structure': '5.1', 'title': 'Distinction between cat1 and cat2 interrupts', 'physical_index': '<physical_index_9>'}, {'structure': '6', 'title': 'Steps in the operation of interrupts', 'physical_index': '<physical_index_11>'}, {'structure': '6.1', 'title': 'Handling cat1 interrupts', 'physical_index': '<physical_index_11>'}, {'structure': '6.1.1', 'title': 'Initial state', 'physical_index': '<physical_index_11>'}, {'structure': '6.1.2', 'title': 'When the hardware requests an interrupt', 'physical_index': '<physical_index_11>'}, {'structure': '6.2', 'title': 'Handling cat2 interrupts', 'physical_index': '<physical_index_13>'}, {'structure': '6.2.1', 'title': 'Initial state', 'physical_index': '<physical_index_13>'}, {'structure': '6.2.2', 'title': 'When the hardware requests an interrupt', 'physical_index': '<physical_index_13>'}, {'structure': '7', 'title': 'Configuration of Interrupts', 'physical_index': '<physical_index_15>'}, {'structure': '7.1', 'title': 'Device Driver configuration and code', 'physical_index': '<physical_index_15>'}, {'structure': '7.1.1', 'title': 'Placement of Interrupt Handlers', 'physical_index': '<physical_index_16>'}, {'structure': '7.2', 'title': 'OS configuration', 'physical_index': '<physical_index_16>'}, {'structure': '7.3', 'title': 'BSW Scheduler configuration', 'physical_index': '<physical_index_17>'}, {'structure': '7.3.1', 'title': 'TASK for main functions', 'physical_index': '<physical_index_17>'}, {'structure': '7.3.2', 'title': 'Other TASKs in the stack', 'physical_index': '<physical_index_18>'}, {'structure': '7.3.3', 'title': 'Critical sections', 'physical_index': '<physical_index_18>'}, {'structure': '7.3.4', 'title': 'Summary', 'physical_index': '<physical_index_20>'}, {'structure': '8', 'title': 'Recommendations for the use of cat1 interrupts', 'physical_index': '<physical_index_21>'}, {'structure': '8.1.1', 'title': 'Communication between adjacent modules using cat1 interrupts', 'physical_index': '<physical_index_21>'}, {'structure': '8.1.2', 'title': 'Trust', 'physical_index': '<physical_index_22>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and purpose of document', 'physical_index': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': 5}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 6}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 6}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 6}, {'structure': '4', 'title': 'Summary of Interrupt Configuration', 'physical_index': 7}, {'structure': '5', 'title': 'Overview of Interrupt Operation', 'physical_index': 9}, {'structure': '5.1', 'title': 'Distinction between cat1 and cat2 interrupts', 'physical_index': 9}, {'structure': '6', 'title': 'Steps in the operation of interrupts', 'physical_index': 11}, {'structure': '6.1', 'title': 'Handling cat1 interrupts', 'physical_index': 11}, {'structure': '6.1.1', 'title': 'Initial state', 'physical_index': 11}, {'structure': '6.1.2', 'title': 'When the hardware requests an interrupt', 'physical_index': 11}, {'structure': '6.2', 'title': 'Handling cat2 interrupts', 'physical_index': 13}, {'structure': '6.2.1', 'title': 'Initial state', 'physical_index': 13}, {'structure': '6.2.2', 'title': 'When the hardware requests an interrupt', 'physical_index': 13}, {'structure': '7', 'title': 'Configuration of Interrupts', 'physical_index': 15}, {'structure': '7.1', 'title': 'Device Driver configuration and code', 'physical_index': 15}, {'structure': '7.1.1', 'title': 'Placement of Interrupt Handlers', 'physical_index': 16}, {'structure': '7.2', 'title': 'OS configuration', 'physical_index': 16}, {'structure': '7.3', 'title': 'BSW Scheduler configuration', 'physical_index': 17}, {'structure': '7.3.1', 'title': 'TASK for main functions', 'physical_index': 17}, {'structure': '7.3.2', 'title': 'Other TASKs in the stack', 'physical_index': 18}, {'structure': '7.3.3', 'title': 'Critical sections', 'physical_index': 18}, {'structure': '7.3.4', 'title': 'Summary', 'physical_index': 20}, {'structure': '8', 'title': 'Recommendations for the use of cat1 interrupts', 'physical_index': 21}, {'structure': '8.1.1', 'title': 'Communication between adjacent modules using cat1 interrupts', 'physical_index': 21}, {'structure': '8.1.2', 'title': 'Trust', 'physical_index': 22}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction and purpose of document', 'page': 4, 'physical_index': 4}, {'title': 'Acronyms and abbreviations', 'page': 5, 'physical_index': 5}, {'title': 'Related documentation', 'page': 6, 'physical_index': 6}, {'title': 'Input documents', 'page': 6, 'physical_index': 6}, {'title': 'Related standards and norms', 'page': 6, 'physical_index': 6}, {'title': 'Summary of Interrupt Configuration', 'page': 7, 'physical_index': 7}, {'title': 'Overview of Interrupt Operation', 'page': 9, 'physical_index': 9}, {'title': 'Distinction between cat1 and cat2 interrupts', 'page': 9, 'physical_index': 9}, {'title': 'Steps in the operation of interrupts', 'page': 11, 'physical_index': 11}, {'title': 'Handling cat1 interrupts', 'page': 11, 'physical_index': 11}, {'title': 'Initial state', 'page': 11, 'physical_index': 11}, {'title': 'Initial state', 'page': 13, 'physical_index': 11}, {'title': 'When the hardware requests an interrupt', 'page': 11, 'physical_index': 11}, {'title': 'When the hardware requests an interrupt', 'page': 13, 'physical_index': 11}, {'title': 'Handling cat2 interrupts', 'page': 13, 'physical_index': 13}, {'title': 'Initial state', 'page': 11, 'physical_index': 13}, {'title': 'Initial state', 'page': 13, 'physical_index': 13}, {'title': 'When the hardware requests an interrupt', 'page': 11, 'physical_index': 13}, {'title': 'When the hardware requests an interrupt', 'page': 13, 'physical_index': 13}, {'title': 'Configuration of Interrupts', 'page': 15, 'physical_index': 15}, {'title': 'Device Driver configuration and code', 'page': 15, 'physical_index': 15}, {'title': 'Placement of Interrupt Handlers', 'page': 16, 'physical_index': 16}, {'title': 'OS configuration', 'page': 16, 'physical_index': 16}, {'title': 'BSW Scheduler configuration', 'page': 17, 'physical_index': 17}, {'title': 'TASK for main functions', 'page': 17, 'physical_index': 17}, {'title': 'Other TASKs in the stack', 'page': 18, 'physical_index': 18}, {'title': 'Critical sections', 'page': 18, 'physical_index': 18}, {'title': 'Summary', 'page': 20, 'physical_index': 20}, {'title': 'Recommendations for the use of cat1 interrupts', 'page': 21, 'physical_index': 21}, {'title': 'Communication between adjacent modules using cat1 interrupts', 'page': 21, 'physical_index': 21}, {'title': 'Trust', 'page': 22, 'physical_index': 22}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and purpose of document', 'physical_index': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': 5}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 6}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 6}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 6}, {'structure': '4', 'title': 'Summary of Interrupt Configuration', 'physical_index': 7}, {'structure': '5', 'title': 'Overview of Interrupt Operation', 'physical_index': 9}, {'structure': '5.1', 'title': 'Distinction between cat1 and cat2 interrupts', 'physical_index': 9}, {'structure': '6', 'title': 'Steps in the operation of interrupts', 'physical_index': 11}, {'structure': '6.1', 'title': 'Handling cat1 interrupts', 'physical_index': 11}, {'structure': '6.1.1', 'title': 'Initial state', 'physical_index': 11}, {'structure': '6.1.2', 'title': 'When the hardware requests an interrupt', 'physical_index': 11}, {'structure': '6.2', 'title': 'Handling cat2 interrupts', 'physical_index': 13}, {'structure': '6.2.1', 'title': 'Initial state', 'physical_index': 13}, {'structure': '6.2.2', 'title': 'When the hardware requests an interrupt', 'physical_index': 13}, {'structure': '7', 'title': 'Configuration of Interrupts', 'physical_index': 15}, {'structure': '7.1', 'title': 'Device Driver configuration and code', 'physical_index': 15}, {'structure': '7.1.1', 'title': 'Placement of Interrupt Handlers', 'physical_index': 16}, {'structure': '7.2', 'title': 'OS configuration', 'physical_index': 16}, {'structure': '7.3', 'title': 'BSW Scheduler configuration', 'physical_index': 17}, {'structure': '7.3.1', 'title': 'TASK for main functions', 'physical_index': 17}, {'structure': '7.3.2', 'title': 'Other TASKs in the stack', 'physical_index': 18}, {'structure': '7.3.3', 'title': 'Critical sections', 'physical_index': 18}, {'structure': '7.3.4', 'title': 'Summary', 'physical_index': 20}, {'structure': '8', 'title': 'Recommendations for the use of cat1 interrupts', 'physical_index': 21}, {'structure': '8.1.1', 'title': 'Communication between adjacent modules using cat1 interrupts', 'physical_index': 21}, {'structure': '8.1.2', 'title': 'Trust', 'physical_index': 22}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and purpose of document', 'physical_index': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': 5}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 6}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 6}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 6}, {'structure': '4', 'title': 'Summary of Interrupt Configuration', 'physical_index': 7}, {'structure': '5', 'title': 'Overview of Interrupt Operation', 'physical_index': 9}, {'structure': '5.1', 'title': 'Distinction between cat1 and cat2 interrupts', 'physical_index': 9}, {'structure': '6', 'title': 'Steps in the operation of interrupts', 'physical_index': 11}, {'structure': '6.1', 'title': 'Handling cat1 interrupts', 'physical_index': 11}, {'structure': '6.1.1', 'title': 'Initial state', 'physical_index': 11}, {'structure': '6.1.2', 'title': 'When the hardware requests an interrupt', 'physical_index': 11}, {'structure': '6.2', 'title': 'Handling cat2 interrupts', 'physical_index': 13}, {'structure': '6.2.1', 'title': 'Initial state', 'physical_index': 13}, {'structure': '6.2.2', 'title': 'When the hardware requests an interrupt', 'physical_index': 13}, {'structure': '7', 'title': 'Configuration of Interrupts', 'physical_index': 15}, {'structure': '7.1', 'title': 'Device Driver configuration and code', 'physical_index': 15}, {'structure': '7.1.1', 'title': 'Placement of Interrupt Handlers', 'physical_index': 16}, {'structure': '7.2', 'title': 'OS configuration', 'physical_index': 16}, {'structure': '7.3', 'title': 'BSW Scheduler configuration', 'physical_index': 17}, {'structure': '7.3.1', 'title': 'TASK for main functions', 'physical_index': 17}, {'structure': '7.3.2', 'title': 'Other TASKs in the stack', 'physical_index': 18}, {'structure': '7.3.3', 'title': 'Critical sections', 'physical_index': 18}, {'structure': '7.3.4', 'title': 'Summary', 'physical_index': 20}, {'structure': '8', 'title': 'Recommendations for the use of cat1 interrupts', 'physical_index': 21}, {'structure': '8.1.1', 'title': 'Communication between adjacent modules using cat1 interrupts', 'physical_index': 21}, {'structure': '8.1.2', 'title': 'Trust', 'physical_index': 22}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.8888888888888888,
+    "incorrect_results": [
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 20
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Communication between adjacent modules using cat1 interrupts",
+        "page_number": 21
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Trust",
+        "page_number": 22
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 23, 'title': 'Summary', 'prev_correct': 18, 'next_correct': 21}, {'list_index': 25, 'title': 'Communication between adjacent modules using cat1 interrupts', 'prev_correct': 21, 'next_correct': 22}, {'list_index': 26, 'title': 'Trust', 'prev_correct': 21, 'next_correct': 22}]"
+  },
+  {
+    "message": "invalid_results: []"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Related documentation' appears after some introductory text and a section number, indicating that it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' is not present at the beginning of the given page_text. The page_text starts with 'Explanation of Interrupt Handling within AUTOSAR'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Steps in the operation of interrupts' appears after some introductory text and document metadata, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Initial state' is found in the page_text, but it is not at the beginning. There are several lines of text and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'When the hardware requests an interrupt' appears in the page_text, but it is not at the beginning. There are several paragraphs and sub-sections before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Acronyms and abbreviations' appears after some introductory text about the document and its version, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Summary of Interrupt Configuration' appears after some introductory text about AUTOSAR and the document ID. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configuration of Interrupts' appears after some introductory text about AUTOSAR and the document details. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction and purpose of document' appears after several lines of text, including the document title, version, and confidentiality information. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Input documents' appears in the page_text, but it is not the first content. There are other contents before it, such as the explanation of interrupt handling, document ID, and related documentation.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Overview of Interrupt Operation' appears in the page_text, but it is not the first content. There are other contents such as the document title, version, and other text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Initial state' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including a header and some introductory text about handling cat2 interrupts.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Related standards and norms' appears in the page_text, but it is not the first content. There are other contents before it, such as the explanation of interrupt handling, document ID, and related documentation sections.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'OS configuration' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title, including an explanation of interrupt handling and details about the placement of interrupt handlers.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Distinction between cat1 and cat2 interrupts' appears in the page_text, but it is not at the very beginning. There are other contents such as the document title, version, and a brief overview before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Handling cat1 interrupts' appears in the page_text, but it is not at the very beginning. There are several lines of text and a sub-section (6 Steps in the operation of interrupts) before the section title '6.1 Handling cat1 interrupts'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Placement of Interrupt Handlers' appears after some introductory text about AUTOSAR and document details. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'BSW Scheduler configuration' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Recommendations for the use of cat1 interrupts' appears after some introductory text and document metadata, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Device Driver configuration and code' appears in the page_text, but it is not at the very beginning. There are several lines of text before it, including a chapter title and some introductory text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Handling cat2 interrupts' appears in the page_text, but it is not the first content. There are other contents before it, such as the document header and section 6.1.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Trust' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title '8.1.2 Trust'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'When the hardware requests an interrupt' appears in the page_text, but it is not the first content. There are several paragraphs and another sub-section (6.2.1 Initial state) before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Other TASKs in the stack' appears in the page_text, but it is not at the very beginning. There is content before it, including an explanation of interrupt handling and a code snippet.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'TASK for main functions' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title, including an explanation of interrupt handling and other configurations.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Communication between adjacent modules using cat1 interrupts' appears in the page_text, but it is not at the very beginning. There is content before it, including an explanation of interrupt handling, recommendations for the use of cat1 interrupts, and a list of conditions under which cat1 interrupts should be used.\", 'start_begin': 'no'}"
+  }
+]

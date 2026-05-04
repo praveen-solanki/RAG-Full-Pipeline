@@ -1,0 +1,982 @@
+[
+  {
+    "total_page_number": 48
+  },
+  {
+    "total_token": 20358
+  },
+  {
+    "toc_content": "Requirements on Basic Software Module\nDescription Template\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Scope of this document 8\n1.1 Document Conventions : 10\n2 Related Documentationn 11\n2.1 Input Documents : 11\n2.2 Specification Documents : 11\n2.3 Abbreviations : 11\n3 Requirements Tracing 12\n4 Requirements on BSW Module Description Template 15\n4.1 Published Information : 15\n[RS_BSWMD_00043] Support description of common published infor-\nmation : 15\n[RS_BSWMD_00024] Support description of module specific published\ninformation : 15\n[RS_BSWMD_00039] Identification of implemented API and functions . 16\n[RS_BSWMD_00040] Identification of required API and functions . . . . 16\n[RS_BSWMD_00041] Declaration of the provided API argument data\ntypes : 16\n[RS_BSWMD_00042] Description of the required API argument data types 18\n[RS_BSWMD_00011] Guaranteed execution context of API calls . . . . 18\n[RS_BSWMD_00038] Required execution context of API calls : 18\n[RS_BSWMD_00010] Compiler version and settings : 19\n[RS_BSWMD_00037] Needed libraries : 19\n[RS_BSWMD_00025] Support for shipment information : 19\n[RS_BSWMD_00014] Support of BSW Module clusters : 20\n[RS_BSWMD_00034] ECU Configuration Editor and Generation sup-\nported tool version information : 20\n[RS_BSWMD_00013] Describe configuration class of ECU Configura-\ntion Parameters : 21\n[RS_BSWMD_00033] Pre-configured ECU Configuration Values . . . . 21\n[RS_BSWMD_00032] Recommended ECU Configuration Values . . . . 21\n[RS_BSWMD_00035] Provide Standardized Module Definition : 23\n[RS_BSWMD_00050] Allow vendor-specific modification of Standard-\nized Module Definition : 23\n[RS_BSWMD_00027] Provide Vendor-Specific Module Definition . . . . 23\n[RS_BSWMD_00007] Provide vendor-specific published information . . 24\n[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition . . 24\n[RS_BSWMD_00047] Modeling of call-chain dependencies between\nBSW Modules : 26\n[RS_BSWMD_00049] Describe optional and required elements : 26\n[RS_BSWMD_00044] Description of generated artifacts : 26\n[RS_BSWMD_00051] Description of libraries : 27\n4 of 48\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 086: AUTOSAR_RS_BSWModuleDescriptionTemplateRequirements on Basic Software Module\nDescription Template\nAUTOSAR CP Release 4.4.0\n[RS_BSWMD_00052] Description of the generated RTE : 27\n[RS_BSWMD_00062] Provide Measurement and Calibration Support . 27\n[RS_BSWMD_00065] Provide Rapid Prototyping Support : 28\n[RS_BSWMD_00070] Support post-build hooking tools for rapid proto-\ntyping : 28\n[RS_BSWMD_00071] Support service based by-passing for rapid pro-\ntotyping : 29\n[RS_BSWMD_00069] Configuration for production errors and extended\nproduction errors : 29\n4.2 BSW Scheduling : 31\n[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Func-\ntions : 31\n[RS_BSWMD_00054] Mode Switches for BSW modules shall be sup-\nported : 31\n[RS_BSWMD_00055] Simultaneous Mode transitions : 31\n[RS_BSWMD_00056] API for Mode switch notification of BSW modules 32\n[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered\nEvents : 32\n[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events . . 32\n[RS_BSWMD_00059] API for Triggering BSW modules by Triggered\nEvents : 33\n[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Ap-\nplication Software Components : 33\n[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event\nAPI : 34\n[RS_BSWMD_00064] Support optional configuration of ExclusiveArea\nusage within BSWModuleEntities : 34\n[RS_BSWMD_00066] BSW inter-partition client-server communication . 35\n[RS_BSWMD_00067] BSW inter-partition sender-receiver communication 35\n[RS_BSWMD_00068] BSW Service Execution on Local or Remote Par-\ntition : 36\n4.3 Resources : 37\n[RS_BSWMD_00005] Description of the memory needs of the software\nimplementation : 37\n[RS_BSWMD_00031] Description of used memory section names . . . 37\n[RS_BSWMD_00009] Description of peripheral register usage : 37\n[RS_BSWMD_00016] Timing guarantees : 38\n[RS_BSWMD_00015] Timing requirements : 38\n[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler . 40\n[RS_BSWMD_00046] Publish OS resource usage : 40\n[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services 40\n[RS_BSWMD_00026] Description of supported hardware : 41\n4.4 Requirements on the Template : 41\n[RS_BSWMD_00001] Main source of information on BSW Module ECU\nConfiguration activity and integration : 41\n5 of 48\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 086: AUTOSAR_RS_BSWModuleDescriptionTemplate",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'page': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'page': 10}, {'structure': '2', 'title': 'Related Documentation', 'page': 11}, {'structure': '2.1', 'title': 'Input Documents', 'page': 11}, {'structure': '2.2', 'title': 'Specification Documents', 'page': 11}, {'structure': '2.3', 'title': 'Abbreviations', 'page': 11}, {'structure': '3', 'title': 'Requirements Tracing', 'page': 12}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'page': 15}, {'structure': '4.1', 'title': 'Published Information', 'page': 15}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'page': 15}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'page': 15}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'page': 16}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'page': 16}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'page': 16}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'page': 18}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'page': 18}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'page': 18}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'page': 19}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'page': 19}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'page': 19}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'page': 20}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'page': 20}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'page': 21}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'page': 21}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'page': 21}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'page': 23}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'page': 23}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'page': 23}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'page': 24}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'page': 24}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'page': 26}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'page': 26}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'page': 26}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'page': 27}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'page': 27}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'page': 27}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'page': 28}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'page': 28}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'page': 29}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'page': 29}, {'structure': '4.2', 'title': 'BSW Scheduling', 'page': 31}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'page': 31}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'page': 31}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'page': 31}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'page': 32}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'page': 32}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'page': 32}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'page': 33}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'page': 33}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'page': 34}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'page': 34}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'page': 35}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'page': 35}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'page': 36}, {'structure': '4.3', 'title': 'Resources', 'page': 37}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'page': 37}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'page': 37}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'page': 37}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'page': 38}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'page': 38}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'page': 40}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'page': 40}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'page': 40}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'page': 41}, {'structure': '4.4', 'title': 'Requirements on the Template', 'page': 41}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'page': 41}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': '<physical_index_10>'}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': '<physical_index_11>'}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': '<physical_index_11>'}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_12>'}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': '<physical_index_15>'}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'physical_index': '<physical_index_22>'}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'physical_index': '<physical_index_29>'}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'physical_index': '<physical_index_29>'}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'physical_index': '<physical_index_29>'}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'physical_index': '<physical_index_36>'}, {'structure': '4.3', 'title': 'Resources', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'physical_index': '<physical_index_41>'}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': '<physical_index_41>'}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'physical_index': '<physical_index_41>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 10}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': 11}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 11}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 11}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': 15}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': 15}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'physical_index': 15}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'physical_index': 15}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'physical_index': 16}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'physical_index': 16}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'physical_index': 16}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'physical_index': 18}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'physical_index': 18}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'physical_index': 18}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'physical_index': 19}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'physical_index': 19}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'physical_index': 20}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'physical_index': 20}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'physical_index': 20}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'physical_index': 21}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'physical_index': 21}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'physical_index': 22}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'physical_index': 23}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'physical_index': 24}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'physical_index': 24}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'physical_index': 26}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'physical_index': 26}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'physical_index': 26}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'physical_index': 27}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'physical_index': 27}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'physical_index': 28}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'physical_index': 28}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'physical_index': 29}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'physical_index': 29}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'physical_index': 29}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': 31}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'physical_index': 31}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'physical_index': 31}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'physical_index': 31}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'physical_index': 32}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'physical_index': 32}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'physical_index': 32}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'physical_index': 33}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'physical_index': 33}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'physical_index': 34}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'physical_index': 34}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'physical_index': 35}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'physical_index': 35}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'physical_index': 36}, {'structure': '4.3', 'title': 'Resources', 'physical_index': 37}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'physical_index': 37}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'physical_index': 37}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'physical_index': 37}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'physical_index': 38}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'physical_index': 38}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'physical_index': 40}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'physical_index': 40}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'physical_index': 40}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'physical_index': 41}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': 41}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'physical_index': 41}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Scope of this document', 'page': 8, 'physical_index': 8}, {'title': 'Document Conventions', 'page': 10, 'physical_index': 10}, {'title': 'Related Documentation', 'page': 11, 'physical_index': 11}, {'title': 'Input Documents', 'page': 11, 'physical_index': 11}, {'title': 'Specification Documents', 'page': 11, 'physical_index': 11}, {'title': 'Abbreviations', 'page': 11, 'physical_index': 11}, {'title': 'Requirements Tracing', 'page': 12, 'physical_index': 12}, {'title': 'Requirements on BSW Module Description Template', 'page': 15, 'physical_index': 15}, {'title': 'Published Information', 'page': 15, 'physical_index': 15}, {'title': '[RS_BSWMD_00043] Support description of common published information', 'page': 15, 'physical_index': 15}, {'title': '[RS_BSWMD_00024] Support description of module specific published information', 'page': 15, 'physical_index': 15}, {'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'page': 16, 'physical_index': 16}, {'title': '[RS_BSWMD_00040] Identification of required API and functions', 'page': 16, 'physical_index': 16}, {'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'page': 16, 'physical_index': 16}, {'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'page': 18, 'physical_index': 18}, {'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'page': 18, 'physical_index': 18}, {'title': '[RS_BSWMD_00038] Required execution context of API calls', 'page': 18, 'physical_index': 18}, {'title': '[RS_BSWMD_00010] Compiler version and settings', 'page': 19, 'physical_index': 19}, {'title': '[RS_BSWMD_00037] Needed libraries', 'page': 19, 'physical_index': 19}, {'title': '[RS_BSWMD_00025] Support for shipment information', 'page': 19, 'physical_index': 20}, {'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'page': 20, 'physical_index': 20}, {'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'page': 20, 'physical_index': 20}, {'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'page': 21, 'physical_index': 21}, {'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'page': 21, 'physical_index': 21}, {'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'page': 21, 'physical_index': 22}, {'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'page': 23, 'physical_index': 23}, {'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'page': 23, 'physical_index': 23}, {'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'page': 23, 'physical_index': 23}, {'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'page': 24, 'physical_index': 24}, {'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'page': 24, 'physical_index': 24}, {'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'page': 26, 'physical_index': 26}, {'title': '[RS_BSWMD_00049] Describe optional and required elements', 'page': 26, 'physical_index': 26}, {'title': '[RS_BSWMD_00044] Description of generated artifacts', 'page': 26, 'physical_index': 26}, {'title': '[RS_BSWMD_00051] Description of libraries', 'page': 27, 'physical_index': 27}, {'title': '[RS_BSWMD_00052] Description of the generated RTE', 'page': 27, 'physical_index': 27}, {'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'page': 27, 'physical_index': 28}, {'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'page': 28, 'physical_index': 28}, {'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'page': 28, 'physical_index': 29}, {'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'page': 29, 'physical_index': 29}, {'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'page': 29, 'physical_index': 29}, {'title': 'BSW Scheduling', 'page': 31, 'physical_index': 31}, {'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'page': 31, 'physical_index': 31}, {'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'page': 31, 'physical_index': 31}, {'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'page': 31, 'physical_index': 31}, {'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'page': 32, 'physical_index': 32}, {'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'page': 32, 'physical_index': 32}, {'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'page': 32, 'physical_index': 32}, {'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'page': 33, 'physical_index': 33}, {'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'page': 33, 'physical_index': 33}, {'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'page': 34, 'physical_index': 34}, {'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'page': 34, 'physical_index': 34}, {'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'page': 35, 'physical_index': 35}, {'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'page': 35, 'physical_index': 35}, {'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'page': 36, 'physical_index': 36}, {'title': 'Resources', 'page': 37, 'physical_index': 37}, {'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'page': 37, 'physical_index': 37}, {'title': '[RS_BSWMD_00031] Description of used memory section names', 'page': 37, 'physical_index': 37}, {'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'page': 37, 'physical_index': 37}, {'title': '[RS_BSWMD_00016] Timing guarantees', 'page': 38, 'physical_index': 38}, {'title': '[RS_BSWMD_00015] Timing requirements', 'page': 38, 'physical_index': 38}, {'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'page': 40, 'physical_index': 40}, {'title': '[RS_BSWMD_00046] Publish OS resource usage', 'page': 40, 'physical_index': 40}, {'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'page': 40, 'physical_index': 40}, {'title': '[RS_BSWMD_00026] Description of supported hardware', 'page': 41, 'physical_index': 41}, {'title': 'Requirements on the Template', 'page': 41, 'physical_index': 41}, {'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'page': 41, 'physical_index': 41}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 10}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': 11}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 11}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 11}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': 15}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': 15}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'physical_index': 15}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'physical_index': 15}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'physical_index': 16}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'physical_index': 16}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'physical_index': 16}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'physical_index': 18}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'physical_index': 18}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'physical_index': 18}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'physical_index': 19}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'physical_index': 19}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'physical_index': 19}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'physical_index': 20}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'physical_index': 20}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'physical_index': 21}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'physical_index': 21}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'physical_index': 21}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'physical_index': 23}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'physical_index': 24}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'physical_index': 24}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'physical_index': 26}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'physical_index': 26}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'physical_index': 26}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'physical_index': 27}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'physical_index': 27}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'physical_index': 27}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'physical_index': 28}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'physical_index': 28}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'physical_index': 29}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'physical_index': 29}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': 31}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'physical_index': 31}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'physical_index': 31}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'physical_index': 31}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'physical_index': 32}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'physical_index': 32}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'physical_index': 32}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'physical_index': 33}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'physical_index': 33}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'physical_index': 34}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'physical_index': 34}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'physical_index': 35}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'physical_index': 35}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'physical_index': 36}, {'structure': '4.3', 'title': 'Resources', 'physical_index': 37}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'physical_index': 37}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'physical_index': 37}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'physical_index': 37}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'physical_index': 38}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'physical_index': 38}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'physical_index': 40}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'physical_index': 40}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'physical_index': 40}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'physical_index': 41}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': 41}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'physical_index': 41}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 10}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': 11}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 11}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 11}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': 15}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': 15}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'physical_index': 15}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'physical_index': 15}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'physical_index': 16}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'physical_index': 16}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'physical_index': 16}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'physical_index': 18}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'physical_index': 18}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'physical_index': 18}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'physical_index': 19}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'physical_index': 19}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'physical_index': 19}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'physical_index': 20}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'physical_index': 20}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'physical_index': 21}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'physical_index': 21}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'physical_index': 21}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'physical_index': 23}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'physical_index': 24}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'physical_index': 24}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'physical_index': 26}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'physical_index': 26}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'physical_index': 26}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'physical_index': 27}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'physical_index': 27}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'physical_index': 27}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'physical_index': 28}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'physical_index': 28}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'physical_index': 29}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'physical_index': 29}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': 31}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'physical_index': 31}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'physical_index': 31}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'physical_index': 31}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'physical_index': 32}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'physical_index': 32}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'physical_index': 32}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'physical_index': 33}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'physical_index': 33}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'physical_index': 34}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'physical_index': 34}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'physical_index': 35}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'physical_index': 35}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'physical_index': 36}, {'structure': '4.3', 'title': 'Resources', 'physical_index': 37}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'physical_index': 37}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'physical_index': 37}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'physical_index': 37}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'physical_index': 38}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'physical_index': 38}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'physical_index': 40}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'physical_index': 40}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'physical_index': 40}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'physical_index': 41}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': 41}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'physical_index': 41}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.36363636363636365,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "[RS_BSWMD_00014] Support of BSW Module clusters",
+        "page_number": 20
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information",
+        "page_number": 20
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters",
+        "page_number": 21
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "[RS_BSWMD_00033] Pre-configured ECU Configuration Values",
+        "page_number": 21
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "[RS_BSWMD_00032] Recommended ECU Configuration Values",
+        "page_number": 21
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "[RS_BSWMD_00035] Provide Standardized Module Definition",
+        "page_number": 23
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition",
+        "page_number": 23
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "[RS_BSWMD_00027] Provide Vendor-Specific Module Definition",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "[RS_BSWMD_00007] Provide vendor-specific published information",
+        "page_number": 24
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules",
+        "page_number": 26
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "[RS_BSWMD_00049] Describe optional and required elements",
+        "page_number": 26
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "[RS_BSWMD_00044] Description of generated artifacts",
+        "page_number": 26
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "[RS_BSWMD_00051] Description of libraries",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "[RS_BSWMD_00052] Description of the generated RTE",
+        "page_number": 27
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "[RS_BSWMD_00062] Provide Measurement and Calibration Support",
+        "page_number": 27
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "[RS_BSWMD_00065] Provide Rapid Prototyping Support",
+        "page_number": 28
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping",
+        "page_number": 28
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "[RS_BSWMD_00071] Support service based by-passing for rapid prototyping",
+        "page_number": 29
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "[RS_BSWMD_00069] Configuration for production errors and extended production errors",
+        "page_number": 29
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "BSW Scheduling",
+        "page_number": 31
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions",
+        "page_number": 31
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported",
+        "page_number": 31
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "[RS_BSWMD_00055] Simultaneous Mode transitions",
+        "page_number": 31
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "[RS_BSWMD_00056] API for Mode switch notification of BSW modules",
+        "page_number": 32
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events",
+        "page_number": 32
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events",
+        "page_number": 32
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events",
+        "page_number": 33
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components",
+        "page_number": 33
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API",
+        "page_number": 34
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities",
+        "page_number": 34
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "[RS_BSWMD_00066] BSW inter-partition client-server communication",
+        "page_number": 35
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "[RS_BSWMD_00067] BSW inter-partition sender-receiver communication",
+        "page_number": 35
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition",
+        "page_number": 36
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Resources",
+        "page_number": 37
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "[RS_BSWMD_00005] Description of the memory needs of the software implementation",
+        "page_number": 37
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "[RS_BSWMD_00031] Description of used memory section names",
+        "page_number": 37
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "[RS_BSWMD_00009] Description of peripheral register usage",
+        "page_number": 37
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "[RS_BSWMD_00016] Timing guarantees",
+        "page_number": 38
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "[RS_BSWMD_00046] Publish OS resource usage",
+        "page_number": 40
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services",
+        "page_number": 40
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "[RS_BSWMD_00026] Description of supported hardware",
+        "page_number": 41
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Scope of this document', 'page': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'page': 10}, {'structure': '2', 'title': 'Related Documentation', 'page': 11}, {'structure': '2.1', 'title': 'Input Documents', 'page': 11}, {'structure': '2.2', 'title': 'Specification Documents', 'page': 11}, {'structure': '2.3', 'title': 'Abbreviations', 'page': 11}, {'structure': '3', 'title': 'Requirements Tracing', 'page': 12}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'page': 15}, {'structure': '4.1', 'title': 'Published Information', 'page': 15}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'page': 15}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'page': 15}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'page': 16}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'page': 16}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'page': 16}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'page': 18}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'page': 18}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'page': 18}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'page': 19}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'page': 19}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'page': 19}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'page': 20}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'page': 20}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'page': 21}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'page': 21}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'page': 21}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'page': 23}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'page': 23}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'page': 23}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'page': 24}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'page': 24}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'page': 26}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'page': 26}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'page': 26}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'page': 27}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'page': 27}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'page': 27}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'page': 28}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'page': 28}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'page': 29}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'page': 29}, {'structure': '4.2', 'title': 'BSW Scheduling', 'page': 31}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'page': 31}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'page': 31}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'page': 31}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'page': 32}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'page': 32}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'page': 32}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'page': 33}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'page': 33}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'page': 34}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'page': 34}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'page': 35}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'page': 35}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'page': 36}, {'structure': '4.3', 'title': 'Resources', 'page': 37}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'page': 37}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'page': 37}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'page': 37}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'page': 38}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'page': 38}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'page': 40}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'page': 40}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'page': 40}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'page': 41}, {'structure': '4.4', 'title': 'Requirements on the Template', 'page': 41}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'page': 41}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': '<physical_index_10>'}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': '<physical_index_11>'}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': '<physical_index_11>'}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_12>'}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': '<physical_index_15>'}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'physical_index': '<physical_index_29>'}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'physical_index': '<physical_index_29>'}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'physical_index': '<physical_index_36>'}, {'structure': '4.3', 'title': 'Resources', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'physical_index': '<physical_index_41>'}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': '<physical_index_41>'}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'physical_index': '<physical_index_41>'}, {'structure': '4.4.2', 'title': '[RS_BSWMD_00008] BSW Module Description SHALL be tool processable', 'physical_index': '<physical_index_42>'}, {'structure': '4.4.3', 'title': '[RS_BSWMD_00028] Development according to the AUTOSAR Generic Structure Template document', 'physical_index': '<physical_index_42>'}, {'structure': '4.4.4', 'title': '[RS_BSWMD_00029] Transformation of BSWMD template modeling according to the AUTOSAR XML Schema Production Rules', 'physical_index': '<physical_index_43>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 10}, {'structure': '2', 'title': 'Related Documentation', 'physical_index': 11}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 11}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 11}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': 15}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': 15}, {'structure': '4.1.1', 'title': '[RS_BSWMD_00043] Support description of common published information', 'physical_index': 15}, {'structure': '4.1.2', 'title': '[RS_BSWMD_00024] Support description of module specific published information', 'physical_index': 15}, {'structure': '4.1.3', 'title': '[RS_BSWMD_00039] Identification of implemented API and functions', 'physical_index': 16}, {'structure': '4.1.4', 'title': '[RS_BSWMD_00040] Identification of required API and functions', 'physical_index': 16}, {'structure': '4.1.5', 'title': '[RS_BSWMD_00041] Declaration of the provided API argument data types', 'physical_index': 16}, {'structure': '4.1.6', 'title': '[RS_BSWMD_00042] Description of the required API argument data types', 'physical_index': 18}, {'structure': '4.1.7', 'title': '[RS_BSWMD_00011] Guaranteed execution context of API calls', 'physical_index': 18}, {'structure': '4.1.8', 'title': '[RS_BSWMD_00038] Required execution context of API calls', 'physical_index': 18}, {'structure': '4.1.9', 'title': '[RS_BSWMD_00010] Compiler version and settings', 'physical_index': 19}, {'structure': '4.1.10', 'title': '[RS_BSWMD_00037] Needed libraries', 'physical_index': 19}, {'structure': '4.1.11', 'title': '[RS_BSWMD_00025] Support for shipment information', 'physical_index': 19}, {'structure': '4.1.12', 'title': '[RS_BSWMD_00014] Support of BSW Module clusters', 'physical_index': 20}, {'structure': '4.1.13', 'title': '[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information', 'physical_index': 20}, {'structure': '4.1.14', 'title': '[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters', 'physical_index': 21}, {'structure': '4.1.15', 'title': '[RS_BSWMD_00033] Pre-configured ECU Configuration Values', 'physical_index': 21}, {'structure': '4.1.16', 'title': '[RS_BSWMD_00032] Recommended ECU Configuration Values', 'physical_index': 21}, {'structure': '4.1.17', 'title': '[RS_BSWMD_00035] Provide Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.18', 'title': '[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition', 'physical_index': 23}, {'structure': '4.1.19', 'title': '[RS_BSWMD_00027] Provide Vendor-Specific Module Definition', 'physical_index': 23}, {'structure': '4.1.20', 'title': '[RS_BSWMD_00007] Provide vendor-specific published information', 'physical_index': 23}, {'structure': '4.1.21', 'title': '[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition', 'physical_index': 24}, {'structure': '4.1.22', 'title': '[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules', 'physical_index': 26}, {'structure': '4.1.23', 'title': '[RS_BSWMD_00049] Describe optional and required elements', 'physical_index': 26}, {'structure': '4.1.24', 'title': '[RS_BSWMD_00044] Description of generated artifacts', 'physical_index': 26}, {'structure': '4.1.25', 'title': '[RS_BSWMD_00051] Description of libraries', 'physical_index': 27}, {'structure': '4.1.26', 'title': '[RS_BSWMD_00052] Description of the generated RTE', 'physical_index': 27}, {'structure': '4.1.27', 'title': '[RS_BSWMD_00062] Provide Measurement and Calibration Support', 'physical_index': 27}, {'structure': '4.1.28', 'title': '[RS_BSWMD_00065] Provide Rapid Prototyping Support', 'physical_index': 28}, {'structure': '4.1.29', 'title': '[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping', 'physical_index': 28}, {'structure': '4.1.30', 'title': '[RS_BSWMD_00071] Support service based by-passing for rapid prototyping', 'physical_index': 29}, {'structure': '4.1.31', 'title': '[RS_BSWMD_00069] Configuration for production errors and extended production errors', 'physical_index': 29}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': 31}, {'structure': '4.2.1', 'title': '[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions', 'physical_index': 31}, {'structure': '4.2.2', 'title': '[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported', 'physical_index': 31}, {'structure': '4.2.3', 'title': '[RS_BSWMD_00055] Simultaneous Mode transitions', 'physical_index': 31}, {'structure': '4.2.4', 'title': '[RS_BSWMD_00056] API for Mode switch notification of BSW modules', 'physical_index': 32}, {'structure': '4.2.5', 'title': '[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events', 'physical_index': 32}, {'structure': '4.2.6', 'title': '[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events', 'physical_index': 32}, {'structure': '4.2.7', 'title': '[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events', 'physical_index': 33}, {'structure': '4.2.8', 'title': '[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components', 'physical_index': 33}, {'structure': '4.2.9', 'title': '[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API', 'physical_index': 34}, {'structure': '4.2.10', 'title': '[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities', 'physical_index': 34}, {'structure': '4.2.11', 'title': '[RS_BSWMD_00066] BSW inter-partition client-server communication', 'physical_index': 35}, {'structure': '4.2.12', 'title': '[RS_BSWMD_00067] BSW inter-partition sender-receiver communication', 'physical_index': 35}, {'structure': '4.2.13', 'title': '[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition', 'physical_index': 36}, {'structure': '4.3', 'title': 'Resources', 'physical_index': 37}, {'structure': '4.3.1', 'title': '[RS_BSWMD_00005] Description of the memory needs of the software implementation', 'physical_index': 37}, {'structure': '4.3.2', 'title': '[RS_BSWMD_00031] Description of used memory section names', 'physical_index': 37}, {'structure': '4.3.3', 'title': '[RS_BSWMD_00009] Description of peripheral register usage', 'physical_index': 37}, {'structure': '4.3.4', 'title': '[RS_BSWMD_00016] Timing guarantees', 'physical_index': 38}, {'structure': '4.3.5', 'title': '[RS_BSWMD_00015] Timing requirements', 'physical_index': 38}, {'structure': '4.3.6', 'title': '[RS_BSWMD_00030] Publish resource needs for the BSW Scheduler', 'physical_index': 40}, {'structure': '4.3.7', 'title': '[RS_BSWMD_00046] Publish OS resource usage', 'physical_index': 40}, {'structure': '4.3.8', 'title': '[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services', 'physical_index': 40}, {'structure': '4.3.9', 'title': '[RS_BSWMD_00026] Description of supported hardware', 'physical_index': 41}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': 41}, {'structure': '4.4.1', 'title': '[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration', 'physical_index': 41}, {'structure': '4.4.2', 'title': '[RS_BSWMD_00008] BSW Module Description SHALL be tool processable', 'physical_index': 42}, {'structure': '4.4.3', 'title': '[RS_BSWMD_00028] Development according to the AUTOSAR Generic Structure Template document', 'physical_index': 42}, {'structure': '4.4.4', 'title': '[RS_BSWMD_00029] Transformation of BSWMD template modeling according to the AUTOSAR XML Schema Production Rules', 'physical_index': 43}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.028985507246376812,
+    "incorrect_results": [
+      {
+        "list_index": 0,
+        "answer": "no",
+        "title": "Scope of this document",
+        "page_number": 8
+      },
+      {
+        "list_index": 1,
+        "answer": "no",
+        "title": "Document Conventions",
+        "page_number": 10
+      },
+      {
+        "list_index": 2,
+        "answer": "no",
+        "title": "Related Documentation",
+        "page_number": 11
+      },
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Input Documents",
+        "page_number": 11
+      },
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Specification Documents",
+        "page_number": 11
+      },
+      {
+        "list_index": 5,
+        "answer": "no",
+        "title": "Abbreviations",
+        "page_number": 11
+      },
+      {
+        "list_index": 6,
+        "answer": "no",
+        "title": "Requirements Tracing",
+        "page_number": 12
+      },
+      {
+        "list_index": 7,
+        "answer": "no",
+        "title": "Requirements on BSW Module Description Template",
+        "page_number": 15
+      },
+      {
+        "list_index": 8,
+        "answer": "no",
+        "title": "Published Information",
+        "page_number": 15
+      },
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "[RS_BSWMD_00043] Support description of common published information",
+        "page_number": 15
+      },
+      {
+        "list_index": 10,
+        "answer": "no",
+        "title": "[RS_BSWMD_00024] Support description of module specific published information",
+        "page_number": 15
+      },
+      {
+        "list_index": 11,
+        "answer": "no",
+        "title": "[RS_BSWMD_00039] Identification of implemented API and functions",
+        "page_number": 16
+      },
+      {
+        "list_index": 12,
+        "answer": "no",
+        "title": "[RS_BSWMD_00040] Identification of required API and functions",
+        "page_number": 16
+      },
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "[RS_BSWMD_00041] Declaration of the provided API argument data types",
+        "page_number": 16
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "[RS_BSWMD_00042] Description of the required API argument data types",
+        "page_number": 18
+      },
+      {
+        "list_index": 15,
+        "answer": "no",
+        "title": "[RS_BSWMD_00011] Guaranteed execution context of API calls",
+        "page_number": 18
+      },
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "[RS_BSWMD_00038] Required execution context of API calls",
+        "page_number": 18
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "[RS_BSWMD_00010] Compiler version and settings",
+        "page_number": 19
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "[RS_BSWMD_00037] Needed libraries",
+        "page_number": 19
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "[RS_BSWMD_00025] Support for shipment information",
+        "page_number": 19
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "[RS_BSWMD_00014] Support of BSW Module clusters",
+        "page_number": 20
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "[RS_BSWMD_00034] ECU Configuration Editor and Generation supported tool version information",
+        "page_number": 20
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "[RS_BSWMD_00013] Describe configuration class of ECU Configuration Parameters",
+        "page_number": 21
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "[RS_BSWMD_00033] Pre-configured ECU Configuration Values",
+        "page_number": 21
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "[RS_BSWMD_00032] Recommended ECU Configuration Values",
+        "page_number": 21
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "[RS_BSWMD_00035] Provide Standardized Module Definition",
+        "page_number": 23
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "[RS_BSWMD_00050] Allow vendor-specific modification of Standardized Module Definition",
+        "page_number": 23
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "[RS_BSWMD_00027] Provide Vendor-Specific Module Definition",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "[RS_BSWMD_00007] Provide vendor-specific published information",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "[RS_BSWMD_00048] Tagging of Vendor-Specific Module Definition",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "[RS_BSWMD_00047] Modeling of call-chain dependencies between BSW Modules",
+        "page_number": 26
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "[RS_BSWMD_00049] Describe optional and required elements",
+        "page_number": 26
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "[RS_BSWMD_00044] Description of generated artifacts",
+        "page_number": 26
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "[RS_BSWMD_00051] Description of libraries",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "[RS_BSWMD_00052] Description of the generated RTE",
+        "page_number": 27
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "[RS_BSWMD_00062] Provide Measurement and Calibration Support",
+        "page_number": 27
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "[RS_BSWMD_00065] Provide Rapid Prototyping Support",
+        "page_number": 28
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "[RS_BSWMD_00070] Support post-build hooking tools for rapid prototyping",
+        "page_number": 28
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "[RS_BSWMD_00071] Support service based by-passing for rapid prototyping",
+        "page_number": 29
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "[RS_BSWMD_00069] Configuration for production errors and extended production errors",
+        "page_number": 29
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "BSW Scheduling",
+        "page_number": 31
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "[RS_BSWMD_00053] Cyclic time based scheduling of BSW Main Functions",
+        "page_number": 31
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "[RS_BSWMD_00054] Mode Switches for BSW modules shall be supported",
+        "page_number": 31
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "[RS_BSWMD_00055] Simultaneous Mode transitions",
+        "page_number": 31
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "[RS_BSWMD_00056] API for Mode switch notification of BSW modules",
+        "page_number": 32
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "[RS_BSWMD_00057] Triggering of BSW Main Functions by Triggered Events",
+        "page_number": 32
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "[RS_BSWMD_00058] Simultaneous Triggering by Triggered Events",
+        "page_number": 32
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "[RS_BSWMD_00059] API for Triggering BSW modules by Triggered Events",
+        "page_number": 33
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "[RS_BSWMD_00060] Support exclusive areas in BSW Modules and Application Software Components",
+        "page_number": 33
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "[RS_BSWMD_00063] Allow enabling of providing Activating Bsw Event API",
+        "page_number": 34
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "[RS_BSWMD_00064] Support optional configuration of ExclusiveArea usage within BSWModuleEntities",
+        "page_number": 34
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "[RS_BSWMD_00066] BSW inter-partition client-server communication",
+        "page_number": 35
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "[RS_BSWMD_00067] BSW inter-partition sender-receiver communication",
+        "page_number": 35
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "[RS_BSWMD_00068] BSW Service Execution on Local or Remote Partition",
+        "page_number": 36
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Resources",
+        "page_number": 37
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "[RS_BSWMD_00005] Description of the memory needs of the software implementation",
+        "page_number": 37
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "[RS_BSWMD_00031] Description of used memory section names",
+        "page_number": 37
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "[RS_BSWMD_00009] Description of peripheral register usage",
+        "page_number": 37
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "[RS_BSWMD_00016] Timing guarantees",
+        "page_number": 38
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "[RS_BSWMD_00015] Timing requirements",
+        "page_number": 38
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "[RS_BSWMD_00046] Publish OS resource usage",
+        "page_number": 40
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "[RS_BSWMD_00045] Publish resources needed from AUTOSAR Services",
+        "page_number": 40
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "[RS_BSWMD_00026] Description of supported hardware",
+        "page_number": 41
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "[RS_BSWMD_00001] Main source of information on BSW Module ECU Configuration activity and integration",
+        "page_number": 41
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "[RS_BSWMD_00008] BSW Module Description SHALL be tool processable",
+        "page_number": 42
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "[RS_BSWMD_00028] Development according to the AUTOSAR Generic Structure Template document",
+        "page_number": 42
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "[RS_BSWMD_00029] Transformation of BSWMD template modeling according to the AUTOSAR XML Schema Production Rules",
+        "page_number": 43
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': '<physical_index_10>'}, {'structure': '2', 'title': 'Related Documentationn', 'physical_index': '<physical_index_11>'}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': '<physical_index_11>'}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_12>'}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': '<physical_index_15>'}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': '<physical_index_15>'}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': '<physical_index_31>'}, {'structure': '4.3', 'title': 'Resources', 'physical_index': '<physical_index_5>'}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': '<physical_index_5>'}, {'structure': '5', 'title': 'Change History', 'physical_index': '<physical_index_6>'}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': '<physical_index_6>'}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.1.3', 'title': 'Deleted Traceables in 4.0.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': '<physical_index_6>'}, {'structure': '5.2.1', 'title': 'Changed Traceables in R4.1.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.2.2', 'title': 'Added Traceables in R4.1.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.1.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': '<physical_index_6>'}, {'structure': '5.3.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.3.2', 'title': 'Changed Traceables in 4.2.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.3.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.4.1', 'title': 'Added Traceables in 4.2.2', 'physical_index': '<physical_index_6>'}, {'structure': '5.4.2', 'title': 'Changed Traceables in 4.2.2', 'physical_index': '<physical_index_6>'}, {'structure': '5.4.3', 'title': 'Deleted Traceables in 4.2.2', 'physical_index': '<physical_index_6>'}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': '<physical_index_6>'}, {'structure': '5.5.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': '<physical_index_6>'}, {'structure': '5.5.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': '<physical_index_6>'}, {'structure': '5.5.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': '<physical_index_6>'}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': '<physical_index_6>'}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.3.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.3.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.3.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': '<physical_index_6>'}, {'structure': '5.7.1', 'title': 'Added Traceables in 4.4.0', 'physical_index': '<physical_index_6>'}, {'structure': '5.7.2', 'title': 'Changed Traceables in 4.4.0', 'physical_index': '<physical_index_6>'}, {'structure': '5.7.3', 'title': 'Deleted Traceables in 4.4.0', 'physical_index': '<physical_index_6>'}, {'structure': '4.2.1', 'title': 'Synchronized Triggering of Runnable Entities and BSW Main Functions by Shared Triggered Events', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.2', 'title': 'API for Triggering BSW Modules by Triggered Events', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.3', 'title': 'Support Exclusive Areas in BSW Modules and Application Software Components', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.4', 'title': 'Allow Enabling of Providing Activating Bsw Event API', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.5', 'title': 'Support Optional Configuration of ExclusiveArea Usage within BSWModuleEntities', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.6', 'title': 'BSW Inter-Partition Client-Server Communication', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.7', 'title': 'BSW Inter-Partition Sender-Receiver Communication', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.8', 'title': 'BSW Service Execution on Local or Remote Partition', 'physical_index': '<physical_index_36>'}, {'structure': '4.3.1', 'title': 'Description of the Memory Needs of the Software Implementation', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.2', 'title': 'Description of Used Memory Section Names', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.3', 'title': 'Description of Peripheral Register Usage', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.4', 'title': 'Timing Guarantees', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.5', 'title': 'Timing Requirements', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.6', 'title': 'Publish Resource Needs for the BSW Scheduler', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.7', 'title': 'Publish OS Resource Usage', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.8', 'title': 'Publish Resources Needed from AUTOSAR Services', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.9', 'title': 'Description of Supported Hardware', 'physical_index': '<physical_index_41>'}, {'structure': '4.4.1', 'title': 'Main Source of Information on BSW Module ECU Configuration Activity and Integration', 'physical_index': '<physical_index_41>'}, {'structure': '4.4.2', 'title': 'BSW Module Description SHALL Be Tool Processable', 'physical_index': '<physical_index_42>'}, {'structure': '4.4.3', 'title': 'Development According to the AUTOSAR Generic Structure Template Document', 'physical_index': '<physical_index_42>'}, {'structure': '4.4.4', 'title': 'Transformation of BSWMD Template Modeling According to the AUTOSAR XML Schema Production Rules', 'physical_index': '<physical_index_43>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 10}, {'structure': '2', 'title': 'Related Documentationn', 'physical_index': 11}, {'structure': '2.1', 'title': 'Input Documents', 'physical_index': 11}, {'structure': '2.2', 'title': 'Specification Documents', 'physical_index': 11}, {'structure': '2.3', 'title': 'Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements on BSW Module Description Template', 'physical_index': 15}, {'structure': '4.1', 'title': 'Published Information', 'physical_index': 15}, {'structure': '4.2', 'title': 'BSW Scheduling', 'physical_index': 31}, {'structure': '4.3', 'title': 'Resources', 'physical_index': 5}, {'structure': '4.4', 'title': 'Requirements on the Template', 'physical_index': 5}, {'structure': '5', 'title': 'Change History', 'physical_index': 6}, {'structure': '5.1', 'title': 'Change History for AUTOSAR R4.0.1 against R3.1.5', 'physical_index': 6}, {'structure': '5.1.1', 'title': 'Added Traceables in R4.0.1', 'physical_index': 6}, {'structure': '5.1.2', 'title': 'Changed Traceables in R4.0.1', 'physical_index': 6}, {'structure': '5.1.3', 'title': 'Deleted Traceables in 4.0.1', 'physical_index': 6}, {'structure': '5.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 6}, {'structure': '5.2.1', 'title': 'Changed Traceables in R4.1.1', 'physical_index': 6}, {'structure': '5.2.2', 'title': 'Added Traceables in R4.1.1', 'physical_index': 6}, {'structure': '5.2.3', 'title': 'Deleted Traceables in 4.1.1', 'physical_index': 6}, {'structure': '5.3', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 6}, {'structure': '5.3.1', 'title': 'Added Traceables in 4.2.1', 'physical_index': 6}, {'structure': '5.3.2', 'title': 'Changed Traceables in 4.2.1', 'physical_index': 6}, {'structure': '5.3.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 6}, {'structure': '5.4', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 6}, {'structure': '5.4.1', 'title': 'Added Traceables in 4.2.2', 'physical_index': 6}, {'structure': '5.4.2', 'title': 'Changed Traceables in 4.2.2', 'physical_index': 6}, {'structure': '5.4.3', 'title': 'Deleted Traceables in 4.2.2', 'physical_index': 6}, {'structure': '5.5', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 6}, {'structure': '5.5.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': 6}, {'structure': '5.5.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': 6}, {'structure': '5.5.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': 6}, {'structure': '5.6', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 6}, {'structure': '5.6.1', 'title': 'Added Traceables in 4.3.1', 'physical_index': 6}, {'structure': '5.6.2', 'title': 'Changed Traceables in 4.3.1', 'physical_index': 6}, {'structure': '5.6.3', 'title': 'Deleted Traceables in 4.3.1', 'physical_index': 6}, {'structure': '5.7', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 6}, {'structure': '5.7.1', 'title': 'Added Traceables in 4.4.0', 'physical_index': 6}, {'structure': '5.7.2', 'title': 'Changed Traceables in 4.4.0', 'physical_index': 6}, {'structure': '5.7.3', 'title': 'Deleted Traceables in 4.4.0', 'physical_index': 6}, {'structure': '4.2.1', 'title': 'Synchronized Triggering of Runnable Entities and BSW Main Functions by Shared Triggered Events', 'physical_index': 33}, {'structure': '4.2.2', 'title': 'API for Triggering BSW Modules by Triggered Events', 'physical_index': 33}, {'structure': '4.2.3', 'title': 'Support Exclusive Areas in BSW Modules and Application Software Components', 'physical_index': 33}, {'structure': '4.2.4', 'title': 'Allow Enabling of Providing Activating Bsw Event API', 'physical_index': 34}, {'structure': '4.2.5', 'title': 'Support Optional Configuration of ExclusiveArea Usage within BSWModuleEntities', 'physical_index': 34}, {'structure': '4.2.6', 'title': 'BSW Inter-Partition Client-Server Communication', 'physical_index': 35}, {'structure': '4.2.7', 'title': 'BSW Inter-Partition Sender-Receiver Communication', 'physical_index': 35}, {'structure': '4.2.8', 'title': 'BSW Service Execution on Local or Remote Partition', 'physical_index': 36}, {'structure': '4.3.1', 'title': 'Description of the Memory Needs of the Software Implementation', 'physical_index': 37}, {'structure': '4.3.2', 'title': 'Description of Used Memory Section Names', 'physical_index': 37}, {'structure': '4.3.3', 'title': 'Description of Peripheral Register Usage', 'physical_index': 38}, {'structure': '4.3.4', 'title': 'Timing Guarantees', 'physical_index': 38}, {'structure': '4.3.5', 'title': 'Timing Requirements', 'physical_index': 38}, {'structure': '4.3.6', 'title': 'Publish Resource Needs for the BSW Scheduler', 'physical_index': 40}, {'structure': '4.3.7', 'title': 'Publish OS Resource Usage', 'physical_index': 40}, {'structure': '4.3.8', 'title': 'Publish Resources Needed from AUTOSAR Services', 'physical_index': 40}, {'structure': '4.3.9', 'title': 'Description of Supported Hardware', 'physical_index': 41}, {'structure': '4.4.1', 'title': 'Main Source of Information on BSW Module ECU Configuration Activity and Integration', 'physical_index': 41}, {'structure': '4.4.2', 'title': 'BSW Module Description SHALL Be Tool Processable', 'physical_index': 42}, {'structure': '4.4.3', 'title': 'Development According to the AUTOSAR Generic Structure Template Document', 'physical_index': 42}, {'structure': '4.4.4', 'title': 'Transformation of BSWMD Template Modeling According to the AUTOSAR XML Schema Production Rules', 'physical_index': 43}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3225806451612903,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.1.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.1 against R4.1.3",
+        "page_number": 6
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Changed Traceables in 4.2.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.2.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.2 against R4.2.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.2",
+        "page_number": 6
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Changed Traceables in 4.2.2",
+        "page_number": 6
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.2.2",
+        "page_number": 6
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.0 against R4.2.2",
+        "page_number": 6
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Added Traceables in 4.3.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Changed Traceables in 4.3.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.3.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.1 against R4.3.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Added Traceables in 4.3.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Changed Traceables in 4.3.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.3.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.4.0 against R4.3.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Added Traceables in 4.4.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Changed Traceables in 4.4.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.4.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Synchronized Triggering of Runnable Entities and BSW Main Functions by Shared Triggered Events",
+        "page_number": 33
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "API for Triggering BSW Modules by Triggered Events",
+        "page_number": 33
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Support Exclusive Areas in BSW Modules and Application Software Components",
+        "page_number": 33
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Allow Enabling of Providing Activating Bsw Event API",
+        "page_number": 34
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Support Optional Configuration of ExclusiveArea Usage within BSWModuleEntities",
+        "page_number": 34
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "BSW Inter-Partition Client-Server Communication",
+        "page_number": 35
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "BSW Inter-Partition Sender-Receiver Communication",
+        "page_number": 35
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "BSW Service Execution on Local or Remote Partition",
+        "page_number": 36
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Description of the Memory Needs of the Software Implementation",
+        "page_number": 37
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Description of Used Memory Section Names",
+        "page_number": 37
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Description of Peripheral Register Usage",
+        "page_number": 38
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Timing Guarantees",
+        "page_number": 38
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Timing Requirements",
+        "page_number": 38
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Publish Resource Needs for the BSW Scheduler",
+        "page_number": 40
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Publish OS Resource Usage",
+        "page_number": 40
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Publish Resources Needed from AUTOSAR Services",
+        "page_number": 40
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Description of Supported Hardware",
+        "page_number": 41
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Main Source of Information on BSW Module ECU Configuration Activity and Integration",
+        "page_number": 41
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "BSW Module Description SHALL Be Tool Processable",
+        "page_number": 42
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Development According to the AUTOSAR Generic Structure Template Document",
+        "page_number": 42
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Transformation of BSWMD Template Modeling According to the AUTOSAR XML Schema Production Rules",
+        "page_number": 43
+      }
+    ]
+  }
+]

@@ -1,0 +1,574 @@
+[
+  {
+    "total_page_number": 45
+  },
+  {
+    "total_token": 20157
+  },
+  {
+    "toc_content": "Requirements on Diagnostic Extract Template\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Introduction 7\n1.1 Scope of this document : 7\n1.2 Document Conventions : 8\n1.3 Guidelines : 9\n1.4 Requirements Tracing : 10\n2 Requirements 11\n2.1 Relation to AUTOSAR Features : 11\n2.2 General Requirements : 11\n[RS_DEXT_00001] Diagnostic data exchange : 11\n[RS_DEXT_00044] Derivation of related ECU-C parameter : 12\n[RS_DEXT_00046] Variants : 12\n[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU 13\n[RS_DEXT_00058] Indicate that an ECU supports ODB : 13\n[RS_DEXT_00059] Support for different protocols : 14\n2.3 Requirements against the Support for UDS Diagnostic Services . . . . 14\n[RS_DEXT_00003] SessionControl : 14\n[RS_DEXT_00004] ECUReset : 14\n[RS_DEXT_00005] ClearDiagnosticInformation : 15\n[RS_DEXT_00006] ReadDTCInformation : 15\n[RS_DEXT_00007] ReadDataByIdentifier : 15\n[RS_DEXT_00008] ReadMemoryByAddress : 16\n[RS_DEXT_00009] SecurityAccess : 16\n[RS_DEXT_00010] CommunicationControl : 16\n[RS_DEXT_00011] ReadDataByPeriodicIdentifier : 17\n[RS_DEXT_00012] DynamicallyDefineDataIdentifier : 17\n[RS_DEXT_00013] WriteDataByIdentifier : 17\n[RS_DEXT_00014] IOControl : 18\n[RS_DEXT_00015] RoutineControl : 18\n[RS_DEXT_00016] RequestDownload : 18\n[RS_DEXT_00017] RequestUpload : 19\n[RS_DEXT_00018] TransferData : 19\n[RS_DEXT_00019] RequestTransferExit : 19\n[RS_DEXT_00020] WriteMemoryByAddress : 20\n[RS_DEXT_00021] ControlDTCSetting : 20\n[RS_DEXT_00022] ResponseOnEvent : 20\n[RS_DEXT_00057] RequestFileTransfer : 21\n[RS_DEXT_00047] Custom Diagnostic Service : 21\n[RS_DEXT_00049] Properties of individual diagnostic services : 21\n[RS_DEXT_00050] Properties of all diagnostic services of a given kind 22\n[RS_DEXT_00051] Subfunctions of Diagnostic Services : 22\n[RS_DEXT_00052] Mapping of diagnostic services to the PortProto-\ntypes of ApplicationSwComponentTypes : 22\n[RS_DEXT_00043] Description of data elements : 23\n3 of 45\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 681: AUTOSAR_RS_DiagnosticExtractTemplateRequirements on Diagnostic Extract Template\nAUTOSAR CP Release 4.4.0\n[RS_DEXT_00038] Description of array data types : 23\n[RS_DEXT_00039] Diagnostic Service Table : 24\n2.4 Requirements against Event Handling : 24\n[RS_DEXT_00023] Configuration of events : 24\n[RS_DEXT_00024] Configuration of DTCs : 25\n[RS_DEXT_00025] Combined Events : 25\n[RS_DEXT_00026] Enable Conditions : 25\n[RS_DEXT_00027] Storage Conditions : 26\n[RS_DEXT_00028] Enable Condition Groups : 26\n[RS_DEXT_00029] Storage Condition Groups : 27\n[RS_DEXT_00030] Assignment of Enable Condition Groups : 27\n[RS_DEXT_00031] Assignment of Storage Condition Group : 27\n[RS_DEXT_00032] Configuration of Extended Data Records : 28\n[RS_DEXT_00033] Configuration of Snapshot Records : 28\n[RS_DEXT_00034] Description of Data Identifiers : 29\n[RS_DEXT_00035] Description of Dynamic Data Identifiers : 29\n[RS_DEXT_00036] Description of Routine Identifiers : 29\n[RS_DEXT_00037] Description of I/O Identifiers : 29\n[RS_DEXT_00053] Debouncing of diagnostic events : 30\n[RS_DEXT_00054] Operation cycles : 30\n[RS_DEXT_00055] Aging : 30\n[RS_DEXT_00056] Indicator : 31\n[RS_DEXT_00045] Textual descriptions : 31\n[RS_DEXT_00078] Support for In Use Monitor Performance Ratio . . . 31\n2.5 Requirements against Sessions and Security : 32\n[RS_DEXT_00040] Diagnostic Sessions : 32\n[RS_DEXT_00041] Access Permissions : 32\n[RS_DEXT_00042] Security Levels : 33\n[RS_DEXT_00079] Support for environment conditions : 33\n2.6 Requirements against the Support for Function Inhibition : 33\n[RS_DEXT_00060] Function : 33\n[RS_DEXT_00061] Relationship between functions and diagnostic events 34\n[RS_DEXT_00062] Pre-configuration of the Fim when the Dem configu-\nration is not yet available : 34\n[RS_DEXT_00063] Relation between functions on Fim level and\nsoftware-components : 35\n2.7 Requirements against the Support for diagnostics on J1939 : 35\n[RS_DEXT_00064] Definition of an SPN : 35\n[RS_DEXT_00065] Definition of freeze frames on J1939 : 36\n[RS_DEXT_00066] Mapping between a J1939 controller application and\na software-component : 36\n[RS_DEXT_00067] Definition of J1939 DTC : 37\n2.8 Requirements against the Support for OBD Diagnostic Services . . . . 37\n[RS_DEXT_00068] Definition of a Diagnostic Parameter Identifier . . . . 37\n[RS_DEXT_00069] Support for OBD Mode 0x01 (RequestCurrentPow-\nertrainDiagnosticData) : 37\n4 of 45\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 681: AUTOSAR_RS_DiagnosticExtractTemplateRequirements on Diagnostic Extract Template\nAUTOSAR CP Release 4.4.0\n[RS_DEXT_00070] Support for OBD Mode 0x02 (RequestPowertrain-\nFreezeFrameData) : 38\n[RS_DEXT_00071] Support for OBD ModeModes 0x03 / 0x07 / 0x0A\n(RequestEmissionRelatedDiagnosticTroubleCodes) : 38\n[RS_DEXT_00072] Support for OBD Mode 0x04 (ClearResetEmission-\nRelatedDiagnosticInformation) : 38\n[RS_DEXT_00073] Support for OBD Mode 0x06 (RequestOnBoard-\nMonitoringTestResults) : 39\n[RS_DEXT_00074] Support for OBD Mode 0x08 (RequestControlOfOn-\nBoardDevice) : 39\n[RS_DEXT_00075] Support for OBD Mode 0x09 (RequestVehicleInfor-\nmation) : 39\n[RS_DEXT_00076] Definition of Diagnostic Test Identifier : 40\n[RS_DEXT_00077] Description of the utilization of UDS for supporting\nWWH-OBD : 40\nA History of Constraints and Specification Items 41\nA.1 Constraint History of this Document according to AUTOSAR R4.2.1 . . 41\nA.1.1 Added Traceables in R4.2.1 : 41\nA.1.2 Added Traceables in 4.2.1 : 42\nA.1.3 Deleted Traceables in 4.2.1 : 42\nA.2 Constraint History of this Document according to AUTOSAR R4.2.2 . . 42\nA.2.1 Added Traceables in 4.2.2 : 42\nA.2.2 Changed Traceables in 4.2.2 : 42\nA.2.3 Deleted Traceables in 4.2.2 : 43\nA.2.4 Added Constraints in 4.2.2 : 43\nA.2.5 Changed Constraints in 4.2.2 : 43\nA.2.6 Deleted Constraints in 4.2.2 : 43\nA.3 Constraint History of this Document according to AUTOSAR R4.3.0 . . 43\nA.3.1 Added Traceables in 4.3.0 : 43\nA.3.2 Changed Traceables in 4.3.0 : 44\nA.3.3 Deleted Traceables in 4.3.0 : 45\nA.3.4 Added Constraints in 4.3.0 : 45\nA.3.5 Changed Constraints in 4.3.0 : 45\nA.3.6 Deleted Constraints in 4.3.0 : 45\n5 of 45\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 681: AUTOSAR_RS_DiagnosticExtractTemplate",
+    "toc_page_list": [
+      2,
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 7}, {'structure': '1.1', 'title': 'Scope of this document', 'page': 7}, {'structure': '1.2', 'title': 'Document Conventions', 'page': 8}, {'structure': '1.3', 'title': 'Guidelines', 'page': 9}, {'structure': '1.4', 'title': 'Requirements Tracing', 'page': 10}, {'structure': '2', 'title': 'Requirements', 'page': 11}, {'structure': '2.1', 'title': 'Relation to AUTOSAR Features', 'page': 11}, {'structure': '2.2', 'title': 'General Requirements', 'page': 11}, {'structure': '2.2.1', 'title': '[RS_DEXT_00001] Diagnostic data exchange', 'page': 11}, {'structure': '2.2.2', 'title': '[RS_DEXT_00044] Derivation of related ECU-C parameter', 'page': 12}, {'structure': '2.2.3', 'title': '[RS_DEXT_00046] Variants', 'page': 12}, {'structure': '2.2.4', 'title': '[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU', 'page': 13}, {'structure': '2.2.5', 'title': '[RS_DEXT_00058] Indicate that an ECU supports ODB', 'page': 13}, {'structure': '2.2.6', 'title': '[RS_DEXT_00059] Support for different protocols', 'page': 14}, {'structure': '2.3', 'title': 'Requirements against the Support for UDS Diagnostic Services', 'page': 14}, {'structure': '2.3.1', 'title': '[RS_DEXT_00003] SessionControl', 'page': 14}, {'structure': '2.3.2', 'title': '[RS_DEXT_00004] ECUReset', 'page': 14}, {'structure': '2.3.3', 'title': '[RS_DEXT_00005] ClearDiagnosticInformation', 'page': 15}, {'structure': '2.3.4', 'title': '[RS_DEXT_00006] ReadDTCInformation', 'page': 15}, {'structure': '2.3.5', 'title': '[RS_DEXT_00007] ReadDataByIdentifier', 'page': 15}, {'structure': '2.3.6', 'title': '[RS_DEXT_00008] ReadMemoryByAddress', 'page': 16}, {'structure': '2.3.7', 'title': '[RS_DEXT_00009] SecurityAccess', 'page': 16}, {'structure': '2.3.8', 'title': '[RS_DEXT_00010] CommunicationControl', 'page': 16}, {'structure': '2.3.9', 'title': '[RS_DEXT_00011] ReadDataByPeriodicIdentifier', 'page': 17}, {'structure': '2.3.10', 'title': '[RS_DEXT_00012] DynamicallyDefineDataIdentifier', 'page': 17}, {'structure': '2.3.11', 'title': '[RS_DEXT_00013] WriteDataByIdentifier', 'page': 17}, {'structure': '2.3.12', 'title': '[RS_DEXT_00014] IOControl', 'page': 18}, {'structure': '2.3.13', 'title': '[RS_DEXT_00015] RoutineControl', 'page': 18}, {'structure': '2.3.14', 'title': '[RS_DEXT_00016] RequestDownload', 'page': 18}, {'structure': '2.3.15', 'title': '[RS_DEXT_00017] RequestUpload', 'page': 19}, {'structure': '2.3.16', 'title': '[RS_DEXT_00018] TransferData', 'page': 19}, {'structure': '2.3.17', 'title': '[RS_DEXT_00019] RequestTransferExit', 'page': 19}, {'structure': '2.3.18', 'title': '[RS_DEXT_00020] WriteMemoryByAddress', 'page': 20}, {'structure': '2.3.19', 'title': '[RS_DEXT_00021] ControlDTCSetting', 'page': 20}, {'structure': '2.3.20', 'title': '[RS_DEXT_00022] ResponseOnEvent', 'page': 20}, {'structure': '2.3.21', 'title': '[RS_DEXT_00057] RequestFileTransfer', 'page': 21}, {'structure': '2.3.22', 'title': '[RS_DEXT_00047] Custom Diagnostic Service', 'page': 21}, {'structure': '2.3.23', 'title': '[RS_DEXT_00049] Properties of individual diagnostic services', 'page': 21}, {'structure': '2.3.24', 'title': '[RS_DEXT_00050] Properties of all diagnostic services of a given kind', 'page': 22}, {'structure': '2.3.25', 'title': '[RS_DEXT_00051] Subfunctions of Diagnostic Services', 'page': 22}, {'structure': '2.3.26', 'title': '[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes', 'page': 22}, {'structure': '2.3.27', 'title': '[RS_DEXT_00043] Description of data elements', 'page': 23}, {'structure': '2.3.28', 'title': '[RS_DEXT_00038] Description of array data types', 'page': 23}, {'structure': '2.3.29', 'title': '[RS_DEXT_00039] Diagnostic Service Table', 'page': 24}, {'structure': '2.4', 'title': 'Requirements against Event Handling', 'page': 24}, {'structure': '2.4.1', 'title': '[RS_DEXT_00023] Configuration of events', 'page': 24}, {'structure': '2.4.2', 'title': '[RS_DEXT_00024] Configuration of DTCs', 'page': 25}, {'structure': '2.4.3', 'title': '[RS_DEXT_00025] Combined Events', 'page': 25}, {'structure': '2.4.4', 'title': '[RS_DEXT_00026] Enable Conditions', 'page': 25}, {'structure': '2.4.5', 'title': '[RS_DEXT_00027] Storage Conditions', 'page': 26}, {'structure': '2.4.6', 'title': '[RS_DEXT_00028] Enable Condition Groups', 'page': 26}, {'structure': '2.4.7', 'title': '[RS_DEXT_00029] Storage Condition Groups', 'page': 27}, {'structure': '2.4.8', 'title': '[RS_DEXT_00030] Assignment of Enable Condition Groups', 'page': 27}, {'structure': '2.4.9', 'title': '[RS_DEXT_00031] Assignment of Storage Condition Group', 'page': 27}, {'structure': '2.4.10', 'title': '[RS_DEXT_00032] Configuration of Extended Data Records', 'page': 28}, {'structure': '2.4.11', 'title': '[RS_DEXT_00033] Configuration of Snapshot Records', 'page': 28}, {'structure': '2.4.12', 'title': '[RS_DEXT_00034] Description of Data Identifiers', 'page': 29}, {'structure': '2.4.13', 'title': '[RS_DEXT_00035] Description of Dynamic Data Identifiers', 'page': 29}, {'structure': '2.4.14', 'title': '[RS_DEXT_00036] Description of Routine Identifiers', 'page': 29}, {'structure': '2.4.15', 'title': '[RS_DEXT_00037] Description of I/O Identifiers', 'page': 29}, {'structure': '2.4.16', 'title': '[RS_DEXT_00053] Debouncing of diagnostic events', 'page': 30}, {'structure': '2.4.17', 'title': '[RS_DEXT_00054] Operation cycles', 'page': 30}, {'structure': '2.4.18', 'title': '[RS_DEXT_00055] Aging', 'page': 30}, {'structure': '2.4.19', 'title': '[RS_DEXT_00056] Indicator', 'page': 31}, {'structure': '2.4.20', 'title': '[RS_DEXT_00045] Textual descriptions', 'page': 31}, {'structure': '2.4.21', 'title': '[RS_DEXT_00078] Support for In Use Monitor Performance Ratio', 'page': 31}, {'structure': '2.5', 'title': 'Requirements against Sessions and Security', 'page': 32}, {'structure': '2.5.1', 'title': '[RS_DEXT_00040] Diagnostic Sessions', 'page': 32}, {'structure': '2.5.2', 'title': '[RS_DEXT_00041] Access Permissions', 'page': 32}, {'structure': '2.5.3', 'title': '[RS_DEXT_00042] Security Levels', 'page': 33}, {'structure': '2.5.4', 'title': '[RS_DEXT_00079] Support for environment conditions', 'page': 33}, {'structure': '2.6', 'title': 'Requirements against the Support for Function Inhibition', 'page': 33}, {'structure': '2.6.1', 'title': '[RS_DEXT_00060] Function', 'page': 33}, {'structure': '2.6.2', 'title': '[RS_DEXT_00061] Relationship between functions and diagnostic events', 'page': 34}, {'structure': '2.6.3', 'title': '[RS_DEXT_00062] Pre-configuration of the Fim when the Dem configuration is not yet available', 'page': 34}, {'structure': '2.6.4', 'title': '[RS_DEXT_00063] Relation between functions on Fim level and software-components', 'page': 35}, {'structure': '2.7', 'title': 'Requirements against the Support for diagnostics on J1939', 'page': 35}, {'structure': '2.7.1', 'title': '[RS_DEXT_00064] Definition of an SPN', 'page': 35}, {'structure': '2.7.2', 'title': '[RS_DEXT_00065] Definition of freeze frames on J1939', 'page': 36}, {'structure': '2.7.3', 'title': '[RS_DEXT_00066] Mapping between a J1939 controller application and a software-component', 'page': 36}, {'structure': '2.7.4', 'title': '[RS_DEXT_00067] Definition of J1939 DTC', 'page': 37}, {'structure': '2.8', 'title': 'Requirements against the Support for OBD Diagnostic Services', 'page': 37}, {'structure': '2.8.1', 'title': '[RS_DEXT_00068] Definition of a Diagnostic Parameter Identifier', 'page': 37}, {'structure': '2.8.2', 'title': '[RS_DEXT_00069] Support for OBD Mode 0x01 (RequestCurrentPowertrainDiagnosticData)', 'page': 37}, {'structure': '2.8.3', 'title': '[RS_DEXT_00070] Support for OBD Mode 0x02 (RequestPowertrainFreezeFrameData)', 'page': 38}, {'structure': '2.8.4', 'title': '[RS_DEXT_00071] Support for OBD ModeModes 0x03 / 0x07 / 0x0A (RequestEmissionRelatedDiagnosticTroubleCodes)', 'page': 38}, {'structure': '2.8.5', 'title': '[RS_DEXT_00072] Support for OBD Mode 0x04 (ClearResetEmissionRelatedDiagnosticInformation)', 'page': 38}, {'structure': '2.8.6', 'title': '[RS_DEXT_00073] Support for OBD Mode 0x06 (RequestOnBoardMonitoringTestResults)', 'page': 39}, {'structure': '2.8.7', 'title': '[RS_DEXT_00074] Support for OBD Mode 0x08 (RequestControlOfOnBoardDevice)', 'page': 39}, {'structure': '2.8.8', 'title': '[RS_DEXT_00075] Support for OBD Mode 0x09 (RequestVehicleInformation)', 'page': 39}, {'structure': '2.8.9', 'title': '[RS_DEXT_00076] Definition of Diagnostic Test Identifier', 'page': 40}, {'structure': '2.8.10', 'title': '[RS_DEXT_00077] Description of the utilization of UDS for supporting WWH-OBD', 'page': 40}, {'structure': 'A', 'title': 'History of Constraints and Specification Items', 'page': 41}, {'structure': 'A.1', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.1', 'page': 41}, {'structure': 'A.1.1', 'title': 'Added Traceables in R4.2.1', 'page': 41}, {'structure': 'A.1.2', 'title': 'Added Traceables in 4.2.1', 'page': 42}, {'structure': 'A.1.3', 'title': 'Deleted Traceables in 4.2.1', 'page': 42}, {'structure': 'A.2', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.2', 'page': 42}, {'structure': 'A.2.1', 'title': 'Added Traceables in 4.2.2', 'page': 42}, {'structure': 'A.2.2', 'title': 'Changed Traceables in 4.2.2', 'page': 42}, {'structure': 'A.2.3', 'title': 'Deleted Traceables in 4.2.2', 'page': 43}, {'structure': 'A.2.4', 'title': 'Added Constraints in 4.2.2', 'page': 43}, {'structure': 'A.2.5', 'title': 'Changed Constraints in 4.2.2', 'page': 43}, {'structure': 'A.2.6', 'title': 'Deleted Constraints in 4.2.2', 'page': 43}, {'structure': 'A.3', 'title': 'Constraint History of this Document according to AUTOSAR R4.3.0', 'page': 43}, {'structure': 'A.3.1', 'title': 'Added Traceables in 4.3.0', 'page': 43}, {'structure': 'A.3.2', 'title': 'Changed Traceables in 4.3.0', 'page': 44}, {'structure': 'A.3.3', 'title': 'Deleted Traceables in 4.3.0', 'page': 45}, {'structure': 'A.3.4', 'title': 'Added Constraints in 4.3.0', 'page': 45}, {'structure': 'A.3.5', 'title': 'Changed Constraints in 4.3.0', 'page': 45}, {'structure': 'A.3.6', 'title': 'Deleted Constraints in 4.3.0', 'page': 45}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': '<physical_index_7>'}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': '<physical_index_8>'}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': '<physical_index_9>'}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_10>'}, {'structure': '2', 'title': 'Requirements', 'physical_index': '<physical_index_11>'}, {'structure': '2.1', 'title': 'Relation to AUTOSAR Features', 'physical_index': '<physical_index_11>'}, {'structure': '2.2', 'title': 'General Requirements', 'physical_index': '<physical_index_11>'}, {'structure': '2.2.1', 'title': '[RS_DEXT_00001] Diagnostic data exchange', 'physical_index': '<physical_index_11>'}, {'structure': '2.2.2', 'title': '[RS_DEXT_00044] Derivation of related ECU-C parameter', 'physical_index': '<physical_index_12>'}, {'structure': '2.2.3', 'title': '[RS_DEXT_00046] Variants', 'physical_index': '<physical_index_12>'}, {'structure': '2.2.4', 'title': '[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU', 'physical_index': '<physical_index_13>'}, {'structure': '2.2.5', 'title': '[RS_DEXT_00058] Indicate that an ECU supports ODB', 'physical_index': '<physical_index_13>'}, {'structure': '2.2.6', 'title': '[RS_DEXT_00059] Support for different protocols', 'physical_index': '<physical_index_14>'}, {'structure': '2.3', 'title': 'Requirements against the Support for UDS Diagnostic Services', 'physical_index': '<physical_index_14>'}, {'structure': '2.3.1', 'title': '[RS_DEXT_00003] SessionControl', 'physical_index': '<physical_index_14>'}, {'structure': '2.3.2', 'title': '[RS_DEXT_00004] ECUReset', 'physical_index': '<physical_index_15>'}, {'structure': '2.3.3', 'title': '[RS_DEXT_00005] ClearDiagnosticInformation', 'physical_index': '<physical_index_15>'}, {'structure': '2.3.4', 'title': '[RS_DEXT_00006] ReadDTCInformation', 'physical_index': '<physical_index_15>'}, {'structure': '2.3.5', 'title': '[RS_DEXT_00007] ReadDataByIdentifier', 'physical_index': '<physical_index_16>'}, {'structure': '2.3.6', 'title': '[RS_DEXT_00008] ReadMemoryByAddress', 'physical_index': '<physical_index_16>'}, {'structure': '2.3.7', 'title': '[RS_DEXT_00009] SecurityAccess', 'physical_index': '<physical_index_16>'}, {'structure': '2.3.8', 'title': '[RS_DEXT_00010] CommunicationControl', 'physical_index': '<physical_index_17>'}, {'structure': '2.3.9', 'title': '[RS_DEXT_00011] ReadDataByPeriodicIdentifier', 'physical_index': '<physical_index_17>'}, {'structure': '2.3.10', 'title': '[RS_DEXT_00012] DynamicallyDefineDataIdentifier', 'physical_index': '<physical_index_17>'}, {'structure': '2.3.11', 'title': '[RS_DEXT_00013] WriteDataByIdentifier', 'physical_index': '<physical_index_18>'}, {'structure': '2.3.12', 'title': '[RS_DEXT_00014] IOControl', 'physical_index': '<physical_index_18>'}, {'structure': '2.3.13', 'title': '[RS_DEXT_00015] RoutineControl', 'physical_index': '<physical_index_18>'}, {'structure': '2.3.14', 'title': '[RS_DEXT_00016] RequestDownload', 'physical_index': '<physical_index_19>'}, {'structure': '2.3.15', 'title': '[RS_DEXT_00017] RequestUpload', 'physical_index': '<physical_index_19>'}, {'structure': '2.3.16', 'title': '[RS_DEXT_00018] TransferData', 'physical_index': '<physical_index_19>'}, {'structure': '2.3.17', 'title': '[RS_DEXT_00019] RequestTransferExit', 'physical_index': '<physical_index_20>'}, {'structure': '2.3.18', 'title': '[RS_DEXT_00020] WriteMemoryByAddress', 'physical_index': '<physical_index_20>'}, {'structure': '2.3.19', 'title': '[RS_DEXT_00021] ControlDTCSetting', 'physical_index': '<physical_index_20>'}, {'structure': '2.3.20', 'title': '[RS_DEXT_00022] ResponseOnEvent', 'physical_index': '<physical_index_21>'}, {'structure': '2.3.21', 'title': '[RS_DEXT_00057] RequestFileTransfer', 'physical_index': '<physical_index_21>'}, {'structure': '2.3.22', 'title': '[RS_DEXT_00047] Custom Diagnostic Service', 'physical_index': '<physical_index_21>'}, {'structure': '2.3.23', 'title': '[RS_DEXT_00049] Properties of individual diagnostic services', 'physical_index': '<physical_index_22>'}, {'structure': '2.3.24', 'title': '[RS_DEXT_00050] Properties of all diagnostic services of a given kind', 'physical_index': '<physical_index_22>'}, {'structure': '2.3.25', 'title': '[RS_DEXT_00051] Subfunctions of Diagnostic Services', 'physical_index': '<physical_index_22>'}, {'structure': '2.3.26', 'title': '[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes', 'physical_index': '<physical_index_23>'}, {'structure': '2.3.27', 'title': '[RS_DEXT_00043] Description of data elements', 'physical_index': '<physical_index_23>'}, {'structure': '2.3.28', 'title': '[RS_DEXT_00038] Description of array data types', 'physical_index': '<physical_index_23>'}, {'structure': '2.3.29', 'title': '[RS_DEXT_00039] Diagnostic Service Table', 'physical_index': '<physical_index_24>'}, {'structure': '2.4', 'title': 'Requirements against Event Handling', 'physical_index': '<physical_index_24>'}, {'structure': '2.4.1', 'title': '[RS_DEXT_00023] Configuration of events', 'physical_index': '<physical_index_25>'}, {'structure': '2.4.2', 'title': '[RS_DEXT_00024] Configuration of DTCs', 'physical_index': '<physical_index_25>'}, {'structure': '2.4.3', 'title': '[RS_DEXT_00025] Combined Events', 'physical_index': '<physical_index_25>'}, {'structure': '2.4.4', 'title': '[RS_DEXT_00026] Enable Conditions', 'physical_index': '<physical_index_26>'}, {'structure': '2.4.5', 'title': '[RS_DEXT_00027] Storage Conditions', 'physical_index': '<physical_index_26>'}, {'structure': '2.4.6', 'title': '[RS_DEXT_00028] Enable Condition Groups', 'physical_index': '<physical_index_26>'}, {'structure': '2.4.7', 'title': '[RS_DEXT_00029] Storage Condition Groups', 'physical_index': '<physical_index_27>'}, {'structure': '2.4.8', 'title': '[RS_DEXT_00030] Assignment of Enable Condition Groups', 'physical_index': '<physical_index_27>'}, {'structure': '2.4.9', 'title': '[RS_DEXT_00031] Assignment of Storage Condition Group', 'physical_index': '<physical_index_27>'}, {'structure': '2.4.10', 'title': '[RS_DEXT_00032] Configuration of Extended Data Records', 'physical_index': '<physical_index_28>'}, {'structure': '2.4.11', 'title': '[RS_DEXT_00033] Configuration of Snapshot Records', 'physical_index': '<physical_index_28>'}, {'structure': '2.4.12', 'title': '[RS_DEXT_00034] Description of Data Identifiers', 'physical_index': '<physical_index_29>'}, {'structure': '2.4.13', 'title': '[RS_DEXT_00035] Description of Dynamic Data Identifiers', 'physical_index': '<physical_index_29>'}, {'structure': '2.4.14', 'title': '[RS_DEXT_00036] Description of Routine Identifiers', 'physical_index': '<physical_index_29>'}, {'structure': '2.4.15', 'title': '[RS_DEXT_00037] Description of I/O Identifiers', 'physical_index': '<physical_index_30>'}, {'structure': '2.4.16', 'title': '[RS_DEXT_00053] Debouncing of diagnostic events', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': 7}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': 8}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': 9}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': 10}, {'structure': '2', 'title': 'Requirements', 'physical_index': 11}, {'structure': '2.1', 'title': 'Relation to AUTOSAR Features', 'physical_index': 11}, {'structure': '2.2', 'title': 'General Requirements', 'physical_index': 11}, {'structure': '2.2.1', 'title': '[RS_DEXT_00001] Diagnostic data exchange', 'physical_index': 11}, {'structure': '2.2.2', 'title': '[RS_DEXT_00044] Derivation of related ECU-C parameter', 'physical_index': 12}, {'structure': '2.2.3', 'title': '[RS_DEXT_00046] Variants', 'physical_index': 12}, {'structure': '2.2.4', 'title': '[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU', 'physical_index': 13}, {'structure': '2.2.5', 'title': '[RS_DEXT_00058] Indicate that an ECU supports ODB', 'physical_index': 13}, {'structure': '2.2.6', 'title': '[RS_DEXT_00059] Support for different protocols', 'physical_index': 14}, {'structure': '2.3', 'title': 'Requirements against the Support for UDS Diagnostic Services', 'physical_index': 14}, {'structure': '2.3.1', 'title': '[RS_DEXT_00003] SessionControl', 'physical_index': 14}, {'structure': '2.3.2', 'title': '[RS_DEXT_00004] ECUReset', 'physical_index': 15}, {'structure': '2.3.3', 'title': '[RS_DEXT_00005] ClearDiagnosticInformation', 'physical_index': 15}, {'structure': '2.3.4', 'title': '[RS_DEXT_00006] ReadDTCInformation', 'physical_index': 15}, {'structure': '2.3.5', 'title': '[RS_DEXT_00007] ReadDataByIdentifier', 'physical_index': 16}, {'structure': '2.3.6', 'title': '[RS_DEXT_00008] ReadMemoryByAddress', 'physical_index': 16}, {'structure': '2.3.7', 'title': '[RS_DEXT_00009] SecurityAccess', 'physical_index': 16}, {'structure': '2.3.8', 'title': '[RS_DEXT_00010] CommunicationControl', 'physical_index': 17}, {'structure': '2.3.9', 'title': '[RS_DEXT_00011] ReadDataByPeriodicIdentifier', 'physical_index': 17}, {'structure': '2.3.10', 'title': '[RS_DEXT_00012] DynamicallyDefineDataIdentifier', 'physical_index': 17}, {'structure': '2.3.11', 'title': '[RS_DEXT_00013] WriteDataByIdentifier', 'physical_index': 18}, {'structure': '2.3.12', 'title': '[RS_DEXT_00014] IOControl', 'physical_index': 18}, {'structure': '2.3.13', 'title': '[RS_DEXT_00015] RoutineControl', 'physical_index': 18}, {'structure': '2.3.14', 'title': '[RS_DEXT_00016] RequestDownload', 'physical_index': 19}, {'structure': '2.3.15', 'title': '[RS_DEXT_00017] RequestUpload', 'physical_index': 19}, {'structure': '2.3.16', 'title': '[RS_DEXT_00018] TransferData', 'physical_index': 19}, {'structure': '2.3.17', 'title': '[RS_DEXT_00019] RequestTransferExit', 'physical_index': 20}, {'structure': '2.3.18', 'title': '[RS_DEXT_00020] WriteMemoryByAddress', 'physical_index': 20}, {'structure': '2.3.19', 'title': '[RS_DEXT_00021] ControlDTCSetting', 'physical_index': 20}, {'structure': '2.3.20', 'title': '[RS_DEXT_00022] ResponseOnEvent', 'physical_index': 21}, {'structure': '2.3.21', 'title': '[RS_DEXT_00057] RequestFileTransfer', 'physical_index': 21}, {'structure': '2.3.22', 'title': '[RS_DEXT_00047] Custom Diagnostic Service', 'physical_index': 21}, {'structure': '2.3.23', 'title': '[RS_DEXT_00049] Properties of individual diagnostic services', 'physical_index': 22}, {'structure': '2.3.24', 'title': '[RS_DEXT_00050] Properties of all diagnostic services of a given kind', 'physical_index': 22}, {'structure': '2.3.25', 'title': '[RS_DEXT_00051] Subfunctions of Diagnostic Services', 'physical_index': 22}, {'structure': '2.3.26', 'title': '[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes', 'physical_index': 23}, {'structure': '2.3.27', 'title': '[RS_DEXT_00043] Description of data elements', 'physical_index': 23}, {'structure': '2.3.28', 'title': '[RS_DEXT_00038] Description of array data types', 'physical_index': 23}, {'structure': '2.3.29', 'title': '[RS_DEXT_00039] Diagnostic Service Table', 'physical_index': 24}, {'structure': '2.4', 'title': 'Requirements against Event Handling', 'physical_index': 24}, {'structure': '2.4.1', 'title': '[RS_DEXT_00023] Configuration of events', 'physical_index': 25}, {'structure': '2.4.2', 'title': '[RS_DEXT_00024] Configuration of DTCs', 'physical_index': 25}, {'structure': '2.4.3', 'title': '[RS_DEXT_00025] Combined Events', 'physical_index': 25}, {'structure': '2.4.4', 'title': '[RS_DEXT_00026] Enable Conditions', 'physical_index': 26}, {'structure': '2.4.5', 'title': '[RS_DEXT_00027] Storage Conditions', 'physical_index': 26}, {'structure': '2.4.6', 'title': '[RS_DEXT_00028] Enable Condition Groups', 'physical_index': 26}, {'structure': '2.4.7', 'title': '[RS_DEXT_00029] Storage Condition Groups', 'physical_index': 27}, {'structure': '2.4.8', 'title': '[RS_DEXT_00030] Assignment of Enable Condition Groups', 'physical_index': 27}, {'structure': '2.4.9', 'title': '[RS_DEXT_00031] Assignment of Storage Condition Group', 'physical_index': 27}, {'structure': '2.4.10', 'title': '[RS_DEXT_00032] Configuration of Extended Data Records', 'physical_index': 28}, {'structure': '2.4.11', 'title': '[RS_DEXT_00033] Configuration of Snapshot Records', 'physical_index': 28}, {'structure': '2.4.12', 'title': '[RS_DEXT_00034] Description of Data Identifiers', 'physical_index': 29}, {'structure': '2.4.13', 'title': '[RS_DEXT_00035] Description of Dynamic Data Identifiers', 'physical_index': 29}, {'structure': '2.4.14', 'title': '[RS_DEXT_00036] Description of Routine Identifiers', 'physical_index': 29}, {'structure': '2.4.15', 'title': '[RS_DEXT_00037] Description of I/O Identifiers', 'physical_index': 30}, {'structure': '2.4.16', 'title': '[RS_DEXT_00053] Debouncing of diagnostic events', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 7, 'physical_index': 7}, {'title': 'Scope of this document', 'page': 7, 'physical_index': 7}, {'title': 'Document Conventions', 'page': 8, 'physical_index': 8}, {'title': 'Guidelines', 'page': 9, 'physical_index': 9}, {'title': 'Requirements Tracing', 'page': 10, 'physical_index': 10}, {'title': 'Requirements', 'page': 11, 'physical_index': 11}, {'title': 'Relation to AUTOSAR Features', 'page': 11, 'physical_index': 11}, {'title': 'General Requirements', 'page': 11, 'physical_index': 11}, {'title': '[RS_DEXT_00001] Diagnostic data exchange', 'page': 11, 'physical_index': 11}, {'title': '[RS_DEXT_00044] Derivation of related ECU-C parameter', 'page': 12, 'physical_index': 12}, {'title': '[RS_DEXT_00046] Variants', 'page': 12, 'physical_index': 12}, {'title': '[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU', 'page': 13, 'physical_index': 13}, {'title': '[RS_DEXT_00058] Indicate that an ECU supports ODB', 'page': 13, 'physical_index': 13}, {'title': '[RS_DEXT_00059] Support for different protocols', 'page': 14, 'physical_index': 14}, {'title': 'Requirements against the Support for UDS Diagnostic Services', 'page': 14, 'physical_index': 14}, {'title': '[RS_DEXT_00003] SessionControl', 'page': 14, 'physical_index': 14}, {'title': '[RS_DEXT_00004] ECUReset', 'page': 14, 'physical_index': 15}, {'title': '[RS_DEXT_00005] ClearDiagnosticInformation', 'page': 15, 'physical_index': 15}, {'title': '[RS_DEXT_00006] ReadDTCInformation', 'page': 15, 'physical_index': 15}, {'title': '[RS_DEXT_00007] ReadDataByIdentifier', 'page': 15, 'physical_index': 16}, {'title': '[RS_DEXT_00008] ReadMemoryByAddress', 'page': 16, 'physical_index': 16}, {'title': '[RS_DEXT_00009] SecurityAccess', 'page': 16, 'physical_index': 16}, {'title': '[RS_DEXT_00010] CommunicationControl', 'page': 16, 'physical_index': 17}, {'title': '[RS_DEXT_00011] ReadDataByPeriodicIdentifier', 'page': 17, 'physical_index': 17}, {'title': '[RS_DEXT_00012] DynamicallyDefineDataIdentifier', 'page': 17, 'physical_index': 17}, {'title': '[RS_DEXT_00013] WriteDataByIdentifier', 'page': 17, 'physical_index': 18}, {'title': '[RS_DEXT_00014] IOControl', 'page': 18, 'physical_index': 18}, {'title': '[RS_DEXT_00015] RoutineControl', 'page': 18, 'physical_index': 18}, {'title': '[RS_DEXT_00016] RequestDownload', 'page': 18, 'physical_index': 19}, {'title': '[RS_DEXT_00017] RequestUpload', 'page': 19, 'physical_index': 19}, {'title': '[RS_DEXT_00018] TransferData', 'page': 19, 'physical_index': 19}, {'title': '[RS_DEXT_00019] RequestTransferExit', 'page': 19, 'physical_index': 20}, {'title': '[RS_DEXT_00020] WriteMemoryByAddress', 'page': 20, 'physical_index': 20}, {'title': '[RS_DEXT_00021] ControlDTCSetting', 'page': 20, 'physical_index': 20}, {'title': '[RS_DEXT_00022] ResponseOnEvent', 'page': 20, 'physical_index': 21}, {'title': '[RS_DEXT_00057] RequestFileTransfer', 'page': 21, 'physical_index': 21}, {'title': '[RS_DEXT_00047] Custom Diagnostic Service', 'page': 21, 'physical_index': 21}, {'title': '[RS_DEXT_00049] Properties of individual diagnostic services', 'page': 21, 'physical_index': 22}, {'title': '[RS_DEXT_00050] Properties of all diagnostic services of a given kind', 'page': 22, 'physical_index': 22}, {'title': '[RS_DEXT_00051] Subfunctions of Diagnostic Services', 'page': 22, 'physical_index': 22}, {'title': '[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes', 'page': 22, 'physical_index': 23}, {'title': '[RS_DEXT_00043] Description of data elements', 'page': 23, 'physical_index': 23}, {'title': '[RS_DEXT_00038] Description of array data types', 'page': 23, 'physical_index': 23}, {'title': '[RS_DEXT_00039] Diagnostic Service Table', 'page': 24, 'physical_index': 24}, {'title': 'Requirements against Event Handling', 'page': 24, 'physical_index': 24}, {'title': '[RS_DEXT_00023] Configuration of events', 'page': 24, 'physical_index': 25}, {'title': '[RS_DEXT_00024] Configuration of DTCs', 'page': 25, 'physical_index': 25}, {'title': '[RS_DEXT_00025] Combined Events', 'page': 25, 'physical_index': 25}, {'title': '[RS_DEXT_00026] Enable Conditions', 'page': 25, 'physical_index': 26}, {'title': '[RS_DEXT_00027] Storage Conditions', 'page': 26, 'physical_index': 26}, {'title': '[RS_DEXT_00028] Enable Condition Groups', 'page': 26, 'physical_index': 26}, {'title': '[RS_DEXT_00029] Storage Condition Groups', 'page': 27, 'physical_index': 27}, {'title': '[RS_DEXT_00030] Assignment of Enable Condition Groups', 'page': 27, 'physical_index': 27}, {'title': '[RS_DEXT_00031] Assignment of Storage Condition Group', 'page': 27, 'physical_index': 27}, {'title': '[RS_DEXT_00032] Configuration of Extended Data Records', 'page': 28, 'physical_index': 28}, {'title': '[RS_DEXT_00033] Configuration of Snapshot Records', 'page': 28, 'physical_index': 28}, {'title': '[RS_DEXT_00034] Description of Data Identifiers', 'page': 29, 'physical_index': 29}, {'title': '[RS_DEXT_00035] Description of Dynamic Data Identifiers', 'page': 29, 'physical_index': 29}, {'title': '[RS_DEXT_00036] Description of Routine Identifiers', 'page': 29, 'physical_index': 29}, {'title': '[RS_DEXT_00037] Description of I/O Identifiers', 'page': 29, 'physical_index': 30}, {'title': '[RS_DEXT_00053] Debouncing of diagnostic events', 'page': 30, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': 7}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': 8}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': 9}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': 10}, {'structure': '2', 'title': 'Requirements', 'physical_index': 11}, {'structure': '2.1', 'title': 'Relation to AUTOSAR Features', 'physical_index': 11}, {'structure': '2.2', 'title': 'General Requirements', 'physical_index': 11}, {'structure': '2.2.1', 'title': '[RS_DEXT_00001] Diagnostic data exchange', 'physical_index': 11}, {'structure': '2.2.2', 'title': '[RS_DEXT_00044] Derivation of related ECU-C parameter', 'physical_index': 12}, {'structure': '2.2.3', 'title': '[RS_DEXT_00046] Variants', 'physical_index': 12}, {'structure': '2.2.4', 'title': '[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU', 'physical_index': 13}, {'structure': '2.2.5', 'title': '[RS_DEXT_00058] Indicate that an ECU supports ODB', 'physical_index': 13}, {'structure': '2.2.6', 'title': '[RS_DEXT_00059] Support for different protocols', 'physical_index': 14}, {'structure': '2.3', 'title': 'Requirements against the Support for UDS Diagnostic Services', 'physical_index': 14}, {'structure': '2.3.1', 'title': '[RS_DEXT_00003] SessionControl', 'physical_index': 14}, {'structure': '2.3.2', 'title': '[RS_DEXT_00004] ECUReset', 'physical_index': 14}, {'structure': '2.3.3', 'title': '[RS_DEXT_00005] ClearDiagnosticInformation', 'physical_index': 15}, {'structure': '2.3.4', 'title': '[RS_DEXT_00006] ReadDTCInformation', 'physical_index': 15}, {'structure': '2.3.5', 'title': '[RS_DEXT_00007] ReadDataByIdentifier', 'physical_index': 15}, {'structure': '2.3.6', 'title': '[RS_DEXT_00008] ReadMemoryByAddress', 'physical_index': 16}, {'structure': '2.3.7', 'title': '[RS_DEXT_00009] SecurityAccess', 'physical_index': 16}, {'structure': '2.3.8', 'title': '[RS_DEXT_00010] CommunicationControl', 'physical_index': 16}, {'structure': '2.3.9', 'title': '[RS_DEXT_00011] ReadDataByPeriodicIdentifier', 'physical_index': 17}, {'structure': '2.3.10', 'title': '[RS_DEXT_00012] DynamicallyDefineDataIdentifier', 'physical_index': 17}, {'structure': '2.3.11', 'title': '[RS_DEXT_00013] WriteDataByIdentifier', 'physical_index': 17}, {'structure': '2.3.12', 'title': '[RS_DEXT_00014] IOControl', 'physical_index': 18}, {'structure': '2.3.13', 'title': '[RS_DEXT_00015] RoutineControl', 'physical_index': 18}, {'structure': '2.3.14', 'title': '[RS_DEXT_00016] RequestDownload', 'physical_index': 18}, {'structure': '2.3.15', 'title': '[RS_DEXT_00017] RequestUpload', 'physical_index': 19}, {'structure': '2.3.16', 'title': '[RS_DEXT_00018] TransferData', 'physical_index': 19}, {'structure': '2.3.17', 'title': '[RS_DEXT_00019] RequestTransferExit', 'physical_index': 19}, {'structure': '2.3.18', 'title': '[RS_DEXT_00020] WriteMemoryByAddress', 'physical_index': 20}, {'structure': '2.3.19', 'title': '[RS_DEXT_00021] ControlDTCSetting', 'physical_index': 20}, {'structure': '2.3.20', 'title': '[RS_DEXT_00022] ResponseOnEvent', 'physical_index': 20}, {'structure': '2.3.21', 'title': '[RS_DEXT_00057] RequestFileTransfer', 'physical_index': 21}, {'structure': '2.3.22', 'title': '[RS_DEXT_00047] Custom Diagnostic Service', 'physical_index': 21}, {'structure': '2.3.23', 'title': '[RS_DEXT_00049] Properties of individual diagnostic services', 'physical_index': 21}, {'structure': '2.3.24', 'title': '[RS_DEXT_00050] Properties of all diagnostic services of a given kind', 'physical_index': 22}, {'structure': '2.3.25', 'title': '[RS_DEXT_00051] Subfunctions of Diagnostic Services', 'physical_index': 22}, {'structure': '2.3.26', 'title': '[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes', 'physical_index': 22}, {'structure': '2.3.27', 'title': '[RS_DEXT_00043] Description of data elements', 'physical_index': 23}, {'structure': '2.3.28', 'title': '[RS_DEXT_00038] Description of array data types', 'physical_index': 23}, {'structure': '2.3.29', 'title': '[RS_DEXT_00039] Diagnostic Service Table', 'physical_index': 24}, {'structure': '2.4', 'title': 'Requirements against Event Handling', 'physical_index': 24}, {'structure': '2.4.1', 'title': '[RS_DEXT_00023] Configuration of events', 'physical_index': 24}, {'structure': '2.4.2', 'title': '[RS_DEXT_00024] Configuration of DTCs', 'physical_index': 25}, {'structure': '2.4.3', 'title': '[RS_DEXT_00025] Combined Events', 'physical_index': 25}, {'structure': '2.4.4', 'title': '[RS_DEXT_00026] Enable Conditions', 'physical_index': 25}, {'structure': '2.4.5', 'title': '[RS_DEXT_00027] Storage Conditions', 'physical_index': 26}, {'structure': '2.4.6', 'title': '[RS_DEXT_00028] Enable Condition Groups', 'physical_index': 26}, {'structure': '2.4.7', 'title': '[RS_DEXT_00029] Storage Condition Groups', 'physical_index': 27}, {'structure': '2.4.8', 'title': '[RS_DEXT_00030] Assignment of Enable Condition Groups', 'physical_index': 27}, {'structure': '2.4.9', 'title': '[RS_DEXT_00031] Assignment of Storage Condition Group', 'physical_index': 27}, {'structure': '2.4.10', 'title': '[RS_DEXT_00032] Configuration of Extended Data Records', 'physical_index': 28}, {'structure': '2.4.11', 'title': '[RS_DEXT_00033] Configuration of Snapshot Records', 'physical_index': 28}, {'structure': '2.4.12', 'title': '[RS_DEXT_00034] Description of Data Identifiers', 'physical_index': 29}, {'structure': '2.4.13', 'title': '[RS_DEXT_00035] Description of Dynamic Data Identifiers', 'physical_index': 29}, {'structure': '2.4.14', 'title': '[RS_DEXT_00036] Description of Routine Identifiers', 'physical_index': 29}, {'structure': '2.4.15', 'title': '[RS_DEXT_00037] Description of I/O Identifiers', 'physical_index': 29}, {'structure': '2.4.16', 'title': '[RS_DEXT_00053] Debouncing of diagnostic events', 'physical_index': 30}, {'structure': '2.4.17', 'title': '[RS_DEXT_00054] Operation cycles', 'physical_index': 30}, {'structure': '2.4.18', 'title': '[RS_DEXT_00055] Aging', 'physical_index': 30}, {'structure': '2.4.19', 'title': '[RS_DEXT_00056] Indicator', 'physical_index': 31}, {'structure': '2.4.20', 'title': '[RS_DEXT_00045] Textual descriptions', 'physical_index': 31}, {'structure': '2.4.21', 'title': '[RS_DEXT_00078] Support for In Use Monitor Performance Ratio', 'physical_index': 31}, {'structure': '2.5', 'title': 'Requirements against Sessions and Security', 'physical_index': 32}, {'structure': '2.5.1', 'title': '[RS_DEXT_00040] Diagnostic Sessions', 'physical_index': 32}, {'structure': '2.5.2', 'title': '[RS_DEXT_00041] Access Permissions', 'physical_index': 32}, {'structure': '2.5.3', 'title': '[RS_DEXT_00042] Security Levels', 'physical_index': 33}, {'structure': '2.5.4', 'title': '[RS_DEXT_00079] Support for environment conditions', 'physical_index': 33}, {'structure': '2.6', 'title': 'Requirements against the Support for Function Inhibition', 'physical_index': 33}, {'structure': '2.6.1', 'title': '[RS_DEXT_00060] Function', 'physical_index': 33}, {'structure': '2.6.2', 'title': '[RS_DEXT_00061] Relationship between functions and diagnostic events', 'physical_index': 34}, {'structure': '2.6.3', 'title': '[RS_DEXT_00062] Pre-configuration of the Fim when the Dem configuration is not yet available', 'physical_index': 34}, {'structure': '2.6.4', 'title': '[RS_DEXT_00063] Relation between functions on Fim level and software-components', 'physical_index': 35}, {'structure': '2.7', 'title': 'Requirements against the Support for diagnostics on J1939', 'physical_index': 35}, {'structure': '2.7.1', 'title': '[RS_DEXT_00064] Definition of an SPN', 'physical_index': 35}, {'structure': '2.7.2', 'title': '[RS_DEXT_00065] Definition of freeze frames on J1939', 'physical_index': 36}, {'structure': '2.7.3', 'title': '[RS_DEXT_00066] Mapping between a J1939 controller application and a software-component', 'physical_index': 36}, {'structure': '2.7.4', 'title': '[RS_DEXT_00067] Definition of J1939 DTC', 'physical_index': 37}, {'structure': '2.8', 'title': 'Requirements against the Support for OBD Diagnostic Services', 'physical_index': 37}, {'structure': '2.8.1', 'title': '[RS_DEXT_00068] Definition of a Diagnostic Parameter Identifier', 'physical_index': 37}, {'structure': '2.8.2', 'title': '[RS_DEXT_00069] Support for OBD Mode 0x01 (RequestCurrentPowertrainDiagnosticData)', 'physical_index': 37}, {'structure': '2.8.3', 'title': '[RS_DEXT_00070] Support for OBD Mode 0x02 (RequestPowertrainFreezeFrameData)', 'physical_index': 38}, {'structure': '2.8.4', 'title': '[RS_DEXT_00071] Support for OBD ModeModes 0x03 / 0x07 / 0x0A (RequestEmissionRelatedDiagnosticTroubleCodes)', 'physical_index': 38}, {'structure': '2.8.5', 'title': '[RS_DEXT_00072] Support for OBD Mode 0x04 (ClearResetEmissionRelatedDiagnosticInformation)', 'physical_index': 38}, {'structure': '2.8.6', 'title': '[RS_DEXT_00073] Support for OBD Mode 0x06 (RequestOnBoardMonitoringTestResults)', 'physical_index': 39}, {'structure': '2.8.7', 'title': '[RS_DEXT_00074] Support for OBD Mode 0x08 (RequestControlOfOnBoardDevice)', 'physical_index': 39}, {'structure': '2.8.8', 'title': '[RS_DEXT_00075] Support for OBD Mode 0x09 (RequestVehicleInformation)', 'physical_index': 39}, {'structure': '2.8.9', 'title': '[RS_DEXT_00076] Definition of Diagnostic Test Identifier', 'physical_index': 40}, {'structure': '2.8.10', 'title': '[RS_DEXT_00077] Description of the utilization of UDS for supporting WWH-OBD', 'physical_index': 40}, {'structure': 'A', 'title': 'History of Constraints and Specification Items', 'physical_index': 41}, {'structure': 'A.1', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.1', 'physical_index': 41}, {'structure': 'A.1.1', 'title': 'Added Traceables in R4.2.1', 'physical_index': 41}, {'structure': 'A.1.2', 'title': 'Added Traceables in 4.2.1', 'physical_index': 42}, {'structure': 'A.1.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 42}, {'structure': 'A.2', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.2', 'physical_index': 42}, {'structure': 'A.2.1', 'title': 'Added Traceables in 4.2.2', 'physical_index': 42}, {'structure': 'A.2.2', 'title': 'Changed Traceables in 4.2.2', 'physical_index': 42}, {'structure': 'A.2.3', 'title': 'Deleted Traceables in 4.2.2', 'physical_index': 43}, {'structure': 'A.2.4', 'title': 'Added Constraints in 4.2.2', 'physical_index': 43}, {'structure': 'A.2.5', 'title': 'Changed Constraints in 4.2.2', 'physical_index': 43}, {'structure': 'A.2.6', 'title': 'Deleted Constraints in 4.2.2', 'physical_index': 43}, {'structure': 'A.3', 'title': 'Constraint History of this Document according to AUTOSAR R4.3.0', 'physical_index': 43}, {'structure': 'A.3.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': 43}, {'structure': 'A.3.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': 44}, {'structure': 'A.3.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': 45}, {'structure': 'A.3.4', 'title': 'Added Constraints in 4.3.0', 'physical_index': 45}, {'structure': 'A.3.5', 'title': 'Changed Constraints in 4.3.0', 'physical_index': 45}, {'structure': 'A.3.6', 'title': 'Deleted Constraints in 4.3.0', 'physical_index': 45}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': 7}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': 8}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': 9}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': 10}, {'structure': '2', 'title': 'Requirements', 'physical_index': 11}, {'structure': '2.1', 'title': 'Relation to AUTOSAR Features', 'physical_index': 11}, {'structure': '2.2', 'title': 'General Requirements', 'physical_index': 11}, {'structure': '2.2.1', 'title': '[RS_DEXT_00001] Diagnostic data exchange', 'physical_index': 11}, {'structure': '2.2.2', 'title': '[RS_DEXT_00044] Derivation of related ECU-C parameter', 'physical_index': 12}, {'structure': '2.2.3', 'title': '[RS_DEXT_00046] Variants', 'physical_index': 12}, {'structure': '2.2.4', 'title': '[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU', 'physical_index': 13}, {'structure': '2.2.5', 'title': '[RS_DEXT_00058] Indicate that an ECU supports ODB', 'physical_index': 13}, {'structure': '2.2.6', 'title': '[RS_DEXT_00059] Support for different protocols', 'physical_index': 14}, {'structure': '2.3', 'title': 'Requirements against the Support for UDS Diagnostic Services', 'physical_index': 14}, {'structure': '2.3.1', 'title': '[RS_DEXT_00003] SessionControl', 'physical_index': 14}, {'structure': '2.3.2', 'title': '[RS_DEXT_00004] ECUReset', 'physical_index': 14}, {'structure': '2.3.3', 'title': '[RS_DEXT_00005] ClearDiagnosticInformation', 'physical_index': 15}, {'structure': '2.3.4', 'title': '[RS_DEXT_00006] ReadDTCInformation', 'physical_index': 15}, {'structure': '2.3.5', 'title': '[RS_DEXT_00007] ReadDataByIdentifier', 'physical_index': 15}, {'structure': '2.3.6', 'title': '[RS_DEXT_00008] ReadMemoryByAddress', 'physical_index': 16}, {'structure': '2.3.7', 'title': '[RS_DEXT_00009] SecurityAccess', 'physical_index': 16}, {'structure': '2.3.8', 'title': '[RS_DEXT_00010] CommunicationControl', 'physical_index': 16}, {'structure': '2.3.9', 'title': '[RS_DEXT_00011] ReadDataByPeriodicIdentifier', 'physical_index': 17}, {'structure': '2.3.10', 'title': '[RS_DEXT_00012] DynamicallyDefineDataIdentifier', 'physical_index': 17}, {'structure': '2.3.11', 'title': '[RS_DEXT_00013] WriteDataByIdentifier', 'physical_index': 17}, {'structure': '2.3.12', 'title': '[RS_DEXT_00014] IOControl', 'physical_index': 18}, {'structure': '2.3.13', 'title': '[RS_DEXT_00015] RoutineControl', 'physical_index': 18}, {'structure': '2.3.14', 'title': '[RS_DEXT_00016] RequestDownload', 'physical_index': 18}, {'structure': '2.3.15', 'title': '[RS_DEXT_00017] RequestUpload', 'physical_index': 19}, {'structure': '2.3.16', 'title': '[RS_DEXT_00018] TransferData', 'physical_index': 19}, {'structure': '2.3.17', 'title': '[RS_DEXT_00019] RequestTransferExit', 'physical_index': 19}, {'structure': '2.3.18', 'title': '[RS_DEXT_00020] WriteMemoryByAddress', 'physical_index': 20}, {'structure': '2.3.19', 'title': '[RS_DEXT_00021] ControlDTCSetting', 'physical_index': 20}, {'structure': '2.3.20', 'title': '[RS_DEXT_00022] ResponseOnEvent', 'physical_index': 20}, {'structure': '2.3.21', 'title': '[RS_DEXT_00057] RequestFileTransfer', 'physical_index': 21}, {'structure': '2.3.22', 'title': '[RS_DEXT_00047] Custom Diagnostic Service', 'physical_index': 21}, {'structure': '2.3.23', 'title': '[RS_DEXT_00049] Properties of individual diagnostic services', 'physical_index': 21}, {'structure': '2.3.24', 'title': '[RS_DEXT_00050] Properties of all diagnostic services of a given kind', 'physical_index': 22}, {'structure': '2.3.25', 'title': '[RS_DEXT_00051] Subfunctions of Diagnostic Services', 'physical_index': 22}, {'structure': '2.3.26', 'title': '[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes', 'physical_index': 22}, {'structure': '2.3.27', 'title': '[RS_DEXT_00043] Description of data elements', 'physical_index': 23}, {'structure': '2.3.28', 'title': '[RS_DEXT_00038] Description of array data types', 'physical_index': 23}, {'structure': '2.3.29', 'title': '[RS_DEXT_00039] Diagnostic Service Table', 'physical_index': 24}, {'structure': '2.4', 'title': 'Requirements against Event Handling', 'physical_index': 24}, {'structure': '2.4.1', 'title': '[RS_DEXT_00023] Configuration of events', 'physical_index': 24}, {'structure': '2.4.2', 'title': '[RS_DEXT_00024] Configuration of DTCs', 'physical_index': 25}, {'structure': '2.4.3', 'title': '[RS_DEXT_00025] Combined Events', 'physical_index': 25}, {'structure': '2.4.4', 'title': '[RS_DEXT_00026] Enable Conditions', 'physical_index': 25}, {'structure': '2.4.5', 'title': '[RS_DEXT_00027] Storage Conditions', 'physical_index': 26}, {'structure': '2.4.6', 'title': '[RS_DEXT_00028] Enable Condition Groups', 'physical_index': 26}, {'structure': '2.4.7', 'title': '[RS_DEXT_00029] Storage Condition Groups', 'physical_index': 27}, {'structure': '2.4.8', 'title': '[RS_DEXT_00030] Assignment of Enable Condition Groups', 'physical_index': 27}, {'structure': '2.4.9', 'title': '[RS_DEXT_00031] Assignment of Storage Condition Group', 'physical_index': 27}, {'structure': '2.4.10', 'title': '[RS_DEXT_00032] Configuration of Extended Data Records', 'physical_index': 28}, {'structure': '2.4.11', 'title': '[RS_DEXT_00033] Configuration of Snapshot Records', 'physical_index': 28}, {'structure': '2.4.12', 'title': '[RS_DEXT_00034] Description of Data Identifiers', 'physical_index': 29}, {'structure': '2.4.13', 'title': '[RS_DEXT_00035] Description of Dynamic Data Identifiers', 'physical_index': 29}, {'structure': '2.4.14', 'title': '[RS_DEXT_00036] Description of Routine Identifiers', 'physical_index': 29}, {'structure': '2.4.15', 'title': '[RS_DEXT_00037] Description of I/O Identifiers', 'physical_index': 29}, {'structure': '2.4.16', 'title': '[RS_DEXT_00053] Debouncing of diagnostic events', 'physical_index': 30}, {'structure': '2.4.17', 'title': '[RS_DEXT_00054] Operation cycles', 'physical_index': 30}, {'structure': '2.4.18', 'title': '[RS_DEXT_00055] Aging', 'physical_index': 30}, {'structure': '2.4.19', 'title': '[RS_DEXT_00056] Indicator', 'physical_index': 31}, {'structure': '2.4.20', 'title': '[RS_DEXT_00045] Textual descriptions', 'physical_index': 31}, {'structure': '2.4.21', 'title': '[RS_DEXT_00078] Support for In Use Monitor Performance Ratio', 'physical_index': 31}, {'structure': '2.5', 'title': 'Requirements against Sessions and Security', 'physical_index': 32}, {'structure': '2.5.1', 'title': '[RS_DEXT_00040] Diagnostic Sessions', 'physical_index': 32}, {'structure': '2.5.2', 'title': '[RS_DEXT_00041] Access Permissions', 'physical_index': 32}, {'structure': '2.5.3', 'title': '[RS_DEXT_00042] Security Levels', 'physical_index': 33}, {'structure': '2.5.4', 'title': '[RS_DEXT_00079] Support for environment conditions', 'physical_index': 33}, {'structure': '2.6', 'title': 'Requirements against the Support for Function Inhibition', 'physical_index': 33}, {'structure': '2.6.1', 'title': '[RS_DEXT_00060] Function', 'physical_index': 33}, {'structure': '2.6.2', 'title': '[RS_DEXT_00061] Relationship between functions and diagnostic events', 'physical_index': 34}, {'structure': '2.6.3', 'title': '[RS_DEXT_00062] Pre-configuration of the Fim when the Dem configuration is not yet available', 'physical_index': 34}, {'structure': '2.6.4', 'title': '[RS_DEXT_00063] Relation between functions on Fim level and software-components', 'physical_index': 35}, {'structure': '2.7', 'title': 'Requirements against the Support for diagnostics on J1939', 'physical_index': 35}, {'structure': '2.7.1', 'title': '[RS_DEXT_00064] Definition of an SPN', 'physical_index': 35}, {'structure': '2.7.2', 'title': '[RS_DEXT_00065] Definition of freeze frames on J1939', 'physical_index': 36}, {'structure': '2.7.3', 'title': '[RS_DEXT_00066] Mapping between a J1939 controller application and a software-component', 'physical_index': 36}, {'structure': '2.7.4', 'title': '[RS_DEXT_00067] Definition of J1939 DTC', 'physical_index': 37}, {'structure': '2.8', 'title': 'Requirements against the Support for OBD Diagnostic Services', 'physical_index': 37}, {'structure': '2.8.1', 'title': '[RS_DEXT_00068] Definition of a Diagnostic Parameter Identifier', 'physical_index': 37}, {'structure': '2.8.2', 'title': '[RS_DEXT_00069] Support for OBD Mode 0x01 (RequestCurrentPowertrainDiagnosticData)', 'physical_index': 37}, {'structure': '2.8.3', 'title': '[RS_DEXT_00070] Support for OBD Mode 0x02 (RequestPowertrainFreezeFrameData)', 'physical_index': 38}, {'structure': '2.8.4', 'title': '[RS_DEXT_00071] Support for OBD ModeModes 0x03 / 0x07 / 0x0A (RequestEmissionRelatedDiagnosticTroubleCodes)', 'physical_index': 38}, {'structure': '2.8.5', 'title': '[RS_DEXT_00072] Support for OBD Mode 0x04 (ClearResetEmissionRelatedDiagnosticInformation)', 'physical_index': 38}, {'structure': '2.8.6', 'title': '[RS_DEXT_00073] Support for OBD Mode 0x06 (RequestOnBoardMonitoringTestResults)', 'physical_index': 39}, {'structure': '2.8.7', 'title': '[RS_DEXT_00074] Support for OBD Mode 0x08 (RequestControlOfOnBoardDevice)', 'physical_index': 39}, {'structure': '2.8.8', 'title': '[RS_DEXT_00075] Support for OBD Mode 0x09 (RequestVehicleInformation)', 'physical_index': 39}, {'structure': '2.8.9', 'title': '[RS_DEXT_00076] Definition of Diagnostic Test Identifier', 'physical_index': 40}, {'structure': '2.8.10', 'title': '[RS_DEXT_00077] Description of the utilization of UDS for supporting WWH-OBD', 'physical_index': 40}, {'structure': 'A', 'title': 'History of Constraints and Specification Items', 'physical_index': 41}, {'structure': 'A.1', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.1', 'physical_index': 41}, {'structure': 'A.1.1', 'title': 'Added Traceables in R4.2.1', 'physical_index': 41}, {'structure': 'A.1.2', 'title': 'Added Traceables in 4.2.1', 'physical_index': 42}, {'structure': 'A.1.3', 'title': 'Deleted Traceables in 4.2.1', 'physical_index': 42}, {'structure': 'A.2', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.2', 'physical_index': 42}, {'structure': 'A.2.1', 'title': 'Added Traceables in 4.2.2', 'physical_index': 42}, {'structure': 'A.2.2', 'title': 'Changed Traceables in 4.2.2', 'physical_index': 42}, {'structure': 'A.2.3', 'title': 'Deleted Traceables in 4.2.2', 'physical_index': 43}, {'structure': 'A.2.4', 'title': 'Added Constraints in 4.2.2', 'physical_index': 43}, {'structure': 'A.2.5', 'title': 'Changed Constraints in 4.2.2', 'physical_index': 43}, {'structure': 'A.2.6', 'title': 'Deleted Constraints in 4.2.2', 'physical_index': 43}, {'structure': 'A.3', 'title': 'Constraint History of this Document according to AUTOSAR R4.3.0', 'physical_index': 43}, {'structure': 'A.3.1', 'title': 'Added Traceables in 4.3.0', 'physical_index': 43}, {'structure': 'A.3.2', 'title': 'Changed Traceables in 4.3.0', 'physical_index': 44}, {'structure': 'A.3.3', 'title': 'Deleted Traceables in 4.3.0', 'physical_index': 45}, {'structure': 'A.3.4', 'title': 'Added Constraints in 4.3.0', 'physical_index': 45}, {'structure': 'A.3.5', 'title': 'Changed Constraints in 4.3.0', 'physical_index': 45}, {'structure': 'A.3.6', 'title': 'Deleted Constraints in 4.3.0', 'physical_index': 45}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.24324324324324326,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "[RS_DEXT_00008] ReadMemoryByAddress",
+        "page_number": 16
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "[RS_DEXT_00009] SecurityAccess",
+        "page_number": 16
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "[RS_DEXT_00010] CommunicationControl",
+        "page_number": 16
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "[RS_DEXT_00011] ReadDataByPeriodicIdentifier",
+        "page_number": 17
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "[RS_DEXT_00012] DynamicallyDefineDataIdentifier",
+        "page_number": 17
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "[RS_DEXT_00013] WriteDataByIdentifier",
+        "page_number": 17
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "[RS_DEXT_00014] IOControl",
+        "page_number": 18
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "[RS_DEXT_00015] RoutineControl",
+        "page_number": 18
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "[RS_DEXT_00016] RequestDownload",
+        "page_number": 18
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "[RS_DEXT_00017] RequestUpload",
+        "page_number": 19
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "[RS_DEXT_00018] TransferData",
+        "page_number": 19
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "[RS_DEXT_00019] RequestTransferExit",
+        "page_number": 19
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "[RS_DEXT_00020] WriteMemoryByAddress",
+        "page_number": 20
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "[RS_DEXT_00021] ControlDTCSetting",
+        "page_number": 20
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "[RS_DEXT_00022] ResponseOnEvent",
+        "page_number": 20
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "[RS_DEXT_00057] RequestFileTransfer",
+        "page_number": 21
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "[RS_DEXT_00047] Custom Diagnostic Service",
+        "page_number": 21
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "[RS_DEXT_00049] Properties of individual diagnostic services",
+        "page_number": 21
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "[RS_DEXT_00050] Properties of all diagnostic services of a given kind",
+        "page_number": 22
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "[RS_DEXT_00051] Subfunctions of Diagnostic Services",
+        "page_number": 22
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes",
+        "page_number": 22
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "[RS_DEXT_00043] Description of data elements",
+        "page_number": 23
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "[RS_DEXT_00038] Description of array data types",
+        "page_number": 23
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "[RS_DEXT_00039] Diagnostic Service Table",
+        "page_number": 24
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Requirements against Event Handling",
+        "page_number": 24
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "[RS_DEXT_00023] Configuration of events",
+        "page_number": 24
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "[RS_DEXT_00024] Configuration of DTCs",
+        "page_number": 25
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "[RS_DEXT_00025] Combined Events",
+        "page_number": 25
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "[RS_DEXT_00026] Enable Conditions",
+        "page_number": 25
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "[RS_DEXT_00027] Storage Conditions",
+        "page_number": 26
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "[RS_DEXT_00028] Enable Condition Groups",
+        "page_number": 26
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "[RS_DEXT_00029] Storage Condition Groups",
+        "page_number": 27
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "[RS_DEXT_00030] Assignment of Enable Condition Groups",
+        "page_number": 27
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "[RS_DEXT_00031] Assignment of Storage Condition Group",
+        "page_number": 27
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "[RS_DEXT_00032] Configuration of Extended Data Records",
+        "page_number": 28
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "[RS_DEXT_00033] Configuration of Snapshot Records",
+        "page_number": 28
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "[RS_DEXT_00034] Description of Data Identifiers",
+        "page_number": 29
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "[RS_DEXT_00035] Description of Dynamic Data Identifiers",
+        "page_number": 29
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "[RS_DEXT_00036] Description of Routine Identifiers",
+        "page_number": 29
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "[RS_DEXT_00037] Description of I/O Identifiers",
+        "page_number": 29
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "[RS_DEXT_00053] Debouncing of diagnostic events",
+        "page_number": 30
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "[RS_DEXT_00054] Operation cycles",
+        "page_number": 30
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "[RS_DEXT_00055] Aging",
+        "page_number": 30
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "[RS_DEXT_00056] Indicator",
+        "page_number": 31
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "[RS_DEXT_00045] Textual descriptions",
+        "page_number": 31
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "[RS_DEXT_00078] Support for In Use Monitor Performance Ratio",
+        "page_number": 31
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Requirements against Sessions and Security",
+        "page_number": 32
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "[RS_DEXT_00040] Diagnostic Sessions",
+        "page_number": 32
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "[RS_DEXT_00041] Access Permissions",
+        "page_number": 32
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "[RS_DEXT_00042] Security Levels",
+        "page_number": 33
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "[RS_DEXT_00079] Support for environment conditions",
+        "page_number": 33
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Requirements against the Support for Function Inhibition",
+        "page_number": 33
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "[RS_DEXT_00060] Function",
+        "page_number": 33
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "[RS_DEXT_00061] Relationship between functions and diagnostic events",
+        "page_number": 34
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "[RS_DEXT_00062] Pre-configuration of the Fim when the Dem configuration is not yet available",
+        "page_number": 34
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "[RS_DEXT_00063] Relation between functions on Fim level and software-components",
+        "page_number": 35
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Requirements against the Support for diagnostics on J1939",
+        "page_number": 35
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "[RS_DEXT_00064] Definition of an SPN",
+        "page_number": 35
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "[RS_DEXT_00065] Definition of freeze frames on J1939",
+        "page_number": 36
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "[RS_DEXT_00066] Mapping between a J1939 controller application and a software-component",
+        "page_number": 36
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "[RS_DEXT_00067] Definition of J1939 DTC",
+        "page_number": 37
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Requirements against the Support for OBD Diagnostic Services",
+        "page_number": 37
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "[RS_DEXT_00068] Definition of a Diagnostic Parameter Identifier",
+        "page_number": 37
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "[RS_DEXT_00069] Support for OBD Mode 0x01 (RequestCurrentPowertrainDiagnosticData)",
+        "page_number": 37
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "[RS_DEXT_00070] Support for OBD Mode 0x02 (RequestPowertrainFreezeFrameData)",
+        "page_number": 38
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "[RS_DEXT_00071] Support for OBD ModeModes 0x03 / 0x07 / 0x0A (RequestEmissionRelatedDiagnosticTroubleCodes)",
+        "page_number": 38
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "[RS_DEXT_00072] Support for OBD Mode 0x04 (ClearResetEmissionRelatedDiagnosticInformation)",
+        "page_number": 38
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "[RS_DEXT_00073] Support for OBD Mode 0x06 (RequestOnBoardMonitoringTestResults)",
+        "page_number": 39
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "[RS_DEXT_00074] Support for OBD Mode 0x08 (RequestControlOfOnBoardDevice)",
+        "page_number": 39
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "[RS_DEXT_00075] Support for OBD Mode 0x09 (RequestVehicleInformation)",
+        "page_number": 39
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "[RS_DEXT_00076] Definition of Diagnostic Test Identifier",
+        "page_number": 40
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "[RS_DEXT_00077] Description of the utilization of UDS for supporting WWH-OBD",
+        "page_number": 40
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "History of Constraints and Specification Items",
+        "page_number": 41
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Constraint History of this Document according to AUTOSAR R4.2.1",
+        "page_number": 41
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Added Traceables in R4.2.1",
+        "page_number": 41
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.1",
+        "page_number": 42
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.2.1",
+        "page_number": 42
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Constraint History of this Document according to AUTOSAR R4.2.2",
+        "page_number": 42
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Added Traceables in 4.2.2",
+        "page_number": 42
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Changed Traceables in 4.2.2",
+        "page_number": 42
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.2.2",
+        "page_number": 43
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Constraint History of this Document according to AUTOSAR R4.3.0",
+        "page_number": 43
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Deleted Traceables in 4.3.0",
+        "page_number": 45
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "Added Constraints in 4.3.0",
+        "page_number": 45
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 7}, {'structure': '1.1', 'title': 'Scope of this document', 'page': 7}, {'structure': '1.2', 'title': 'Document Conventions', 'page': 8}, {'structure': '1.3', 'title': 'Guidelines', 'page': 9}, {'structure': '1.4', 'title': 'Requirements Tracing', 'page': 10}, {'structure': '2', 'title': 'Requirements', 'page': 11}, {'structure': '2.1', 'title': 'Relation to AUTOSAR Features', 'page': 11}, {'structure': '2.2', 'title': 'General Requirements', 'page': 11}, {'structure': '2.2.1', 'title': '[RS_DEXT_00001] Diagnostic data exchange', 'page': 11}, {'structure': '2.2.2', 'title': '[RS_DEXT_00044] Derivation of related ECU-C parameter', 'page': 12}, {'structure': '2.2.3', 'title': '[RS_DEXT_00046] Variants', 'page': 12}, {'structure': '2.2.4', 'title': '[RS_DEXT_00048] Diagnostic Properties that are specific for one ECU', 'page': 13}, {'structure': '2.2.5', 'title': '[RS_DEXT_00058] Indicate that an ECU supports ODB', 'page': 13}, {'structure': '2.2.6', 'title': '[RS_DEXT_00059] Support for different protocols', 'page': 14}, {'structure': '2.3', 'title': 'Requirements against the Support for UDS Diagnostic Services', 'page': 14}, {'structure': '2.3.1', 'title': '[RS_DEXT_00003] SessionControl', 'page': 14}, {'structure': '2.3.2', 'title': '[RS_DEXT_00004] ECUReset', 'page': 14}, {'structure': '2.3.3', 'title': '[RS_DEXT_00005] ClearDiagnosticInformation', 'page': 15}, {'structure': '2.3.4', 'title': '[RS_DEXT_00006] ReadDTCInformation', 'page': 15}, {'structure': '2.3.5', 'title': '[RS_DEXT_00007] ReadDataByIdentifier', 'page': 15}, {'structure': '2.3.6', 'title': '[RS_DEXT_00008] ReadMemoryByAddress', 'page': 16}, {'structure': '2.3.7', 'title': '[RS_DEXT_00009] SecurityAccess', 'page': 16}, {'structure': '2.3.8', 'title': '[RS_DEXT_00010] CommunicationControl', 'page': 16}, {'structure': '2.3.9', 'title': '[RS_DEXT_00011] ReadDataByPeriodicIdentifier', 'page': 17}, {'structure': '2.3.10', 'title': '[RS_DEXT_00012] DynamicallyDefineDataIdentifier', 'page': 17}, {'structure': '2.3.11', 'title': '[RS_DEXT_00013] WriteDataByIdentifier', 'page': 17}, {'structure': '2.3.12', 'title': '[RS_DEXT_00014] IOControl', 'page': 18}, {'structure': '2.3.13', 'title': '[RS_DEXT_00015] RoutineControl', 'page': 18}, {'structure': '2.3.14', 'title': '[RS_DEXT_00016] RequestDownload', 'page': 18}, {'structure': '2.3.15', 'title': '[RS_DEXT_00017] RequestUpload', 'page': 19}, {'structure': '2.3.16', 'title': '[RS_DEXT_00018] TransferData', 'page': 19}, {'structure': '2.3.17', 'title': '[RS_DEXT_00019] RequestTransferExit', 'page': 19}, {'structure': '2.3.18', 'title': '[RS_DEXT_00020] WriteMemoryByAddress', 'page': 20}, {'structure': '2.3.19', 'title': '[RS_DEXT_00021] ControlDTCSetting', 'page': 20}, {'structure': '2.3.20', 'title': '[RS_DEXT_00022] ResponseOnEvent', 'page': 20}, {'structure': '2.3.21', 'title': '[RS_DEXT_00057] RequestFileTransfer', 'page': 21}, {'structure': '2.3.22', 'title': '[RS_DEXT_00047] Custom Diagnostic Service', 'page': 21}, {'structure': '2.3.23', 'title': '[RS_DEXT_00049] Properties of individual diagnostic services', 'page': 21}, {'structure': '2.3.24', 'title': '[RS_DEXT_00050] Properties of all diagnostic services of a given kind', 'page': 22}, {'structure': '2.3.25', 'title': '[RS_DEXT_00051] Subfunctions of Diagnostic Services', 'page': 22}, {'structure': '2.3.26', 'title': '[RS_DEXT_00052] Mapping of diagnostic services to the PortPrototypes of ApplicationSwComponentTypes', 'page': 22}, {'structure': '2.3.27', 'title': '[RS_DEXT_00043] Description of data elements', 'page': 23}, {'structure': '2.3.28', 'title': '[RS_DEXT_00038] Description of array data types', 'page': 23}, {'structure': '2.3.29', 'title': '[RS_DEXT_00039] Diagnostic Service Table', 'page': 24}, {'structure': '2.4', 'title': 'Requirements against Event Handling', 'page': 24}, {'structure': '2.4.1', 'title': '[RS_DEXT_00023] Configuration of events', 'page': 24}, {'structure': '2.4.2', 'title': '[RS_DEXT_00024] Configuration of DTCs', 'page': 25}, {'structure': '2.4.3', 'title': '[RS_DEXT_00025] Combined Events', 'page': 25}, {'structure': '2.4.4', 'title': '[RS_DEXT_00026] Enable Conditions', 'page': 25}, {'structure': '2.4.5', 'title': '[RS_DEXT_00027] Storage Conditions', 'page': 26}, {'structure': '2.4.6', 'title': '[RS_DEXT_00028] Enable Condition Groups', 'page': 26}, {'structure': '2.4.7', 'title': '[RS_DEXT_00029] Storage Condition Groups', 'page': 27}, {'structure': '2.4.8', 'title': '[RS_DEXT_00030] Assignment of Enable Condition Groups', 'page': 27}, {'structure': '2.4.9', 'title': '[RS_DEXT_00031] Assignment of Storage Condition Group', 'page': 27}, {'structure': '2.4.10', 'title': '[RS_DEXT_00032] Configuration of Extended Data Records', 'page': 28}, {'structure': '2.4.11', 'title': '[RS_DEXT_00033] Configuration of Snapshot Records', 'page': 28}, {'structure': '2.4.12', 'title': '[RS_DEXT_00034] Description of Data Identifiers', 'page': 29}, {'structure': '2.4.13', 'title': '[RS_DEXT_00035] Description of Dynamic Data Identifiers', 'page': 29}, {'structure': '2.4.14', 'title': '[RS_DEXT_00036] Description of Routine Identifiers', 'page': 29}, {'structure': '2.4.15', 'title': '[RS_DEXT_00037] Description of I/O Identifiers', 'page': 29}, {'structure': '2.4.16', 'title': '[RS_DEXT_00053] Debouncing of diagnostic events', 'page': 30}, {'structure': '2.4.17', 'title': '[RS_DEXT_00054] Operation cycles', 'page': 30}, {'structure': '2.4.18', 'title': '[RS_DEXT_00055] Aging', 'page': 30}, {'structure': '2.4.19', 'title': '[RS_DEXT_00056] Indicator', 'page': 31}, {'structure': '2.4.20', 'title': '[RS_DEXT_00045] Textual descriptions', 'page': 31}, {'structure': '2.4.21', 'title': '[RS_DEXT_00078] Support for In Use Monitor Performance Ratio', 'page': 31}, {'structure': '2.5', 'title': 'Requirements against Sessions and Security', 'page': 32}, {'structure': '2.5.1', 'title': '[RS_DEXT_00040] Diagnostic Sessions', 'page': 32}, {'structure': '2.5.2', 'title': '[RS_DEXT_00041] Access Permissions', 'page': 32}, {'structure': '2.5.3', 'title': '[RS_DEXT_00042] Security Levels', 'page': 33}, {'structure': '2.5.4', 'title': '[RS_DEXT_00079] Support for environment conditions', 'page': 33}, {'structure': '2.6', 'title': 'Requirements against the Support for Function Inhibition', 'page': 33}, {'structure': '2.6.1', 'title': '[RS_DEXT_00060] Function', 'page': 33}, {'structure': '2.6.2', 'title': '[RS_DEXT_00061] Relationship between functions and diagnostic events', 'page': 34}, {'structure': '2.6.3', 'title': '[RS_DEXT_00062] Pre-configuration of the Fim when the Dem configuration is not yet available', 'page': 34}, {'structure': '2.6.4', 'title': '[RS_DEXT_00063] Relation between functions on Fim level and software-components', 'page': 35}, {'structure': '2.7', 'title': 'Requirements against the Support for diagnostics on J1939', 'page': 35}, {'structure': '2.7.1', 'title': '[RS_DEXT_00064] Definition of an SPN', 'page': 35}, {'structure': '2.7.2', 'title': '[RS_DEXT_00065] Definition of freeze frames on J1939', 'page': 36}, {'structure': '2.7.3', 'title': '[RS_DEXT_00066] Mapping between a J1939 controller application and a software-component', 'page': 36}, {'structure': '2.7.4', 'title': '[RS_DEXT_00067] Definition of J1939 DTC', 'page': 37}, {'structure': '2.8', 'title': 'Requirements against the Support for OBD Diagnostic Services', 'page': 37}, {'structure': '2.8.1', 'title': '[RS_DEXT_00068] Definition of a Diagnostic Parameter Identifier', 'page': 37}, {'structure': '2.8.2', 'title': '[RS_DEXT_00069] Support for OBD Mode 0x01 (RequestCurrentPowertrainDiagnosticData)', 'page': 37}, {'structure': '2.8.3', 'title': '[RS_DEXT_00070] Support for OBD Mode 0x02 (RequestPowertrainFreezeFrameData)', 'page': 38}, {'structure': '2.8.4', 'title': '[RS_DEXT_00071] Support for OBD ModeModes 0x03 / 0x07 / 0x0A (RequestEmissionRelatedDiagnosticTroubleCodes)', 'page': 38}, {'structure': '2.8.5', 'title': '[RS_DEXT_00072] Support for OBD Mode 0x04 (ClearResetEmissionRelatedDiagnosticInformation)', 'page': 38}, {'structure': '2.8.6', 'title': '[RS_DEXT_00073] Support for OBD Mode 0x06 (RequestOnBoardMonitoringTestResults)', 'page': 39}, {'structure': '2.8.7', 'title': '[RS_DEXT_00074] Support for OBD Mode 0x08 (RequestControlOfOnBoardDevice)', 'page': 39}, {'structure': '2.8.8', 'title': '[RS_DEXT_00075] Support for OBD Mode 0x09 (RequestVehicleInformation)', 'page': 39}, {'structure': '2.8.9', 'title': '[RS_DEXT_00076] Definition of Diagnostic Test Identifier', 'page': 40}, {'structure': '2.8.10', 'title': '[RS_DEXT_00077] Description of the utilization of UDS for supporting WWH-OBD', 'page': 40}, {'structure': 'A', 'title': 'History of Constraints and Specification Items', 'page': 41}, {'structure': 'A.1', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.1', 'page': 41}, {'structure': 'A.1.1', 'title': 'Added Traceables in R4.2.1', 'page': 41}, {'structure': 'A.1.2', 'title': 'Added Traceables in 4.2.1', 'page': 42}, {'structure': 'A.1.3', 'title': 'Deleted Traceables in 4.2.1', 'page': 42}, {'structure': 'A.2', 'title': 'Constraint History of this Document according to AUTOSAR R4.2.2', 'page': 42}, {'structure': 'A.2.1', 'title': 'Added Traceables in 4.2.2', 'page': 42}, {'structure': 'A.2.2', 'title': 'Changed Traceables in 4.2.2', 'page': 42}, {'structure': 'A.2.3', 'title': 'Deleted Traceables in 4.2.2', 'page': 43}, {'structure': 'A.2.4', 'title': 'Added Constraints in 4.2.2', 'page': 43}, {'structure': 'A.2.5', 'title': 'Changed Constraints in 4.2.2', 'page': 43}, {'structure': 'A.2.6', 'title': 'Deleted Constraints in 4.2.2', 'page': 43}, {'structure': 'A.3', 'title': 'Constraint History of this Document according to AUTOSAR R4.3.0', 'page': 43}, {'structure': 'A.3.1', 'title': 'Added Traceables in 4.3.0', 'page': 43}, {'structure': 'A.3.2', 'title': 'Changed Traceables in 4.3.0', 'page': 44}, {'structure': 'A.3.3', 'title': 'Deleted Traceables in 4.3.0', 'page': 45}, {'structure': 'A.3.4', 'title': 'Added Constraints in 4.3.0', 'page': 45}, {'structure': 'A.3.5', 'title': 'Changed Constraints in 4.3.0', 'page': 45}, {'structure': 'A.3.6', 'title': 'Deleted Constraints in 4.3.0', 'page': 45}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '2.4', 'title': 'Requirements against Event Handling', 'physical_index': '<physical_index_24>'}, {'structure': '2.5', 'title': 'Requirements against Sessions and Security', 'physical_index': None}, {'structure': '2.6', 'title': 'Requirements against the Support for Function Inhibition', 'physical_index': None}, {'structure': '2.7', 'title': 'Requirements against the Support for diagnostics on J1939', 'physical_index': None}, {'structure': '2.8', 'title': 'Requirements against the Support for OBD Diagnostic Services', 'physical_index': None}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '2.4', 'title': 'Requirements against Event Handling', 'physical_index': 24}, {'structure': '2.5', 'title': 'Requirements against Sessions and Security', 'physical_index': None}, {'structure': '2.6', 'title': 'Requirements against the Support for Function Inhibition', 'physical_index': None}, {'structure': '2.7', 'title': 'Requirements against the Support for diagnostics on J1939', 'physical_index': None}, {'structure': '2.8', 'title': 'Requirements against the Support for OBD Diagnostic Services', 'physical_index': None}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 1.0,
+    "incorrect_results": []
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Requirements against Event Handling' appears in the page_text, but it is not the first content. There are several paragraphs and other sections before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given page_text starts with 'Requirements on Diagnostic Extract Template' and does not begin with the section title 'Preface'. Therefore, the section 'Preface' does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  }
+]

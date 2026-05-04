@@ -1,0 +1,1487 @@
+[
+  {
+    "total_page_number": 78
+  },
+  {
+    "total_token": 36709
+  },
+  {
+    "toc_content": "Explanation of Error Handling on Application Level  \nAUTOSAR CP Release 4.4.0    \n3 of 78 Document ID 378: AUTOSAR_EXP _ApplicationLevelEr rorHandling  \n  - AUTOSAR confidential - \nTable of Contents  \n1 Introduction  :  :  :  :   7 \n2 Relation to other documents  :  :  :   8 \n3 References  :  :  :  :   9 \n4 Guide to the document  :  :  :   11 \n5 Terms and definitions  :  :  :   13 \n5.1 Basic dependability terms  :  :  :   13 \n5.2 Fault Detection, I solation and Recovery (FDIR)  :  :   14 \n6 Scope  :  :  :  :   16 \n7 Error model  :  :  :  :   17 \n8 Error handling mechanisms  :  :  :   20 \n8.1 Plausibility checks  :  :  :   20 \n8.1.1  Description  :  :  :   20 \n8.1.2  Applicability  :  :  :   21 \n8.1.3  Application level vs. BSW  :  :  ... 22 \n8.1.4  AUTOSAR References  :  :  :  23 \n8.2 Substitute Values  :  :  :   23 \n8.2.1  Description  :  :  :   23 \n8.2.2  Applicability  :  :  :   24 \n8.2.3  Application level vs. BSW  :  :  ... 24 \n8.2.4  AUTOSAR Referen ces :  :  :  25 \n8.3 Voting  :  :  :  :   25 \n8.3.1  Description  :  :  :   25 \n8.3.2  Applicability  :  :  :   26 \n8.3.3  Application level vs. BSW  :  :  ... 26 \n8.3.4  AUTOSAR References  :  :  :  26 \n8.4 Agreement  :  :  :  .. 26 \n8.4.1  Description  :  :  :   26 \n8.4.2  Applicability  :  :  :   27 \n8.4.3  Application level vs. BSW  :  :  ... 27 \n8.4.4  AUTOSAR References  :  :  :  28 \n8.5 Checksums/Codes  :  :  :   28 \n8.5.1  Description  :  :  :   28 \n8.5.2  Applicability  :  :  :   28 Explanation of Error Handling on Application Level  \nAUTOSAR CP Release 4.4.0    \n4 of 78 Document ID 378: AUTOSAR_EXP _ApplicationLevelEr rorHandling  \n  - AUTOSAR confidential - \n8.5.3  Application level vs. BSW  :  :  ... 29 \n8.5.4  AUTOSAR References  :  :  :  29 \n8.6 Execution sequence monito ring :  :  . 29 \n8.6.1  Description  :  :  :   29 \n8.6.2  Applicability  :  :  :   30 \n8.6.3  Application level vs. BSW  :  :  ... 31 \n8.6.4  AUTOSAR Referen ces :  :  :  31 \n8.7 Aliveness monitoring  :  :  :   31 \n8.7.1  Description  :  :  :   31 \n8.7.2  Applicability  :  :  :   32 \n8.7.3  Application level vs. BSW  :  :  ... 32 \n8.7.4  AUTOSAR References  :  :  :  32 \n8.8 Status and Mode Management  :  :  .. 33 \n8.8.1  Description  :  :  :   33 \n8.8.2  Applicability  :  :  :   34 \n8.8.3  Application level vs. BSW  :  :  ... 35 \n8.8.4  AUTOSAR References  :  :  :  35 \n8.9 Reconfiguration  :  :  :   36 \n8.9.1  Description  :  :  :   36 \n8.9.2  Applicability  :  :  :   37 \n8.9.3  Application level vs. BSW  :  :  ... 37 \n8.9.4  AUTOSAR References  :  :  :  38 \n8.10  Reset  :  :  :  :   39 \n8.10.1  Description  :  :  :   39 \n8.10.2  Applicability  :  :  :   40 \n8.10.3  Application level vs. BSW  :  :  ... 40 \n8.10.4  AUTOSAR References  :  :  :  40 \n8.11  Error Filtering  :  :  :   42 \n8.11.1  Description  :  :  :   42 \n8.11.2  Applicability  :  :  :   42 \n8.11.3  Application level vs. BSW  :  :  ... 42 \n8.11.4  AUTOSAR References  :  :  :  42 \n8.12  Memory Protection  :  :  :   43 \n8.12.1  Description  :  :  :   43 \n8.12.2  Applicability  :  :  :   43 Explanation of Error Handling on Application Level  \nAUTOSAR CP Release 4.4.0    \n5 of 78 Document ID 378: AUTOSAR_EXP _ApplicationLevelEr rorHandling  \n  - AUTOSAR confidential - \n8.12.3  Application level vs. BSW  :  :  ... 43 \n8.12.4  AUTOSAR References  :  :  :  44 \n8.13  Timing Protection  :  :  :   45 \n8.13.1  Description  :  :  :   45 \n8.13.2  Applicability  :  :  :   45 \n8.13.3  Application level vs. BSW  :  :  ... 45 \n8.13.4  AUTOSAR References  :  :  :  46 \n9 Aspect mapping  :  :  :  . 48 \n9.1 Mapping to FDIR process and Error Model  :  :   48 \n9.2 Mapping to implementation level  :  :   51 \n10 Terminating and restarting partitions  :  :  . 53 \n10.1  Introd uction  :  :  :   53 \n10.1.1  Automotive  Applications  :  :  :  54 \n10.1.2  Software Partitioning & Error Containment Regions  :   54 \n10.2  Rationale \u2013 Use Cases  :  :  :   55 \n10.2.1  Use Case 1: Softwar e Partitioning [UC1]  :  :   55 \n10.2.2  Use Case 2: Application -level Error Handling [UC2]  :   56 \n10.3  Approach for Terminating and Restarting Partitions  :  ... 58 \n10.3.1  OS features  :  :  :   58 \n10.3.2  Going from OS -Applications  to partitions  :  :   62 \n10.3.3  Sequence diagram for termination and restart of a partition  :   75 \n10.3.4  Support for Use Cases  :  :  :   76 \n10.3.5  Consistency Aspects  :  :  :   76 \n10.4  Integrator Responsibility  :  :  :   77 ",
+    "toc_page_list": [
+      2,
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 7}, {'structure': '2', 'title': 'Relation to other documents', 'page': 8}, {'structure': '3', 'title': 'References', 'page': 9}, {'structure': '4', 'title': 'Guide to the document', 'page': 11}, {'structure': '5', 'title': 'Terms and definitions', 'page': 13}, {'structure': '5.1', 'title': 'Basic dependability terms', 'page': 13}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'page': 14}, {'structure': '6', 'title': 'Scope', 'page': 16}, {'structure': '7', 'title': 'Error model', 'page': 17}, {'structure': '8', 'title': 'Error handling mechanisms', 'page': 20}, {'structure': '8.1', 'title': 'Plausibility checks', 'page': 20}, {'structure': '8.1.1', 'title': 'Description', 'page': 20}, {'structure': '8.1.2', 'title': 'Applicability', 'page': 21}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'page': 22}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'page': 23}, {'structure': '8.2', 'title': 'Substitute Values', 'page': 23}, {'structure': '8.2.1', 'title': 'Description', 'page': 23}, {'structure': '8.2.2', 'title': 'Applicability', 'page': 24}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'page': 24}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'page': 25}, {'structure': '8.3', 'title': 'Voting', 'page': 25}, {'structure': '8.3.1', 'title': 'Description', 'page': 25}, {'structure': '8.3.2', 'title': 'Applicability', 'page': 26}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'page': 26}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'page': 26}, {'structure': '8.4', 'title': 'Agreement', 'page': 26}, {'structure': '8.4.1', 'title': 'Description', 'page': 26}, {'structure': '8.4.2', 'title': 'Applicability', 'page': 27}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'page': 27}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'page': 28}, {'structure': '8.5', 'title': 'Checksums/Codes', 'page': 28}, {'structure': '8.5.1', 'title': 'Description', 'page': 28}, {'structure': '8.5.2', 'title': 'Applicability', 'page': 28}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'page': 29}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'page': 29}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'page': 29}, {'structure': '8.6.1', 'title': 'Description', 'page': 29}, {'structure': '8.6.2', 'title': 'Applicability', 'page': 30}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'page': 31}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'page': 31}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'page': 31}, {'structure': '8.7.1', 'title': 'Description', 'page': 31}, {'structure': '8.7.2', 'title': 'Applicability', 'page': 32}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'page': 32}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'page': 32}, {'structure': '8.8', 'title': 'Status and Mode Management', 'page': 33}, {'structure': '8.8.1', 'title': 'Description', 'page': 33}, {'structure': '8.8.2', 'title': 'Applicability', 'page': 34}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'page': 35}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'page': 35}, {'structure': '8.9', 'title': 'Reconfiguration', 'page': 36}, {'structure': '8.9.1', 'title': 'Description', 'page': 36}, {'structure': '8.9.2', 'title': 'Applicability', 'page': 37}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'page': 37}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'page': 38}, {'structure': '8.10', 'title': 'Reset', 'page': 39}, {'structure': '8.10.1', 'title': 'Description', 'page': 39}, {'structure': '8.10.2', 'title': 'Applicability', 'page': 40}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'page': 40}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'page': 40}, {'structure': '8.11', 'title': 'Error Filtering', 'page': 42}, {'structure': '8.11.1', 'title': 'Description', 'page': 42}, {'structure': '8.11.2', 'title': 'Applicability', 'page': 42}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'page': 42}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'page': 42}, {'structure': '8.12', 'title': 'Memory Protection', 'page': 43}, {'structure': '8.12.1', 'title': 'Description', 'page': 43}, {'structure': '8.12.2', 'title': 'Applicability', 'page': 43}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'page': 43}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'page': 44}, {'structure': '8.13', 'title': 'Timing Protection', 'page': 45}, {'structure': '8.13.1', 'title': 'Description', 'page': 45}, {'structure': '8.13.2', 'title': 'Applicability', 'page': 45}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'page': 45}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'page': 46}, {'structure': '9', 'title': 'Aspect mapping', 'page': 48}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'page': 48}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'page': 51}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'page': 53}, {'structure': '10.1', 'title': 'Introduction', 'page': 53}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'page': 54}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'page': 54}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'page': 55}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'page': 55}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'page': 56}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'page': 58}, {'structure': '10.3.1', 'title': 'OS features', 'page': 58}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'page': 62}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'page': 75}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'page': 76}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'page': 76}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'page': 77}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'References', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': '<physical_index_11>'}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': '<physical_index_13>'}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': '<physical_index_13>'}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': '<physical_index_14>'}, {'structure': '6', 'title': 'Scope', 'physical_index': '<physical_index_16>'}, {'structure': '7', 'title': 'Error model', 'physical_index': '<physical_index_17>'}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_20>'}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': '<physical_index_20>'}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': '<physical_index_20>'}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': '<physical_index_21>'}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_22>'}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_23>'}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': '<physical_index_23>'}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': '<physical_index_23>'}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': '<physical_index_24>'}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_24>'}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_25>'}, {'structure': '8.3', 'title': 'Voting', 'physical_index': '<physical_index_25>'}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': '<physical_index_25>'}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': '<physical_index_26>'}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_26>'}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_26>'}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': '<physical_index_26>'}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': '<physical_index_26>'}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': '<physical_index_27>'}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_27>'}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_28>'}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_29>'}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_29>'}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': '<physical_index_29>'}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': '<physical_index_29>'}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 8}, {'structure': '3', 'title': 'References', 'physical_index': 9}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': 11}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': 13}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': 13}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': 14}, {'structure': '6', 'title': 'Scope', 'physical_index': 16}, {'structure': '7', 'title': 'Error model', 'physical_index': 17}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': 20}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': 20}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': 20}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': 21}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': 22}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': 23}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': 23}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': 23}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': 24}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': 24}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': 25}, {'structure': '8.3', 'title': 'Voting', 'physical_index': 25}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': 25}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': 26}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': 26}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': 26}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': 26}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': 26}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': 27}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': 27}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': 28}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': 28}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': 28}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': 28}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': 29}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': 29}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': 29}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': 29}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 7, 'physical_index': 7}, {'title': 'Introduction', 'page': 53, 'physical_index': 7}, {'title': 'Relation to other documents', 'page': 8, 'physical_index': 8}, {'title': 'References', 'page': 9, 'physical_index': 9}, {'title': 'Guide to the document', 'page': 11, 'physical_index': 11}, {'title': 'Terms and definitions', 'page': 13, 'physical_index': 13}, {'title': 'Basic dependability terms', 'page': 13, 'physical_index': 13}, {'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'page': 14, 'physical_index': 14}, {'title': 'Scope', 'page': 16, 'physical_index': 16}, {'title': 'Error model', 'page': 17, 'physical_index': 17}, {'title': 'Error handling mechanisms', 'page': 20, 'physical_index': 20}, {'title': 'Plausibility checks', 'page': 20, 'physical_index': 20}, {'title': 'Description', 'page': 20, 'physical_index': 20}, {'title': 'Description', 'page': 23, 'physical_index': 20}, {'title': 'Description', 'page': 25, 'physical_index': 20}, {'title': 'Description', 'page': 26, 'physical_index': 20}, {'title': 'Description', 'page': 28, 'physical_index': 20}, {'title': 'Description', 'page': 29, 'physical_index': 20}, {'title': 'Description', 'page': 31, 'physical_index': 20}, {'title': 'Description', 'page': 33, 'physical_index': 20}, {'title': 'Description', 'page': 36, 'physical_index': 20}, {'title': 'Description', 'page': 39, 'physical_index': 20}, {'title': 'Description', 'page': 42, 'physical_index': 20}, {'title': 'Description', 'page': 43, 'physical_index': 20}, {'title': 'Description', 'page': 45, 'physical_index': 20}, {'title': 'Applicability', 'page': 21, 'physical_index': 21}, {'title': 'Applicability', 'page': 24, 'physical_index': 21}, {'title': 'Applicability', 'page': 26, 'physical_index': 21}, {'title': 'Applicability', 'page': 27, 'physical_index': 21}, {'title': 'Applicability', 'page': 28, 'physical_index': 21}, {'title': 'Applicability', 'page': 30, 'physical_index': 21}, {'title': 'Applicability', 'page': 32, 'physical_index': 21}, {'title': 'Applicability', 'page': 34, 'physical_index': 21}, {'title': 'Applicability', 'page': 37, 'physical_index': 21}, {'title': 'Applicability', 'page': 40, 'physical_index': 21}, {'title': 'Applicability', 'page': 42, 'physical_index': 21}, {'title': 'Applicability', 'page': 43, 'physical_index': 21}, {'title': 'Applicability', 'page': 45, 'physical_index': 21}, {'title': 'Application level vs. BSW', 'page': 22, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 24, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 26, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 27, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 29, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 31, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 32, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 35, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 37, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 40, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 42, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 43, 'physical_index': 22}, {'title': 'Application level vs. BSW', 'page': 45, 'physical_index': 22}, {'title': 'AUTOSAR References', 'page': 23, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 25, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 26, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 28, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 29, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 31, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 32, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 35, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 38, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 40, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 42, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 44, 'physical_index': 23}, {'title': 'AUTOSAR References', 'page': 46, 'physical_index': 23}, {'title': 'Substitute Values', 'page': 23, 'physical_index': 23}, {'title': 'Description', 'page': 20, 'physical_index': 23}, {'title': 'Description', 'page': 23, 'physical_index': 23}, {'title': 'Description', 'page': 25, 'physical_index': 23}, {'title': 'Description', 'page': 26, 'physical_index': 23}, {'title': 'Description', 'page': 28, 'physical_index': 23}, {'title': 'Description', 'page': 29, 'physical_index': 23}, {'title': 'Description', 'page': 31, 'physical_index': 23}, {'title': 'Description', 'page': 33, 'physical_index': 23}, {'title': 'Description', 'page': 36, 'physical_index': 23}, {'title': 'Description', 'page': 39, 'physical_index': 23}, {'title': 'Description', 'page': 42, 'physical_index': 23}, {'title': 'Description', 'page': 43, 'physical_index': 23}, {'title': 'Description', 'page': 45, 'physical_index': 23}, {'title': 'Applicability', 'page': 21, 'physical_index': 24}, {'title': 'Applicability', 'page': 24, 'physical_index': 24}, {'title': 'Applicability', 'page': 26, 'physical_index': 24}, {'title': 'Applicability', 'page': 27, 'physical_index': 24}, {'title': 'Applicability', 'page': 28, 'physical_index': 24}, {'title': 'Applicability', 'page': 30, 'physical_index': 24}, {'title': 'Applicability', 'page': 32, 'physical_index': 24}, {'title': 'Applicability', 'page': 34, 'physical_index': 24}, {'title': 'Applicability', 'page': 37, 'physical_index': 24}, {'title': 'Applicability', 'page': 40, 'physical_index': 24}, {'title': 'Applicability', 'page': 42, 'physical_index': 24}, {'title': 'Applicability', 'page': 43, 'physical_index': 24}, {'title': 'Applicability', 'page': 45, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 22, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 24, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 26, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 27, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 29, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 31, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 32, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 35, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 37, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 40, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 42, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 43, 'physical_index': 24}, {'title': 'Application level vs. BSW', 'page': 45, 'physical_index': 24}, {'title': 'AUTOSAR References', 'page': 23, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 25, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 26, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 28, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 29, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 31, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 32, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 35, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 38, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 40, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 42, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 44, 'physical_index': 25}, {'title': 'AUTOSAR References', 'page': 46, 'physical_index': 25}, {'title': 'Voting', 'page': 25, 'physical_index': 25}, {'title': 'Description', 'page': 20, 'physical_index': 25}, {'title': 'Description', 'page': 23, 'physical_index': 25}, {'title': 'Description', 'page': 25, 'physical_index': 25}, {'title': 'Description', 'page': 26, 'physical_index': 25}, {'title': 'Description', 'page': 28, 'physical_index': 25}, {'title': 'Description', 'page': 29, 'physical_index': 25}, {'title': 'Description', 'page': 31, 'physical_index': 25}, {'title': 'Description', 'page': 33, 'physical_index': 25}, {'title': 'Description', 'page': 36, 'physical_index': 25}, {'title': 'Description', 'page': 39, 'physical_index': 25}, {'title': 'Description', 'page': 42, 'physical_index': 25}, {'title': 'Description', 'page': 43, 'physical_index': 25}, {'title': 'Description', 'page': 45, 'physical_index': 25}, {'title': 'Applicability', 'page': 21, 'physical_index': 26}, {'title': 'Applicability', 'page': 24, 'physical_index': 26}, {'title': 'Applicability', 'page': 26, 'physical_index': 26}, {'title': 'Applicability', 'page': 27, 'physical_index': 26}, {'title': 'Applicability', 'page': 28, 'physical_index': 26}, {'title': 'Applicability', 'page': 30, 'physical_index': 26}, {'title': 'Applicability', 'page': 32, 'physical_index': 26}, {'title': 'Applicability', 'page': 34, 'physical_index': 26}, {'title': 'Applicability', 'page': 37, 'physical_index': 26}, {'title': 'Applicability', 'page': 40, 'physical_index': 26}, {'title': 'Applicability', 'page': 42, 'physical_index': 26}, {'title': 'Applicability', 'page': 43, 'physical_index': 26}, {'title': 'Applicability', 'page': 45, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 22, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 24, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 26, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 27, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 29, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 31, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 32, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 35, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 37, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 40, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 42, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 43, 'physical_index': 26}, {'title': 'Application level vs. BSW', 'page': 45, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 23, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 25, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 26, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 28, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 29, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 31, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 32, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 35, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 38, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 40, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 42, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 44, 'physical_index': 26}, {'title': 'AUTOSAR References', 'page': 46, 'physical_index': 26}, {'title': 'Agreement', 'page': 26, 'physical_index': 26}, {'title': 'Description', 'page': 20, 'physical_index': 26}, {'title': 'Description', 'page': 23, 'physical_index': 26}, {'title': 'Description', 'page': 25, 'physical_index': 26}, {'title': 'Description', 'page': 26, 'physical_index': 26}, {'title': 'Description', 'page': 28, 'physical_index': 26}, {'title': 'Description', 'page': 29, 'physical_index': 26}, {'title': 'Description', 'page': 31, 'physical_index': 26}, {'title': 'Description', 'page': 33, 'physical_index': 26}, {'title': 'Description', 'page': 36, 'physical_index': 26}, {'title': 'Description', 'page': 39, 'physical_index': 26}, {'title': 'Description', 'page': 42, 'physical_index': 26}, {'title': 'Description', 'page': 43, 'physical_index': 26}, {'title': 'Description', 'page': 45, 'physical_index': 26}, {'title': 'Applicability', 'page': 21, 'physical_index': 27}, {'title': 'Applicability', 'page': 24, 'physical_index': 27}, {'title': 'Applicability', 'page': 26, 'physical_index': 27}, {'title': 'Applicability', 'page': 27, 'physical_index': 27}, {'title': 'Applicability', 'page': 28, 'physical_index': 27}, {'title': 'Applicability', 'page': 30, 'physical_index': 27}, {'title': 'Applicability', 'page': 32, 'physical_index': 27}, {'title': 'Applicability', 'page': 34, 'physical_index': 27}, {'title': 'Applicability', 'page': 37, 'physical_index': 27}, {'title': 'Applicability', 'page': 40, 'physical_index': 27}, {'title': 'Applicability', 'page': 42, 'physical_index': 27}, {'title': 'Applicability', 'page': 43, 'physical_index': 27}, {'title': 'Applicability', 'page': 45, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 22, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 24, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 26, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 27, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 29, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 31, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 32, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 35, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 37, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 40, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 42, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 43, 'physical_index': 27}, {'title': 'Application level vs. BSW', 'page': 45, 'physical_index': 27}, {'title': 'AUTOSAR References', 'page': 23, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 25, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 26, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 28, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 29, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 31, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 32, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 35, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 38, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 40, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 42, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 44, 'physical_index': 28}, {'title': 'AUTOSAR References', 'page': 46, 'physical_index': 28}, {'title': 'Checksums/Codes', 'page': 28, 'physical_index': 28}, {'title': 'Description', 'page': 20, 'physical_index': 28}, {'title': 'Description', 'page': 23, 'physical_index': 28}, {'title': 'Description', 'page': 25, 'physical_index': 28}, {'title': 'Description', 'page': 26, 'physical_index': 28}, {'title': 'Description', 'page': 28, 'physical_index': 28}, {'title': 'Description', 'page': 29, 'physical_index': 28}, {'title': 'Description', 'page': 31, 'physical_index': 28}, {'title': 'Description', 'page': 33, 'physical_index': 28}, {'title': 'Description', 'page': 36, 'physical_index': 28}, {'title': 'Description', 'page': 39, 'physical_index': 28}, {'title': 'Description', 'page': 42, 'physical_index': 28}, {'title': 'Description', 'page': 43, 'physical_index': 28}, {'title': 'Description', 'page': 45, 'physical_index': 28}, {'title': 'Applicability', 'page': 21, 'physical_index': 28}, {'title': 'Applicability', 'page': 24, 'physical_index': 28}, {'title': 'Applicability', 'page': 26, 'physical_index': 28}, {'title': 'Applicability', 'page': 27, 'physical_index': 28}, {'title': 'Applicability', 'page': 28, 'physical_index': 28}, {'title': 'Applicability', 'page': 30, 'physical_index': 28}, {'title': 'Applicability', 'page': 32, 'physical_index': 28}, {'title': 'Applicability', 'page': 34, 'physical_index': 28}, {'title': 'Applicability', 'page': 37, 'physical_index': 28}, {'title': 'Applicability', 'page': 40, 'physical_index': 28}, {'title': 'Applicability', 'page': 42, 'physical_index': 28}, {'title': 'Applicability', 'page': 43, 'physical_index': 28}, {'title': 'Applicability', 'page': 45, 'physical_index': 28}, {'title': 'Application level vs. BSW', 'page': 22, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 24, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 26, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 27, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 29, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 31, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 32, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 35, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 37, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 40, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 42, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 43, 'physical_index': 29}, {'title': 'Application level vs. BSW', 'page': 45, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 23, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 25, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 26, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 28, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 29, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 31, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 32, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 35, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 38, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 40, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 42, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 44, 'physical_index': 29}, {'title': 'AUTOSAR References', 'page': 46, 'physical_index': 29}, {'title': 'Execution sequence monitoring', 'page': 29, 'physical_index': 29}, {'title': 'Description', 'page': 20, 'physical_index': 29}, {'title': 'Description', 'page': 23, 'physical_index': 29}, {'title': 'Description', 'page': 25, 'physical_index': 29}, {'title': 'Description', 'page': 26, 'physical_index': 29}, {'title': 'Description', 'page': 28, 'physical_index': 29}, {'title': 'Description', 'page': 29, 'physical_index': 29}, {'title': 'Description', 'page': 31, 'physical_index': 29}, {'title': 'Description', 'page': 33, 'physical_index': 29}, {'title': 'Description', 'page': 36, 'physical_index': 29}, {'title': 'Description', 'page': 39, 'physical_index': 29}, {'title': 'Description', 'page': 42, 'physical_index': 29}, {'title': 'Description', 'page': 43, 'physical_index': 29}, {'title': 'Description', 'page': 45, 'physical_index': 29}, {'title': 'Applicability', 'page': 21, 'physical_index': 30}, {'title': 'Applicability', 'page': 24, 'physical_index': 30}, {'title': 'Applicability', 'page': 26, 'physical_index': 30}, {'title': 'Applicability', 'page': 27, 'physical_index': 30}, {'title': 'Applicability', 'page': 28, 'physical_index': 30}, {'title': 'Applicability', 'page': 30, 'physical_index': 30}, {'title': 'Applicability', 'page': 32, 'physical_index': 30}, {'title': 'Applicability', 'page': 34, 'physical_index': 30}, {'title': 'Applicability', 'page': 37, 'physical_index': 30}, {'title': 'Applicability', 'page': 40, 'physical_index': 30}, {'title': 'Applicability', 'page': 42, 'physical_index': 30}, {'title': 'Applicability', 'page': 43, 'physical_index': 30}, {'title': 'Applicability', 'page': 45, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 8}, {'structure': '3', 'title': 'References', 'physical_index': 9}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': 11}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': 13}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': 13}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': 14}, {'structure': '6', 'title': 'Scope', 'physical_index': 16}, {'structure': '7', 'title': 'Error model', 'physical_index': 17}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': 20}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': 20}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': 20}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': 21}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': 22}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': 23}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': 23}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': 23}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': 24}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': 24}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': 25}, {'structure': '8.3', 'title': 'Voting', 'physical_index': 25}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': 25}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': 26}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': 26}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': 26}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': 26}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': 26}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': 27}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': 27}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': 28}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': 28}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': 28}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': 28}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': 29}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': 29}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': 29}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': 29}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': 30}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'physical_index': 31}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'physical_index': 31}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'physical_index': 31}, {'structure': '8.7.1', 'title': 'Description', 'physical_index': 31}, {'structure': '8.7.2', 'title': 'Applicability', 'physical_index': 32}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'physical_index': 32}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'physical_index': 32}, {'structure': '8.8', 'title': 'Status and Mode Management', 'physical_index': 33}, {'structure': '8.8.1', 'title': 'Description', 'physical_index': 33}, {'structure': '8.8.2', 'title': 'Applicability', 'physical_index': 34}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'physical_index': 35}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'physical_index': 35}, {'structure': '8.9', 'title': 'Reconfiguration', 'physical_index': 36}, {'structure': '8.9.1', 'title': 'Description', 'physical_index': 36}, {'structure': '8.9.2', 'title': 'Applicability', 'physical_index': 37}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'physical_index': 37}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'physical_index': 38}, {'structure': '8.10', 'title': 'Reset', 'physical_index': 39}, {'structure': '8.10.1', 'title': 'Description', 'physical_index': 39}, {'structure': '8.10.2', 'title': 'Applicability', 'physical_index': 40}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'physical_index': 40}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'physical_index': 40}, {'structure': '8.11', 'title': 'Error Filtering', 'physical_index': 42}, {'structure': '8.11.1', 'title': 'Description', 'physical_index': 42}, {'structure': '8.11.2', 'title': 'Applicability', 'physical_index': 42}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'physical_index': 42}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'physical_index': 42}, {'structure': '8.12', 'title': 'Memory Protection', 'physical_index': 43}, {'structure': '8.12.1', 'title': 'Description', 'physical_index': 43}, {'structure': '8.12.2', 'title': 'Applicability', 'physical_index': 43}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'physical_index': 43}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'physical_index': 44}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': 45}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': 45}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': 45}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': 45}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': 46}, {'structure': '9', 'title': 'Aspect mapping', 'physical_index': 48}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'physical_index': 48}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'physical_index': 51}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'physical_index': 53}, {'structure': '10.1', 'title': 'Introduction', 'physical_index': 53}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'physical_index': 54}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'physical_index': 54}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'physical_index': 55}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'physical_index': 55}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'physical_index': 56}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'physical_index': 58}, {'structure': '10.3.1', 'title': 'OS features', 'physical_index': 58}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'physical_index': 62}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': 75}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'physical_index': 76}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'physical_index': 76}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': 77}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 8}, {'structure': '3', 'title': 'References', 'physical_index': 9}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': 11}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': 13}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': 13}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': 14}, {'structure': '6', 'title': 'Scope', 'physical_index': 16}, {'structure': '7', 'title': 'Error model', 'physical_index': 17}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': 20}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': 20}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': 20}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': 21}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': 22}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': 23}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': 23}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': 23}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': 24}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': 24}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': 25}, {'structure': '8.3', 'title': 'Voting', 'physical_index': 25}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': 25}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': 26}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': 26}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': 26}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': 26}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': 26}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': 27}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': 27}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': 28}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': 28}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': 28}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': 28}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': 29}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': 29}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': 29}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': 29}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': 30}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'physical_index': 31}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'physical_index': 31}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'physical_index': 31}, {'structure': '8.7.1', 'title': 'Description', 'physical_index': 31}, {'structure': '8.7.2', 'title': 'Applicability', 'physical_index': 32}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'physical_index': 32}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'physical_index': 32}, {'structure': '8.8', 'title': 'Status and Mode Management', 'physical_index': 33}, {'structure': '8.8.1', 'title': 'Description', 'physical_index': 33}, {'structure': '8.8.2', 'title': 'Applicability', 'physical_index': 34}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'physical_index': 35}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'physical_index': 35}, {'structure': '8.9', 'title': 'Reconfiguration', 'physical_index': 36}, {'structure': '8.9.1', 'title': 'Description', 'physical_index': 36}, {'structure': '8.9.2', 'title': 'Applicability', 'physical_index': 37}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'physical_index': 37}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'physical_index': 38}, {'structure': '8.10', 'title': 'Reset', 'physical_index': 39}, {'structure': '8.10.1', 'title': 'Description', 'physical_index': 39}, {'structure': '8.10.2', 'title': 'Applicability', 'physical_index': 40}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'physical_index': 40}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'physical_index': 40}, {'structure': '8.11', 'title': 'Error Filtering', 'physical_index': 42}, {'structure': '8.11.1', 'title': 'Description', 'physical_index': 42}, {'structure': '8.11.2', 'title': 'Applicability', 'physical_index': 42}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'physical_index': 42}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'physical_index': 42}, {'structure': '8.12', 'title': 'Memory Protection', 'physical_index': 43}, {'structure': '8.12.1', 'title': 'Description', 'physical_index': 43}, {'structure': '8.12.2', 'title': 'Applicability', 'physical_index': 43}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'physical_index': 43}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'physical_index': 44}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': 45}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': 45}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': 45}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': 45}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': 46}, {'structure': '9', 'title': 'Aspect mapping', 'physical_index': 48}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'physical_index': 48}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'physical_index': 51}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'physical_index': 53}, {'structure': '10.1', 'title': 'Introduction', 'physical_index': 53}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'physical_index': 54}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'physical_index': 54}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'physical_index': 55}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'physical_index': 55}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'physical_index': 56}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'physical_index': 58}, {'structure': '10.3.1', 'title': 'OS features', 'physical_index': 58}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'physical_index': 62}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': 75}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'physical_index': 76}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'physical_index': 76}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': 77}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.22826086956521738,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Voting",
+        "page_number": 25
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 25
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 26
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 26
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 26
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Agreement",
+        "page_number": 26
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 27
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 28
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Checksums/Codes",
+        "page_number": 28
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 28
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 29
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 29
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Execution sequence monitoring",
+        "page_number": 29
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 29
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 30
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 31
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 31
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Aliveness monitoring",
+        "page_number": 31
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 31
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 32
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 32
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 32
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Status and Mode Management",
+        "page_number": 33
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 33
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 34
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 35
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 35
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Reconfiguration",
+        "page_number": 36
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 36
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 37
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 37
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 38
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Reset",
+        "page_number": 39
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 39
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 40
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 40
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 40
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Error Filtering",
+        "page_number": 42
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 42
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 42
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 42
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 42
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Memory Protection",
+        "page_number": 43
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 43
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 43
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 43
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 44
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Timing Protection",
+        "page_number": 45
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 45
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 45
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 45
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 46
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Aspect mapping",
+        "page_number": 48
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Mapping to FDIR process and Error Model",
+        "page_number": 48
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Mapping to implementation level",
+        "page_number": 51
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Terminating and restarting partitions",
+        "page_number": 53
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 53
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Automotive Applications",
+        "page_number": 54
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Software Partitioning & Error Containment Regions",
+        "page_number": 54
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Rationale \u2013 Use Cases",
+        "page_number": 55
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Use Case 1: Software Partitioning [UC1]",
+        "page_number": 55
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Use Case 2: Application-level Error Handling [UC2]",
+        "page_number": 56
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Approach for Terminating and Restarting Partitions",
+        "page_number": 58
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "OS features",
+        "page_number": 58
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Going from OS-Applications to partitions",
+        "page_number": 62
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Sequence diagram for termination and restart of a partition",
+        "page_number": 75
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Consistency Aspects",
+        "page_number": 76
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Integrator Responsibility",
+        "page_number": 77
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 7}, {'structure': '2', 'title': 'Relation to other documents', 'page': 8}, {'structure': '3', 'title': 'References', 'page': 9}, {'structure': '4', 'title': 'Guide to the document', 'page': 11}, {'structure': '5', 'title': 'Terms and definitions', 'page': 13}, {'structure': '5.1', 'title': 'Basic dependability terms', 'page': 13}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'page': 14}, {'structure': '6', 'title': 'Scope', 'page': 16}, {'structure': '7', 'title': 'Error model', 'page': 17}, {'structure': '8', 'title': 'Error handling mechanisms', 'page': 20}, {'structure': '8.1', 'title': 'Plausibility checks', 'page': 20}, {'structure': '8.1.1', 'title': 'Description', 'page': 20}, {'structure': '8.1.2', 'title': 'Applicability', 'page': 21}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'page': 22}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'page': 23}, {'structure': '8.2', 'title': 'Substitute Values', 'page': 23}, {'structure': '8.2.1', 'title': 'Description', 'page': 23}, {'structure': '8.2.2', 'title': 'Applicability', 'page': 24}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'page': 24}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'page': 25}, {'structure': '8.3', 'title': 'Voting', 'page': 25}, {'structure': '8.3.1', 'title': 'Description', 'page': 25}, {'structure': '8.3.2', 'title': 'Applicability', 'page': 26}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'page': 26}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'page': 26}, {'structure': '8.4', 'title': 'Agreement', 'page': 26}, {'structure': '8.4.1', 'title': 'Description', 'page': 26}, {'structure': '8.4.2', 'title': 'Applicability', 'page': 27}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'page': 27}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'page': 28}, {'structure': '8.5', 'title': 'Checksums/Codes', 'page': 28}, {'structure': '8.5.1', 'title': 'Description', 'page': 28}, {'structure': '8.5.2', 'title': 'Applicability', 'page': 28}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'page': 29}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'page': 29}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'page': 29}, {'structure': '8.6.1', 'title': 'Description', 'page': 29}, {'structure': '8.6.2', 'title': 'Applicability', 'page': 30}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'page': 31}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'page': 31}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'page': 31}, {'structure': '8.7.1', 'title': 'Description', 'page': 31}, {'structure': '8.7.2', 'title': 'Applicability', 'page': 32}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'page': 32}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'page': 32}, {'structure': '8.8', 'title': 'Status and Mode Management', 'page': 33}, {'structure': '8.8.1', 'title': 'Description', 'page': 33}, {'structure': '8.8.2', 'title': 'Applicability', 'page': 34}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'page': 35}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'page': 35}, {'structure': '8.9', 'title': 'Reconfiguration', 'page': 36}, {'structure': '8.9.1', 'title': 'Description', 'page': 36}, {'structure': '8.9.2', 'title': 'Applicability', 'page': 37}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'page': 37}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'page': 38}, {'structure': '8.10', 'title': 'Reset', 'page': 39}, {'structure': '8.10.1', 'title': 'Description', 'page': 39}, {'structure': '8.10.2', 'title': 'Applicability', 'page': 40}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'page': 40}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'page': 40}, {'structure': '8.11', 'title': 'Error Filtering', 'page': 42}, {'structure': '8.11.1', 'title': 'Description', 'page': 42}, {'structure': '8.11.2', 'title': 'Applicability', 'page': 42}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'page': 42}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'page': 42}, {'structure': '8.12', 'title': 'Memory Protection', 'page': 43}, {'structure': '8.12.1', 'title': 'Description', 'page': 43}, {'structure': '8.12.2', 'title': 'Applicability', 'page': 43}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'page': 43}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'page': 44}, {'structure': '8.13', 'title': 'Timing Protection', 'page': 45}, {'structure': '8.13.1', 'title': 'Description', 'page': 45}, {'structure': '8.13.2', 'title': 'Applicability', 'page': 45}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'page': 45}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'page': 46}, {'structure': '9', 'title': 'Aspect mapping', 'page': 48}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'page': 48}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'page': 51}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'page': 53}, {'structure': '10.1', 'title': 'Introduction', 'page': 53}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'page': 54}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'page': 54}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'page': 55}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'page': 55}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'page': 56}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'page': 58}, {'structure': '10.3.1', 'title': 'OS features', 'page': 58}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'page': 62}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'page': 75}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'page': 76}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'page': 76}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'page': 77}]"
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'References', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': '<physical_index_11>'}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': '<physical_index_13>'}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': '<physical_index_13>'}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': '<physical_index_14>'}, {'structure': '6', 'title': 'Scope', 'physical_index': '<physical_index_16>'}, {'structure': '7', 'title': 'Error model', 'physical_index': '<physical_index_17>'}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_20>'}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': '<physical_index_20>'}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': '<physical_index_20>'}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': '<physical_index_21>'}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_22>'}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_23>'}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': '<physical_index_23>'}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': '<physical_index_23>'}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': '<physical_index_24>'}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_24>'}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_25>'}, {'structure': '8.3', 'title': 'Voting', 'physical_index': '<physical_index_25>'}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': '<physical_index_25>'}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': '<physical_index_26>'}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_26>'}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_26>'}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': '<physical_index_26>'}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': '<physical_index_26>'}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': '<physical_index_27>'}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_27>'}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_28>'}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_29>'}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_29>'}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': '<physical_index_29>'}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': '<physical_index_29>'}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': '<physical_index_30>'}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_31>'}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_31>'}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'physical_index': '<physical_index_31>'}, {'structure': '8.7.1', 'title': 'Description', 'physical_index': '<physical_index_31>'}, {'structure': '8.7.2', 'title': 'Applicability', 'physical_index': '<physical_index_32>'}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_32>'}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_32>'}, {'structure': '8.8', 'title': 'Status and Mode Management', 'physical_index': '<physical_index_33>'}, {'structure': '8.8.1', 'title': 'Description', 'physical_index': '<physical_index_33>'}, {'structure': '8.8.2', 'title': 'Applicability', 'physical_index': '<physical_index_34>'}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_35>'}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_35>'}, {'structure': '8.9', 'title': 'Reconfiguration', 'physical_index': '<physical_index_36>'}, {'structure': '8.9.1', 'title': 'Description', 'physical_index': '<physical_index_36>'}, {'structure': '8.9.2', 'title': 'Applicability', 'physical_index': '<physical_index_37>'}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_37>'}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_38>'}, {'structure': '8.10', 'title': 'Reset', 'physical_index': '<physical_index_39>'}, {'structure': '8.10.1', 'title': 'Description', 'physical_index': '<physical_index_39>'}, {'structure': '8.10.2', 'title': 'Applicability', 'physical_index': '<physical_index_40>'}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_40>'}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_40>'}, {'structure': '8.11', 'title': 'Error Filtering', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.1', 'title': 'Description', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.2', 'title': 'Applicability', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_42>'}, {'structure': '8.12', 'title': 'Memory Protection', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.1', 'title': 'Description', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.2', 'title': 'Applicability', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_44>'}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_46>'}, {'structure': '9', 'title': 'Aspect mapping', 'physical_index': '<physical_index_48>'}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'physical_index': '<physical_index_48>'}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'physical_index': '<physical_index_51>'}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'physical_index': '<physical_index_53>'}, {'structure': '10.1', 'title': 'Introduction', 'physical_index': '<physical_index_53>'}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'physical_index': '<physical_index_54>'}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'physical_index': '<physical_index_54>'}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'physical_index': '<physical_index_55>'}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'physical_index': '<physical_index_55>'}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'physical_index': '<physical_index_56>'}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'physical_index': '<physical_index_58>'}, {'structure': '10.3.1', 'title': 'OS features', 'physical_index': '<physical_index_58>'}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'physical_index': '<physical_index_62>'}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': '<physical_index_75>'}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'physical_index': '<physical_index_76>'}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'physical_index': '<physical_index_76>'}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': '<physical_index_77>'}, {'structure': '10.3.2.1', 'title': 'Error handling strategy in the Protection Hook', 'physical_index': '<physical_index_69>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 8}, {'structure': '3', 'title': 'References', 'physical_index': 9}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': 11}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': 13}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': 13}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': 14}, {'structure': '6', 'title': 'Scope', 'physical_index': 16}, {'structure': '7', 'title': 'Error model', 'physical_index': 17}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': 20}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': 20}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': 20}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': 21}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': 22}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': 23}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': 23}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': 23}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': 24}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': 24}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': 25}, {'structure': '8.3', 'title': 'Voting', 'physical_index': 25}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': 25}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': 26}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': 26}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': 26}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': 26}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': 26}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': 27}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': 27}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': 28}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': 28}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': 28}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': 28}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': 29}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': 29}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': 29}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': 29}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': 30}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'physical_index': 31}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'physical_index': 31}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'physical_index': 31}, {'structure': '8.7.1', 'title': 'Description', 'physical_index': 31}, {'structure': '8.7.2', 'title': 'Applicability', 'physical_index': 32}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'physical_index': 32}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'physical_index': 32}, {'structure': '8.8', 'title': 'Status and Mode Management', 'physical_index': 33}, {'structure': '8.8.1', 'title': 'Description', 'physical_index': 33}, {'structure': '8.8.2', 'title': 'Applicability', 'physical_index': 34}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'physical_index': 35}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'physical_index': 35}, {'structure': '8.9', 'title': 'Reconfiguration', 'physical_index': 36}, {'structure': '8.9.1', 'title': 'Description', 'physical_index': 36}, {'structure': '8.9.2', 'title': 'Applicability', 'physical_index': 37}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'physical_index': 37}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'physical_index': 38}, {'structure': '8.10', 'title': 'Reset', 'physical_index': 39}, {'structure': '8.10.1', 'title': 'Description', 'physical_index': 39}, {'structure': '8.10.2', 'title': 'Applicability', 'physical_index': 40}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'physical_index': 40}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'physical_index': 40}, {'structure': '8.11', 'title': 'Error Filtering', 'physical_index': 42}, {'structure': '8.11.1', 'title': 'Description', 'physical_index': 42}, {'structure': '8.11.2', 'title': 'Applicability', 'physical_index': 42}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'physical_index': 42}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'physical_index': 42}, {'structure': '8.12', 'title': 'Memory Protection', 'physical_index': 43}, {'structure': '8.12.1', 'title': 'Description', 'physical_index': 43}, {'structure': '8.12.2', 'title': 'Applicability', 'physical_index': 43}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'physical_index': 43}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'physical_index': 44}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': 45}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': 45}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': 45}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': 45}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': 46}, {'structure': '9', 'title': 'Aspect mapping', 'physical_index': 48}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'physical_index': 48}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'physical_index': 51}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'physical_index': 53}, {'structure': '10.1', 'title': 'Introduction', 'physical_index': 53}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'physical_index': 54}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'physical_index': 54}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'physical_index': 55}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'physical_index': 55}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'physical_index': 56}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'physical_index': 58}, {'structure': '10.3.1', 'title': 'OS features', 'physical_index': 58}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'physical_index': 62}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': 75}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'physical_index': 76}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'physical_index': 76}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': 77}, {'structure': '10.3.2.1', 'title': 'Error handling strategy in the Protection Hook', 'physical_index': 69}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.22580645161290322,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Voting",
+        "page_number": 25
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 25
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 26
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 26
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 26
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Agreement",
+        "page_number": 26
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 27
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 28
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Checksums/Codes",
+        "page_number": 28
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 28
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 29
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 29
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Execution sequence monitoring",
+        "page_number": 29
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 29
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 30
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 31
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 31
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Aliveness monitoring",
+        "page_number": 31
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 31
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 32
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 32
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 32
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Status and Mode Management",
+        "page_number": 33
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 33
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 34
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 35
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 35
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Reconfiguration",
+        "page_number": 36
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 36
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 37
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 37
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 38
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Reset",
+        "page_number": 39
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 39
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 40
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 40
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 40
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Error Filtering",
+        "page_number": 42
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 42
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 42
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 42
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 42
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Memory Protection",
+        "page_number": 43
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 43
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 43
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 43
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 44
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Timing Protection",
+        "page_number": 45
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 45
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 45
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 45
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 46
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Aspect mapping",
+        "page_number": 48
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Mapping to FDIR process and Error Model",
+        "page_number": 48
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Mapping to implementation level",
+        "page_number": 51
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Terminating and restarting partitions",
+        "page_number": 53
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 53
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Automotive Applications",
+        "page_number": 54
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Software Partitioning & Error Containment Regions",
+        "page_number": 54
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Rationale \u2013 Use Cases",
+        "page_number": 55
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Use Case 1: Software Partitioning [UC1]",
+        "page_number": 55
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Use Case 2: Application-level Error Handling [UC2]",
+        "page_number": 56
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Approach for Terminating and Restarting Partitions",
+        "page_number": 58
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "OS features",
+        "page_number": 58
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Going from OS-Applications to partitions",
+        "page_number": 62
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Sequence diagram for termination and restart of a partition",
+        "page_number": 75
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Support for Use Cases",
+        "page_number": 76
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Consistency Aspects",
+        "page_number": 76
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Error handling strategy in the Protection Hook",
+        "page_number": 69
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'References', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': '<physical_index_11>'}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': '<physical_index_13>'}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': '<physical_index_13>'}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': '<physical_index_14>'}, {'structure': '6', 'title': 'Scope', 'physical_index': '<physical_index_16>'}, {'structure': '7', 'title': 'Error model', 'physical_index': '<physical_index_17>'}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_20>'}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': '<physical_index_20>'}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': '<physical_index_20>'}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': '<physical_index_21>'}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_22>'}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_23>'}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': '<physical_index_23>'}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': '<physical_index_23>'}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': '<physical_index_24>'}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_24>'}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_25>'}, {'structure': '8.3', 'title': 'Voting', 'physical_index': '<physical_index_25>'}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': '<physical_index_25>'}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': '<physical_index_26>'}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_26>'}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_26>'}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': '<physical_index_26>'}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': '<physical_index_26>'}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': '<physical_index_27>'}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_27>'}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_28>'}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': '<physical_index_28>'}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_29>'}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_29>'}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': '<physical_index_29>'}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': '<physical_index_29>'}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': '<physical_index_30>'}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_31>'}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_31>'}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'physical_index': '<physical_index_31>'}, {'structure': '8.7.1', 'title': 'Description', 'physical_index': '<physical_index_31>'}, {'structure': '8.7.2', 'title': 'Applicability', 'physical_index': '<physical_index_32>'}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_32>'}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_32>'}, {'structure': '8.8', 'title': 'Status and Mode Management', 'physical_index': '<physical_index_33>'}, {'structure': '8.8.1', 'title': 'Description', 'physical_index': '<physical_index_33>'}, {'structure': '8.8.2', 'title': 'Applicability', 'physical_index': '<physical_index_34>'}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_35>'}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_35>'}, {'structure': '8.9', 'title': 'Reconfiguration', 'physical_index': '<physical_index_36>'}, {'structure': '8.9.1', 'title': 'Description', 'physical_index': '<physical_index_36>'}, {'structure': '8.9.2', 'title': 'Applicability', 'physical_index': '<physical_index_37>'}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_37>'}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_38>'}, {'structure': '8.10', 'title': 'Reset', 'physical_index': '<physical_index_39>'}, {'structure': '8.10.1', 'title': 'Description', 'physical_index': '<physical_index_39>'}, {'structure': '8.10.2', 'title': 'Applicability', 'physical_index': '<physical_index_40>'}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_40>'}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_40>'}, {'structure': '8.11', 'title': 'Error Filtering', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.1', 'title': 'Description', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.2', 'title': 'Applicability', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_42>'}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_42>'}, {'structure': '8.12', 'title': 'Memory Protection', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.1', 'title': 'Description', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.2', 'title': 'Applicability', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_43>'}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_44>'}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_46>'}, {'structure': '9', 'title': 'Aspect mapping', 'physical_index': '<physical_index_48>'}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'physical_index': '<physical_index_48>'}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'physical_index': '<physical_index_51>'}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'physical_index': '<physical_index_53>'}, {'structure': '10.1', 'title': 'Introduction', 'physical_index': '<physical_index_53>'}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'physical_index': '<physical_index_54>'}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'physical_index': '<physical_index_54>'}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'physical_index': '<physical_index_55>'}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'physical_index': '<physical_index_55>'}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'physical_index': '<physical_index_56>'}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'physical_index': '<physical_index_58>'}, {'structure': '10.3.1', 'title': 'OS features', 'physical_index': '<physical_index_58>'}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'physical_index': '<physical_index_62>'}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': '<physical_index_75>'}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'physical_index': '<physical_index_76>'}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'physical_index': '<physical_index_76>'}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': '<physical_index_77>'}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': '<physical_index_45>'}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': '<physical_index_46>'}, {'structure': '10.3.1.1', 'title': 'OS-Applications', 'physical_index': '<physical_index_58>'}, {'structure': '10.3.1.2', 'title': 'Protection Hook', 'physical_index': '<physical_index_59>'}, {'structure': '10.3.1.3', 'title': 'TerminateApplication() API', 'physical_index': '<physical_index_59>'}, {'structure': '10.3.1.4', 'title': 'OSRestartTask', 'physical_index': '<physical_index_60>'}, {'structure': '10.3.1.5', 'title': 'OS-Application state machine', 'physical_index': '<physical_index_61>'}, {'structure': '10.3.2.1', 'title': 'Partition state machine', 'physical_index': '<physical_index_63>'}, {'structure': '10.3.2.2', 'title': 'Error handling strategy in the Protection Hook', 'physical_index': '<physical_index_69>'}, {'structure': '10.3.2.3', 'title': 'Clean-up activities in the OSRestartTask', 'physical_index': '<physical_index_70>'}, {'structure': '10.3.2.4', 'title': 'Externally triggered restart or termination', 'physical_index': '<physical_index_74>'}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': '<physical_index_75>'}, {'structure': '10.3.4.1', 'title': 'UC1: SW Partitioning', 'physical_index': '<physical_index_76>'}, {'structure': '10.3.4.2', 'title': 'UC2: OEM Specific Error Handling', 'physical_index': '<physical_index_76>'}, {'structure': '10.3.5.1', 'title': 'Application-level consistency', 'physical_index': '<physical_index_76>'}, {'structure': '10.3.5.2', 'title': 'BSW consistency', 'physical_index': '<physical_index_76>'}, {'structure': '10.3.5.3', 'title': 'Communication consistency', 'physical_index': '<physical_index_76>'}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': '<physical_index_77>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 7}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 8}, {'structure': '3', 'title': 'References', 'physical_index': 9}, {'structure': '4', 'title': 'Guide to the document', 'physical_index': 11}, {'structure': '5', 'title': 'Terms and definitions', 'physical_index': 13}, {'structure': '5.1', 'title': 'Basic dependability terms', 'physical_index': 13}, {'structure': '5.2', 'title': 'Fault Detection, Isolation and Recovery (FDIR)', 'physical_index': 14}, {'structure': '6', 'title': 'Scope', 'physical_index': 16}, {'structure': '7', 'title': 'Error model', 'physical_index': 17}, {'structure': '8', 'title': 'Error handling mechanisms', 'physical_index': 20}, {'structure': '8.1', 'title': 'Plausibility checks', 'physical_index': 20}, {'structure': '8.1.1', 'title': 'Description', 'physical_index': 20}, {'structure': '8.1.2', 'title': 'Applicability', 'physical_index': 21}, {'structure': '8.1.3', 'title': 'Application level vs. BSW', 'physical_index': 22}, {'structure': '8.1.4', 'title': 'AUTOSAR References', 'physical_index': 23}, {'structure': '8.2', 'title': 'Substitute Values', 'physical_index': 23}, {'structure': '8.2.1', 'title': 'Description', 'physical_index': 23}, {'structure': '8.2.2', 'title': 'Applicability', 'physical_index': 24}, {'structure': '8.2.3', 'title': 'Application level vs. BSW', 'physical_index': 24}, {'structure': '8.2.4', 'title': 'AUTOSAR References', 'physical_index': 25}, {'structure': '8.3', 'title': 'Voting', 'physical_index': 25}, {'structure': '8.3.1', 'title': 'Description', 'physical_index': 25}, {'structure': '8.3.2', 'title': 'Applicability', 'physical_index': 26}, {'structure': '8.3.3', 'title': 'Application level vs. BSW', 'physical_index': 26}, {'structure': '8.3.4', 'title': 'AUTOSAR References', 'physical_index': 26}, {'structure': '8.4', 'title': 'Agreement', 'physical_index': 26}, {'structure': '8.4.1', 'title': 'Description', 'physical_index': 26}, {'structure': '8.4.2', 'title': 'Applicability', 'physical_index': 27}, {'structure': '8.4.3', 'title': 'Application level vs. BSW', 'physical_index': 27}, {'structure': '8.4.4', 'title': 'AUTOSAR References', 'physical_index': 28}, {'structure': '8.5', 'title': 'Checksums/Codes', 'physical_index': 28}, {'structure': '8.5.1', 'title': 'Description', 'physical_index': 28}, {'structure': '8.5.2', 'title': 'Applicability', 'physical_index': 28}, {'structure': '8.5.3', 'title': 'Application level vs. BSW', 'physical_index': 29}, {'structure': '8.5.4', 'title': 'AUTOSAR References', 'physical_index': 29}, {'structure': '8.6', 'title': 'Execution sequence monitoring', 'physical_index': 29}, {'structure': '8.6.1', 'title': 'Description', 'physical_index': 29}, {'structure': '8.6.2', 'title': 'Applicability', 'physical_index': 30}, {'structure': '8.6.3', 'title': 'Application level vs. BSW', 'physical_index': 31}, {'structure': '8.6.4', 'title': 'AUTOSAR References', 'physical_index': 31}, {'structure': '8.7', 'title': 'Aliveness monitoring', 'physical_index': 31}, {'structure': '8.7.1', 'title': 'Description', 'physical_index': 31}, {'structure': '8.7.2', 'title': 'Applicability', 'physical_index': 32}, {'structure': '8.7.3', 'title': 'Application level vs. BSW', 'physical_index': 32}, {'structure': '8.7.4', 'title': 'AUTOSAR References', 'physical_index': 32}, {'structure': '8.8', 'title': 'Status and Mode Management', 'physical_index': 33}, {'structure': '8.8.1', 'title': 'Description', 'physical_index': 33}, {'structure': '8.8.2', 'title': 'Applicability', 'physical_index': 34}, {'structure': '8.8.3', 'title': 'Application level vs. BSW', 'physical_index': 35}, {'structure': '8.8.4', 'title': 'AUTOSAR References', 'physical_index': 35}, {'structure': '8.9', 'title': 'Reconfiguration', 'physical_index': 36}, {'structure': '8.9.1', 'title': 'Description', 'physical_index': 36}, {'structure': '8.9.2', 'title': 'Applicability', 'physical_index': 37}, {'structure': '8.9.3', 'title': 'Application level vs. BSW', 'physical_index': 37}, {'structure': '8.9.4', 'title': 'AUTOSAR References', 'physical_index': 38}, {'structure': '8.10', 'title': 'Reset', 'physical_index': 39}, {'structure': '8.10.1', 'title': 'Description', 'physical_index': 39}, {'structure': '8.10.2', 'title': 'Applicability', 'physical_index': 40}, {'structure': '8.10.3', 'title': 'Application level vs. BSW', 'physical_index': 40}, {'structure': '8.10.4', 'title': 'AUTOSAR References', 'physical_index': 40}, {'structure': '8.11', 'title': 'Error Filtering', 'physical_index': 42}, {'structure': '8.11.1', 'title': 'Description', 'physical_index': 42}, {'structure': '8.11.2', 'title': 'Applicability', 'physical_index': 42}, {'structure': '8.11.3', 'title': 'Application level vs. BSW', 'physical_index': 42}, {'structure': '8.11.4', 'title': 'AUTOSAR References', 'physical_index': 42}, {'structure': '8.12', 'title': 'Memory Protection', 'physical_index': 43}, {'structure': '8.12.1', 'title': 'Description', 'physical_index': 43}, {'structure': '8.12.2', 'title': 'Applicability', 'physical_index': 43}, {'structure': '8.12.3', 'title': 'Application level vs. BSW', 'physical_index': 43}, {'structure': '8.12.4', 'title': 'AUTOSAR References', 'physical_index': 44}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': 45}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': 45}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': 45}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': 45}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': 46}, {'structure': '9', 'title': 'Aspect mapping', 'physical_index': 48}, {'structure': '9.1', 'title': 'Mapping to FDIR process and Error Model', 'physical_index': 48}, {'structure': '9.2', 'title': 'Mapping to implementation level', 'physical_index': 51}, {'structure': '10', 'title': 'Terminating and restarting partitions', 'physical_index': 53}, {'structure': '10.1', 'title': 'Introduction', 'physical_index': 53}, {'structure': '10.1.1', 'title': 'Automotive Applications', 'physical_index': 54}, {'structure': '10.1.2', 'title': 'Software Partitioning & Error Containment Regions', 'physical_index': 54}, {'structure': '10.2', 'title': 'Rationale \u2013 Use Cases', 'physical_index': 55}, {'structure': '10.2.1', 'title': 'Use Case 1: Software Partitioning [UC1]', 'physical_index': 55}, {'structure': '10.2.2', 'title': 'Use Case 2: Application-level Error Handling [UC2]', 'physical_index': 56}, {'structure': '10.3', 'title': 'Approach for Terminating and Restarting Partitions', 'physical_index': 58}, {'structure': '10.3.1', 'title': 'OS features', 'physical_index': 58}, {'structure': '10.3.2', 'title': 'Going from OS-Applications to partitions', 'physical_index': 62}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': 75}, {'structure': '10.3.4', 'title': 'Support for Use Cases', 'physical_index': 76}, {'structure': '10.3.5', 'title': 'Consistency Aspects', 'physical_index': 76}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': 77}, {'structure': '8.13', 'title': 'Timing Protection', 'physical_index': 45}, {'structure': '8.13.1', 'title': 'Description', 'physical_index': 45}, {'structure': '8.13.2', 'title': 'Applicability', 'physical_index': 45}, {'structure': '8.13.3', 'title': 'Application level vs. BSW', 'physical_index': 45}, {'structure': '8.13.4', 'title': 'AUTOSAR References', 'physical_index': 46}, {'structure': '10.3.1.1', 'title': 'OS-Applications', 'physical_index': 58}, {'structure': '10.3.1.2', 'title': 'Protection Hook', 'physical_index': 59}, {'structure': '10.3.1.3', 'title': 'TerminateApplication() API', 'physical_index': 59}, {'structure': '10.3.1.4', 'title': 'OSRestartTask', 'physical_index': 60}, {'structure': '10.3.1.5', 'title': 'OS-Application state machine', 'physical_index': 61}, {'structure': '10.3.2.1', 'title': 'Partition state machine', 'physical_index': 63}, {'structure': '10.3.2.2', 'title': 'Error handling strategy in the Protection Hook', 'physical_index': 69}, {'structure': '10.3.2.3', 'title': 'Clean-up activities in the OSRestartTask', 'physical_index': 70}, {'structure': '10.3.2.4', 'title': 'Externally triggered restart or termination', 'physical_index': 74}, {'structure': '10.3.3', 'title': 'Sequence diagram for termination and restart of a partition', 'physical_index': 75}, {'structure': '10.3.4.1', 'title': 'UC1: SW Partitioning', 'physical_index': 76}, {'structure': '10.3.4.2', 'title': 'UC2: OEM Specific Error Handling', 'physical_index': 76}, {'structure': '10.3.5.1', 'title': 'Application-level consistency', 'physical_index': 76}, {'structure': '10.3.5.2', 'title': 'BSW consistency', 'physical_index': 76}, {'structure': '10.3.5.3', 'title': 'Communication consistency', 'physical_index': 76}, {'structure': '10.4', 'title': 'Integrator Responsibility', 'physical_index': 77}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.18584070796460178,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Voting",
+        "page_number": 25
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 25
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 26
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 26
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 26
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Agreement",
+        "page_number": 26
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 27
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 28
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Checksums/Codes",
+        "page_number": 28
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 28
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 29
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 29
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Execution sequence monitoring",
+        "page_number": 29
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 29
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 30
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 31
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 31
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Aliveness monitoring",
+        "page_number": 31
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 31
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 32
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 32
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 32
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Status and Mode Management",
+        "page_number": 33
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 33
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 34
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 35
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 35
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Reconfiguration",
+        "page_number": 36
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 36
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 37
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 37
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 38
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Reset",
+        "page_number": 39
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 39
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 40
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 40
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 40
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Error Filtering",
+        "page_number": 42
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 42
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 42
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 42
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 42
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Memory Protection",
+        "page_number": 43
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 43
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 43
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 43
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 44
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Timing Protection",
+        "page_number": 45
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 45
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 45
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 45
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 46
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Aspect mapping",
+        "page_number": 48
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Mapping to FDIR process and Error Model",
+        "page_number": 48
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Mapping to implementation level",
+        "page_number": 51
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Terminating and restarting partitions",
+        "page_number": 53
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 53
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Automotive Applications",
+        "page_number": 54
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Software Partitioning & Error Containment Regions",
+        "page_number": 54
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Rationale \u2013 Use Cases",
+        "page_number": 55
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Use Case 1: Software Partitioning [UC1]",
+        "page_number": 55
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Use Case 2: Application-level Error Handling [UC2]",
+        "page_number": 56
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Approach for Terminating and Restarting Partitions",
+        "page_number": 58
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "OS features",
+        "page_number": 58
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Going from OS-Applications to partitions",
+        "page_number": 62
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Sequence diagram for termination and restart of a partition",
+        "page_number": 75
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Support for Use Cases",
+        "page_number": 76
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Consistency Aspects",
+        "page_number": 76
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Integrator Responsibility",
+        "page_number": 77
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Timing Protection",
+        "page_number": 45
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 45
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Applicability",
+        "page_number": 45
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Application level vs. BSW",
+        "page_number": 45
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "AUTOSAR References",
+        "page_number": 46
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "OS-Applications",
+        "page_number": 58
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Protection Hook",
+        "page_number": 59
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "TerminateApplication() API",
+        "page_number": 59
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "OSRestartTask",
+        "page_number": 60
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "OS-Application state machine",
+        "page_number": 61
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Partition state machine",
+        "page_number": 63
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Error handling strategy in the Protection Hook",
+        "page_number": 69
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Clean-up activities in the OSRestartTask",
+        "page_number": 70
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Externally triggered restart or termination",
+        "page_number": 74
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "Sequence diagram for termination and restart of a partition",
+        "page_number": 75
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "UC1: SW Partitioning",
+        "page_number": 76
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "UC2: OEM Specific Error Handling",
+        "page_number": 76
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "BSW consistency",
+        "page_number": 76
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "Communication consistency",
+        "page_number": 76
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "Integrator Responsibility",
+        "page_number": 77
+      }
+    ]
+  }
+]

@@ -1,0 +1,1146 @@
+[
+  {
+    "total_page_number": 165
+  },
+  {
+    "total_token": 89920
+  },
+  {
+    "toc_content": "Acceptance Tes t Specification of Communication via \nbus \nAUTOSAR TC Release 1.2.0  \n3 of 165 Document ID 666: AUTOSAR_ATS_CommunicationViaBus   \n- AUTOSAR Confidential - \nTable of Contents  \n \n1 Acronyms and abbreviations  :  :  :   8 \n2 Scope  :  :  :  :   9 \n3 RS_BRF_01600 - Timeout Handling  :  :   10 \n3.1 General Test Objective and Approach :  :   10 \n3.1.1  Test Sy stem  :  :  :   10 \n3.1.2  Test Configuration  :  :  :   13 \n3.1.3  Test Case Design  :  :  :   15 \n3.2 Re-usable Test Steps  :  :  :   15 \n3.3 Test Cases  :  :  :  . 15 \n3.3.1  [ATS_COMINDEP_00100] Managing Rx signal deadline timeout with \nnotification  :  :  :   15 \n3.3.2  [ATS_COMINDEP_00101] Managing Rx signal group deadline \ntimeout with action REPLACE  :  :   18 \n3.3.3  [ATS_COMINDEP_00102] Managing Tx Ipdu deadline timeout :   19 \n3.3.4  [ATS_COMINDEP_00104] Disabling/Enabling Rx Deadline \nmonitoring  :  :  :   20 \n3.3.5  [ATS_COMINDEP_00105] Managing Rx Ipdu deadline timeout \nwithout notification  :  :  :   22 \n3.3.6  [ATS_COMINDEP_00107]  Managing Rx signal group deadline \ntimeout with action NONE :  :  :  24 \n3.3.7  [ATS_COMINDEP_00738] Signal With ComRxDataTimeoutAction \nSet To NONE And Reception Deadline Monitoring Expires  :   25 \n4 RS_BRF_01616 - Initial Values  :  :  :   27 \n4.1 General Test Objective and Approach :  :   27 \n4.1.1  Test System  :  :  :   28 \n4.1.2  Test Configuration  :  :  :   30 \n4.1.3  Test Case Design  :  :  :   33 \n4.2 Re-usable Test Steps  :  :  :   34 \n4.3 Test Cases  :  :  :  . 34 \n4.3.1  [ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal \nwas never received  :  :  :   34 \n4.3.2  [ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal \ndeadline timeout occurs  :  :  :   35 \n4.3.3  [ATS_COMINDEP_00079] Providing U INT16 initial value if Rx signal \nwas never received  :  :  :   36 \n4.3.4  [ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal \ndeadline timeout occurs  :  :  :   36 \n4.3.5  [ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal \nwas never received  :  :  :   38 \n4.3.6  [ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal \ndeadline timeout occurs  :  :  :   38 \n4.3.7  [ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal \nwas never received  :  :  :   40 Acceptance Tes t Specification of Communication via \nbus \nAUTOSAR TC Release 1.2.0  \n4 of 165 Document ID 666: AUTOSAR_ATS_CommunicationViaBus   \n- AUTOSAR Confidential - \n4.3.8  [ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal \ndeadline timeout occurs  :  :  :   40 \n4.3.9  [ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal \nwas never received  :  :  :   42 \n4.3.10  [ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal \ndeadline timeout occurs  :  :  :   42 \n4.3.11  [ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal \nwas never received  :  :  :   44 \n4.3.12  [ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal \ndeadline timeout occurs  :  :  :   44 \n4.3.13  [ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx \nsignal was never received  :  :  :  46 \n4.3.14  [ATS_COMINDEP_000 91] Providing BOOLEAN initial value if Rx \nsignal deadline timeout occurs  :  :   46 \n4.3.15  [ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx \nsignal was never received  :  :  :  48 \n4.3.16  [ATS_COMINDEP_00093] Providing FL OAT32 initial value if Rx \nsignal deadline timeout occurs  :  :   48 \n4.3.17  [ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx \nsignal was never received  :  :  :  50 \n4.3.18  [ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx \nsignal deadline timeout occurs  :  :   50 \n4.3.19  [ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx \nsignal was never received  :  :  :  52 \n4.3.20  [ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx \nsignal deadline timeout occurs  :  :   52 \n4.3.21  [ATS_COMINDEP_00098] Providing initial value for Tx gatewayed \nsignal if Rx signal was never received  :  :   54 \n4.3.22  [ATS_COMINDEP_00099] Providing initial value for Tx gatewayed \nsignal if Rx signal deadline timeout occurs  :  :   55 \n4.3.23  [ATS_COMINDEP_00721] Packing Of IPdu Data  :  . 56 \n4.3.24  [ATS_COMINDEP_00722] Unpacking Of IPdu Data  :   57 \n5 RS_BRF_01632 - Data Consistency  :  :   59 \n5.1 General Test Objective and Approach :  :   59 \n5.1.1  Test System  :  :  :   59 \n5.1.2  Test Configuration  :  :  :   61 \n5.1.3  Test Case Design  :  :  :   63 \n5.2 Re-usable Test Steps  :  :  :   63 \n5.3 Test Cases  :  :  :  . 63 \n5.3.1  [ATS_COMINDEP_00050] Invalidating a Tx signal group when \ninvalidated by the SWC  :  :  :   63 \n5.3.2  [ATS_COMINDEP_00051] Notifying the SWC when a signal or a \nsignal group is received with invalid data  :  :   65 \n5.3.3  [ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated \nby the SWC  :  :  :   66 \n5.3.4  [ATS_COMINDEP_00074] Replacing by the init value when a signal \ngroup is received invalid  :  :  :   67 \n6 RS_BRF_01649 - LdCo m data transfer  (Bus independent)  :   69 Acceptance Tes t Specification of Communication via \nbus \nAUTOSAR TC Release 1.2.0  \n5 of 165 Document ID 666: AUTOSAR_ATS_CommunicationViaBus   \n- AUTOSAR Confidential - \n6.1 General Test Objective and Approach :  :   69 \n6.1.1  Test Sy stem  :  :  :   69 \n6.1.2  Test Configuration  :  :  :   70 \n6.1.3  Test Case Design  :  :  :   72 \n6.2 Re-usable Test Steps  :  :  :   72 \n6.3 Test Cases  :  :  :  . 73 \n6.3.1  [ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API \nand Notification for PDU Transfer  :  :   73 \n6.3.2  [ATS_C OMINDEP_01471] LdCom Reception using <Bus>IF API  :   74 \n6.3.3  [ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API \nand Notification for PDU Transfer  :  :   75 \n6.3.4  [ATS_COMINDEP_01473] LdCom R eception using <Bus>TP API  :  76 \n6.3.5  [ATS_COMINDEP_01476] Behavior of LdCom Transmit Request \nfrom Application when there is a req uest in Progress for the same \nPDU  :  :  :  :  77 \n6.3.6  [ATS_COMINDEP_01478] Behavior of LdCom Receive Request from \nApplication when there is a request in Progress for the same PDU  :  79 \n6.3.7  [ATS_COMINDEP_01047] Behavior of LdCom Transmit Request \nfrom Application when Tr ansmit Confirmation was invoked for the \nongoing Transmission request for the same PDU  :  . 80 \n7 RS_BRF_01592 - Data Transfer (Bus independent)  :  :   83 \n7.1 General Test Objective and Approach :  :   83 \n7.1.1  Test System  :  :  :   83 \n7.1.2  Test Configuration  :  :  :   84 \n7.1.3  Test Case Design  :  :  :   94 \n7.2 Re-usable Test Steps  :  :  :   94 \n7.3 Test Cases  :  :  :  . 94 \n7.3.1  [ATS_COMINDEP_00200] Group Control - Time Based frame \n(PERIODIC)  :  :  :   94 \n7.3.2  [ATS_COMINDEP_00205] Group Control - User Request frame \n(DIRECT) + MDT  :  :  :   97 \n7.3.3  [ATS_COMINDEP_00259] User Request frame (DIRECT) + MDT  :  99 \n7.3.4  [ATS_COMINDEP_00260] User Request frame (DIRECT) + several \ntriggers :  :  :  . 100  \n7.3.5  [ATS_COMINDEP_00212] Tx notification  :  :   101  \n7.3.6  [ATS_COMINDEP_00220] Tx Mode Switch (TMS) - \nPERIODIC/PERIODIC  :  :  :   103  \n7.3.7  [ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT  106  \n7.3.8  [ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE \nWITHOUT REPETITIONS  :  :  ... 108  \n7.3.9  [ATS_COMINDEP_00222] Tx Mode Swi tch (TMS) - \nPERIODIC/MIXED + MDT  :  :  ... 110  \n7.3.10  [ATS_COMINDEP_00224] Tx Mode Switch (TMS) - \nDIRECT/PERIODIC  :  :  :   112  \n7.3.11  [ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) \nPERODIC/PERIODIC  :  :  :   114  \n7.3.12  [ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + \nMDT  :  :  :  :  116  Acceptance Tes t Specification of Communication via \nbus \nAUTOSAR TC Release 1.2.0  \n6 of 165 Document ID 666: AUTOSAR_ATS_CommunicationViaBus   \n- AUTOSAR Confidential - \n7.3.13  [ATS_COMINDEP_00226] Ipdu and Trigger Transmit Callouts  :   118  \n7.3.14  [ATS_COMINDEP_00723] Transmission Of An I -PDU having \nDIRECT Tx Mode Consisting of Signal And Signal Group with \nTriggered On Change Transfer Property  :  :   120  \n7.3.15  [ATS_COMINDEP_00724] Transmission Of An I -PDU having MIXED \nTx Mode Consisting of Signal And Signal Group With Triggered On \nChange Transfer Property  :  :  ... 121  \n7.3.16  [ATS_COMINDEP_00725] Transmission Of An I -PDU having \nDIRECT Tx Mode Consisting of Signal And Signal Group with \nTRIGGERED WITHOUT REPETITION Transfer Property  :   123  \n7.3.17  [ATS_COMINDEP_00726] Transmission Of An I -PDU Having MIXED \nTx Mode Consisting of Signal And Signal Group with TRIGGERED \nWITHOUT REPETIT ION Transfer Property  :  :   124  \n7.3.18  [ATS_COMINDEP_00727] Transmission Of An I -PDU having MIXED \nTx Mode Consisting of Signal And Signa l Group with TRIGGERED \nON CHANGE WITHOUT REPETITION Transfer Property  :   125  \n7.3.19  [ATS_COMINDEP_00728] Triggered Transmission Of An  I-Pdu With \nMIXED Mode And Minimum Delay Timer Configured  :   127  \n7.3.20  [ATS_COMINDEP_00729] Transmit I -PDU Callout With Tx Mode \nPERIODIC  :  :  :   128  \n7.3.21  [ATS_COMINDEP_00730] Transmit I -PDU Callout With Tx Mode \nMIXED  :  :  :  . 129  \n7.3.22  [ATS_COMINDEP_00731] Verify  The Update Bits In An IPDU With \nTX MODE DIRECT when Com_Sendsignal / Com_SendSignalGroup \nis invoked :  :  :   130  \n7.3.23  [ATS_COMINDEP_007 32] Verify The Update Bits In An IPDU With \nTX MODE PERIODIC when Com_Sendsignal / \nCom_SendSignalGroup is invoked  :  :   131  \n7.3.24  [ATS_COMINDEP_00733] Verify The Update Bits In An IPDU With \nMIXED TX MODE when Com_Sendsignal / Com_SendSignalGroup \nis invoked :  :  :   132  \n7.3.25  [ATS_COMINDEP_00734] Signal Routing When Source And \nDestination Signals/signal group have Update Bit And Update Bit Of \nThe Received Signal Is Not Set  :  :   134  \n7.3.26  [ATS_COMINDEP_00735] Signal Routing When Source Signals Has \nUpdate Bit And Destination Signals has no Update Bit And Update Bit \nOf The Received Signal Is Not Set  :  :   135  \n7.3.27  [ATS_COMINDEP_00736] Signal Routing When Source Signals Has \nUpdate Bit And Destination Signals has no Update Bit With Update \nBit Of The Received Si gnal Is Set  :  :   136  \n7.3.28  [ATS_COMINDEP_00737] The Filter Mechanism Of \n\u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -\nPdu :  :  :  :  137  \n8 RS_BRF_01648 - Large Data Type  :  :   139  \n8.1 General Test Objective and Approach :  :   139  \n8.1.1  Test System  :  :  :   139  \n8.1.2  Test Configuration  :  :  :   140  \n8.1.3  Test Case Design  :  :  :   143  \n8.2 Re-usable Test Steps  :  :  :   143  Acceptance Tes t Specification of Communication via \nbus \nAUTOSAR TC Release 1.2.0  \n7 of 165 Document ID 666: AUTOSAR_ATS_CommunicationViaBus   \n- AUTOSAR Confidential - \n8.3 Test Cases  :  :  :   143  \n8.3.1  [ATS_COMINDEP_00233] DIRECT TP transmission  :   143  \n8.3.2  [ATS_COMINDEP_00234] PERIODIC TP transmission  :   145  \n8.3.3  [ATS_COMINDEP_00235] MIXED TP transmission  :   146  \n8.3.4  [ATS_COMINDEP_00236] Dynamic send message  :   148  \n8.3.5  [ATS_COMINDEP_00238] S top Ipdu group even if TP transmission \nis not complete  :  :  :   149  \n8.3.6  [ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is \nnot complete  :  :  :   151  \n8.3.7  [ATS_COMINDEP_00739] Unsuccessful Transmission  Of An I -PDU \nConsisting Of A Dynamic Signal With Periodic Mode And Having \nComTransferProperty As TRIGGERED  :  :   153  \n8.3.8  [ATS_COMINDE P_00740] Unsuccessful Transmission Of An I -PDU \nConsisting Of A Dynamic Signal Having ComTransferProperty As \nPENDING  :  :  :   154  \n8.3.9  [ATS _COMINDEP_00741] Reception Of Dynamic Length I -PDU  :  155  \n8.3.10  [ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP \nInterfac e:  :  :   155  \n8.3.11  [ATS_COMINDEP_00743] Data Sequence control when Received I -\nPDU counter is greater than expected I -PDU counter + threshold  :  156  \n9 Miscellaneous features  :  :  :   158  \n9.1 General Test Object ive and Approach :  :   158  \n9.1.1  Test System  :  :  :   158  \n9.1.2  Test Configuration  :  :  :   159  \n9.2 Re-usable Test Steps  :  :  :   159  \n9.3 Test Cases  :  :  :   159  \n9.3.1  [ATS_COMINDEP_00744] Check The Functionality Of \nPduR_EnableRouting And PduR_DisableRouting  :   159  \n9.3.2  [ATS_COMINDEP_00745] Interface PDU Transmission During \nSinglecast When Source PDU Belongs To Com And Destination PDU \nBelongs To CanIf  :  :  :   160  \n9.3.3  [ATS_COMINDEP_00746] Interface PDU Transmission During \nMulticast When Source PDU Is From Com Module And Destination \nPDU Belongs To Lower Layer (CanI f, LinIf, FRIF)  :   161  \n9.3.4  [ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, \nCanIf And FrIf  :  :  :   162  \n9.3.5  [ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast \nWhen Source PDU Belongs To Com and Destination PDU Belongs \nTo CanTp :  :  :   163  \n9.3.6  [ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, \nCanTp and FrTp  :  :  :   164  \n ",
+    "toc_page_list": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Acronyms and abbreviations', 'page': 8}, {'structure': '2', 'title': 'Scope', 'page': 9}, {'structure': '3', 'title': 'RS_BRF_01600 - Timeout Handling', 'page': 10}, {'structure': '3.1', 'title': 'General Test Objective and Approach', 'page': 10}, {'structure': '3.1.1', 'title': 'Test System', 'page': 10}, {'structure': '3.1.2', 'title': 'Test Configuration', 'page': 13}, {'structure': '3.1.3', 'title': 'Test Case Design', 'page': 15}, {'structure': '3.2', 'title': 'Re-usable Test Steps', 'page': 15}, {'structure': '3.3', 'title': 'Test Cases', 'page': 15}, {'structure': '3.3.1', 'title': '[ATS_COMINDEP_00100] Managing Rx signal deadline timeout with notification', 'page': 15}, {'structure': '3.3.2', 'title': '[ATS_COMINDEP_00101] Managing Rx signal group deadline timeout with action REPLACE', 'page': 18}, {'structure': '3.3.3', 'title': '[ATS_COMINDEP_00102] Managing Tx Ipdu deadline timeout', 'page': 19}, {'structure': '3.3.4', 'title': '[ATS_COMINDEP_00104] Disabling/Enabling Rx Deadline monitoring', 'page': 20}, {'structure': '3.3.5', 'title': '[ATS_COMINDEP_00105] Managing Rx Ipdu deadline timeout without notification', 'page': 22}, {'structure': '3.3.6', 'title': '[ATS_COMINDEP_00107] Managing Rx signal group deadline timeout with action NONE', 'page': 24}, {'structure': '3.3.7', 'title': '[ATS_COMINDEP_00738] Signal With ComRxDataTimeoutAction Set To NONE And Reception Deadline Monitoring Expires', 'page': 25}, {'structure': '4', 'title': 'RS_BRF_01616 - Initial Values', 'page': 27}, {'structure': '4.1', 'title': 'General Test Objective and Approach', 'page': 27}, {'structure': '4.1.1', 'title': 'Test System', 'page': 28}, {'structure': '4.1.2', 'title': 'Test Configuration', 'page': 30}, {'structure': '4.1.3', 'title': 'Test Case Design', 'page': 33}, {'structure': '4.2', 'title': 'Re-usable Test Steps', 'page': 34}, {'structure': '4.3', 'title': 'Test Cases', 'page': 34}, {'structure': '4.3.1', 'title': '[ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal was never received', 'page': 34}, {'structure': '4.3.2', 'title': '[ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal deadline timeout occurs', 'page': 35}, {'structure': '4.3.3', 'title': '[ATS_COMINDEP_00079] Providing UINT16 initial value if Rx signal was never received', 'page': 36}, {'structure': '4.3.4', 'title': '[ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal deadline timeout occurs', 'page': 36}, {'structure': '4.3.5', 'title': '[ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal was never received', 'page': 38}, {'structure': '4.3.6', 'title': '[ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal deadline timeout occurs', 'page': 38}, {'structure': '4.3.7', 'title': '[ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal was never received', 'page': 40}, {'structure': '4.3.8', 'title': '[ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal deadline timeout occurs', 'page': 40}, {'structure': '4.3.9', 'title': '[ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal was never received', 'page': 42}, {'structure': '4.3.10', 'title': '[ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal deadline timeout occurs', 'page': 42}, {'structure': '4.3.11', 'title': '[ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal was never received', 'page': 44}, {'structure': '4.3.12', 'title': '[ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal deadline timeout occurs', 'page': 44}, {'structure': '4.3.13', 'title': '[ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx signal was never received', 'page': 46}, {'structure': '4.3.14', 'title': '[ATS_COMINDEP_00091] Providing BOOLEAN initial value if Rx signal deadline timeout occurs', 'page': 46}, {'structure': '4.3.15', 'title': '[ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx signal was never received', 'page': 48}, {'structure': '4.3.16', 'title': '[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs', 'page': 48}, {'structure': '4.3.17', 'title': '[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received', 'page': 50}, {'structure': '4.3.18', 'title': '[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs', 'page': 50}, {'structure': '4.3.19', 'title': '[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received', 'page': 52}, {'structure': '4.3.20', 'title': '[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs', 'page': 52}, {'structure': '4.3.21', 'title': '[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received', 'page': 54}, {'structure': '4.3.22', 'title': '[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs', 'page': 55}, {'structure': '4.3.23', 'title': '[ATS_COMINDEP_00721] Packing Of IPdu Data', 'page': 56}, {'structure': '4.3.24', 'title': '[ATS_COMINDEP_00722] Unpacking Of IPdu Data', 'page': 57}, {'structure': '5', 'title': 'RS_BRF_01632 - Data Consistency', 'page': 59}, {'structure': '5.1', 'title': 'General Test Objective and Approach', 'page': 59}, {'structure': '5.1.1', 'title': 'Test System', 'page': 59}, {'structure': '5.1.2', 'title': 'Test Configuration', 'page': 61}, {'structure': '5.1.3', 'title': 'Test Case Design', 'page': 63}, {'structure': '5.2', 'title': 'Re-usable Test Steps', 'page': 63}, {'structure': '5.3', 'title': 'Test Cases', 'page': 63}, {'structure': '5.3.1', 'title': '[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC', 'page': 63}, {'structure': '5.3.2', 'title': '[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data', 'page': 65}, {'structure': '5.3.3', 'title': '[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC', 'page': 66}, {'structure': '5.3.4', 'title': '[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid', 'page': 67}, {'structure': '6', 'title': 'RS_BRF_01649 - LdCom data transfer (Bus independent)', 'page': 69}, {'structure': '6.1', 'title': 'General Test Objective and Approach', 'page': 69}, {'structure': '6.1.1', 'title': 'Test System', 'page': 69}, {'structure': '6.1.2', 'title': 'Test Configuration', 'page': 70}, {'structure': '6.1.3', 'title': 'Test Case Design', 'page': 72}, {'structure': '6.2', 'title': 'Re-usable Test Steps', 'page': 72}, {'structure': '6.3', 'title': 'Test Cases', 'page': 73}, {'structure': '6.3.1', 'title': '[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer', 'page': 73}, {'structure': '6.3.2', 'title': '[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API', 'page': 74}, {'structure': '6.3.3', 'title': '[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer', 'page': 75}, {'structure': '6.3.4', 'title': '[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API', 'page': 76}, {'structure': '6.3.5', 'title': '[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU', 'page': 77}, {'structure': '6.3.6', 'title': '[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU', 'page': 79}, {'structure': '6.3.7', 'title': '[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU', 'page': 80}, {'structure': '7', 'title': 'RS_BRF_01592 - Data Transfer (Bus independent)', 'page': 83}, {'structure': '7.1', 'title': 'General Test Objective and Approach', 'page': 83}, {'structure': '7.1.1', 'title': 'Test System', 'page': 83}, {'structure': '7.1.2', 'title': 'Test Configuration', 'page': 84}, {'structure': '7.1.3', 'title': 'Test Case Design', 'page': 94}, {'structure': '7.2', 'title': 'Re-usable Test Steps', 'page': 94}, {'structure': '7.3', 'title': 'Test Cases', 'page': 94}, {'structure': '7.3.1', 'title': '[ATS_COMINDEP_00200] Group Control - Time Based frame (PERIODIC)', 'page': 94}, {'structure': '7.3.2', 'title': '[ATS_COMINDEP_00205] Group Control - User Request frame (DIRECT) + MDT', 'page': 97}, {'structure': '7.3.3', 'title': '[ATS_COMINDEP_00259] User Request frame (DIRECT) + MDT', 'page': 99}, {'structure': '7.3.4', 'title': '[ATS_COMINDEP_00260] User Request frame (DIRECT) + several triggers', 'page': 100}, {'structure': '7.3.5', 'title': '[ATS_COMINDEP_00212] Tx notification', 'page': 101}, {'structure': '7.3.6', 'title': '[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC', 'page': 103}, {'structure': '7.3.7', 'title': '[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT', 'page': 106}, {'structure': '7.3.8', 'title': '[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS', 'page': 108}, {'structure': '7.3.9', 'title': '[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT', 'page': 110}, {'structure': '7.3.10', 'title': '[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC', 'page': 112}, {'structure': '7.3.11', 'title': '[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC', 'page': 114}, {'structure': '7.3.12', 'title': '[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT', 'page': 116}, {'structure': '7.3.13', 'title': '[ATS_COMINDEP_00226] Ipdu and Trigger Transmit Callouts', 'page': 118}, {'structure': '7.3.14', 'title': '[ATS_COMINDEP_00723] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with Triggered On Change Transfer Property', 'page': 120}, {'structure': '7.3.15', 'title': '[ATS_COMINDEP_00724] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group With Triggered On Change Transfer Property', 'page': 121}, {'structure': '7.3.16', 'title': '[ATS_COMINDEP_00725] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'page': 123}, {'structure': '7.3.17', 'title': '[ATS_COMINDEP_00726] Transmission Of An I -PDU Having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'page': 124}, {'structure': '7.3.18', 'title': '[ATS_COMINDEP_00727] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED ON CHANGE WITHOUT REPETITION Transfer Property', 'page': 125}, {'structure': '7.3.19', 'title': '[ATS_COMINDEP_00728] Triggered Transmission Of An I -Pdu With MIXED Mode And Minimum Delay Timer Configured', 'page': 127}, {'structure': '7.3.20', 'title': '[ATS_COMINDEP_00729] Transmit I -PDU Callout With Tx Mode PERIODIC', 'page': 128}, {'structure': '7.3.21', 'title': '[ATS_COMINDEP_00730] Transmit I -PDU Callout With Tx Mode MIXED', 'page': 129}, {'structure': '7.3.22', 'title': '[ATS_COMINDEP_00731] Verify The Update Bits In An IPDU With TX MODE DIRECT when Com_Sendsignal / Com_SendSignalGroup is invoked', 'page': 130}, {'structure': '7.3.23', 'title': '[ATS_COMINDEP_00732] Verify The Update Bits In An IPDU With TX MODE PERIODIC when Com_Sendsignal / Com_SendSignalGroup is invoked', 'page': 131}, {'structure': '7.3.24', 'title': '[ATS_COMINDEP_00733] Verify The Update Bits In An IPDU With MIXED TX MODE when Com_Sendsignal / Com_SendSignalGroup is invoked', 'page': 132}, {'structure': '7.3.25', 'title': '[ATS_COMINDEP_00734] Signal Routing When Source And Destination Signals/signal group have Update Bit And Update Bit Of The Received Signal Is Not Set', 'page': 134}, {'structure': '7.3.26', 'title': '[ATS_COMINDEP_00735] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit And Update Bit Of The Received Signal Is Not Set', 'page': 135}, {'structure': '7.3.27', 'title': '[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set', 'page': 136}, {'structure': '7.3.28', 'title': '[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu', 'page': 137}, {'structure': '8', 'title': 'RS_BRF_01648 - Large Data Type', 'page': 139}, {'structure': '8.1', 'title': 'General Test Objective and Approach', 'page': 139}, {'structure': '8.1.1', 'title': 'Test System', 'page': 139}, {'structure': '8.1.2', 'title': 'Test Configuration', 'page': 140}, {'structure': '8.1.3', 'title': 'Test Case Design', 'page': 143}, {'structure': '8.2', 'title': 'Re-usable Test Steps', 'page': 143}, {'structure': '8.3', 'title': 'Test Cases', 'page': 143}, {'structure': '8.3.1', 'title': '[ATS_COMINDEP_00233] DIRECT TP transmission', 'page': 143}, {'structure': '8.3.2', 'title': '[ATS_COMINDEP_00234] PERIODIC TP transmission', 'page': 145}, {'structure': '8.3.3', 'title': '[ATS_COMINDEP_00235] MIXED TP transmission', 'page': 146}, {'structure': '8.3.4', 'title': '[ATS_COMINDEP_00236] Dynamic send message', 'page': 148}, {'structure': '8.3.5', 'title': '[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete', 'page': 149}, {'structure': '8.3.6', 'title': '[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete', 'page': 151}, {'structure': '8.3.7', 'title': '[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED', 'page': 153}, {'structure': '8.3.8', 'title': '[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING', 'page': 154}, {'structure': '8.3.9', 'title': '[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU', 'page': 155}, {'structure': '8.3.10', 'title': '[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface', 'page': 155}, {'structure': '8.3.11', 'title': '[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold', 'page': 156}, {'structure': '9', 'title': 'Miscellaneous features', 'page': 158}, {'structure': '9.1', 'title': 'General Test Objective and Approach', 'page': 158}, {'structure': '9.1.1', 'title': 'Test System', 'page': 158}, {'structure': '9.1.2', 'title': 'Test Configuration', 'page': 159}, {'structure': '9.2', 'title': 'Re-usable Test Steps', 'page': 159}, {'structure': '9.3', 'title': 'Test Cases', 'page': 159}, {'structure': '9.3.1', 'title': '[ATS_COMINDEP_00744] Check The Functionality Of PduR_EnableRouting And PduR_DisableRouting', 'page': 159}, {'structure': '9.3.2', 'title': '[ATS_COMINDEP_00745] Interface PDU Transmission During Singlecast When Source PDU Belongs To Com And Destination PDU Belongs To CanIf', 'page': 160}, {'structure': '9.3.3', 'title': '[ATS_COMINDEP_00746] Interface PDU Transmission During Multicast When Source PDU Is From Com Module And Destination PDU Belongs To Lower Layer (CanIf, LinIf, FRIF)', 'page': 161}, {'structure': '9.3.4', 'title': '[ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, CanIf And FrIf', 'page': 162}, {'structure': '9.3.5', 'title': '[ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast When Source PDU Belongs To Com and Destination PDU Belongs To CanTp', 'page': 163}, {'structure': '9.3.6', 'title': '[ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, CanTp and FrTp', 'page': 164}]"
+  },
+  {
+    "message": "toc_with_physical_index: {}"
+  },
+  {
+    "message": "toc_with_physical_index: {}"
+  },
+  {
+    "message": "matching_pairs: []"
+  },
+  {
+    "message": "offset: None"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": -1,
+    "incorrect_results": []
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Acronyms and abbreviations', 'page': 8}, {'structure': '2', 'title': 'Scope', 'page': 9}, {'structure': '3', 'title': 'RS_BRF_01600 - Timeout Handling', 'page': 10}, {'structure': '3.1', 'title': 'General Test Objective and Approach', 'page': 10}, {'structure': '3.1.1', 'title': 'Test System', 'page': 10}, {'structure': '3.1.2', 'title': 'Test Configuration', 'page': 13}, {'structure': '3.1.3', 'title': 'Test Case Design', 'page': 15}, {'structure': '3.2', 'title': 'Re-usable Test Steps', 'page': 15}, {'structure': '3.3', 'title': 'Test Cases', 'page': 15}, {'structure': '3.3.1', 'title': '[ATS_COMINDEP_00100] Managing Rx signal deadline timeout with notification', 'page': 15}, {'structure': '3.3.2', 'title': '[ATS_COMINDEP_00101] Managing Rx signal group deadline timeout with action REPLACE', 'page': 18}, {'structure': '3.3.3', 'title': '[ATS_COMINDEP_00102] Managing Tx Ipdu deadline timeout', 'page': 19}, {'structure': '3.3.4', 'title': '[ATS_COMINDEP_00104] Disabling/Enabling Rx Deadline monitoring', 'page': 20}, {'structure': '3.3.5', 'title': '[ATS_COMINDEP_00105] Managing Rx Ipdu deadline timeout without notification', 'page': 22}, {'structure': '3.3.6', 'title': '[ATS_COMINDEP_00107] Managing Rx signal group deadline timeout with action NONE', 'page': 24}, {'structure': '3.3.7', 'title': '[ATS_COMINDEP_00738] Signal With ComRxDataTimeoutAction Set To NONE And Reception Deadline Monitoring Expires', 'page': 25}, {'structure': '4', 'title': 'RS_BRF_01616 - Initial Values', 'page': 27}, {'structure': '4.1', 'title': 'General Test Objective and Approach', 'page': 27}, {'structure': '4.1.1', 'title': 'Test System', 'page': 28}, {'structure': '4.1.2', 'title': 'Test Configuration', 'page': 30}, {'structure': '4.1.3', 'title': 'Test Case Design', 'page': 33}, {'structure': '4.2', 'title': 'Re-usable Test Steps', 'page': 34}, {'structure': '4.3', 'title': 'Test Cases', 'page': 34}, {'structure': '4.3.1', 'title': '[ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal was never received', 'page': 34}, {'structure': '4.3.2', 'title': '[ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal deadline timeout occurs', 'page': 35}, {'structure': '4.3.3', 'title': '[ATS_COMINDEP_00079] Providing UINT16 initial value if Rx signal was never received', 'page': 36}, {'structure': '4.3.4', 'title': '[ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal deadline timeout occurs', 'page': 36}, {'structure': '4.3.5', 'title': '[ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal was never received', 'page': 38}, {'structure': '4.3.6', 'title': '[ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal deadline timeout occurs', 'page': 38}, {'structure': '4.3.7', 'title': '[ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal was never received', 'page': 40}, {'structure': '4.3.8', 'title': '[ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal deadline timeout occurs', 'page': 40}, {'structure': '4.3.9', 'title': '[ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal was never received', 'page': 42}, {'structure': '4.3.10', 'title': '[ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal deadline timeout occurs', 'page': 42}, {'structure': '4.3.11', 'title': '[ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal was never received', 'page': 44}, {'structure': '4.3.12', 'title': '[ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal deadline timeout occurs', 'page': 44}, {'structure': '4.3.13', 'title': '[ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx signal was never received', 'page': 46}, {'structure': '4.3.14', 'title': '[ATS_COMINDEP_00091] Providing BOOLEAN initial value if Rx signal deadline timeout occurs', 'page': 46}, {'structure': '4.3.15', 'title': '[ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx signal was never received', 'page': 48}, {'structure': '4.3.16', 'title': '[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs', 'page': 48}, {'structure': '4.3.17', 'title': '[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received', 'page': 50}, {'structure': '4.3.18', 'title': '[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs', 'page': 50}, {'structure': '4.3.19', 'title': '[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received', 'page': 52}, {'structure': '4.3.20', 'title': '[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs', 'page': 52}, {'structure': '4.3.21', 'title': '[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received', 'page': 54}, {'structure': '4.3.22', 'title': '[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs', 'page': 55}, {'structure': '4.3.23', 'title': '[ATS_COMINDEP_00721] Packing Of IPdu Data', 'page': 56}, {'structure': '4.3.24', 'title': '[ATS_COMINDEP_00722] Unpacking Of IPdu Data', 'page': 57}, {'structure': '5', 'title': 'RS_BRF_01632 - Data Consistency', 'page': 59}, {'structure': '5.1', 'title': 'General Test Objective and Approach', 'page': 59}, {'structure': '5.1.1', 'title': 'Test System', 'page': 59}, {'structure': '5.1.2', 'title': 'Test Configuration', 'page': 61}, {'structure': '5.1.3', 'title': 'Test Case Design', 'page': 63}, {'structure': '5.2', 'title': 'Re-usable Test Steps', 'page': 63}, {'structure': '5.3', 'title': 'Test Cases', 'page': 63}, {'structure': '5.3.1', 'title': '[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC', 'page': 63}, {'structure': '5.3.2', 'title': '[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data', 'page': 65}, {'structure': '5.3.3', 'title': '[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC', 'page': 66}, {'structure': '5.3.4', 'title': '[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid', 'page': 67}, {'structure': '6', 'title': 'RS_BRF_01649 - LdCom data transfer (Bus independent)', 'page': 69}, {'structure': '6.1', 'title': 'General Test Objective and Approach', 'page': 69}, {'structure': '6.1.1', 'title': 'Test System', 'page': 69}, {'structure': '6.1.2', 'title': 'Test Configuration', 'page': 70}, {'structure': '6.1.3', 'title': 'Test Case Design', 'page': 72}, {'structure': '6.2', 'title': 'Re-usable Test Steps', 'page': 72}, {'structure': '6.3', 'title': 'Test Cases', 'page': 73}, {'structure': '6.3.1', 'title': '[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer', 'page': 73}, {'structure': '6.3.2', 'title': '[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API', 'page': 74}, {'structure': '6.3.3', 'title': '[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer', 'page': 75}, {'structure': '6.3.4', 'title': '[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API', 'page': 76}, {'structure': '6.3.5', 'title': '[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU', 'page': 77}, {'structure': '6.3.6', 'title': '[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU', 'page': 79}, {'structure': '6.3.7', 'title': '[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU', 'page': 80}, {'structure': '7', 'title': 'RS_BRF_01592 - Data Transfer (Bus independent)', 'page': 83}, {'structure': '7.1', 'title': 'General Test Objective and Approach', 'page': 83}, {'structure': '7.1.1', 'title': 'Test System', 'page': 83}, {'structure': '7.1.2', 'title': 'Test Configuration', 'page': 84}, {'structure': '7.1.3', 'title': 'Test Case Design', 'page': 94}, {'structure': '7.2', 'title': 'Re-usable Test Steps', 'page': 94}, {'structure': '7.3', 'title': 'Test Cases', 'page': 94}, {'structure': '7.3.1', 'title': '[ATS_COMINDEP_00200] Group Control - Time Based frame (PERIODIC)', 'page': 94}, {'structure': '7.3.2', 'title': '[ATS_COMINDEP_00205] Group Control - User Request frame (DIRECT) + MDT', 'page': 97}, {'structure': '7.3.3', 'title': '[ATS_COMINDEP_00259] User Request frame (DIRECT) + MDT', 'page': 99}, {'structure': '7.3.4', 'title': '[ATS_COMINDEP_00260] User Request frame (DIRECT) + several triggers', 'page': 100}, {'structure': '7.3.5', 'title': '[ATS_COMINDEP_00212] Tx notification', 'page': 101}, {'structure': '7.3.6', 'title': '[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC', 'page': 103}, {'structure': '7.3.7', 'title': '[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT', 'page': 106}, {'structure': '7.3.8', 'title': '[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS', 'page': 108}, {'structure': '7.3.9', 'title': '[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT', 'page': 110}, {'structure': '7.3.10', 'title': '[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC', 'page': 112}, {'structure': '7.3.11', 'title': '[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC', 'page': 114}, {'structure': '7.3.12', 'title': '[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT', 'page': 116}, {'structure': '7.3.13', 'title': '[ATS_COMINDEP_00226] Ipdu and Trigger Transmit Callouts', 'page': 118}, {'structure': '7.3.14', 'title': '[ATS_COMINDEP_00723] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with Triggered On Change Transfer Property', 'page': 120}, {'structure': '7.3.15', 'title': '[ATS_COMINDEP_00724] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group With Triggered On Change Transfer Property', 'page': 121}, {'structure': '7.3.16', 'title': '[ATS_COMINDEP_00725] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'page': 123}, {'structure': '7.3.17', 'title': '[ATS_COMINDEP_00726] Transmission Of An I -PDU Having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'page': 124}, {'structure': '7.3.18', 'title': '[ATS_COMINDEP_00727] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED ON CHANGE WITHOUT REPETITION Transfer Property', 'page': 125}, {'structure': '7.3.19', 'title': '[ATS_COMINDEP_00728] Triggered Transmission Of An I -Pdu With MIXED Mode And Minimum Delay Timer Configured', 'page': 127}, {'structure': '7.3.20', 'title': '[ATS_COMINDEP_00729] Transmit I -PDU Callout With Tx Mode PERIODIC', 'page': 128}, {'structure': '7.3.21', 'title': '[ATS_COMINDEP_00730] Transmit I -PDU Callout With Tx Mode MIXED', 'page': 129}, {'structure': '7.3.22', 'title': '[ATS_COMINDEP_00731] Verify The Update Bits In An IPDU With TX MODE DIRECT when Com_Sendsignal / Com_SendSignalGroup is invoked', 'page': 130}, {'structure': '7.3.23', 'title': '[ATS_COMINDEP_00732] Verify The Update Bits In An IPDU With TX MODE PERIODIC when Com_Sendsignal / Com_SendSignalGroup is invoked', 'page': 131}, {'structure': '7.3.24', 'title': '[ATS_COMINDEP_00733] Verify The Update Bits In An IPDU With MIXED TX MODE when Com_Sendsignal / Com_SendSignalGroup is invoked', 'page': 132}, {'structure': '7.3.25', 'title': '[ATS_COMINDEP_00734] Signal Routing When Source And Destination Signals/signal group have Update Bit And Update Bit Of The Received Signal Is Not Set', 'page': 134}, {'structure': '7.3.26', 'title': '[ATS_COMINDEP_00735] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit And Update Bit Of The Received Signal Is Not Set', 'page': 135}, {'structure': '7.3.27', 'title': '[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set', 'page': 136}, {'structure': '7.3.28', 'title': '[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu', 'page': 137}, {'structure': '8', 'title': 'RS_BRF_01648 - Large Data Type', 'page': 139}, {'structure': '8.1', 'title': 'General Test Objective and Approach', 'page': 139}, {'structure': '8.1.1', 'title': 'Test System', 'page': 139}, {'structure': '8.1.2', 'title': 'Test Configuration', 'page': 140}, {'structure': '8.1.3', 'title': 'Test Case Design', 'page': 143}, {'structure': '8.2', 'title': 'Re-usable Test Steps', 'page': 143}, {'structure': '8.3', 'title': 'Test Cases', 'page': 143}, {'structure': '8.3.1', 'title': '[ATS_COMINDEP_00233] DIRECT TP transmission', 'page': 143}, {'structure': '8.3.2', 'title': '[ATS_COMINDEP_00234] PERIODIC TP transmission', 'page': 145}, {'structure': '8.3.3', 'title': '[ATS_COMINDEP_00235] MIXED TP transmission', 'page': 146}, {'structure': '8.3.4', 'title': '[ATS_COMINDEP_00236] Dynamic send message', 'page': 148}, {'structure': '8.3.5', 'title': '[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete', 'page': 149}, {'structure': '8.3.6', 'title': '[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete', 'page': 151}, {'structure': '8.3.7', 'title': '[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED', 'page': 153}, {'structure': '8.3.8', 'title': '[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING', 'page': 154}, {'structure': '8.3.9', 'title': '[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU', 'page': 155}, {'structure': '8.3.10', 'title': '[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface', 'page': 155}, {'structure': '8.3.11', 'title': '[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold', 'page': 156}, {'structure': '9', 'title': 'Miscellaneous features', 'page': 158}, {'structure': '9.1', 'title': 'General Test Objective and Approach', 'page': 158}, {'structure': '9.1.1', 'title': 'Test System', 'page': 158}, {'structure': '9.1.2', 'title': 'Test Configuration', 'page': 159}, {'structure': '9.2', 'title': 'Re-usable Test Steps', 'page': 159}, {'structure': '9.3', 'title': 'Test Cases', 'page': 159}, {'structure': '9.3.1', 'title': '[ATS_COMINDEP_00744] Check The Functionality Of PduR_EnableRouting And PduR_DisableRouting', 'page': 159}, {'structure': '9.3.2', 'title': '[ATS_COMINDEP_00745] Interface PDU Transmission During Singlecast When Source PDU Belongs To Com And Destination PDU Belongs To CanIf', 'page': 160}, {'structure': '9.3.3', 'title': '[ATS_COMINDEP_00746] Interface PDU Transmission During Multicast When Source PDU Is From Com Module And Destination PDU Belongs To Lower Layer (CanIf, LinIf, FRIF)', 'page': 161}, {'structure': '9.3.4', 'title': '[ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, CanIf And FrIf', 'page': 162}, {'structure': '9.3.5', 'title': '[ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast When Source PDU Belongs To Com and Destination PDU Belongs To CanTp', 'page': 163}, {'structure': '9.3.6', 'title': '[ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, CanTp and FrTp', 'page': 164}]"
+  },
+  {
+    "message": "len(group_texts): 9"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '3.3.4', 'title': '[ATS_COMINDEP_00104] Disabling/Enabling Rx Deadline monitoring', 'physical_index': '<physical_index_20>'}, {'structure': '3.3.5', 'title': '[ATS_COMINDEP_00105] Managing Rx Ipdu deadline timeout without notification', 'physical_index': '<physical_index_22>'}, {'structure': '3.3.6', 'title': '[ATS_COMINDEP_00107] Managing Rx signal group deadline timeout with action NONE', 'physical_index': '<physical_index_24>'}, {'structure': '3.3.7', 'title': '[ATS_COMINDEP_00738] Signal With ComRxDataTimeoutAction Set To NONE And Reception Deadline Monitoring Expires', 'physical_index': '<physical_index_25>'}, {'structure': '4', 'title': 'RS_BRF_01616 - Initial Values', 'physical_index': '<physical_index_27>'}, {'structure': '4.3.1', 'title': '[ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal was never received', 'physical_index': '<physical_index_34>'}, {'structure': '4.3.2', 'title': '[ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_35>'}, {'structure': '4.3.3', 'title': '[ATS_COMINDEP_00079] Providing UINT16 initial value if Rx signal was never received', 'physical_index': '<physical_index_36>'}, {'structure': '4.3.4', 'title': '[ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_37>'}, {'structure': '4.3.5', 'title': '[ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal was never received', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.6', 'title': '[ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_39>'}, {'structure': '4.3.7', 'title': '[ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal was never received', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.8', 'title': '[ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_41>'}, {'structure': '4.3.9', 'title': '[ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal was never received', 'physical_index': '<physical_index_42>'}, {'structure': '4.3.10', 'title': '[ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_42>'}, {'structure': '4.3.11', 'title': '[ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal was never received', 'physical_index': '<physical_index_44>'}, {'structure': '4.3.12', 'title': '[ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_44>'}, {'structure': '4.3.13', 'title': '[ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx signal was never received', 'physical_index': '<physical_index_46>'}, {'structure': '4.3.14', 'title': '[ATS_COMINDEP_00091] Providing BOOLEAN initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_46>'}, {'structure': '4.3.15', 'title': '[ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx signal was never received', 'physical_index': '<physical_index_48>'}, {'structure': '4.3.16', 'title': '[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_48>'}, {'structure': '4.3.17', 'title': '[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received', 'physical_index': '<physical_index_50>'}, {'structure': '4.3.18', 'title': '[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_50>'}, {'structure': '4.3.19', 'title': '[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received', 'physical_index': '<physical_index_52>'}, {'structure': '4.3.20', 'title': '[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_52>'}, {'structure': '4.3.21', 'title': '[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received', 'physical_index': '<physical_index_54>'}, {'structure': '4.3.22', 'title': '[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_54>'}, {'structure': '4.3.23', 'title': '[ATS_COMINDEP_00721] Packing Of IPdu Data', 'physical_index': '<physical_index_56>'}, {'structure': '4.3.24', 'title': '[ATS_COMINDEP_00722] Unpacking Of IPdu Data', 'physical_index': '<physical_index_58>'}, {'structure': '5', 'title': 'RS_BRF_01632 - Data Consistency', 'physical_index': '<physical_index_59>'}, {'structure': '5.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_61>'}, {'structure': '5.1.2.1', 'title': 'Required ECU Extract of System Description Files', 'physical_index': '<physical_index_62>'}, {'structure': '5.1.2.2', 'title': 'Required ECU Configuration Description Files', 'physical_index': '<physical_index_63>'}, {'structure': '5.1.2.3', 'title': 'Required Software Component Description Files', 'physical_index': '<physical_index_63>'}, {'structure': '5.1.2.4', 'title': 'Mandatory vs. Customizable Parts', 'physical_index': '<physical_index_63>'}, {'structure': '5.1.3', 'title': 'Test Case Design', 'physical_index': None}, {'structure': '5.2', 'title': 'Re-usable Test Steps', 'physical_index': None}, {'structure': '5.3', 'title': 'Test Cases', 'physical_index': '<physical_index_63>'}, {'structure': '5.3.1', 'title': '[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC', 'physical_index': '<physical_index_64>'}, {'structure': '5.3.2', 'title': '[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data', 'physical_index': '<physical_index_65>'}, {'structure': '5.3.3', 'title': '[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC', 'physical_index': '<physical_index_66>'}, {'structure': '5.3.4', 'title': '[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid', 'physical_index': '<physical_index_67>'}, {'structure': '6', 'title': 'RS_BRF_01649 - LdCom data transfer (Bus independent)', 'physical_index': '<physical_index_69>'}, {'structure': '6.1.1.1.1', 'title': 'Use case 06.01 : Data Transfer of Array Signal of Size lesser than or equal to<BUS> Capability', 'physical_index': '<physical_index_70>'}, {'structure': '6.1.1.1.2', 'title': 'Use case 06.02: Data Transfer of Array Signal of size more than <BUS> Capability', 'physical_index': '<physical_index_70>'}, {'structure': '6.1.2.1.1', 'title': 'Use Case 06.01: Data Transfer of Array Signal of Size lesser than or equal to<BUS> Capability', 'physical_index': '<physical_index_71>'}, {'structure': '6.1.2.1.2', 'title': 'Use case 06.02 : Data Transfer of Array Signal of size more than <BUS> Capability', 'physical_index': '<physical_index_71>'}, {'structure': '6.3.1', 'title': '[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer', 'physical_index': '<physical_index_73>'}, {'structure': '6.3.2', 'title': '[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API', 'physical_index': '<physical_index_74>'}, {'structure': '6.3.3', 'title': '[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer', 'physical_index': '<physical_index_75>'}, {'structure': '6.3.4', 'title': '[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API', 'physical_index': '<physical_index_76>'}, {'structure': '6.3.5', 'title': '[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU', 'physical_index': '<physical_index_78>'}, {'structure': '6.3.6', 'title': '[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU', 'physical_index': '<physical_index_79>'}, {'structure': '6.3.7', 'title': '[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU', 'physical_index': '<physical_index_80>'}, {'structure': '7', 'title': 'RS_BRF_01592 - Data Transfer (Bus independent)', 'physical_index': '<physical_index_83>'}, {'structure': '7.1.1.1.1', 'title': 'Use case 04.01: General features', 'physical_index': '<physical_index_84>'}, {'structure': '7.1.2.1', 'title': 'Required ECU Extract of System Description Files', 'physical_index': '<physical_index_85>'}, {'structure': '7.3.6', 'title': '[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC', 'physical_index': '<physical_index_103>'}, {'structure': '7.3.7', 'title': '[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT', 'physical_index': '<physical_index_106>'}, {'structure': '7.3.8', 'title': '[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS', 'physical_index': '<physical_index_108>'}, {'structure': '7.3.9', 'title': '[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT', 'physical_index': '<physical_index_111>'}, {'structure': '7.3.10', 'title': '[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC', 'physical_index': '<physical_index_113>'}, {'structure': '7.3.11', 'title': '[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC', 'physical_index': '<physical_index_115>'}, {'structure': '7.3.12', 'title': '[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT', 'physical_index': '<physical_index_117>'}, {'structure': '7.3.27', 'title': '[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set', 'physical_index': '<physical_index_136>'}, {'structure': '7.3.28', 'title': '[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu', 'physical_index': '<physical_index_137>'}, {'structure': '8', 'title': 'RS_BRF_01648 - Large Data Type', 'physical_index': '<physical_index_139>'}, {'structure': '8.1.1.1.1', 'title': 'Use case 05.01: General features', 'physical_index': '<physical_index_139>'}, {'structure': '8.1.2.1', 'title': 'Required ECU Extract of System Description Files', 'physical_index': '<physical_index_141>'}, {'structure': '8.1.2.1.1', 'title': 'Use Case 05.01: General features', 'physical_index': '<physical_index_142>'}, {'structure': '8.1.2.4', 'title': 'Mandatory vs. Customizable Parts', 'physical_index': '<physical_index_143>'}, {'structure': '8.3.1', 'title': '[ATS_COMINDEP_00233] DIRECT TP transmission', 'physical_index': '<physical_index_143>'}, {'structure': '8.3.2', 'title': '[ATS_COMINDEP_00234] PERIODIC TP transmission', 'physical_index': '<physical_index_145>'}, {'structure': '8.3.3', 'title': '[ATS_COMINDEP_00235] MIXED TP transmission', 'physical_index': '<physical_index_146>'}, {'structure': '8.3.4', 'title': '[ATS_COMINDEP_00236] Dynamic send message', 'physical_index': '<physical_index_148>'}, {'structure': '8.3.5', 'title': '[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete', 'physical_index': '<physical_index_150>'}, {'structure': '8.3.6', 'title': '[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete', 'physical_index': '<physical_index_152>'}, {'structure': '8.3.7', 'title': '[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED', 'physical_index': '<physical_index_153>'}, {'structure': '8.3.8', 'title': '[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING', 'physical_index': '<physical_index_154>'}, {'structure': '8.3.9', 'title': '[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU', 'physical_index': '<physical_index_155>'}, {'structure': '8.3.10', 'title': '[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface', 'physical_index': '<physical_index_156>'}, {'structure': '8.3.11', 'title': '[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold', 'physical_index': '<physical_index_157>'}, {'structure': '9', 'title': 'Miscellaneous features', 'physical_index': '<physical_index_158>'}, {'structure': '9.1.1.1.1', 'title': 'Use case 05.01: General features', 'physical_index': '<physical_index_158>'}, {'structure': '9.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_159>'}, {'structure': '9.3.1', 'title': '[ATS_COMINDEP_00744] Check The Functionality Of PduR_EnableRouting And PduR_DisableRouting', 'physical_index': '<physical_index_159>'}, {'structure': '9.3.2', 'title': '[ATS_COMINDEP_00745] Interface PDU Transmission During Singlecast When Source PDU Belongs To Com And Destination PDU Belongs To CanIf', 'physical_index': '<physical_index_160>'}, {'structure': '9.3.3', 'title': '[ATS_COMINDEP_00746] Interface PDU Transmission During Multicast When Source PDU Is From Com Module And Destination PDU Belongs To Lower Layer (CanIf, LinIf, FRIF)', 'physical_index': '<physical_index_161>'}, {'structure': '9.3.4', 'title': '[ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, CanIf And FrIf', 'physical_index': '<physical_index_162>'}, {'structure': '9.3.5', 'title': '[ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast When Source PDU Belongs To Com and Destination PDU Belongs To CanTp', 'physical_index': '<physical_index_163>'}, {'structure': '9.3.6', 'title': '[ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, CanTp and FrTp', 'physical_index': '<physical_index_164>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '3.3.4', 'title': '[ATS_COMINDEP_00104] Disabling/Enabling Rx Deadline monitoring', 'physical_index': 20}, {'structure': '3.3.5', 'title': '[ATS_COMINDEP_00105] Managing Rx Ipdu deadline timeout without notification', 'physical_index': 22}, {'structure': '3.3.6', 'title': '[ATS_COMINDEP_00107] Managing Rx signal group deadline timeout with action NONE', 'physical_index': 24}, {'structure': '3.3.7', 'title': '[ATS_COMINDEP_00738] Signal With ComRxDataTimeoutAction Set To NONE And Reception Deadline Monitoring Expires', 'physical_index': 25}, {'structure': '4', 'title': 'RS_BRF_01616 - Initial Values', 'physical_index': 27}, {'structure': '4.3.1', 'title': '[ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal was never received', 'physical_index': 34}, {'structure': '4.3.2', 'title': '[ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': 35}, {'structure': '4.3.3', 'title': '[ATS_COMINDEP_00079] Providing UINT16 initial value if Rx signal was never received', 'physical_index': 36}, {'structure': '4.3.4', 'title': '[ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': 37}, {'structure': '4.3.5', 'title': '[ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal was never received', 'physical_index': 38}, {'structure': '4.3.6', 'title': '[ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': 39}, {'structure': '4.3.7', 'title': '[ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal was never received', 'physical_index': 40}, {'structure': '4.3.8', 'title': '[ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': 41}, {'structure': '4.3.9', 'title': '[ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal was never received', 'physical_index': 42}, {'structure': '4.3.10', 'title': '[ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': 42}, {'structure': '4.3.11', 'title': '[ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal was never received', 'physical_index': 44}, {'structure': '4.3.12', 'title': '[ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': 44}, {'structure': '4.3.13', 'title': '[ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx signal was never received', 'physical_index': 46}, {'structure': '4.3.14', 'title': '[ATS_COMINDEP_00091] Providing BOOLEAN initial value if Rx signal deadline timeout occurs', 'physical_index': 46}, {'structure': '4.3.15', 'title': '[ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx signal was never received', 'physical_index': 48}, {'structure': '4.3.16', 'title': '[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs', 'physical_index': 48}, {'structure': '4.3.17', 'title': '[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received', 'physical_index': 50}, {'structure': '4.3.18', 'title': '[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs', 'physical_index': 50}, {'structure': '4.3.19', 'title': '[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received', 'physical_index': 52}, {'structure': '4.3.20', 'title': '[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs', 'physical_index': 52}, {'structure': '4.3.21', 'title': '[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received', 'physical_index': 54}, {'structure': '4.3.22', 'title': '[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs', 'physical_index': 54}, {'structure': '4.3.23', 'title': '[ATS_COMINDEP_00721] Packing Of IPdu Data', 'physical_index': 56}, {'structure': '4.3.24', 'title': '[ATS_COMINDEP_00722] Unpacking Of IPdu Data', 'physical_index': 58}, {'structure': '5', 'title': 'RS_BRF_01632 - Data Consistency', 'physical_index': 59}, {'structure': '5.1.2', 'title': 'Test Configuration', 'physical_index': 61}, {'structure': '5.1.2.1', 'title': 'Required ECU Extract of System Description Files', 'physical_index': 62}, {'structure': '5.1.2.2', 'title': 'Required ECU Configuration Description Files', 'physical_index': 63}, {'structure': '5.1.2.3', 'title': 'Required Software Component Description Files', 'physical_index': 63}, {'structure': '5.1.2.4', 'title': 'Mandatory vs. Customizable Parts', 'physical_index': 63}, {'structure': '5.1.3', 'title': 'Test Case Design', 'physical_index': None}, {'structure': '5.2', 'title': 'Re-usable Test Steps', 'physical_index': None}, {'structure': '5.3', 'title': 'Test Cases', 'physical_index': 63}, {'structure': '5.3.1', 'title': '[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC', 'physical_index': 64}, {'structure': '5.3.2', 'title': '[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data', 'physical_index': 65}, {'structure': '5.3.3', 'title': '[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC', 'physical_index': 66}, {'structure': '5.3.4', 'title': '[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid', 'physical_index': 67}, {'structure': '6', 'title': 'RS_BRF_01649 - LdCom data transfer (Bus independent)', 'physical_index': 69}, {'structure': '6.1.1.1.1', 'title': 'Use case 06.01 : Data Transfer of Array Signal of Size lesser than or equal to<BUS> Capability', 'physical_index': 70}, {'structure': '6.1.1.1.2', 'title': 'Use case 06.02: Data Transfer of Array Signal of size more than <BUS> Capability', 'physical_index': 70}, {'structure': '6.1.2.1.1', 'title': 'Use Case 06.01: Data Transfer of Array Signal of Size lesser than or equal to<BUS> Capability', 'physical_index': 71}, {'structure': '6.1.2.1.2', 'title': 'Use case 06.02 : Data Transfer of Array Signal of size more than <BUS> Capability', 'physical_index': 71}, {'structure': '6.3.1', 'title': '[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer', 'physical_index': 73}, {'structure': '6.3.2', 'title': '[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API', 'physical_index': 74}, {'structure': '6.3.3', 'title': '[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer', 'physical_index': 75}, {'structure': '6.3.4', 'title': '[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API', 'physical_index': 76}, {'structure': '6.3.5', 'title': '[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU', 'physical_index': 78}, {'structure': '6.3.6', 'title': '[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU', 'physical_index': 79}, {'structure': '6.3.7', 'title': '[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU', 'physical_index': 80}, {'structure': '7', 'title': 'RS_BRF_01592 - Data Transfer (Bus independent)', 'physical_index': 83}, {'structure': '7.1.1.1.1', 'title': 'Use case 04.01: General features', 'physical_index': 84}, {'structure': '7.1.2.1', 'title': 'Required ECU Extract of System Description Files', 'physical_index': 85}, {'structure': '7.3.6', 'title': '[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC', 'physical_index': 103}, {'structure': '7.3.7', 'title': '[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT', 'physical_index': 106}, {'structure': '7.3.8', 'title': '[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS', 'physical_index': 108}, {'structure': '7.3.9', 'title': '[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT', 'physical_index': 111}, {'structure': '7.3.10', 'title': '[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC', 'physical_index': 113}, {'structure': '7.3.11', 'title': '[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC', 'physical_index': 115}, {'structure': '7.3.12', 'title': '[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT', 'physical_index': 117}, {'structure': '7.3.27', 'title': '[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set', 'physical_index': 136}, {'structure': '7.3.28', 'title': '[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu', 'physical_index': 137}, {'structure': '8', 'title': 'RS_BRF_01648 - Large Data Type', 'physical_index': 139}, {'structure': '8.1.1.1.1', 'title': 'Use case 05.01: General features', 'physical_index': 139}, {'structure': '8.1.2.1', 'title': 'Required ECU Extract of System Description Files', 'physical_index': 141}, {'structure': '8.1.2.1.1', 'title': 'Use Case 05.01: General features', 'physical_index': 142}, {'structure': '8.1.2.4', 'title': 'Mandatory vs. Customizable Parts', 'physical_index': 143}, {'structure': '8.3.1', 'title': '[ATS_COMINDEP_00233] DIRECT TP transmission', 'physical_index': 143}, {'structure': '8.3.2', 'title': '[ATS_COMINDEP_00234] PERIODIC TP transmission', 'physical_index': 145}, {'structure': '8.3.3', 'title': '[ATS_COMINDEP_00235] MIXED TP transmission', 'physical_index': 146}, {'structure': '8.3.4', 'title': '[ATS_COMINDEP_00236] Dynamic send message', 'physical_index': 148}, {'structure': '8.3.5', 'title': '[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete', 'physical_index': 150}, {'structure': '8.3.6', 'title': '[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete', 'physical_index': 152}, {'structure': '8.3.7', 'title': '[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED', 'physical_index': 153}, {'structure': '8.3.8', 'title': '[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING', 'physical_index': 154}, {'structure': '8.3.9', 'title': '[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU', 'physical_index': 155}, {'structure': '8.3.10', 'title': '[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface', 'physical_index': 156}, {'structure': '8.3.11', 'title': '[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold', 'physical_index': 157}, {'structure': '9', 'title': 'Miscellaneous features', 'physical_index': 158}, {'structure': '9.1.1.1.1', 'title': 'Use case 05.01: General features', 'physical_index': 158}, {'structure': '9.1.2', 'title': 'Test Configuration', 'physical_index': 159}, {'structure': '9.3.1', 'title': '[ATS_COMINDEP_00744] Check The Functionality Of PduR_EnableRouting And PduR_DisableRouting', 'physical_index': 159}, {'structure': '9.3.2', 'title': '[ATS_COMINDEP_00745] Interface PDU Transmission During Singlecast When Source PDU Belongs To Com And Destination PDU Belongs To CanIf', 'physical_index': 160}, {'structure': '9.3.3', 'title': '[ATS_COMINDEP_00746] Interface PDU Transmission During Multicast When Source PDU Is From Com Module And Destination PDU Belongs To Lower Layer (CanIf, LinIf, FRIF)', 'physical_index': 161}, {'structure': '9.3.4', 'title': '[ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, CanIf And FrIf', 'physical_index': 162}, {'structure': '9.3.5', 'title': '[ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast When Source PDU Belongs To Com and Destination PDU Belongs To CanTp', 'physical_index': 163}, {'structure': '9.3.6', 'title': '[ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, CanTp and FrTp', 'physical_index': 164}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.2247191011235955,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs",
+        "page_number": 48
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received",
+        "page_number": 50
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs",
+        "page_number": 50
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received",
+        "page_number": 52
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs",
+        "page_number": 52
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received",
+        "page_number": 54
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs",
+        "page_number": 54
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00721] Packing Of IPdu Data",
+        "page_number": 56
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00722] Unpacking Of IPdu Data",
+        "page_number": 58
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "RS_BRF_01632 - Data Consistency",
+        "page_number": 59
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Test Configuration",
+        "page_number": 61
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Required ECU Extract of System Description Files",
+        "page_number": 62
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Required ECU Configuration Description Files",
+        "page_number": 63
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Required Software Component Description Files",
+        "page_number": 63
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Mandatory vs. Customizable Parts",
+        "page_number": 63
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Test Cases",
+        "page_number": 63
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC",
+        "page_number": 64
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data",
+        "page_number": 65
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC",
+        "page_number": 66
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid",
+        "page_number": 67
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "RS_BRF_01649 - LdCom data transfer (Bus independent)",
+        "page_number": 69
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Use case 06.01 : Data Transfer of Array Signal of Size lesser than or equal to<BUS> Capability",
+        "page_number": 70
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Use case 06.02: Data Transfer of Array Signal of size more than <BUS> Capability",
+        "page_number": 70
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Use Case 06.01: Data Transfer of Array Signal of Size lesser than or equal to<BUS> Capability",
+        "page_number": 71
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Use case 06.02 : Data Transfer of Array Signal of size more than <BUS> Capability",
+        "page_number": 71
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer",
+        "page_number": 73
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API",
+        "page_number": 74
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer",
+        "page_number": 75
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API",
+        "page_number": 76
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU",
+        "page_number": 78
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU",
+        "page_number": 79
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU",
+        "page_number": 80
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "RS_BRF_01592 - Data Transfer (Bus independent)",
+        "page_number": 83
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Use case 04.01: General features",
+        "page_number": 84
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Required ECU Extract of System Description Files",
+        "page_number": 85
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC",
+        "page_number": 103
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT",
+        "page_number": 106
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS",
+        "page_number": 108
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT",
+        "page_number": 111
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC",
+        "page_number": 113
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC",
+        "page_number": 115
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT",
+        "page_number": 117
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set",
+        "page_number": 136
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu",
+        "page_number": 137
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "RS_BRF_01648 - Large Data Type",
+        "page_number": 139
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Use case 05.01: General features",
+        "page_number": 139
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Required ECU Extract of System Description Files",
+        "page_number": 141
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Use Case 05.01: General features",
+        "page_number": 142
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Mandatory vs. Customizable Parts",
+        "page_number": 143
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00233] DIRECT TP transmission",
+        "page_number": 143
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00234] PERIODIC TP transmission",
+        "page_number": 145
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00235] MIXED TP transmission",
+        "page_number": 146
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00236] Dynamic send message",
+        "page_number": 148
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete",
+        "page_number": 150
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete",
+        "page_number": 152
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED",
+        "page_number": 153
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING",
+        "page_number": 154
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU",
+        "page_number": 155
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface",
+        "page_number": 156
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold",
+        "page_number": 157
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Miscellaneous features",
+        "page_number": 158
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Use case 05.01: General features",
+        "page_number": 158
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Test Configuration",
+        "page_number": 159
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00744] Check The Functionality Of PduR_EnableRouting And PduR_DisableRouting",
+        "page_number": 159
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00745] Interface PDU Transmission During Singlecast When Source PDU Belongs To Com And Destination PDU Belongs To CanIf",
+        "page_number": 160
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00746] Interface PDU Transmission During Multicast When Source PDU Is From Com Module And Destination PDU Belongs To Lower Layer (CanIf, LinIf, FRIF)",
+        "page_number": 161
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, CanIf And FrIf",
+        "page_number": 162
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast When Source PDU Belongs To Com and Destination PDU Belongs To CanTp",
+        "page_number": 163
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, CanTp and FrTp",
+        "page_number": 164
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 9"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '2', 'title': 'Scope', 'physical_index': '<physical_index_9>'}, {'structure': '3', 'title': 'RS_BRF_01600 - Timeout Handling', 'physical_index': '<physical_index_10>'}, {'structure': '3.1', 'title': 'General Test Objective and Approach', 'physical_index': '<physical_index_10>'}, {'structure': '3.1.1', 'title': 'Test System', 'physical_index': '<physical_index_10>'}, {'structure': '3.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.3', 'title': 'Test Case Design', 'physical_index': '<physical_index_15>'}, {'structure': '3.2', 'title': 'Re-usable Test Steps', 'physical_index': '<physical_index_15>'}, {'structure': '3.3', 'title': 'Test Cases', 'physical_index': '<physical_index_15>'}, {'structure': '3.3.1', 'title': '[ATS_COMINDEP_00100] Managing Rx signal deadline timeout with notification', 'physical_index': '<physical_index_16>'}, {'structure': '3.3.2', 'title': '[ATS_COMINDEP_00101] Managing Rx signal group deadline timeout with action REPLACE', 'physical_index': '<physical_index_18>'}, {'structure': '3.3.3', 'title': '[ATS_COMINDEP_00102] Managing Tx Ipdu deadline timeout', 'physical_index': '<physical_index_19>'}, {'structure': '3.3.4', 'title': '[ATS_COMINDEP_00104] Disabling/Enabling Rx Deadline monitoring', 'physical_index': '<physical_index_20>'}, {'structure': '3.3.5', 'title': '[ATS_COMINDEP_00105] Managing Rx Ipdu deadline timeout without notification', 'physical_index': '<physical_index_22>'}, {'structure': '3.3.6', 'title': '[ATS_COMINDEP_00107] Managing Rx signal group deadline timeout with action NONE', 'physical_index': '<physical_index_24>'}, {'structure': '3.3.7', 'title': '[ATS_COMINDEP_00738] Signal With ComRxDataTimeoutAction Set To NONE And Reception Deadline Monitoring Expires', 'physical_index': '<physical_index_25>'}, {'structure': '4', 'title': 'RS_BRF_01616 - Initial Values', 'physical_index': '<physical_index_27>'}, {'structure': '4.1', 'title': 'General Test Objective and Approach', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.1', 'title': 'Test System', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_30>'}, {'structure': '4.1.3', 'title': 'Test Case Design', 'physical_index': '<physical_index_33>'}, {'structure': '4.2', 'title': 'Re-usable Test Steps', 'physical_index': '<physical_index_34>'}, {'structure': '4.3', 'title': 'Test Cases', 'physical_index': '<physical_index_34>'}, {'structure': '4.3.1', 'title': '[ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal was never received', 'physical_index': '<physical_index_34>'}, {'structure': '4.3.2', 'title': '[ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_35>'}, {'structure': '4.3.3', 'title': '[ATS_COMINDEP_00079] Providing UINT16 initial value if Rx signal was never received', 'physical_index': '<physical_index_36>'}, {'structure': '4.3.4', 'title': '[ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_36>'}, {'structure': '4.3.5', 'title': '[ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal was never received', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.6', 'title': '[ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_38>'}, {'structure': '4.3.7', 'title': '[ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal was never received', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.8', 'title': '[ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_40>'}, {'structure': '4.3.9', 'title': '[ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal was never received', 'physical_index': '<physical_index_42>'}, {'structure': '4.3.10', 'title': '[ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_42>'}, {'structure': '4.3.11', 'title': '[ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal was never received', 'physical_index': '<physical_index_44>'}, {'structure': '4.3.12', 'title': '[ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_44>'}, {'structure': '4.3.13', 'title': '[ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx signal was never received', 'physical_index': '<physical_index_46>'}, {'structure': '4.3.14', 'title': '[ATS_COMINDEP_00091] Providing BOOLEAN initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_46>'}, {'structure': '4.3.15', 'title': '[ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx signal was never received', 'physical_index': '<physical_index_48>'}, {'structure': '4.3.16', 'title': '[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_48>'}, {'structure': '4.3.17', 'title': '[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received', 'physical_index': '<physical_index_50>'}, {'structure': '4.3.18', 'title': '[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_50>'}, {'structure': '4.3.19', 'title': '[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received', 'physical_index': '<physical_index_52>'}, {'structure': '4.3.20', 'title': '[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_52>'}, {'structure': '4.3.21', 'title': '[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received', 'physical_index': '<physical_index_54>'}, {'structure': '4.3.22', 'title': '[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs', 'physical_index': '<physical_index_55>'}, {'structure': '4.3.23', 'title': '[ATS_COMINDEP_00721] Packing Of IPdu Data', 'physical_index': '<physical_index_56>'}, {'structure': '4.3.24', 'title': '[ATS_COMINDEP_00722] Unpacking Of IPdu Data', 'physical_index': '<physical_index_57>'}, {'structure': '5', 'title': 'RS_BRF_01632 - Data Consistency', 'physical_index': '<physical_index_59>'}, {'structure': '5.1', 'title': 'General Test Objective and Approach', 'physical_index': '<physical_index_59>'}, {'structure': '5.1.1', 'title': 'Test System', 'physical_index': '<physical_index_59>'}, {'structure': '5.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_61>'}, {'structure': '5.1.3', 'title': 'Test Case Design', 'physical_index': '<physical_index_63>'}, {'structure': '5.2', 'title': 'Re-usable Test Steps', 'physical_index': '<physical_index_63>'}, {'structure': '5.3', 'title': 'Test Cases', 'physical_index': '<physical_index_63>'}, {'structure': '5.3.1', 'title': '[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC', 'physical_index': '<physical_index_63>'}, {'structure': '5.3.2', 'title': '[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data', 'physical_index': '<physical_index_65>'}, {'structure': '5.3.3', 'title': '[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC', 'physical_index': '<physical_index_66>'}, {'structure': '5.3.4', 'title': '[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid', 'physical_index': '<physical_index_67>'}, {'structure': '6', 'title': 'RS_BRF_01649 - LdCom data transfer (Bus independent)', 'physical_index': '<physical_index_69>'}, {'structure': '6.1', 'title': 'General Test Objective and Approach', 'physical_index': '<physical_index_69>'}, {'structure': '6.1.1', 'title': 'Test System', 'physical_index': '<physical_index_69>'}, {'structure': '6.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_70>'}, {'structure': '6.1.3', 'title': 'Test Case Design', 'physical_index': '<physical_index_72>'}, {'structure': '6.2', 'title': 'Re-usable Test Steps', 'physical_index': '<physical_index_72>'}, {'structure': '6.3', 'title': 'Test Cases', 'physical_index': '<physical_index_73>'}, {'structure': '6.3.1', 'title': '[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer', 'physical_index': '<physical_index_73>'}, {'structure': '6.3.2', 'title': '[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API', 'physical_index': '<physical_index_74>'}, {'structure': '6.3.3', 'title': '[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer', 'physical_index': '<physical_index_75>'}, {'structure': '6.3.4', 'title': '[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API', 'physical_index': '<physical_index_76>'}, {'structure': '6.3.5', 'title': '[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU', 'physical_index': '<physical_index_77>'}, {'structure': '6.3.6', 'title': '[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU', 'physical_index': '<physical_index_79>'}, {'structure': '6.3.7', 'title': '[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU', 'physical_index': '<physical_index_80>'}, {'structure': '7', 'title': 'RS_BRF_01592 - Data Transfer (Bus independent)', 'physical_index': '<physical_index_83>'}, {'structure': '7.1', 'title': 'General Test Objective and Approach', 'physical_index': '<physical_index_83>'}, {'structure': '7.1.1', 'title': 'Test System', 'physical_index': '<physical_index_83>'}, {'structure': '7.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_84>'}, {'structure': '7.1.3', 'title': 'Test Case Design', 'physical_index': '<physical_index_94>'}, {'structure': '7.2', 'title': 'Re-usable Test Steps', 'physical_index': '<physical_index_94>'}, {'structure': '7.3', 'title': 'Test Cases', 'physical_index': '<physical_index_94>'}, {'structure': '7.3.1', 'title': '[ATS_COMINDEP_00200] Group Control - Time Based frame (PERIODIC)', 'physical_index': '<physical_index_94>'}, {'structure': '7.3.2', 'title': '[ATS_COMINDEP_00205] Group Control - User Request frame (DIRECT) + MDT', 'physical_index': '<physical_index_97>'}, {'structure': '7.3.3', 'title': '[ATS_COMINDEP_00259] User Request frame (DIRECT) + MDT', 'physical_index': '<physical_index_99>'}, {'structure': '7.3.4', 'title': '[ATS_COMINDEP_00260] User Request frame (DIRECT) + several triggers', 'physical_index': '<physical_index_100>'}, {'structure': '7.3.5', 'title': '[ATS_COMINDEP_00212] Tx notification', 'physical_index': '<physical_index_101>'}, {'structure': '7.3.6', 'title': '[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC', 'physical_index': '<physical_index_103>'}, {'structure': '7.3.7', 'title': '[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT', 'physical_index': '<physical_index_106>'}, {'structure': '7.3.8', 'title': '[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS', 'physical_index': '<physical_index_108>'}, {'structure': '7.3.9', 'title': '[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT', 'physical_index': '<physical_index_110>'}, {'structure': '7.3.10', 'title': '[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC', 'physical_index': '<physical_index_112>'}, {'structure': '7.3.11', 'title': '[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC', 'physical_index': '<physical_index_114>'}, {'structure': '7.3.12', 'title': '[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT', 'physical_index': '<physical_index_116>'}, {'structure': '7.3.13', 'title': '[ATS_COMINDEP_00226] Ipdu and Trigger Transmit Callouts', 'physical_index': '<physical_index_118>'}, {'structure': '7.3.14', 'title': '[ATS_COMINDEP_00723] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with Triggered On Change Transfer Property', 'physical_index': '<physical_index_120>'}, {'structure': '7.3.15', 'title': '[ATS_COMINDEP_00724] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group With Triggered On Change Transfer Property', 'physical_index': '<physical_index_121>'}, {'structure': '7.3.16', 'title': '[ATS_COMINDEP_00725] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'physical_index': '<physical_index_123>'}, {'structure': '7.3.17', 'title': '[ATS_COMINDEP_00726] Transmission Of An I -PDU Having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'physical_index': '<physical_index_124>'}, {'structure': '7.3.18', 'title': '[ATS_COMINDEP_00727] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED ON CHANGE WITHOUT REPETITION Transfer Property', 'physical_index': '<physical_index_125>'}, {'structure': '7.3.19', 'title': '[ATS_COMINDEP_00728] Triggered Transmission Of An I -Pdu With MIXED Mode And Minimum Delay Timer Configured', 'physical_index': '<physical_index_127>'}, {'structure': '7.3.20', 'title': '[ATS_COMINDEP_00729] Transmit I -PDU Callout With Tx Mode PERIODIC', 'physical_index': '<physical_index_128>'}, {'structure': '7.3.21', 'title': '[ATS_COMINDEP_00730] Transmit I -PDU Callout With Tx Mode MIXED', 'physical_index': '<physical_index_129>'}, {'structure': '7.3.22', 'title': '[ATS_COMINDEP_00731] Verify The Update Bits In An IPDU With TX MODE DIRECT when Com_Sendsignal / Com_SendSignalGroup is invoked', 'physical_index': '<physical_index_130>'}, {'structure': '7.3.23', 'title': '[ATS_COMINDEP_00732] Verify The Update Bits In An IPDU With TX MODE PERIODIC when Com_Sendsignal / Com_SendSignalGroup is invoked', 'physical_index': '<physical_index_131>'}, {'structure': '7.3.24', 'title': '[ATS_COMINDEP_00733] Verify The Update Bits In An IPDU With MIXED TX MODE when Com_Sendsignal / Com_SendSignalGroup is invoked', 'physical_index': '<physical_index_132>'}, {'structure': '7.3.25', 'title': '[ATS_COMINDEP_00734] Signal Routing When Source And Destination Signals/signal group have Update Bit And Update Bit Of The Received Signal Is Not Set', 'physical_index': '<physical_index_134>'}, {'structure': '7.3.26', 'title': '[ATS_COMINDEP_00735] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit And Update Bit Of The Received Signal Is Not Set', 'physical_index': '<physical_index_135>'}, {'structure': '7.3.27', 'title': '[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set', 'physical_index': '<physical_index_136>'}, {'structure': '7.3.28', 'title': '[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu', 'physical_index': '<physical_index_137>'}, {'structure': '8', 'title': 'RS_BRF_01648 - Large Data Type', 'physical_index': '<physical_index_139>'}, {'structure': '8.1', 'title': 'General Test Objective and Approach', 'physical_index': '<physical_index_139>'}, {'structure': '8.1.1', 'title': 'Test System', 'physical_index': '<physical_index_139>'}, {'structure': '8.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_140>'}, {'structure': '8.1.3', 'title': 'Test Case Design', 'physical_index': '<physical_index_143>'}, {'structure': '8.2', 'title': 'Re-usable Test Steps', 'physical_index': '<physical_index_143>'}, {'structure': '8.3', 'title': 'Test Cases', 'physical_index': '<physical_index_143>'}, {'structure': '8.3.1', 'title': '[ATS_COMINDEP_00233] DIRECT TP transmission', 'physical_index': '<physical_index_143>'}, {'structure': '8.3.2', 'title': '[ATS_COMINDEP_00234] PERIODIC TP transmission', 'physical_index': '<physical_index_145>'}, {'structure': '8.3.3', 'title': '[ATS_COMINDEP_00235] MIXED TP transmission', 'physical_index': '<physical_index_146>'}, {'structure': '8.3.4', 'title': '[ATS_COMINDEP_00236] Dynamic send message', 'physical_index': '<physical_index_148>'}, {'structure': '8.3.5', 'title': '[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete', 'physical_index': '<physical_index_149>'}, {'structure': '8.3.6', 'title': '[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete', 'physical_index': '<physical_index_151>'}, {'structure': '8.3.7', 'title': '[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED', 'physical_index': '<physical_index_153>'}, {'structure': '8.3.8', 'title': '[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING', 'physical_index': '<physical_index_154>'}, {'structure': '8.3.9', 'title': '[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU', 'physical_index': '<physical_index_155>'}, {'structure': '8.3.10', 'title': '[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface', 'physical_index': '<physical_index_155>'}, {'structure': '8.3.11', 'title': '[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold', 'physical_index': '<physical_index_156>'}, {'structure': '9', 'title': 'Miscellaneous features', 'physical_index': '<physical_index_158>'}, {'structure': '9.1', 'title': 'General Test Objective and Approach', 'physical_index': '<physical_index_158>'}, {'structure': '9.1.1', 'title': 'Test System', 'physical_index': '<physical_index_158>'}, {'structure': '9.1.2', 'title': 'Test Configuration', 'physical_index': '<physical_index_159>'}, {'structure': '9.2', 'title': 'Re-usable Test Steps', 'physical_index': '<physical_index_159>'}, {'structure': '9.3', 'title': 'Test Cases', 'physical_index': '<physical_index_159>'}, {'structure': '9.3.1', 'title': '[ATS_COMINDEP_00744] Check The Functionality Of PduR_EnableRouting And PduR_DisableRouting', 'physical_index': '<physical_index_159>'}, {'structure': '9.3.2', 'title': '[ATS_COMINDEP_00745] Interface PDU Transmission During Singlecast When Source PDU Belongs To Com And Destination PDU Belongs To CanIf', 'physical_index': '<physical_index_160>'}, {'structure': '9.3.3', 'title': '[ATS_COMINDEP_00746] Interface PDU Transmission During Multicast When Source PDU Is From Com Module And Destination PDU Belongs To Lower Layer (CanIf, LinIf, FRIF)', 'physical_index': '<physical_index_161>'}, {'structure': '9.3.4', 'title': '[ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, CanIf And FrIf', 'physical_index': '<physical_index_162>'}, {'structure': '9.3.5', 'title': '[ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast When Source PDU Belongs To Com and Destination PDU Belongs To CanTp', 'physical_index': '<physical_index_163>'}, {'structure': '9.3.6', 'title': '[ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, CanTp and FrTp', 'physical_index': '<physical_index_164>'}, {'structure': '9.3.7', 'title': '[ATS_COMINDEP_00750] Additional Test Case Title', 'physical_index': '<physical_index_165>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Acronyms and abbreviations', 'physical_index': 8}, {'structure': '2', 'title': 'Scope', 'physical_index': 9}, {'structure': '3', 'title': 'RS_BRF_01600 - Timeout Handling', 'physical_index': 10}, {'structure': '3.1', 'title': 'General Test Objective and Approach', 'physical_index': 10}, {'structure': '3.1.1', 'title': 'Test System', 'physical_index': 10}, {'structure': '3.1.2', 'title': 'Test Configuration', 'physical_index': 13}, {'structure': '3.1.3', 'title': 'Test Case Design', 'physical_index': 15}, {'structure': '3.2', 'title': 'Re-usable Test Steps', 'physical_index': 15}, {'structure': '3.3', 'title': 'Test Cases', 'physical_index': 15}, {'structure': '3.3.1', 'title': '[ATS_COMINDEP_00100] Managing Rx signal deadline timeout with notification', 'physical_index': 16}, {'structure': '3.3.2', 'title': '[ATS_COMINDEP_00101] Managing Rx signal group deadline timeout with action REPLACE', 'physical_index': 18}, {'structure': '3.3.3', 'title': '[ATS_COMINDEP_00102] Managing Tx Ipdu deadline timeout', 'physical_index': 19}, {'structure': '3.3.4', 'title': '[ATS_COMINDEP_00104] Disabling/Enabling Rx Deadline monitoring', 'physical_index': 20}, {'structure': '3.3.5', 'title': '[ATS_COMINDEP_00105] Managing Rx Ipdu deadline timeout without notification', 'physical_index': 22}, {'structure': '3.3.6', 'title': '[ATS_COMINDEP_00107] Managing Rx signal group deadline timeout with action NONE', 'physical_index': 24}, {'structure': '3.3.7', 'title': '[ATS_COMINDEP_00738] Signal With ComRxDataTimeoutAction Set To NONE And Reception Deadline Monitoring Expires', 'physical_index': 25}, {'structure': '4', 'title': 'RS_BRF_01616 - Initial Values', 'physical_index': 27}, {'structure': '4.1', 'title': 'General Test Objective and Approach', 'physical_index': 27}, {'structure': '4.1.1', 'title': 'Test System', 'physical_index': 28}, {'structure': '4.1.2', 'title': 'Test Configuration', 'physical_index': 30}, {'structure': '4.1.3', 'title': 'Test Case Design', 'physical_index': 33}, {'structure': '4.2', 'title': 'Re-usable Test Steps', 'physical_index': 34}, {'structure': '4.3', 'title': 'Test Cases', 'physical_index': 34}, {'structure': '4.3.1', 'title': '[ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal was never received', 'physical_index': 34}, {'structure': '4.3.2', 'title': '[ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': 35}, {'structure': '4.3.3', 'title': '[ATS_COMINDEP_00079] Providing UINT16 initial value if Rx signal was never received', 'physical_index': 36}, {'structure': '4.3.4', 'title': '[ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': 36}, {'structure': '4.3.5', 'title': '[ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal was never received', 'physical_index': 38}, {'structure': '4.3.6', 'title': '[ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': 38}, {'structure': '4.3.7', 'title': '[ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal was never received', 'physical_index': 40}, {'structure': '4.3.8', 'title': '[ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal deadline timeout occurs', 'physical_index': 40}, {'structure': '4.3.9', 'title': '[ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal was never received', 'physical_index': 42}, {'structure': '4.3.10', 'title': '[ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal deadline timeout occurs', 'physical_index': 42}, {'structure': '4.3.11', 'title': '[ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal was never received', 'physical_index': 44}, {'structure': '4.3.12', 'title': '[ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal deadline timeout occurs', 'physical_index': 44}, {'structure': '4.3.13', 'title': '[ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx signal was never received', 'physical_index': 46}, {'structure': '4.3.14', 'title': '[ATS_COMINDEP_00091] Providing BOOLEAN initial value if Rx signal deadline timeout occurs', 'physical_index': 46}, {'structure': '4.3.15', 'title': '[ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx signal was never received', 'physical_index': 48}, {'structure': '4.3.16', 'title': '[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs', 'physical_index': 48}, {'structure': '4.3.17', 'title': '[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received', 'physical_index': 50}, {'structure': '4.3.18', 'title': '[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs', 'physical_index': 50}, {'structure': '4.3.19', 'title': '[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received', 'physical_index': 52}, {'structure': '4.3.20', 'title': '[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs', 'physical_index': 52}, {'structure': '4.3.21', 'title': '[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received', 'physical_index': 54}, {'structure': '4.3.22', 'title': '[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs', 'physical_index': 55}, {'structure': '4.3.23', 'title': '[ATS_COMINDEP_00721] Packing Of IPdu Data', 'physical_index': 56}, {'structure': '4.3.24', 'title': '[ATS_COMINDEP_00722] Unpacking Of IPdu Data', 'physical_index': 57}, {'structure': '5', 'title': 'RS_BRF_01632 - Data Consistency', 'physical_index': 59}, {'structure': '5.1', 'title': 'General Test Objective and Approach', 'physical_index': 59}, {'structure': '5.1.1', 'title': 'Test System', 'physical_index': 59}, {'structure': '5.1.2', 'title': 'Test Configuration', 'physical_index': 61}, {'structure': '5.1.3', 'title': 'Test Case Design', 'physical_index': 63}, {'structure': '5.2', 'title': 'Re-usable Test Steps', 'physical_index': 63}, {'structure': '5.3', 'title': 'Test Cases', 'physical_index': 63}, {'structure': '5.3.1', 'title': '[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC', 'physical_index': 63}, {'structure': '5.3.2', 'title': '[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data', 'physical_index': 65}, {'structure': '5.3.3', 'title': '[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC', 'physical_index': 66}, {'structure': '5.3.4', 'title': '[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid', 'physical_index': 67}, {'structure': '6', 'title': 'RS_BRF_01649 - LdCom data transfer (Bus independent)', 'physical_index': 69}, {'structure': '6.1', 'title': 'General Test Objective and Approach', 'physical_index': 69}, {'structure': '6.1.1', 'title': 'Test System', 'physical_index': 69}, {'structure': '6.1.2', 'title': 'Test Configuration', 'physical_index': 70}, {'structure': '6.1.3', 'title': 'Test Case Design', 'physical_index': 72}, {'structure': '6.2', 'title': 'Re-usable Test Steps', 'physical_index': 72}, {'structure': '6.3', 'title': 'Test Cases', 'physical_index': 73}, {'structure': '6.3.1', 'title': '[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer', 'physical_index': 73}, {'structure': '6.3.2', 'title': '[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API', 'physical_index': 74}, {'structure': '6.3.3', 'title': '[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer', 'physical_index': 75}, {'structure': '6.3.4', 'title': '[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API', 'physical_index': 76}, {'structure': '6.3.5', 'title': '[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU', 'physical_index': 77}, {'structure': '6.3.6', 'title': '[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU', 'physical_index': 79}, {'structure': '6.3.7', 'title': '[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU', 'physical_index': 80}, {'structure': '7', 'title': 'RS_BRF_01592 - Data Transfer (Bus independent)', 'physical_index': 83}, {'structure': '7.1', 'title': 'General Test Objective and Approach', 'physical_index': 83}, {'structure': '7.1.1', 'title': 'Test System', 'physical_index': 83}, {'structure': '7.1.2', 'title': 'Test Configuration', 'physical_index': 84}, {'structure': '7.1.3', 'title': 'Test Case Design', 'physical_index': 94}, {'structure': '7.2', 'title': 'Re-usable Test Steps', 'physical_index': 94}, {'structure': '7.3', 'title': 'Test Cases', 'physical_index': 94}, {'structure': '7.3.1', 'title': '[ATS_COMINDEP_00200] Group Control - Time Based frame (PERIODIC)', 'physical_index': 94}, {'structure': '7.3.2', 'title': '[ATS_COMINDEP_00205] Group Control - User Request frame (DIRECT) + MDT', 'physical_index': 97}, {'structure': '7.3.3', 'title': '[ATS_COMINDEP_00259] User Request frame (DIRECT) + MDT', 'physical_index': 99}, {'structure': '7.3.4', 'title': '[ATS_COMINDEP_00260] User Request frame (DIRECT) + several triggers', 'physical_index': 100}, {'structure': '7.3.5', 'title': '[ATS_COMINDEP_00212] Tx notification', 'physical_index': 101}, {'structure': '7.3.6', 'title': '[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC', 'physical_index': 103}, {'structure': '7.3.7', 'title': '[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT', 'physical_index': 106}, {'structure': '7.3.8', 'title': '[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS', 'physical_index': 108}, {'structure': '7.3.9', 'title': '[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT', 'physical_index': 110}, {'structure': '7.3.10', 'title': '[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC', 'physical_index': 112}, {'structure': '7.3.11', 'title': '[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC', 'physical_index': 114}, {'structure': '7.3.12', 'title': '[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT', 'physical_index': 116}, {'structure': '7.3.13', 'title': '[ATS_COMINDEP_00226] Ipdu and Trigger Transmit Callouts', 'physical_index': 118}, {'structure': '7.3.14', 'title': '[ATS_COMINDEP_00723] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with Triggered On Change Transfer Property', 'physical_index': 120}, {'structure': '7.3.15', 'title': '[ATS_COMINDEP_00724] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group With Triggered On Change Transfer Property', 'physical_index': 121}, {'structure': '7.3.16', 'title': '[ATS_COMINDEP_00725] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'physical_index': 123}, {'structure': '7.3.17', 'title': '[ATS_COMINDEP_00726] Transmission Of An I -PDU Having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property', 'physical_index': 124}, {'structure': '7.3.18', 'title': '[ATS_COMINDEP_00727] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED ON CHANGE WITHOUT REPETITION Transfer Property', 'physical_index': 125}, {'structure': '7.3.19', 'title': '[ATS_COMINDEP_00728] Triggered Transmission Of An I -Pdu With MIXED Mode And Minimum Delay Timer Configured', 'physical_index': 127}, {'structure': '7.3.20', 'title': '[ATS_COMINDEP_00729] Transmit I -PDU Callout With Tx Mode PERIODIC', 'physical_index': 128}, {'structure': '7.3.21', 'title': '[ATS_COMINDEP_00730] Transmit I -PDU Callout With Tx Mode MIXED', 'physical_index': 129}, {'structure': '7.3.22', 'title': '[ATS_COMINDEP_00731] Verify The Update Bits In An IPDU With TX MODE DIRECT when Com_Sendsignal / Com_SendSignalGroup is invoked', 'physical_index': 130}, {'structure': '7.3.23', 'title': '[ATS_COMINDEP_00732] Verify The Update Bits In An IPDU With TX MODE PERIODIC when Com_Sendsignal / Com_SendSignalGroup is invoked', 'physical_index': 131}, {'structure': '7.3.24', 'title': '[ATS_COMINDEP_00733] Verify The Update Bits In An IPDU With MIXED TX MODE when Com_Sendsignal / Com_SendSignalGroup is invoked', 'physical_index': 132}, {'structure': '7.3.25', 'title': '[ATS_COMINDEP_00734] Signal Routing When Source And Destination Signals/signal group have Update Bit And Update Bit Of The Received Signal Is Not Set', 'physical_index': 134}, {'structure': '7.3.26', 'title': '[ATS_COMINDEP_00735] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit And Update Bit Of The Received Signal Is Not Set', 'physical_index': 135}, {'structure': '7.3.27', 'title': '[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set', 'physical_index': 136}, {'structure': '7.3.28', 'title': '[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu', 'physical_index': 137}, {'structure': '8', 'title': 'RS_BRF_01648 - Large Data Type', 'physical_index': 139}, {'structure': '8.1', 'title': 'General Test Objective and Approach', 'physical_index': 139}, {'structure': '8.1.1', 'title': 'Test System', 'physical_index': 139}, {'structure': '8.1.2', 'title': 'Test Configuration', 'physical_index': 140}, {'structure': '8.1.3', 'title': 'Test Case Design', 'physical_index': 143}, {'structure': '8.2', 'title': 'Re-usable Test Steps', 'physical_index': 143}, {'structure': '8.3', 'title': 'Test Cases', 'physical_index': 143}, {'structure': '8.3.1', 'title': '[ATS_COMINDEP_00233] DIRECT TP transmission', 'physical_index': 143}, {'structure': '8.3.2', 'title': '[ATS_COMINDEP_00234] PERIODIC TP transmission', 'physical_index': 145}, {'structure': '8.3.3', 'title': '[ATS_COMINDEP_00235] MIXED TP transmission', 'physical_index': 146}, {'structure': '8.3.4', 'title': '[ATS_COMINDEP_00236] Dynamic send message', 'physical_index': 148}, {'structure': '8.3.5', 'title': '[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete', 'physical_index': 149}, {'structure': '8.3.6', 'title': '[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete', 'physical_index': 151}, {'structure': '8.3.7', 'title': '[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED', 'physical_index': 153}, {'structure': '8.3.8', 'title': '[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING', 'physical_index': 154}, {'structure': '8.3.9', 'title': '[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU', 'physical_index': 155}, {'structure': '8.3.10', 'title': '[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface', 'physical_index': 155}, {'structure': '8.3.11', 'title': '[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold', 'physical_index': 156}, {'structure': '9', 'title': 'Miscellaneous features', 'physical_index': 158}, {'structure': '9.1', 'title': 'General Test Objective and Approach', 'physical_index': 158}, {'structure': '9.1.1', 'title': 'Test System', 'physical_index': 158}, {'structure': '9.1.2', 'title': 'Test Configuration', 'physical_index': 159}, {'structure': '9.2', 'title': 'Re-usable Test Steps', 'physical_index': 159}, {'structure': '9.3', 'title': 'Test Cases', 'physical_index': 159}, {'structure': '9.3.1', 'title': '[ATS_COMINDEP_00744] Check The Functionality Of PduR_EnableRouting And PduR_DisableRouting', 'physical_index': 159}, {'structure': '9.3.2', 'title': '[ATS_COMINDEP_00745] Interface PDU Transmission During Singlecast When Source PDU Belongs To Com And Destination PDU Belongs To CanIf', 'physical_index': 160}, {'structure': '9.3.3', 'title': '[ATS_COMINDEP_00746] Interface PDU Transmission During Multicast When Source PDU Is From Com Module And Destination PDU Belongs To Lower Layer (CanIf, LinIf, FRIF)', 'physical_index': 161}, {'structure': '9.3.4', 'title': '[ATS_COMINDEP_00747] Frame Gateway From CanIf To LinIf, CanIf And FrIf', 'physical_index': 162}, {'structure': '9.3.5', 'title': '[ATS_COMINDEP_00748] Tp PDU Transmission During Singlecast When Source PDU Belongs To Com and Destination PDU Belongs To CanTp', 'physical_index': 163}, {'structure': '9.3.6', 'title': '[ATS_COMINDEP_00749] Frame Gateway From CanTp To LINTP, CanTp and FrTp', 'physical_index': 164}, {'structure': '9.3.7', 'title': '[ATS_COMINDEP_00750] Additional Test Case Title', 'physical_index': 165}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.2028985507246377,
+    "incorrect_results": [
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00100] Managing Rx signal deadline timeout with notification",
+        "page_number": 16
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Test Case Design",
+        "page_number": 33
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Re-usable Test Steps",
+        "page_number": 34
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Test Cases",
+        "page_number": 34
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00075] Providing UINT8 initial value if Rx signal was never received",
+        "page_number": 34
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00076] Providing UINT8 initial value if Rx signal deadline timeout occurs",
+        "page_number": 35
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00079] Providing UINT16 initial value if Rx signal was never received",
+        "page_number": 36
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00080] Providing UINT16 initial value if Rx signal deadline timeout occurs",
+        "page_number": 36
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00081] Providing UINT32 initial value if Rx signal was never received",
+        "page_number": 38
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00082] Providing UINT32 initial value if Rx signal deadline timeout occurs",
+        "page_number": 38
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00083] Providing SINT8 initial value if Rx signal was never received",
+        "page_number": 40
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00084] Providing SINT8 initial value if Rx signal deadline timeout occurs",
+        "page_number": 40
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00086] Providing SINT16 initial value if Rx signal was never received",
+        "page_number": 42
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00087] Providing SINT16 initial value if Rx signal deadline timeout occurs",
+        "page_number": 42
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00088] Providing SINT32 initial value if Rx signal was never received",
+        "page_number": 44
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00089] Providing SINT32 initial value if Rx signal deadline timeout occurs",
+        "page_number": 44
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00090] Providing BOOLEAN initial value if Rx signal was never received",
+        "page_number": 46
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00091] Providing BOOLEAN initial value if Rx signal deadline timeout occurs",
+        "page_number": 46
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00092] Providing FLOAT32 initial value if Rx signal was never received",
+        "page_number": 48
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00093] Providing FLOAT32 initial value if Rx signal deadline timeout occurs",
+        "page_number": 48
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00094] Providing UINT8_N initial value if Rx signal was never received",
+        "page_number": 50
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00095] Providing UINT8_N initial value if Rx signal deadline timeout occurs",
+        "page_number": 50
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00096] Providing FLOAT64 initial value if Rx signal was never received",
+        "page_number": 52
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00097] Providing FLOAT64 initial value if Rx signal deadline timeout occurs",
+        "page_number": 52
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00098] Providing initial value for Tx gatewayed signal if Rx signal was never received",
+        "page_number": 54
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00099] Providing initial value for Tx gatewayed signal if Rx signal deadline timeout occurs",
+        "page_number": 55
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00721] Packing Of IPdu Data",
+        "page_number": 56
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00722] Unpacking Of IPdu Data",
+        "page_number": 57
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "RS_BRF_01632 - Data Consistency",
+        "page_number": 59
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "General Test Objective and Approach",
+        "page_number": 59
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Test System",
+        "page_number": 59
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Test Configuration",
+        "page_number": 61
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Test Case Design",
+        "page_number": 63
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Re-usable Test Steps",
+        "page_number": 63
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Test Cases",
+        "page_number": 63
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00050] Invalidating a Tx signal group when invalidated by the SWC",
+        "page_number": 63
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00051] Notifying the SWC when a signal or a signal group is received with invalid data",
+        "page_number": 65
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00072] Invalidating a Tx signal when invalidated by the SWC",
+        "page_number": 66
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00074] Replacing by the init value when a signal group is received invalid",
+        "page_number": 67
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "RS_BRF_01649 - LdCom data transfer (Bus independent)",
+        "page_number": 69
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "General Test Objective and Approach",
+        "page_number": 69
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Test System",
+        "page_number": 69
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Test Configuration",
+        "page_number": 70
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Test Case Design",
+        "page_number": 72
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Re-usable Test Steps",
+        "page_number": 72
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Test Cases",
+        "page_number": 73
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01470] LdCom Transmission using <Bus>IF API and Notification for PDU Transfer",
+        "page_number": 73
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01471] LdCom Reception using <Bus>IF API",
+        "page_number": 74
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01472] LdCom Transmission using <Bus>TP API and Notification for PDU Transfer",
+        "page_number": 75
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01473] LdCom Reception using <Bus>TP API",
+        "page_number": 76
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01476] Behavior of LdCom Transmit Request from Application when there is a request in Progress for the same PDU",
+        "page_number": 77
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01478] Behavior of LdCom Receive Request from Application when there is a request in Progress for the same PDU",
+        "page_number": 79
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_01047] Behavior of LdCom Transmit Request from Application when Transmit Confirmation was invoked for the ongoing Transmission request for the same PDU",
+        "page_number": 80
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "RS_BRF_01592 - Data Transfer (Bus independent)",
+        "page_number": 83
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "General Test Objective and Approach",
+        "page_number": 83
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Test System",
+        "page_number": 83
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Test Configuration",
+        "page_number": 84
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Test Case Design",
+        "page_number": 94
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Re-usable Test Steps",
+        "page_number": 94
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Test Cases",
+        "page_number": 94
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00200] Group Control - Time Based frame (PERIODIC)",
+        "page_number": 94
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00205] Group Control - User Request frame (DIRECT) + MDT",
+        "page_number": 97
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00259] User Request frame (DIRECT) + MDT",
+        "page_number": 99
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00260] User Request frame (DIRECT) + several triggers",
+        "page_number": 100
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00212] Tx notification",
+        "page_number": 101
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00220] Tx Mode Switch (TMS) - PERIODIC/PERIODIC",
+        "page_number": 103
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00221] Tx Mode Switch (TMS) - MIXED/DIRECT",
+        "page_number": 106
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00261] DIRECT + TRIGGERED ON CHANGE WITHOUT REPETITIONS",
+        "page_number": 108
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00222] Tx Mode Switch (TMS) - PERIODIC/MIXED + MDT",
+        "page_number": 110
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00224] Tx Mode Switch (TMS) - DIRECT/PERIODIC",
+        "page_number": 112
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00225] Manual Tx Mode Switch (TMS) PERODIC/PERIODIC",
+        "page_number": 114
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00223] Manual Tx Send (Trigger IPdu Send) + MDT",
+        "page_number": 116
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00226] Ipdu and Trigger Transmit Callouts",
+        "page_number": 118
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00723] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with Triggered On Change Transfer Property",
+        "page_number": 120
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00724] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group With Triggered On Change Transfer Property",
+        "page_number": 121
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00725] Transmission Of An I -PDU having DIRECT Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property",
+        "page_number": 123
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00726] Transmission Of An I -PDU Having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED WITHOUT REPETITION Transfer Property",
+        "page_number": 124
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00727] Transmission Of An I -PDU having MIXED Tx Mode Consisting of Signal And Signal Group with TRIGGERED ON CHANGE WITHOUT REPETITION Transfer Property",
+        "page_number": 125
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00728] Triggered Transmission Of An I -Pdu With MIXED Mode And Minimum Delay Timer Configured",
+        "page_number": 127
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00729] Transmit I -PDU Callout With Tx Mode PERIODIC",
+        "page_number": 128
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00730] Transmit I -PDU Callout With Tx Mode MIXED",
+        "page_number": 129
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00731] Verify The Update Bits In An IPDU With TX MODE DIRECT when Com_Sendsignal / Com_SendSignalGroup is invoked",
+        "page_number": 130
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00732] Verify The Update Bits In An IPDU With TX MODE PERIODIC when Com_Sendsignal / Com_SendSignalGroup is invoked",
+        "page_number": 131
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00733] Verify The Update Bits In An IPDU With MIXED TX MODE when Com_Sendsignal / Com_SendSignalGroup is invoked",
+        "page_number": 132
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00734] Signal Routing When Source And Destination Signals/signal group have Update Bit And Update Bit Of The Received Signal Is Not Set",
+        "page_number": 134
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00735] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit And Update Bit Of The Received Signal Is Not Set",
+        "page_number": 135
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00736] Signal Routing When Source Signals Has Update Bit And Destination Signals has no Update Bit With Update Bit Of The Received Signal Is Set",
+        "page_number": 136
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00737] The Filter Mechanism Of \u201cMASKED_NEW_DIFFERS_MASKED_OLD\u201d On Reception Of An I -Pdu",
+        "page_number": 137
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "RS_BRF_01648 - Large Data Type",
+        "page_number": 139
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "General Test Objective and Approach",
+        "page_number": 139
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "Test System",
+        "page_number": 139
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "Test Configuration",
+        "page_number": 140
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "Test Case Design",
+        "page_number": 143
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "Re-usable Test Steps",
+        "page_number": 143
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Test Cases",
+        "page_number": 143
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00233] DIRECT TP transmission",
+        "page_number": 143
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00234] PERIODIC TP transmission",
+        "page_number": 145
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00235] MIXED TP transmission",
+        "page_number": 146
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00236] Dynamic send message",
+        "page_number": 148
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00238] Stop Ipdu group even if TP transmission is not complete",
+        "page_number": 149
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00275] Stop Ipdu group even if TP Reception is not complete",
+        "page_number": 151
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00739] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal With Periodic Mode And Having ComTransferProperty As TRIGGERED",
+        "page_number": 153
+      },
+      {
+        "list_index": 121,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00740] Unsuccessful Transmission Of An I -PDU Consisting Of A Dynamic Signal Having ComTransferProperty As PENDING",
+        "page_number": 154
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00741] Reception Of Dynamic Length I -PDU",
+        "page_number": 155
+      },
+      {
+        "list_index": 123,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00742] Reception Of A Large I -PDU Via The TP Interface",
+        "page_number": 155
+      },
+      {
+        "list_index": 124,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00743] Data Sequence control when Received I -PDU counter is greater than expected I -PDU counter + threshold",
+        "page_number": 156
+      },
+      {
+        "list_index": 125,
+        "answer": "no",
+        "title": "Miscellaneous features",
+        "page_number": 158
+      },
+      {
+        "list_index": 126,
+        "answer": "no",
+        "title": "General Test Objective and Approach",
+        "page_number": 158
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "Test System",
+        "page_number": 158
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "[ATS_COMINDEP_00750] Additional Test Case Title",
+        "page_number": 165
+      }
+    ]
+  }
+]

@@ -1,0 +1,414 @@
+[
+  {
+    "total_page_number": 162
+  },
+  {
+    "total_token": 40065
+  },
+  {
+    "toc_content": "- AUTOSAR Confidential - \nTable of contents  \n1.Architecture  \n1.Overview of Software Layers  \n2.Content of Software Layers  \n3.Content of Software Layers in Multi -Core Systems  \n4.Content of Software Layers in Mixed -Critical Systems  \n5.Overview of Modules  \n6.Interfaces  \n1.General  \n2.Interaction of Layers (Examples)  \n2.Configuration  \n3.Integration and Runtime Aspects  \nDocument ID 053 : AUTOSAR_EXP_LayeredSoftwareArchitecture  17 page  id: 94jt4  ",
+    "toc_page_list": [
+      6
+    ],
+    "page_index_given_in_toc": "no"
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Architecture', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Overview of Software Layers', 'physical_index': '<physical_index_10>'}, {'structure': '1.2', 'title': 'Content of Software Layers', 'physical_index': '<physical_index_26>'}, {'structure': '1.3', 'title': 'Content of Software Layers in Multi -Core Systems', 'physical_index': '<physical_index_7>'}, {'structure': '1.4', 'title': 'Content of Software Layers in Mixed -Critical Systems', 'physical_index': '<physical_index_7>'}, {'structure': '1.5', 'title': 'Overview of Modules', 'physical_index': '<physical_index_25>'}, {'structure': '1.6', 'title': 'Interfaces', 'physical_index': '<physical_index_25>'}, {'structure': '2', 'title': 'Configuration', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Integration and Runtime Aspects', 'physical_index': '<physical_index_7>'}, {'structure': '1.2.1', 'title': 'Communication Stack \u2013 FlexRay', 'physical_index': '<physical_index_45>'}, {'structure': '1.2.2', 'title': 'Communication Stack \u2013 TCP/IP', 'physical_index': '<physical_index_46>'}, {'structure': '1.2.3', 'title': 'Communication Stack \u2013 General', 'physical_index': '<physical_index_48>'}, {'structure': '1.2.4', 'title': 'Off-board Communication Stack \u2013 Vehicle -2-X', 'physical_index': '<physical_index_49>'}, {'structure': '1.2.5', 'title': 'Services: Memory Services', 'physical_index': '<physical_index_50>'}, {'structure': '1.2.6', 'title': 'Services: System Services', 'physical_index': '<physical_index_51>'}, {'structure': '1.2.7', 'title': 'Error Handling, Reporting and Diagnostic', 'physical_index': '<physical_index_52>'}, {'structure': '1.2.8', 'title': 'Application Layer: Sensor/Actuator Software Components', 'physical_index': '<physical_index_53>'}, {'structure': '1.2.9', 'title': 'Example of a Layered Software Architecture for Multi -Core Microcontroller', 'physical_index': '<physical_index_55>'}, {'structure': '1.2.10', 'title': 'Detailed View of Distributed BSW Modules', 'physical_index': '<physical_index_56>'}, {'structure': '1.2.11', 'title': 'Overview of BSW Modules, OS, BswM and EcuM on Multiple Partitions', 'physical_index': '<physical_index_57>'}, {'structure': '1.2.12', 'title': 'Scope: Multi -Core System Services', 'physical_index': '<physical_index_58>'}, {'structure': '1.2.13', 'title': 'Overview of AUTOSAR safety handling', 'physical_index': '<physical_index_60>'}, {'structure': '1.2.14', 'title': 'AUTOSAR BSW distribution for safety systems', 'physical_index': '<physical_index_61>'}, {'structure': '1.6.1', 'title': 'Type of Interfaces in AUTOSAR', 'physical_index': '<physical_index_68>'}, {'structure': '1.6.2', 'title': 'Components and interfaces view (simplified)', 'physical_index': '<physical_index_69>'}, {'structure': '1.6.3', 'title': 'General Rules', 'physical_index': '<physical_index_70>'}, {'structure': '1.6.4', 'title': 'Interfacing with Complex Drivers (1)', 'physical_index': '<physical_index_72>'}, {'structure': '1.6.5', 'title': 'Interfacing with Complex Drivers (2)', 'physical_index': '<physical_index_73>'}, {'structure': '1.6.6', 'title': 'Interfacing with Complex Drivers (3)', 'physical_index': '<physical_index_74>'}, {'structure': '1.6.7', 'title': 'Interaction of Layers \u2013 Example \u201cMemory\u201d', 'physical_index': '<physical_index_76>'}, {'structure': '1.6.8', 'title': 'Example and First Look', 'physical_index': '<physical_index_77>'}, {'structure': '1.6.9', 'title': 'Closer Look at Memory Hardware Abstraction', 'physical_index': '<physical_index_78>'}, {'structure': '1.6.10', 'title': 'Implementation of Memory Abstraction Interface', 'physical_index': '<physical_index_79>'}, {'structure': '1.6.11', 'title': 'Implementation of Memory Abstraction Interface', 'physical_index': '<physical_index_80>'}, {'structure': '1.6.12', 'title': 'Conclusion', 'physical_index': '<physical_index_81>'}, {'structure': '1.6.13', 'title': 'PDU Flow through the Layered Architecture', 'physical_index': '<physical_index_82>'}, {'structure': '1.6.14', 'title': 'Example \u201cCommunication\u201d (1)', 'physical_index': '<physical_index_83>'}, {'structure': '1.6.15', 'title': 'Example \u201cCommunication\u201d (2)', 'physical_index': '<physical_index_84>'}, {'structure': '1.6.16', 'title': 'Example \u201cCommunication\u201d (3)', 'physical_index': '<physical_index_85>'}, {'structure': '1.6.17', 'title': 'Example \u201cCommunication\u201d (4) \u2013 Ethernet Protocol', 'physical_index': '<physical_index_86>'}, {'structure': '1.6.18', 'title': 'Example \u201cData Transformation\u201d (1) \u2013 Introduction', 'physical_index': '<physical_index_87>'}, {'structure': '1.6.19', 'title': 'Example \u201cData Transformation\u201d (2) \u2013 Example and First Look', 'physical_index': '<physical_index_88>'}, {'structure': '1.6.20', 'title': 'Example \u201cData Transformation\u201d (3) \u2013 Closer Look at Interfaces', 'physical_index': '<physical_index_89>'}, {'structure': '1.6.21', 'title': 'Example \u201cData Transformation\u201d (4) \u2013 COM Based Transformation', 'physical_index': '<physical_index_90>'}, {'structure': '2.1', 'title': 'Overview', 'physical_index': '<physical_index_92>'}, {'structure': '2.2', 'title': 'Pre-compile time (1)', 'physical_index': '<physical_index_93>'}, {'structure': '2.3', 'title': 'Pre-compile time (2)', 'physical_index': '<physical_index_94>'}, {'structure': '2.4', 'title': 'Pre-compile time (3)', 'physical_index': '<physical_index_95>'}, {'structure': '2.5', 'title': 'Link time (1)', 'physical_index': '<physical_index_96>'}, {'structure': '2.6', 'title': 'Link time (2)', 'physical_index': '<physical_index_97>'}, {'structure': '2.7', 'title': 'Link time (3)', 'physical_index': '<physical_index_98>'}, {'structure': '2.8', 'title': 'Post -build time (1)', 'physical_index': '<physical_index_99>'}, {'structure': '2.9', 'title': 'Post -build time (2)', 'physical_index': '<physical_index_100>'}, {'structure': '2.10', 'title': 'Post -build time (3)', 'physical_index': '<physical_index_101>'}, {'structure': '2.11', 'title': 'Variants', 'physical_index': '<physical_index_102>'}, {'structure': '2.12', 'title': 'Memory Layout Example: Post -build configuration', 'physical_index': '<physical_index_103>'}, {'structure': '2.13', 'title': 'Memory Layout Example: Multiple configuration sets', 'physical_index': '<physical_index_104>'}, {'structure': '3.1', 'title': 'Mapping of Runnables', 'physical_index': '<physical_index_106>'}, {'structure': '3.2', 'title': 'Partitioning', 'physical_index': '<physical_index_108>'}, {'structure': '3.3', 'title': 'Scheduling', 'physical_index': '<physical_index_114>'}, {'structure': '3.4', 'title': 'Mode Management', 'physical_index': '<physical_index_123>'}, {'structure': '3.5', 'title': 'Vehicle and application mode management (1)', 'physical_index': '<physical_index_125>'}, {'structure': '3.6', 'title': 'Vehicle and application mode management (2)', 'physical_index': '<physical_index_126>'}, {'structure': '3.7', 'title': 'Vehicle and application mode management (3)', 'physical_index': '<physical_index_127>'}, {'structure': '3.8', 'title': 'Vehicle and application mode management (4)', 'physical_index': '<physical_index_128>'}, {'structure': '3.9', 'title': 'Error Handling, Reporting and Diagnostic', 'physical_index': '<physical_index_130>'}, {'structure': '3.9.1', 'title': 'Error Classification (1)', 'physical_index': '<physical_index_130>'}, {'structure': '3.9.2', 'title': 'Error Classification (2)', 'physical_index': '<physical_index_131>'}, {'structure': '3.9.3', 'title': 'Error Reporting \u2013 Alternatives', 'physical_index': '<physical_index_132>'}, {'structure': '3.9.4', 'title': 'Mechanism in relation to AUTOSAR layers and system life time', 'physical_index': '<physical_index_133>'}, {'structure': '3.9.5', 'title': 'Error Reporting via API', 'physical_index': '<physical_index_134>'}, {'structure': '3.9.6', 'title': 'Error Reporting \u2013 Introduction', 'physical_index': '<physical_index_135>'}, {'structure': '3.9.7', 'title': 'Diagnostic Event Manager \u2013 Diagnostic Error Reporting', 'physical_index': '<physical_index_136>'}, {'structure': '3.9.8', 'title': 'Default Error Tracer \u2013 Example: Development Error Reporting', 'physical_index': '<physical_index_137>'}, {'structure': '3.9.9', 'title': 'Diagnostic Log and Trace (1)', 'physical_index': '<physical_index_138>'}, {'structure': '3.9.10', 'title': 'Diagnostic Log and Trace (2)', 'physical_index': '<physical_index_139>'}, {'structure': '3.9.11', 'title': 'Diagnostic Log and Trace (3)', 'physical_index': '<physical_index_140>'}, {'structure': '3.10', 'title': 'Measurement and Calibration', 'physical_index': '<physical_index_142>'}, {'structure': '3.11', 'title': 'Safety End to End (E2E) Communication Protection', 'physical_index': '<physical_index_144>'}, {'structure': '3.11.1', 'title': 'Overview', 'physical_index': '<physical_index_144>'}, {'structure': '3.11.2', 'title': 'Logic', 'physical_index': '<physical_index_145>'}, {'structure': '3.12', 'title': 'Secure Onboard Communication', 'physical_index': '<physical_index_147>'}, {'structure': '3.12.1', 'title': 'Overview - Message Authentication and Freshness Verification', 'physical_index': '<physical_index_147>'}, {'structure': '3.12.2', 'title': 'SecOC BSW', 'physical_index': '<physical_index_148>'}, {'structure': '3.12.3', 'title': 'Integration as communication service', 'physical_index': '<physical_index_148>'}, {'structure': '3.12.4', 'title': 'Integration with other services', 'physical_index': '<physical_index_149>'}, {'structure': '3.13', 'title': 'Energy Management', 'physical_index': '<physical_index_151>'}, {'structure': '3.13.1', 'title': 'Introduction', 'physical_index': '<physical_index_151>'}, {'structure': '3.13.2', 'title': 'Partial Networking', 'physical_index': '<physical_index_152>'}, {'structure': '3.13.3', 'title': 'Conceptual terms', 'physical_index': '<physical_index_153>'}, {'structure': '3.13.4', 'title': 'Restrictions', 'physical_index': '<physical_index_154>'}, {'structure': '3.13.5', 'title': 'Mapping of Virtual Function Cluster to Partial Network Cluster', 'physical_index': '<physical_index_155>'}, {'structure': '3.13.6', 'title': 'Involved modules \u2013 Solution for CAN', 'physical_index': '<physical_index_156>'}, {'structure': '3.13.7', 'title': 'Pretended Networking', 'physical_index': '<physical_index_157>'}, {'structure': '3.13.8', 'title': 'Restrictions', 'physical_index': '<physical_index_158>'}, {'structure': '3.13.9', 'title': 'Involved modules \u2013 Solution for I/O Drivers', 'physical_index': '<physical_index_159>'}, {'structure': '3.13.10', 'title': 'Restrictions', 'physical_index': '<physical_index_160>'}, {'structure': '3.14', 'title': 'Global Time Synchronization', 'physical_index': '<physical_index_162>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Architecture', 'physical_index': 7}, {'structure': '1.1', 'title': 'Overview of Software Layers', 'physical_index': 10}, {'structure': '1.2', 'title': 'Content of Software Layers', 'physical_index': 26}, {'structure': '1.3', 'title': 'Content of Software Layers in Multi -Core Systems', 'physical_index': 7}, {'structure': '1.4', 'title': 'Content of Software Layers in Mixed -Critical Systems', 'physical_index': 7}, {'structure': '1.5', 'title': 'Overview of Modules', 'physical_index': 25}, {'structure': '1.6', 'title': 'Interfaces', 'physical_index': 25}, {'structure': '2', 'title': 'Configuration', 'physical_index': 7}, {'structure': '3', 'title': 'Integration and Runtime Aspects', 'physical_index': 7}, {'structure': '1.2.1', 'title': 'Communication Stack \u2013 FlexRay', 'physical_index': 45}, {'structure': '1.2.2', 'title': 'Communication Stack \u2013 TCP/IP', 'physical_index': 46}, {'structure': '1.2.3', 'title': 'Communication Stack \u2013 General', 'physical_index': 48}, {'structure': '1.2.4', 'title': 'Off-board Communication Stack \u2013 Vehicle -2-X', 'physical_index': 49}, {'structure': '1.2.5', 'title': 'Services: Memory Services', 'physical_index': 50}, {'structure': '1.2.6', 'title': 'Services: System Services', 'physical_index': 51}, {'structure': '1.2.7', 'title': 'Error Handling, Reporting and Diagnostic', 'physical_index': 52}, {'structure': '1.2.8', 'title': 'Application Layer: Sensor/Actuator Software Components', 'physical_index': 53}, {'structure': '1.2.9', 'title': 'Example of a Layered Software Architecture for Multi -Core Microcontroller', 'physical_index': 55}, {'structure': '1.2.10', 'title': 'Detailed View of Distributed BSW Modules', 'physical_index': 56}, {'structure': '1.2.11', 'title': 'Overview of BSW Modules, OS, BswM and EcuM on Multiple Partitions', 'physical_index': 57}, {'structure': '1.2.12', 'title': 'Scope: Multi -Core System Services', 'physical_index': 58}, {'structure': '1.2.13', 'title': 'Overview of AUTOSAR safety handling', 'physical_index': 60}, {'structure': '1.2.14', 'title': 'AUTOSAR BSW distribution for safety systems', 'physical_index': 61}, {'structure': '1.6.1', 'title': 'Type of Interfaces in AUTOSAR', 'physical_index': 68}, {'structure': '1.6.2', 'title': 'Components and interfaces view (simplified)', 'physical_index': 69}, {'structure': '1.6.3', 'title': 'General Rules', 'physical_index': 70}, {'structure': '1.6.4', 'title': 'Interfacing with Complex Drivers (1)', 'physical_index': 72}, {'structure': '1.6.5', 'title': 'Interfacing with Complex Drivers (2)', 'physical_index': 73}, {'structure': '1.6.6', 'title': 'Interfacing with Complex Drivers (3)', 'physical_index': 74}, {'structure': '1.6.7', 'title': 'Interaction of Layers \u2013 Example \u201cMemory\u201d', 'physical_index': 76}, {'structure': '1.6.8', 'title': 'Example and First Look', 'physical_index': 77}, {'structure': '1.6.9', 'title': 'Closer Look at Memory Hardware Abstraction', 'physical_index': 78}, {'structure': '1.6.10', 'title': 'Implementation of Memory Abstraction Interface', 'physical_index': 79}, {'structure': '1.6.11', 'title': 'Implementation of Memory Abstraction Interface', 'physical_index': 80}, {'structure': '1.6.12', 'title': 'Conclusion', 'physical_index': 81}, {'structure': '1.6.13', 'title': 'PDU Flow through the Layered Architecture', 'physical_index': 82}, {'structure': '1.6.14', 'title': 'Example \u201cCommunication\u201d (1)', 'physical_index': 83}, {'structure': '1.6.15', 'title': 'Example \u201cCommunication\u201d (2)', 'physical_index': 84}, {'structure': '1.6.16', 'title': 'Example \u201cCommunication\u201d (3)', 'physical_index': 85}, {'structure': '1.6.17', 'title': 'Example \u201cCommunication\u201d (4) \u2013 Ethernet Protocol', 'physical_index': 86}, {'structure': '1.6.18', 'title': 'Example \u201cData Transformation\u201d (1) \u2013 Introduction', 'physical_index': 87}, {'structure': '1.6.19', 'title': 'Example \u201cData Transformation\u201d (2) \u2013 Example and First Look', 'physical_index': 88}, {'structure': '1.6.20', 'title': 'Example \u201cData Transformation\u201d (3) \u2013 Closer Look at Interfaces', 'physical_index': 89}, {'structure': '1.6.21', 'title': 'Example \u201cData Transformation\u201d (4) \u2013 COM Based Transformation', 'physical_index': 90}, {'structure': '2.1', 'title': 'Overview', 'physical_index': 92}, {'structure': '2.2', 'title': 'Pre-compile time (1)', 'physical_index': 93}, {'structure': '2.3', 'title': 'Pre-compile time (2)', 'physical_index': 94}, {'structure': '2.4', 'title': 'Pre-compile time (3)', 'physical_index': 95}, {'structure': '2.5', 'title': 'Link time (1)', 'physical_index': 96}, {'structure': '2.6', 'title': 'Link time (2)', 'physical_index': 97}, {'structure': '2.7', 'title': 'Link time (3)', 'physical_index': 98}, {'structure': '2.8', 'title': 'Post -build time (1)', 'physical_index': 99}, {'structure': '2.9', 'title': 'Post -build time (2)', 'physical_index': 100}, {'structure': '2.10', 'title': 'Post -build time (3)', 'physical_index': 101}, {'structure': '2.11', 'title': 'Variants', 'physical_index': 102}, {'structure': '2.12', 'title': 'Memory Layout Example: Post -build configuration', 'physical_index': 103}, {'structure': '2.13', 'title': 'Memory Layout Example: Multiple configuration sets', 'physical_index': 104}, {'structure': '3.1', 'title': 'Mapping of Runnables', 'physical_index': 106}, {'structure': '3.2', 'title': 'Partitioning', 'physical_index': 108}, {'structure': '3.3', 'title': 'Scheduling', 'physical_index': 114}, {'structure': '3.4', 'title': 'Mode Management', 'physical_index': 123}, {'structure': '3.5', 'title': 'Vehicle and application mode management (1)', 'physical_index': 125}, {'structure': '3.6', 'title': 'Vehicle and application mode management (2)', 'physical_index': 126}, {'structure': '3.7', 'title': 'Vehicle and application mode management (3)', 'physical_index': 127}, {'structure': '3.8', 'title': 'Vehicle and application mode management (4)', 'physical_index': 128}, {'structure': '3.9', 'title': 'Error Handling, Reporting and Diagnostic', 'physical_index': 130}, {'structure': '3.9.1', 'title': 'Error Classification (1)', 'physical_index': 130}, {'structure': '3.9.2', 'title': 'Error Classification (2)', 'physical_index': 131}, {'structure': '3.9.3', 'title': 'Error Reporting \u2013 Alternatives', 'physical_index': 132}, {'structure': '3.9.4', 'title': 'Mechanism in relation to AUTOSAR layers and system life time', 'physical_index': 133}, {'structure': '3.9.5', 'title': 'Error Reporting via API', 'physical_index': 134}, {'structure': '3.9.6', 'title': 'Error Reporting \u2013 Introduction', 'physical_index': 135}, {'structure': '3.9.7', 'title': 'Diagnostic Event Manager \u2013 Diagnostic Error Reporting', 'physical_index': 136}, {'structure': '3.9.8', 'title': 'Default Error Tracer \u2013 Example: Development Error Reporting', 'physical_index': 137}, {'structure': '3.9.9', 'title': 'Diagnostic Log and Trace (1)', 'physical_index': 138}, {'structure': '3.9.10', 'title': 'Diagnostic Log and Trace (2)', 'physical_index': 139}, {'structure': '3.9.11', 'title': 'Diagnostic Log and Trace (3)', 'physical_index': 140}, {'structure': '3.10', 'title': 'Measurement and Calibration', 'physical_index': 142}, {'structure': '3.11', 'title': 'Safety End to End (E2E) Communication Protection', 'physical_index': 144}, {'structure': '3.11.1', 'title': 'Overview', 'physical_index': 144}, {'structure': '3.11.2', 'title': 'Logic', 'physical_index': 145}, {'structure': '3.12', 'title': 'Secure Onboard Communication', 'physical_index': 147}, {'structure': '3.12.1', 'title': 'Overview - Message Authentication and Freshness Verification', 'physical_index': 147}, {'structure': '3.12.2', 'title': 'SecOC BSW', 'physical_index': 148}, {'structure': '3.12.3', 'title': 'Integration as communication service', 'physical_index': 148}, {'structure': '3.12.4', 'title': 'Integration with other services', 'physical_index': 149}, {'structure': '3.13', 'title': 'Energy Management', 'physical_index': 151}, {'structure': '3.13.1', 'title': 'Introduction', 'physical_index': 151}, {'structure': '3.13.2', 'title': 'Partial Networking', 'physical_index': 152}, {'structure': '3.13.3', 'title': 'Conceptual terms', 'physical_index': 153}, {'structure': '3.13.4', 'title': 'Restrictions', 'physical_index': 154}, {'structure': '3.13.5', 'title': 'Mapping of Virtual Function Cluster to Partial Network Cluster', 'physical_index': 155}, {'structure': '3.13.6', 'title': 'Involved modules \u2013 Solution for CAN', 'physical_index': 156}, {'structure': '3.13.7', 'title': 'Pretended Networking', 'physical_index': 157}, {'structure': '3.13.8', 'title': 'Restrictions', 'physical_index': 158}, {'structure': '3.13.9', 'title': 'Involved modules \u2013 Solution for I/O Drivers', 'physical_index': 159}, {'structure': '3.13.10', 'title': 'Restrictions', 'physical_index': 160}, {'structure': '3.14', 'title': 'Global Time Synchronization', 'physical_index': 162}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3469387755102041,
+    "incorrect_results": [
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Type of Interfaces in AUTOSAR",
+        "page_number": 68
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Components and interfaces view (simplified)",
+        "page_number": 69
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "General Rules",
+        "page_number": 70
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Interfacing with Complex Drivers (1)",
+        "page_number": 72
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Interfacing with Complex Drivers (2)",
+        "page_number": 73
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Interfacing with Complex Drivers (3)",
+        "page_number": 74
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Interaction of Layers \u2013 Example \u201cMemory\u201d",
+        "page_number": 76
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Example and First Look",
+        "page_number": 77
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Closer Look at Memory Hardware Abstraction",
+        "page_number": 78
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Implementation of Memory Abstraction Interface",
+        "page_number": 79
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Implementation of Memory Abstraction Interface",
+        "page_number": 80
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Conclusion",
+        "page_number": 81
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "PDU Flow through the Layered Architecture",
+        "page_number": 82
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Example \u201cCommunication\u201d (1)",
+        "page_number": 83
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Example \u201cCommunication\u201d (2)",
+        "page_number": 84
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Example \u201cCommunication\u201d (3)",
+        "page_number": 85
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Example \u201cCommunication\u201d (4) \u2013 Ethernet Protocol",
+        "page_number": 86
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Example \u201cData Transformation\u201d (1) \u2013 Introduction",
+        "page_number": 87
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Example \u201cData Transformation\u201d (2) \u2013 Example and First Look",
+        "page_number": 88
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Example \u201cData Transformation\u201d (3) \u2013 Closer Look at Interfaces",
+        "page_number": 89
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Example \u201cData Transformation\u201d (4) \u2013 COM Based Transformation",
+        "page_number": 90
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 92
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Pre-compile time (1)",
+        "page_number": 93
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Pre-compile time (2)",
+        "page_number": 94
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Pre-compile time (3)",
+        "page_number": 95
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Link time (1)",
+        "page_number": 96
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Link time (2)",
+        "page_number": 97
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Link time (3)",
+        "page_number": 98
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Post -build time (1)",
+        "page_number": 99
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Post -build time (2)",
+        "page_number": 100
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Post -build time (3)",
+        "page_number": 101
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Variants",
+        "page_number": 102
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Memory Layout Example: Post -build configuration",
+        "page_number": 103
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Memory Layout Example: Multiple configuration sets",
+        "page_number": 104
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Mapping of Runnables",
+        "page_number": 106
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Partitioning",
+        "page_number": 108
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Scheduling",
+        "page_number": 114
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Mode Management",
+        "page_number": 123
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Vehicle and application mode management (1)",
+        "page_number": 125
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Vehicle and application mode management (2)",
+        "page_number": 126
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Vehicle and application mode management (3)",
+        "page_number": 127
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Vehicle and application mode management (4)",
+        "page_number": 128
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Error Handling, Reporting and Diagnostic",
+        "page_number": 130
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Error Classification (1)",
+        "page_number": 130
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Error Classification (2)",
+        "page_number": 131
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Error Reporting \u2013 Alternatives",
+        "page_number": 132
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Mechanism in relation to AUTOSAR layers and system life time",
+        "page_number": 133
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Error Reporting via API",
+        "page_number": 134
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Error Reporting \u2013 Introduction",
+        "page_number": 135
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Diagnostic Event Manager \u2013 Diagnostic Error Reporting",
+        "page_number": 136
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Default Error Tracer \u2013 Example: Development Error Reporting",
+        "page_number": 137
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Diagnostic Log and Trace (1)",
+        "page_number": 138
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Diagnostic Log and Trace (2)",
+        "page_number": 139
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Diagnostic Log and Trace (3)",
+        "page_number": 140
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Measurement and Calibration",
+        "page_number": 142
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Safety End to End (E2E) Communication Protection",
+        "page_number": 144
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 144
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Logic",
+        "page_number": 145
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Secure Onboard Communication",
+        "page_number": 147
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Overview - Message Authentication and Freshness Verification",
+        "page_number": 147
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "SecOC BSW",
+        "page_number": 148
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Integration as communication service",
+        "page_number": 148
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Integration with other services",
+        "page_number": 149
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Energy Management",
+        "page_number": 151
+      }
+    ]
+  }
+]

@@ -1,0 +1,1229 @@
+[
+  {
+    "total_page_number": 96
+  },
+  {
+    "total_token": 43944
+  },
+  {
+    "toc_content": " Overview of Functional Safety Measures in AUTOSAR  \nAUTOSAR CP Release 4.4.0   \n3 of 96 Document ID 664: AUTOSAR_TR_ OverviewOfFunctionalSafetyMeasuresInAUTOSAR  \n- AUTOSAR confidential - \nTable of Contents  \n \n1 Introduction  :  :  :  :   5 \n1.1 Disclaimer  :  :  :  :  5 \n1.2 Scope  :  :  :  :   5 \n1.3 Purpose  :  :  :  :   6 \n1.4 Intended Audience :  :  :   6 \n2 Functional Safety Mechanisms  :  :  :   7 \n2.1 Memory Partitioning  :  :  :   8 \n2.1.1  Fault Models  :  :  :   8 \n2.1.2  Description  :  :  :   9 \n2.1.2.1  Application Software  :  :   9 \n2.1.2.2  OS Applications  :  :  :  11 \n2.1.2.3  Communication and Code Sharing  :  :   12 \n2.1.2.4  Memory Partitioning within Application Software  :   13 \n2.1.2.5  Memory Partitioning within Software Components  :   14 \n2.1.2.6  Implementation of Memory Partitioning  :  . 16 \n2.1.3  Detection and Reaction  :  :  :   19 \n2.1.4  Limitations  20 \n2.1.5  References to AUTOSAR Documents  :  :   21 \n2.1.6  References to ISO26262  :  :  :   23 \n2.2 Timing Monitoring  :  :  :   24 \n2.2.1  Fault Models  :  :  :   24 \n2.2.2  Description  :  :  :   25 \n2.2.2.1  Supervised Entities  :  :   25 \n2.2.2.2  Watchdog Manager  :  :   25 \n2.2.2.3  Timing Protection of the Operating System  :   27 \n2.2.3  Detection and Reaction  :  :  :   28 \n2.2.4  Limitations  29 \n2.2.5  References to AUTOSAR Documents  :  :   30 \n2.2.6  Referenc es to ISO26262  :  :  :   31 \n2.3 Logical Supervision  :  :  :   32 \n2.3.1  Fault Models  :  :  :   32 \n2.3.2  Description  :  :  :   32 \n2.3.3  Detection and Reaction  :  :  :   34 \n2.3.4  Limitations  35 \n2.3.5  References to AUTOSAR Documents  :  :   36 \n2.3.6  References to ISO26262  :  :  :   36 \n2.4 End-2-End Protection  :  :  :   37 \n2.4.1  Fault Models  :  :  :   37 \n2.4.2  Description  :  :  :   39 \n2.4.2.1  End-2-End Profiles  :  :  . 40 \n2.4.2.2  End-2-End State Machine  :  :   44 \n2.4.2.3  Integration of the End -2-End Protection Library  :   45 \n2.4.2.4  End-2-End Protection Wrapper  :  :   46 \n2.4.2.5  Transmission Manager  :  :   48 \n2.4.2.6  COM End -2-End Callout  :  :   49 \n2.4.2.7  RTE Data Transformer  :  :   50 \n2.4.3  Detection and Re action  :  :  :   52 \n2.4.4  Limitations  52  Overview of Functional Safety Measures in AUTOSAR  \nAUTOSAR CP Release 4.4.0   \n4 of 96 Document ID 664: AUTOSAR_TR_ OverviewOfFunctionalSafetyMeasuresInAUTOSAR  \n- AUTOSAR confidential - \n2.4.5  References to AUTOSAR Documents  :  :   53 \n2.4.6  References to ISO26262  :  :  :   55 \n3 Functional Safety Me asures  :  :  :   56 \n3.1 Functional Safety Measures of AUTOSAR  :  :   56 \n3.2 Traceability  :  :  :  . 57 \n3.3 Development Measures and the Evolution of the Standard  :   57 \n3.4 Functional Safety Measures not delivered by AUTOSAR  :   59 \n3.5 Safety related Extensions of Methodology and Templates  :   60 \n3.6 Safety Use Case :  :  :   60 \n3.7 Use of AUTOSAR features for functional safety  :  :   61 \n3.7.1 Timing Related Features  :  :  :   61 \n3.7.1.1  Features related to the provision of synchronized time \nbases  :  :  :   61 \n3.7.1.2  Features related to synchronization of processing of \nasynchronous processing units  :  :   68 \n3.7.1.3  Features to allow time deterministic implementation of \napplications  :  :  :   71 \n3.7.1.4  Features related to protection against timing violation  :   76 \n3.7.2  E-Gas Monitoring Related Features  :  :   79 \n4 Hardware Diagnostics  :  :  :   86 \n4.1 Core Test  :  :  :  .... 86 \n4.1.1  Fault Models  :  :  :   86 \n4.1.2  Description  :  :  :   87 \n4.1.3  Detection and Reaction  :  :  :   87 \n4.1.4  Limitations  87 \n4.1.5  References to AUTOSAR Documents  :  :   88 \n4.1.6  Referenc es to ISO26262  :  :  :   91 \n4.2 RAM Test  :  :  :  ... 91 \n4.2.1  Fault Models  :  :  :   91 \n4.2.2  Description  :  :  :   92 \n4.2.3  Detection and Reaction  :  :  :   92 \n4.2.4  Limitations  92 \n4.2.5  References to AUTOSAR Docume nts :  :   93 \n4.2.6  References to ISO26262  :  :  :   94 \n5 Appendix  :  :  :  :   95 \n5.1 Acronyms and abbreviations  :  :  :  95 \n5.2 Related Documents  :  :  :   96 \n  Overview of Functional Safety Measures in AUTOSAR  \nAUTOSAR CP Release 4.4.0   \n5 of 96 Document ID 664: AUTOSAR_TR_ OverviewOfFunctionalSafetyMeasuresInAUTOSAR  \n- AUTOSAR confidential - \n1 Introduction  \nFunctional s afety is a system characteristic which  is taken into account from the \nbeginnin g, as it may influence system design dec isions.  Therefore  AUTOSAR \nspecifications  include  requirements related to functional safety . \nAspect s such as complexity  of the system design can be relevant for the \nachievement of functional safety  in the automotive f ield. \nSoftware is one parameter that can influence  complexity on system level . New \ntechniques and concepts for software development  can be used in order to minimize \ncomplexity and therefore can ease the achievement of functional safety.  \n \nAUTOSAR supports the development of safety -related systems  by offering safety \nmeasures and mechanisms. However AUTOSAR  is not a complete safe solution . \n \nThe use of AUTOSAR does not imply ISO26262 compliance. It is still possible to \nbuild unsafe systems using the AUTOSAR safety measures and mechanisms.  \n1.1 Disclaimer  \nThis explanatory document represents the functional safety measures and \nmechanisms of the latest release of AUTOSAR. Some of the described mechanisms \nand measures may be implemented differently or may not be availab le in previous \nreleases.  The user of this document shall always consult the applicable referenced \ndocuments . \n1.2 Scope  \nThe content of this document is structured in to separate chapters as follows:  \n \nFunctional Safety Mechanisms: This chapter contains AUTOSAR fu nctional safety \nmechanisms related to freedom from interference between AUTOSAR SW -Cs. \n\uf0b7 Memory: Partitioning mechanisms of AUTOSAR with the context of Application \nSoftware development and deployment.  \n\uf0b7 Timing: Temporal Program Flow Monitoring  mechanisms usin g the Watchdog \nManager  and Timing Protection mechanisms  using the Operating System . \n\uf0b7 Execution: Logical Supervision  mechanisms using the Watchdog Manager.  \n\uf0b7 Exchange of Information: Communication fault detection mechanisms using the \nEnd-2-End Library and Exte nsions.  \n \nFunctional Safety Measures: This chapter contains topics related to the development \nof safety -relevant systems. The following items are covered:  \n\uf0b7 Functional Safety Measures of AUTOSAR, such as Traceability, Development \nMeasures and the Evolution o f the Standard .  \n\uf0b7 Functional Safety Measures not delivered by AUTOSAR . \n\uf0b7 Safety Use Case: An exemplary safety related system using AUTOSAR based on \nthe guided tour example Front Light Management.  ",
+    "toc_page_list": [
+      2,
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 5}, {'structure': '1.1', 'title': 'Disclaimer', 'page': 5}, {'structure': '1.2', 'title': 'Scope', 'page': 5}, {'structure': '1.3', 'title': 'Purpose', 'page': 6}, {'structure': '1.4', 'title': 'Intended Audience', 'page': 6}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'page': 7}, {'structure': '2.1', 'title': 'Memory Partitioning', 'page': 8}, {'structure': '2.1.1', 'title': 'Fault Models', 'page': 8}, {'structure': '2.1.2', 'title': 'Description', 'page': 9}, {'structure': '2.1.2.1', 'title': 'Application Software', 'page': 9}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'page': 11}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'page': 12}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'page': 13}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'page': 14}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'page': 16}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'page': 19}, {'structure': '2.1.4', 'title': 'Limitations', 'page': 20}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'page': 21}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'page': 23}, {'structure': '2.2', 'title': 'Timing Monitoring', 'page': 24}, {'structure': '2.2.1', 'title': 'Fault Models', 'page': 24}, {'structure': '2.2.2', 'title': 'Description', 'page': 25}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'page': 25}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'page': 25}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'page': 27}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'page': 28}, {'structure': '2.2.4', 'title': 'Limitations', 'page': 29}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'page': 30}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'page': 31}, {'structure': '2.3', 'title': 'Logical Supervision', 'page': 32}, {'structure': '2.3.1', 'title': 'Fault Models', 'page': 32}, {'structure': '2.3.2', 'title': 'Description', 'page': 32}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'page': 34}, {'structure': '2.3.4', 'title': 'Limitations', 'page': 35}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'page': 36}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'page': 36}, {'structure': '2.4', 'title': 'End-2-End Protection', 'page': 37}, {'structure': '2.4.1', 'title': 'Fault Models', 'page': 37}, {'structure': '2.4.2', 'title': 'Description', 'page': 39}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'page': 40}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'page': 44}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'page': 45}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'page': 46}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'page': 48}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'page': 49}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'page': 50}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'page': 52}, {'structure': '2.4.4', 'title': 'Limitations', 'page': 52}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'page': 53}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'page': 55}, {'structure': '3', 'title': 'Functional Safety Measures', 'page': 56}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'page': 56}, {'structure': '3.2', 'title': 'Traceability', 'page': 57}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'page': 57}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'page': 59}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'page': 60}, {'structure': '3.6', 'title': 'Safety Use Case', 'page': 60}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'page': 61}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'page': 61}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'page': 61}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'page': 68}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'page': 71}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'page': 76}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'page': 79}, {'structure': '4', 'title': 'Hardware Diagnostics', 'page': 86}, {'structure': '4.1', 'title': 'Core Test', 'page': 86}, {'structure': '4.1.1', 'title': 'Fault Models', 'page': 86}, {'structure': '4.1.2', 'title': 'Description', 'page': 87}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'page': 87}, {'structure': '4.1.4', 'title': 'Limitations', 'page': 87}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'page': 88}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'page': 91}, {'structure': '4.2', 'title': 'RAM Test', 'page': 91}, {'structure': '4.2.1', 'title': 'Fault Models', 'page': 91}, {'structure': '4.2.2', 'title': 'Description', 'page': 92}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'page': 92}, {'structure': '4.2.4', 'title': 'Limitations', 'page': 92}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'page': 93}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'page': 94}, {'structure': '5', 'title': 'Appendix', 'page': 95}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'page': 95}, {'structure': '5.2', 'title': 'Related Documents', 'page': 96}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_6>'}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': '<physical_index_6>'}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': '<physical_index_9>'}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': '<physical_index_9>'}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': '<physical_index_11>'}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': '<physical_index_12>'}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': '<physical_index_13>'}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': '<physical_index_14>'}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_19>'}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': '<physical_index_20>'}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_21>'}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_23>'}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': '<physical_index_24>'}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': '<physical_index_24>'}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': '<physical_index_25>'}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': '<physical_index_25>'}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': '<physical_index_25>'}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': '<physical_index_27>'}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_28>'}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': '<physical_index_29>'}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': 6}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': 6}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': 7}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': 9}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': 9}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': 11}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': 12}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': 13}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': 14}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': 16}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': 19}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': 20}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 21}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': 23}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': 24}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': 24}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': 25}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': 25}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': 25}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': 27}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': 28}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': 29}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 5, 'physical_index': 6}, {'title': 'Purpose', 'page': 6, 'physical_index': 6}, {'title': 'Intended Audience', 'page': 6, 'physical_index': 6}, {'title': 'Functional Safety Mechanisms', 'page': 7, 'physical_index': 7}, {'title': 'Memory Partitioning', 'page': 8, 'physical_index': 8}, {'title': 'Fault Models', 'page': 8, 'physical_index': 8}, {'title': 'Fault Models', 'page': 24, 'physical_index': 8}, {'title': 'Fault Models', 'page': 32, 'physical_index': 8}, {'title': 'Fault Models', 'page': 37, 'physical_index': 8}, {'title': 'Fault Models', 'page': 86, 'physical_index': 8}, {'title': 'Fault Models', 'page': 91, 'physical_index': 8}, {'title': 'Description', 'page': 9, 'physical_index': 9}, {'title': 'Description', 'page': 25, 'physical_index': 9}, {'title': 'Description', 'page': 32, 'physical_index': 9}, {'title': 'Description', 'page': 39, 'physical_index': 9}, {'title': 'Description', 'page': 87, 'physical_index': 9}, {'title': 'Description', 'page': 92, 'physical_index': 9}, {'title': 'Application Software', 'page': 9, 'physical_index': 9}, {'title': 'OS Applications', 'page': 11, 'physical_index': 11}, {'title': 'Communication and Code Sharing', 'page': 12, 'physical_index': 12}, {'title': 'Memory Partitioning within Application Software', 'page': 13, 'physical_index': 13}, {'title': 'Memory Partitioning within Software Components', 'page': 14, 'physical_index': 14}, {'title': 'Implementation of Memory Partitioning', 'page': 16, 'physical_index': 16}, {'title': 'Detection and Reaction', 'page': 19, 'physical_index': 19}, {'title': 'Detection and Reaction', 'page': 28, 'physical_index': 19}, {'title': 'Detection and Reaction', 'page': 34, 'physical_index': 19}, {'title': 'Detection and Reaction', 'page': 52, 'physical_index': 19}, {'title': 'Detection and Reaction', 'page': 87, 'physical_index': 19}, {'title': 'Detection and Reaction', 'page': 92, 'physical_index': 19}, {'title': 'Limitations', 'page': 20, 'physical_index': 20}, {'title': 'Limitations', 'page': 29, 'physical_index': 20}, {'title': 'Limitations', 'page': 35, 'physical_index': 20}, {'title': 'Limitations', 'page': 52, 'physical_index': 20}, {'title': 'Limitations', 'page': 87, 'physical_index': 20}, {'title': 'Limitations', 'page': 92, 'physical_index': 20}, {'title': 'References to AUTOSAR Documents', 'page': 21, 'physical_index': 21}, {'title': 'References to AUTOSAR Documents', 'page': 30, 'physical_index': 21}, {'title': 'References to AUTOSAR Documents', 'page': 36, 'physical_index': 21}, {'title': 'References to AUTOSAR Documents', 'page': 53, 'physical_index': 21}, {'title': 'References to AUTOSAR Documents', 'page': 88, 'physical_index': 21}, {'title': 'References to AUTOSAR Documents', 'page': 93, 'physical_index': 21}, {'title': 'References to ISO26262', 'page': 23, 'physical_index': 23}, {'title': 'References to ISO26262', 'page': 31, 'physical_index': 23}, {'title': 'References to ISO26262', 'page': 36, 'physical_index': 23}, {'title': 'References to ISO26262', 'page': 55, 'physical_index': 23}, {'title': 'References to ISO26262', 'page': 91, 'physical_index': 23}, {'title': 'References to ISO26262', 'page': 94, 'physical_index': 23}, {'title': 'Timing Monitoring', 'page': 24, 'physical_index': 24}, {'title': 'Fault Models', 'page': 8, 'physical_index': 24}, {'title': 'Fault Models', 'page': 24, 'physical_index': 24}, {'title': 'Fault Models', 'page': 32, 'physical_index': 24}, {'title': 'Fault Models', 'page': 37, 'physical_index': 24}, {'title': 'Fault Models', 'page': 86, 'physical_index': 24}, {'title': 'Fault Models', 'page': 91, 'physical_index': 24}, {'title': 'Description', 'page': 9, 'physical_index': 25}, {'title': 'Description', 'page': 25, 'physical_index': 25}, {'title': 'Description', 'page': 32, 'physical_index': 25}, {'title': 'Description', 'page': 39, 'physical_index': 25}, {'title': 'Description', 'page': 87, 'physical_index': 25}, {'title': 'Description', 'page': 92, 'physical_index': 25}, {'title': 'Supervised Entities', 'page': 25, 'physical_index': 25}, {'title': 'Watchdog Manager', 'page': 25, 'physical_index': 25}, {'title': 'Timing Protection of the Operating System', 'page': 27, 'physical_index': 27}, {'title': 'Detection and Reaction', 'page': 19, 'physical_index': 28}, {'title': 'Detection and Reaction', 'page': 28, 'physical_index': 28}, {'title': 'Detection and Reaction', 'page': 34, 'physical_index': 28}, {'title': 'Detection and Reaction', 'page': 52, 'physical_index': 28}, {'title': 'Detection and Reaction', 'page': 87, 'physical_index': 28}, {'title': 'Detection and Reaction', 'page': 92, 'physical_index': 28}, {'title': 'Limitations', 'page': 20, 'physical_index': 29}, {'title': 'Limitations', 'page': 29, 'physical_index': 29}, {'title': 'Limitations', 'page': 35, 'physical_index': 29}, {'title': 'Limitations', 'page': 52, 'physical_index': 29}, {'title': 'Limitations', 'page': 87, 'physical_index': 29}, {'title': 'Limitations', 'page': 92, 'physical_index': 29}, {'title': 'References to AUTOSAR Documents', 'page': 21, 'physical_index': 30}, {'title': 'References to AUTOSAR Documents', 'page': 30, 'physical_index': 30}, {'title': 'References to AUTOSAR Documents', 'page': 36, 'physical_index': 30}, {'title': 'References to AUTOSAR Documents', 'page': 53, 'physical_index': 30}, {'title': 'References to AUTOSAR Documents', 'page': 88, 'physical_index': 30}, {'title': 'References to AUTOSAR Documents', 'page': 93, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '1.1', 'title': 'Disclaimer', 'physical_index': 5}, {'structure': '1.2', 'title': 'Scope', 'physical_index': 5}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': 6}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': 6}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': 7}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': 9}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': 9}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': 11}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': 12}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': 13}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': 14}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': 16}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': 19}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': 20}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 21}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': 23}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': 24}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': 24}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': 25}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': 25}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': 25}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': 27}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': 28}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': 29}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 30}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'physical_index': 31}, {'structure': '2.3', 'title': 'Logical Supervision', 'physical_index': 32}, {'structure': '2.3.1', 'title': 'Fault Models', 'physical_index': 32}, {'structure': '2.3.2', 'title': 'Description', 'physical_index': 32}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'physical_index': 34}, {'structure': '2.3.4', 'title': 'Limitations', 'physical_index': 35}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 36}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'physical_index': 36}, {'structure': '2.4', 'title': 'End-2-End Protection', 'physical_index': 37}, {'structure': '2.4.1', 'title': 'Fault Models', 'physical_index': 37}, {'structure': '2.4.2', 'title': 'Description', 'physical_index': 39}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': 40}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': 44}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': 45}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': 46}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': 48}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': 49}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': 50}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': 52}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': 52}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 53}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': 55}, {'structure': '3', 'title': 'Functional Safety Measures', 'physical_index': 56}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': 56}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': 57}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': 57}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': 59}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': 60}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': 60}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': 61}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': 61}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': 61}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': 68}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': 71}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'physical_index': 76}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'physical_index': 79}, {'structure': '4', 'title': 'Hardware Diagnostics', 'physical_index': 86}, {'structure': '4.1', 'title': 'Core Test', 'physical_index': 86}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': 86}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': 87}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': 87}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': 87}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 88}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': 91}, {'structure': '4.2', 'title': 'RAM Test', 'physical_index': 91}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': 91}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': 92}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': 92}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': 92}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 93}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': 94}, {'structure': '5', 'title': 'Appendix', 'physical_index': 95}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 95}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': 96}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '1.1', 'title': 'Disclaimer', 'physical_index': 5}, {'structure': '1.2', 'title': 'Scope', 'physical_index': 5}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': 6}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': 6}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': 7}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': 9}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': 9}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': 11}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': 12}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': 13}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': 14}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': 16}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': 19}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': 20}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 21}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': 23}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': 24}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': 24}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': 25}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': 25}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': 25}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': 27}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': 28}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': 29}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 30}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'physical_index': 31}, {'structure': '2.3', 'title': 'Logical Supervision', 'physical_index': 32}, {'structure': '2.3.1', 'title': 'Fault Models', 'physical_index': 32}, {'structure': '2.3.2', 'title': 'Description', 'physical_index': 32}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'physical_index': 34}, {'structure': '2.3.4', 'title': 'Limitations', 'physical_index': 35}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 36}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'physical_index': 36}, {'structure': '2.4', 'title': 'End-2-End Protection', 'physical_index': 37}, {'structure': '2.4.1', 'title': 'Fault Models', 'physical_index': 37}, {'structure': '2.4.2', 'title': 'Description', 'physical_index': 39}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': 40}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': 44}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': 45}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': 46}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': 48}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': 49}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': 50}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': 52}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': 52}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 53}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': 55}, {'structure': '3', 'title': 'Functional Safety Measures', 'physical_index': 56}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': 56}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': 57}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': 57}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': 59}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': 60}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': 60}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': 61}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': 61}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': 61}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': 68}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': 71}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'physical_index': 76}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'physical_index': 79}, {'structure': '4', 'title': 'Hardware Diagnostics', 'physical_index': 86}, {'structure': '4.1', 'title': 'Core Test', 'physical_index': 86}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': 86}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': 87}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': 87}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': 87}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 88}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': 91}, {'structure': '4.2', 'title': 'RAM Test', 'physical_index': 91}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': 91}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': 92}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': 92}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': 92}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 93}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': 94}, {'structure': '5', 'title': 'Appendix', 'physical_index': 95}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 95}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': 96}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.2926829268292683,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 24
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 25
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Supervised Entities",
+        "page_number": 25
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Watchdog Manager",
+        "page_number": 25
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Timing Protection of the Operating System",
+        "page_number": 27
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 28
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 29
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 30
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 31
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Logical Supervision",
+        "page_number": 32
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 32
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 32
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 34
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 35
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 36
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 36
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "End-2-End Protection",
+        "page_number": 37
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 37
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 39
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "End-2-End Profiles",
+        "page_number": 40
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "End-2-End State Machine",
+        "page_number": 44
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Integration of the End-2-End Protection Library",
+        "page_number": 45
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "End-2-End Protection Wrapper",
+        "page_number": 46
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Transmission Manager",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "COM End-2-End Callout",
+        "page_number": 49
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "RTE Data Transformer",
+        "page_number": 50
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 52
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 52
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 53
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 55
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Functional Safety Measures",
+        "page_number": 56
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Functional Safety Measures of AUTOSAR",
+        "page_number": 56
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Traceability",
+        "page_number": 57
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Development Measures and the Evolution of the Standard",
+        "page_number": 57
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Functional Safety Measures not delivered by AUTOSAR",
+        "page_number": 59
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Safety related Extensions of Methodology and Templates",
+        "page_number": 60
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Safety Use Case",
+        "page_number": 60
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Use of AUTOSAR features for functional safety",
+        "page_number": 61
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Timing Related Features",
+        "page_number": 61
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Features related to the provision of synchronized time bases",
+        "page_number": 61
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Features related to synchronization of processing of asynchronous processing units",
+        "page_number": 68
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Features to allow time deterministic implementation of applications",
+        "page_number": 71
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Features related to protection against timing violation",
+        "page_number": 76
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "E-Gas Monitoring Related Features",
+        "page_number": 79
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Hardware Diagnostics",
+        "page_number": 86
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Core Test",
+        "page_number": 86
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 86
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 87
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 87
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 87
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 88
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 91
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "RAM Test",
+        "page_number": 91
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 92
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 92
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 93
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 94
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Related Documents",
+        "page_number": 96
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 5}, {'structure': '1.1', 'title': 'Disclaimer', 'page': 5}, {'structure': '1.2', 'title': 'Scope', 'page': 5}, {'structure': '1.3', 'title': 'Purpose', 'page': 6}, {'structure': '1.4', 'title': 'Intended Audience', 'page': 6}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'page': 7}, {'structure': '2.1', 'title': 'Memory Partitioning', 'page': 8}, {'structure': '2.1.1', 'title': 'Fault Models', 'page': 8}, {'structure': '2.1.2', 'title': 'Description', 'page': 9}, {'structure': '2.1.2.1', 'title': 'Application Software', 'page': 9}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'page': 11}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'page': 12}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'page': 13}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'page': 14}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'page': 16}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'page': 19}, {'structure': '2.1.4', 'title': 'Limitations', 'page': 20}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'page': 21}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'page': 23}, {'structure': '2.2', 'title': 'Timing Monitoring', 'page': 24}, {'structure': '2.2.1', 'title': 'Fault Models', 'page': 24}, {'structure': '2.2.2', 'title': 'Description', 'page': 25}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'page': 25}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'page': 25}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'page': 27}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'page': 28}, {'structure': '2.2.4', 'title': 'Limitations', 'page': 29}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'page': 30}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'page': 31}, {'structure': '2.3', 'title': 'Logical Supervision', 'page': 32}, {'structure': '2.3.1', 'title': 'Fault Models', 'page': 32}, {'structure': '2.3.2', 'title': 'Description', 'page': 32}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'page': 34}, {'structure': '2.3.4', 'title': 'Limitations', 'page': 35}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'page': 36}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'page': 36}, {'structure': '2.4', 'title': 'End-2-End Protection', 'page': 37}, {'structure': '2.4.1', 'title': 'Fault Models', 'page': 37}, {'structure': '2.4.2', 'title': 'Description', 'page': 39}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'page': 40}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'page': 44}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'page': 45}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'page': 46}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'page': 48}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'page': 49}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'page': 50}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'page': 52}, {'structure': '2.4.4', 'title': 'Limitations', 'page': 52}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'page': 53}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'page': 55}, {'structure': '3', 'title': 'Functional Safety Measures', 'page': 56}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'page': 56}, {'structure': '3.2', 'title': 'Traceability', 'page': 57}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'page': 57}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'page': 59}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'page': 60}, {'structure': '3.6', 'title': 'Safety Use Case', 'page': 60}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'page': 61}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'page': 61}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'page': 61}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'page': 68}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'page': 71}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'page': 76}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'page': 79}, {'structure': '4', 'title': 'Hardware Diagnostics', 'page': 86}, {'structure': '4.1', 'title': 'Core Test', 'page': 86}, {'structure': '4.1.1', 'title': 'Fault Models', 'page': 86}, {'structure': '4.1.2', 'title': 'Description', 'page': 87}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'page': 87}, {'structure': '4.1.4', 'title': 'Limitations', 'page': 87}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'page': 88}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'page': 91}, {'structure': '4.2', 'title': 'RAM Test', 'page': 91}, {'structure': '4.2.1', 'title': 'Fault Models', 'page': 91}, {'structure': '4.2.2', 'title': 'Description', 'page': 92}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'page': 92}, {'structure': '4.2.4', 'title': 'Limitations', 'page': 92}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'page': 93}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'page': 94}, {'structure': '5', 'title': 'Appendix', 'page': 95}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'page': 95}, {'structure': '5.2', 'title': 'Related Documents', 'page': 96}]"
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_5>'}, {'structure': '1.1', 'title': 'Disclaimer', 'physical_index': '<physical_index_5>'}, {'structure': '1.2', 'title': 'Scope', 'physical_index': '<physical_index_5>'}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': None}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': None}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': None}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': None}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': None}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': None}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': None}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': None}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': None}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': None}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': None}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': None}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': None}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': None}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': None}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': None}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': None}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': None}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': None}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': None}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': None}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': None}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': None}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'physical_index': None}, {'structure': '2.3', 'title': 'Logical Supervision', 'physical_index': None}, {'structure': '2.3.1', 'title': 'Fault Models', 'physical_index': None}, {'structure': '2.3.2', 'title': 'Description', 'physical_index': None}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'physical_index': None}, {'structure': '2.3.4', 'title': 'Limitations', 'physical_index': None}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'physical_index': None}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'physical_index': None}, {'structure': '2.4', 'title': 'End-2-End Protection', 'physical_index': '<physical_index_37>', 'start_index': '<physical_index_37>'}, {'structure': '2.4.1', 'title': 'Fault Models', 'physical_index': '<physical_index_37>', 'start_index': '<physical_index_37>'}, {'structure': '2.4.2', 'title': 'Description', 'physical_index': '<physical_index_39>', 'start_index': '<physical_index_39>'}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': '<physical_index_40>', 'start_index': '<physical_index_40>'}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': '<physical_index_44>', 'start_index': '<physical_index_44>'}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': '<physical_index_45>', 'start_index': '<physical_index_45>'}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': '<physical_index_46>', 'start_index': '<physical_index_46>'}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': '<physical_index_48>', 'start_index': '<physical_index_48>'}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': '<physical_index_49>', 'start_index': '<physical_index_49>'}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': '<physical_index_50>', 'start_index': '<physical_index_50>'}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_52>', 'start_index': '<physical_index_52>'}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': '<physical_index_52>', 'start_index': '<physical_index_52>'}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_53>', 'start_index': '<physical_index_53>'}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_55>', 'start_index': '<physical_index_55>'}, {'structure': '3', 'title': 'Functional Safety Measures', 'physical_index': '<physical_index_56>', 'start_index': '<physical_index_56>'}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': '<physical_index_56>', 'start_index': '<physical_index_56>'}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': '<physical_index_56>', 'start_index': '<physical_index_56>'}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': '<physical_index_57>', 'start_index': '<physical_index_57>'}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': '<physical_index_59>', 'start_index': '<physical_index_59>'}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': '<physical_index_60>', 'start_index': '<physical_index_60>'}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': '<physical_index_60>', 'start_index': '<physical_index_60>'}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': '<physical_index_61>', 'start_index': '<physical_index_61>'}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': '<physical_index_61>', 'start_index': '<physical_index_61>'}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': '<physical_index_61>', 'start_index': '<physical_index_61>'}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': '<physical_index_68>', 'start_index': '<physical_index_68>'}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': '<physical_index_71>', 'start_index': '<physical_index_71>'}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'physical_index': '<physical_index_76>', 'start_index': '<physical_index_76>'}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'physical_index': '<physical_index_79>', 'start_index': '<physical_index_79>'}, {'structure': '4', 'title': 'Hardware Diagnostics', 'physical_index': '<physical_index_86>', 'start_index': '<physical_index_86>'}, {'structure': '4.1', 'title': 'Core Test', 'physical_index': '<physical_index_86>', 'start_index': '<physical_index_86>'}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': '<physical_index_86>', 'start_index': '<physical_index_86>'}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': '<physical_index_87>', 'start_index': '<physical_index_87>'}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_87>', 'start_index': '<physical_index_87>'}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': '<physical_index_87>', 'start_index': '<physical_index_87>'}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_88>', 'start_index': '<physical_index_88>'}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_89>', 'start_index': '<physical_index_89>'}, {'structure': '4.2', 'title': 'RAM Test', 'physical_index': '<physical_index_91>', 'start_index': '<physical_index_91>'}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': '<physical_index_91>', 'start_index': '<physical_index_91>'}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': '<physical_index_92>', 'start_index': '<physical_index_92>'}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_92>', 'start_index': '<physical_index_92>'}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': '<physical_index_92>', 'start_index': '<physical_index_92>'}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_93>', 'start_index': '<physical_index_93>'}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_94>', 'start_index': '<physical_index_94>'}, {'structure': '5', 'title': 'Appendix', 'physical_index': '<physical_index_95>', 'start_index': '<physical_index_95>'}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_95>', 'start_index': '<physical_index_95>'}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': '<physical_index_96>', 'start_index': '<physical_index_96>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '1.1', 'title': 'Disclaimer', 'physical_index': 5}, {'structure': '1.2', 'title': 'Scope', 'physical_index': 5}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': 5}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': 5}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': None}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': None}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': None}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': None}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': None}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': None}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': None}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': None}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': None}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': None}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': None}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': None}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': None}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': None}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': None}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': None}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': None}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': None}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': None}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': None}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': None}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': None}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': None}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'physical_index': None}, {'structure': '2.3', 'title': 'Logical Supervision', 'physical_index': None}, {'structure': '2.3.1', 'title': 'Fault Models', 'physical_index': None}, {'structure': '2.3.2', 'title': 'Description', 'physical_index': None}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'physical_index': None}, {'structure': '2.3.4', 'title': 'Limitations', 'physical_index': None}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'physical_index': None}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'physical_index': None}, {'structure': '2.4', 'title': 'End-2-End Protection', 'physical_index': 37, 'start_index': '<physical_index_37>'}, {'structure': '2.4.1', 'title': 'Fault Models', 'physical_index': 37, 'start_index': '<physical_index_37>'}, {'structure': '2.4.2', 'title': 'Description', 'physical_index': 39, 'start_index': '<physical_index_39>'}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': 40, 'start_index': '<physical_index_40>'}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': 44, 'start_index': '<physical_index_44>'}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': 45, 'start_index': '<physical_index_45>'}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': 46, 'start_index': '<physical_index_46>'}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': 48, 'start_index': '<physical_index_48>'}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': 49, 'start_index': '<physical_index_49>'}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': 50, 'start_index': '<physical_index_50>'}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': 52, 'start_index': '<physical_index_52>'}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': 52, 'start_index': '<physical_index_52>'}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 53, 'start_index': '<physical_index_53>'}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': 55, 'start_index': '<physical_index_55>'}, {'structure': '3', 'title': 'Functional Safety Measures', 'physical_index': 56, 'start_index': '<physical_index_56>'}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': 56, 'start_index': '<physical_index_56>'}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': 56, 'start_index': '<physical_index_56>'}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': 57, 'start_index': '<physical_index_57>'}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': 59, 'start_index': '<physical_index_59>'}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': 60, 'start_index': '<physical_index_60>'}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': 60, 'start_index': '<physical_index_60>'}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': 61, 'start_index': '<physical_index_61>'}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': 61, 'start_index': '<physical_index_61>'}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': 61, 'start_index': '<physical_index_61>'}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': 68, 'start_index': '<physical_index_68>'}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': 71, 'start_index': '<physical_index_71>'}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'physical_index': 76, 'start_index': '<physical_index_76>'}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'physical_index': 79, 'start_index': '<physical_index_79>'}, {'structure': '4', 'title': 'Hardware Diagnostics', 'physical_index': 86, 'start_index': '<physical_index_86>'}, {'structure': '4.1', 'title': 'Core Test', 'physical_index': 86, 'start_index': '<physical_index_86>'}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': 86, 'start_index': '<physical_index_86>'}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': 87, 'start_index': '<physical_index_87>'}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': 87, 'start_index': '<physical_index_87>'}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': 87, 'start_index': '<physical_index_87>'}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 88, 'start_index': '<physical_index_88>'}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': 89, 'start_index': '<physical_index_89>'}, {'structure': '4.2', 'title': 'RAM Test', 'physical_index': 91, 'start_index': '<physical_index_91>'}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': 91, 'start_index': '<physical_index_91>'}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': 92, 'start_index': '<physical_index_92>'}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': 92, 'start_index': '<physical_index_92>'}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': 92, 'start_index': '<physical_index_92>'}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 93, 'start_index': '<physical_index_93>'}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': 94, 'start_index': '<physical_index_94>'}, {'structure': '5', 'title': 'Appendix', 'physical_index': 95, 'start_index': '<physical_index_95>'}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 95, 'start_index': '<physical_index_95>'}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': 96, 'start_index': '<physical_index_96>'}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.39215686274509803,
+    "incorrect_results": [
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Purpose",
+        "page_number": 5
+      },
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Intended Audience",
+        "page_number": 5
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Traceability",
+        "page_number": 56
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Development Measures and the Evolution of the Standard",
+        "page_number": 57
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Functional Safety Measures not delivered by AUTOSAR",
+        "page_number": 59
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Safety related Extensions of Methodology and Templates",
+        "page_number": 60
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Safety Use Case",
+        "page_number": 60
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Use of AUTOSAR features for functional safety",
+        "page_number": 61
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Timing Related Features",
+        "page_number": 61
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Features related to the provision of synchronized time bases",
+        "page_number": 61
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Features related to synchronization of processing of asynchronous processing units",
+        "page_number": 68
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Features to allow time deterministic implementation of applications",
+        "page_number": 71
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Features related to protection against timing violation",
+        "page_number": 76
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "E-Gas Monitoring Related Features",
+        "page_number": 79
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Hardware Diagnostics",
+        "page_number": 86
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Core Test",
+        "page_number": 86
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 86
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 87
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 87
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 87
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 88
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 89
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "RAM Test",
+        "page_number": 91
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 91
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 92
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 92
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 92
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 93
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 94
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 95
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Related Documents",
+        "page_number": 96
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_5>'}, {'structure': '1.1', 'title': 'Disclaimer', 'physical_index': '<physical_index_5>'}, {'structure': '1.2', 'title': 'Scope', 'physical_index': '<physical_index_5>'}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': '<physical_index_9>'}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': '<physical_index_9>'}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': '<physical_index_11>'}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': '<physical_index_12>'}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': '<physical_index_13>'}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': '<physical_index_14>'}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_19>'}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': '<physical_index_20>'}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_21>'}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_23>'}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': '<physical_index_24>'}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': '<physical_index_24>'}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': '<physical_index_25>'}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': '<physical_index_25>'}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': '<physical_index_25>'}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': '<physical_index_27>'}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_28>'}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': '<physical_index_29>'}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_30>'}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_31>'}, {'structure': '2.3', 'title': 'Logical Supervision', 'physical_index': '<physical_index_32>'}, {'structure': '2.3.1', 'title': 'Fault Models', 'physical_index': '<physical_index_32>'}, {'structure': '2.3.2', 'title': 'Description', 'physical_index': '<physical_index_33>'}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_34>'}, {'structure': '2.3.4', 'title': 'Limitations', 'physical_index': '<physical_index_35>'}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_36>'}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_36>'}, {'structure': '2.4', 'title': 'End-2-End Protection', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.1', 'title': 'Fault Models', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2', 'title': 'Description', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_37>'}, {'structure': '3', 'title': 'Functional Safety Measures', 'physical_index': '<physical_index_4>'}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': '<physical_index_4>'}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': '<physical_index_4>'}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': '<physical_index_4>'}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': '<physical_index_4>'}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': '<physical_index_4>'}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': '<physical_index_4>'}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': '<physical_index_4>'}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': '<physical_index_4>'}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': '<physical_index_4>'}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': '<physical_index_4>'}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': '<physical_index_4>'}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'physical_index': '<physical_index_4>'}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'physical_index': '<physical_index_4>'}, {'structure': '4', 'title': 'Hardware Diagnostics', 'physical_index': '<physical_index_4>'}, {'structure': '4.1', 'title': 'Core Test', 'physical_index': '<physical_index_4>'}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': '<physical_index_4>'}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': '<physical_index_4>'}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_4>'}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': '<physical_index_4>'}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_4>'}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_4>'}, {'structure': '4.2', 'title': 'RAM Test', 'physical_index': '<physical_index_4>'}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': '<physical_index_4>'}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': '<physical_index_4>'}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_4>'}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': '<physical_index_4>'}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_4>'}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_4>'}, {'structure': '5', 'title': 'Appendix', 'physical_index': '<physical_index_4>'}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_4>'}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': '<physical_index_4>'}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_37>'}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_37>'}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': '<physical_index_56>'}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': '<physical_index_56>'}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': '<physical_index_56>'}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': '<physical_index_59>'}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': '<physical_index_60>'}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': '<physical_index_60>'}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': '<physical_index_61>'}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': '<physical_index_61>'}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': '<physical_index_61>'}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': '<physical_index_68>'}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': '<physical_index_71>'}, {'structure': '3.7.1.3.1', 'title': 'The specification of timing constraints and properties is possible using the AUTOSAR timing extensions', 'physical_index': '<physical_index_73>'}, {'structure': '3.7.1.3.2', 'title': '[RS_BRF_00123] Responsiveness to external events', 'physical_index': '<physical_index_75>'}, {'structure': '3.7.1.4.1', 'title': '[RS_BRF_00121] Runtime timing protection and monitoring', 'physical_index': '<physical_index_76>'}, {'structure': '3.7.1.4.2', 'title': '[RS_BRF_00125] Monitoring of local time', 'physical_index': '<physical_index_78>'}, {'structure': '3.7.2.1.1', 'title': '[RS_BRF_00243] Communication protections against corruption and loss of data', 'physical_index': '<physical_index_80>'}, {'structure': '3.7.2.1.2', 'title': '[RS_BRF_00251] Priority access to SPI bus', 'physical_index': '<physical_index_82>'}, {'structure': '3.7.2.1.3', 'title': '[RS_BRF_00248] Testing and monitoring of I/O data and I/O HW', 'physical_index': '<physical_index_83>'}, {'structure': '3.7.2.1.4', 'title': '[RS_BRF_00301] Ability to make an AUTOSAR application compatible to the e-Gas monitoring Concept', 'physical_index': '<physical_index_84>'}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': '<physical_index_86>'}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': '<physical_index_86>'}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_87>'}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': '<physical_index_87>'}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_88>'}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_89>'}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': '<physical_index_91>'}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': '<physical_index_92>'}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': '<physical_index_92>'}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': '<physical_index_92>'}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': '<physical_index_93>'}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': '<physical_index_94>'}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_95>'}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': '<physical_index_96>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '1.1', 'title': 'Disclaimer', 'physical_index': 5}, {'structure': '1.2', 'title': 'Scope', 'physical_index': 5}, {'structure': '1.3', 'title': 'Purpose', 'physical_index': 5}, {'structure': '1.4', 'title': 'Intended Audience', 'physical_index': 6}, {'structure': '2', 'title': 'Functional Safety Mechanisms', 'physical_index': 7}, {'structure': '2.1', 'title': 'Memory Partitioning', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Fault Models', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Description', 'physical_index': 9}, {'structure': '2.1.2.1', 'title': 'Application Software', 'physical_index': 9}, {'structure': '2.1.2.2', 'title': 'OS Applications', 'physical_index': 11}, {'structure': '2.1.2.3', 'title': 'Communication and Code Sharing', 'physical_index': 12}, {'structure': '2.1.2.4', 'title': 'Memory Partitioning within Application Software', 'physical_index': 13}, {'structure': '2.1.2.5', 'title': 'Memory Partitioning within Software Components', 'physical_index': 14}, {'structure': '2.1.2.6', 'title': 'Implementation of Memory Partitioning', 'physical_index': 16}, {'structure': '2.1.3', 'title': 'Detection and Reaction', 'physical_index': 19}, {'structure': '2.1.4', 'title': 'Limitations', 'physical_index': 20}, {'structure': '2.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 21}, {'structure': '2.1.6', 'title': 'References to ISO26262', 'physical_index': 23}, {'structure': '2.2', 'title': 'Timing Monitoring', 'physical_index': 24}, {'structure': '2.2.1', 'title': 'Fault Models', 'physical_index': 24}, {'structure': '2.2.2', 'title': 'Description', 'physical_index': 25}, {'structure': '2.2.2.1', 'title': 'Supervised Entities', 'physical_index': 25}, {'structure': '2.2.2.2', 'title': 'Watchdog Manager', 'physical_index': 25}, {'structure': '2.2.2.3', 'title': 'Timing Protection of the Operating System', 'physical_index': 27}, {'structure': '2.2.3', 'title': 'Detection and Reaction', 'physical_index': 28}, {'structure': '2.2.4', 'title': 'Limitations', 'physical_index': 29}, {'structure': '2.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 30}, {'structure': '2.2.6', 'title': 'References to ISO26262', 'physical_index': 31}, {'structure': '2.3', 'title': 'Logical Supervision', 'physical_index': 32}, {'structure': '2.3.1', 'title': 'Fault Models', 'physical_index': 32}, {'structure': '2.3.2', 'title': 'Description', 'physical_index': 33}, {'structure': '2.3.3', 'title': 'Detection and Reaction', 'physical_index': 34}, {'structure': '2.3.4', 'title': 'Limitations', 'physical_index': 35}, {'structure': '2.3.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 36}, {'structure': '2.3.6', 'title': 'References to ISO26262', 'physical_index': 36}, {'structure': '2.4', 'title': 'End-2-End Protection', 'physical_index': 37}, {'structure': '2.4.1', 'title': 'Fault Models', 'physical_index': 37}, {'structure': '2.4.2', 'title': 'Description', 'physical_index': 37}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': 37}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': 37}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': 37}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': 37}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': 37}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': 37}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': 37}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': 37}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': 37}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 37}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': 37}, {'structure': '3', 'title': 'Functional Safety Measures', 'physical_index': 4}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': 4}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': 4}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': 4}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': 4}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': 4}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': 4}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': 4}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': 4}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': 4}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': 4}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': 4}, {'structure': '3.7.1.4', 'title': 'Features related to protection against timing violation', 'physical_index': 4}, {'structure': '3.7.2', 'title': 'E-Gas Monitoring Related Features', 'physical_index': 4}, {'structure': '4', 'title': 'Hardware Diagnostics', 'physical_index': 4}, {'structure': '4.1', 'title': 'Core Test', 'physical_index': 4}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': 4}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': 4}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': 4}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': 4}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 4}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': 4}, {'structure': '4.2', 'title': 'RAM Test', 'physical_index': 4}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': 4}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': 4}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': 4}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': 4}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 4}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': 4}, {'structure': '5', 'title': 'Appendix', 'physical_index': 4}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 4}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': 4}, {'structure': '2.4.2.1', 'title': 'End-2-End Profiles', 'physical_index': 37}, {'structure': '2.4.2.2', 'title': 'End-2-End State Machine', 'physical_index': 37}, {'structure': '2.4.2.3', 'title': 'Integration of the End-2-End Protection Library', 'physical_index': 37}, {'structure': '2.4.2.4', 'title': 'End-2-End Protection Wrapper', 'physical_index': 37}, {'structure': '2.4.2.5', 'title': 'Transmission Manager', 'physical_index': 37}, {'structure': '2.4.2.6', 'title': 'COM End-2-End Callout', 'physical_index': 37}, {'structure': '2.4.2.7', 'title': 'RTE Data Transformer', 'physical_index': 37}, {'structure': '2.4.3', 'title': 'Detection and Reaction', 'physical_index': 37}, {'structure': '2.4.4', 'title': 'Limitations', 'physical_index': 37}, {'structure': '2.4.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 37}, {'structure': '2.4.6', 'title': 'References to ISO26262', 'physical_index': 37}, {'structure': '3.1', 'title': 'Functional Safety Measures of AUTOSAR', 'physical_index': 56}, {'structure': '3.2', 'title': 'Traceability', 'physical_index': 56}, {'structure': '3.3', 'title': 'Development Measures and the Evolution of the Standard', 'physical_index': 56}, {'structure': '3.4', 'title': 'Functional Safety Measures not delivered by AUTOSAR', 'physical_index': 59}, {'structure': '3.5', 'title': 'Safety related Extensions of Methodology and Templates', 'physical_index': 60}, {'structure': '3.6', 'title': 'Safety Use Case', 'physical_index': 60}, {'structure': '3.7', 'title': 'Use of AUTOSAR features for functional safety', 'physical_index': 61}, {'structure': '3.7.1', 'title': 'Timing Related Features', 'physical_index': 61}, {'structure': '3.7.1.1', 'title': 'Features related to the provision of synchronized time bases', 'physical_index': 61}, {'structure': '3.7.1.2', 'title': 'Features related to synchronization of processing of asynchronous processing units', 'physical_index': 68}, {'structure': '3.7.1.3', 'title': 'Features to allow time deterministic implementation of applications', 'physical_index': 71}, {'structure': '3.7.1.3.1', 'title': 'The specification of timing constraints and properties is possible using the AUTOSAR timing extensions', 'physical_index': 73}, {'structure': '3.7.1.3.2', 'title': '[RS_BRF_00123] Responsiveness to external events', 'physical_index': 75}, {'structure': '3.7.1.4.1', 'title': '[RS_BRF_00121] Runtime timing protection and monitoring', 'physical_index': 76}, {'structure': '3.7.1.4.2', 'title': '[RS_BRF_00125] Monitoring of local time', 'physical_index': 78}, {'structure': '3.7.2.1.1', 'title': '[RS_BRF_00243] Communication protections against corruption and loss of data', 'physical_index': 80}, {'structure': '3.7.2.1.2', 'title': '[RS_BRF_00251] Priority access to SPI bus', 'physical_index': 82}, {'structure': '3.7.2.1.3', 'title': '[RS_BRF_00248] Testing and monitoring of I/O data and I/O HW', 'physical_index': 83}, {'structure': '3.7.2.1.4', 'title': '[RS_BRF_00301] Ability to make an AUTOSAR application compatible to the e-Gas monitoring Concept', 'physical_index': 84}, {'structure': '4.1.1', 'title': 'Fault Models', 'physical_index': 86}, {'structure': '4.1.2', 'title': 'Description', 'physical_index': 86}, {'structure': '4.1.3', 'title': 'Detection and Reaction', 'physical_index': 87}, {'structure': '4.1.4', 'title': 'Limitations', 'physical_index': 87}, {'structure': '4.1.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 88}, {'structure': '4.1.6', 'title': 'References to ISO26262', 'physical_index': 89}, {'structure': '4.2.1', 'title': 'Fault Models', 'physical_index': 91}, {'structure': '4.2.2', 'title': 'Description', 'physical_index': 92}, {'structure': '4.2.3', 'title': 'Detection and Reaction', 'physical_index': 92}, {'structure': '4.2.4', 'title': 'Limitations', 'physical_index': 92}, {'structure': '4.2.5', 'title': 'References to AUTOSAR Documents', 'physical_index': 93}, {'structure': '4.2.6', 'title': 'References to ISO26262', 'physical_index': 94}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 95}, {'structure': '5.2', 'title': 'Related Documents', 'physical_index': 96}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.18253968253968253,
+    "incorrect_results": [
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Purpose",
+        "page_number": 5
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 24
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 25
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Supervised Entities",
+        "page_number": 25
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Watchdog Manager",
+        "page_number": 25
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Timing Protection of the Operating System",
+        "page_number": 27
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 28
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 29
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 30
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 31
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Logical Supervision",
+        "page_number": 32
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 32
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 33
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 34
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 35
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 36
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 36
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "End-2-End Protection",
+        "page_number": 37
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 37
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 37
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "End-2-End Profiles",
+        "page_number": 37
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "End-2-End State Machine",
+        "page_number": 37
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Integration of the End-2-End Protection Library",
+        "page_number": 37
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "End-2-End Protection Wrapper",
+        "page_number": 37
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Transmission Manager",
+        "page_number": 37
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "COM End-2-End Callout",
+        "page_number": 37
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "RTE Data Transformer",
+        "page_number": 37
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 37
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 37
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 37
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 37
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Functional Safety Measures",
+        "page_number": 4
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Functional Safety Measures of AUTOSAR",
+        "page_number": 4
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Traceability",
+        "page_number": 4
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Development Measures and the Evolution of the Standard",
+        "page_number": 4
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Functional Safety Measures not delivered by AUTOSAR",
+        "page_number": 4
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Safety related Extensions of Methodology and Templates",
+        "page_number": 4
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Safety Use Case",
+        "page_number": 4
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Use of AUTOSAR features for functional safety",
+        "page_number": 4
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Timing Related Features",
+        "page_number": 4
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Features related to the provision of synchronized time bases",
+        "page_number": 4
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Features related to synchronization of processing of asynchronous processing units",
+        "page_number": 4
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Features to allow time deterministic implementation of applications",
+        "page_number": 4
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Features related to protection against timing violation",
+        "page_number": 4
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "E-Gas Monitoring Related Features",
+        "page_number": 4
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Hardware Diagnostics",
+        "page_number": 4
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Core Test",
+        "page_number": 4
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 4
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 4
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 4
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 4
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 4
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 4
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "RAM Test",
+        "page_number": 4
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 4
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 4
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 4
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 4
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 4
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 4
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Appendix",
+        "page_number": 4
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 4
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Related Documents",
+        "page_number": 4
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "End-2-End Profiles",
+        "page_number": 37
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "End-2-End State Machine",
+        "page_number": 37
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Integration of the End-2-End Protection Library",
+        "page_number": 37
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "End-2-End Protection Wrapper",
+        "page_number": 37
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Transmission Manager",
+        "page_number": 37
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "COM End-2-End Callout",
+        "page_number": 37
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "RTE Data Transformer",
+        "page_number": 37
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 37
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 37
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 37
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 37
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Functional Safety Measures of AUTOSAR",
+        "page_number": 56
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Traceability",
+        "page_number": 56
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Development Measures and the Evolution of the Standard",
+        "page_number": 56
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Functional Safety Measures not delivered by AUTOSAR",
+        "page_number": 59
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Safety related Extensions of Methodology and Templates",
+        "page_number": 60
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Safety Use Case",
+        "page_number": 60
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Use of AUTOSAR features for functional safety",
+        "page_number": 61
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Timing Related Features",
+        "page_number": 61
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Features related to the provision of synchronized time bases",
+        "page_number": 61
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Features related to synchronization of processing of asynchronous processing units",
+        "page_number": 68
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Features to allow time deterministic implementation of applications",
+        "page_number": 71
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "The specification of timing constraints and properties is possible using the AUTOSAR timing extensions",
+        "page_number": 73
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "[RS_BRF_00123] Responsiveness to external events",
+        "page_number": 75
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "[RS_BRF_00121] Runtime timing protection and monitoring",
+        "page_number": 76
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "[RS_BRF_00125] Monitoring of local time",
+        "page_number": 78
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "[RS_BRF_00243] Communication protections against corruption and loss of data",
+        "page_number": 80
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "[RS_BRF_00251] Priority access to SPI bus",
+        "page_number": 82
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "[RS_BRF_00248] Testing and monitoring of I/O data and I/O HW",
+        "page_number": 83
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "[RS_BRF_00301] Ability to make an AUTOSAR application compatible to the e-Gas monitoring Concept",
+        "page_number": 84
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 86
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 86
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 87
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 87
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 88
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "References to ISO26262",
+        "page_number": 89
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "Fault Models",
+        "page_number": 91
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Description",
+        "page_number": 92
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "Detection and Reaction",
+        "page_number": 92
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "References to AUTOSAR Documents",
+        "page_number": 93
+      }
+    ]
+  }
+]

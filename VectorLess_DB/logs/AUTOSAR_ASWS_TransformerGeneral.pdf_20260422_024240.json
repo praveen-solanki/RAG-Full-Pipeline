@@ -1,0 +1,700 @@
+[
+  {
+    "total_page_number": 71
+  },
+  {
+    "total_token": 31864
+  },
+  {
+    "toc_content": "General Specification of Transformers\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Introduction and functional overview 5\n2 Acronyms and Abbreviations 6\n3 Related documentation 7\n3.1 Input documents : 7\n3.2 Related standards and norms : 8\n3.3 Related specification : 8\n4 Constraints and assumptions 9\n4.1 Limitations : 9\n4.2 Applicability to car domains : 9\n5 Dependencies to other modules 10\n5.1 File structure : 10\n5.1.1 Code file structure : 10\n5.1.2 Header file structure : 10\n6 Requirements Tracing 11\n7 Functional Specification 14\n7.1 Buffer Handling : 19\n7.2 Transformer Classes : 20\n7.2.1 Serializer : 20\n7.2.2 Safety : 21\n7.2.3 Security : 21\n7.2.4 Custom : 22\n7.3 Error Handling : 22\n7.3.1 Errors of Serializer Transformers : 23\n7.3.2 Errors of Safety Transformers : 23\n7.3.3 Errors of Security Transformers : 25\n7.3.4 Errors of Custom Transformers : 25\n7.4 Development Errors : 26\n7.5 Production Errors : 26\n7.6 Extended Production Errors : 26\n7.6.1 XFRM_E_MALFORMED_MESSAGE : 26\n7.7 Error Notification : 27\n8 API specification 28\n8.1 Imported types : 28\n8.2 Type definitions : 28\n8.3 Function definitions : 28\n8.3.1 <Mip>_<transformerId> : 30\n8.3.2 <Mip>_Inv_<transformerId> : 36\n8.3.3 <Mip>_Init : 41\n3 of 71\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 658: AUTOSAR_ASWS_TransformerGeneralGeneral Specification of Transformers\nAUTOSAR CP Release 4.4.0\n8.3.4 <Mip>_DeInit : 41\n8.3.5 <Mip>_GetVersionInfo : 42\n8.4 Callback notifications : 42\n8.5 Scheduled functions : 42\n8.6 Expected interfaces : 43\n9 Sequence diagrams 44\n10 Configuration specification 45\n10.1 How to read this chapter : 45\n10.2 Containers and configuration parameters : 45\n10.2.1 XfrmGeneral : 47\n10.2.2 XfrmImplementationMapping : 48\n10.2.3 XfrmSignal : 52\n10.2.4 XfrmDemEventParameterRefs : 54\nA Referenced Meta Classes 56\n4 of 71\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 658: AUTOSAR_ASWS_TransformerGeneral",
+    "toc_page_list": [
+      2,
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'page': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 6}, {'structure': '3', 'title': 'Related documentation', 'page': 7}, {'structure': '3.1', 'title': 'Input documents', 'page': 7}, {'structure': '3.2', 'title': 'Related standards and norms', 'page': 8}, {'structure': '3.3', 'title': 'Related specification', 'page': 8}, {'structure': '4', 'title': 'Constraints and assumptions', 'page': 9}, {'structure': '4.1', 'title': 'Limitations', 'page': 9}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 9}, {'structure': '5', 'title': 'Dependencies to other modules', 'page': 10}, {'structure': '5.1', 'title': 'File structure', 'page': 10}, {'structure': '5.1.1', 'title': 'Code file structure', 'page': 10}, {'structure': '5.1.2', 'title': 'Header file structure', 'page': 10}, {'structure': '6', 'title': 'Requirements Tracing', 'page': 11}, {'structure': '7', 'title': 'Functional Specification', 'page': 14}, {'structure': '7.1', 'title': 'Buffer Handling', 'page': 19}, {'structure': '7.2', 'title': 'Transformer Classes', 'page': 20}, {'structure': '7.2.1', 'title': 'Serializer', 'page': 20}, {'structure': '7.2.2', 'title': 'Safety', 'page': 21}, {'structure': '7.2.3', 'title': 'Security', 'page': 21}, {'structure': '7.2.4', 'title': 'Custom', 'page': 22}, {'structure': '7.3', 'title': 'Error Handling', 'page': 22}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'page': 23}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'page': 23}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'page': 25}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'page': 25}, {'structure': '7.4', 'title': 'Development Errors', 'page': 26}, {'structure': '7.5', 'title': 'Production Errors', 'page': 26}, {'structure': '7.6', 'title': 'Extended Production Errors', 'page': 26}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'page': 26}, {'structure': '7.7', 'title': 'Error Notification', 'page': 27}, {'structure': '8', 'title': 'API specification', 'page': 28}, {'structure': '8.1', 'title': 'Imported types', 'page': 28}, {'structure': '8.2', 'title': 'Type definitions', 'page': 28}, {'structure': '8.3', 'title': 'Function definitions', 'page': 28}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'page': 30}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'page': 36}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'page': 41}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'page': 41}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'page': 42}, {'structure': '8.4', 'title': 'Callback notifications', 'page': 42}, {'structure': '8.5', 'title': 'Scheduled functions', 'page': 42}, {'structure': '8.6', 'title': 'Expected interfaces', 'page': 43}, {'structure': '9', 'title': 'Sequence diagrams', 'page': 44}, {'structure': '10', 'title': 'Configuration specification', 'page': 45}, {'structure': '10.1', 'title': 'How to read this chapter', 'page': 45}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'page': 45}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'page': 47}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'page': 48}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'page': 52}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'page': 54}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'page': 56}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Related documentation', 'physical_index': '<physical_index_7>'}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': '<physical_index_7>'}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_8>'}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': '<physical_index_8>'}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_9>'}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': '<physical_index_9>'}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': '<physical_index_9>'}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': '<physical_index_10>'}, {'structure': '5.1', 'title': 'File structure', 'physical_index': '<physical_index_10>'}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': '<physical_index_10>'}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': '<physical_index_10>'}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_11>'}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': '<physical_index_14>'}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': '<physical_index_19>'}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': '<physical_index_20>'}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': '<physical_index_20>'}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': '<physical_index_21>'}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': '<physical_index_21>'}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': '<physical_index_22>'}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': '<physical_index_22>'}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': '<physical_index_23>'}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': '<physical_index_24>'}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': '<physical_index_25>'}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': '<physical_index_25>'}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': '<physical_index_26>'}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': '<physical_index_26>'}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': '<physical_index_26>'}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': '<physical_index_26>'}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': '<physical_index_27>'}, {'structure': '8', 'title': 'API specification', 'physical_index': '<physical_index_28>'}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': '<physical_index_28>'}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': '<physical_index_28>'}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': '<physical_index_28>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 8}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 9}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 9}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 9}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 10}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 10}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 10}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 10}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 14}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 19}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 20}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 20}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 21}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 21}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 22}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 22}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': 23}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': 24}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': 25}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': 25}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': 26}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': 26}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': 26}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 26}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': 27}, {'structure': '8', 'title': 'API specification', 'physical_index': 28}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': 28}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': 28}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': 28}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction and functional overview', 'page': 5, 'physical_index': 5}, {'title': 'Acronyms and Abbreviations', 'page': 6, 'physical_index': 6}, {'title': 'Related documentation', 'page': 7, 'physical_index': 7}, {'title': 'Input documents', 'page': 7, 'physical_index': 7}, {'title': 'Related standards and norms', 'page': 8, 'physical_index': 8}, {'title': 'Related specification', 'page': 8, 'physical_index': 8}, {'title': 'Constraints and assumptions', 'page': 9, 'physical_index': 9}, {'title': 'Limitations', 'page': 9, 'physical_index': 9}, {'title': 'Applicability to car domains', 'page': 9, 'physical_index': 9}, {'title': 'Dependencies to other modules', 'page': 10, 'physical_index': 10}, {'title': 'File structure', 'page': 10, 'physical_index': 10}, {'title': 'Code file structure', 'page': 10, 'physical_index': 10}, {'title': 'Header file structure', 'page': 10, 'physical_index': 10}, {'title': 'Requirements Tracing', 'page': 11, 'physical_index': 11}, {'title': 'Functional Specification', 'page': 14, 'physical_index': 14}, {'title': 'Buffer Handling', 'page': 19, 'physical_index': 19}, {'title': 'Transformer Classes', 'page': 20, 'physical_index': 20}, {'title': 'Serializer', 'page': 20, 'physical_index': 20}, {'title': 'Safety', 'page': 21, 'physical_index': 21}, {'title': 'Security', 'page': 21, 'physical_index': 21}, {'title': 'Custom', 'page': 22, 'physical_index': 22}, {'title': 'Error Handling', 'page': 22, 'physical_index': 22}, {'title': 'Errors of Serializer Transformers', 'page': 23, 'physical_index': 23}, {'title': 'Errors of Safety Transformers', 'page': 23, 'physical_index': 24}, {'title': 'Errors of Security Transformers', 'page': 25, 'physical_index': 25}, {'title': 'Errors of Custom Transformers', 'page': 25, 'physical_index': 25}, {'title': 'Development Errors', 'page': 26, 'physical_index': 26}, {'title': 'Production Errors', 'page': 26, 'physical_index': 26}, {'title': 'Extended Production Errors', 'page': 26, 'physical_index': 26}, {'title': 'XFRM_E_MALFORMED_MESSAGE', 'page': 26, 'physical_index': 26}, {'title': 'Error Notification', 'page': 27, 'physical_index': 27}, {'title': 'API specification', 'page': 28, 'physical_index': 28}, {'title': 'Imported types', 'page': 28, 'physical_index': 28}, {'title': 'Type definitions', 'page': 28, 'physical_index': 28}, {'title': 'Function definitions', 'page': 28, 'physical_index': 28}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 8}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 9}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 9}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 9}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 10}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 10}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 10}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 10}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 14}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 19}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 20}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 20}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 21}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 21}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 22}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 22}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': 23}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': 23}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': 25}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': 25}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': 26}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': 26}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': 26}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 26}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': 27}, {'structure': '8', 'title': 'API specification', 'physical_index': 28}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': 28}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': 28}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': 28}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'physical_index': 30}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': 36}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'physical_index': 41}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'physical_index': 41}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'physical_index': 42}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': 42}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': 42}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': 43}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': 44}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': 45}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': 45}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': 45}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': 47}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': 48}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': 52}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': 54}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': 56}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 8}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 9}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 9}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 9}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 10}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 10}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 10}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 10}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 14}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 19}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 20}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 20}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 21}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 21}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 22}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 22}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': 23}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': 23}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': 25}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': 25}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': 26}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': 26}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': 26}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 26}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': 27}, {'structure': '8', 'title': 'API specification', 'physical_index': 28}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': 28}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': 28}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': 28}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'physical_index': 30}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': 36}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'physical_index': 41}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'physical_index': 41}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'physical_index': 42}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': 42}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': 42}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': 43}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': 44}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': 45}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': 45}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': 45}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': 47}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': 48}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': 52}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': 54}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': 56}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.0,
+    "incorrect_results": [
+      {
+        "list_index": 0,
+        "answer": "no",
+        "title": "Introduction and functional overview",
+        "page_number": 5
+      },
+      {
+        "list_index": 1,
+        "answer": "no",
+        "title": "Acronyms and Abbreviations",
+        "page_number": 6
+      },
+      {
+        "list_index": 2,
+        "answer": "no",
+        "title": "Related documentation",
+        "page_number": 7
+      },
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Input documents",
+        "page_number": 7
+      },
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Related standards and norms",
+        "page_number": 8
+      },
+      {
+        "list_index": 5,
+        "answer": "no",
+        "title": "Related specification",
+        "page_number": 8
+      },
+      {
+        "list_index": 6,
+        "answer": "no",
+        "title": "Constraints and assumptions",
+        "page_number": 9
+      },
+      {
+        "list_index": 7,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 9
+      },
+      {
+        "list_index": 8,
+        "answer": "no",
+        "title": "Applicability to car domains",
+        "page_number": 9
+      },
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "Dependencies to other modules",
+        "page_number": 10
+      },
+      {
+        "list_index": 10,
+        "answer": "no",
+        "title": "File structure",
+        "page_number": 10
+      },
+      {
+        "list_index": 11,
+        "answer": "no",
+        "title": "Code file structure",
+        "page_number": 10
+      },
+      {
+        "list_index": 12,
+        "answer": "no",
+        "title": "Header file structure",
+        "page_number": 10
+      },
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "Requirements Tracing",
+        "page_number": 11
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "Functional Specification",
+        "page_number": 14
+      },
+      {
+        "list_index": 15,
+        "answer": "no",
+        "title": "Buffer Handling",
+        "page_number": 19
+      },
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "Transformer Classes",
+        "page_number": 20
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "Serializer",
+        "page_number": 20
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "Safety",
+        "page_number": 21
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "Security",
+        "page_number": 21
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Custom",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Errors of Serializer Transformers",
+        "page_number": 23
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Errors of Safety Transformers",
+        "page_number": 23
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Errors of Security Transformers",
+        "page_number": 25
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Errors of Custom Transformers",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Development Errors",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Production Errors",
+        "page_number": 26
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Extended Production Errors",
+        "page_number": 26
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "XFRM_E_MALFORMED_MESSAGE",
+        "page_number": 26
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Error Notification",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "API specification",
+        "page_number": 28
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Imported types",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Type definitions",
+        "page_number": 28
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Function definitions",
+        "page_number": 28
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "<Mip>_<transformerId>",
+        "page_number": 30
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "<Mip>_Inv_<transformerId>",
+        "page_number": 36
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "<Mip>_Init",
+        "page_number": 41
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "<Mip>_DeInit",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "<Mip>_GetVersionInfo",
+        "page_number": 42
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Callback notifications",
+        "page_number": 42
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Scheduled functions",
+        "page_number": 42
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Expected interfaces",
+        "page_number": 43
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Sequence diagrams",
+        "page_number": 44
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Configuration specification",
+        "page_number": 45
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "How to read this chapter",
+        "page_number": 45
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Containers and configuration parameters",
+        "page_number": 45
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "XfrmGeneral",
+        "page_number": 47
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "XfrmImplementationMapping",
+        "page_number": 48
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "XfrmSignal",
+        "page_number": 52
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "XfrmDemEventParameterRefs",
+        "page_number": 54
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Referenced Meta Classes",
+        "page_number": 56
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction and functional overview', 'page': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 6}, {'structure': '3', 'title': 'Related documentation', 'page': 7}, {'structure': '3.1', 'title': 'Input documents', 'page': 7}, {'structure': '3.2', 'title': 'Related standards and norms', 'page': 8}, {'structure': '3.3', 'title': 'Related specification', 'page': 8}, {'structure': '4', 'title': 'Constraints and assumptions', 'page': 9}, {'structure': '4.1', 'title': 'Limitations', 'page': 9}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 9}, {'structure': '5', 'title': 'Dependencies to other modules', 'page': 10}, {'structure': '5.1', 'title': 'File structure', 'page': 10}, {'structure': '5.1.1', 'title': 'Code file structure', 'page': 10}, {'structure': '5.1.2', 'title': 'Header file structure', 'page': 10}, {'structure': '6', 'title': 'Requirements Tracing', 'page': 11}, {'structure': '7', 'title': 'Functional Specification', 'page': 14}, {'structure': '7.1', 'title': 'Buffer Handling', 'page': 19}, {'structure': '7.2', 'title': 'Transformer Classes', 'page': 20}, {'structure': '7.2.1', 'title': 'Serializer', 'page': 20}, {'structure': '7.2.2', 'title': 'Safety', 'page': 21}, {'structure': '7.2.3', 'title': 'Security', 'page': 21}, {'structure': '7.2.4', 'title': 'Custom', 'page': 22}, {'structure': '7.3', 'title': 'Error Handling', 'page': 22}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'page': 23}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'page': 23}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'page': 25}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'page': 25}, {'structure': '7.4', 'title': 'Development Errors', 'page': 26}, {'structure': '7.5', 'title': 'Production Errors', 'page': 26}, {'structure': '7.6', 'title': 'Extended Production Errors', 'page': 26}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'page': 26}, {'structure': '7.7', 'title': 'Error Notification', 'page': 27}, {'structure': '8', 'title': 'API specification', 'page': 28}, {'structure': '8.1', 'title': 'Imported types', 'page': 28}, {'structure': '8.2', 'title': 'Type definitions', 'page': 28}, {'structure': '8.3', 'title': 'Function definitions', 'page': 28}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'page': 30}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'page': 36}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'page': 41}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'page': 41}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'page': 42}, {'structure': '8.4', 'title': 'Callback notifications', 'page': 42}, {'structure': '8.5', 'title': 'Scheduled functions', 'page': 42}, {'structure': '8.6', 'title': 'Expected interfaces', 'page': 43}, {'structure': '9', 'title': 'Sequence diagrams', 'page': 44}, {'structure': '10', 'title': 'Configuration specification', 'page': 45}, {'structure': '10.1', 'title': 'How to read this chapter', 'page': 45}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'page': 45}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'page': 47}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'page': 48}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'page': 52}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'page': 54}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'page': 56}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Related documentation', 'physical_index': '<physical_index_7>'}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': '<physical_index_7>'}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_8>'}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': '<physical_index_8>'}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_9>'}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': '<physical_index_9>'}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': '<physical_index_9>'}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': '<physical_index_10>'}, {'structure': '5.1', 'title': 'File structure', 'physical_index': '<physical_index_10>'}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': '<physical_index_10>'}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': '<physical_index_10>'}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_11>'}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': '<physical_index_14>'}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': '<physical_index_19>'}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': '<physical_index_20>'}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': '<physical_index_20>'}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': '<physical_index_21>'}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': '<physical_index_21>'}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': '<physical_index_22>'}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': '<physical_index_22>'}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': '<physical_index_23>'}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': '<physical_index_23>'}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': '<physical_index_24>'}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': '<physical_index_24>'}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': '<physical_index_26>'}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': '<physical_index_26>'}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': '<physical_index_26>'}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': '<physical_index_26>'}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': '<physical_index_27>'}, {'structure': '8', 'title': 'API specification', 'physical_index': '<physical_index_28>'}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': '<physical_index_28>'}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': '<physical_index_28>'}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': '<physical_index_28>'}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'physical_index': '<physical_index_30>'}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': '<physical_index_36>'}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'physical_index': '<physical_index_41>'}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'physical_index': '<physical_index_41>'}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'physical_index': '<physical_index_42>'}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': '<physical_index_42>'}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': '<physical_index_42>'}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': '<physical_index_43>'}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': '<physical_index_44>'}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': '<physical_index_45>'}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': '<physical_index_45>'}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': '<physical_index_45>'}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': '<physical_index_47>'}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': '<physical_index_48>'}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': '<physical_index_52>'}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': '<physical_index_54>'}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': '<physical_index_56>'}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': '<physical_index_52>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 8}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 9}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 9}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 9}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 10}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 10}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 10}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 10}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 14}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 19}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 20}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 20}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 21}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 21}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 22}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 22}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': 23}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': 23}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': 24}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': 24}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': 26}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': 26}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': 26}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 26}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': 27}, {'structure': '8', 'title': 'API specification', 'physical_index': 28}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': 28}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': 28}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': 28}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'physical_index': 30}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': 36}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'physical_index': 41}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'physical_index': 41}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'physical_index': 42}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': 42}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': 42}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': 43}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': 44}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': 45}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': 45}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': 45}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': 47}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': 48}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': 52}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': 54}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': 56}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': 52}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.5283018867924528,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Custom",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Errors of Serializer Transformers",
+        "page_number": 23
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Errors of Safety Transformers",
+        "page_number": 23
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Errors of Security Transformers",
+        "page_number": 24
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Errors of Custom Transformers",
+        "page_number": 24
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Development Errors",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Production Errors",
+        "page_number": 26
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Extended Production Errors",
+        "page_number": 26
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "XFRM_E_MALFORMED_MESSAGE",
+        "page_number": 26
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Error Notification",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "API specification",
+        "page_number": 28
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Imported types",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Type definitions",
+        "page_number": 28
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Function definitions",
+        "page_number": 28
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "<Mip>_<transformerId>",
+        "page_number": 30
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "<Mip>_Inv_<transformerId>",
+        "page_number": 36
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "<Mip>_Init",
+        "page_number": 41
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "<Mip>_DeInit",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "<Mip>_GetVersionInfo",
+        "page_number": 42
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Callback notifications",
+        "page_number": 42
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Expected interfaces",
+        "page_number": 43
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Sequence diagrams",
+        "page_number": 44
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Configuration specification",
+        "page_number": 45
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "How to read this chapter",
+        "page_number": 45
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Related documentation', 'physical_index': '<physical_index_7>'}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': '<physical_index_7>'}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_8>'}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': '<physical_index_8>'}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_9>'}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': '<physical_index_9>'}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': '<physical_index_9>'}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': '<physical_index_10>'}, {'structure': '5.1', 'title': 'File structure', 'physical_index': '<physical_index_10>'}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': '<physical_index_10>'}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': '<physical_index_10>'}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_11>'}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': '<physical_index_14>'}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': '<physical_index_19>'}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': '<physical_index_20>'}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': '<physical_index_20>'}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': '<physical_index_21>'}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': '<physical_index_21>'}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': '<physical_index_22>'}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': '<physical_index_22>'}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': '<physical_index_23>'}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': '<physical_index_24>'}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': '<physical_index_25>'}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': '<physical_index_25>'}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': '<physical_index_26>'}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': '<physical_index_27>'}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': '<physical_index_27>'}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': '<physical_index_27>'}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': '<physical_index_27>'}, {'structure': '8', 'title': 'API specification', 'physical_index': '<physical_index_28>'}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': '<physical_index_28>'}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': '<physical_index_28>'}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': '<physical_index_28>'}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'physical_index': '<physical_index_30>'}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': '<physical_index_36>'}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'physical_index': '<physical_index_41>'}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'physical_index': '<physical_index_41>'}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'physical_index': '<physical_index_42>'}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': '<physical_index_42>'}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': '<physical_index_42>'}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': '<physical_index_43>'}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': '<physical_index_44>'}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': '<physical_index_45>'}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': '<physical_index_45>'}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': '<physical_index_45>'}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': '<physical_index_47>'}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': '<physical_index_48>'}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': '<physical_index_52>'}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': '<physical_index_54>'}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': '<physical_index_56>'}, {'structure': '10.2.3.1', 'title': 'XfrmSignalChoice', 'physical_index': '<physical_index_52>'}, {'structure': '10.2.3.2', 'title': 'XfrmISignalGroupRefChoice', 'physical_index': '<physical_index_53>'}, {'structure': '10.2.3.3', 'title': 'XfrmISignalRefChoice', 'physical_index': '<physical_index_53>'}, {'structure': '10.2.4.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': '<physical_index_54>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 8}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 9}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 9}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 9}, {'structure': '5', 'title': 'Dependencies to other modules', 'physical_index': 10}, {'structure': '5.1', 'title': 'File structure', 'physical_index': 10}, {'structure': '5.1.1', 'title': 'Code file structure', 'physical_index': 10}, {'structure': '5.1.2', 'title': 'Header file structure', 'physical_index': 10}, {'structure': '6', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '7', 'title': 'Functional Specification', 'physical_index': 14}, {'structure': '7.1', 'title': 'Buffer Handling', 'physical_index': 19}, {'structure': '7.2', 'title': 'Transformer Classes', 'physical_index': 20}, {'structure': '7.2.1', 'title': 'Serializer', 'physical_index': 20}, {'structure': '7.2.2', 'title': 'Safety', 'physical_index': 21}, {'structure': '7.2.3', 'title': 'Security', 'physical_index': 21}, {'structure': '7.2.4', 'title': 'Custom', 'physical_index': 22}, {'structure': '7.3', 'title': 'Error Handling', 'physical_index': 22}, {'structure': '7.3.1', 'title': 'Errors of Serializer Transformers', 'physical_index': 23}, {'structure': '7.3.2', 'title': 'Errors of Safety Transformers', 'physical_index': 24}, {'structure': '7.3.3', 'title': 'Errors of Security Transformers', 'physical_index': 25}, {'structure': '7.3.4', 'title': 'Errors of Custom Transformers', 'physical_index': 25}, {'structure': '7.4', 'title': 'Development Errors', 'physical_index': 26}, {'structure': '7.5', 'title': 'Production Errors', 'physical_index': 27}, {'structure': '7.6', 'title': 'Extended Production Errors', 'physical_index': 27}, {'structure': '7.6.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 27}, {'structure': '7.7', 'title': 'Error Notification', 'physical_index': 27}, {'structure': '8', 'title': 'API specification', 'physical_index': 28}, {'structure': '8.1', 'title': 'Imported types', 'physical_index': 28}, {'structure': '8.2', 'title': 'Type definitions', 'physical_index': 28}, {'structure': '8.3', 'title': 'Function definitions', 'physical_index': 28}, {'structure': '8.3.1', 'title': '<Mip>_<transformerId>', 'physical_index': 30}, {'structure': '8.3.2', 'title': '<Mip>_Inv_<transformerId>', 'physical_index': 36}, {'structure': '8.3.3', 'title': '<Mip>_Init', 'physical_index': 41}, {'structure': '8.3.4', 'title': '<Mip>_DeInit', 'physical_index': 41}, {'structure': '8.3.5', 'title': '<Mip>_GetVersionInfo', 'physical_index': 42}, {'structure': '8.4', 'title': 'Callback notifications', 'physical_index': 42}, {'structure': '8.5', 'title': 'Scheduled functions', 'physical_index': 42}, {'structure': '8.6', 'title': 'Expected interfaces', 'physical_index': 43}, {'structure': '9', 'title': 'Sequence diagrams', 'physical_index': 44}, {'structure': '10', 'title': 'Configuration specification', 'physical_index': 45}, {'structure': '10.1', 'title': 'How to read this chapter', 'physical_index': 45}, {'structure': '10.2', 'title': 'Containers and configuration parameters', 'physical_index': 45}, {'structure': '10.2.1', 'title': 'XfrmGeneral', 'physical_index': 47}, {'structure': '10.2.2', 'title': 'XfrmImplementationMapping', 'physical_index': 48}, {'structure': '10.2.3', 'title': 'XfrmSignal', 'physical_index': 52}, {'structure': '10.2.4', 'title': 'XfrmDemEventParameterRefs', 'physical_index': 54}, {'structure': 'A', 'title': 'Referenced Meta Classes', 'physical_index': 56}, {'structure': '10.2.3.1', 'title': 'XfrmSignalChoice', 'physical_index': 52}, {'structure': '10.2.3.2', 'title': 'XfrmISignalGroupRefChoice', 'physical_index': 53}, {'structure': '10.2.3.3', 'title': 'XfrmISignalRefChoice', 'physical_index': 53}, {'structure': '10.2.4.1', 'title': 'XFRM_E_MALFORMED_MESSAGE', 'physical_index': 54}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.5178571428571429,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Custom",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Errors of Serializer Transformers",
+        "page_number": 23
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Errors of Safety Transformers",
+        "page_number": 24
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Errors of Security Transformers",
+        "page_number": 25
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Errors of Custom Transformers",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Development Errors",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Production Errors",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Extended Production Errors",
+        "page_number": 27
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "XFRM_E_MALFORMED_MESSAGE",
+        "page_number": 27
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Error Notification",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "API specification",
+        "page_number": 28
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Imported types",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Type definitions",
+        "page_number": 28
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Function definitions",
+        "page_number": 28
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "<Mip>_<transformerId>",
+        "page_number": 30
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "<Mip>_Inv_<transformerId>",
+        "page_number": 36
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "<Mip>_Init",
+        "page_number": 41
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "<Mip>_DeInit",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "<Mip>_GetVersionInfo",
+        "page_number": 42
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Callback notifications",
+        "page_number": 42
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Scheduled functions",
+        "page_number": 42
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Expected interfaces",
+        "page_number": 43
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Sequence diagrams",
+        "page_number": 44
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Configuration specification",
+        "page_number": 45
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "How to read this chapter",
+        "page_number": 45
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "XfrmISignalRefChoice",
+        "page_number": 53
+      }
+    ]
+  }
+]

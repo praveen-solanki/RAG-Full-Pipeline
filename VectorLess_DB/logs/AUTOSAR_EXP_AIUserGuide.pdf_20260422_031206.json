@@ -1,0 +1,1301 @@
+[
+  {
+    "total_page_number": 102
+  },
+  {
+    "total_token": 49632
+  },
+  {
+    "toc_content": " Application Interfaces User Guide  \nAUTOSAR CP Release 4.4.0    \n \n4 of 102 Document ID 442: AUTOSAR_EXP_AIUserGuide  \n  - AUTOSAR confidential - \nTable of Contents  \n \n1 Purpose of this document  :  :  :   7 \n1.1 Document Overview  :  :  :   7 \n2 Introduction to Application Interfaces Table  :  :   8 \n2.1 Structural overview of Domains in AI Table  :  :   10 \n3 AUTOSAR Methodology  :  :  :   11 \n3.1 Overview on available documents  :  :   12 \n3.1.1  Software Co mponent Template [1]  :  :   12 \n3.1.2  Standardization Template [2]  :  :  . 12 \n3.1.3  Generic Structure Template [4]  :  :   12 \n3.1.4  AI Specification [6]  :  :  :   12 \n3.1.5  Modeling Guide for Application Interfaces [9]  :  :   12 \n3.1.6  AUTOSAR Methodology [10]  :  :  . 12 \n3.1.7  Explanation of Application Int erfaces for Domain Body Comfort [11]  :  13 \n3.1.8  Explanation of Application Interfaces for Domain Powertrain [12]  :   13 \n3.1.9  Explanation of Application Interfaces for Domain Chassis [13]  :   13 \n3.1.10  Explanation of Application Interfaces for Domain Occupant and \nPedestrian Safety [14]  :  :  :   13 \n3.1.11  Explanation of Application Interfaces for Domain Multimedia, \nTelematics, Human Machine Interface [15]  :  :   13 \n4 Metamodel representation of AI Table  :  :   14 \n4.1 Category of Model Elements  :  :  :  14 \n4.1.1  STANDARD  :  :  :   14 \n4.1.2  BLUEPRINT  :  :  :   14 \n4.1.3  EXAMPLE  :  :  :   15 \n4.2 Meta model diagrams and the AI Table  :  :   15 \n4.2.1  Composition  :  :  :   15 \n4.2.2  Blueprint Mapping & Blueprin tMappingSet :  :   21 \n4.2.3  PortPrototypes  :  :  :   21 \n4.2.4  PortInterfaces  :  :  :   24 \n4.2.5  DataTypes  :  :  :   27 \n4.2.6  Physical Units  :  :  :   33 \n4.2.7  Computation Methods  :  :  :   34 \n4.2.8  Keyword and KeywordSet  :  :  :  34 \n5 Backward Compatibility  :  :  :   37  Application Interfaces User Guide  \nAUTOSAR CP Release 4.4.0    \n \n5 of 102 Document ID 442: AUTOSAR_EXP_AIUserGuide  \n  - AUTOSAR confidential - \n5.1 Introduction  :  :  :  . 37 \n5.2 Backward Compatibility Definition  :  :   37 \n5.3 Summary  :  :  :  .... 40 \n6 Life Cycle States  :  :  :   41 \n6.1 Introduction  :  :  :  . 41 \n6.2 Representation in AI Table  :  :  :   41 \n6.3 Representation in meta model and arxml  :  :   42 \n7 View Concept in Application Interfaces (Variant Handling)  :   44 \n7.1 Introduction  :  :  :  . 44 \n7.2 Implementation in Application Int erfaces and Meta Model Representation  44 \n8 Structure of Application Interfaces (AI) Table  :  :   48 \n8.1 Main sheets of the AI Table  :  :  :   48 \n8.1.1  Sheet 04_Keywords  :  :  :   48 \n8.1.2  Sheet 05_TopLevel  :  :  :   49 \n8.1.3  Sheets 050xxxxx  :  :  :   52 \n8.1.4  Sheet 06_Interfaces_DataElements (SenderReceiverInterface)  :   53 \n8.1.5  Sheet 06_Interface_ClientServer  :  :   55 \n8.1.6  Sheet 07_DataTypes_ContinuousValue  :  :   57 \n8.1.7  Sheet 08_DataTypes_Enumeration  :  :   57 \n8.1.8  Sheet 09_DataTypes_Array  :  :  ... 59 \n8.1.9  Sheet 11_DataTypes_Record  :  :   60 \n8.1.10  Sheet 13_Units  :  :  :   62 \n8.1.11  Sheet 15_Redirected_Por ts :  :  ... 63 \n8.2 Complete List of all Sheets of the AI Table  :  :   64 \n9 Relationship between AI Table data and XML Output  :  :  67 \n9.1 Overview  :  :  :  .... 67 \n9.1.1  Dependencies of XML Generation  :  :   67 \n9.1.2  Contents of Generated XML  :  :  .. 67 \n9.1.3  Schema Structure  :  :  :   69 \n9.2 Common Elements  :  :  :   71 \n9.2.1  Package Structure  :  :  :   71 \n9.2.2  References  :  :  :   76 \n9.2.3  Instance References  :  :  :   76 \n9.2.4  Type References  :  :  :   77 \n9.2.5  Descriptions  :  :  :   77 \n9.3 Component Types  :  :  :   78 \n9.3.1  Composition Types  :  :  :   79 \n9.3.2  Ports :  :  :  :  80  Application Interfaces User Guide  \nAUTOSAR CP Release 4.4.0    \n \n6 of 102 Document ID 442: AUTOSAR_EXP_AIUserGuide  \n  - AUTOSAR confidential - \n9.3.3  Components  :  :  :   80 \n9.3.4  Connectors  :  :  :   81 \n9.4 PortPrototypeBlueprints  :  :  :   83 \n9.5 PortInterfaces  :  :  :   84 \n9.5.1  Sender -Receiver -Interface  :  :  :  84 \n9.5.2  Client -Server -Interface  :  :  :   85 \n9.6 Blueprint Mapping Sets :  :  :   87 \n9.7 Data Types  :  :  :  . 88 \n9.7.1  Continuous Value Types  :  :  :   88 \n9.7.2  Enumeration Types  :  :  :   92 \n9.7.3  Array Types  :  :  :   94 \n9.7.4  Record Types  :  :  :   95 \n9.7.5  Float Types  :  :  :   96 \n9.8 Units  :  :  :  :   96 \n9.9 Life Cycle State  :  :  :   97 \n9.10  Views  :  :  :  :   100  \n10 Refere nces  :  :  :  :  102  \n10.1  Standard documents  :  :  :   102  \n10.2  Auxiliary documents  :  :  :   102  \n ",
+    "toc_page_list": [
+      3,
+      4,
+      5
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this document', 'page': 7}, {'structure': '1.1', 'title': 'Document Overview', 'page': 7}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'page': 8}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'page': 10}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'page': 11}, {'structure': '3.1', 'title': 'Overview on available documents', 'page': 12}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'page': 12}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'page': 12}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'page': 12}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'page': 12}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'page': 12}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'page': 12}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'page': 13}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'page': 13}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'page': 13}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'page': 13}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'page': 13}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'page': 14}, {'structure': '4.1', 'title': 'Category of Model Elements', 'page': 14}, {'structure': '4.1.1', 'title': 'STANDARD', 'page': 14}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'page': 14}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'page': 15}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'page': 15}, {'structure': '4.2.1', 'title': 'Composition', 'page': 15}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'page': 21}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'page': 21}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'page': 24}, {'structure': '4.2.5', 'title': 'DataTypes', 'page': 27}, {'structure': '4.2.6', 'title': 'Physical Units', 'page': 33}, {'structure': '4.2.7', 'title': 'Computation Methods', 'page': 34}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'page': 34}, {'structure': '5', 'title': 'Backward Compatibility', 'page': 37}, {'structure': '5.1', 'title': 'Introduction', 'page': 37}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'page': 37}, {'structure': '5.3', 'title': 'Summary', 'page': 40}, {'structure': '6', 'title': 'Life Cycle States', 'page': 41}, {'structure': '6.1', 'title': 'Introduction', 'page': 41}, {'structure': '6.2', 'title': 'Representation in AI Table', 'page': 41}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'page': 42}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'page': 44}, {'structure': '7.1', 'title': 'Introduction', 'page': 44}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'page': 44}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'page': 48}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'page': 48}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'page': 48}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'page': 49}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'page': 52}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'page': 53}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'page': 55}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'page': 57}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'page': 57}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'page': 59}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'page': 60}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'page': 62}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'page': 63}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'page': 64}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'page': 67}, {'structure': '9.1', 'title': 'Overview', 'page': 67}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'page': 67}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'page': 67}, {'structure': '9.1.3', 'title': 'Schema Structure', 'page': 69}, {'structure': '9.2', 'title': 'Common Elements', 'page': 71}, {'structure': '9.2.1', 'title': 'Package Structure', 'page': 71}, {'structure': '9.2.2', 'title': 'References', 'page': 76}, {'structure': '9.2.3', 'title': 'Instance References', 'page': 76}, {'structure': '9.2.4', 'title': 'Type References', 'page': 77}, {'structure': '9.2.5', 'title': 'Descriptions', 'page': 77}, {'structure': '9.3', 'title': 'Component Types', 'page': 78}, {'structure': '9.3.1', 'title': 'Composition Types', 'page': 79}, {'structure': '9.3.2', 'title': 'Ports', 'page': 80}, {'structure': '9.3.3', 'title': 'Components', 'page': 80}, {'structure': '9.3.4', 'title': 'Connectors', 'page': 81}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'page': 83}, {'structure': '9.5', 'title': 'PortInterfaces', 'page': 84}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'page': 84}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'page': 85}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'page': 87}, {'structure': '9.7', 'title': 'Data Types', 'page': 88}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'page': 88}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'page': 92}, {'structure': '9.7.3', 'title': 'Array Types', 'page': 94}, {'structure': '9.7.4', 'title': 'Record Types', 'page': 95}, {'structure': '9.7.5', 'title': 'Float Types', 'page': 96}, {'structure': '9.8', 'title': 'Units', 'page': 96}, {'structure': '9.9', 'title': 'Life Cycle State', 'page': 97}, {'structure': '9.10', 'title': 'Views', 'page': 100}, {'structure': '10', 'title': 'References', 'page': 102}, {'structure': '10.1', 'title': 'Standard documents', 'page': 102}, {'structure': '10.2', 'title': 'Auxiliary documents', 'page': 102}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': '<physical_index_8>'}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': '<physical_index_11>'}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': '<physical_index_13>'}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': '<physical_index_15>'}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': '<physical_index_15>'}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': '<physical_index_15>'}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': '<physical_index_21>'}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': '<physical_index_21>'}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': '<physical_index_24>'}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': '<physical_index_27>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': 8}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': 10}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': 11}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': 12}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': 12}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': 12}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': 12}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': 12}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': 12}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': 12}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': 13}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': 13}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': 13}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': 13}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': 13}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': 14}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': 14}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': 14}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': 14}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': 15}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': 15}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': 15}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': 21}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': 21}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': 24}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': 27}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Purpose of this document', 'page': 7, 'physical_index': 7}, {'title': 'Document Overview', 'page': 7, 'physical_index': 7}, {'title': 'Introduction to Application Interfaces Table', 'page': 8, 'physical_index': 8}, {'title': 'Structural overview of Domains in AI Table', 'page': 10, 'physical_index': 10}, {'title': 'AUTOSAR Methodology', 'page': 11, 'physical_index': 11}, {'title': 'Overview on available documents', 'page': 12, 'physical_index': 12}, {'title': 'Software Component Template [1]', 'page': 12, 'physical_index': 12}, {'title': 'Standardization Template [2]', 'page': 12, 'physical_index': 12}, {'title': 'Generic Structure Template [4]', 'page': 12, 'physical_index': 12}, {'title': 'AI Specification [6]', 'page': 12, 'physical_index': 12}, {'title': 'Modeling Guide for Application Interfaces [9]', 'page': 12, 'physical_index': 12}, {'title': 'AUTOSAR Methodology [10]', 'page': 12, 'physical_index': 12}, {'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'page': 13, 'physical_index': 13}, {'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'page': 13, 'physical_index': 13}, {'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'page': 13, 'physical_index': 13}, {'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'page': 13, 'physical_index': 13}, {'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'page': 13, 'physical_index': 13}, {'title': 'Metamodel representation of AI Table', 'page': 14, 'physical_index': 14}, {'title': 'Category of Model Elements', 'page': 14, 'physical_index': 14}, {'title': 'STANDARD', 'page': 14, 'physical_index': 14}, {'title': 'BLUEPRINT', 'page': 14, 'physical_index': 14}, {'title': 'EXAMPLE', 'page': 15, 'physical_index': 15}, {'title': 'Meta model diagrams and the AI Table', 'page': 15, 'physical_index': 15}, {'title': 'Composition', 'page': 15, 'physical_index': 15}, {'title': 'Blueprint Mapping & BlueprintMappingSet', 'page': 21, 'physical_index': 21}, {'title': 'PortPrototypes', 'page': 21, 'physical_index': 21}, {'title': 'PortInterfaces', 'page': 24, 'physical_index': 24}, {'title': 'PortInterfaces', 'page': 84, 'physical_index': 24}, {'title': 'DataTypes', 'page': 27, 'physical_index': 27}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': 8}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': 10}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': 11}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': 12}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': 12}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': 12}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': 12}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': 12}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': 12}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': 12}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': 13}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': 13}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': 13}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': 13}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': 13}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': 14}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': 14}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': 14}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': 14}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': 15}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': 15}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': 15}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': 21}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': 21}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': 24}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': 27}, {'structure': '4.2.6', 'title': 'Physical Units', 'physical_index': 33}, {'structure': '4.2.7', 'title': 'Computation Methods', 'physical_index': 34}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'physical_index': 34}, {'structure': '5', 'title': 'Backward Compatibility', 'physical_index': 37}, {'structure': '5.1', 'title': 'Introduction', 'physical_index': 37}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'physical_index': 37}, {'structure': '5.3', 'title': 'Summary', 'physical_index': 40}, {'structure': '6', 'title': 'Life Cycle States', 'physical_index': 41}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 41}, {'structure': '6.2', 'title': 'Representation in AI Table', 'physical_index': 41}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'physical_index': 42}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'physical_index': 44}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 44}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'physical_index': 44}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'physical_index': 48}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'physical_index': 48}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'physical_index': 48}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'physical_index': 49}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'physical_index': 52}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'physical_index': 53}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'physical_index': 55}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'physical_index': 57}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'physical_index': 57}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'physical_index': 59}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'physical_index': 60}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'physical_index': 62}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'physical_index': 63}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'physical_index': 64}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'physical_index': 67}, {'structure': '9.1', 'title': 'Overview', 'physical_index': 67}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'physical_index': 67}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'physical_index': 67}, {'structure': '9.1.3', 'title': 'Schema Structure', 'physical_index': 69}, {'structure': '9.2', 'title': 'Common Elements', 'physical_index': 71}, {'structure': '9.2.1', 'title': 'Package Structure', 'physical_index': 71}, {'structure': '9.2.2', 'title': 'References', 'physical_index': 76}, {'structure': '9.2.3', 'title': 'Instance References', 'physical_index': 76}, {'structure': '9.2.4', 'title': 'Type References', 'physical_index': 77}, {'structure': '9.2.5', 'title': 'Descriptions', 'physical_index': 77}, {'structure': '9.3', 'title': 'Component Types', 'physical_index': 78}, {'structure': '9.3.1', 'title': 'Composition Types', 'physical_index': 79}, {'structure': '9.3.2', 'title': 'Ports', 'physical_index': 80}, {'structure': '9.3.3', 'title': 'Components', 'physical_index': 80}, {'structure': '9.3.4', 'title': 'Connectors', 'physical_index': 81}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'physical_index': 83}, {'structure': '9.5', 'title': 'PortInterfaces', 'physical_index': 84}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'physical_index': 84}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'physical_index': 85}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'physical_index': 87}, {'structure': '9.7', 'title': 'Data Types', 'physical_index': 88}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'physical_index': 88}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'physical_index': 92}, {'structure': '9.7.3', 'title': 'Array Types', 'physical_index': 94}, {'structure': '9.7.4', 'title': 'Record Types', 'physical_index': 95}, {'structure': '9.7.5', 'title': 'Float Types', 'physical_index': 96}, {'structure': '9.8', 'title': 'Units', 'physical_index': 96}, {'structure': '9.9', 'title': 'Life Cycle State', 'physical_index': 97}, {'structure': '9.10', 'title': 'Views', 'physical_index': 100}, {'structure': '10', 'title': 'References', 'physical_index': 102}, {'structure': '10.1', 'title': 'Standard documents', 'physical_index': 102}, {'structure': '10.2', 'title': 'Auxiliary documents', 'physical_index': 102}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': 8}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': 10}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': 11}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': 12}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': 12}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': 12}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': 12}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': 12}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': 12}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': 12}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': 13}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': 13}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': 13}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': 13}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': 13}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': 14}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': 14}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': 14}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': 14}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': 15}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': 15}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': 15}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': 21}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': 21}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': 24}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': 27}, {'structure': '4.2.6', 'title': 'Physical Units', 'physical_index': 33}, {'structure': '4.2.7', 'title': 'Computation Methods', 'physical_index': 34}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'physical_index': 34}, {'structure': '5', 'title': 'Backward Compatibility', 'physical_index': 37}, {'structure': '5.1', 'title': 'Introduction', 'physical_index': 37}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'physical_index': 37}, {'structure': '5.3', 'title': 'Summary', 'physical_index': 40}, {'structure': '6', 'title': 'Life Cycle States', 'physical_index': 41}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 41}, {'structure': '6.2', 'title': 'Representation in AI Table', 'physical_index': 41}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'physical_index': 42}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'physical_index': 44}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 44}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'physical_index': 44}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'physical_index': 48}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'physical_index': 48}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'physical_index': 48}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'physical_index': 49}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'physical_index': 52}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'physical_index': 53}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'physical_index': 55}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'physical_index': 57}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'physical_index': 57}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'physical_index': 59}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'physical_index': 60}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'physical_index': 62}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'physical_index': 63}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'physical_index': 64}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'physical_index': 67}, {'structure': '9.1', 'title': 'Overview', 'physical_index': 67}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'physical_index': 67}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'physical_index': 67}, {'structure': '9.1.3', 'title': 'Schema Structure', 'physical_index': 69}, {'structure': '9.2', 'title': 'Common Elements', 'physical_index': 71}, {'structure': '9.2.1', 'title': 'Package Structure', 'physical_index': 71}, {'structure': '9.2.2', 'title': 'References', 'physical_index': 76}, {'structure': '9.2.3', 'title': 'Instance References', 'physical_index': 76}, {'structure': '9.2.4', 'title': 'Type References', 'physical_index': 77}, {'structure': '9.2.5', 'title': 'Descriptions', 'physical_index': 77}, {'structure': '9.3', 'title': 'Component Types', 'physical_index': 78}, {'structure': '9.3.1', 'title': 'Composition Types', 'physical_index': 79}, {'structure': '9.3.2', 'title': 'Ports', 'physical_index': 80}, {'structure': '9.3.3', 'title': 'Components', 'physical_index': 80}, {'structure': '9.3.4', 'title': 'Connectors', 'physical_index': 81}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'physical_index': 83}, {'structure': '9.5', 'title': 'PortInterfaces', 'physical_index': 84}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'physical_index': 84}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'physical_index': 85}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'physical_index': 87}, {'structure': '9.7', 'title': 'Data Types', 'physical_index': 88}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'physical_index': 88}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'physical_index': 92}, {'structure': '9.7.3', 'title': 'Array Types', 'physical_index': 94}, {'structure': '9.7.4', 'title': 'Record Types', 'physical_index': 95}, {'structure': '9.7.5', 'title': 'Float Types', 'physical_index': 96}, {'structure': '9.8', 'title': 'Units', 'physical_index': 96}, {'structure': '9.9', 'title': 'Life Cycle State', 'physical_index': 97}, {'structure': '9.10', 'title': 'Views', 'physical_index': 100}, {'structure': '10', 'title': 'References', 'physical_index': 102}, {'structure': '10.1', 'title': 'Standard documents', 'physical_index': 102}, {'structure': '10.2', 'title': 'Auxiliary documents', 'physical_index': 102}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.24719101123595505,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "BLUEPRINT",
+        "page_number": 14
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "EXAMPLE",
+        "page_number": 15
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Meta model diagrams and the AI Table",
+        "page_number": 15
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Composition",
+        "page_number": 15
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Blueprint Mapping & BlueprintMappingSet",
+        "page_number": 21
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "PortPrototypes",
+        "page_number": 21
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "PortInterfaces",
+        "page_number": 24
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "DataTypes",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Physical Units",
+        "page_number": 33
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Computation Methods",
+        "page_number": 34
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Keyword and KeywordSet",
+        "page_number": 34
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Backward Compatibility",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 37
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Backward Compatibility Definition",
+        "page_number": 37
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 40
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Life Cycle States",
+        "page_number": 41
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 41
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Representation in AI Table",
+        "page_number": 41
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Representation in meta model and arxml",
+        "page_number": 42
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "View Concept in Application Interfaces (Variant Handling)",
+        "page_number": 44
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 44
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Implementation in Application Interfaces and Meta Model Representation",
+        "page_number": 44
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Structure of Application Interfaces (AI) Table",
+        "page_number": 48
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Main sheets of the AI Table",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Sheet 04_Keywords",
+        "page_number": 48
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Sheet 05_TopLevel",
+        "page_number": 49
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Sheets 050xxxxx",
+        "page_number": 52
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Sheet 06_Interfaces_DataElements (SenderReceiverInterface)",
+        "page_number": 53
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Sheet 06_Interface_ClientServer",
+        "page_number": 55
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Sheet 07_DataTypes_ContinuousValue",
+        "page_number": 57
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Sheet 08_DataTypes_Enumeration",
+        "page_number": 57
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Sheet 09_DataTypes_Array",
+        "page_number": 59
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Sheet 11_DataTypes_Record",
+        "page_number": 60
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Sheet 13_Units",
+        "page_number": 62
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Sheet 15_Redirected_Ports",
+        "page_number": 63
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Complete List of all Sheets of the AI Table",
+        "page_number": 64
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Relationship between AI Table data and XML Output",
+        "page_number": 67
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 67
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Dependencies of XML Generation",
+        "page_number": 67
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Contents of Generated XML",
+        "page_number": 67
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Schema Structure",
+        "page_number": 69
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Common Elements",
+        "page_number": 71
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Package Structure",
+        "page_number": 71
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "References",
+        "page_number": 76
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Instance References",
+        "page_number": 76
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Type References",
+        "page_number": 77
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Descriptions",
+        "page_number": 77
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Component Types",
+        "page_number": 78
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Composition Types",
+        "page_number": 79
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Ports",
+        "page_number": 80
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Components",
+        "page_number": 80
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Connectors",
+        "page_number": 81
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "PortPrototypeBlueprints",
+        "page_number": 83
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "PortInterfaces",
+        "page_number": 84
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Sender-Receiver-Interface",
+        "page_number": 84
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Client-Server-Interface",
+        "page_number": 85
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Blueprint Mapping Sets",
+        "page_number": 87
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Data Types",
+        "page_number": 88
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Continuous Value Types",
+        "page_number": 88
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Enumeration Types",
+        "page_number": 92
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Array Types",
+        "page_number": 94
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Float Types",
+        "page_number": 96
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Units",
+        "page_number": 96
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Life Cycle State",
+        "page_number": 97
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Views",
+        "page_number": 100
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "References",
+        "page_number": 102
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Standard documents",
+        "page_number": 102
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Purpose of this document', 'page': 7}, {'structure': '1.1', 'title': 'Document Overview', 'page': 7}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'page': 8}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'page': 10}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'page': 11}, {'structure': '3.1', 'title': 'Overview on available documents', 'page': 12}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'page': 12}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'page': 12}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'page': 12}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'page': 12}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'page': 12}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'page': 12}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'page': 13}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'page': 13}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'page': 13}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'page': 13}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'page': 13}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'page': 14}, {'structure': '4.1', 'title': 'Category of Model Elements', 'page': 14}, {'structure': '4.1.1', 'title': 'STANDARD', 'page': 14}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'page': 14}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'page': 15}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'page': 15}, {'structure': '4.2.1', 'title': 'Composition', 'page': 15}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'page': 21}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'page': 21}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'page': 24}, {'structure': '4.2.5', 'title': 'DataTypes', 'page': 27}, {'structure': '4.2.6', 'title': 'Physical Units', 'page': 33}, {'structure': '4.2.7', 'title': 'Computation Methods', 'page': 34}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'page': 34}, {'structure': '5', 'title': 'Backward Compatibility', 'page': 37}, {'structure': '5.1', 'title': 'Introduction', 'page': 37}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'page': 37}, {'structure': '5.3', 'title': 'Summary', 'page': 40}, {'structure': '6', 'title': 'Life Cycle States', 'page': 41}, {'structure': '6.1', 'title': 'Introduction', 'page': 41}, {'structure': '6.2', 'title': 'Representation in AI Table', 'page': 41}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'page': 42}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'page': 44}, {'structure': '7.1', 'title': 'Introduction', 'page': 44}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'page': 44}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'page': 48}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'page': 48}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'page': 48}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'page': 49}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'page': 52}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'page': 53}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'page': 55}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'page': 57}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'page': 57}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'page': 59}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'page': 60}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'page': 62}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'page': 63}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'page': 64}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'page': 67}, {'structure': '9.1', 'title': 'Overview', 'page': 67}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'page': 67}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'page': 67}, {'structure': '9.1.3', 'title': 'Schema Structure', 'page': 69}, {'structure': '9.2', 'title': 'Common Elements', 'page': 71}, {'structure': '9.2.1', 'title': 'Package Structure', 'page': 71}, {'structure': '9.2.2', 'title': 'References', 'page': 76}, {'structure': '9.2.3', 'title': 'Instance References', 'page': 76}, {'structure': '9.2.4', 'title': 'Type References', 'page': 77}, {'structure': '9.2.5', 'title': 'Descriptions', 'page': 77}, {'structure': '9.3', 'title': 'Component Types', 'page': 78}, {'structure': '9.3.1', 'title': 'Composition Types', 'page': 79}, {'structure': '9.3.2', 'title': 'Ports', 'page': 80}, {'structure': '9.3.3', 'title': 'Components', 'page': 80}, {'structure': '9.3.4', 'title': 'Connectors', 'page': 81}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'page': 83}, {'structure': '9.5', 'title': 'PortInterfaces', 'page': 84}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'page': 84}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'page': 85}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'page': 87}, {'structure': '9.7', 'title': 'Data Types', 'page': 88}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'page': 88}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'page': 92}, {'structure': '9.7.3', 'title': 'Array Types', 'page': 94}, {'structure': '9.7.4', 'title': 'Record Types', 'page': 95}, {'structure': '9.7.5', 'title': 'Float Types', 'page': 96}, {'structure': '9.8', 'title': 'Units', 'page': 96}, {'structure': '9.9', 'title': 'Life Cycle State', 'page': 97}, {'structure': '9.10', 'title': 'Views', 'page': 100}, {'structure': '10', 'title': 'References', 'page': 102}, {'structure': '10.1', 'title': 'Standard documents', 'page': 102}, {'structure': '10.2', 'title': 'Auxiliary documents', 'page': 102}]"
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': '<physical_index_8>'}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': '<physical_index_11>'}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': '<physical_index_13>'}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': '<physical_index_15>'}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': '<physical_index_15>'}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': '<physical_index_16>'}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': '<physical_index_18>'}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': '<physical_index_21>'}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': '<physical_index_24>'}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': '<physical_index_27>'}, {'structure': '4.2.6', 'title': 'Physical Units', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.7', 'title': 'Computation Methods', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'physical_index': '<physical_index_34>'}, {'structure': '5', 'title': 'Backward Compatibility', 'physical_index': '<physical_index_37>'}, {'structure': '5.1', 'title': 'Introduction', 'physical_index': '<physical_index_37>'}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'physical_index': '<physical_index_38>'}, {'structure': '5.3', 'title': 'Summary', 'physical_index': '<physical_index_40>'}, {'structure': '6', 'title': 'Life Cycle States', 'physical_index': '<physical_index_41>'}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': '<physical_index_41>'}, {'structure': '6.2', 'title': 'Representation in AI Table', 'physical_index': '<physical_index_41>'}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'physical_index': '<physical_index_42>'}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'physical_index': '<physical_index_44>'}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': '<physical_index_44>'}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'physical_index': '<physical_index_44>'}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'physical_index': '<physical_index_48>'}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'physical_index': '<physical_index_48>'}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'physical_index': '<physical_index_48>'}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'physical_index': '<physical_index_49>'}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'physical_index': '<physical_index_52>'}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'physical_index': '<physical_index_53>'}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'physical_index': '<physical_index_55>'}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'physical_index': '<physical_index_57>'}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'physical_index': '<physical_index_57>'}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'physical_index': '<physical_index_59>'}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'physical_index': '<physical_index_60>'}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'physical_index': '<physical_index_62>'}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'physical_index': '<physical_index_63>'}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'physical_index': '<physical_index_64>'}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'physical_index': '<physical_index_67>'}, {'structure': '9.1', 'title': 'Overview', 'physical_index': '<physical_index_67>'}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'physical_index': '<physical_index_67>'}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'physical_index': '<physical_index_67>'}, {'structure': '9.1.3', 'title': 'Schema Structure', 'physical_index': '<physical_index_69>'}, {'structure': '9.2', 'title': 'Common Elements', 'physical_index': '<physical_index_71>'}, {'structure': '9.2.1', 'title': 'Package Structure', 'physical_index': '<physical_index_71>'}, {'structure': '9.2.2', 'title': 'References', 'physical_index': '<physical_index_76>'}, {'structure': '9.2.3', 'title': 'Instance References', 'physical_index': '<physical_index_76>'}, {'structure': '9.2.4', 'title': 'Type References', 'physical_index': '<physical_index_77>'}, {'structure': '9.2.5', 'title': 'Descriptions', 'physical_index': '<physical_index_77>'}, {'structure': '9.3', 'title': 'Component Types', 'physical_index': '<physical_index_78>'}, {'structure': '9.3.1', 'title': 'Composition Types', 'physical_index': '<physical_index_79>'}, {'structure': '9.3.2', 'title': 'Ports', 'physical_index': '<physical_index_80>'}, {'structure': '9.3.3', 'title': 'Components', 'physical_index': '<physical_index_80>'}, {'structure': '9.3.4', 'title': 'Connectors', 'physical_index': '<physical_index_81>'}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'physical_index': '<physical_index_83>'}, {'structure': '9.5', 'title': 'PortInterfaces', 'physical_index': '<physical_index_84>'}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'physical_index': '<physical_index_84>'}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'physical_index': '<physical_index_85>'}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'physical_index': '<physical_index_87>'}, {'structure': '9.7', 'title': 'Data Types', 'physical_index': '<physical_index_88>'}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'physical_index': '<physical_index_88>'}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'physical_index': '<physical_index_92>'}, {'structure': '9.7.3', 'title': 'Array Types', 'physical_index': '<physical_index_94>'}, {'structure': '9.7.4', 'title': 'Record Types', 'physical_index': '<physical_index_95>'}, {'structure': '9.7.5', 'title': 'Float Types', 'physical_index': '<physical_index_96>'}, {'structure': '9.8', 'title': 'Units', 'physical_index': '<physical_index_96>'}, {'structure': '9.9', 'title': 'Life Cycle State', 'physical_index': '<physical_index_97>'}, {'structure': '9.10', 'title': 'Views', 'physical_index': '<physical_index_100>'}, {'structure': '10', 'title': 'References', 'physical_index': '<physical_index_102>'}, {'structure': '10.1', 'title': 'Standard documents', 'physical_index': '<physical_index_102>'}, {'structure': '10.2', 'title': 'Auxiliary documents', 'physical_index': '<physical_index_102>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': 8}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': 10}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': 11}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': 12}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': 12}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': 12}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': 12}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': 12}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': 12}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': 12}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': 13}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': 13}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': 13}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': 13}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': 13}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': 14}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': 14}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': 14}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': 14}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': 15}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': 15}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': 16}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': 18}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': 21}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': 24}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': 27}, {'structure': '4.2.6', 'title': 'Physical Units', 'physical_index': 33}, {'structure': '4.2.7', 'title': 'Computation Methods', 'physical_index': 34}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'physical_index': 34}, {'structure': '5', 'title': 'Backward Compatibility', 'physical_index': 37}, {'structure': '5.1', 'title': 'Introduction', 'physical_index': 37}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'physical_index': 38}, {'structure': '5.3', 'title': 'Summary', 'physical_index': 40}, {'structure': '6', 'title': 'Life Cycle States', 'physical_index': 41}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 41}, {'structure': '6.2', 'title': 'Representation in AI Table', 'physical_index': 41}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'physical_index': 42}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'physical_index': 44}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 44}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'physical_index': 44}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'physical_index': 48}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'physical_index': 48}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'physical_index': 48}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'physical_index': 49}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'physical_index': 52}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'physical_index': 53}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'physical_index': 55}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'physical_index': 57}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'physical_index': 57}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'physical_index': 59}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'physical_index': 60}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'physical_index': 62}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'physical_index': 63}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'physical_index': 64}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'physical_index': 67}, {'structure': '9.1', 'title': 'Overview', 'physical_index': 67}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'physical_index': 67}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'physical_index': 67}, {'structure': '9.1.3', 'title': 'Schema Structure', 'physical_index': 69}, {'structure': '9.2', 'title': 'Common Elements', 'physical_index': 71}, {'structure': '9.2.1', 'title': 'Package Structure', 'physical_index': 71}, {'structure': '9.2.2', 'title': 'References', 'physical_index': 76}, {'structure': '9.2.3', 'title': 'Instance References', 'physical_index': 76}, {'structure': '9.2.4', 'title': 'Type References', 'physical_index': 77}, {'structure': '9.2.5', 'title': 'Descriptions', 'physical_index': 77}, {'structure': '9.3', 'title': 'Component Types', 'physical_index': 78}, {'structure': '9.3.1', 'title': 'Composition Types', 'physical_index': 79}, {'structure': '9.3.2', 'title': 'Ports', 'physical_index': 80}, {'structure': '9.3.3', 'title': 'Components', 'physical_index': 80}, {'structure': '9.3.4', 'title': 'Connectors', 'physical_index': 81}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'physical_index': 83}, {'structure': '9.5', 'title': 'PortInterfaces', 'physical_index': 84}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'physical_index': 84}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'physical_index': 85}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'physical_index': 87}, {'structure': '9.7', 'title': 'Data Types', 'physical_index': 88}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'physical_index': 88}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'physical_index': 92}, {'structure': '9.7.3', 'title': 'Array Types', 'physical_index': 94}, {'structure': '9.7.4', 'title': 'Record Types', 'physical_index': 95}, {'structure': '9.7.5', 'title': 'Float Types', 'physical_index': 96}, {'structure': '9.8', 'title': 'Units', 'physical_index': 96}, {'structure': '9.9', 'title': 'Life Cycle State', 'physical_index': 97}, {'structure': '9.10', 'title': 'Views', 'physical_index': 100}, {'structure': '10', 'title': 'References', 'physical_index': 102}, {'structure': '10.1', 'title': 'Standard documents', 'physical_index': 102}, {'structure': '10.2', 'title': 'Auxiliary documents', 'physical_index': 102}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.24719101123595505,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "BLUEPRINT",
+        "page_number": 14
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "EXAMPLE",
+        "page_number": 15
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Meta model diagrams and the AI Table",
+        "page_number": 15
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Composition",
+        "page_number": 16
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Blueprint Mapping & BlueprintMappingSet",
+        "page_number": 18
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "PortPrototypes",
+        "page_number": 21
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "PortInterfaces",
+        "page_number": 24
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "DataTypes",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Physical Units",
+        "page_number": 33
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Computation Methods",
+        "page_number": 34
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Keyword and KeywordSet",
+        "page_number": 34
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Backward Compatibility",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 37
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Backward Compatibility Definition",
+        "page_number": 38
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 40
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Life Cycle States",
+        "page_number": 41
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 41
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Representation in AI Table",
+        "page_number": 41
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Representation in meta model and arxml",
+        "page_number": 42
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "View Concept in Application Interfaces (Variant Handling)",
+        "page_number": 44
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 44
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Implementation in Application Interfaces and Meta Model Representation",
+        "page_number": 44
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Structure of Application Interfaces (AI) Table",
+        "page_number": 48
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Main sheets of the AI Table",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Sheet 04_Keywords",
+        "page_number": 48
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Sheet 05_TopLevel",
+        "page_number": 49
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Sheets 050xxxxx",
+        "page_number": 52
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Sheet 06_Interfaces_DataElements (SenderReceiverInterface)",
+        "page_number": 53
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Sheet 06_Interface_ClientServer",
+        "page_number": 55
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Sheet 07_DataTypes_ContinuousValue",
+        "page_number": 57
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Sheet 08_DataTypes_Enumeration",
+        "page_number": 57
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Sheet 09_DataTypes_Array",
+        "page_number": 59
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Sheet 11_DataTypes_Record",
+        "page_number": 60
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Sheet 13_Units",
+        "page_number": 62
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Sheet 15_Redirected_Ports",
+        "page_number": 63
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Complete List of all Sheets of the AI Table",
+        "page_number": 64
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Relationship between AI Table data and XML Output",
+        "page_number": 67
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 67
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Dependencies of XML Generation",
+        "page_number": 67
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Contents of Generated XML",
+        "page_number": 67
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Schema Structure",
+        "page_number": 69
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Common Elements",
+        "page_number": 71
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Package Structure",
+        "page_number": 71
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "References",
+        "page_number": 76
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Instance References",
+        "page_number": 76
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Type References",
+        "page_number": 77
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Descriptions",
+        "page_number": 77
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Component Types",
+        "page_number": 78
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Composition Types",
+        "page_number": 79
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Ports",
+        "page_number": 80
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Components",
+        "page_number": 80
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Connectors",
+        "page_number": 81
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "PortPrototypeBlueprints",
+        "page_number": 83
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "PortInterfaces",
+        "page_number": 84
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Sender-Receiver-Interface",
+        "page_number": 84
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Client-Server-Interface",
+        "page_number": 85
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Blueprint Mapping Sets",
+        "page_number": 87
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Data Types",
+        "page_number": 88
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Continuous Value Types",
+        "page_number": 88
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Enumeration Types",
+        "page_number": 92
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Array Types",
+        "page_number": 94
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Record Types",
+        "page_number": 95
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Units",
+        "page_number": 96
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Life Cycle State",
+        "page_number": 97
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Views",
+        "page_number": 100
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "References",
+        "page_number": 102
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Auxiliary documents",
+        "page_number": 102
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': '<physical_index_8>'}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': '<physical_index_11>'}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': '<physical_index_12>'}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': '<physical_index_13>'}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': '<physical_index_13>'}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': '<physical_index_14>'}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': '<physical_index_15>'}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': '<physical_index_15>'}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': '<physical_index_15>'}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': '<physical_index_21>'}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': '<physical_index_24>'}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': '<physical_index_27>'}, {'structure': '4.2.6', 'title': 'Physical Units', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.7', 'title': 'Computation Methods', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'physical_index': '<physical_index_35>'}, {'structure': '5', 'title': 'Backward Compatibility', 'physical_index': '<physical_index_37>'}, {'structure': '5.1', 'title': 'Introduction', 'physical_index': '<physical_index_37>'}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'physical_index': '<physical_index_38>'}, {'structure': '5.3', 'title': 'Summary', 'physical_index': '<physical_index_40>'}, {'structure': '6', 'title': 'Life Cycle States', 'physical_index': '<physical_index_41>'}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': '<physical_index_41>'}, {'structure': '6.2', 'title': 'Representation in AI Table', 'physical_index': '<physical_index_41>'}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'physical_index': '<physical_index_42>'}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'physical_index': '<physical_index_44>'}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': '<physical_index_44>'}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'physical_index': '<physical_index_45>'}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'physical_index': '<physical_index_48>'}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'physical_index': '<physical_index_48>'}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'physical_index': '<physical_index_48>'}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'physical_index': '<physical_index_49>'}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'physical_index': '<physical_index_52>'}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'physical_index': '<physical_index_53>'}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'physical_index': '<physical_index_55>'}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'physical_index': '<physical_index_57>'}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'physical_index': '<physical_index_57>'}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'physical_index': '<physical_index_59>'}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'physical_index': '<physical_index_60>'}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'physical_index': '<physical_index_62>'}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'physical_index': '<physical_index_63>'}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'physical_index': '<physical_index_64>'}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'physical_index': '<physical_index_67>'}, {'structure': '9.1', 'title': 'Overview', 'physical_index': '<physical_index_67>'}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'physical_index': '<physical_index_67>'}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'physical_index': '<physical_index_67>'}, {'structure': '9.1.3', 'title': 'Schema Structure', 'physical_index': '<physical_index_69>'}, {'structure': '9.2', 'title': 'Common Elements', 'physical_index': '<physical_index_71>'}, {'structure': '9.2.1', 'title': 'Package Structure', 'physical_index': '<physical_index_71>'}, {'structure': '9.2.2', 'title': 'References', 'physical_index': '<physical_index_76>'}, {'structure': '9.2.3', 'title': 'Instance References', 'physical_index': '<physical_index_76>'}, {'structure': '9.2.4', 'title': 'Type References', 'physical_index': '<physical_index_77>'}, {'structure': '9.2.5', 'title': 'Descriptions', 'physical_index': '<physical_index_77>'}, {'structure': '9.3', 'title': 'Component Types', 'physical_index': '<physical_index_78>'}, {'structure': '9.3.1', 'title': 'Composition Types', 'physical_index': '<physical_index_79>'}, {'structure': '9.3.2', 'title': 'Ports', 'physical_index': '<physical_index_80>'}, {'structure': '9.3.3', 'title': 'Components', 'physical_index': '<physical_index_80>'}, {'structure': '9.3.4', 'title': 'Connectors', 'physical_index': '<physical_index_81>'}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'physical_index': '<physical_index_83>'}, {'structure': '9.5', 'title': 'PortInterfaces', 'physical_index': '<physical_index_84>'}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'physical_index': '<physical_index_84>'}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'physical_index': '<physical_index_85>'}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'physical_index': '<physical_index_87>'}, {'structure': '9.7', 'title': 'Data Types', 'physical_index': '<physical_index_88>'}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'physical_index': '<physical_index_88>'}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'physical_index': '<physical_index_92>'}, {'structure': '9.7.3', 'title': 'Array Types', 'physical_index': '<physical_index_94>'}, {'structure': '9.7.4', 'title': 'Record Types', 'physical_index': '<physical_index_95>'}, {'structure': '9.7.5', 'title': 'Float Types', 'physical_index': '<physical_index_96>'}, {'structure': '9.8', 'title': 'Units', 'physical_index': '<physical_index_96>'}, {'structure': '9.9', 'title': 'Life Cycle State', 'physical_index': '<physical_index_97>'}, {'structure': '9.10', 'title': 'Views', 'physical_index': '<physical_index_100>'}, {'structure': '10', 'title': 'References', 'physical_index': '<physical_index_102>'}, {'structure': '10.1', 'title': 'Standard documents', 'physical_index': '<physical_index_102>'}, {'structure': '10.2', 'title': 'Auxiliary documents', 'physical_index': '<physical_index_102>'}, {'structure': '9.3.5', 'title': 'PortPrototypeBlueprints', 'physical_index': '<physical_index_81>'}, {'structure': '9.7.6', 'title': 'Data Constraints', 'physical_index': '<physical_index_89>'}, {'structure': '9.7.7', 'title': 'Computation Methods', 'physical_index': '<physical_index_91>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose of this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Document Overview', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction to Application Interfaces Table', 'physical_index': 8}, {'structure': '2.1', 'title': 'Structural overview of Domains in AI Table', 'physical_index': 10}, {'structure': '3', 'title': 'AUTOSAR Methodology', 'physical_index': 11}, {'structure': '3.1', 'title': 'Overview on available documents', 'physical_index': 12}, {'structure': '3.1.1', 'title': 'Software Component Template [1]', 'physical_index': 12}, {'structure': '3.1.2', 'title': 'Standardization Template [2]', 'physical_index': 12}, {'structure': '3.1.3', 'title': 'Generic Structure Template [4]', 'physical_index': 12}, {'structure': '3.1.4', 'title': 'AI Specification [6]', 'physical_index': 12}, {'structure': '3.1.5', 'title': 'Modeling Guide for Application Interfaces [9]', 'physical_index': 12}, {'structure': '3.1.6', 'title': 'AUTOSAR Methodology [10]', 'physical_index': 12}, {'structure': '3.1.7', 'title': 'Explanation of Application Interfaces for Domain Body Comfort [11]', 'physical_index': 13}, {'structure': '3.1.8', 'title': 'Explanation of Application Interfaces for Domain Powertrain [12]', 'physical_index': 13}, {'structure': '3.1.9', 'title': 'Explanation of Application Interfaces for Domain Chassis [13]', 'physical_index': 13}, {'structure': '3.1.10', 'title': 'Explanation of Application Interfaces for Domain Occupant and Pedestrian Safety [14]', 'physical_index': 13}, {'structure': '3.1.11', 'title': 'Explanation of Application Interfaces for Domain Multimedia, Telematics, Human Machine Interface [15]', 'physical_index': 13}, {'structure': '4', 'title': 'Metamodel representation of AI Table', 'physical_index': 14}, {'structure': '4.1', 'title': 'Category of Model Elements', 'physical_index': 14}, {'structure': '4.1.1', 'title': 'STANDARD', 'physical_index': 14}, {'structure': '4.1.2', 'title': 'BLUEPRINT', 'physical_index': 14}, {'structure': '4.1.3', 'title': 'EXAMPLE', 'physical_index': 14}, {'structure': '4.2', 'title': 'Meta model diagrams and the AI Table', 'physical_index': 15}, {'structure': '4.2.1', 'title': 'Composition', 'physical_index': 15}, {'structure': '4.2.2', 'title': 'Blueprint Mapping & BlueprintMappingSet', 'physical_index': 15}, {'structure': '4.2.3', 'title': 'PortPrototypes', 'physical_index': 21}, {'structure': '4.2.4', 'title': 'PortInterfaces', 'physical_index': 24}, {'structure': '4.2.5', 'title': 'DataTypes', 'physical_index': 27}, {'structure': '4.2.6', 'title': 'Physical Units', 'physical_index': 33}, {'structure': '4.2.7', 'title': 'Computation Methods', 'physical_index': 34}, {'structure': '4.2.8', 'title': 'Keyword and KeywordSet', 'physical_index': 35}, {'structure': '5', 'title': 'Backward Compatibility', 'physical_index': 37}, {'structure': '5.1', 'title': 'Introduction', 'physical_index': 37}, {'structure': '5.2', 'title': 'Backward Compatibility Definition', 'physical_index': 38}, {'structure': '5.3', 'title': 'Summary', 'physical_index': 40}, {'structure': '6', 'title': 'Life Cycle States', 'physical_index': 41}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 41}, {'structure': '6.2', 'title': 'Representation in AI Table', 'physical_index': 41}, {'structure': '6.3', 'title': 'Representation in meta model and arxml', 'physical_index': 42}, {'structure': '7', 'title': 'View Concept in Application Interfaces (Variant Handling)', 'physical_index': 44}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 44}, {'structure': '7.2', 'title': 'Implementation in Application Interfaces and Meta Model Representation', 'physical_index': 45}, {'structure': '8', 'title': 'Structure of Application Interfaces (AI) Table', 'physical_index': 48}, {'structure': '8.1', 'title': 'Main sheets of the AI Table', 'physical_index': 48}, {'structure': '8.1.1', 'title': 'Sheet 04_Keywords', 'physical_index': 48}, {'structure': '8.1.2', 'title': 'Sheet 05_TopLevel', 'physical_index': 49}, {'structure': '8.1.3', 'title': 'Sheets 050xxxxx', 'physical_index': 52}, {'structure': '8.1.4', 'title': 'Sheet 06_Interfaces_DataElements (SenderReceiverInterface)', 'physical_index': 53}, {'structure': '8.1.5', 'title': 'Sheet 06_Interface_ClientServer', 'physical_index': 55}, {'structure': '8.1.6', 'title': 'Sheet 07_DataTypes_ContinuousValue', 'physical_index': 57}, {'structure': '8.1.7', 'title': 'Sheet 08_DataTypes_Enumeration', 'physical_index': 57}, {'structure': '8.1.8', 'title': 'Sheet 09_DataTypes_Array', 'physical_index': 59}, {'structure': '8.1.9', 'title': 'Sheet 11_DataTypes_Record', 'physical_index': 60}, {'structure': '8.1.10', 'title': 'Sheet 13_Units', 'physical_index': 62}, {'structure': '8.1.11', 'title': 'Sheet 15_Redirected_Ports', 'physical_index': 63}, {'structure': '8.2', 'title': 'Complete List of all Sheets of the AI Table', 'physical_index': 64}, {'structure': '9', 'title': 'Relationship between AI Table data and XML Output', 'physical_index': 67}, {'structure': '9.1', 'title': 'Overview', 'physical_index': 67}, {'structure': '9.1.1', 'title': 'Dependencies of XML Generation', 'physical_index': 67}, {'structure': '9.1.2', 'title': 'Contents of Generated XML', 'physical_index': 67}, {'structure': '9.1.3', 'title': 'Schema Structure', 'physical_index': 69}, {'structure': '9.2', 'title': 'Common Elements', 'physical_index': 71}, {'structure': '9.2.1', 'title': 'Package Structure', 'physical_index': 71}, {'structure': '9.2.2', 'title': 'References', 'physical_index': 76}, {'structure': '9.2.3', 'title': 'Instance References', 'physical_index': 76}, {'structure': '9.2.4', 'title': 'Type References', 'physical_index': 77}, {'structure': '9.2.5', 'title': 'Descriptions', 'physical_index': 77}, {'structure': '9.3', 'title': 'Component Types', 'physical_index': 78}, {'structure': '9.3.1', 'title': 'Composition Types', 'physical_index': 79}, {'structure': '9.3.2', 'title': 'Ports', 'physical_index': 80}, {'structure': '9.3.3', 'title': 'Components', 'physical_index': 80}, {'structure': '9.3.4', 'title': 'Connectors', 'physical_index': 81}, {'structure': '9.4', 'title': 'PortPrototypeBlueprints', 'physical_index': 83}, {'structure': '9.5', 'title': 'PortInterfaces', 'physical_index': 84}, {'structure': '9.5.1', 'title': 'Sender-Receiver-Interface', 'physical_index': 84}, {'structure': '9.5.2', 'title': 'Client-Server-Interface', 'physical_index': 85}, {'structure': '9.6', 'title': 'Blueprint Mapping Sets', 'physical_index': 87}, {'structure': '9.7', 'title': 'Data Types', 'physical_index': 88}, {'structure': '9.7.1', 'title': 'Continuous Value Types', 'physical_index': 88}, {'structure': '9.7.2', 'title': 'Enumeration Types', 'physical_index': 92}, {'structure': '9.7.3', 'title': 'Array Types', 'physical_index': 94}, {'structure': '9.7.4', 'title': 'Record Types', 'physical_index': 95}, {'structure': '9.7.5', 'title': 'Float Types', 'physical_index': 96}, {'structure': '9.8', 'title': 'Units', 'physical_index': 96}, {'structure': '9.9', 'title': 'Life Cycle State', 'physical_index': 97}, {'structure': '9.10', 'title': 'Views', 'physical_index': 100}, {'structure': '10', 'title': 'References', 'physical_index': 102}, {'structure': '10.1', 'title': 'Standard documents', 'physical_index': 102}, {'structure': '10.2', 'title': 'Auxiliary documents', 'physical_index': 102}, {'structure': '9.3.5', 'title': 'PortPrototypeBlueprints', 'physical_index': 81}, {'structure': '9.7.6', 'title': 'Data Constraints', 'physical_index': 89}, {'structure': '9.7.7', 'title': 'Computation Methods', 'physical_index': 91}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.2391304347826087,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "BLUEPRINT",
+        "page_number": 14
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "EXAMPLE",
+        "page_number": 14
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Meta model diagrams and the AI Table",
+        "page_number": 15
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Composition",
+        "page_number": 15
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Blueprint Mapping & BlueprintMappingSet",
+        "page_number": 15
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "PortPrototypes",
+        "page_number": 21
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "PortInterfaces",
+        "page_number": 24
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "DataTypes",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Physical Units",
+        "page_number": 33
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Computation Methods",
+        "page_number": 34
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Keyword and KeywordSet",
+        "page_number": 35
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Backward Compatibility",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 37
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Backward Compatibility Definition",
+        "page_number": 38
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 40
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Life Cycle States",
+        "page_number": 41
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 41
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Representation in AI Table",
+        "page_number": 41
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Representation in meta model and arxml",
+        "page_number": 42
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "View Concept in Application Interfaces (Variant Handling)",
+        "page_number": 44
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 44
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Implementation in Application Interfaces and Meta Model Representation",
+        "page_number": 45
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Structure of Application Interfaces (AI) Table",
+        "page_number": 48
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Main sheets of the AI Table",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Sheet 04_Keywords",
+        "page_number": 48
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Sheet 05_TopLevel",
+        "page_number": 49
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Sheets 050xxxxx",
+        "page_number": 52
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Sheet 06_Interfaces_DataElements (SenderReceiverInterface)",
+        "page_number": 53
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Sheet 06_Interface_ClientServer",
+        "page_number": 55
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Sheet 07_DataTypes_ContinuousValue",
+        "page_number": 57
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Sheet 08_DataTypes_Enumeration",
+        "page_number": 57
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Sheet 09_DataTypes_Array",
+        "page_number": 59
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Sheet 11_DataTypes_Record",
+        "page_number": 60
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Sheet 13_Units",
+        "page_number": 62
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Sheet 15_Redirected_Ports",
+        "page_number": 63
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Complete List of all Sheets of the AI Table",
+        "page_number": 64
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Relationship between AI Table data and XML Output",
+        "page_number": 67
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 67
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Dependencies of XML Generation",
+        "page_number": 67
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Contents of Generated XML",
+        "page_number": 67
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Schema Structure",
+        "page_number": 69
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Common Elements",
+        "page_number": 71
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Package Structure",
+        "page_number": 71
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "References",
+        "page_number": 76
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Instance References",
+        "page_number": 76
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Type References",
+        "page_number": 77
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Descriptions",
+        "page_number": 77
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Component Types",
+        "page_number": 78
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Composition Types",
+        "page_number": 79
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Ports",
+        "page_number": 80
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Components",
+        "page_number": 80
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Connectors",
+        "page_number": 81
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "PortPrototypeBlueprints",
+        "page_number": 83
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "PortInterfaces",
+        "page_number": 84
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Sender-Receiver-Interface",
+        "page_number": 84
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Client-Server-Interface",
+        "page_number": 85
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Blueprint Mapping Sets",
+        "page_number": 87
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Data Types",
+        "page_number": 88
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Continuous Value Types",
+        "page_number": 88
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Enumeration Types",
+        "page_number": 92
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Array Types",
+        "page_number": 94
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Record Types",
+        "page_number": 95
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Units",
+        "page_number": 96
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Life Cycle State",
+        "page_number": 97
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Views",
+        "page_number": 100
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Standard documents",
+        "page_number": 102
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Auxiliary documents",
+        "page_number": 102
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "PortPrototypeBlueprints",
+        "page_number": 81
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Data Constraints",
+        "page_number": 89
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Computation Methods",
+        "page_number": 91
+      }
+    ]
+  }
+]

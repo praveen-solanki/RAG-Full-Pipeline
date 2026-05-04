@@ -1,0 +1,658 @@
+[
+  {
+    "total_page_number": 37
+  },
+  {
+    "total_token": 15130
+  },
+  {
+    "toc_content": "Specification of Testability Protoc ol and Service \nPrimitives  \nAUTOSAR TC Release 1.2.0  \n3 of 37 Document ID 778: AUTOSAR_ PRS_TestabilityProtocolAndServicePrimitives   \n- AUTOSAR Confidential - \nTable of Contents  \n1 Introduction and Functional Overview  :  :  . 5 \n2 Acronyms and Abbreviations  :  :  :   6 \n3 Related Documentatio n :  :  :   7 \n3.1 Input documents  :  :  :   7 \n3.2 Related Standards and Norms  :  :  :  7 \n3.3 Related specification  :  :  :   7 \n4 Constraints and Assumpti ons :  :  :   8 \n4.1 Limitations  :  :  :  .... 8 \n4.2 Applicability to car domains  :  :  :   8 \n5 Intended context and applicability of protocol  :  :   9 \n5.1 Dependencies to other protocol layers  :  :   9 \n5.2 Depend encies to other standards and norms  :  :   9 \n6 Protocol Specification  :  :  :   10 \n6.1 Message Format and Protocol Fields  :  :   10 \n6.2 Message Exchange  :  :  :   11 \n6.3 States of Service Primitives  :  :  :   12 \n6.4 Default Behavior  :  :  :   12 \n6.5 Constraints  :  :  :  . 12 \n6.6 Extensibility  :  :  :   12 \n6.7 Data Types and Format  :  :  :   13 \n Boolean Type  :  :  :   13 \n Unsigned Type  :  :  :   13 \n Signed Type  :  :  :   13 \n Floating Point Type  :  :  :   13 \n Variable Length Type  :  :  :   14 \n6.8 Result IDs  :  :  :  ... 15 \n Standard Results  :  :  :   15 \n Testability Specific  :  :  :   15 \n Service Primitive Specific  :  :  .... 15 \n6.9 Service Groups :  :  :   16 \n General Group  :  :  :   16 \n UDP Group :  :  :   17 \n TCP Group  :  :  :   17 \n ICMP Group  :  :  :   17 \n ICMPv6 Group  :  :  :   18 \n IP Group  :  :  :   18 \n IPv6 Group  :  :  :   18 \n DHCP Group  :  :  :   18 Specification of Testability Protoc ol and Service \nPrimitives  \nAUTOSAR TC Release 1.2.0  \n4 of 37 Document ID 778: AUTOSAR_ PRS_TestabilityProtocolAndServicePrimitives   \n- AUTOSAR Confidential - \n DHCPv6 Group  :  :  :   19 \n ETH Group  :  :  :   19 \n PHY Group  :  :  :   19 \n6.10  Service Primitives  :  :  :   20 \n Get Version  :  :  :   21 \n Start Test :  :  :   21 \n End Test  :  :  :   22 \n Close Socket  :  :  :   22 \n Create and Bind  :  :  :   23 \n Send Data  :  :  :   24 \n Receive and Forward  :  :  :   25 \n Listen and Accept  :  :  :   26 \n Connect  :  :  :   26 \n Configure Socket  :  :  :   27 \n Read Signal Quality  :  :  :   28 \n Read Cable Diagn ostics Result  :  :   28 \n Activate PHY Test Mode :  :  .. 29 \n Set PHY Tx Mode  :  :  :   29 \n6.11  Standard Extensions  :  :  :   30 \n Shutdown  :  :  :   30 \n Interface Up :  :  :   30 \n Interface Down  :  :  :   31 \n Static Address  :  :  :   31 \n Static Route :  :  :   31 \n Initialize DHCP Client  :  :  :   32 \n Stop DHCP Client  :  :  :   32 \n Set DHCP Option  :  :  :   33 \n Echo Request  :  :  :   33 \n6.12  Use Cases  :  :  :  .. 34 \n UDP Transmit  :  :  :   34 \n UDP Receive and Count  :  :  :  35 \n TCP Server Transmit  :  :  :   35 \n TCP Client Receive and Forward  :  :   36 \n7 Changes to P revious Versions  :  :  :   37 \n \n ",
+    "toc_page_list": [
+      2,
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'page': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 6}, {'structure': '3', 'title': 'Related Documentation', 'page': 7}, {'structure': '3.1', 'title': 'Input documents', 'page': 7}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'page': 7}, {'structure': '3.3', 'title': 'Related specification', 'page': 7}, {'structure': '4', 'title': 'Constraints and Assumptions', 'page': 8}, {'structure': '4.1', 'title': 'Limitations', 'page': 8}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 8}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'page': 9}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'page': 9}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'page': 9}, {'structure': '6', 'title': 'Protocol Specification', 'page': 10}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'page': 10}, {'structure': '6.2', 'title': 'Message Exchange', 'page': 11}, {'structure': '6.3', 'title': 'States of Service Primitives', 'page': 12}, {'structure': '6.4', 'title': 'Default Behavior', 'page': 12}, {'structure': '6.5', 'title': 'Constraints', 'page': 12}, {'structure': '6.6', 'title': 'Extensibility', 'page': 12}, {'structure': '6.7', 'title': 'Data Types and Format', 'page': 13}, {'structure': '6.7.1', 'title': 'Boolean Type', 'page': 13}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'page': 13}, {'structure': '6.7.3', 'title': 'Signed Type', 'page': 13}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'page': 13}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'page': 14}, {'structure': '6.8', 'title': 'Result IDs', 'page': 15}, {'structure': '6.8.1', 'title': 'Standard Results', 'page': 15}, {'structure': '6.8.2', 'title': 'Testability Specific', 'page': 15}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'page': 15}, {'structure': '6.9', 'title': 'Service Groups', 'page': 16}, {'structure': '6.9.1', 'title': 'General Group', 'page': 16}, {'structure': '6.9.2', 'title': 'UDP Group', 'page': 17}, {'structure': '6.9.3', 'title': 'TCP Group', 'page': 17}, {'structure': '6.9.4', 'title': 'ICMP Group', 'page': 17}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'page': 18}, {'structure': '6.9.6', 'title': 'IP Group', 'page': 18}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'page': 18}, {'structure': '6.9.8', 'title': 'DHCP Group', 'page': 18}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'page': 19}, {'structure': '6.9.10', 'title': 'ETH Group', 'page': 19}, {'structure': '6.9.11', 'title': 'PHY Group', 'page': 19}, {'structure': '6.10', 'title': 'Service Primitives', 'page': 20}, {'structure': '6.10.1', 'title': 'Get Version', 'page': 21}, {'structure': '6.10.2', 'title': 'Start Test', 'page': 21}, {'structure': '6.10.3', 'title': 'End Test', 'page': 22}, {'structure': '6.10.4', 'title': 'Close Socket', 'page': 22}, {'structure': '6.10.5', 'title': 'Create and Bind', 'page': 23}, {'structure': '6.10.6', 'title': 'Send Data', 'page': 24}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'page': 25}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'page': 26}, {'structure': '6.10.9', 'title': 'Connect', 'page': 26}, {'structure': '6.10.10', 'title': 'Configure Socket', 'page': 27}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'page': 28}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'page': 28}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'page': 29}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'page': 29}, {'structure': '6.11', 'title': 'Standard Extensions', 'page': 30}, {'structure': '6.11.1', 'title': 'Shutdown', 'page': 30}, {'structure': '6.11.2', 'title': 'Interface Up', 'page': 30}, {'structure': '6.11.3', 'title': 'Interface Down', 'page': 31}, {'structure': '6.11.4', 'title': 'Static Address', 'page': 31}, {'structure': '6.11.5', 'title': 'Static Route', 'page': 31}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'page': 32}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'page': 32}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'page': 33}, {'structure': '6.11.9', 'title': 'Echo Request', 'page': 33}, {'structure': '6.12', 'title': 'Use Cases', 'page': 34}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'page': 34}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'page': 35}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'page': 35}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'page': 36}, {'structure': '7', 'title': 'Changes to Previous Versions', 'page': 37}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Related Documentation', 'physical_index': '<physical_index_7>'}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': '<physical_index_7>'}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'physical_index': '<physical_index_7>'}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': '<physical_index_7>'}, {'structure': '4', 'title': 'Constraints and Assumptions', 'physical_index': '<physical_index_8>'}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': '<physical_index_8>'}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': '<physical_index_8>'}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'physical_index': '<physical_index_9>'}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'physical_index': '<physical_index_9>'}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'physical_index': '<physical_index_9>'}, {'structure': '6', 'title': 'Protocol Specification', 'physical_index': '<physical_index_10>'}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'physical_index': '<physical_index_10>'}, {'structure': '6.2', 'title': 'Message Exchange', 'physical_index': '<physical_index_11>'}, {'structure': '6.3', 'title': 'States of Service Primitives', 'physical_index': '<physical_index_12>'}, {'structure': '6.4', 'title': 'Default Behavior', 'physical_index': '<physical_index_12>'}, {'structure': '6.5', 'title': 'Constraints', 'physical_index': '<physical_index_12>'}, {'structure': '6.6', 'title': 'Extensibility', 'physical_index': '<physical_index_12>'}, {'structure': '6.7', 'title': 'Data Types and Format', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.1', 'title': 'Boolean Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.3', 'title': 'Signed Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'physical_index': '<physical_index_14>'}, {'structure': '6.8', 'title': 'Result IDs', 'physical_index': '<physical_index_15>'}, {'structure': '6.8.1', 'title': 'Standard Results', 'physical_index': '<physical_index_15>'}, {'structure': '6.8.2', 'title': 'Testability Specific', 'physical_index': '<physical_index_15>'}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'physical_index': '<physical_index_15>'}, {'structure': '6.9', 'title': 'Service Groups', 'physical_index': '<physical_index_16>'}, {'structure': '6.9.1', 'title': 'General Group', 'physical_index': '<physical_index_16>'}, {'structure': '6.9.2', 'title': 'UDP Group', 'physical_index': '<physical_index_17>'}, {'structure': '6.9.3', 'title': 'TCP Group', 'physical_index': '<physical_index_17>'}, {'structure': '6.9.4', 'title': 'ICMP Group', 'physical_index': '<physical_index_17>'}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.6', 'title': 'IP Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.8', 'title': 'DHCP Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'physical_index': '<physical_index_19>'}, {'structure': '6.9.10', 'title': 'ETH Group', 'physical_index': '<physical_index_19>'}, {'structure': '6.9.11', 'title': 'PHY Group', 'physical_index': '<physical_index_19>'}, {'structure': '6.10', 'title': 'Service Primitives', 'physical_index': '<physical_index_20>'}, {'structure': '6.10.1', 'title': 'Get Version', 'physical_index': '<physical_index_21>'}, {'structure': '6.10.2', 'title': 'Start Test', 'physical_index': '<physical_index_21>'}, {'structure': '6.10.3', 'title': 'End Test', 'physical_index': '<physical_index_22>'}, {'structure': '6.10.4', 'title': 'Close Socket', 'physical_index': '<physical_index_22>'}, {'structure': '6.10.5', 'title': 'Create and Bind', 'physical_index': '<physical_index_23>'}, {'structure': '6.10.6', 'title': 'Send Data', 'physical_index': '<physical_index_24>'}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'physical_index': '<physical_index_25>'}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'physical_index': '<physical_index_26>'}, {'structure': '6.10.9', 'title': 'Connect', 'physical_index': '<physical_index_26>'}, {'structure': '6.10.10', 'title': 'Configure Socket', 'physical_index': '<physical_index_27>'}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'physical_index': '<physical_index_28>'}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'physical_index': '<physical_index_28>'}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'physical_index': '<physical_index_29>'}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'physical_index': '<physical_index_29>'}, {'structure': '6.11', 'title': 'Standard Extensions', 'physical_index': '<physical_index_30>'}, {'structure': '6.11.1', 'title': 'Shutdown', 'physical_index': '<physical_index_30>'}, {'structure': '6.11.2', 'title': 'Interface Up', 'physical_index': '<physical_index_30>'}, {'structure': '6.11.3', 'title': 'Interface Down', 'physical_index': '<physical_index_31>'}, {'structure': '6.11.4', 'title': 'Static Address', 'physical_index': '<physical_index_31>'}, {'structure': '6.11.5', 'title': 'Static Route', 'physical_index': '<physical_index_31>'}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'physical_index': '<physical_index_32>'}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'physical_index': '<physical_index_32>'}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'physical_index': '<physical_index_33>'}, {'structure': '6.11.9', 'title': 'Echo Request', 'physical_index': '<physical_index_33>'}, {'structure': '6.12', 'title': 'Use Cases', 'physical_index': '<physical_index_34>'}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'physical_index': '<physical_index_34>'}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'physical_index': '<physical_index_35>'}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'physical_index': '<physical_index_35>'}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'physical_index': '<physical_index_36>'}, {'structure': '7', 'title': 'Changes to Previous Versions', 'physical_index': '<physical_index_37>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related Documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'physical_index': 7}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 7}, {'structure': '4', 'title': 'Constraints and Assumptions', 'physical_index': 8}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 8}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 8}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'physical_index': 9}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'physical_index': 9}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'physical_index': 9}, {'structure': '6', 'title': 'Protocol Specification', 'physical_index': 10}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'physical_index': 10}, {'structure': '6.2', 'title': 'Message Exchange', 'physical_index': 11}, {'structure': '6.3', 'title': 'States of Service Primitives', 'physical_index': 12}, {'structure': '6.4', 'title': 'Default Behavior', 'physical_index': 12}, {'structure': '6.5', 'title': 'Constraints', 'physical_index': 12}, {'structure': '6.6', 'title': 'Extensibility', 'physical_index': 12}, {'structure': '6.7', 'title': 'Data Types and Format', 'physical_index': 13}, {'structure': '6.7.1', 'title': 'Boolean Type', 'physical_index': 13}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'physical_index': 13}, {'structure': '6.7.3', 'title': 'Signed Type', 'physical_index': 13}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'physical_index': 13}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'physical_index': 14}, {'structure': '6.8', 'title': 'Result IDs', 'physical_index': 15}, {'structure': '6.8.1', 'title': 'Standard Results', 'physical_index': 15}, {'structure': '6.8.2', 'title': 'Testability Specific', 'physical_index': 15}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'physical_index': 15}, {'structure': '6.9', 'title': 'Service Groups', 'physical_index': 16}, {'structure': '6.9.1', 'title': 'General Group', 'physical_index': 16}, {'structure': '6.9.2', 'title': 'UDP Group', 'physical_index': 17}, {'structure': '6.9.3', 'title': 'TCP Group', 'physical_index': 17}, {'structure': '6.9.4', 'title': 'ICMP Group', 'physical_index': 17}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'physical_index': 18}, {'structure': '6.9.6', 'title': 'IP Group', 'physical_index': 18}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'physical_index': 18}, {'structure': '6.9.8', 'title': 'DHCP Group', 'physical_index': 18}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'physical_index': 19}, {'structure': '6.9.10', 'title': 'ETH Group', 'physical_index': 19}, {'structure': '6.9.11', 'title': 'PHY Group', 'physical_index': 19}, {'structure': '6.10', 'title': 'Service Primitives', 'physical_index': 20}, {'structure': '6.10.1', 'title': 'Get Version', 'physical_index': 21}, {'structure': '6.10.2', 'title': 'Start Test', 'physical_index': 21}, {'structure': '6.10.3', 'title': 'End Test', 'physical_index': 22}, {'structure': '6.10.4', 'title': 'Close Socket', 'physical_index': 22}, {'structure': '6.10.5', 'title': 'Create and Bind', 'physical_index': 23}, {'structure': '6.10.6', 'title': 'Send Data', 'physical_index': 24}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'physical_index': 25}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'physical_index': 26}, {'structure': '6.10.9', 'title': 'Connect', 'physical_index': 26}, {'structure': '6.10.10', 'title': 'Configure Socket', 'physical_index': 27}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'physical_index': 28}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'physical_index': 28}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'physical_index': 29}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'physical_index': 29}, {'structure': '6.11', 'title': 'Standard Extensions', 'physical_index': 30}, {'structure': '6.11.1', 'title': 'Shutdown', 'physical_index': 30}, {'structure': '6.11.2', 'title': 'Interface Up', 'physical_index': 30}, {'structure': '6.11.3', 'title': 'Interface Down', 'physical_index': 31}, {'structure': '6.11.4', 'title': 'Static Address', 'physical_index': 31}, {'structure': '6.11.5', 'title': 'Static Route', 'physical_index': 31}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'physical_index': 32}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'physical_index': 32}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'physical_index': 33}, {'structure': '6.11.9', 'title': 'Echo Request', 'physical_index': 33}, {'structure': '6.12', 'title': 'Use Cases', 'physical_index': 34}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'physical_index': 34}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'physical_index': 35}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'physical_index': 35}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'physical_index': 36}, {'structure': '7', 'title': 'Changes to Previous Versions', 'physical_index': 37}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction and Functional Overview', 'page': 5, 'physical_index': 5}, {'title': 'Acronyms and Abbreviations', 'page': 6, 'physical_index': 6}, {'title': 'Related Documentation', 'page': 7, 'physical_index': 7}, {'title': 'Input documents', 'page': 7, 'physical_index': 7}, {'title': 'Related Standards and Norms', 'page': 7, 'physical_index': 7}, {'title': 'Related specification', 'page': 7, 'physical_index': 7}, {'title': 'Constraints and Assumptions', 'page': 8, 'physical_index': 8}, {'title': 'Limitations', 'page': 8, 'physical_index': 8}, {'title': 'Applicability to car domains', 'page': 8, 'physical_index': 8}, {'title': 'Intended context and applicability of protocol', 'page': 9, 'physical_index': 9}, {'title': 'Dependencies to other protocol layers', 'page': 9, 'physical_index': 9}, {'title': 'Dependencies to other standards and norms', 'page': 9, 'physical_index': 9}, {'title': 'Protocol Specification', 'page': 10, 'physical_index': 10}, {'title': 'Message Format and Protocol Fields', 'page': 10, 'physical_index': 10}, {'title': 'Message Exchange', 'page': 11, 'physical_index': 11}, {'title': 'States of Service Primitives', 'page': 12, 'physical_index': 12}, {'title': 'Default Behavior', 'page': 12, 'physical_index': 12}, {'title': 'Constraints', 'page': 12, 'physical_index': 12}, {'title': 'Extensibility', 'page': 12, 'physical_index': 12}, {'title': 'Data Types and Format', 'page': 13, 'physical_index': 13}, {'title': 'Boolean Type', 'page': 13, 'physical_index': 13}, {'title': 'Unsigned Type', 'page': 13, 'physical_index': 13}, {'title': 'Signed Type', 'page': 13, 'physical_index': 13}, {'title': 'Floating Point Type', 'page': 13, 'physical_index': 13}, {'title': 'Variable Length Type', 'page': 14, 'physical_index': 14}, {'title': 'Result IDs', 'page': 15, 'physical_index': 15}, {'title': 'Standard Results', 'page': 15, 'physical_index': 15}, {'title': 'Testability Specific', 'page': 15, 'physical_index': 15}, {'title': 'Service Primitive Specific', 'page': 15, 'physical_index': 15}, {'title': 'Service Groups', 'page': 16, 'physical_index': 16}, {'title': 'General Group', 'page': 16, 'physical_index': 16}, {'title': 'UDP Group', 'page': 17, 'physical_index': 17}, {'title': 'TCP Group', 'page': 17, 'physical_index': 17}, {'title': 'ICMP Group', 'page': 17, 'physical_index': 17}, {'title': 'ICMPv6 Group', 'page': 18, 'physical_index': 18}, {'title': 'IP Group', 'page': 18, 'physical_index': 18}, {'title': 'IPv6 Group', 'page': 18, 'physical_index': 18}, {'title': 'DHCP Group', 'page': 18, 'physical_index': 18}, {'title': 'DHCPv6 Group', 'page': 19, 'physical_index': 19}, {'title': 'ETH Group', 'page': 19, 'physical_index': 19}, {'title': 'PHY Group', 'page': 19, 'physical_index': 19}, {'title': 'Service Primitives', 'page': 20, 'physical_index': 20}, {'title': 'Get Version', 'page': 21, 'physical_index': 21}, {'title': 'Start Test', 'page': 21, 'physical_index': 21}, {'title': 'End Test', 'page': 22, 'physical_index': 22}, {'title': 'Close Socket', 'page': 22, 'physical_index': 22}, {'title': 'Create and Bind', 'page': 23, 'physical_index': 23}, {'title': 'Send Data', 'page': 24, 'physical_index': 24}, {'title': 'Receive and Forward', 'page': 25, 'physical_index': 25}, {'title': 'Listen and Accept', 'page': 26, 'physical_index': 26}, {'title': 'Connect', 'page': 26, 'physical_index': 26}, {'title': 'Configure Socket', 'page': 27, 'physical_index': 27}, {'title': 'Read Signal Quality', 'page': 28, 'physical_index': 28}, {'title': 'Read Cable Diagnostics Result', 'page': 28, 'physical_index': 28}, {'title': 'Activate PHY Test Mode', 'page': 29, 'physical_index': 29}, {'title': 'Set PHY Tx Mode', 'page': 29, 'physical_index': 29}, {'title': 'Standard Extensions', 'page': 30, 'physical_index': 30}, {'title': 'Shutdown', 'page': 30, 'physical_index': 30}, {'title': 'Interface Up', 'page': 30, 'physical_index': 30}, {'title': 'Interface Down', 'page': 31, 'physical_index': 31}, {'title': 'Static Address', 'page': 31, 'physical_index': 31}, {'title': 'Static Route', 'page': 31, 'physical_index': 31}, {'title': 'Initialize DHCP Client', 'page': 32, 'physical_index': 32}, {'title': 'Stop DHCP Client', 'page': 32, 'physical_index': 32}, {'title': 'Set DHCP Option', 'page': 33, 'physical_index': 33}, {'title': 'Echo Request', 'page': 33, 'physical_index': 33}, {'title': 'Use Cases', 'page': 34, 'physical_index': 34}, {'title': 'UDP Transmit', 'page': 34, 'physical_index': 34}, {'title': 'UDP Receive and Count', 'page': 35, 'physical_index': 35}, {'title': 'TCP Server Transmit', 'page': 35, 'physical_index': 35}, {'title': 'TCP Client Receive and Forward', 'page': 36, 'physical_index': 36}, {'title': 'Changes to Previous Versions', 'page': 37, 'physical_index': 37}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related Documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'physical_index': 7}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 7}, {'structure': '4', 'title': 'Constraints and Assumptions', 'physical_index': 8}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 8}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 8}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'physical_index': 9}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'physical_index': 9}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'physical_index': 9}, {'structure': '6', 'title': 'Protocol Specification', 'physical_index': 10}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'physical_index': 10}, {'structure': '6.2', 'title': 'Message Exchange', 'physical_index': 11}, {'structure': '6.3', 'title': 'States of Service Primitives', 'physical_index': 12}, {'structure': '6.4', 'title': 'Default Behavior', 'physical_index': 12}, {'structure': '6.5', 'title': 'Constraints', 'physical_index': 12}, {'structure': '6.6', 'title': 'Extensibility', 'physical_index': 12}, {'structure': '6.7', 'title': 'Data Types and Format', 'physical_index': 13}, {'structure': '6.7.1', 'title': 'Boolean Type', 'physical_index': 13}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'physical_index': 13}, {'structure': '6.7.3', 'title': 'Signed Type', 'physical_index': 13}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'physical_index': 13}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'physical_index': 14}, {'structure': '6.8', 'title': 'Result IDs', 'physical_index': 15}, {'structure': '6.8.1', 'title': 'Standard Results', 'physical_index': 15}, {'structure': '6.8.2', 'title': 'Testability Specific', 'physical_index': 15}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'physical_index': 15}, {'structure': '6.9', 'title': 'Service Groups', 'physical_index': 16}, {'structure': '6.9.1', 'title': 'General Group', 'physical_index': 16}, {'structure': '6.9.2', 'title': 'UDP Group', 'physical_index': 17}, {'structure': '6.9.3', 'title': 'TCP Group', 'physical_index': 17}, {'structure': '6.9.4', 'title': 'ICMP Group', 'physical_index': 17}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'physical_index': 18}, {'structure': '6.9.6', 'title': 'IP Group', 'physical_index': 18}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'physical_index': 18}, {'structure': '6.9.8', 'title': 'DHCP Group', 'physical_index': 18}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'physical_index': 19}, {'structure': '6.9.10', 'title': 'ETH Group', 'physical_index': 19}, {'structure': '6.9.11', 'title': 'PHY Group', 'physical_index': 19}, {'structure': '6.10', 'title': 'Service Primitives', 'physical_index': 20}, {'structure': '6.10.1', 'title': 'Get Version', 'physical_index': 21}, {'structure': '6.10.2', 'title': 'Start Test', 'physical_index': 21}, {'structure': '6.10.3', 'title': 'End Test', 'physical_index': 22}, {'structure': '6.10.4', 'title': 'Close Socket', 'physical_index': 22}, {'structure': '6.10.5', 'title': 'Create and Bind', 'physical_index': 23}, {'structure': '6.10.6', 'title': 'Send Data', 'physical_index': 24}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'physical_index': 25}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'physical_index': 26}, {'structure': '6.10.9', 'title': 'Connect', 'physical_index': 26}, {'structure': '6.10.10', 'title': 'Configure Socket', 'physical_index': 27}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'physical_index': 28}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'physical_index': 28}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'physical_index': 29}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'physical_index': 29}, {'structure': '6.11', 'title': 'Standard Extensions', 'physical_index': 30}, {'structure': '6.11.1', 'title': 'Shutdown', 'physical_index': 30}, {'structure': '6.11.2', 'title': 'Interface Up', 'physical_index': 30}, {'structure': '6.11.3', 'title': 'Interface Down', 'physical_index': 31}, {'structure': '6.11.4', 'title': 'Static Address', 'physical_index': 31}, {'structure': '6.11.5', 'title': 'Static Route', 'physical_index': 31}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'physical_index': 32}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'physical_index': 32}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'physical_index': 33}, {'structure': '6.11.9', 'title': 'Echo Request', 'physical_index': 33}, {'structure': '6.12', 'title': 'Use Cases', 'physical_index': 34}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'physical_index': 34}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'physical_index': 35}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'physical_index': 35}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'physical_index': 36}, {'structure': '7', 'title': 'Changes to Previous Versions', 'physical_index': 37}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related Documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'physical_index': 7}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 7}, {'structure': '4', 'title': 'Constraints and Assumptions', 'physical_index': 8}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 8}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 8}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'physical_index': 9}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'physical_index': 9}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'physical_index': 9}, {'structure': '6', 'title': 'Protocol Specification', 'physical_index': 10}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'physical_index': 10}, {'structure': '6.2', 'title': 'Message Exchange', 'physical_index': 11}, {'structure': '6.3', 'title': 'States of Service Primitives', 'physical_index': 12}, {'structure': '6.4', 'title': 'Default Behavior', 'physical_index': 12}, {'structure': '6.5', 'title': 'Constraints', 'physical_index': 12}, {'structure': '6.6', 'title': 'Extensibility', 'physical_index': 12}, {'structure': '6.7', 'title': 'Data Types and Format', 'physical_index': 13}, {'structure': '6.7.1', 'title': 'Boolean Type', 'physical_index': 13}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'physical_index': 13}, {'structure': '6.7.3', 'title': 'Signed Type', 'physical_index': 13}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'physical_index': 13}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'physical_index': 14}, {'structure': '6.8', 'title': 'Result IDs', 'physical_index': 15}, {'structure': '6.8.1', 'title': 'Standard Results', 'physical_index': 15}, {'structure': '6.8.2', 'title': 'Testability Specific', 'physical_index': 15}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'physical_index': 15}, {'structure': '6.9', 'title': 'Service Groups', 'physical_index': 16}, {'structure': '6.9.1', 'title': 'General Group', 'physical_index': 16}, {'structure': '6.9.2', 'title': 'UDP Group', 'physical_index': 17}, {'structure': '6.9.3', 'title': 'TCP Group', 'physical_index': 17}, {'structure': '6.9.4', 'title': 'ICMP Group', 'physical_index': 17}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'physical_index': 18}, {'structure': '6.9.6', 'title': 'IP Group', 'physical_index': 18}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'physical_index': 18}, {'structure': '6.9.8', 'title': 'DHCP Group', 'physical_index': 18}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'physical_index': 19}, {'structure': '6.9.10', 'title': 'ETH Group', 'physical_index': 19}, {'structure': '6.9.11', 'title': 'PHY Group', 'physical_index': 19}, {'structure': '6.10', 'title': 'Service Primitives', 'physical_index': 20}, {'structure': '6.10.1', 'title': 'Get Version', 'physical_index': 21}, {'structure': '6.10.2', 'title': 'Start Test', 'physical_index': 21}, {'structure': '6.10.3', 'title': 'End Test', 'physical_index': 22}, {'structure': '6.10.4', 'title': 'Close Socket', 'physical_index': 22}, {'structure': '6.10.5', 'title': 'Create and Bind', 'physical_index': 23}, {'structure': '6.10.6', 'title': 'Send Data', 'physical_index': 24}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'physical_index': 25}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'physical_index': 26}, {'structure': '6.10.9', 'title': 'Connect', 'physical_index': 26}, {'structure': '6.10.10', 'title': 'Configure Socket', 'physical_index': 27}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'physical_index': 28}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'physical_index': 28}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'physical_index': 29}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'physical_index': 29}, {'structure': '6.11', 'title': 'Standard Extensions', 'physical_index': 30}, {'structure': '6.11.1', 'title': 'Shutdown', 'physical_index': 30}, {'structure': '6.11.2', 'title': 'Interface Up', 'physical_index': 30}, {'structure': '6.11.3', 'title': 'Interface Down', 'physical_index': 31}, {'structure': '6.11.4', 'title': 'Static Address', 'physical_index': 31}, {'structure': '6.11.5', 'title': 'Static Route', 'physical_index': 31}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'physical_index': 32}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'physical_index': 32}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'physical_index': 33}, {'structure': '6.11.9', 'title': 'Echo Request', 'physical_index': 33}, {'structure': '6.12', 'title': 'Use Cases', 'physical_index': 34}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'physical_index': 34}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'physical_index': 35}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'physical_index': 35}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'physical_index': 36}, {'structure': '7', 'title': 'Changes to Previous Versions', 'physical_index': 37}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3888888888888889,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Boolean Type",
+        "page_number": 13
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Unsigned Type",
+        "page_number": 13
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Signed Type",
+        "page_number": 13
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Floating Point Type",
+        "page_number": 13
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Variable Length Type",
+        "page_number": 14
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Result IDs",
+        "page_number": 15
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Standard Results",
+        "page_number": 15
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Testability Specific",
+        "page_number": 15
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Service Primitive Specific",
+        "page_number": 15
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Service Groups",
+        "page_number": 16
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "General Group",
+        "page_number": 16
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "UDP Group",
+        "page_number": 17
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "TCP Group",
+        "page_number": 17
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "ICMP Group",
+        "page_number": 17
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "ICMPv6 Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "IP Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "IPv6 Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "DHCP Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "DHCPv6 Group",
+        "page_number": 19
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "ETH Group",
+        "page_number": 19
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "PHY Group",
+        "page_number": 19
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Service Primitives",
+        "page_number": 20
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Get Version",
+        "page_number": 21
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Start Test",
+        "page_number": 21
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "End Test",
+        "page_number": 22
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Close Socket",
+        "page_number": 22
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Create and Bind",
+        "page_number": 23
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Send Data",
+        "page_number": 24
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Receive and Forward",
+        "page_number": 25
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Listen and Accept",
+        "page_number": 26
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Connect",
+        "page_number": 26
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Configure Socket",
+        "page_number": 27
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Read Signal Quality",
+        "page_number": 28
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Read Cable Diagnostics Result",
+        "page_number": 28
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Activate PHY Test Mode",
+        "page_number": 29
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Set PHY Tx Mode",
+        "page_number": 29
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Standard Extensions",
+        "page_number": 30
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 30
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Interface Up",
+        "page_number": 30
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Interface Down",
+        "page_number": 31
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Static Address",
+        "page_number": 31
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Static Route",
+        "page_number": 31
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "UDP Receive and Count",
+        "page_number": 35
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "TCP Client Receive and Forward",
+        "page_number": 36
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'page': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 6}, {'structure': '3', 'title': 'Related Documentation', 'page': 7}, {'structure': '3.1', 'title': 'Input documents', 'page': 7}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'page': 7}, {'structure': '3.3', 'title': 'Related specification', 'page': 7}, {'structure': '4', 'title': 'Constraints and Assumptions', 'page': 8}, {'structure': '4.1', 'title': 'Limitations', 'page': 8}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 8}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'page': 9}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'page': 9}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'page': 9}, {'structure': '6', 'title': 'Protocol Specification', 'page': 10}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'page': 10}, {'structure': '6.2', 'title': 'Message Exchange', 'page': 11}, {'structure': '6.3', 'title': 'States of Service Primitives', 'page': 12}, {'structure': '6.4', 'title': 'Default Behavior', 'page': 12}, {'structure': '6.5', 'title': 'Constraints', 'page': 12}, {'structure': '6.6', 'title': 'Extensibility', 'page': 12}, {'structure': '6.7', 'title': 'Data Types and Format', 'page': 13}, {'structure': '6.7.1', 'title': 'Boolean Type', 'page': 13}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'page': 13}, {'structure': '6.7.3', 'title': 'Signed Type', 'page': 13}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'page': 13}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'page': 14}, {'structure': '6.8', 'title': 'Result IDs', 'page': 15}, {'structure': '6.8.1', 'title': 'Standard Results', 'page': 15}, {'structure': '6.8.2', 'title': 'Testability Specific', 'page': 15}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'page': 15}, {'structure': '6.9', 'title': 'Service Groups', 'page': 16}, {'structure': '6.9.1', 'title': 'General Group', 'page': 16}, {'structure': '6.9.2', 'title': 'UDP Group', 'page': 17}, {'structure': '6.9.3', 'title': 'TCP Group', 'page': 17}, {'structure': '6.9.4', 'title': 'ICMP Group', 'page': 17}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'page': 18}, {'structure': '6.9.6', 'title': 'IP Group', 'page': 18}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'page': 18}, {'structure': '6.9.8', 'title': 'DHCP Group', 'page': 18}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'page': 19}, {'structure': '6.9.10', 'title': 'ETH Group', 'page': 19}, {'structure': '6.9.11', 'title': 'PHY Group', 'page': 19}, {'structure': '6.10', 'title': 'Service Primitives', 'page': 20}, {'structure': '6.10.1', 'title': 'Get Version', 'page': 21}, {'structure': '6.10.2', 'title': 'Start Test', 'page': 21}, {'structure': '6.10.3', 'title': 'End Test', 'page': 22}, {'structure': '6.10.4', 'title': 'Close Socket', 'page': 22}, {'structure': '6.10.5', 'title': 'Create and Bind', 'page': 23}, {'structure': '6.10.6', 'title': 'Send Data', 'page': 24}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'page': 25}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'page': 26}, {'structure': '6.10.9', 'title': 'Connect', 'page': 26}, {'structure': '6.10.10', 'title': 'Configure Socket', 'page': 27}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'page': 28}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'page': 28}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'page': 29}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'page': 29}, {'structure': '6.11', 'title': 'Standard Extensions', 'page': 30}, {'structure': '6.11.1', 'title': 'Shutdown', 'page': 30}, {'structure': '6.11.2', 'title': 'Interface Up', 'page': 30}, {'structure': '6.11.3', 'title': 'Interface Down', 'page': 31}, {'structure': '6.11.4', 'title': 'Static Address', 'page': 31}, {'structure': '6.11.5', 'title': 'Static Route', 'page': 31}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'page': 32}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'page': 32}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'page': 33}, {'structure': '6.11.9', 'title': 'Echo Request', 'page': 33}, {'structure': '6.12', 'title': 'Use Cases', 'page': 34}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'page': 34}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'page': 35}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'page': 35}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'page': 36}, {'structure': '7', 'title': 'Changes to Previous Versions', 'page': 37}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Related Documentation', 'physical_index': '<physical_index_7>'}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': '<physical_index_7>'}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'physical_index': '<physical_index_7>'}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': '<physical_index_7>'}, {'structure': '4', 'title': 'Constraints and Assumptions', 'physical_index': '<physical_index_8>'}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': '<physical_index_8>'}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': '<physical_index_8>'}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'physical_index': '<physical_index_9>'}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'physical_index': '<physical_index_9>'}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'physical_index': '<physical_index_9>'}, {'structure': '6', 'title': 'Protocol Specification', 'physical_index': '<physical_index_10>'}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'physical_index': '<physical_index_10>'}, {'structure': '6.2', 'title': 'Message Exchange', 'physical_index': '<physical_index_11>'}, {'structure': '6.3', 'title': 'States of Service Primitives', 'physical_index': '<physical_index_12>'}, {'structure': '6.4', 'title': 'Default Behavior', 'physical_index': '<physical_index_12>'}, {'structure': '6.5', 'title': 'Constraints', 'physical_index': '<physical_index_12>'}, {'structure': '6.6', 'title': 'Extensibility', 'physical_index': '<physical_index_12>'}, {'structure': '6.7', 'title': 'Data Types and Format', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.1', 'title': 'Boolean Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.3', 'title': 'Signed Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'physical_index': '<physical_index_13>'}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'physical_index': '<physical_index_14>'}, {'structure': '6.8', 'title': 'Result IDs', 'physical_index': '<physical_index_15>'}, {'structure': '6.8.1', 'title': 'Standard Results', 'physical_index': '<physical_index_15>'}, {'structure': '6.8.2', 'title': 'Testability Specific', 'physical_index': '<physical_index_15>'}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'physical_index': '<physical_index_15>'}, {'structure': '6.9', 'title': 'Service Groups', 'physical_index': '<physical_index_16>'}, {'structure': '6.9.1', 'title': 'General Group', 'physical_index': '<physical_index_16>'}, {'structure': '6.9.2', 'title': 'UDP Group', 'physical_index': '<physical_index_17>'}, {'structure': '6.9.3', 'title': 'TCP Group', 'physical_index': '<physical_index_17>'}, {'structure': '6.9.4', 'title': 'ICMP Group', 'physical_index': '<physical_index_17>'}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.6', 'title': 'IP Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.8', 'title': 'DHCP Group', 'physical_index': '<physical_index_18>'}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'physical_index': '<physical_index_19>'}, {'structure': '6.9.10', 'title': 'ETH Group', 'physical_index': '<physical_index_19>'}, {'structure': '6.9.11', 'title': 'PHY Group', 'physical_index': '<physical_index_19>'}, {'structure': '6.10', 'title': 'Service Primitives', 'physical_index': '<physical_index_20>'}, {'structure': '6.10.1', 'title': 'Get Version', 'physical_index': '<physical_index_21>'}, {'structure': '6.10.2', 'title': 'Start Test', 'physical_index': '<physical_index_21>'}, {'structure': '6.10.3', 'title': 'End Test', 'physical_index': '<physical_index_22>'}, {'structure': '6.10.4', 'title': 'Close Socket', 'physical_index': '<physical_index_22>'}, {'structure': '6.10.5', 'title': 'Create and Bind', 'physical_index': '<physical_index_23>'}, {'structure': '6.10.6', 'title': 'Send Data', 'physical_index': '<physical_index_24>'}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'physical_index': '<physical_index_25>'}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'physical_index': '<physical_index_26>'}, {'structure': '6.10.9', 'title': 'Connect', 'physical_index': None}, {'structure': '6.10.10', 'title': 'Configure Socket', 'physical_index': '<physical_index_27>'}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'physical_index': '<physical_index_28>'}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'physical_index': None}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'physical_index': '<physical_index_29>'}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'physical_index': None}, {'structure': '6.11', 'title': 'Standard Extensions', 'physical_index': '<physical_index_30>'}, {'structure': '6.11.1', 'title': 'Shutdown', 'physical_index': None}, {'structure': '6.11.2', 'title': 'Interface Up', 'physical_index': None}, {'structure': '6.11.3', 'title': 'Interface Down', 'physical_index': '<physical_index_31>'}, {'structure': '6.11.4', 'title': 'Static Address', 'physical_index': None}, {'structure': '6.11.5', 'title': 'Static Route', 'physical_index': None}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'physical_index': '<physical_index_32>'}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'physical_index': None}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'physical_index': '<physical_index_33>'}, {'structure': '6.11.9', 'title': 'Echo Request', 'physical_index': None}, {'structure': '6.12', 'title': 'Use Cases', 'physical_index': '<physical_index_34>'}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'physical_index': None}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'physical_index': '<physical_index_35>'}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'physical_index': None}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'physical_index': '<physical_index_36>'}, {'structure': '7', 'title': 'Changes to Previous Versions', 'physical_index': '<physical_index_37>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction and Functional Overview', 'physical_index': 5}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 6}, {'structure': '3', 'title': 'Related Documentation', 'physical_index': 7}, {'structure': '3.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '3.2', 'title': 'Related Standards and Norms', 'physical_index': 7}, {'structure': '3.3', 'title': 'Related specification', 'physical_index': 7}, {'structure': '4', 'title': 'Constraints and Assumptions', 'physical_index': 8}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 8}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 8}, {'structure': '5', 'title': 'Intended context and applicability of protocol', 'physical_index': 9}, {'structure': '5.1', 'title': 'Dependencies to other protocol layers', 'physical_index': 9}, {'structure': '5.2', 'title': 'Dependencies to other standards and norms', 'physical_index': 9}, {'structure': '6', 'title': 'Protocol Specification', 'physical_index': 10}, {'structure': '6.1', 'title': 'Message Format and Protocol Fields', 'physical_index': 10}, {'structure': '6.2', 'title': 'Message Exchange', 'physical_index': 11}, {'structure': '6.3', 'title': 'States of Service Primitives', 'physical_index': 12}, {'structure': '6.4', 'title': 'Default Behavior', 'physical_index': 12}, {'structure': '6.5', 'title': 'Constraints', 'physical_index': 12}, {'structure': '6.6', 'title': 'Extensibility', 'physical_index': 12}, {'structure': '6.7', 'title': 'Data Types and Format', 'physical_index': 13}, {'structure': '6.7.1', 'title': 'Boolean Type', 'physical_index': 13}, {'structure': '6.7.2', 'title': 'Unsigned Type', 'physical_index': 13}, {'structure': '6.7.3', 'title': 'Signed Type', 'physical_index': 13}, {'structure': '6.7.4', 'title': 'Floating Point Type', 'physical_index': 13}, {'structure': '6.7.5', 'title': 'Variable Length Type', 'physical_index': 14}, {'structure': '6.8', 'title': 'Result IDs', 'physical_index': 15}, {'structure': '6.8.1', 'title': 'Standard Results', 'physical_index': 15}, {'structure': '6.8.2', 'title': 'Testability Specific', 'physical_index': 15}, {'structure': '6.8.3', 'title': 'Service Primitive Specific', 'physical_index': 15}, {'structure': '6.9', 'title': 'Service Groups', 'physical_index': 16}, {'structure': '6.9.1', 'title': 'General Group', 'physical_index': 16}, {'structure': '6.9.2', 'title': 'UDP Group', 'physical_index': 17}, {'structure': '6.9.3', 'title': 'TCP Group', 'physical_index': 17}, {'structure': '6.9.4', 'title': 'ICMP Group', 'physical_index': 17}, {'structure': '6.9.5', 'title': 'ICMPv6 Group', 'physical_index': 18}, {'structure': '6.9.6', 'title': 'IP Group', 'physical_index': 18}, {'structure': '6.9.7', 'title': 'IPv6 Group', 'physical_index': 18}, {'structure': '6.9.8', 'title': 'DHCP Group', 'physical_index': 18}, {'structure': '6.9.9', 'title': 'DHCPv6 Group', 'physical_index': 19}, {'structure': '6.9.10', 'title': 'ETH Group', 'physical_index': 19}, {'structure': '6.9.11', 'title': 'PHY Group', 'physical_index': 19}, {'structure': '6.10', 'title': 'Service Primitives', 'physical_index': 20}, {'structure': '6.10.1', 'title': 'Get Version', 'physical_index': 21}, {'structure': '6.10.2', 'title': 'Start Test', 'physical_index': 21}, {'structure': '6.10.3', 'title': 'End Test', 'physical_index': 22}, {'structure': '6.10.4', 'title': 'Close Socket', 'physical_index': 22}, {'structure': '6.10.5', 'title': 'Create and Bind', 'physical_index': 23}, {'structure': '6.10.6', 'title': 'Send Data', 'physical_index': 24}, {'structure': '6.10.7', 'title': 'Receive and Forward', 'physical_index': 25}, {'structure': '6.10.8', 'title': 'Listen and Accept', 'physical_index': 26}, {'structure': '6.10.9', 'title': 'Connect', 'physical_index': None}, {'structure': '6.10.10', 'title': 'Configure Socket', 'physical_index': 27}, {'structure': '6.10.11', 'title': 'Read Signal Quality', 'physical_index': 28}, {'structure': '6.10.12', 'title': 'Read Cable Diagnostics Result', 'physical_index': None}, {'structure': '6.10.13', 'title': 'Activate PHY Test Mode', 'physical_index': 29}, {'structure': '6.10.14', 'title': 'Set PHY Tx Mode', 'physical_index': None}, {'structure': '6.11', 'title': 'Standard Extensions', 'physical_index': 30}, {'structure': '6.11.1', 'title': 'Shutdown', 'physical_index': None}, {'structure': '6.11.2', 'title': 'Interface Up', 'physical_index': None}, {'structure': '6.11.3', 'title': 'Interface Down', 'physical_index': 31}, {'structure': '6.11.4', 'title': 'Static Address', 'physical_index': None}, {'structure': '6.11.5', 'title': 'Static Route', 'physical_index': None}, {'structure': '6.11.6', 'title': 'Initialize DHCP Client', 'physical_index': 32}, {'structure': '6.11.7', 'title': 'Stop DHCP Client', 'physical_index': None}, {'structure': '6.11.8', 'title': 'Set DHCP Option', 'physical_index': 33}, {'structure': '6.11.9', 'title': 'Echo Request', 'physical_index': None}, {'structure': '6.12', 'title': 'Use Cases', 'physical_index': 34}, {'structure': '6.12.1', 'title': 'UDP Transmit', 'physical_index': None}, {'structure': '6.12.2', 'title': 'UDP Receive and Count', 'physical_index': 35}, {'structure': '6.12.3', 'title': 'TCP Server Transmit', 'physical_index': None}, {'structure': '6.12.4', 'title': 'TCP Client Receive and Forward', 'physical_index': 36}, {'structure': '7', 'title': 'Changes to Previous Versions', 'physical_index': 37}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.6229508196721312,
+    "incorrect_results": [
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "General Group",
+        "page_number": 16
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "UDP Group",
+        "page_number": 17
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "TCP Group",
+        "page_number": 17
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "ICMP Group",
+        "page_number": 17
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "ICMPv6 Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "IP Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "IPv6 Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "DHCP Group",
+        "page_number": 18
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "DHCPv6 Group",
+        "page_number": 19
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "ETH Group",
+        "page_number": 19
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "PHY Group",
+        "page_number": 19
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Service Primitives",
+        "page_number": 20
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Get Version",
+        "page_number": 21
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Start Test",
+        "page_number": 21
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "End Test",
+        "page_number": 22
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Close Socket",
+        "page_number": 22
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Create and Bind",
+        "page_number": 23
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Send Data",
+        "page_number": 24
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Receive and Forward",
+        "page_number": 25
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Read Signal Quality",
+        "page_number": 28
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Activate PHY Test Mode",
+        "page_number": 29
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Interface Down",
+        "page_number": 31
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Set DHCP Option",
+        "page_number": 33
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 30, 'title': 'General Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 31, 'title': 'UDP Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 32, 'title': 'TCP Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 33, 'title': 'ICMP Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 34, 'title': 'ICMPv6 Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 35, 'title': 'IP Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 36, 'title': 'IPv6 Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 37, 'title': 'DHCP Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 38, 'title': 'DHCPv6 Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 39, 'title': 'ETH Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 40, 'title': 'PHY Group', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 41, 'title': 'Service Primitives', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 42, 'title': 'Get Version', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 43, 'title': 'Start Test', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 44, 'title': 'End Test', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 45, 'title': 'Close Socket', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 46, 'title': 'Create and Bind', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 47, 'title': 'Send Data', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 48, 'title': 'Receive and Forward', 'prev_correct': 16, 'next_correct': 26}, {'list_index': 51, 'title': 'Read Signal Quality', 'prev_correct': 27, 'next_correct': 30}, {'list_index': 52, 'title': 'Activate PHY Test Mode', 'prev_correct': 27, 'next_correct': 30}, {'list_index': 54, 'title': 'Interface Down', 'prev_correct': 30, 'next_correct': 32}, {'list_index': 56, 'title': 'Set DHCP Option', 'prev_correct': 32, 'next_correct': 34}]"
+  },
+  {
+    "message": "invalid_results: []"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Protocol Specification' appears after some introductory text and version information, so it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Related specification' appears in the page_text, but it is not the first content. There are other sections and text before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction and Functional Overview' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Dependencies to other protocol layers' appears after some introductory text and a previous section. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Related Documentation' appears after some introductory text about the document's specifications and version. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Dependencies to other standards and norms' appears in the page_text, but it is not the first content. There are other sections and text before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Acronyms and Abbreviations' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Constraints and Assumptions' appears after some introductory text and a section number, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Message Format and Protocol Fields' appears after some introductory text and a previous section title, indicating that it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Input documents' appears in the page_text, but it is not the first content. There are other contents before it, such as the specification details and the 'Related Documentation' section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Related Standards and Norms' appears in the page_text, but it is not the first content. It is preceded by other sections such as '3 Related Documentation' and '3.1 Input documents'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Intended context and applicability of protocol' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document specification and other headers.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given page_text starts with 'Specification of Testability Protocol and Service Primitives', which is not the section title 'Preface'. Therefore, the section 'Preface' does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Message Exchange' appears in the page_text, but it is not at the very beginning. There are several lines of text before the section title, including a specification name, release information, and a description of message types.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Applicability to car domains' appears in the page_text, but it is not at the beginning. It is preceded by other content, including the section '4 Constraints and Assumptions' and its subsection '4.1 Limitations'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Limitations' appears as part of the text, but it is not the first content in the given page_text. The text starts with 'Specification of Testability Protocol and Service Primitives', which indicates that the section does not start at the beginning.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Default Behavior' appears after some text about service primitives and their states. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Constraints' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Extensibility' appears in the page_text, but it is not the first content. There are several other sections and text before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Data Types and Format' appears after some introductory text and version information, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'States of Service Primitives' appears in the page_text, but it is not the first content. There are several lines of text and a header before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'TCP Client Receive and Forward' appears after some introductory text about the specification and version information. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'UDP Receive and Count' appears after some introductory text about the document and protocol specifications. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Floating Point Type' appears in the page_text, but it is not the first content. There are several other sections and text before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interface Down' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document specification and other service primitives.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Boolean Type' appears after some introductory text about data types and formats. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Changes to Previous Versions' appears after some introductory text about the document, which includes the document name, version, and confidentiality level. Therefore, the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Signed Type' appears in the page_text, but it is not the first content. There are several lines of text and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Unsigned Type' appears in the page_text, but it is not the first content. There are other contents before it, such as the specification details and other data types.\", 'start_begin': 'no'}"
+  }
+]

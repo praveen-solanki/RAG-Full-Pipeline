@@ -1,0 +1,1672 @@
+[
+  {
+    "total_page_number": 104
+  },
+  {
+    "total_token": 49185
+  },
+  {
+    "toc_content": " Virtual Functional Bus  \nAUTOSAR CP Release 4.4.0    \n \n4 of 104 Document ID 056: AUTOSAR_EXP_VFB  \n- AUTOSAR Confidential - \nTable of Content  \n \n1 Introduction to this document  :  :  :   6 \n1.1 Contents  :  :  :  :   6 \n1.2 Prereads  :  :  :  :   6 \n1.3 Relationship to other AUTOSAR specifi cations  :  :   7 \n1.4 Structure and conventions of this document  :  :   8 \n1.4.1  Structure of this document  :  :  :   8 \n1.4.2  Specification Items  :  :  :   8 \n2 The Virtual Functional Bus  :  :  :   9 \n3 Overall mechanisms and concepts  :  :   12 \n3.1 Components  :  :  :  .. 12 \n3.2 Port-Interfaces  :  :  :   14 \n3.3 Ports :  :  :  :   17 \n3.3.1  Port Types  :  :  :   17 \n3.3.2  Port Compatibility  :  :  :   25 \n3.3.3  Data Type Policies  :  :  :   26 \n3.4 Connectors  :  :  :  .... 26 \n3.4.1  Unconnected Ports  :  :  :   28 \n3.5 Compositions versus atomic components  :  :   29 \n3.6 Relationship between the VFB and the ECU Software Architecture  :   30 \n3.7 Kinds of software components  :  :  :  33 \n3.8 Resources for com ponents and \u201crunnables\u201d  :  :   36 \n3.8.1  Background  :  :  :   36 \n3.8.2  The \u201crunnable\u201d concept  :  :  :   37 \n3.8.3  The implementation of a component and the role of the RTE  :   39 \n3.9 Interface Conversion Blocks  :  :  :   40 \n3.9.1  Supported Conversions and Mappings  :  :   40 \n3.10  Variant Handling  :  :  :   42 \n3.10.1  Binding Times  :  :  :   42 \n3.10.2  Choosing a Variant  :  :  :   42 \n3.10.3  Variability  :  :  :  . 43 \n4 Communication on the VFB  :  :  :   44 \n4.1 Introduction  :  :  :  .... 44 \n4.2 Error types  :  :  :  :  44 \n4.3 Sender -Receiver communication  :  :  ... 44 \n4.3.1  From the point of view of the sender  :  :   45 \n4.3.2  From the point of view of the receiver  :  :   47 \n4.3.3  Multiplicity of sender -receiver  :  :  ... 51 \n4.3.4  Filtering between the sender and the receiver  :  :   52 \n4.3.5  Concurrency and ordering withi n a sender -receiver connector  :   52 \n4.4 Client -Server communication  :  :  :   53 \n4.4.1  From the point of view of the client  :  :   56 \n4.4.2  From  the point of view of the server  :  :   57 \n4.4.3  Multiplicity of client -server  :  :  :   58 \n4.4.4  Ordering and concurrency within a client -server connector  :   58 \n4.5 Remarks regarding the identification of communication partners  :   59 \n5 Timing Extensions  :  :  :   61 \n5.1 Main Purpose of Timing Extensions for AUTOSAR  :  :  61 \n5.2 Timing in different phases of the AUTOSAR methodology  :   62  Virtual Functional Bus  \nAUTOSAR CP Release 4.4.0    \n \n5 of 104 Document ID 056: AUTOSAR_EXP_VFB  \n- AUTOSAR Confidential - \n6 Interaction with hardware :  :  :   63 \n6.1 Introduction  :  :  :  .... 63 \n6.2 Microcontroller Abstraction Layer (MCAL)  :  :   64 \n6.3 ECU Abstraction  :  :  :   65 \n6.4 Sensor -Actuator Software Component  :  :   65 \n6.5 Complex Driver Component  :  :  :   65 \n7 AUTOSAR Services  :  :  :   67 \n7.1 Introduction  :  :  :  .... 67 \n7.2 VFB Representation  :  :  :   67 \n7.2.1  Selection of a communication mechanism  :  :   68 \n7.2.2  Location of a Service  :  :  :   68 \n7.2.3  Distribution of Requests to Remote Services  :  :   68 \n7.2.4  Platform dependent types  :  :  :   69 \n7.2.5  Configuration  :  :  :   70 \n7.3 List of Services  :  :  :   70 \n8 Mode Management  :  :  :   71 \n8.1 Introduction  :  :  :  .... 71 \n8.2 Defining modes  :  :  :   71 \n8.3 Communicating modes  :  :  :   72 \n8.4 Mode -managers: components  that control modes  :  :   73 \n8.5 Components that depend on modes  :  :   74 \n9 Port Groups  :  :  :  ... 76 \n10 Measurement and Calibration  :  :  :   77 \n10.1  Calibration  :  :  :  :  77 \n10.1.1  Port-based calibration  :  :  :   77 \n10.1.2  Private calibration  :  :  :   80 \n10.2  Measurement  :  :  :  . 80 \n11 VFB Features and Profiles  :  :  :   82 \n11.1  Motivation and Introduction  :  :  :   82 \n11.2  Feature tables  :  :  :   82 \n11.2.1  Intra-ECU features  :  :  :   83 \n11.2.2  Inter-ECU features  :  :  :   95 \n12 Interaction with Non -AUTOSAR -ECUs  :  :   101  \n12.1  Introduction  :  :  :  .. 101  \n12.2  Problems of interaction  :  :  :   101  \n12.3  Description of interaction  :  :  :   102  \n13 References  :  :  :  .. 104  ",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction to this document', 'page': 6}, {'structure': '1.1', 'title': 'Contents', 'page': 6}, {'structure': '1.2', 'title': 'Prereads', 'page': 6}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'page': 7}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'page': 8}, {'structure': '1.4.1', 'title': 'Structure of this document', 'page': 8}, {'structure': '1.4.2', 'title': 'Specification Items', 'page': 8}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'page': 9}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'page': 12}, {'structure': '3.1', 'title': 'Components', 'page': 12}, {'structure': '3.2', 'title': 'Port-Interfaces', 'page': 14}, {'structure': '3.3', 'title': 'Ports', 'page': 17}, {'structure': '3.3.1', 'title': 'Port Types', 'page': 17}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'page': 25}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'page': 26}, {'structure': '3.4', 'title': 'Connectors', 'page': 26}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'page': 28}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'page': 29}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'page': 30}, {'structure': '3.7', 'title': 'Kinds of software components', 'page': 33}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'page': 36}, {'structure': '3.8.1', 'title': 'Background', 'page': 36}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'page': 37}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'page': 39}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'page': 40}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'page': 40}, {'structure': '3.10', 'title': 'Variant Handling', 'page': 42}, {'structure': '3.10.1', 'title': 'Binding Times', 'page': 42}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'page': 42}, {'structure': '3.10.3', 'title': 'Variability', 'page': 43}, {'structure': '4', 'title': 'Communication on the VFB', 'page': 44}, {'structure': '4.1', 'title': 'Introduction', 'page': 44}, {'structure': '4.2', 'title': 'Error types', 'page': 44}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'page': 44}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'page': 45}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'page': 47}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'page': 51}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'page': 52}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'page': 52}, {'structure': '4.4', 'title': 'Client -Server communication', 'page': 53}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'page': 56}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'page': 57}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'page': 58}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'page': 58}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'page': 59}, {'structure': '5', 'title': 'Timing Extensions', 'page': 61}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'page': 61}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'page': 62}, {'structure': '6', 'title': 'Interaction with hardware', 'page': 63}, {'structure': '6.1', 'title': 'Introduction', 'page': 63}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'page': 64}, {'structure': '6.3', 'title': 'ECU Abstraction', 'page': 65}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'page': 65}, {'structure': '6.5', 'title': 'Complex Driver Component', 'page': 65}, {'structure': '7', 'title': 'AUTOSAR Services', 'page': 67}, {'structure': '7.1', 'title': 'Introduction', 'page': 67}, {'structure': '7.2', 'title': 'VFB Representation', 'page': 67}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'page': 68}, {'structure': '7.2.2', 'title': 'Location of a Service', 'page': 68}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'page': 68}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'page': 69}, {'structure': '7.2.5', 'title': 'Configuration', 'page': 70}, {'structure': '7.3', 'title': 'List of Services', 'page': 70}, {'structure': '8', 'title': 'Mode Management', 'page': 71}, {'structure': '8.1', 'title': 'Introduction', 'page': 71}, {'structure': '8.2', 'title': 'Defining modes', 'page': 71}, {'structure': '8.3', 'title': 'Communicating modes', 'page': 72}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'page': 73}, {'structure': '8.5', 'title': 'Components that depend on modes', 'page': 74}, {'structure': '9', 'title': 'Port Groups', 'page': 76}, {'structure': '10', 'title': 'Measurement and Calibration', 'page': 77}, {'structure': '10.1', 'title': 'Calibration', 'page': 77}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'page': 77}, {'structure': '10.1.2', 'title': 'Private calibration', 'page': 80}, {'structure': '10.2', 'title': 'Measurement', 'page': 80}, {'structure': '11', 'title': 'VFB Features and Profiles', 'page': 82}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'page': 82}, {'structure': '11.2', 'title': 'Feature tables', 'page': 82}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'page': 83}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'page': 95}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'page': 101}, {'structure': '12.1', 'title': 'Introduction', 'page': 101}, {'structure': '12.2', 'title': 'Problems of interaction', 'page': 101}, {'structure': '12.3', 'title': 'Description of interaction', 'page': 102}, {'structure': '13', 'title': 'References', 'page': 104}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': '<physical_index_6>'}, {'structure': '1.1', 'title': 'Contents', 'physical_index': '<physical_index_6>'}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': '<physical_index_6>'}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': '<physical_index_7>'}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.4.1', 'title': 'Structure of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.4.2', 'title': 'Specification Items', 'physical_index': '<physical_index_8>'}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'physical_index': '<physical_index_9>'}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Components', 'physical_index': '<physical_index_12>'}, {'structure': '3.2', 'title': 'Port-Interfaces', 'physical_index': '<physical_index_14>'}, {'structure': '3.3', 'title': 'Ports', 'physical_index': '<physical_index_17>'}, {'structure': '3.3.1', 'title': 'Port Types', 'physical_index': '<physical_index_17>'}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'physical_index': '<physical_index_25>'}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'physical_index': '<physical_index_26>'}, {'structure': '3.4', 'title': 'Connectors', 'physical_index': '<physical_index_26>'}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'physical_index': '<physical_index_28>'}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': '<physical_index_29>'}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 6}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 6}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 6}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 7}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'physical_index': 8}, {'structure': '1.4.1', 'title': 'Structure of this document', 'physical_index': 8}, {'structure': '1.4.2', 'title': 'Specification Items', 'physical_index': 8}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'physical_index': 9}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'physical_index': 12}, {'structure': '3.1', 'title': 'Components', 'physical_index': 12}, {'structure': '3.2', 'title': 'Port-Interfaces', 'physical_index': 14}, {'structure': '3.3', 'title': 'Ports', 'physical_index': 17}, {'structure': '3.3.1', 'title': 'Port Types', 'physical_index': 17}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'physical_index': 25}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'physical_index': 26}, {'structure': '3.4', 'title': 'Connectors', 'physical_index': 26}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'physical_index': 28}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': 29}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction to this document', 'page': 6, 'physical_index': 6}, {'title': 'Contents', 'page': 6, 'physical_index': 6}, {'title': 'Prereads', 'page': 6, 'physical_index': 6}, {'title': 'Relationship to other AUTOSAR specifications', 'page': 7, 'physical_index': 7}, {'title': 'Structure and conventions of this document', 'page': 8, 'physical_index': 8}, {'title': 'Structure of this document', 'page': 8, 'physical_index': 8}, {'title': 'Specification Items', 'page': 8, 'physical_index': 8}, {'title': 'The Virtual Functional Bus', 'page': 9, 'physical_index': 9}, {'title': 'Overall mechanisms and concepts', 'page': 12, 'physical_index': 12}, {'title': 'Components', 'page': 12, 'physical_index': 12}, {'title': 'Port-Interfaces', 'page': 14, 'physical_index': 14}, {'title': 'Ports', 'page': 17, 'physical_index': 17}, {'title': 'Port Types', 'page': 17, 'physical_index': 17}, {'title': 'Port Compatibility', 'page': 25, 'physical_index': 25}, {'title': 'Data Type Policies', 'page': 26, 'physical_index': 26}, {'title': 'Connectors', 'page': 26, 'physical_index': 26}, {'title': 'Unconnected Ports', 'page': 28, 'physical_index': 28}, {'title': 'Compositions versus atomic components', 'page': 29, 'physical_index': 29}, {'title': 'Relationship between the VFB and the ECU Software Architecture', 'page': 30, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 6}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 6}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 6}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 7}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'physical_index': 8}, {'structure': '1.4.1', 'title': 'Structure of this document', 'physical_index': 8}, {'structure': '1.4.2', 'title': 'Specification Items', 'physical_index': 8}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'physical_index': 9}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'physical_index': 12}, {'structure': '3.1', 'title': 'Components', 'physical_index': 12}, {'structure': '3.2', 'title': 'Port-Interfaces', 'physical_index': 14}, {'structure': '3.3', 'title': 'Ports', 'physical_index': 17}, {'structure': '3.3.1', 'title': 'Port Types', 'physical_index': 17}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'physical_index': 25}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'physical_index': 26}, {'structure': '3.4', 'title': 'Connectors', 'physical_index': 26}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'physical_index': 28}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': 29}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': 30}, {'structure': '3.7', 'title': 'Kinds of software components', 'physical_index': 33}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'physical_index': 36}, {'structure': '3.8.1', 'title': 'Background', 'physical_index': 36}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'physical_index': 37}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'physical_index': 39}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'physical_index': 40}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'physical_index': 40}, {'structure': '3.10', 'title': 'Variant Handling', 'physical_index': 42}, {'structure': '3.10.1', 'title': 'Binding Times', 'physical_index': 42}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'physical_index': 42}, {'structure': '3.10.3', 'title': 'Variability', 'physical_index': 43}, {'structure': '4', 'title': 'Communication on the VFB', 'physical_index': 44}, {'structure': '4.1', 'title': 'Introduction', 'physical_index': 44}, {'structure': '4.2', 'title': 'Error types', 'physical_index': 44}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'physical_index': 44}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'physical_index': 45}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'physical_index': 47}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'physical_index': 51}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'physical_index': 52}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'physical_index': 52}, {'structure': '4.4', 'title': 'Client -Server communication', 'physical_index': 53}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'physical_index': 56}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'physical_index': 57}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'physical_index': 58}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'physical_index': 58}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'physical_index': 59}, {'structure': '5', 'title': 'Timing Extensions', 'physical_index': 61}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'physical_index': 61}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'physical_index': 62}, {'structure': '6', 'title': 'Interaction with hardware', 'physical_index': 63}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 63}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'physical_index': 64}, {'structure': '6.3', 'title': 'ECU Abstraction', 'physical_index': 65}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'physical_index': 65}, {'structure': '6.5', 'title': 'Complex Driver Component', 'physical_index': 65}, {'structure': '7', 'title': 'AUTOSAR Services', 'physical_index': 67}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 67}, {'structure': '7.2', 'title': 'VFB Representation', 'physical_index': 67}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'physical_index': 68}, {'structure': '7.2.2', 'title': 'Location of a Service', 'physical_index': 68}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'physical_index': 68}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'physical_index': 69}, {'structure': '7.2.5', 'title': 'Configuration', 'physical_index': 70}, {'structure': '7.3', 'title': 'List of Services', 'physical_index': 70}, {'structure': '8', 'title': 'Mode Management', 'physical_index': 71}, {'structure': '8.1', 'title': 'Introduction', 'physical_index': 71}, {'structure': '8.2', 'title': 'Defining modes', 'physical_index': 71}, {'structure': '8.3', 'title': 'Communicating modes', 'physical_index': 72}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'physical_index': 73}, {'structure': '8.5', 'title': 'Components that depend on modes', 'physical_index': 74}, {'structure': '9', 'title': 'Port Groups', 'physical_index': 76}, {'structure': '10', 'title': 'Measurement and Calibration', 'physical_index': 77}, {'structure': '10.1', 'title': 'Calibration', 'physical_index': 77}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'physical_index': 77}, {'structure': '10.1.2', 'title': 'Private calibration', 'physical_index': 80}, {'structure': '10.2', 'title': 'Measurement', 'physical_index': 80}, {'structure': '11', 'title': 'VFB Features and Profiles', 'physical_index': 82}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'physical_index': 82}, {'structure': '11.2', 'title': 'Feature tables', 'physical_index': 82}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'physical_index': 83}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': 95}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'physical_index': 101}, {'structure': '12.1', 'title': 'Introduction', 'physical_index': 101}, {'structure': '12.2', 'title': 'Problems of interaction', 'physical_index': 101}, {'structure': '12.3', 'title': 'Description of interaction', 'physical_index': 102}, {'structure': '13', 'title': 'References', 'physical_index': 104}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 6}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 6}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 6}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 7}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'physical_index': 8}, {'structure': '1.4.1', 'title': 'Structure of this document', 'physical_index': 8}, {'structure': '1.4.2', 'title': 'Specification Items', 'physical_index': 8}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'physical_index': 9}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'physical_index': 12}, {'structure': '3.1', 'title': 'Components', 'physical_index': 12}, {'structure': '3.2', 'title': 'Port-Interfaces', 'physical_index': 14}, {'structure': '3.3', 'title': 'Ports', 'physical_index': 17}, {'structure': '3.3.1', 'title': 'Port Types', 'physical_index': 17}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'physical_index': 25}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'physical_index': 26}, {'structure': '3.4', 'title': 'Connectors', 'physical_index': 26}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'physical_index': 28}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': 29}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': 30}, {'structure': '3.7', 'title': 'Kinds of software components', 'physical_index': 33}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'physical_index': 36}, {'structure': '3.8.1', 'title': 'Background', 'physical_index': 36}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'physical_index': 37}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'physical_index': 39}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'physical_index': 40}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'physical_index': 40}, {'structure': '3.10', 'title': 'Variant Handling', 'physical_index': 42}, {'structure': '3.10.1', 'title': 'Binding Times', 'physical_index': 42}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'physical_index': 42}, {'structure': '3.10.3', 'title': 'Variability', 'physical_index': 43}, {'structure': '4', 'title': 'Communication on the VFB', 'physical_index': 44}, {'structure': '4.1', 'title': 'Introduction', 'physical_index': 44}, {'structure': '4.2', 'title': 'Error types', 'physical_index': 44}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'physical_index': 44}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'physical_index': 45}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'physical_index': 47}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'physical_index': 51}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'physical_index': 52}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'physical_index': 52}, {'structure': '4.4', 'title': 'Client -Server communication', 'physical_index': 53}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'physical_index': 56}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'physical_index': 57}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'physical_index': 58}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'physical_index': 58}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'physical_index': 59}, {'structure': '5', 'title': 'Timing Extensions', 'physical_index': 61}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'physical_index': 61}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'physical_index': 62}, {'structure': '6', 'title': 'Interaction with hardware', 'physical_index': 63}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 63}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'physical_index': 64}, {'structure': '6.3', 'title': 'ECU Abstraction', 'physical_index': 65}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'physical_index': 65}, {'structure': '6.5', 'title': 'Complex Driver Component', 'physical_index': 65}, {'structure': '7', 'title': 'AUTOSAR Services', 'physical_index': 67}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 67}, {'structure': '7.2', 'title': 'VFB Representation', 'physical_index': 67}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'physical_index': 68}, {'structure': '7.2.2', 'title': 'Location of a Service', 'physical_index': 68}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'physical_index': 68}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'physical_index': 69}, {'structure': '7.2.5', 'title': 'Configuration', 'physical_index': 70}, {'structure': '7.3', 'title': 'List of Services', 'physical_index': 70}, {'structure': '8', 'title': 'Mode Management', 'physical_index': 71}, {'structure': '8.1', 'title': 'Introduction', 'physical_index': 71}, {'structure': '8.2', 'title': 'Defining modes', 'physical_index': 71}, {'structure': '8.3', 'title': 'Communicating modes', 'physical_index': 72}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'physical_index': 73}, {'structure': '8.5', 'title': 'Components that depend on modes', 'physical_index': 74}, {'structure': '9', 'title': 'Port Groups', 'physical_index': 76}, {'structure': '10', 'title': 'Measurement and Calibration', 'physical_index': 77}, {'structure': '10.1', 'title': 'Calibration', 'physical_index': 77}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'physical_index': 77}, {'structure': '10.1.2', 'title': 'Private calibration', 'physical_index': 80}, {'structure': '10.2', 'title': 'Measurement', 'physical_index': 80}, {'structure': '11', 'title': 'VFB Features and Profiles', 'physical_index': 82}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'physical_index': 82}, {'structure': '11.2', 'title': 'Feature tables', 'physical_index': 82}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'physical_index': 83}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': 95}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'physical_index': 101}, {'structure': '12.1', 'title': 'Introduction', 'physical_index': 101}, {'structure': '12.2', 'title': 'Problems of interaction', 'physical_index': 101}, {'structure': '12.3', 'title': 'Description of interaction', 'physical_index': 102}, {'structure': '13', 'title': 'References', 'physical_index': 104}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3176470588235294,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Resources for components and \u201crunnables\u201d",
+        "page_number": 36
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Background",
+        "page_number": 36
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "The \u201crunnable\u201d concept",
+        "page_number": 37
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "The implementation of a component and the role of the RTE",
+        "page_number": 39
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Interface Conversion Blocks",
+        "page_number": 40
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Supported Conversions and Mappings",
+        "page_number": 40
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Variant Handling",
+        "page_number": 42
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Binding Times",
+        "page_number": 42
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Choosing a Variant",
+        "page_number": 42
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Variability",
+        "page_number": 43
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Communication on the VFB",
+        "page_number": 44
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 44
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Error types",
+        "page_number": 44
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Sender -Receiver communication",
+        "page_number": 44
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "From the point of view of the sender",
+        "page_number": 45
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "From the point of view of the receiver",
+        "page_number": 47
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Multiplicity of sender -receiver",
+        "page_number": 51
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Filtering between the sender and the receiver",
+        "page_number": 52
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Concurrency and ordering within a sender -receiver connector",
+        "page_number": 52
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Client -Server communication",
+        "page_number": 53
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "From the point of view of the client",
+        "page_number": 56
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "From the point of view of the server",
+        "page_number": 57
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Multiplicity of client -server",
+        "page_number": 58
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Ordering and concurrency within a client -server connector",
+        "page_number": 58
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Remarks regarding the identification of communication partners",
+        "page_number": 59
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Timing Extensions",
+        "page_number": 61
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Main Purpose of Timing Extensions for AUTOSAR",
+        "page_number": 61
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Timing in different phases of the AUTOSAR methodology",
+        "page_number": 62
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Interaction with hardware",
+        "page_number": 63
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 63
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Microcontroller Abstraction Layer (MCAL)",
+        "page_number": 64
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "ECU Abstraction",
+        "page_number": 65
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Sensor -Actuator Software Component",
+        "page_number": 65
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Complex Driver Component",
+        "page_number": 65
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "AUTOSAR Services",
+        "page_number": 67
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 67
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "VFB Representation",
+        "page_number": 67
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Selection of a communication mechanism",
+        "page_number": 68
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Location of a Service",
+        "page_number": 68
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Distribution of Requests to Remote Services",
+        "page_number": 68
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Platform dependent types",
+        "page_number": 69
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Configuration",
+        "page_number": 70
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "List of Services",
+        "page_number": 70
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Mode Management",
+        "page_number": 71
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 71
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Defining modes",
+        "page_number": 71
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Communicating modes",
+        "page_number": 72
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Mode -managers: components that control modes",
+        "page_number": 73
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Components that depend on modes",
+        "page_number": 74
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Port Groups",
+        "page_number": 76
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Measurement and Calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Port-based calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Private calibration",
+        "page_number": 80
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Measurement",
+        "page_number": 80
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "VFB Features and Profiles",
+        "page_number": 82
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Inter-ECU features",
+        "page_number": 95
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 101
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction to this document', 'page': 6}, {'structure': '1.1', 'title': 'Contents', 'page': 6}, {'structure': '1.2', 'title': 'Prereads', 'page': 6}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'page': 7}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'page': 8}, {'structure': '1.4.1', 'title': 'Structure of this document', 'page': 8}, {'structure': '1.4.2', 'title': 'Specification Items', 'page': 8}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'page': 9}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'page': 12}, {'structure': '3.1', 'title': 'Components', 'page': 12}, {'structure': '3.2', 'title': 'Port-Interfaces', 'page': 14}, {'structure': '3.3', 'title': 'Ports', 'page': 17}, {'structure': '3.3.1', 'title': 'Port Types', 'page': 17}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'page': 25}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'page': 26}, {'structure': '3.4', 'title': 'Connectors', 'page': 26}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'page': 28}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'page': 29}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'page': 30}, {'structure': '3.7', 'title': 'Kinds of software components', 'page': 33}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'page': 36}, {'structure': '3.8.1', 'title': 'Background', 'page': 36}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'page': 37}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'page': 39}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'page': 40}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'page': 40}, {'structure': '3.10', 'title': 'Variant Handling', 'page': 42}, {'structure': '3.10.1', 'title': 'Binding Times', 'page': 42}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'page': 42}, {'structure': '3.10.3', 'title': 'Variability', 'page': 43}, {'structure': '4', 'title': 'Communication on the VFB', 'page': 44}, {'structure': '4.1', 'title': 'Introduction', 'page': 44}, {'structure': '4.2', 'title': 'Error types', 'page': 44}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'page': 44}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'page': 45}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'page': 47}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'page': 51}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'page': 52}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'page': 52}, {'structure': '4.4', 'title': 'Client -Server communication', 'page': 53}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'page': 56}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'page': 57}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'page': 58}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'page': 58}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'page': 59}, {'structure': '5', 'title': 'Timing Extensions', 'page': 61}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'page': 61}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'page': 62}, {'structure': '6', 'title': 'Interaction with hardware', 'page': 63}, {'structure': '6.1', 'title': 'Introduction', 'page': 63}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'page': 64}, {'structure': '6.3', 'title': 'ECU Abstraction', 'page': 65}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'page': 65}, {'structure': '6.5', 'title': 'Complex Driver Component', 'page': 65}, {'structure': '7', 'title': 'AUTOSAR Services', 'page': 67}, {'structure': '7.1', 'title': 'Introduction', 'page': 67}, {'structure': '7.2', 'title': 'VFB Representation', 'page': 67}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'page': 68}, {'structure': '7.2.2', 'title': 'Location of a Service', 'page': 68}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'page': 68}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'page': 69}, {'structure': '7.2.5', 'title': 'Configuration', 'page': 70}, {'structure': '7.3', 'title': 'List of Services', 'page': 70}, {'structure': '8', 'title': 'Mode Management', 'page': 71}, {'structure': '8.1', 'title': 'Introduction', 'page': 71}, {'structure': '8.2', 'title': 'Defining modes', 'page': 71}, {'structure': '8.3', 'title': 'Communicating modes', 'page': 72}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'page': 73}, {'structure': '8.5', 'title': 'Components that depend on modes', 'page': 74}, {'structure': '9', 'title': 'Port Groups', 'page': 76}, {'structure': '10', 'title': 'Measurement and Calibration', 'page': 77}, {'structure': '10.1', 'title': 'Calibration', 'page': 77}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'page': 77}, {'structure': '10.1.2', 'title': 'Private calibration', 'page': 80}, {'structure': '10.2', 'title': 'Measurement', 'page': 80}, {'structure': '11', 'title': 'VFB Features and Profiles', 'page': 82}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'page': 82}, {'structure': '11.2', 'title': 'Feature tables', 'page': 82}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'page': 83}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'page': 95}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'page': 101}, {'structure': '12.1', 'title': 'Introduction', 'page': 101}, {'structure': '12.2', 'title': 'Problems of interaction', 'page': 101}, {'structure': '12.3', 'title': 'Description of interaction', 'page': 102}, {'structure': '13', 'title': 'References', 'page': 104}]"
+  },
+  {
+    "message": "len(group_texts): 5"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction to this document', 'page': 6, 'physical_index': '<physical_index_6>'}, {'structure': '1.1', 'title': 'Contents', 'page': 6, 'physical_index': '<physical_index_6>'}, {'structure': '1.2', 'title': 'Prereads', 'page': 6, 'physical_index': '<physical_index_6>'}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'page': 7, 'physical_index': '<physical_index_7>'}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'page': 8, 'physical_index': '<physical_index_8>'}, {'structure': '1.4.1', 'title': 'Structure of this document', 'page': 8, 'physical_index': '<physical_index_8>'}, {'structure': '1.4.2', 'title': 'Specification Items', 'page': 8, 'physical_index': '<physical_index_8>'}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'page': 9, 'physical_index': '<physical_index_9>'}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'page': 12, 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Components', 'page': 12, 'physical_index': '<physical_index_12>'}, {'structure': '3.2', 'title': 'Port-Interfaces', 'page': 14, 'physical_index': '<physical_index_14>'}, {'structure': '3.3', 'title': 'Ports', 'page': 17, 'physical_index': '<physical_index_17>'}, {'structure': '3.3.1', 'title': 'Port Types', 'page': 17, 'physical_index': '<physical_index_17>'}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'page': 25, 'physical_index': '<physical_index_25>'}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'page': 26, 'physical_index': '<physical_index_26>'}, {'structure': '3.4', 'title': 'Connectors', 'page': 26, 'physical_index': '<physical_index_26>'}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'page': 28, 'physical_index': '<physical_index_27>'}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'page': 29, 'physical_index': '<physical_index_27>'}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'page': 30, 'physical_index': '<physical_index_27>'}, {'structure': '3.7', 'title': 'Kinds of software components', 'page': 33, 'physical_index': '<physical_index_27>'}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'page': 36, 'physical_index': '<physical_index_27>'}, {'structure': '3.8.1', 'title': 'Background', 'page': 36, 'physical_index': '<physical_index_27>'}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'page': 37, 'physical_index': '<physical_index_27>'}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'page': 39, 'physical_index': '<physical_index_27>'}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'page': 40, 'physical_index': '<physical_index_27>'}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'page': 40, 'physical_index': '<physical_index_27>'}, {'structure': '3.10', 'title': 'Variant Handling', 'page': 42, 'physical_index': '<physical_index_27>'}, {'structure': '3.10.1', 'title': 'Binding Times', 'page': 42, 'physical_index': '<physical_index_27>'}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'page': 42, 'physical_index': '<physical_index_27>'}, {'structure': '3.10.3', 'title': 'Variability', 'page': 43, 'physical_index': '<physical_index_27>'}, {'structure': '4', 'title': 'Communication on the VFB', 'page': 44, 'physical_index': '<physical_index_27>'}, {'structure': '4.1', 'title': 'Introduction', 'page': 44, 'physical_index': '<physical_index_27>'}, {'structure': '4.2', 'title': 'Error types', 'page': 44, 'physical_index': '<physical_index_27>'}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'page': 44, 'physical_index': '<physical_index_27>'}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'page': 45, 'physical_index': '<physical_index_27>'}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'page': 47, 'physical_index': '<physical_index_47>'}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'page': 51, 'physical_index': '<physical_index_27>'}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'page': 52, 'physical_index': '<physical_index_27>'}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'page': 52, 'physical_index': '<physical_index_27>'}, {'structure': '4.4', 'title': 'Client -Server communication', 'page': 53, 'physical_index': '<physical_index_27>'}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'page': 56, 'physical_index': '<physical_index_27>'}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'page': 57, 'physical_index': '<physical_index_27>'}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'page': 58, 'physical_index': '<physical_index_27>'}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'page': 58, 'physical_index': '<physical_index_27>'}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'page': 59, 'physical_index': '<physical_index_27>'}, {'structure': '5', 'title': 'Timing Extensions', 'page': 61, 'physical_index': '<physical_index_27>'}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'page': 61, 'physical_index': '<physical_index_27>'}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'page': 62, 'physical_index': '<physical_index_27>'}, {'structure': '6', 'title': 'Interaction with hardware', 'page': 63, 'physical_index': '<physical_index_5>'}, {'structure': '6.1', 'title': 'Introduction', 'page': 63, 'physical_index': '<physical_index_5>'}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'page': 64, 'physical_index': '<physical_index_5>'}, {'structure': '6.3', 'title': 'ECU Abstraction', 'page': 65, 'physical_index': '<physical_index_5>'}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'page': 65, 'physical_index': '<physical_index_5>'}, {'structure': '6.5', 'title': 'Complex Driver Component', 'page': 65, 'physical_index': '<physical_index_5>'}, {'structure': '7', 'title': 'AUTOSAR Services', 'page': 67, 'physical_index': '<physical_index_5>'}, {'structure': '7.1', 'title': 'Introduction', 'page': 67, 'physical_index': '<physical_index_5>'}, {'structure': '7.2', 'title': 'VFB Representation', 'page': 67, 'physical_index': '<physical_index_5>'}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'page': 68, 'physical_index': '<physical_index_68>'}, {'structure': '7.2.2', 'title': 'Location of a Service', 'page': 68, 'physical_index': '<physical_index_68>'}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'page': 68, 'physical_index': '<physical_index_68>'}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'page': 69, 'physical_index': '<physical_index_69>'}, {'structure': '7.2.5', 'title': 'Configuration', 'page': 70, 'physical_index': '<physical_index_70>'}, {'structure': '7.3', 'title': 'List of Services', 'page': 70, 'physical_index': '<physical_index_5>'}, {'structure': '8', 'title': 'Mode Management', 'page': 71, 'physical_index': '<physical_index_71>'}, {'structure': '8.1', 'title': 'Introduction', 'page': 71, 'physical_index': '<physical_index_71>'}, {'structure': '8.2', 'title': 'Defining modes', 'page': 71, 'physical_index': '<physical_index_71>'}, {'structure': '8.3', 'title': 'Communicating modes', 'page': 72, 'physical_index': '<physical_index_72>'}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'page': 73, 'physical_index': '<physical_index_73>'}, {'structure': '8.5', 'title': 'Components that depend on modes', 'page': 74, 'physical_index': '<physical_index_74>'}, {'structure': '9', 'title': 'Port Groups', 'page': 76, 'physical_index': '<physical_index_76>'}, {'structure': '10', 'title': 'Measurement and Calibration', 'page': 77, 'physical_index': '<physical_index_77>'}, {'structure': '10.1', 'title': 'Calibration', 'page': 77, 'physical_index': '<physical_index_77>'}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'page': 77, 'physical_index': '<physical_index_77>'}, {'structure': '10.1.2', 'title': 'Private calibration', 'page': 80, 'physical_index': '<physical_index_79>'}, {'structure': '10.2', 'title': 'Measurement', 'page': 80, 'physical_index': '<physical_index_80>'}, {'structure': '11', 'title': 'VFB Features and Profiles', 'page': 82, 'physical_index': '<physical_index_82>'}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'page': 82, 'physical_index': '<physical_index_82>'}, {'structure': '11.2', 'title': 'Feature tables', 'page': 82, 'physical_index': '<physical_index_82>'}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'page': 83, 'physical_index': '<physical_index_83>'}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'page': 95, 'physical_index': '<physical_index_95>'}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'page': 101, 'physical_index': '<physical_index_101>'}, {'structure': '12.1', 'title': 'Introduction', 'page': 101, 'physical_index': '<physical_index_101>'}, {'structure': '12.2', 'title': 'Problems of interaction', 'page': 101, 'physical_index': '<physical_index_101>'}, {'structure': '12.3', 'title': 'Description of interaction', 'page': 102, 'physical_index': '<physical_index_102>'}, {'structure': '13', 'title': 'References', 'page': 104, 'physical_index': '<physical_index_104>'}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': '<physical_index_95>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction to this document', 'page': 6, 'physical_index': 6}, {'structure': '1.1', 'title': 'Contents', 'page': 6, 'physical_index': 6}, {'structure': '1.2', 'title': 'Prereads', 'page': 6, 'physical_index': 6}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'page': 7, 'physical_index': 7}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'page': 8, 'physical_index': 8}, {'structure': '1.4.1', 'title': 'Structure of this document', 'page': 8, 'physical_index': 8}, {'structure': '1.4.2', 'title': 'Specification Items', 'page': 8, 'physical_index': 8}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'page': 9, 'physical_index': 9}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'page': 12, 'physical_index': 12}, {'structure': '3.1', 'title': 'Components', 'page': 12, 'physical_index': 12}, {'structure': '3.2', 'title': 'Port-Interfaces', 'page': 14, 'physical_index': 14}, {'structure': '3.3', 'title': 'Ports', 'page': 17, 'physical_index': 17}, {'structure': '3.3.1', 'title': 'Port Types', 'page': 17, 'physical_index': 17}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'page': 25, 'physical_index': 25}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'page': 26, 'physical_index': 26}, {'structure': '3.4', 'title': 'Connectors', 'page': 26, 'physical_index': 26}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'page': 28, 'physical_index': 27}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'page': 29, 'physical_index': 27}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'page': 30, 'physical_index': 27}, {'structure': '3.7', 'title': 'Kinds of software components', 'page': 33, 'physical_index': 27}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'page': 36, 'physical_index': 27}, {'structure': '3.8.1', 'title': 'Background', 'page': 36, 'physical_index': 27}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'page': 37, 'physical_index': 27}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'page': 39, 'physical_index': 27}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'page': 40, 'physical_index': 27}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'page': 40, 'physical_index': 27}, {'structure': '3.10', 'title': 'Variant Handling', 'page': 42, 'physical_index': 27}, {'structure': '3.10.1', 'title': 'Binding Times', 'page': 42, 'physical_index': 27}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'page': 42, 'physical_index': 27}, {'structure': '3.10.3', 'title': 'Variability', 'page': 43, 'physical_index': 27}, {'structure': '4', 'title': 'Communication on the VFB', 'page': 44, 'physical_index': 27}, {'structure': '4.1', 'title': 'Introduction', 'page': 44, 'physical_index': 27}, {'structure': '4.2', 'title': 'Error types', 'page': 44, 'physical_index': 27}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'page': 44, 'physical_index': 27}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'page': 45, 'physical_index': 27}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'page': 47, 'physical_index': 47}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'page': 51, 'physical_index': 27}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'page': 52, 'physical_index': 27}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'page': 52, 'physical_index': 27}, {'structure': '4.4', 'title': 'Client -Server communication', 'page': 53, 'physical_index': 27}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'page': 56, 'physical_index': 27}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'page': 57, 'physical_index': 27}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'page': 58, 'physical_index': 27}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'page': 58, 'physical_index': 27}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'page': 59, 'physical_index': 27}, {'structure': '5', 'title': 'Timing Extensions', 'page': 61, 'physical_index': 27}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'page': 61, 'physical_index': 27}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'page': 62, 'physical_index': 27}, {'structure': '6', 'title': 'Interaction with hardware', 'page': 63, 'physical_index': 5}, {'structure': '6.1', 'title': 'Introduction', 'page': 63, 'physical_index': 5}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'page': 64, 'physical_index': 5}, {'structure': '6.3', 'title': 'ECU Abstraction', 'page': 65, 'physical_index': 5}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'page': 65, 'physical_index': 5}, {'structure': '6.5', 'title': 'Complex Driver Component', 'page': 65, 'physical_index': 5}, {'structure': '7', 'title': 'AUTOSAR Services', 'page': 67, 'physical_index': 5}, {'structure': '7.1', 'title': 'Introduction', 'page': 67, 'physical_index': 5}, {'structure': '7.2', 'title': 'VFB Representation', 'page': 67, 'physical_index': 5}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'page': 68, 'physical_index': 68}, {'structure': '7.2.2', 'title': 'Location of a Service', 'page': 68, 'physical_index': 68}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'page': 68, 'physical_index': 68}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'page': 69, 'physical_index': 69}, {'structure': '7.2.5', 'title': 'Configuration', 'page': 70, 'physical_index': 70}, {'structure': '7.3', 'title': 'List of Services', 'page': 70, 'physical_index': 5}, {'structure': '8', 'title': 'Mode Management', 'page': 71, 'physical_index': 71}, {'structure': '8.1', 'title': 'Introduction', 'page': 71, 'physical_index': 71}, {'structure': '8.2', 'title': 'Defining modes', 'page': 71, 'physical_index': 71}, {'structure': '8.3', 'title': 'Communicating modes', 'page': 72, 'physical_index': 72}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'page': 73, 'physical_index': 73}, {'structure': '8.5', 'title': 'Components that depend on modes', 'page': 74, 'physical_index': 74}, {'structure': '9', 'title': 'Port Groups', 'page': 76, 'physical_index': 76}, {'structure': '10', 'title': 'Measurement and Calibration', 'page': 77, 'physical_index': 77}, {'structure': '10.1', 'title': 'Calibration', 'page': 77, 'physical_index': 77}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'page': 77, 'physical_index': 77}, {'structure': '10.1.2', 'title': 'Private calibration', 'page': 80, 'physical_index': 79}, {'structure': '10.2', 'title': 'Measurement', 'page': 80, 'physical_index': 80}, {'structure': '11', 'title': 'VFB Features and Profiles', 'page': 82, 'physical_index': 82}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'page': 82, 'physical_index': 82}, {'structure': '11.2', 'title': 'Feature tables', 'page': 82, 'physical_index': 82}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'page': 83, 'physical_index': 83}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'page': 95, 'physical_index': 95}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'page': 101, 'physical_index': 101}, {'structure': '12.1', 'title': 'Introduction', 'page': 101, 'physical_index': 101}, {'structure': '12.2', 'title': 'Problems of interaction', 'page': 101, 'physical_index': 101}, {'structure': '12.3', 'title': 'Description of interaction', 'page': 102, 'physical_index': 102}, {'structure': '13', 'title': 'References', 'page': 104, 'physical_index': 104}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': 95}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.26744186046511625,
+    "incorrect_results": [
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "Unconnected Ports",
+        "page_number": 27
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "Compositions versus atomic components",
+        "page_number": 27
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "Relationship between the VFB and the ECU Software Architecture",
+        "page_number": 27
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "Kinds of software components",
+        "page_number": 27
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Resources for components and \u201crunnables\u201d",
+        "page_number": 27
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Background",
+        "page_number": 27
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "The \u201crunnable\u201d concept",
+        "page_number": 27
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "The implementation of a component and the role of the RTE",
+        "page_number": 27
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Interface Conversion Blocks",
+        "page_number": 27
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Supported Conversions and Mappings",
+        "page_number": 27
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Variant Handling",
+        "page_number": 27
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Binding Times",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Choosing a Variant",
+        "page_number": 27
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Variability",
+        "page_number": 27
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Communication on the VFB",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 27
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Error types",
+        "page_number": 27
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Sender -Receiver communication",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "From the point of view of the sender",
+        "page_number": 27
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "From the point of view of the receiver",
+        "page_number": 47
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Multiplicity of sender -receiver",
+        "page_number": 27
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Filtering between the sender and the receiver",
+        "page_number": 27
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Concurrency and ordering within a sender -receiver connector",
+        "page_number": 27
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Client -Server communication",
+        "page_number": 27
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "From the point of view of the client",
+        "page_number": 27
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "From the point of view of the server",
+        "page_number": 27
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Multiplicity of client -server",
+        "page_number": 27
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Ordering and concurrency within a client -server connector",
+        "page_number": 27
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Remarks regarding the identification of communication partners",
+        "page_number": 27
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Timing Extensions",
+        "page_number": 27
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Main Purpose of Timing Extensions for AUTOSAR",
+        "page_number": 27
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Timing in different phases of the AUTOSAR methodology",
+        "page_number": 27
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Interaction with hardware",
+        "page_number": 5
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 5
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Microcontroller Abstraction Layer (MCAL)",
+        "page_number": 5
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "ECU Abstraction",
+        "page_number": 5
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Sensor -Actuator Software Component",
+        "page_number": 5
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Complex Driver Component",
+        "page_number": 5
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "AUTOSAR Services",
+        "page_number": 5
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 5
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "VFB Representation",
+        "page_number": 5
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Selection of a communication mechanism",
+        "page_number": 68
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Location of a Service",
+        "page_number": 68
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Distribution of Requests to Remote Services",
+        "page_number": 68
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Platform dependent types",
+        "page_number": 69
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Configuration",
+        "page_number": 70
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "List of Services",
+        "page_number": 5
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Mode Management",
+        "page_number": 71
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 71
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Defining modes",
+        "page_number": 71
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Communicating modes",
+        "page_number": 72
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Mode -managers: components that control modes",
+        "page_number": 73
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Components that depend on modes",
+        "page_number": 74
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Port Groups",
+        "page_number": 76
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Measurement and Calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Port-based calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Private calibration",
+        "page_number": 79
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 101
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Problems of interaction",
+        "page_number": 101
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Description of interaction",
+        "page_number": 102
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "References",
+        "page_number": 104
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Inter-ECU features",
+        "page_number": 95
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 5"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': '<physical_index_4>'}, {'structure': '1.1', 'title': 'Contents', 'physical_index': '<physical_index_4>'}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': '<physical_index_4>'}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': '<physical_index_4>'}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'physical_index': '<physical_index_4>'}, {'structure': '1.4.1', 'title': 'Structure of this document', 'physical_index': '<physical_index_4>'}, {'structure': '1.4.2', 'title': 'Specification Items', 'physical_index': '<physical_index_4>'}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'physical_index': '<physical_index_4>'}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'physical_index': '<physical_index_4>'}, {'structure': '3.1', 'title': 'Components', 'physical_index': '<physical_index_4>'}, {'structure': '3.2', 'title': 'Port-Interfaces', 'physical_index': '<physical_index_4>'}, {'structure': '3.3', 'title': 'Ports', 'physical_index': '<physical_index_4>'}, {'structure': '3.3.1', 'title': 'Port Types', 'physical_index': '<physical_index_4>'}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'physical_index': '<physical_index_4>'}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'physical_index': '<physical_index_4>'}, {'structure': '3.4', 'title': 'Connectors', 'physical_index': '<physical_index_4>'}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'physical_index': '<physical_index_4>'}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': '<physical_index_4>'}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': '<physical_index_4>'}, {'structure': '3.7', 'title': 'Kinds of software components', 'physical_index': '<physical_index_4>'}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'physical_index': '<physical_index_4>'}, {'structure': '3.8.1', 'title': 'Background', 'physical_index': '<physical_index_4>'}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'physical_index': '<physical_index_4>'}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'physical_index': '<physical_index_4>'}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'physical_index': '<physical_index_4>'}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'physical_index': '<physical_index_4>'}, {'structure': '3.10', 'title': 'Variant Handling', 'physical_index': '<physical_index_4>'}, {'structure': '3.10.1', 'title': 'Binding Times', 'physical_index': '<physical_index_4>'}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'physical_index': '<physical_index_4>'}, {'structure': '3.10.3', 'title': 'Variability', 'physical_index': '<physical_index_4>'}, {'structure': '4', 'title': 'Communication on the VFB', 'physical_index': '<physical_index_4>'}, {'structure': '4.1', 'title': 'Introduction', 'physical_index': '<physical_index_4>'}, {'structure': '4.2', 'title': 'Error types', 'physical_index': '<physical_index_4>'}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'physical_index': '<physical_index_4>'}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'physical_index': '<physical_index_4>'}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'physical_index': '<physical_index_4>'}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'physical_index': '<physical_index_4>'}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'physical_index': '<physical_index_4>'}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'physical_index': '<physical_index_4>'}, {'structure': '4.4', 'title': 'Client -Server communication', 'physical_index': '<physical_index_4>'}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'physical_index': '<physical_index_4>'}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'physical_index': '<physical_index_4>'}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'physical_index': '<physical_index_4>'}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'physical_index': '<physical_index_4>'}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'physical_index': '<physical_index_4>'}, {'structure': '5', 'title': 'Timing Extensions', 'physical_index': '<physical_index_4>'}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'physical_index': '<physical_index_4>'}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'physical_index': '<physical_index_4>'}, {'structure': '6', 'title': 'Interaction with hardware', 'physical_index': '<physical_index_4>'}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': '<physical_index_4>'}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'physical_index': '<physical_index_4>'}, {'structure': '6.3', 'title': 'ECU Abstraction', 'physical_index': '<physical_index_4>'}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'physical_index': '<physical_index_4>'}, {'structure': '6.5', 'title': 'Complex Driver Component', 'physical_index': '<physical_index_4>'}, {'structure': '7', 'title': 'AUTOSAR Services', 'physical_index': '<physical_index_4>'}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': '<physical_index_4>'}, {'structure': '7.2', 'title': 'VFB Representation', 'physical_index': '<physical_index_4>'}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'physical_index': '<physical_index_4>'}, {'structure': '7.2.2', 'title': 'Location of a Service', 'physical_index': '<physical_index_4>'}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'physical_index': '<physical_index_4>'}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'physical_index': '<physical_index_4>'}, {'structure': '7.2.5', 'title': 'Configuration', 'physical_index': '<physical_index_4>'}, {'structure': '7.3', 'title': 'List of Services', 'physical_index': '<physical_index_4>'}, {'structure': '8', 'title': 'Mode Management', 'physical_index': '<physical_index_4>'}, {'structure': '8.1', 'title': 'Introduction', 'physical_index': '<physical_index_4>'}, {'structure': '8.2', 'title': 'Defining modes', 'physical_index': '<physical_index_4>'}, {'structure': '8.3', 'title': 'Communicating modes', 'physical_index': '<physical_index_4>'}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'physical_index': '<physical_index_4>'}, {'structure': '8.5', 'title': 'Components that depend on modes', 'physical_index': '<physical_index_4>'}, {'structure': '9', 'title': 'Port Groups', 'physical_index': '<physical_index_4>'}, {'structure': '10', 'title': 'Measurement and Calibration', 'physical_index': '<physical_index_4>'}, {'structure': '10.1', 'title': 'Calibration', 'physical_index': '<physical_index_4>'}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'physical_index': '<physical_index_4>'}, {'structure': '10.1.2', 'title': 'Private calibration', 'physical_index': '<physical_index_4>'}, {'structure': '10.2', 'title': 'Measurement', 'physical_index': '<physical_index_4>'}, {'structure': '11', 'title': 'VFB Features and Profiles', 'physical_index': '<physical_index_4>'}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'physical_index': '<physical_index_4>'}, {'structure': '11.2', 'title': 'Feature tables', 'physical_index': '<physical_index_4>'}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'physical_index': '<physical_index_4>'}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': '<physical_index_4>'}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'physical_index': '<physical_index_4>'}, {'structure': '12.1', 'title': 'Introduction', 'physical_index': '<physical_index_4>'}, {'structure': '12.2', 'title': 'Problems of interaction', 'physical_index': '<physical_index_4>'}, {'structure': '12.3', 'title': 'Description of interaction', 'physical_index': '<physical_index_4>'}, {'structure': '13', 'title': 'References', 'physical_index': '<physical_index_4>'}, {'structure': '3.4.1.1', 'title': 'Unconnected PRPorts', 'physical_index': '<physical_index_28>'}, {'structure': '3.4.1.2', 'title': 'Unconnected Sender/Receiver Ports', 'physical_index': '<physical_index_28>'}, {'structure': '3.4.1.3', 'title': 'Unconnected Client/Server Ports', 'physical_index': '<physical_index_28>'}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': '<physical_index_29>'}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': '<physical_index_30>'}, {'structure': '3.7', 'title': 'Kinds of software components', 'physical_index': '<physical_index_33>'}, {'structure': '3.8', 'title': \"Resources for components and 'runnables'\", 'physical_index': '<physical_index_36>'}, {'structure': '3.8.1', 'title': 'Background', 'physical_index': '<physical_index_36>'}, {'structure': '3.8.2', 'title': \"The 'runnable' concept\", 'physical_index': '<physical_index_37>'}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'physical_index': '<physical_index_39>'}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'physical_index': '<physical_index_40>'}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'physical_index': '<physical_index_40>'}, {'structure': '3.9.1.1', 'title': 'Interface Element Mapping', 'physical_index': '<physical_index_41>'}, {'structure': '3.9.1.2', 'title': 'Linear Data Conversion', 'physical_index': '<physical_index_41>'}, {'structure': '3.9.1.3', 'title': 'Data Mapping', 'physical_index': '<physical_index_42>'}, {'structure': '3.9.1.4', 'title': 'Mixed Conversion', 'physical_index': '<physical_index_42>'}, {'structure': '3.10', 'title': 'Variant Handling', 'physical_index': '<physical_index_43>'}, {'structure': '3.10.1', 'title': 'Binding Times', 'physical_index': '<physical_index_43>'}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'physical_index': '<physical_index_43>'}, {'structure': '3.10.3', 'title': 'Variability', 'physical_index': '<physical_index_43>'}, {'structure': '3.10.3.1', 'title': 'Software Component Variability', 'physical_index': '<physical_index_43>'}, {'structure': '3.10.3.2', 'title': 'Port Variability', 'physical_index': '<physical_index_43>'}, {'structure': '3.10.3.3', 'title': 'Connector Variability', 'physical_index': '<physical_index_43>'}, {'structure': '4.1', 'title': 'Introduction', 'physical_index': '<physical_index_44>'}, {'structure': '4.2', 'title': 'Error types', 'physical_index': '<physical_index_44>'}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'physical_index': '<physical_index_45>'}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'physical_index': '<physical_index_46>'}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'physical_index': '<physical_index_47>'}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'physical_index': '<physical_index_51>'}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'physical_index': '<physical_index_52>'}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'physical_index': '<physical_index_53>'}, {'structure': '4.4', 'title': 'Client -Server communication', 'physical_index': '<physical_index_54>'}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'physical_index': '<physical_index_56>'}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'physical_index': '<physical_index_57>'}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'physical_index': '<physical_index_58>'}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'physical_index': '<physical_index_59>'}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'physical_index': '<physical_index_60>'}, {'structure': '5', 'title': 'Timing Extensions', 'physical_index': '<physical_index_61>'}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'physical_index': '<physical_index_61>'}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'physical_index': '<physical_index_62>'}, {'structure': '6', 'title': 'Interaction with hardware', 'physical_index': '<physical_index_63>'}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': '<physical_index_63>'}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'physical_index': '<physical_index_64>'}, {'structure': '6.3', 'title': 'ECU Abstraction', 'physical_index': '<physical_index_65>'}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'physical_index': '<physical_index_65>'}, {'structure': '6.5', 'title': 'Complex Driver Component', 'physical_index': '<physical_index_66>'}, {'structure': '7', 'title': 'AUTOSAR Services', 'physical_index': '<physical_index_67>'}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': '<physical_index_67>'}, {'structure': '7.2', 'title': 'VFB Representation', 'physical_index': '<physical_index_68>'}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'physical_index': '<physical_index_68>'}, {'structure': '7.2.2', 'title': 'Location of a Service', 'physical_index': '<physical_index_68>'}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'physical_index': '<physical_index_68>'}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'physical_index': '<physical_index_69>'}, {'structure': '7.2.5', 'title': 'Configuration', 'physical_index': '<physical_index_70>'}, {'structure': '7.3', 'title': 'List of Services', 'physical_index': '<physical_index_70>'}, {'structure': '8', 'title': 'Mode Management', 'physical_index': '<physical_index_71>'}, {'structure': '8.1', 'title': 'Introduction', 'physical_index': '<physical_index_71>'}, {'structure': '8.2', 'title': 'Defining modes', 'physical_index': '<physical_index_71>'}, {'structure': '8.3', 'title': 'Communicating modes', 'physical_index': '<physical_index_72>'}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'physical_index': '<physical_index_73>'}, {'structure': '8.5', 'title': 'Components that depend on modes', 'physical_index': '<physical_index_74>'}, {'structure': '9', 'title': 'Port Groups', 'physical_index': '<physical_index_76>'}, {'structure': '10', 'title': 'Measurement and Calibration', 'physical_index': '<physical_index_77>'}, {'structure': '10.1', 'title': 'Calibration', 'physical_index': '<physical_index_77>'}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'physical_index': '<physical_index_77>'}, {'structure': '10.1.1.1', 'title': 'Pure single instantiation', 'physical_index': '<physical_index_78>'}, {'structure': '10.1.1.2', 'title': 'Multiple instantiation of the involved software components', 'physical_index': '<physical_index_78>'}, {'structure': '10.1.1.3', 'title': 'Multiple instantiation of the involved calibration components', 'physical_index': '<physical_index_79>'}, {'structure': '10.1.2', 'title': 'Private calibration', 'physical_index': '<physical_index_80>'}, {'structure': '10.2', 'title': 'Measurement', 'physical_index': '<physical_index_81>'}, {'structure': '11', 'title': 'VFB Features and Profiles', 'physical_index': '<physical_index_82>'}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'physical_index': '<physical_index_82>'}, {'structure': '11.2', 'title': 'Feature tables', 'physical_index': '<physical_index_82>'}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'physical_index': '<physical_index_83>'}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': '<physical_index_95>'}, {'structure': '12', 'title': 'Interaction with Non-AUTOSAR-ECUs', 'physical_index': '<physical_index_101>'}, {'structure': '12.1', 'title': 'Introduction', 'physical_index': '<physical_index_101>'}, {'structure': '12.2', 'title': 'Problems of interaction', 'physical_index': '<physical_index_101>'}, {'structure': '12.3', 'title': 'Description of interaction', 'physical_index': '<physical_index_102>'}, {'structure': '13', 'title': 'References', 'physical_index': '<physical_index_104>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 4}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 4}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 4}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 4}, {'structure': '1.4', 'title': 'Structure and conventions of this document', 'physical_index': 4}, {'structure': '1.4.1', 'title': 'Structure of this document', 'physical_index': 4}, {'structure': '1.4.2', 'title': 'Specification Items', 'physical_index': 4}, {'structure': '2', 'title': 'The Virtual Functional Bus', 'physical_index': 4}, {'structure': '3', 'title': 'Overall mechanisms and concepts', 'physical_index': 4}, {'structure': '3.1', 'title': 'Components', 'physical_index': 4}, {'structure': '3.2', 'title': 'Port-Interfaces', 'physical_index': 4}, {'structure': '3.3', 'title': 'Ports', 'physical_index': 4}, {'structure': '3.3.1', 'title': 'Port Types', 'physical_index': 4}, {'structure': '3.3.2', 'title': 'Port Compatibility', 'physical_index': 4}, {'structure': '3.3.3', 'title': 'Data Type Policies', 'physical_index': 4}, {'structure': '3.4', 'title': 'Connectors', 'physical_index': 4}, {'structure': '3.4.1', 'title': 'Unconnected Ports', 'physical_index': 4}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': 4}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': 4}, {'structure': '3.7', 'title': 'Kinds of software components', 'physical_index': 4}, {'structure': '3.8', 'title': 'Resources for components and \u201crunnables\u201d', 'physical_index': 4}, {'structure': '3.8.1', 'title': 'Background', 'physical_index': 4}, {'structure': '3.8.2', 'title': 'The \u201crunnable\u201d concept', 'physical_index': 4}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'physical_index': 4}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'physical_index': 4}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'physical_index': 4}, {'structure': '3.10', 'title': 'Variant Handling', 'physical_index': 4}, {'structure': '3.10.1', 'title': 'Binding Times', 'physical_index': 4}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'physical_index': 4}, {'structure': '3.10.3', 'title': 'Variability', 'physical_index': 4}, {'structure': '4', 'title': 'Communication on the VFB', 'physical_index': 4}, {'structure': '4.1', 'title': 'Introduction', 'physical_index': 4}, {'structure': '4.2', 'title': 'Error types', 'physical_index': 4}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'physical_index': 4}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'physical_index': 4}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'physical_index': 4}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'physical_index': 4}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'physical_index': 4}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'physical_index': 4}, {'structure': '4.4', 'title': 'Client -Server communication', 'physical_index': 4}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'physical_index': 4}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'physical_index': 4}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'physical_index': 4}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'physical_index': 4}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'physical_index': 4}, {'structure': '5', 'title': 'Timing Extensions', 'physical_index': 4}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'physical_index': 4}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'physical_index': 4}, {'structure': '6', 'title': 'Interaction with hardware', 'physical_index': 4}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 4}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'physical_index': 4}, {'structure': '6.3', 'title': 'ECU Abstraction', 'physical_index': 4}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'physical_index': 4}, {'structure': '6.5', 'title': 'Complex Driver Component', 'physical_index': 4}, {'structure': '7', 'title': 'AUTOSAR Services', 'physical_index': 4}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 4}, {'structure': '7.2', 'title': 'VFB Representation', 'physical_index': 4}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'physical_index': 4}, {'structure': '7.2.2', 'title': 'Location of a Service', 'physical_index': 4}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'physical_index': 4}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'physical_index': 4}, {'structure': '7.2.5', 'title': 'Configuration', 'physical_index': 4}, {'structure': '7.3', 'title': 'List of Services', 'physical_index': 4}, {'structure': '8', 'title': 'Mode Management', 'physical_index': 4}, {'structure': '8.1', 'title': 'Introduction', 'physical_index': 4}, {'structure': '8.2', 'title': 'Defining modes', 'physical_index': 4}, {'structure': '8.3', 'title': 'Communicating modes', 'physical_index': 4}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'physical_index': 4}, {'structure': '8.5', 'title': 'Components that depend on modes', 'physical_index': 4}, {'structure': '9', 'title': 'Port Groups', 'physical_index': 4}, {'structure': '10', 'title': 'Measurement and Calibration', 'physical_index': 4}, {'structure': '10.1', 'title': 'Calibration', 'physical_index': 4}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'physical_index': 4}, {'structure': '10.1.2', 'title': 'Private calibration', 'physical_index': 4}, {'structure': '10.2', 'title': 'Measurement', 'physical_index': 4}, {'structure': '11', 'title': 'VFB Features and Profiles', 'physical_index': 4}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'physical_index': 4}, {'structure': '11.2', 'title': 'Feature tables', 'physical_index': 4}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'physical_index': 4}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': 4}, {'structure': '12', 'title': 'Interaction with Non -AUTOSAR -ECUs', 'physical_index': 4}, {'structure': '12.1', 'title': 'Introduction', 'physical_index': 4}, {'structure': '12.2', 'title': 'Problems of interaction', 'physical_index': 4}, {'structure': '12.3', 'title': 'Description of interaction', 'physical_index': 4}, {'structure': '13', 'title': 'References', 'physical_index': 4}, {'structure': '3.4.1.1', 'title': 'Unconnected PRPorts', 'physical_index': 28}, {'structure': '3.4.1.2', 'title': 'Unconnected Sender/Receiver Ports', 'physical_index': 28}, {'structure': '3.4.1.3', 'title': 'Unconnected Client/Server Ports', 'physical_index': 28}, {'structure': '3.5', 'title': 'Compositions versus atomic components', 'physical_index': 29}, {'structure': '3.6', 'title': 'Relationship between the VFB and the ECU Software Architecture', 'physical_index': 30}, {'structure': '3.7', 'title': 'Kinds of software components', 'physical_index': 33}, {'structure': '3.8', 'title': \"Resources for components and 'runnables'\", 'physical_index': 36}, {'structure': '3.8.1', 'title': 'Background', 'physical_index': 36}, {'structure': '3.8.2', 'title': \"The 'runnable' concept\", 'physical_index': 37}, {'structure': '3.8.3', 'title': 'The implementation of a component and the role of the RTE', 'physical_index': 39}, {'structure': '3.9', 'title': 'Interface Conversion Blocks', 'physical_index': 40}, {'structure': '3.9.1', 'title': 'Supported Conversions and Mappings', 'physical_index': 40}, {'structure': '3.9.1.1', 'title': 'Interface Element Mapping', 'physical_index': 41}, {'structure': '3.9.1.2', 'title': 'Linear Data Conversion', 'physical_index': 41}, {'structure': '3.9.1.3', 'title': 'Data Mapping', 'physical_index': 42}, {'structure': '3.9.1.4', 'title': 'Mixed Conversion', 'physical_index': 42}, {'structure': '3.10', 'title': 'Variant Handling', 'physical_index': 43}, {'structure': '3.10.1', 'title': 'Binding Times', 'physical_index': 43}, {'structure': '3.10.2', 'title': 'Choosing a Variant', 'physical_index': 43}, {'structure': '3.10.3', 'title': 'Variability', 'physical_index': 43}, {'structure': '3.10.3.1', 'title': 'Software Component Variability', 'physical_index': 43}, {'structure': '3.10.3.2', 'title': 'Port Variability', 'physical_index': 43}, {'structure': '3.10.3.3', 'title': 'Connector Variability', 'physical_index': 43}, {'structure': '4.1', 'title': 'Introduction', 'physical_index': 44}, {'structure': '4.2', 'title': 'Error types', 'physical_index': 44}, {'structure': '4.3', 'title': 'Sender -Receiver communication', 'physical_index': 45}, {'structure': '4.3.1', 'title': 'From the point of view of the sender', 'physical_index': 46}, {'structure': '4.3.2', 'title': 'From the point of view of the receiver', 'physical_index': 47}, {'structure': '4.3.3', 'title': 'Multiplicity of sender -receiver', 'physical_index': 51}, {'structure': '4.3.4', 'title': 'Filtering between the sender and the receiver', 'physical_index': 52}, {'structure': '4.3.5', 'title': 'Concurrency and ordering within a sender -receiver connector', 'physical_index': 53}, {'structure': '4.4', 'title': 'Client -Server communication', 'physical_index': 54}, {'structure': '4.4.1', 'title': 'From the point of view of the client', 'physical_index': 56}, {'structure': '4.4.2', 'title': 'From the point of view of the server', 'physical_index': 57}, {'structure': '4.4.3', 'title': 'Multiplicity of client -server', 'physical_index': 58}, {'structure': '4.4.4', 'title': 'Ordering and concurrency within a client -server connector', 'physical_index': 59}, {'structure': '4.5', 'title': 'Remarks regarding the identification of communication partners', 'physical_index': 60}, {'structure': '5', 'title': 'Timing Extensions', 'physical_index': 61}, {'structure': '5.1', 'title': 'Main Purpose of Timing Extensions for AUTOSAR', 'physical_index': 61}, {'structure': '5.2', 'title': 'Timing in different phases of the AUTOSAR methodology', 'physical_index': 62}, {'structure': '6', 'title': 'Interaction with hardware', 'physical_index': 63}, {'structure': '6.1', 'title': 'Introduction', 'physical_index': 63}, {'structure': '6.2', 'title': 'Microcontroller Abstraction Layer (MCAL)', 'physical_index': 64}, {'structure': '6.3', 'title': 'ECU Abstraction', 'physical_index': 65}, {'structure': '6.4', 'title': 'Sensor -Actuator Software Component', 'physical_index': 65}, {'structure': '6.5', 'title': 'Complex Driver Component', 'physical_index': 66}, {'structure': '7', 'title': 'AUTOSAR Services', 'physical_index': 67}, {'structure': '7.1', 'title': 'Introduction', 'physical_index': 67}, {'structure': '7.2', 'title': 'VFB Representation', 'physical_index': 68}, {'structure': '7.2.1', 'title': 'Selection of a communication mechanism', 'physical_index': 68}, {'structure': '7.2.2', 'title': 'Location of a Service', 'physical_index': 68}, {'structure': '7.2.3', 'title': 'Distribution of Requests to Remote Services', 'physical_index': 68}, {'structure': '7.2.4', 'title': 'Platform dependent types', 'physical_index': 69}, {'structure': '7.2.5', 'title': 'Configuration', 'physical_index': 70}, {'structure': '7.3', 'title': 'List of Services', 'physical_index': 70}, {'structure': '8', 'title': 'Mode Management', 'physical_index': 71}, {'structure': '8.1', 'title': 'Introduction', 'physical_index': 71}, {'structure': '8.2', 'title': 'Defining modes', 'physical_index': 71}, {'structure': '8.3', 'title': 'Communicating modes', 'physical_index': 72}, {'structure': '8.4', 'title': 'Mode -managers: components that control modes', 'physical_index': 73}, {'structure': '8.5', 'title': 'Components that depend on modes', 'physical_index': 74}, {'structure': '9', 'title': 'Port Groups', 'physical_index': 76}, {'structure': '10', 'title': 'Measurement and Calibration', 'physical_index': 77}, {'structure': '10.1', 'title': 'Calibration', 'physical_index': 77}, {'structure': '10.1.1', 'title': 'Port-based calibration', 'physical_index': 77}, {'structure': '10.1.1.1', 'title': 'Pure single instantiation', 'physical_index': 78}, {'structure': '10.1.1.2', 'title': 'Multiple instantiation of the involved software components', 'physical_index': 78}, {'structure': '10.1.1.3', 'title': 'Multiple instantiation of the involved calibration components', 'physical_index': 79}, {'structure': '10.1.2', 'title': 'Private calibration', 'physical_index': 80}, {'structure': '10.2', 'title': 'Measurement', 'physical_index': 81}, {'structure': '11', 'title': 'VFB Features and Profiles', 'physical_index': 82}, {'structure': '11.1', 'title': 'Motivation and Introduction', 'physical_index': 82}, {'structure': '11.2', 'title': 'Feature tables', 'physical_index': 82}, {'structure': '11.2.1', 'title': 'Intra-ECU features', 'physical_index': 83}, {'structure': '11.2.2', 'title': 'Inter-ECU features', 'physical_index': 95}, {'structure': '12', 'title': 'Interaction with Non-AUTOSAR-ECUs', 'physical_index': 101}, {'structure': '12.1', 'title': 'Introduction', 'physical_index': 101}, {'structure': '12.2', 'title': 'Problems of interaction', 'physical_index': 101}, {'structure': '12.3', 'title': 'Description of interaction', 'physical_index': 102}, {'structure': '13', 'title': 'References', 'physical_index': 104}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.12121212121212122,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Resources for components and \u201crunnables\u201d",
+        "page_number": 4
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Background",
+        "page_number": 4
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "The \u201crunnable\u201d concept",
+        "page_number": 4
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "The implementation of a component and the role of the RTE",
+        "page_number": 4
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Interface Conversion Blocks",
+        "page_number": 4
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Supported Conversions and Mappings",
+        "page_number": 4
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Variant Handling",
+        "page_number": 4
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Binding Times",
+        "page_number": 4
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Choosing a Variant",
+        "page_number": 4
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Variability",
+        "page_number": 4
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Communication on the VFB",
+        "page_number": 4
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 4
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Error types",
+        "page_number": 4
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Sender -Receiver communication",
+        "page_number": 4
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "From the point of view of the sender",
+        "page_number": 4
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "From the point of view of the receiver",
+        "page_number": 4
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Multiplicity of sender -receiver",
+        "page_number": 4
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Filtering between the sender and the receiver",
+        "page_number": 4
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Concurrency and ordering within a sender -receiver connector",
+        "page_number": 4
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Client -Server communication",
+        "page_number": 4
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "From the point of view of the client",
+        "page_number": 4
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "From the point of view of the server",
+        "page_number": 4
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Multiplicity of client -server",
+        "page_number": 4
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Ordering and concurrency within a client -server connector",
+        "page_number": 4
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Remarks regarding the identification of communication partners",
+        "page_number": 4
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Timing Extensions",
+        "page_number": 4
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Main Purpose of Timing Extensions for AUTOSAR",
+        "page_number": 4
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Timing in different phases of the AUTOSAR methodology",
+        "page_number": 4
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Interaction with hardware",
+        "page_number": 4
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 4
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Microcontroller Abstraction Layer (MCAL)",
+        "page_number": 4
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "ECU Abstraction",
+        "page_number": 4
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Sensor -Actuator Software Component",
+        "page_number": 4
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Complex Driver Component",
+        "page_number": 4
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "AUTOSAR Services",
+        "page_number": 4
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 4
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "VFB Representation",
+        "page_number": 4
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Selection of a communication mechanism",
+        "page_number": 4
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Location of a Service",
+        "page_number": 4
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Distribution of Requests to Remote Services",
+        "page_number": 4
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Platform dependent types",
+        "page_number": 4
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Configuration",
+        "page_number": 4
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "List of Services",
+        "page_number": 4
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Mode Management",
+        "page_number": 4
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 4
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Defining modes",
+        "page_number": 4
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Communicating modes",
+        "page_number": 4
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Mode -managers: components that control modes",
+        "page_number": 4
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Components that depend on modes",
+        "page_number": 4
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Port Groups",
+        "page_number": 4
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Measurement and Calibration",
+        "page_number": 4
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Calibration",
+        "page_number": 4
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Port-based calibration",
+        "page_number": 4
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Private calibration",
+        "page_number": 4
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Measurement",
+        "page_number": 4
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "VFB Features and Profiles",
+        "page_number": 4
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Motivation and Introduction",
+        "page_number": 4
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Feature tables",
+        "page_number": 4
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Intra-ECU features",
+        "page_number": 4
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Inter-ECU features",
+        "page_number": 4
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Interaction with Non -AUTOSAR -ECUs",
+        "page_number": 4
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 4
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Problems of interaction",
+        "page_number": 4
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Description of interaction",
+        "page_number": 4
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "References",
+        "page_number": 4
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Unconnected PRPorts",
+        "page_number": 28
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Unconnected Sender/Receiver Ports",
+        "page_number": 28
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Unconnected Client/Server Ports",
+        "page_number": 28
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Compositions versus atomic components",
+        "page_number": 29
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Relationship between the VFB and the ECU Software Architecture",
+        "page_number": 30
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Kinds of software components",
+        "page_number": 33
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Resources for components and 'runnables'",
+        "page_number": 36
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Background",
+        "page_number": 36
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "The 'runnable' concept",
+        "page_number": 37
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "The implementation of a component and the role of the RTE",
+        "page_number": 39
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Interface Conversion Blocks",
+        "page_number": 40
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Supported Conversions and Mappings",
+        "page_number": 40
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Interface Element Mapping",
+        "page_number": 41
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Linear Data Conversion",
+        "page_number": 41
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Data Mapping",
+        "page_number": 42
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Mixed Conversion",
+        "page_number": 42
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Variant Handling",
+        "page_number": 43
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Binding Times",
+        "page_number": 43
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Choosing a Variant",
+        "page_number": 43
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Variability",
+        "page_number": 43
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Software Component Variability",
+        "page_number": 43
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "Port Variability",
+        "page_number": 43
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Connector Variability",
+        "page_number": 43
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 44
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "Error types",
+        "page_number": 44
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "Sender -Receiver communication",
+        "page_number": 45
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "From the point of view of the sender",
+        "page_number": 46
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "From the point of view of the receiver",
+        "page_number": 47
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Multiplicity of sender -receiver",
+        "page_number": 51
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Filtering between the sender and the receiver",
+        "page_number": 52
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "Concurrency and ordering within a sender -receiver connector",
+        "page_number": 53
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "Client -Server communication",
+        "page_number": 54
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "From the point of view of the client",
+        "page_number": 56
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "From the point of view of the server",
+        "page_number": 57
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Multiplicity of client -server",
+        "page_number": 58
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "Ordering and concurrency within a client -server connector",
+        "page_number": 59
+      },
+      {
+        "list_index": 121,
+        "answer": "no",
+        "title": "Remarks regarding the identification of communication partners",
+        "page_number": 60
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "Timing Extensions",
+        "page_number": 61
+      },
+      {
+        "list_index": 123,
+        "answer": "no",
+        "title": "Main Purpose of Timing Extensions for AUTOSAR",
+        "page_number": 61
+      },
+      {
+        "list_index": 124,
+        "answer": "no",
+        "title": "Timing in different phases of the AUTOSAR methodology",
+        "page_number": 62
+      },
+      {
+        "list_index": 125,
+        "answer": "no",
+        "title": "Interaction with hardware",
+        "page_number": 63
+      },
+      {
+        "list_index": 126,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 63
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "Microcontroller Abstraction Layer (MCAL)",
+        "page_number": 64
+      },
+      {
+        "list_index": 128,
+        "answer": "no",
+        "title": "ECU Abstraction",
+        "page_number": 65
+      },
+      {
+        "list_index": 129,
+        "answer": "no",
+        "title": "Sensor -Actuator Software Component",
+        "page_number": 65
+      },
+      {
+        "list_index": 130,
+        "answer": "no",
+        "title": "Complex Driver Component",
+        "page_number": 66
+      },
+      {
+        "list_index": 131,
+        "answer": "no",
+        "title": "AUTOSAR Services",
+        "page_number": 67
+      },
+      {
+        "list_index": 132,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 67
+      },
+      {
+        "list_index": 133,
+        "answer": "no",
+        "title": "VFB Representation",
+        "page_number": 68
+      },
+      {
+        "list_index": 134,
+        "answer": "no",
+        "title": "Selection of a communication mechanism",
+        "page_number": 68
+      },
+      {
+        "list_index": 135,
+        "answer": "no",
+        "title": "Location of a Service",
+        "page_number": 68
+      },
+      {
+        "list_index": 136,
+        "answer": "no",
+        "title": "Distribution of Requests to Remote Services",
+        "page_number": 68
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "Platform dependent types",
+        "page_number": 69
+      },
+      {
+        "list_index": 138,
+        "answer": "no",
+        "title": "Configuration",
+        "page_number": 70
+      },
+      {
+        "list_index": 139,
+        "answer": "no",
+        "title": "List of Services",
+        "page_number": 70
+      },
+      {
+        "list_index": 140,
+        "answer": "no",
+        "title": "Mode Management",
+        "page_number": 71
+      },
+      {
+        "list_index": 141,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 71
+      },
+      {
+        "list_index": 142,
+        "answer": "no",
+        "title": "Defining modes",
+        "page_number": 71
+      },
+      {
+        "list_index": 143,
+        "answer": "no",
+        "title": "Communicating modes",
+        "page_number": 72
+      },
+      {
+        "list_index": 144,
+        "answer": "no",
+        "title": "Mode -managers: components that control modes",
+        "page_number": 73
+      },
+      {
+        "list_index": 145,
+        "answer": "no",
+        "title": "Components that depend on modes",
+        "page_number": 74
+      },
+      {
+        "list_index": 146,
+        "answer": "no",
+        "title": "Port Groups",
+        "page_number": 76
+      },
+      {
+        "list_index": 147,
+        "answer": "no",
+        "title": "Measurement and Calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 148,
+        "answer": "no",
+        "title": "Calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 149,
+        "answer": "no",
+        "title": "Port-based calibration",
+        "page_number": 77
+      },
+      {
+        "list_index": 150,
+        "answer": "no",
+        "title": "Pure single instantiation",
+        "page_number": 78
+      },
+      {
+        "list_index": 151,
+        "answer": "no",
+        "title": "Multiple instantiation of the involved software components",
+        "page_number": 78
+      },
+      {
+        "list_index": 152,
+        "answer": "no",
+        "title": "Multiple instantiation of the involved calibration components",
+        "page_number": 79
+      },
+      {
+        "list_index": 153,
+        "answer": "no",
+        "title": "Private calibration",
+        "page_number": 80
+      },
+      {
+        "list_index": 154,
+        "answer": "no",
+        "title": "Measurement",
+        "page_number": 81
+      },
+      {
+        "list_index": 155,
+        "answer": "no",
+        "title": "VFB Features and Profiles",
+        "page_number": 82
+      },
+      {
+        "list_index": 156,
+        "answer": "no",
+        "title": "Motivation and Introduction",
+        "page_number": 82
+      },
+      {
+        "list_index": 157,
+        "answer": "no",
+        "title": "Feature tables",
+        "page_number": 82
+      },
+      {
+        "list_index": 158,
+        "answer": "no",
+        "title": "Intra-ECU features",
+        "page_number": 83
+      },
+      {
+        "list_index": 159,
+        "answer": "no",
+        "title": "Inter-ECU features",
+        "page_number": 95
+      },
+      {
+        "list_index": 160,
+        "answer": "no",
+        "title": "Interaction with Non-AUTOSAR-ECUs",
+        "page_number": 101
+      },
+      {
+        "list_index": 161,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 101
+      },
+      {
+        "list_index": 162,
+        "answer": "no",
+        "title": "Problems of interaction",
+        "page_number": 101
+      },
+      {
+        "list_index": 163,
+        "answer": "no",
+        "title": "Description of interaction",
+        "page_number": 102
+      },
+      {
+        "list_index": 164,
+        "answer": "no",
+        "title": "References",
+        "page_number": 104
+      }
+    ]
+  }
+]

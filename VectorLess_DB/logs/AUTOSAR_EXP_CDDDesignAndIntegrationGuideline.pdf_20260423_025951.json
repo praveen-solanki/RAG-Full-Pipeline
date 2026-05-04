@@ -1,0 +1,207 @@
+[
+  {
+    "total_page_number": 21
+  },
+  {
+    "total_token": 8906
+  },
+  {
+    "toc_content": " Complex Driver design and integration guideline  \nAUTOSAR CP Release 4.4.0    \n \n3 of 21 Document ID 622: AUTOSAR_EXP_CDDDesignAndIntegrationGuideline  \n- AUTOSAR confidential - \nTable of Contents  \n \n1 Scope of Document  :  :  :   4 \n2 Acronyms and abbreviations  :  :  :   5 \n2.1 Glossary of terms  :  :  :   5 \n3 Conventions to be used  :  :  :   6 \n4 Related documentation  :  :  :   7 \n4.1 Input documents  :  :  :   7 \n4.2 Related standards and norms  :  :  :  8 \n5 Introduction to CDD  :  :  :   9 \n6 CDD design recommendations  :  :  :   10 \n6.1 Documentations :  :  :   10 \n6.1.1  User's Manual  :  :  :   10 \n6.2 Implementation  :  :  :   11 \n6.3 CDD Files  :  :  :  .... 11 \n6.3.1  Code file(s)  :  :  :   11 \n6.3.2  Header file(s)  :  :  :   11 \n6.3.3  Recommended files struct ure :  :   12 \n6.3.4  Coherence checks  :  :  :   13 \n6.4 Behaviour and Interfaces description  :  :   13 \n6.5 Parameters configuration  :  :  :   14 \n7 Interfacing to other  modules  :  :  :   15 \n7.1 Interfacing to Rte and SW -C :  :  :   15 \n7.2 Interfacing to libraries  :  :  :   15 \n7.3 Interfacing to standard BSW modules  :  :   15 \n7.3.1  Interfacing with MCAL modules  :  :   16 \n7.3.2  Interfacing with BSW Mode Manager & ECU State Manager  :   16 \n7.3.3  Interfacing with Memory Stack  :  :   16 \n7.3.4  Interfacing with Watchdog Stack  :  :   17 \n7.3.5  Interfacing with Communication Stack  :  :   17 \n7.3.6  Interfacing with XCP module  :  :  . 19 \n7.3.7  Interfacing with Diagnostic Log and Trace  :  :   19 \n7.3.8  Interfacing with Default Error Tracer and Diagnostic Event Manager  ... 20 \n7.3.9  Interfacing with OS  :  :  :   20 \n7.3.10  Interfacing with St bM module  :  :   20 \n7.4 CDD in multi -cores system  :  :  :   20 \n7.5 CDD module of the MCAL  :  :  :   21 ",
+    "toc_page_list": [
+      2
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of Document', 'page': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'page': 5}, {'structure': '2.1', 'title': 'Glossary of terms', 'page': 5}, {'structure': '3', 'title': 'Conventions to be used', 'page': 6}, {'structure': '4', 'title': 'Related documentation', 'page': 7}, {'structure': '4.1', 'title': 'Input documents', 'page': 7}, {'structure': '4.2', 'title': 'Related standards and norms', 'page': 8}, {'structure': '5', 'title': 'Introduction to CDD', 'page': 9}, {'structure': '6', 'title': 'CDD design recommendations', 'page': 10}, {'structure': '6.1', 'title': 'Documentations', 'page': 10}, {'structure': '6.1.1', 'title': \"User's Manual\", 'page': 10}, {'structure': '6.2', 'title': 'Implementation', 'page': 11}, {'structure': '6.3', 'title': 'CDD Files', 'page': 11}, {'structure': '6.3.1', 'title': 'Code file(s)', 'page': 11}, {'structure': '6.3.2', 'title': 'Header file(s)', 'page': 11}, {'structure': '6.3.3', 'title': 'Recommended files structure', 'page': 12}, {'structure': '6.3.4', 'title': 'Coherence checks', 'page': 13}, {'structure': '6.4', 'title': 'Behaviour and Interfaces description', 'page': 13}, {'structure': '6.5', 'title': 'Parameters configuration', 'page': 14}, {'structure': '7', 'title': 'Interfacing to other modules', 'page': 15}, {'structure': '7.1', 'title': 'Interfacing to Rte and SW -C', 'page': 15}, {'structure': '7.2', 'title': 'Interfacing to libraries', 'page': 15}, {'structure': '7.3', 'title': 'Interfacing to standard BSW modules', 'page': 15}, {'structure': '7.3.1', 'title': 'Interfacing with MCAL modules', 'page': 16}, {'structure': '7.3.2', 'title': 'Interfacing with BSW Mode Manager & ECU State Manager', 'page': 16}, {'structure': '7.3.3', 'title': 'Interfacing with Memory Stack', 'page': 16}, {'structure': '7.3.4', 'title': 'Interfacing with Watchdog Stack', 'page': 17}, {'structure': '7.3.5', 'title': 'Interfacing with Communication Stack', 'page': 17}, {'structure': '7.3.6', 'title': 'Interfacing with XCP module', 'page': 19}, {'structure': '7.3.7', 'title': 'Interfacing with Diagnostic Log and Trace', 'page': 19}, {'structure': '7.3.8', 'title': 'Interfacing with Default Error Tracer and Diagnostic Event Manager', 'page': 20}, {'structure': '7.3.9', 'title': 'Interfacing with OS', 'page': 20}, {'structure': '7.3.10', 'title': 'Interfacing with St bM module', 'page': 20}, {'structure': '7.4', 'title': 'CDD in multi -cores system', 'page': 20}, {'structure': '7.5', 'title': 'CDD module of the MCAL', 'page': 21}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': '<physical_index_4>'}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_5>'}, {'structure': '2.1', 'title': 'Glossary of terms', 'physical_index': '<physical_index_5>'}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': '<physical_index_6>'}, {'structure': '4', 'title': 'Related documentation', 'physical_index': '<physical_index_7>'}, {'structure': '4.1', 'title': 'Input documents', 'physical_index': '<physical_index_7>'}, {'structure': '4.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_8>'}, {'structure': '5', 'title': 'Introduction to CDD', 'physical_index': '<physical_index_9>'}, {'structure': '6', 'title': 'CDD design recommendations', 'physical_index': '<physical_index_10>'}, {'structure': '6.1', 'title': 'Documentations', 'physical_index': '<physical_index_10>'}, {'structure': '6.1.1', 'title': \"User's Manual\", 'physical_index': '<physical_index_10>'}, {'structure': '6.2', 'title': 'Implementation', 'physical_index': '<physical_index_11>'}, {'structure': '6.3', 'title': 'CDD Files', 'physical_index': '<physical_index_11>'}, {'structure': '6.3.1', 'title': 'Code file(s)', 'physical_index': '<physical_index_11>'}, {'structure': '6.3.2', 'title': 'Header file(s)', 'physical_index': '<physical_index_11>'}, {'structure': '6.3.3', 'title': 'Recommended files structure', 'physical_index': '<physical_index_12>'}, {'structure': '6.3.4', 'title': 'Coherence checks', 'physical_index': '<physical_index_13>'}, {'structure': '6.4', 'title': 'Behaviour and Interfaces description', 'physical_index': '<physical_index_13>'}, {'structure': '6.5', 'title': 'Parameters configuration', 'physical_index': '<physical_index_14>'}, {'structure': '7', 'title': 'Interfacing to other modules', 'physical_index': '<physical_index_15>'}, {'structure': '7.1', 'title': 'Interfacing to Rte and SW -C', 'physical_index': '<physical_index_15>'}, {'structure': '7.2', 'title': 'Interfacing to libraries', 'physical_index': '<physical_index_15>'}, {'structure': '7.3', 'title': 'Interfacing to standard BSW modules', 'physical_index': '<physical_index_16>'}, {'structure': '7.3.1', 'title': 'Interfacing with MCAL modules', 'physical_index': '<physical_index_16>'}, {'structure': '7.3.2', 'title': 'Interfacing with BSW Mode Manager & ECU State Manager', 'physical_index': '<physical_index_16>'}, {'structure': '7.3.3', 'title': 'Interfacing with Memory Stack', 'physical_index': '<physical_index_16>'}, {'structure': '7.3.4', 'title': 'Interfacing with Watchdog Stack', 'physical_index': '<physical_index_17>'}, {'structure': '7.3.5', 'title': 'Interfacing with Communication Stack', 'physical_index': '<physical_index_17>'}, {'structure': '7.3.6', 'title': 'Interfacing with XCP module', 'physical_index': '<physical_index_19>'}, {'structure': '7.3.7', 'title': 'Interfacing with Diagnostic Log and Trace', 'physical_index': '<physical_index_19>'}, {'structure': '7.3.8', 'title': 'Interfacing with Default Error Tracer and Diagnostic Event Manager', 'physical_index': '<physical_index_20>'}, {'structure': '7.3.9', 'title': 'Interfacing with OS', 'physical_index': '<physical_index_20>'}, {'structure': '7.3.10', 'title': 'Interfacing with St bM module', 'physical_index': '<physical_index_20>'}, {'structure': '7.4', 'title': 'CDD in multi -cores system', 'physical_index': '<physical_index_20>'}, {'structure': '7.5', 'title': 'CDD module of the MCAL', 'physical_index': '<physical_index_21>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': 5}, {'structure': '2.1', 'title': 'Glossary of terms', 'physical_index': 5}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 6}, {'structure': '4', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '4.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '4.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '5', 'title': 'Introduction to CDD', 'physical_index': 9}, {'structure': '6', 'title': 'CDD design recommendations', 'physical_index': 10}, {'structure': '6.1', 'title': 'Documentations', 'physical_index': 10}, {'structure': '6.1.1', 'title': \"User's Manual\", 'physical_index': 10}, {'structure': '6.2', 'title': 'Implementation', 'physical_index': 11}, {'structure': '6.3', 'title': 'CDD Files', 'physical_index': 11}, {'structure': '6.3.1', 'title': 'Code file(s)', 'physical_index': 11}, {'structure': '6.3.2', 'title': 'Header file(s)', 'physical_index': 11}, {'structure': '6.3.3', 'title': 'Recommended files structure', 'physical_index': 12}, {'structure': '6.3.4', 'title': 'Coherence checks', 'physical_index': 13}, {'structure': '6.4', 'title': 'Behaviour and Interfaces description', 'physical_index': 13}, {'structure': '6.5', 'title': 'Parameters configuration', 'physical_index': 14}, {'structure': '7', 'title': 'Interfacing to other modules', 'physical_index': 15}, {'structure': '7.1', 'title': 'Interfacing to Rte and SW -C', 'physical_index': 15}, {'structure': '7.2', 'title': 'Interfacing to libraries', 'physical_index': 15}, {'structure': '7.3', 'title': 'Interfacing to standard BSW modules', 'physical_index': 16}, {'structure': '7.3.1', 'title': 'Interfacing with MCAL modules', 'physical_index': 16}, {'structure': '7.3.2', 'title': 'Interfacing with BSW Mode Manager & ECU State Manager', 'physical_index': 16}, {'structure': '7.3.3', 'title': 'Interfacing with Memory Stack', 'physical_index': 16}, {'structure': '7.3.4', 'title': 'Interfacing with Watchdog Stack', 'physical_index': 17}, {'structure': '7.3.5', 'title': 'Interfacing with Communication Stack', 'physical_index': 17}, {'structure': '7.3.6', 'title': 'Interfacing with XCP module', 'physical_index': 19}, {'structure': '7.3.7', 'title': 'Interfacing with Diagnostic Log and Trace', 'physical_index': 19}, {'structure': '7.3.8', 'title': 'Interfacing with Default Error Tracer and Diagnostic Event Manager', 'physical_index': 20}, {'structure': '7.3.9', 'title': 'Interfacing with OS', 'physical_index': 20}, {'structure': '7.3.10', 'title': 'Interfacing with St bM module', 'physical_index': 20}, {'structure': '7.4', 'title': 'CDD in multi -cores system', 'physical_index': 20}, {'structure': '7.5', 'title': 'CDD module of the MCAL', 'physical_index': 21}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Scope of Document', 'page': 4, 'physical_index': 4}, {'title': 'Acronyms and abbreviations', 'page': 5, 'physical_index': 5}, {'title': 'Glossary of terms', 'page': 5, 'physical_index': 5}, {'title': 'Conventions to be used', 'page': 6, 'physical_index': 6}, {'title': 'Related documentation', 'page': 7, 'physical_index': 7}, {'title': 'Input documents', 'page': 7, 'physical_index': 7}, {'title': 'Related standards and norms', 'page': 8, 'physical_index': 8}, {'title': 'Introduction to CDD', 'page': 9, 'physical_index': 9}, {'title': 'CDD design recommendations', 'page': 10, 'physical_index': 10}, {'title': 'Documentations', 'page': 10, 'physical_index': 10}, {'title': \"User's Manual\", 'page': 10, 'physical_index': 10}, {'title': 'Implementation', 'page': 11, 'physical_index': 11}, {'title': 'CDD Files', 'page': 11, 'physical_index': 11}, {'title': 'Code file(s)', 'page': 11, 'physical_index': 11}, {'title': 'Header file(s)', 'page': 11, 'physical_index': 11}, {'title': 'Recommended files structure', 'page': 12, 'physical_index': 12}, {'title': 'Coherence checks', 'page': 13, 'physical_index': 13}, {'title': 'Behaviour and Interfaces description', 'page': 13, 'physical_index': 13}, {'title': 'Parameters configuration', 'page': 14, 'physical_index': 14}, {'title': 'Interfacing to other modules', 'page': 15, 'physical_index': 15}, {'title': 'Interfacing to Rte and SW -C', 'page': 15, 'physical_index': 15}, {'title': 'Interfacing to libraries', 'page': 15, 'physical_index': 15}, {'title': 'Interfacing to standard BSW modules', 'page': 15, 'physical_index': 16}, {'title': 'Interfacing with MCAL modules', 'page': 16, 'physical_index': 16}, {'title': 'Interfacing with BSW Mode Manager & ECU State Manager', 'page': 16, 'physical_index': 16}, {'title': 'Interfacing with Memory Stack', 'page': 16, 'physical_index': 16}, {'title': 'Interfacing with Watchdog Stack', 'page': 17, 'physical_index': 17}, {'title': 'Interfacing with Communication Stack', 'page': 17, 'physical_index': 17}, {'title': 'Interfacing with XCP module', 'page': 19, 'physical_index': 19}, {'title': 'Interfacing with Diagnostic Log and Trace', 'page': 19, 'physical_index': 19}, {'title': 'Interfacing with Default Error Tracer and Diagnostic Event Manager', 'page': 20, 'physical_index': 20}, {'title': 'Interfacing with OS', 'page': 20, 'physical_index': 20}, {'title': 'Interfacing with St bM module', 'page': 20, 'physical_index': 20}, {'title': 'CDD in multi -cores system', 'page': 20, 'physical_index': 20}, {'title': 'CDD module of the MCAL', 'page': 21, 'physical_index': 21}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': 5}, {'structure': '2.1', 'title': 'Glossary of terms', 'physical_index': 5}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 6}, {'structure': '4', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '4.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '4.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '5', 'title': 'Introduction to CDD', 'physical_index': 9}, {'structure': '6', 'title': 'CDD design recommendations', 'physical_index': 10}, {'structure': '6.1', 'title': 'Documentations', 'physical_index': 10}, {'structure': '6.1.1', 'title': \"User's Manual\", 'physical_index': 10}, {'structure': '6.2', 'title': 'Implementation', 'physical_index': 11}, {'structure': '6.3', 'title': 'CDD Files', 'physical_index': 11}, {'structure': '6.3.1', 'title': 'Code file(s)', 'physical_index': 11}, {'structure': '6.3.2', 'title': 'Header file(s)', 'physical_index': 11}, {'structure': '6.3.3', 'title': 'Recommended files structure', 'physical_index': 12}, {'structure': '6.3.4', 'title': 'Coherence checks', 'physical_index': 13}, {'structure': '6.4', 'title': 'Behaviour and Interfaces description', 'physical_index': 13}, {'structure': '6.5', 'title': 'Parameters configuration', 'physical_index': 14}, {'structure': '7', 'title': 'Interfacing to other modules', 'physical_index': 15}, {'structure': '7.1', 'title': 'Interfacing to Rte and SW -C', 'physical_index': 15}, {'structure': '7.2', 'title': 'Interfacing to libraries', 'physical_index': 15}, {'structure': '7.3', 'title': 'Interfacing to standard BSW modules', 'physical_index': 15}, {'structure': '7.3.1', 'title': 'Interfacing with MCAL modules', 'physical_index': 16}, {'structure': '7.3.2', 'title': 'Interfacing with BSW Mode Manager & ECU State Manager', 'physical_index': 16}, {'structure': '7.3.3', 'title': 'Interfacing with Memory Stack', 'physical_index': 16}, {'structure': '7.3.4', 'title': 'Interfacing with Watchdog Stack', 'physical_index': 17}, {'structure': '7.3.5', 'title': 'Interfacing with Communication Stack', 'physical_index': 17}, {'structure': '7.3.6', 'title': 'Interfacing with XCP module', 'physical_index': 19}, {'structure': '7.3.7', 'title': 'Interfacing with Diagnostic Log and Trace', 'physical_index': 19}, {'structure': '7.3.8', 'title': 'Interfacing with Default Error Tracer and Diagnostic Event Manager', 'physical_index': 20}, {'structure': '7.3.9', 'title': 'Interfacing with OS', 'physical_index': 20}, {'structure': '7.3.10', 'title': 'Interfacing with St bM module', 'physical_index': 20}, {'structure': '7.4', 'title': 'CDD in multi -cores system', 'physical_index': 20}, {'structure': '7.5', 'title': 'CDD module of the MCAL', 'physical_index': 21}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 4}, {'structure': '2', 'title': 'Acronyms and abbreviations', 'physical_index': 5}, {'structure': '2.1', 'title': 'Glossary of terms', 'physical_index': 5}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 6}, {'structure': '4', 'title': 'Related documentation', 'physical_index': 7}, {'structure': '4.1', 'title': 'Input documents', 'physical_index': 7}, {'structure': '4.2', 'title': 'Related standards and norms', 'physical_index': 8}, {'structure': '5', 'title': 'Introduction to CDD', 'physical_index': 9}, {'structure': '6', 'title': 'CDD design recommendations', 'physical_index': 10}, {'structure': '6.1', 'title': 'Documentations', 'physical_index': 10}, {'structure': '6.1.1', 'title': \"User's Manual\", 'physical_index': 10}, {'structure': '6.2', 'title': 'Implementation', 'physical_index': 11}, {'structure': '6.3', 'title': 'CDD Files', 'physical_index': 11}, {'structure': '6.3.1', 'title': 'Code file(s)', 'physical_index': 11}, {'structure': '6.3.2', 'title': 'Header file(s)', 'physical_index': 11}, {'structure': '6.3.3', 'title': 'Recommended files structure', 'physical_index': 12}, {'structure': '6.3.4', 'title': 'Coherence checks', 'physical_index': 13}, {'structure': '6.4', 'title': 'Behaviour and Interfaces description', 'physical_index': 13}, {'structure': '6.5', 'title': 'Parameters configuration', 'physical_index': 14}, {'structure': '7', 'title': 'Interfacing to other modules', 'physical_index': 15}, {'structure': '7.1', 'title': 'Interfacing to Rte and SW -C', 'physical_index': 15}, {'structure': '7.2', 'title': 'Interfacing to libraries', 'physical_index': 15}, {'structure': '7.3', 'title': 'Interfacing to standard BSW modules', 'physical_index': 15}, {'structure': '7.3.1', 'title': 'Interfacing with MCAL modules', 'physical_index': 16}, {'structure': '7.3.2', 'title': 'Interfacing with BSW Mode Manager & ECU State Manager', 'physical_index': 16}, {'structure': '7.3.3', 'title': 'Interfacing with Memory Stack', 'physical_index': 16}, {'structure': '7.3.4', 'title': 'Interfacing with Watchdog Stack', 'physical_index': 17}, {'structure': '7.3.5', 'title': 'Interfacing with Communication Stack', 'physical_index': 17}, {'structure': '7.3.6', 'title': 'Interfacing with XCP module', 'physical_index': 19}, {'structure': '7.3.7', 'title': 'Interfacing with Diagnostic Log and Trace', 'physical_index': 19}, {'structure': '7.3.8', 'title': 'Interfacing with Default Error Tracer and Diagnostic Event Manager', 'physical_index': 20}, {'structure': '7.3.9', 'title': 'Interfacing with OS', 'physical_index': 20}, {'structure': '7.3.10', 'title': 'Interfacing with St bM module', 'physical_index': 20}, {'structure': '7.4', 'title': 'CDD in multi -cores system', 'physical_index': 20}, {'structure': '7.5', 'title': 'CDD module of the MCAL', 'physical_index': 21}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.7714285714285715,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Interfacing to Rte and SW -C",
+        "page_number": 15
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Interfacing to libraries",
+        "page_number": 15
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Interfacing to standard BSW modules",
+        "page_number": 15
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Interfacing with MCAL modules",
+        "page_number": 16
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Interfacing with BSW Mode Manager & ECU State Manager",
+        "page_number": 16
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Interfacing with Memory Stack",
+        "page_number": 16
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Interfacing with Watchdog Stack",
+        "page_number": 17
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Interfacing with Communication Stack",
+        "page_number": 17
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 20, 'title': 'Interfacing to Rte and SW -C', 'prev_correct': 15, 'next_correct': 19}, {'list_index': 21, 'title': 'Interfacing to libraries', 'prev_correct': 15, 'next_correct': 19}, {'list_index': 22, 'title': 'Interfacing to standard BSW modules', 'prev_correct': 15, 'next_correct': 19}, {'list_index': 23, 'title': 'Interfacing with MCAL modules', 'prev_correct': 15, 'next_correct': 19}, {'list_index': 24, 'title': 'Interfacing with BSW Mode Manager & ECU State Manager', 'prev_correct': 15, 'next_correct': 19}, {'list_index': 25, 'title': 'Interfacing with Memory Stack', 'prev_correct': 15, 'next_correct': 19}, {'list_index': 26, 'title': 'Interfacing with Watchdog Stack', 'prev_correct': 15, 'next_correct': 19}, {'list_index': 27, 'title': 'Interfacing with Communication Stack', 'prev_correct': 15, 'next_correct': 19}]"
+  },
+  {
+    "message": "invalid_results: []"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Coherence checks' appears after some introductory text and version information, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '1 Scope of Document' appears after some introductory text and document information, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Acronyms and abbreviations' appears after some introductory text and document information, so it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Recommended files structure' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Related standards and norms' appears in the page_text, but it is not the first content. There are several lines of text and references before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction to CDD' appears in the page_text, but it is not the first content. There are several lines of text and a page number before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' is not present at the beginning of the given page_text. The page_text starts with document metadata and a title that does not match the section title 'Preface'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Documentations' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including a header and some introductory text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'CDD Files' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including a section about implementation constraints.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'User's Manual' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including a header and other section titles.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Implementation' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document title, version, and other metadata.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Related documentation' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document title, release information, and document ID.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Glossary of terms' appears in the page_text, but it is not at the very beginning. There are other contents such as the document title, version, and acronyms section before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Input documents' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document title, release information, and a related documentation header.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Conventions to be used' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document title, release information, and confidentiality notice.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'CDD design recommendations' appears in the page_text, but it is not the first content. There are other contents such as 'Complex Driver design and integration guideline', 'AUTOSAR CP Release 4.4.0', and page metadata before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Header file(s)' appears in the page_text, but it is not the first content. There are several paragraphs and another section title ('Code file(s)') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Parameters configuration' appears in the page_text, but it is not the first content. There are other contents before it, such as the document title and some introductory text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Behaviour and Interfaces description' appears after some other content in the page_text, specifically after the 'Coherence checks' section. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interfacing with Memory Stack' appears in the page_text, but it is not at the very beginning. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Code file(s)' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document title, version information, and other section content.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interfacing to Rte and SW -C' appears after some introductory text and another section title ('Interfacing to other modules'). Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interfacing with Watchdog Stack' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document title, version, and other headers.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'CDD module of the MCAL' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including a discussion about multi-core architectures and CDD placement rules.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interfacing to other modules' appears as '7 Interfacing to other modules' in the page_text, but it is not at the very beginning of the text. There are other contents before it, such as the document title and some introductory information.\", 'start_begin': 'no'}"
+  }
+]

@@ -1,0 +1,790 @@
+[
+  {
+    "total_page_number": 70
+  },
+  {
+    "total_token": 31172
+  },
+  {
+    "toc_content": "Guide to Mode Management\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Introduction 8\n1.1 Further Work : 8\n2 Overall mechanisms and concepts 9\n2.1 Declaration of modes : 9\n2.2 Mode managers and mode users : 11\n2.3 Modes in the RTE : 11\n2.4 Modes in the Basic Software Scheduler : 12\n2.5 Communication of modes : 12\n2.5.1 Mode switch : 13\n2.5.2 Mode request : 14\n2.5.3 Conformance of mode switches and mode requests : 14\n2.5.4 Mode proxies : 14\n2.5.5 Mode communication on multi core ECUs : 15\n3 Configuration of the Basic Software Modemanager 18\n3.1 Process how to configure and integrate a BswM : 18\n3.2 Semantics of BswM Configuration: Interfaces and behavioral aspects . 19\n3.2.1 Interface of the BswM : 19\n3.2.1.1 Mode Requests : 19\n3.2.1.2 Available Actions : 20\n3.2.2 Definition of the interface in pseudo code : 21\n3.2.2.1 Mode switch and mode request interfaces : 21\n3.2.2.2 ModeRequestPorts defined by the standardized in-\nterface of the BswM : 23\n3.2.2.3 Configurable ModeRequestPorts : 30\n3.2.2.4 Configurable ModeSwitchPorts : 31\n3.2.3 Configuration of the BswM behavior : 31\n3.3 ECU state management : 33\n3.3.1 ECU Mode Handling : 33\n3.3.1.1 Startup : 34\n3.3.1.2 Running : 34\n3.3.1.3 Shutdown and Sleep : 35\n3.3.2 Startup : 35\n3.3.3 Run : 37\n3.3.4 Shutdown : 38\n3.3.5 Sleep : 38\n3.3.6 Wakeup : 39\n3.3.7 Reset of partitions : 39\n3.4 Communication Management : 40\n3.4.1 Startup and Shutdown : 40\n3.4.2 I-PDU Group Switching : 41\n3.4.3 J1939 Networkmanagement : 45\n3.4.4 J1939 diagnostic mode management : 46\n5 of 70\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 440: AUTOSAR_EXP_ModeManagementGuideGuide to Mode Management\nAUTOSAR CP Release 4.4.0\n3.4.5 Pretended Networking : 47\n3.4.5.1 Activation of Pretended Networking : 47\n3.4.5.2 Deactivation of Pretended Networking : 48\n3.4.6 LIN Schedule Table Switch : 49\n3.5 Diagnostics : 50\n3.5.1 Diagnostic Session Control : 50\n3.5.2 ECU Reset : 51\n3.5.3 Rapid Power Shutdown : 53\n3.5.4 Communciation Control diagnostic service : 54\n3.5.5 Control DTC Setting : 57\n3.5.6 Roe Status : 57\n3.6 BswM to BswM interaction on multicore ECUs : 58\n3.7 Inter-partition Actions : 59\n3.8 Inter-partition Requests/Indications : 59\n4 Backward Compatibility 61\n4.1 Example for BswM Configuration : 63\n4.1.1 Startup : 63\n4.1.2 Shutdown : 64\n4.1.3 Wakeup : 66\n5 Acronyms and abbreviations 67\n5.1 Technical Terms : 67\n6 of 70\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 440: AUTOSAR_EXP_ModeManagementGuide",
+    "toc_page_list": [
+      4,
+      5
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 8}, {'structure': '1.1', 'title': 'Further Work', 'page': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'page': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'page': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'page': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'page': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'page': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'page': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'page': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'page': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'page': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'page': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'page': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'page': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'page': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'page': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'page': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'page': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'page': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'page': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'page': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'page': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'page': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'page': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'page': 31}, {'structure': '3.3', 'title': 'ECU state management', 'page': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'page': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'page': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'page': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'page': 35}, {'structure': '3.3.2', 'title': 'Startup', 'page': 35}, {'structure': '3.3.3', 'title': 'Run', 'page': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'page': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'page': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'page': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'page': 39}, {'structure': '3.4', 'title': 'Communication Management', 'page': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'page': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'page': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'page': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'page': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'page': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'page': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'page': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'page': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'page': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'page': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'page': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'page': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'page': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'page': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'page': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'page': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'page': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'page': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'page': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'page': 63}, {'structure': '4.1.1', 'title': 'Startup', 'page': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'page': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'page': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'page': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'page': 67}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': '<physical_index_8>'}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': '<physical_index_9>'}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': '<physical_index_9>'}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': '<physical_index_11>'}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': '<physical_index_12>'}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': '<physical_index_12>'}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': '<physical_index_13>'}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': '<physical_index_15>'}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': '<physical_index_18>'}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': '<physical_index_18>'}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': '<physical_index_20>'}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': '<physical_index_23>'}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': '<physical_index_30>'}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': '<physical_index_31>'}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': '<physical_index_31>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 31}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 8, 'physical_index': 8}, {'title': 'Further Work', 'page': 8, 'physical_index': 8}, {'title': 'Overall mechanisms and concepts', 'page': 9, 'physical_index': 9}, {'title': 'Declaration of modes', 'page': 9, 'physical_index': 9}, {'title': 'Mode managers and mode users', 'page': 11, 'physical_index': 11}, {'title': 'Modes in the RTE', 'page': 11, 'physical_index': 11}, {'title': 'Modes in the Basic Software Scheduler', 'page': 12, 'physical_index': 12}, {'title': 'Communication of modes', 'page': 12, 'physical_index': 12}, {'title': 'Mode switch', 'page': 13, 'physical_index': 13}, {'title': 'Mode request', 'page': 14, 'physical_index': 14}, {'title': 'Conformance of mode switches and mode requests', 'page': 14, 'physical_index': 14}, {'title': 'Mode proxies', 'page': 14, 'physical_index': 14}, {'title': 'Mode communication on multi core ECUs', 'page': 15, 'physical_index': 15}, {'title': 'Configuration of the Basic Software Modemanager', 'page': 18, 'physical_index': 18}, {'title': 'Process how to configure and integrate a BswM', 'page': 18, 'physical_index': 18}, {'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'page': 19, 'physical_index': 19}, {'title': 'Interface of the BswM', 'page': 19, 'physical_index': 19}, {'title': 'Mode Requests', 'page': 19, 'physical_index': 19}, {'title': 'Available Actions', 'page': 20, 'physical_index': 20}, {'title': 'Definition of the interface in pseudo code', 'page': 21, 'physical_index': 21}, {'title': 'Mode switch and mode request interfaces', 'page': 21, 'physical_index': 21}, {'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'page': 23, 'physical_index': 23}, {'title': 'Configurable ModeRequestPorts', 'page': 30, 'physical_index': 30}, {'title': 'Configurable ModeSwitchPorts', 'page': 31, 'physical_index': 31}, {'title': 'Configuration of the BswM behavior', 'page': 31, 'physical_index': 31}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 31}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': 35}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': 35}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': 39}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': 63}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': 67}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 31}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': 35}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': 35}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': 39}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': 63}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': 67}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3709677419354839,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Mode switch and mode request interfaces",
+        "page_number": 21
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "ModeRequestPorts defined by the standardized interface of the BswM",
+        "page_number": 23
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Configurable ModeRequestPorts",
+        "page_number": 30
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Configurable ModeSwitchPorts",
+        "page_number": 31
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Configuration of the BswM behavior",
+        "page_number": 31
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "ECU state management",
+        "page_number": 33
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "ECU Mode Handling",
+        "page_number": 33
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 34
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Running",
+        "page_number": 34
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Shutdown and Sleep",
+        "page_number": 35
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 35
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Run",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 38
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Sleep",
+        "page_number": 38
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Wakeup",
+        "page_number": 39
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Reset of partitions",
+        "page_number": 39
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Communication Management",
+        "page_number": 40
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Startup and Shutdown",
+        "page_number": 40
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "I-PDU Group Switching",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "J1939 Networkmanagement",
+        "page_number": 45
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "J1939 diagnostic mode management",
+        "page_number": 46
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Pretended Networking",
+        "page_number": 47
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Activation of Pretended Networking",
+        "page_number": 47
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Deactivation of Pretended Networking",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "LIN Schedule Table Switch",
+        "page_number": 49
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Diagnostics",
+        "page_number": 50
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Diagnostic Session Control",
+        "page_number": 50
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "ECU Reset",
+        "page_number": 51
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Rapid Power Shutdown",
+        "page_number": 53
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Communciation Control diagnostic service",
+        "page_number": 54
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Control DTC Setting",
+        "page_number": 57
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "BswM to BswM interaction on multicore ECUs",
+        "page_number": 58
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Inter-partition Actions",
+        "page_number": 59
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Inter-partition Requests/Indications",
+        "page_number": 59
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Backward Compatibility",
+        "page_number": 61
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 64
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Wakeup",
+        "page_number": 66
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 67
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Technical Terms",
+        "page_number": 67
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 8}, {'structure': '1.1', 'title': 'Further Work', 'page': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'page': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'page': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'page': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'page': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'page': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'page': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'page': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'page': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'page': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'page': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'page': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'page': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'page': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'page': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'page': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'page': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'page': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'page': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'page': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'page': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'page': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'page': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'page': 31}, {'structure': '3.3', 'title': 'ECU state management', 'page': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'page': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'page': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'page': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'page': 35}, {'structure': '3.3.2', 'title': 'Startup', 'page': 35}, {'structure': '3.3.3', 'title': 'Run', 'page': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'page': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'page': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'page': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'page': 39}, {'structure': '3.4', 'title': 'Communication Management', 'page': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'page': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'page': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'page': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'page': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'page': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'page': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'page': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'page': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'page': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'page': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'page': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'page': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'page': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'page': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'page': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'page': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'page': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'page': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'page': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'page': 63}, {'structure': '4.1.1', 'title': 'Startup', 'page': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'page': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'page': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'page': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'page': 67}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': '<physical_index_8>'}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': '<physical_index_9>'}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': '<physical_index_9>'}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': '<physical_index_11>'}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': '<physical_index_12>'}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': '<physical_index_12>'}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': '<physical_index_13>'}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': '<physical_index_15>'}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': '<physical_index_18>'}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': '<physical_index_18>'}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': '<physical_index_20>'}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': '<physical_index_23>'}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': '<physical_index_30>'}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': '<physical_index_31>'}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': '<physical_index_31>'}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': '<physical_index_33>'}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': '<physical_index_33>'}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': '<physical_index_34>'}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': '<physical_index_34>'}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': '<physical_index_35>'}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': '<physical_index_35>'}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': '<physical_index_37>'}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': '<physical_index_38>'}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': '<physical_index_38>'}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': '<physical_index_39>'}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': '<physical_index_39>'}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': '<physical_index_40>'}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': '<physical_index_40>'}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': '<physical_index_41>'}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': '<physical_index_45>'}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': '<physical_index_46>'}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': '<physical_index_47>'}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': '<physical_index_47>'}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': '<physical_index_48>'}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': '<physical_index_49>'}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': '<physical_index_50>'}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': '<physical_index_50>'}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': '<physical_index_51>'}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': '<physical_index_53>'}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': '<physical_index_54>'}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': '<physical_index_57>'}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': '<physical_index_57>'}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': '<physical_index_58>'}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': '<physical_index_59>'}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': '<physical_index_59>'}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': '<physical_index_61>'}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': '<physical_index_63>'}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': '<physical_index_63>'}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': '<physical_index_64>'}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': '<physical_index_66>'}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_67>'}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': '<physical_index_67>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 31}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': 35}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': 35}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': 39}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': 63}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': 67}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3548387096774194,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Mode switch and mode request interfaces",
+        "page_number": 21
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "ModeRequestPorts defined by the standardized interface of the BswM",
+        "page_number": 23
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Configurable ModeRequestPorts",
+        "page_number": 30
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Configurable ModeSwitchPorts",
+        "page_number": 31
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Configuration of the BswM behavior",
+        "page_number": 31
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "ECU state management",
+        "page_number": 33
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "ECU Mode Handling",
+        "page_number": 33
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 34
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Running",
+        "page_number": 34
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Shutdown and Sleep",
+        "page_number": 35
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 35
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Run",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 38
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Sleep",
+        "page_number": 38
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Wakeup",
+        "page_number": 39
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Reset of partitions",
+        "page_number": 39
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Communication Management",
+        "page_number": 40
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Startup and Shutdown",
+        "page_number": 40
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "I-PDU Group Switching",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "J1939 Networkmanagement",
+        "page_number": 45
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "J1939 diagnostic mode management",
+        "page_number": 46
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Pretended Networking",
+        "page_number": 47
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Activation of Pretended Networking",
+        "page_number": 47
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Deactivation of Pretended Networking",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "LIN Schedule Table Switch",
+        "page_number": 49
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Diagnostics",
+        "page_number": 50
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Diagnostic Session Control",
+        "page_number": 50
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "ECU Reset",
+        "page_number": 51
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Rapid Power Shutdown",
+        "page_number": 53
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Communciation Control diagnostic service",
+        "page_number": 54
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Control DTC Setting",
+        "page_number": 57
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Roe Status",
+        "page_number": 57
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Inter-partition Requests/Indications",
+        "page_number": 59
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Backward Compatibility",
+        "page_number": 61
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Example for BswM Configuration",
+        "page_number": 63
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 63
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 64
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Wakeup",
+        "page_number": 66
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 67
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Technical Terms",
+        "page_number": 67
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': '<physical_index_8>'}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': '<physical_index_9>'}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': '<physical_index_9>'}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': '<physical_index_11>'}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': '<physical_index_12>'}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': '<physical_index_12>'}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': '<physical_index_13>'}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': '<physical_index_15>'}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': '<physical_index_18>'}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': '<physical_index_18>'}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': '<physical_index_20>'}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': '<physical_index_30>'}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': '<physical_index_31>'}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': '<physical_index_32>'}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': '<physical_index_33>'}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': '<physical_index_33>'}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': '<physical_index_34>'}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': '<physical_index_34>'}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': '<physical_index_35>'}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': '<physical_index_35>'}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': '<physical_index_37>'}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': '<physical_index_38>'}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': '<physical_index_38>'}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': '<physical_index_39>'}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': '<physical_index_39>'}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': '<physical_index_39>'}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': '<physical_index_39>'}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': '<physical_index_41>'}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': '<physical_index_45>'}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': '<physical_index_46>'}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': '<physical_index_47>'}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': '<physical_index_47>'}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': '<physical_index_48>'}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': '<physical_index_49>'}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': '<physical_index_50>'}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': '<physical_index_50>'}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': '<physical_index_51>'}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': '<physical_index_53>'}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': '<physical_index_54>'}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': '<physical_index_57>'}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': '<physical_index_57>'}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': '<physical_index_58>'}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': '<physical_index_59>'}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': '<physical_index_59>'}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': '<physical_index_61>'}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': '<physical_index_63>'}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': '<physical_index_63>'}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': '<physical_index_64>'}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': '<physical_index_66>'}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_67>'}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': '<physical_index_67>'}, {'structure': '5.2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_68>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 22}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 32}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': 35}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': 35}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': 39}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': 39}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': 39}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': 63}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': 67}, {'structure': '5.2', 'title': 'Acronyms and Abbreviations', 'physical_index': 68}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.36507936507936506,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Mode switch and mode request interfaces",
+        "page_number": 21
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "ModeRequestPorts defined by the standardized interface of the BswM",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Configurable ModeRequestPorts",
+        "page_number": 30
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Configurable ModeSwitchPorts",
+        "page_number": 31
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Configuration of the BswM behavior",
+        "page_number": 32
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "ECU state management",
+        "page_number": 33
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "ECU Mode Handling",
+        "page_number": 33
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 34
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Running",
+        "page_number": 34
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Shutdown and Sleep",
+        "page_number": 35
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 35
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Run",
+        "page_number": 37
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 38
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Sleep",
+        "page_number": 38
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Wakeup",
+        "page_number": 39
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Reset of partitions",
+        "page_number": 39
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Communication Management",
+        "page_number": 39
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Startup and Shutdown",
+        "page_number": 39
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "I-PDU Group Switching",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "J1939 Networkmanagement",
+        "page_number": 45
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "J1939 diagnostic mode management",
+        "page_number": 46
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Pretended Networking",
+        "page_number": 47
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Activation of Pretended Networking",
+        "page_number": 47
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Deactivation of Pretended Networking",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "LIN Schedule Table Switch",
+        "page_number": 49
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Diagnostics",
+        "page_number": 50
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Diagnostic Session Control",
+        "page_number": 50
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "ECU Reset",
+        "page_number": 51
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Rapid Power Shutdown",
+        "page_number": 53
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Communciation Control diagnostic service",
+        "page_number": 54
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Control DTC Setting",
+        "page_number": 57
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Roe Status",
+        "page_number": 57
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "BswM to BswM interaction on multicore ECUs",
+        "page_number": 58
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Inter-partition Actions",
+        "page_number": 59
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Inter-partition Requests/Indications",
+        "page_number": 59
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Backward Compatibility",
+        "page_number": 61
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Example for BswM Configuration",
+        "page_number": 63
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 63
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 64
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Acronyms and Abbreviations",
+        "page_number": 68
+      }
+    ]
+  }
+]

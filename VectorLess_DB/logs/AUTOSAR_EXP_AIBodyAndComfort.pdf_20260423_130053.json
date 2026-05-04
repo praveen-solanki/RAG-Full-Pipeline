@@ -1,0 +1,390 @@
+[
+  {
+    "total_page_number": 98
+  },
+  {
+    "total_token": 61651
+  },
+  {
+    "toc_content": "                   Explanation of Application Inte rfaces of \nthe Body and Comfort Domain  \nAUTOSAR CP Release 4.4.0   \n4 of 98 Document ID 268: AUTOSAR _EXP_AIBodyAndComfort  \n- AUTOSAR CONFIDENTIAL - Table of Contents  \n \n1 Purpose of this Document  :  :  :   6 \n2 Description of Terms and Concepts of the Body - and Comfort Domain  :   7 \n2.1 Design Rationale  :  :  :   7 \n2.2 Abbreviations  :  :  :  .. 7 \n3 Decomposition Overview  :  :  :   9 \n4 Description of Software Compositions and Components  :  .... 10 \n4.1 Wiper/Washer  :  :  :   10 \n4.1.1  Rain sensing  :  :  :   13 \n4.2 Mirror Adjustment & Tinting  :  :  :   13 \n4.2.1  Mirror Adjustment  :  :  :   13 \n4.2.2  Mirror Tinting :  :  :   16 \n4.3 Interior Light  :  :  :  .. 17 \n4.3.1  InteriorLightManager  :  :  :   19 \n4.3.2  Body Sensors for Interior Light (HMI)  :  :   19 \n4.3.3  CentralLocking (including Doorlocks) / Remote Key / PASE  :   21 \n4.3.4  Exterior Light :  :  :   21 \n4.3.5  Anti-Theft -System  :  :  :   21 \n4.3.6  ProfileManager  :  :  :   21 \n4.3.7  TerminalClampControl  :  :  :   21 \n4.3.8  Inter-Domain Interfaces  :  :  :   21 \n4.3.9  Battery Monitor (Future function)  :  :   22 \n4.3.10  Actuators  :  :  :   22 \n4.3.11  List of interior light sources \u2013 groups of light sources  :   22 \n4.3.12  Scope definition / possible future enhancements  :   24 \n4.4 Seat Adjustment  :  :  :   25 \n4.4.1  Seat Configurations  :  :  :   25 \n4.4.2  Seat Adjustment Decomposition  :  :   26 \n4.4.3  Personalization Issues  :  :  :   31 \n4.4.4  Design Rationale  :  :  :   31 \n4.5 Central Locking  :  :  :   32 \n4.5.1  Central Locking Decomposition main view  :  :   32 \n4.5.2  Explanation of SW -Cs :  :  :   34 \n4.5.3  Further Issues con cerning Central Locking  :  :   37 \n4.5.4  Known Defects :  :  :   38 \n4.6 Exterior Light  :  :  :  . 38 \n4.6.1  Overview on Exterior Light  :  :  :  44 \n4.6.2  ExteriorLightManager  :  :  :   45 \n4.6.3  BrakeLight Manager  :  :  :   46 \n4.6.4  Flash Manager  :  :  :   47 \n4.6.5  Use case descriptions  :  :  :   48 \n4.6.6  Autolight Adapter  :  :  :   50 \n4.6.7  Cornering Adapter  :  :  :   51 \n4.6.8  CHLH Adapter  :  :  :   51 \n4.6.9  ExteriorLight AdapterFront/Rear/Trailer  :  :   51 \n4.6.10  Exterior Light Actuator  :  :  :   53 \n4.6.11  Headlamp -Leve ling Manager  :  :   54                    Explanation of Application Inte rfaces of \nthe Body and Comfort Domain  \nAUTOSAR CP Release 4.4.0   \n5 of 98 Document ID 268: AUTOSAR _EXP_AIBodyAndComfort  \n- AUTOSAR CONFIDENTIAL - 4.6.12  External interfaces  :  :  :   54 \n4.6.13  ports to AUTOSAR -Services  :  :   54 \n4.6.14  Terminology Definitions  :  :  :  54 \n4.6.15  List of light sources  :  :  :   60 \n4.6.16  Known Deficienc ies :  :  :   61 \n4.7 Antitheft Warning System  :  :  :   61 \n4.7.1  Alarm triggers  :  :  :   61 \n4.7.2  Alarm system status indications :  :   62 \n4.7.3  Alarm St ates :  :  :   62 \n4.7.4  Panic Alarm  :  :  :   62 \n4.7.5  ATWS decomposition  :  :  :   62 \n4.8 Horn  :  :  :  :   65 \n4.8.1  Horn decomposition  :  :  :   66 \n4.9 Defrost Control  :  :  :   66 \n4.9.1  Introduction  :  :  :   66 \n4.9.2  Sensors and actuators overview  :  :   66 \n4.9.3  Defrost Control Decomposition  :  :   68 \n4.10  Terminal Clamp Control  :  :  :   70 \n4.10.1  Explanation of SW -Cs :  :  :   72 \n4.10.2  Use case descriptions  :  :  :   73 \n4.11  Immobilizer  :  :  :  ... 76 \n4.11.1  Constraints/Limitations  :  :  :   78 \n4.12  Seat Climatization  :  :  :   79 \n4.12.1  Introduction  :  :  :   79 \n4.12.2  Seat Climatization Decomposition  :  :   79 \n4.13  PASE (P ASsive Entry)  :  :  :   81 \n4.13.1  Introduction  :  :  :   81 \n4.13.2  PASE Decomposition  :  :  :   81 \n4.14  RKE (Remote Keyless Entry) :  :  :   88 \n4.14.1  Introduction  :  :  :   88 \n4.14.2 RKE Decomposition  :  :  :   90 \n4.15  Convertible Control  :  :  :   92 \n4.15.1  Introduction  :  :  :   92 \n4.15.2  Convertible Control decomposition  :  :   92 \n4.16  BodySensors  :  :  :   94 \n4.16.1  Introduction  :  :  :   94 \n4.16.2  BodySensors decomposition  :  :   94 \n4.17  KeyPad  :  :  :  :   97 \n5 Additional Information (Optional)  :  :  :   98 \n ",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'page': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'page': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'page': 7}, {'structure': '3', 'title': 'Decomposition Overview', 'page': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'page': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'page': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'page': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'page': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'page': 13}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'page': 16}, {'structure': '4.3', 'title': 'Interior Light', 'page': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'page': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'page': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'page': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'page': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'page': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'page': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'page': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'page': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'page': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'page': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'page': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'page': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'page': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'page': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'page': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'page': 31}, {'structure': '4.4.4', 'title': 'Design Rationale', 'page': 31}, {'structure': '4.5', 'title': 'Central Locking', 'page': 32}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'page': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'page': 34}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'page': 37}, {'structure': '4.5.4', 'title': 'Known Defects', 'page': 38}, {'structure': '4.6', 'title': 'Exterior Light', 'page': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'page': 44}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'page': 45}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'page': 46}, {'structure': '4.6.4', 'title': 'Flash Manager', 'page': 47}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'page': 48}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'page': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'page': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'page': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'page': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'page': 53}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'page': 54}, {'structure': '4.6.12', 'title': 'External interfaces', 'page': 54}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'page': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'page': 54}, {'structure': '4.6.15', 'title': 'List of light sources', 'page': 60}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'page': 61}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'page': 61}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'page': 61}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'page': 62}, {'structure': '4.7.3', 'title': 'Alarm States', 'page': 62}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'page': 62}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'page': 62}, {'structure': '4.8', 'title': 'Horn', 'page': 65}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'page': 66}, {'structure': '4.9', 'title': 'Defrost Control', 'page': 66}, {'structure': '4.9.1', 'title': 'Introduction', 'page': 66}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'page': 66}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'page': 68}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'page': 70}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'page': 72}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'page': 73}, {'structure': '4.11', 'title': 'Immobilizer', 'page': 76}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'page': 78}, {'structure': '4.12', 'title': 'Seat Climatization', 'page': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'page': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'page': 79}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'page': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'page': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'page': 81}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'page': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'page': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'page': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'page': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'page': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'page': 92}, {'structure': '4.16', 'title': 'BodySensors', 'page': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'page': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'page': 94}, {'structure': '4.17', 'title': 'KeyPad', 'page': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'page': 98}]"
+  },
+  {
+    "message": "toc_with_physical_index: {}"
+  },
+  {
+    "message": "toc_with_physical_index: {}"
+  },
+  {
+    "message": "matching_pairs: []"
+  },
+  {
+    "message": "offset: None"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": -1,
+    "incorrect_results": []
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'page': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'page': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'page': 7}, {'structure': '3', 'title': 'Decomposition Overview', 'page': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'page': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'page': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'page': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'page': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'page': 13}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'page': 16}, {'structure': '4.3', 'title': 'Interior Light', 'page': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'page': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'page': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'page': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'page': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'page': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'page': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'page': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'page': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'page': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'page': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'page': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'page': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'page': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'page': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'page': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'page': 31}, {'structure': '4.4.4', 'title': 'Design Rationale', 'page': 31}, {'structure': '4.5', 'title': 'Central Locking', 'page': 32}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'page': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'page': 34}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'page': 37}, {'structure': '4.5.4', 'title': 'Known Defects', 'page': 38}, {'structure': '4.6', 'title': 'Exterior Light', 'page': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'page': 44}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'page': 45}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'page': 46}, {'structure': '4.6.4', 'title': 'Flash Manager', 'page': 47}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'page': 48}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'page': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'page': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'page': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'page': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'page': 53}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'page': 54}, {'structure': '4.6.12', 'title': 'External interfaces', 'page': 54}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'page': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'page': 54}, {'structure': '4.6.15', 'title': 'List of light sources', 'page': 60}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'page': 61}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'page': 61}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'page': 61}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'page': 62}, {'structure': '4.7.3', 'title': 'Alarm States', 'page': 62}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'page': 62}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'page': 62}, {'structure': '4.8', 'title': 'Horn', 'page': 65}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'page': 66}, {'structure': '4.9', 'title': 'Defrost Control', 'page': 66}, {'structure': '4.9.1', 'title': 'Introduction', 'page': 66}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'page': 66}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'page': 68}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'page': 70}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'page': 72}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'page': 73}, {'structure': '4.11', 'title': 'Immobilizer', 'page': 76}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'page': 78}, {'structure': '4.12', 'title': 'Seat Climatization', 'page': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'page': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'page': 79}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'page': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'page': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'page': 81}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'page': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'page': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'page': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'page': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'page': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'page': 92}, {'structure': '4.16', 'title': 'BodySensors', 'page': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'page': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'page': 94}, {'structure': '4.17', 'title': 'KeyPad', 'page': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'page': 98}]"
+  },
+  {
+    "message": "len(group_texts): 7"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': '<physical_index_10>'}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': '<physical_index_10>'}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': '<physical_index_13>'}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': '<physical_index_13>'}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': '<physical_index_14>'}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': '<physical_index_16>'}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': '<physical_index_17>'}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': '<physical_index_17>'}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': '<physical_index_18>'}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': '<physical_index_19>'}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': '<physical_index_23>'}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': '<physical_index_24>'}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': '<physical_index_25>'}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': '<physical_index_25>'}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': '<physical_index_26>'}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': '<physical_index_28>'}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': '<physical_index_29>'}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': '<physical_index_32>'}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': '<physical_index_32>'}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_32>'}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': '<physical_index_34>'}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': '<physical_index_34>'}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': '<physical_index_45>'}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': '<physical_index_46>'}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': '<physical_index_47>'}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': '<physical_index_48>'}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': '<physical_index_50>'}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': '<physical_index_51>'}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': '<physical_index_51>'}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': '<physical_index_51>'}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': '<physical_index_52>'}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': '<physical_index_53>'}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': '<physical_index_54>'}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': '<physical_index_54>'}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': '<physical_index_55>'}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': '<physical_index_60>'}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': '<physical_index_61>'}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': '<physical_index_61>'}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': '<physical_index_61>'}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': '<physical_index_62>'}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': '<physical_index_62>'}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': '<physical_index_62>'}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': '<physical_index_63>'}, {'structure': '4.8', 'title': 'Horn', 'physical_index': '<physical_index_65>'}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': '<physical_index_66>'}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': '<physical_index_66>'}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': '<physical_index_66>'}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': '<physical_index_67>'}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': '<physical_index_68>'}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': '<physical_index_70>'}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_72>'}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': '<physical_index_73>'}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': '<physical_index_76>'}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': '<physical_index_78>'}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': '<physical_index_79>'}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': '<physical_index_79>'}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': '<physical_index_79>'}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': '<physical_index_81>'}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': '<physical_index_81>'}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': '<physical_index_81>'}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': '<physical_index_88>'}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': '<physical_index_88>'}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': '<physical_index_90>'}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': '<physical_index_92>'}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': '<physical_index_92>'}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': '<physical_index_92>'}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': '<physical_index_94>'}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': '<physical_index_94>'}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': '<physical_index_94>'}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': '<physical_index_97>'}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': '<physical_index_98>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': 14}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': 16}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': 17}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': 18}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': 19}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': 23}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': 28}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': 29}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': 32}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': 32}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': 34}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': 34}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': 38}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': 45}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': 46}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': 47}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': 48}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': 52}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': 53}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': 54}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': 55}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': 60}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': 61}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': 61}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': 61}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': 62}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': 62}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': 62}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': 63}, {'structure': '4.8', 'title': 'Horn', 'physical_index': 65}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': 66}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': 66}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': 66}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': 67}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': 68}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': 70}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': 72}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': 73}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': 76}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': 78}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': 79}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': 81}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': 92}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': 94}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': 98}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.8941176470588236,
+    "incorrect_results": [
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "Body Sensors for Interior Light (HMI)",
+        "page_number": 18
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "CentralLocking (including Doorlocks) / Remote Key / PASE",
+        "page_number": 19
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Personalization Issues",
+        "page_number": 28
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Design Rationale",
+        "page_number": 29
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Further Issues concerning Central Locking",
+        "page_number": 34
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Known Defects",
+        "page_number": 34
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Headlamp -Leve ling Manager",
+        "page_number": 53
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "ATWS decomposition",
+        "page_number": 63
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Sensors and actuators overview",
+        "page_number": 67
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 13, 'title': 'Body Sensors for Interior Light (HMI)', 'prev_correct': 17, 'next_correct': 21}, {'list_index': 14, 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'prev_correct': 17, 'next_correct': 21}, {'list_index': 27, 'title': 'Personalization Issues', 'prev_correct': 26, 'next_correct': 32}, {'list_index': 28, 'title': 'Design Rationale', 'prev_correct': 26, 'next_correct': 32}, {'list_index': 32, 'title': 'Further Issues concerning Central Locking', 'prev_correct': 32, 'next_correct': 38}, {'list_index': 33, 'title': 'Known Defects', 'prev_correct': 32, 'next_correct': 38}, {'list_index': 45, 'title': 'Headlamp -Leve ling Manager', 'prev_correct': 52, 'next_correct': 54}, {'list_index': 56, 'title': 'ATWS decomposition', 'prev_correct': 62, 'next_correct': 65}, {'list_index': 61, 'title': 'Sensors and actuators overview', 'prev_correct': 66, 'next_correct': 68}]"
+  },
+  {
+    "message": "invalid_results: [{'list_index': 61, 'title': 'Sensors and actuators overview', 'physical_index': 67}]"
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 61, 'title': 'Sensors and actuators overview', 'prev_correct': 66, 'next_correct': 68}]"
+  },
+  {
+    "message": "invalid_results: [{'list_index': 61, 'title': 'Sensors and actuators overview', 'physical_index': 67}]"
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 61, 'title': 'Sensors and actuators overview', 'prev_correct': 66, 'next_correct': 68}]"
+  },
+  {
+    "message": "invalid_results: [{'list_index': 61, 'title': 'Sensors and actuators overview', 'physical_index': 67}]"
+  },
+  {
+    "message": "Maximum fix attempts reached"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Decomposition Overview' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Purpose of this Document' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Wiper/Washer' appears after some introductory text and other content, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interior Light' is found in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Exterior Light' is found in the page_text, but it is not at the very beginning. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'TerminalClampControl' appears in the page_text, but it is not at the very beginning. There are several other sections and text contents before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Anti-Theft -System' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Description of Software Compositions and Components' appears after some introductory text and version information, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mirror Adjustment & Tinting' appears in the page_text, but it is not the first content. There are several paragraphs and figures before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Description of Terms and Concepts of the Body - and Comfort Domain' appears after some introductory text and version information, so it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mirror Adjustment' appears in the page_text, but it is not the first content. There are many lines of text before it, including headers and other section titles.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' is not found at the beginning of the given page_text. The page_text starts with 'Explanation of Application Inte rfaces of the Body and Comfort Domain'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mirror Tinting' appears after a significant amount of text that describes other components and functionalities. Therefore, it does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Design Rationale' appears after some introductory text and other content, such as the document title and a previous section title. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Rain sensing' appears after several lines of text that include an explanation of application interfaces, document information, and a figure. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Abbreviations' is not explicitly present at the beginning of the page_text. Instead, the page starts with 'Explanation of Application Inte rfaces of the Body and Comfort Domain'. The list of abbreviations follows this introductory text, indicating that the section does not start at the beginning of the page.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ProfileManager' appears in the page_text, but it is not at the very beginning. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Battery Monitor (Future function)' appears after some introductory text and version information, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Inter-Domain Interfaces' appears in the page_text, but it is not at the very beginning. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Seat Adjustment' appears after several lines of text that include other section titles and content. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'InteriorLightManager' is not present at the beginning of the given page_text. The text starts with an explanation of application interfaces and other components before mentioning 'InteriorLight'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Body Sensors for Interior Light (HMI)' appears in the page_text, but it is not at the very beginning. There are several lines of text and figures before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Design Rationale' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'CentralLocking (including Doorlocks) / Remote Key / PASE' appears after some introductory text and version information, indicating that it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Central Locking' appears in the page_text, but it is not the first content. There are several lines of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Seat Adjustment Decomposition' appears in the page_text, but it is not the first content. There are several lines of text and a figure before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Personalization Issues' appears in the page_text, but it is not the first content. There are several paragraphs and another section title ('SeatAdjustManager') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'List of interior light sources \u2013 groups of light sources' does not appear at the beginning of the given page_text. The page_text starts with 'Explanation of Application Interfaces of the Body and Comfort Domain'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Scope definition / possible future enhancements' appears in the page_text, but it is not the first content. There are several paragraphs and sections before it, including details about interior light interfaces and functional groups.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Seat Configurations' appears in the page_text, but it is not the first content. There are several paragraphs and headings before it, such as 'Explanation of Application Interfaces of the Body and Comfort Domain', 'Timing:', 'Variant handling:', and 'Seat Adjustment'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Actuators' is found in the page_text, but it is not the first content. There are other contents before it, such as 'Explanation of Application Interfaces of the Body and Comfort Domain', 'AUTOSAR CP Release 4.3.1', and 'Battery Monitor'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Known Defects' appears in the page_text, but it is not the first content. There are several paragraphs and figures before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Explanation of SW -Cs' does not appear at the beginning of the given page_text. The page_text starts with 'Explanation of Application Interfaces of the Body and Comfort Domain'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Central Locking Decomposition main view' appears in the page_text, but it is not the first content. There are other contents before this section title, such as explanations about the Body and Comfort Domain interfaces and an introduction to the Central Locking software component group.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Exterior Light' appears in the page_text, but it is not the first content. There are several paragraphs and figures before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Exterior Light' appears in the page_text, but it is not the first content. There are several paragraphs and a figure before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Flash Manager' appears after some introductory text about the document and its context. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ExteriorLightManager' appears after some introductory text about the document and its context. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Autolight Adapter' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Use case descriptions' appears in the page_text, but it is not the first content. There are several lines of text before it, including document information and a section number.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'BrakeLight Manager' appears in the page_text, but it is not at the very beginning. There are several lines of text before the section title, including information about the ExteriorLightManager and other functionalities.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Cornering Adapter' appears after several lines of text that include an explanation of application interfaces, document information, and other section titles. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'CHLH Adapter' appears in the page_text, but it is not the first content. There are other contents before it, such as the explanation of the Cornering Adapter and other text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Further Issues concerning Central Locking' appears in the page_text, but it is not the first content. There are several lines of text before it, including the title 'Explanation of Application Interfaces of the Body and Comfort Domain', version information, and a brief description of the ProfileManager.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Exterior Light Actuator' is not found at the beginning of the given page_text. The page_text starts with 'Explanation of Application Interfaces of the Body and Comfort Domain', which indicates that the section does not start at the beginning.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ExteriorLight AdapterFront/Rear/Trailer' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Headlamp -Leveling Manager' appears in the page_text, but it is not the first content. There are other contents before it, such as explanations of other interfaces and components.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ports to AUTOSAR -Services' is found in the page_text, but it is not at the very beginning. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Alarm system status indications' appears after some introductory text about the application interfaces and other content. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'External interfaces' is found in the page_text, but it is not at the very beginning. There are several paragraphs and another section title ('Headlamp -Leveling Manager') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'List of light sources' appears after several lines of text that include an explanation of application interfaces, document information, and a version number. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Antitheft Warning System' appears after several paragraphs of text, including explanations of application interfaces, known deficiencies, and other systems. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Panic Alarm' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Alarm States' appears in the page_text, but it is not the first content. There are several paragraphs and another sub-section (4.7.2) before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ATWS decomposition' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Known Deficiencies' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including information about BatterySaver, Curb lights, and other topics.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Horn' appears in the page_text, but it is not the first content. There are several paragraphs and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Alarm triggers' appears in the page_text, but it is not the first content. There are several paragraphs and sections before it, including 'Explanation of Application Interfaces', 'Known Deficiencies', and 'Antitheft Warning System'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Terminology Definitions' is not present at the beginning of the given page_text. The page_text starts with 'Explanation of Application Interfaces of the Body and Comfort Domain', which indicates that the section does not start at the beginning of the provided text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Horn decomposition' appears after several lines of text that include document metadata and other section titles. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' appears after several lines of text that describe other aspects of the document. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Defrost Control' appears after a significant amount of text that includes other sections and content. Therefore, it does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Sensors and actuators overview' does not appear at the beginning of the given page_text. The text starts with 'Explanation of Application Interfaces of the Body and Comfort Domain' and other content before the section title is mentioned.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Defrost Control Decomposition' appears in the page_text, but it is not the first content. There are several paragraphs and other contents before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Explanation of SW -Cs' appears after some introductory text about the document and other content. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Seat Climatization' appears after some introductory text and version information, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Constraints/Limitations' appears after a significant amount of text about the Immobilizer functionality and interfaces. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Use case descriptions' appears after several lines of text that include an explanation of application interfaces, a figure description, and other content. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Seat Climatization Decomposition' appears in the page_text, but it is not the first content. There are several lines of text and another section ('Introduction') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' is found in the page_text, but it is not the first content. There are several lines of text before the section title '4.12.1 Introduction'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'RKE (Remote Keyless Entry)' appears after some introductory text and version information, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'PASE Decomposition' appears in the page_text, but it is not at the beginning. There are other contents before this section, including explanations of other components and the introduction to PASE.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Immobilizer' is found in the page_text, but it is not at the very beginning. There are several lines of text and a previous section (Remote Engine Start System) before the 'Immobilizer' section begins.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Introduction' appears after a significant amount of text that describes various components and functionalities of the Body and Comfort Domain. The section title 'Introduction' is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Terminal Clamp Control' is not the first content in the given page_text. There are other contents such as 'Explanation of Application Interfaces of the Body and Comfort Domain', 'AUTOSAR CP Release 4.3.1', and page number information before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' is found in the page_text, but it is not the first content. There are several lines of text before the section title '4.14.1 Introduction'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '4.13 PASE (PASsive Entry)' appears after a significant amount of text about other components and functionalities, such as SeatButtonManager, SeatClimatizationManager, etc. Therefore, it does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Convertible Control' appears after some introductory text and version information, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' appears after several lines of text that include other section titles and content. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'BodySensors' appears after some introductory text and version information, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'RKE Decomposition' is preceded by other content in the page_text, such as 'Explanation of Application Interfaces of the Body and Comfort Domain', 'AUTOSAR CP Release 4.3.1', and page number information. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' is found within the page_text, but it is not at the very beginning. There are other contents before it, such as the document title and other section titles.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Additional Information (Optional)' appears after several lines of text, including an explanation of application interfaces, document details, and confidentiality information. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Convertible Control' appears in the page_text, but it is not the first content. There are other contents such as 'Explanation of Application Interfaces of the Body and Comfort Domain', 'AUTOSAR CP Release 4.3.1', and document metadata before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'BodySensors decomposition' appears in the page_text, but it is not the first content. There are other contents before it, such as the explanation of application interfaces, document information, and the introduction of BodySensors.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'KeyPad' is found in the page_text, but it is not the first content. There are other contents before it, such as 'Explanation of Application Interfaces of the Body and Comfort Domain', 'AUTOSAR CP Release 4.3.1', and page number information.\", 'start_begin': 'no'}"
+  }
+]

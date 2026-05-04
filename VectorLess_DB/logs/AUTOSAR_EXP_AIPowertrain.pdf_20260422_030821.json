@@ -1,0 +1,195 @@
+[
+  {
+    "total_page_number": 34
+  },
+  {
+    "total_token": 12714
+  },
+  {
+    "toc_content": " Explanation of Application Interfaces of the \nPowertrain Domain  \nAUTOSAR CP Release 4.4.0    \n5 of 34 Document ID 269: AUTOSAR_EXP_AIPowertrain  \n  - AUTOS AR confidential - \nTable of Contents  \n1 Purpose of this Document  :  :  :   6 \n2 References  :  :  :  :   7 \n3 Description of Terms and Concepts  :  :  .... 8 \n3.1 Abbreviation s :  :  :   8 \n3.2 Terminology \u2013 Torque within the Powertrain Domain  :   8 \n3.3 Terminology \u2013 Fast and Slow Torque Requests  :  :  9 \n3.4 Typical combinations of signals for transmission shift intervention  :   11 \n3.5 Overview of AUTOSAR torque application interfaces  :   13 \n4 Architecture Overview  :  :  :   19 \n5 Description of Exemplary Software Components  :  :   21 \n5.1 Powertrain Coordinator \u2013 PTC (PtCoorr)  :  :   21 \n5.2 Transmission System (Trsm)  :  :  .. 21 \n5.3 Combustion Engin e (CmbEng)  :  :   22 \n5.3.1  Engine Speed and Position (EngSpdAndPosn)  :  .. 22 \n5.3.2  Engine Torque Mode Management (EngTqModMngt)  :   23 \n5.3.3  Combustion Engine: Miscellaneous (CmbEngMisc)  :   23 \n5.3.4  Combustion Engine: Timing - and Accuracy requirements to the signal \n\u201cEngine Speed Including Start Stop\u201d, necessary for transmission.  :   24 \n5.4 Vehicle Motion relevant for Powertrain (VehMtnForPt)  :   26 \n5.4.1  Driver Request (DrvReq)  :  :  :  26 \n5.4.2  Accelerator Pedal Position (AccrPedlPosn)  :  :   27 \n5.4.3 Safety Vehicle Speed Limitation (VehSpdLimnForSfty)  :   27 \n5.4.4  Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)  :   27 \n5.5 Powertrain: Miscellaneous (PtMisc)  :  :   27 \n6 Additional Information  :  :  :   28 \n6.1 Differences between SW -Cs and ECUs  :  :   28 \n6.2 Function al safety  :  :  :   28 \n6.3 Powertrain Application Interfaces - Decisions / Assumptions  :   28 \n6.3.1  Scope  :  :  :  .. 28 \n6.3.2  PTC Composition (PtCoorr)  :  :   28 \n6.3.3  Definition of overboost  :  :  :   28 \n6.3.4  Coordination at the vehicle level  :  :   29 \n6.3.5  PTC Arbitration between Driver and Chassis torque requests  :   29 \n6.3.6  Assumptions on modeling style and naming aspects specific for \npowe rtrain domain  :  :  :   30 \n \n ",
+    "toc_page_list": [
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 6}, {'structure': '2', 'title': 'References', 'page': 7}, {'structure': '3', 'title': 'Description of Terms and Concepts', 'page': 8}, {'structure': '3.1', 'title': 'Abbreviations', 'page': 8}, {'structure': '3.2', 'title': 'Terminology \u2013 Torque within the Powertrain Domain', 'page': 8}, {'structure': '3.3', 'title': 'Terminology \u2013 Fast and Slow Torque Requests', 'page': 9}, {'structure': '3.4', 'title': 'Typical combinations of signals for transmission shift intervention', 'page': 11}, {'structure': '3.5', 'title': 'Overview of AUTOSAR torque application interfaces', 'page': 13}, {'structure': '4', 'title': 'Architecture Overview', 'page': 19}, {'structure': '5', 'title': 'Description of Exemplary Software Components', 'page': 21}, {'structure': '5.1', 'title': 'Powertrain Coordinator \u2013 PTC (PtCoorr)', 'page': 21}, {'structure': '5.2', 'title': 'Transmission System (Trsm)', 'page': 21}, {'structure': '5.3', 'title': 'Combustion Engine (CmbEng)', 'page': 22}, {'structure': '5.3.1', 'title': 'Engine Speed and Position (EngSpdAndPosn)', 'page': 22}, {'structure': '5.3.2', 'title': 'Engine Torque Mode Management (EngTqModMngt)', 'page': 23}, {'structure': '5.3.3', 'title': 'Combustion Engine: Miscellaneous (CmbEngMisc)', 'page': 23}, {'structure': '5.3.4', 'title': 'Combustion Engine: Timing - and Accuracy requirements to the signal \u201cEngine Speed Including Start Stop\u201d, necessary for transmission.', 'page': 24}, {'structure': '5.4', 'title': 'Vehicle Motion relevant for Powertrain (VehMtnForPt)', 'page': 26}, {'structure': '5.4.1', 'title': 'Driver Request (DrvReq)', 'page': 26}, {'structure': '5.4.2', 'title': 'Accelerator Pedal Position (AccrPedlPosn)', 'page': 27}, {'structure': '5.4.3', 'title': 'Safety Vehicle Speed Limitation (VehSpdLimnForSfty)', 'page': 27}, {'structure': '5.4.4', 'title': 'Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)', 'page': 27}, {'structure': '5.5', 'title': 'Powertrain: Miscellaneous (PtMisc)', 'page': 27}, {'structure': '6', 'title': 'Additional Information', 'page': 28}, {'structure': '6.1', 'title': 'Differences between SW -Cs and ECUs', 'page': 28}, {'structure': '6.2', 'title': 'Functional safety', 'page': 28}, {'structure': '6.3', 'title': 'Powertrain Application Interfaces - Decisions / Assumptions', 'page': 28}, {'structure': '6.3.1', 'title': 'Scope', 'page': 28}, {'structure': '6.3.2', 'title': 'PTC Composition (PtCoorr)', 'page': 28}, {'structure': '6.3.3', 'title': 'Definition of overboost', 'page': 28}, {'structure': '6.3.4', 'title': 'Coordination at the vehicle level', 'page': 29}, {'structure': '6.3.5', 'title': 'PTC Arbitration between Driver and Chassis torque requests', 'page': 29}, {'structure': '6.3.6', 'title': 'Assumptions on modeling style and naming aspects specific for powertrain domain', 'page': 30}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'References', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Description of Terms and Concepts', 'physical_index': '<physical_index_8>'}, {'structure': '3.1', 'title': 'Abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3.2', 'title': 'Terminology \u2013 Torque within the Powertrain Domain', 'physical_index': '<physical_index_8>'}, {'structure': '3.3', 'title': 'Terminology \u2013 Fast and Slow Torque Requests', 'physical_index': '<physical_index_9>'}, {'structure': '3.4', 'title': 'Typical combinations of signals for transmission shift intervention', 'physical_index': '<physical_index_11>'}, {'structure': '3.5', 'title': 'Overview of AUTOSAR torque application interfaces', 'physical_index': '<physical_index_13>'}, {'structure': '4', 'title': 'Architecture Overview', 'physical_index': '<physical_index_19>'}, {'structure': '5', 'title': 'Description of Exemplary Software Components', 'physical_index': '<physical_index_21>'}, {'structure': '5.1', 'title': 'Powertrain Coordinator \u2013 PTC (PtCoorr)', 'physical_index': '<physical_index_21>'}, {'structure': '5.2', 'title': 'Transmission System (Trsm)', 'physical_index': '<physical_index_21>'}, {'structure': '5.3', 'title': 'Combustion Engine (CmbEng)', 'physical_index': '<physical_index_22>'}, {'structure': '5.3.1', 'title': 'Engine Speed and Position (EngSpdAndPosn)', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.2', 'title': 'Engine Torque Mode Management (EngTqModMngt)', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.3', 'title': 'Combustion Engine: Miscellaneous (CmbEngMisc)', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.4', 'title': 'Combustion Engine: Timing - and Accuracy requirements to the signal \u201cEngine Speed Including Start Stop\u201d, necessary for transmission.', 'physical_index': '<physical_index_24>'}, {'structure': '5.4', 'title': 'Vehicle Motion relevant for Powertrain (VehMtnForPt)', 'physical_index': '<physical_index_26>'}, {'structure': '5.4.1', 'title': 'Driver Request (DrvReq)', 'physical_index': '<physical_index_26>'}, {'structure': '5.4.2', 'title': 'Accelerator Pedal Position (AccrPedlPosn)', 'physical_index': '<physical_index_27>'}, {'structure': '5.4.3', 'title': 'Safety Vehicle Speed Limitation (VehSpdLimnForSfty)', 'physical_index': '<physical_index_27>'}, {'structure': '5.4.4', 'title': 'Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)', 'physical_index': '<physical_index_27>'}, {'structure': '5.5', 'title': 'Powertrain: Miscellaneous (PtMisc)', 'physical_index': '<physical_index_27>'}, {'structure': '6', 'title': 'Additional Information', 'physical_index': '<physical_index_28>'}, {'structure': '6.1', 'title': 'Differences between SW -Cs and ECUs', 'physical_index': '<physical_index_28>'}, {'structure': '6.2', 'title': 'Functional safety', 'physical_index': '<physical_index_28>'}, {'structure': '6.3', 'title': 'Powertrain Application Interfaces - Decisions / Assumptions', 'physical_index': '<physical_index_28>'}, {'structure': '6.3.1', 'title': 'Scope', 'physical_index': '<physical_index_28>'}, {'structure': '6.3.2', 'title': 'PTC Composition (PtCoorr)', 'physical_index': '<physical_index_28>'}, {'structure': '6.3.3', 'title': 'Definition of overboost', 'physical_index': '<physical_index_28>'}, {'structure': '6.3.4', 'title': 'Coordination at the vehicle level', 'physical_index': '<physical_index_29>'}, {'structure': '6.3.5', 'title': 'PTC Arbitration between Driver and Chassis torque requests', 'physical_index': '<physical_index_29>'}, {'structure': '6.3.6', 'title': 'Assumptions on modeling style and naming aspects specific for powertrain domain', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'References', 'physical_index': 7}, {'structure': '3', 'title': 'Description of Terms and Concepts', 'physical_index': 8}, {'structure': '3.1', 'title': 'Abbreviations', 'physical_index': 8}, {'structure': '3.2', 'title': 'Terminology \u2013 Torque within the Powertrain Domain', 'physical_index': 8}, {'structure': '3.3', 'title': 'Terminology \u2013 Fast and Slow Torque Requests', 'physical_index': 9}, {'structure': '3.4', 'title': 'Typical combinations of signals for transmission shift intervention', 'physical_index': 11}, {'structure': '3.5', 'title': 'Overview of AUTOSAR torque application interfaces', 'physical_index': 13}, {'structure': '4', 'title': 'Architecture Overview', 'physical_index': 19}, {'structure': '5', 'title': 'Description of Exemplary Software Components', 'physical_index': 21}, {'structure': '5.1', 'title': 'Powertrain Coordinator \u2013 PTC (PtCoorr)', 'physical_index': 21}, {'structure': '5.2', 'title': 'Transmission System (Trsm)', 'physical_index': 21}, {'structure': '5.3', 'title': 'Combustion Engine (CmbEng)', 'physical_index': 22}, {'structure': '5.3.1', 'title': 'Engine Speed and Position (EngSpdAndPosn)', 'physical_index': 23}, {'structure': '5.3.2', 'title': 'Engine Torque Mode Management (EngTqModMngt)', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'Combustion Engine: Miscellaneous (CmbEngMisc)', 'physical_index': 23}, {'structure': '5.3.4', 'title': 'Combustion Engine: Timing - and Accuracy requirements to the signal \u201cEngine Speed Including Start Stop\u201d, necessary for transmission.', 'physical_index': 24}, {'structure': '5.4', 'title': 'Vehicle Motion relevant for Powertrain (VehMtnForPt)', 'physical_index': 26}, {'structure': '5.4.1', 'title': 'Driver Request (DrvReq)', 'physical_index': 26}, {'structure': '5.4.2', 'title': 'Accelerator Pedal Position (AccrPedlPosn)', 'physical_index': 27}, {'structure': '5.4.3', 'title': 'Safety Vehicle Speed Limitation (VehSpdLimnForSfty)', 'physical_index': 27}, {'structure': '5.4.4', 'title': 'Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)', 'physical_index': 27}, {'structure': '5.5', 'title': 'Powertrain: Miscellaneous (PtMisc)', 'physical_index': 27}, {'structure': '6', 'title': 'Additional Information', 'physical_index': 28}, {'structure': '6.1', 'title': 'Differences between SW -Cs and ECUs', 'physical_index': 28}, {'structure': '6.2', 'title': 'Functional safety', 'physical_index': 28}, {'structure': '6.3', 'title': 'Powertrain Application Interfaces - Decisions / Assumptions', 'physical_index': 28}, {'structure': '6.3.1', 'title': 'Scope', 'physical_index': 28}, {'structure': '6.3.2', 'title': 'PTC Composition (PtCoorr)', 'physical_index': 28}, {'structure': '6.3.3', 'title': 'Definition of overboost', 'physical_index': 28}, {'structure': '6.3.4', 'title': 'Coordination at the vehicle level', 'physical_index': 29}, {'structure': '6.3.5', 'title': 'PTC Arbitration between Driver and Chassis torque requests', 'physical_index': 29}, {'structure': '6.3.6', 'title': 'Assumptions on modeling style and naming aspects specific for powertrain domain', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Purpose of this Document', 'page': 6, 'physical_index': 6}, {'title': 'References', 'page': 7, 'physical_index': 7}, {'title': 'Description of Terms and Concepts', 'page': 8, 'physical_index': 8}, {'title': 'Abbreviations', 'page': 8, 'physical_index': 8}, {'title': 'Terminology \u2013 Torque within the Powertrain Domain', 'page': 8, 'physical_index': 8}, {'title': 'Terminology \u2013 Fast and Slow Torque Requests', 'page': 9, 'physical_index': 9}, {'title': 'Typical combinations of signals for transmission shift intervention', 'page': 11, 'physical_index': 11}, {'title': 'Overview of AUTOSAR torque application interfaces', 'page': 13, 'physical_index': 13}, {'title': 'Architecture Overview', 'page': 19, 'physical_index': 19}, {'title': 'Description of Exemplary Software Components', 'page': 21, 'physical_index': 21}, {'title': 'Powertrain Coordinator \u2013 PTC (PtCoorr)', 'page': 21, 'physical_index': 21}, {'title': 'Transmission System (Trsm)', 'page': 21, 'physical_index': 21}, {'title': 'Combustion Engine (CmbEng)', 'page': 22, 'physical_index': 22}, {'title': 'Engine Speed and Position (EngSpdAndPosn)', 'page': 22, 'physical_index': 23}, {'title': 'Engine Torque Mode Management (EngTqModMngt)', 'page': 23, 'physical_index': 23}, {'title': 'Combustion Engine: Miscellaneous (CmbEngMisc)', 'page': 23, 'physical_index': 23}, {'title': 'Combustion Engine: Timing - and Accuracy requirements to the signal \u201cEngine Speed Including Start Stop\u201d, necessary for transmission.', 'page': 24, 'physical_index': 24}, {'title': 'Vehicle Motion relevant for Powertrain (VehMtnForPt)', 'page': 26, 'physical_index': 26}, {'title': 'Driver Request (DrvReq)', 'page': 26, 'physical_index': 26}, {'title': 'Accelerator Pedal Position (AccrPedlPosn)', 'page': 27, 'physical_index': 27}, {'title': 'Safety Vehicle Speed Limitation (VehSpdLimnForSfty)', 'page': 27, 'physical_index': 27}, {'title': 'Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)', 'page': 27, 'physical_index': 27}, {'title': 'Powertrain: Miscellaneous (PtMisc)', 'page': 27, 'physical_index': 27}, {'title': 'Additional Information', 'page': 28, 'physical_index': 28}, {'title': 'Differences between SW -Cs and ECUs', 'page': 28, 'physical_index': 28}, {'title': 'Functional safety', 'page': 28, 'physical_index': 28}, {'title': 'Powertrain Application Interfaces - Decisions / Assumptions', 'page': 28, 'physical_index': 28}, {'title': 'Scope', 'page': 28, 'physical_index': 28}, {'title': 'PTC Composition (PtCoorr)', 'page': 28, 'physical_index': 28}, {'title': 'Definition of overboost', 'page': 28, 'physical_index': 28}, {'title': 'Coordination at the vehicle level', 'page': 29, 'physical_index': 29}, {'title': 'PTC Arbitration between Driver and Chassis torque requests', 'page': 29, 'physical_index': 29}, {'title': 'Assumptions on modeling style and naming aspects specific for powertrain domain', 'page': 30, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'References', 'physical_index': 7}, {'structure': '3', 'title': 'Description of Terms and Concepts', 'physical_index': 8}, {'structure': '3.1', 'title': 'Abbreviations', 'physical_index': 8}, {'structure': '3.2', 'title': 'Terminology \u2013 Torque within the Powertrain Domain', 'physical_index': 8}, {'structure': '3.3', 'title': 'Terminology \u2013 Fast and Slow Torque Requests', 'physical_index': 9}, {'structure': '3.4', 'title': 'Typical combinations of signals for transmission shift intervention', 'physical_index': 11}, {'structure': '3.5', 'title': 'Overview of AUTOSAR torque application interfaces', 'physical_index': 13}, {'structure': '4', 'title': 'Architecture Overview', 'physical_index': 19}, {'structure': '5', 'title': 'Description of Exemplary Software Components', 'physical_index': 21}, {'structure': '5.1', 'title': 'Powertrain Coordinator \u2013 PTC (PtCoorr)', 'physical_index': 21}, {'structure': '5.2', 'title': 'Transmission System (Trsm)', 'physical_index': 21}, {'structure': '5.3', 'title': 'Combustion Engine (CmbEng)', 'physical_index': 22}, {'structure': '5.3.1', 'title': 'Engine Speed and Position (EngSpdAndPosn)', 'physical_index': 22}, {'structure': '5.3.2', 'title': 'Engine Torque Mode Management (EngTqModMngt)', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'Combustion Engine: Miscellaneous (CmbEngMisc)', 'physical_index': 23}, {'structure': '5.3.4', 'title': 'Combustion Engine: Timing - and Accuracy requirements to the signal \u201cEngine Speed Including Start Stop\u201d, necessary for transmission.', 'physical_index': 24}, {'structure': '5.4', 'title': 'Vehicle Motion relevant for Powertrain (VehMtnForPt)', 'physical_index': 26}, {'structure': '5.4.1', 'title': 'Driver Request (DrvReq)', 'physical_index': 26}, {'structure': '5.4.2', 'title': 'Accelerator Pedal Position (AccrPedlPosn)', 'physical_index': 27}, {'structure': '5.4.3', 'title': 'Safety Vehicle Speed Limitation (VehSpdLimnForSfty)', 'physical_index': 27}, {'structure': '5.4.4', 'title': 'Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)', 'physical_index': 27}, {'structure': '5.5', 'title': 'Powertrain: Miscellaneous (PtMisc)', 'physical_index': 27}, {'structure': '6', 'title': 'Additional Information', 'physical_index': 28}, {'structure': '6.1', 'title': 'Differences between SW -Cs and ECUs', 'physical_index': 28}, {'structure': '6.2', 'title': 'Functional safety', 'physical_index': 28}, {'structure': '6.3', 'title': 'Powertrain Application Interfaces - Decisions / Assumptions', 'physical_index': 28}, {'structure': '6.3.1', 'title': 'Scope', 'physical_index': 28}, {'structure': '6.3.2', 'title': 'PTC Composition (PtCoorr)', 'physical_index': 28}, {'structure': '6.3.3', 'title': 'Definition of overboost', 'physical_index': 28}, {'structure': '6.3.4', 'title': 'Coordination at the vehicle level', 'physical_index': 29}, {'structure': '6.3.5', 'title': 'PTC Arbitration between Driver and Chassis torque requests', 'physical_index': 29}, {'structure': '6.3.6', 'title': 'Assumptions on modeling style and naming aspects specific for powertrain domain', 'physical_index': 30}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'References', 'physical_index': 7}, {'structure': '3', 'title': 'Description of Terms and Concepts', 'physical_index': 8}, {'structure': '3.1', 'title': 'Abbreviations', 'physical_index': 8}, {'structure': '3.2', 'title': 'Terminology \u2013 Torque within the Powertrain Domain', 'physical_index': 8}, {'structure': '3.3', 'title': 'Terminology \u2013 Fast and Slow Torque Requests', 'physical_index': 9}, {'structure': '3.4', 'title': 'Typical combinations of signals for transmission shift intervention', 'physical_index': 11}, {'structure': '3.5', 'title': 'Overview of AUTOSAR torque application interfaces', 'physical_index': 13}, {'structure': '4', 'title': 'Architecture Overview', 'physical_index': 19}, {'structure': '5', 'title': 'Description of Exemplary Software Components', 'physical_index': 21}, {'structure': '5.1', 'title': 'Powertrain Coordinator \u2013 PTC (PtCoorr)', 'physical_index': 21}, {'structure': '5.2', 'title': 'Transmission System (Trsm)', 'physical_index': 21}, {'structure': '5.3', 'title': 'Combustion Engine (CmbEng)', 'physical_index': 22}, {'structure': '5.3.1', 'title': 'Engine Speed and Position (EngSpdAndPosn)', 'physical_index': 22}, {'structure': '5.3.2', 'title': 'Engine Torque Mode Management (EngTqModMngt)', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'Combustion Engine: Miscellaneous (CmbEngMisc)', 'physical_index': 23}, {'structure': '5.3.4', 'title': 'Combustion Engine: Timing - and Accuracy requirements to the signal \u201cEngine Speed Including Start Stop\u201d, necessary for transmission.', 'physical_index': 24}, {'structure': '5.4', 'title': 'Vehicle Motion relevant for Powertrain (VehMtnForPt)', 'physical_index': 26}, {'structure': '5.4.1', 'title': 'Driver Request (DrvReq)', 'physical_index': 26}, {'structure': '5.4.2', 'title': 'Accelerator Pedal Position (AccrPedlPosn)', 'physical_index': 27}, {'structure': '5.4.3', 'title': 'Safety Vehicle Speed Limitation (VehSpdLimnForSfty)', 'physical_index': 27}, {'structure': '5.4.4', 'title': 'Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)', 'physical_index': 27}, {'structure': '5.5', 'title': 'Powertrain: Miscellaneous (PtMisc)', 'physical_index': 27}, {'structure': '6', 'title': 'Additional Information', 'physical_index': 28}, {'structure': '6.1', 'title': 'Differences between SW -Cs and ECUs', 'physical_index': 28}, {'structure': '6.2', 'title': 'Functional safety', 'physical_index': 28}, {'structure': '6.3', 'title': 'Powertrain Application Interfaces - Decisions / Assumptions', 'physical_index': 28}, {'structure': '6.3.1', 'title': 'Scope', 'physical_index': 28}, {'structure': '6.3.2', 'title': 'PTC Composition (PtCoorr)', 'physical_index': 28}, {'structure': '6.3.3', 'title': 'Definition of overboost', 'physical_index': 28}, {'structure': '6.3.4', 'title': 'Coordination at the vehicle level', 'physical_index': 29}, {'structure': '6.3.5', 'title': 'PTC Arbitration between Driver and Chassis torque requests', 'physical_index': 29}, {'structure': '6.3.6', 'title': 'Assumptions on modeling style and naming aspects specific for powertrain domain', 'physical_index': 30}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.7878787878787878,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Safety Vehicle Speed Limitation (VehSpdLimnForSfty)",
+        "page_number": 27
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)",
+        "page_number": 27
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Powertrain: Miscellaneous (PtMisc)",
+        "page_number": 27
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Additional Information",
+        "page_number": 28
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Scope",
+        "page_number": 28
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "PTC Composition (PtCoorr)",
+        "page_number": 28
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Assumptions on modeling style and naming aspects specific for powertrain domain",
+        "page_number": 30
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 20, 'title': 'Safety Vehicle Speed Limitation (VehSpdLimnForSfty)', 'prev_correct': 27, 'next_correct': 28}, {'list_index': 21, 'title': 'Vehicle Motion (Powertrain): Miscellaneous (VehMtnForPtMisc)', 'prev_correct': 27, 'next_correct': 28}, {'list_index': 22, 'title': 'Powertrain: Miscellaneous (PtMisc)', 'prev_correct': 27, 'next_correct': 28}, {'list_index': 23, 'title': 'Additional Information', 'prev_correct': 27, 'next_correct': 28}, {'list_index': 27, 'title': 'Scope', 'prev_correct': 28, 'next_correct': 28}, {'list_index': 28, 'title': 'PTC Composition (PtCoorr)', 'prev_correct': 28, 'next_correct': 28}, {'list_index': 32, 'title': 'Assumptions on modeling style and naming aspects specific for powertrain domain', 'prev_correct': 29, 'next_correct': 34}]"
+  },
+  {
+    "message": "invalid_results: []"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'References' is not the first content in the given page_text. There are several lines of text before the section title 'References'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given page_text does not start with the section title 'Preface'. Instead, it begins with information about the document, such as the title, owner, and change history.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Terminology \u2013 Fast and Slow Torque Requests' appears in the page_text, but it is not the first content. There are several paragraphs and definitions before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Terminology \u2013 Torque within the Powertrain Domain' appears in the page_text, but it is not the first content. There are other sections and text before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Architecture Overview' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including document information and a confidentiality notice.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Description of Terms and Concepts' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including a header and some introductory information.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Abbreviations' (fuzzily matched as 'Abbreviat ions') appears in the page_text, but it is not at the beginning. There are other contents before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Typical combinations of signals for transmission shift interve n-tion' appears after some introductory text about the document and its confidentiality. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Vehicle Motion relevant for Powertrain (VehMtnForPt)' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Purpose of this Document' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document title, release information, and a confidentiality notice.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Powertrain Coordinator \u2013 PTC (PtCoorr)' appears after some introductory text and other content, such as the document title and a brief description of the components. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Overview of AUTOSAR torque application interfaces' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Explanation of Application Interfaces of the Powertrain Domain', version information, and document details.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '5.2 Transmission System (Trsm)' is found in the page_text, but it is not the first content. There are several paragraphs and another section ('5.1 Powertrain Coordinator \u2013 PTC (PtCoorr)') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Description of Exemplary Software Components' appears as '5 Description of Exemplary Software Comp onents' in the page_text, but it is not at the very beginning of the text. There are other contents before it, such as the document title and some introductory text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Combustion Engine: Timing - and Accuracy requirements to the signal \u201cEngine Speed Including Start Stop\u201d, necessary for transmission.' is found in the page_text, but it is not at the very beginning. There are other contents such as the document title and some introductory text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Engine Speed and Position (EngSpdAndPosn)' appears in the page_text, but it is not the first content. There are several lines of text and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Combustion Engine (CmbEng)' appears in the page_text, but it is not the first content. There are several paragraphs and figures before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Combustion Engine: Miscellaneous (CmbEngMisc)' appears in the page_text, but it is not the first content. There are other sections and text before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Additional Information' appears in the page_text, but it is not the first content. There are other contents before it, such as the explanation of application interfaces and the document details.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Coordination at the vehicle level' appears in the page_text, but it is not the first content. There are other contents before it, such as the document title and section number.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Scope' is found within the page_text, but it is not at the very beginning. It appears under the subsection '6.3 Powertrain Application Interfaces - Decisions / Assumptions'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Driver Request (DrvReq)' appears in the page_text, but it is not at the very beginning. There are several paragraphs and another section title ('Vehicle Motion relevant for Powertrain (VehMtnForPt)') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'PTC Arbitration between Driver and Chassis torque requests' appears after other content in the page_text, specifically after a discussion about coordination at the vehicle level and the addition of VehMtnForPtMisc.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Engine Torque Mode Management (EngTqModMngt)' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including an explanation of application interfaces, a document identifier, and descriptions of other functionalities.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Definition of overboost' is found in the page_text, but it is not at the very beginning. There are multiple sections and content before it, such as 'Explanation of Application Interfaces of the Powertrain Domain', 'Additional Information', and 'Functional safety'.\", 'start_begin': 'no'}"
+  }
+]

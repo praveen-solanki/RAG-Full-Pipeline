@@ -1,0 +1,496 @@
+[
+  {
+    "total_page_number": 46
+  },
+  {
+    "total_token": 17877
+  },
+  {
+    "toc_content": "Explanation of Application Interfaces of the Chassis \nDomain  \nAUTOSAR CP Release 4.4.0    \n4 of 46 Document ID 270: AUTOSAR_EXP_AIChassis  \n- AUTOSAR confidential - \nTable of Contents  \n \n1 Purpose of this Document :  :  :   6 \n2 Description of Terms and Concepts  :  :   7 \n2.1 Axis System  :  :  :   7 \n2.2 Definitions  :  :  :  .. 7 \n2.2.1  Methodology for Optimization of Interface Definition in the Chassis \nDomain :  :  :  :  7 \n2.2.2  Centre of gravity of passenger car  :  :   10 \n2.2.3  Definit ion of the car surroundings (e.g. Used for ACC)  :   11 \n2.3 Glossary  :  :  :  .. 17 \n2.4 References  :  :  :   17 \n2.5 General remarks  :  :  :   18 \n2.5.1  Differences between SW -Comp onents and ECUs  :  . 18 \n2.5.2  Functional safety  :  :  :   18 \n2.5.3  Concept of core -, conditional - and optional - ports  :  .. 18 \n2.5.4  Concept of sensors  :  :  :   19 \n2.5.5  Limitations  :  :  :   19 \n3 Architecture Overview  :  :  :   21 \n4 Description of the Chassis Domain Software Compositions and \nComponents  :  :  :   24 \n4.1 Software Composition CrsCt rlAndAcc  (Cruise Control and Adaptive \nCruise Control ):  :  :   24 \n4.1.1  AccSnsrDataFusion ( ACC Sensor Data Fusion)  :  .... 27 \n4.1.2  AccObjTarSeln ( ACC Object Target Selection ) :  :  27 \n4.1.3  CrsCtrlFree ( Free Cruise Control ) :  :   27 \n4.1.4  FolwCtrlAndAArbn ( Follow Control and Acceleration Arbitration ) :   28 \n4.1.5  CrsCtrlAndAcc StCtrl  (Cruise Control and ACC State Machine ) :   28 \n4.1.6  CrsCtrlAndAccObsvrForVehSt (C ruise Control and ACC Vehicle State \nObserver ) :  :  :   28 \n4.2 Software Component Esc (Electro nic Stability Control)  :   28 \n4.3 Software Component Ssm (Stand Still Manager)  :  .... 29 \n4.4 Software Component Epb (Electronic Parking Brake)  :   30 \n4.5 Software Component Vlc (Vehicle Longitudinal Control)  :   32 \n4.6 Software Component Rsc (Roll Stabil ity Control)  :  .... 32 Explanation of Application Interfaces of the Chassis \nDomain  \nAUTOSAR CP Release 4.4.0    \n5 of 46 Document ID 270: AUTOSAR_EXP_AIChassis  \n- AUTOSAR confidential - \n4.7 Software Component Steer (Steering System)  :  :   32 \n4.8 Software Component Steer DrvrAsscS ys (Steering Driver Assistance \nSystem)  :  :  :  ... 34 \n4.9 Software Component SteerVehStabyCtrl  (Steering Vehicle Stabilizing \nControl)  :  :  :  .... 34 \n4.9.1  Superposition ste ering angle actuation  :  :   35 \n4.9.2  Superposition steering torque actuation  :  :   35 \n4.10  Software Component Susp  (Suspension System)  :  ... 36 \n4.11  Software Component TirePMon  (Tire Pressure Monitoring)  :   38 \n4.12  Software Component DtTqDistbn (Drivetrain Torque Distribution)  :   39 \n4.12.1  Hang -on Coupling  :  :  :   40 \n4.12.2  Active Differentials  :  :  :   40 \n4.12.3  Torque Vectoring Device :  :  :   41 \n4.13  Software Component  SurrndgsSnsr (Surroundings Sensor)  :   42 \n4.14  Software Component ChassisSnsr (Chassis Sensor)  :   42 \n4.15  Software Component PrkgAid (Parking Aid)  :  :   43 \n5 Outlook  :  :  :  :  44 \n5.1 Chassis Domain Structure  :  :  :  44 \n5.2 Scalability  :  :  :   45 \n ",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'page': 7}, {'structure': '2.1', 'title': 'Axis System', 'page': 7}, {'structure': '2.2', 'title': 'Definitions', 'page': 7}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'page': 7}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'page': 10}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'page': 11}, {'structure': '2.3', 'title': 'Glossary', 'page': 17}, {'structure': '2.4', 'title': 'References', 'page': 17}, {'structure': '2.5', 'title': 'General remarks', 'page': 18}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'page': 18}, {'structure': '2.5.2', 'title': 'Functional safety', 'page': 18}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'page': 18}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'page': 19}, {'structure': '2.5.5', 'title': 'Limitations', 'page': 19}, {'structure': '3', 'title': 'Architecture Overview', 'page': 21}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'page': 24}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'page': 24}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'page': 27}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'page': 27}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'page': 27}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'page': 28}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'page': 28}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'page': 28}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'page': 28}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'page': 29}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'page': 30}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'page': 32}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'page': 32}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'page': 32}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'page': 34}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'page': 34}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'page': 35}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'page': 35}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'page': 36}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'page': 38}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'page': 39}, {'structure': '4.12.1', 'title': 'Hang-on Coupling', 'page': 40}, {'structure': '4.12.2', 'title': 'Active Differentials', 'page': 40}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'page': 41}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'page': 42}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'page': 42}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'page': 43}, {'structure': '5', 'title': 'Outlook', 'page': 44}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'page': 44}, {'structure': '5.2', 'title': 'Scalability', 'page': 45}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': '<physical_index_7>'}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': '<physical_index_7>'}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': '<physical_index_17>'}, {'structure': '2.4', 'title': 'References', 'physical_index': '<physical_index_17>'}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': '<physical_index_19>'}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': '<physical_index_19>'}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': '<physical_index_21>'}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': '<physical_index_24>'}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': '<physical_index_28>'}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': '<physical_index_29>'}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': '<physical_index_29>'}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 7}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': 7}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': 7}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': 7}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': 10}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': 11}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': 17}, {'structure': '2.4', 'title': 'References', 'physical_index': 17}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': 18}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': 18}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': 18}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': 18}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': 19}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': 19}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 21}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': 24}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': 24}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': 27}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': 27}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': 27}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': 28}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': 28}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': 28}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': 29}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': 29}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Purpose of this Document', 'page': 6, 'physical_index': 6}, {'title': 'Description of Terms and Concepts', 'page': 7, 'physical_index': 7}, {'title': 'Axis System', 'page': 7, 'physical_index': 7}, {'title': 'Definitions', 'page': 7, 'physical_index': 7}, {'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'page': 7, 'physical_index': 7}, {'title': 'Centre of gravity of passenger car', 'page': 10, 'physical_index': 10}, {'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'page': 11, 'physical_index': 11}, {'title': 'Glossary', 'page': 17, 'physical_index': 17}, {'title': 'References', 'page': 17, 'physical_index': 17}, {'title': 'General remarks', 'page': 18, 'physical_index': 18}, {'title': 'Differences between SW -Components and ECUs', 'page': 18, 'physical_index': 18}, {'title': 'Functional safety', 'page': 18, 'physical_index': 18}, {'title': 'Concept of core -, conditional - and optional - ports', 'page': 18, 'physical_index': 18}, {'title': 'Concept of sensors', 'page': 19, 'physical_index': 19}, {'title': 'Limitations', 'page': 19, 'physical_index': 19}, {'title': 'Architecture Overview', 'page': 21, 'physical_index': 21}, {'title': 'Description of the Chassis Domain Software Compositions and Components', 'page': 24, 'physical_index': 24}, {'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'page': 24, 'physical_index': 24}, {'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'page': 27, 'physical_index': 27}, {'title': 'AccObjTarSeln (ACC Object Target Selection)', 'page': 27, 'physical_index': 27}, {'title': 'CrsCtrlFree (Free Cruise Control)', 'page': 27, 'physical_index': 27}, {'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'page': 28, 'physical_index': 28}, {'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'page': 28, 'physical_index': 28}, {'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'page': 28, 'physical_index': 28}, {'title': 'Software Component Esc (Electronic Stability Control)', 'page': 28, 'physical_index': 29}, {'title': 'Software Component Ssm (Stand Still Manager)', 'page': 29, 'physical_index': 29}, {'title': 'Software Component Epb (Electronic Parking Brake)', 'page': 30, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 7}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': 7}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': 7}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': 7}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': 10}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': 11}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': 17}, {'structure': '2.4', 'title': 'References', 'physical_index': 17}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': 18}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': 18}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': 18}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': 18}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': 19}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': 19}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 21}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': 24}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': 24}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': 27}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': 27}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': 27}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': 28}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': 28}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': 28}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': 28}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': 29}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': 30}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'physical_index': 32}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'physical_index': 32}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'physical_index': 32}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'physical_index': 34}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'physical_index': 34}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'physical_index': 35}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'physical_index': 35}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'physical_index': 36}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'physical_index': 38}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'physical_index': 39}, {'structure': '4.12.1', 'title': 'Hang-on Coupling', 'physical_index': 40}, {'structure': '4.12.2', 'title': 'Active Differentials', 'physical_index': 40}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'physical_index': 41}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'physical_index': 42}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'physical_index': 42}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'physical_index': 43}, {'structure': '5', 'title': 'Outlook', 'physical_index': 44}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'physical_index': 44}, {'structure': '5.2', 'title': 'Scalability', 'physical_index': 45}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 7}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': 7}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': 7}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': 7}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': 10}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': 11}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': 17}, {'structure': '2.4', 'title': 'References', 'physical_index': 17}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': 18}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': 18}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': 18}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': 18}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': 19}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': 19}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 21}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': 24}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': 24}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': 27}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': 27}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': 27}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': 28}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': 28}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': 28}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': 28}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': 29}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': 30}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'physical_index': 32}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'physical_index': 32}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'physical_index': 32}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'physical_index': 34}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'physical_index': 34}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'physical_index': 35}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'physical_index': 35}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'physical_index': 36}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'physical_index': 38}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'physical_index': 39}, {'structure': '4.12.1', 'title': 'Hang-on Coupling', 'physical_index': 40}, {'structure': '4.12.2', 'title': 'Active Differentials', 'physical_index': 40}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'physical_index': 41}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'physical_index': 42}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'physical_index': 42}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'physical_index': 43}, {'structure': '5', 'title': 'Outlook', 'physical_index': 44}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'physical_index': 44}, {'structure': '5.2', 'title': 'Scalability', 'physical_index': 45}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.5217391304347826,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "CrsCtrlFree (Free Cruise Control)",
+        "page_number": 27
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)",
+        "page_number": 28
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)",
+        "page_number": 28
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)",
+        "page_number": 28
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Software Component Esc (Electronic Stability Control)",
+        "page_number": 28
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Software Component Ssm (Stand Still Manager)",
+        "page_number": 29
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Software Component Epb (Electronic Parking Brake)",
+        "page_number": 30
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Software Component Vlc (Vehicle Longitudinal Control)",
+        "page_number": 32
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Software Component Rsc (Roll Stability Control)",
+        "page_number": 32
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Software Component Steer (Steering System)",
+        "page_number": 32
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Software Component Steer DrvrAsscSys (Steering Driver Assistance System)",
+        "page_number": 34
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)",
+        "page_number": 34
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Superposition steering angle actuation",
+        "page_number": 35
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Superposition steering torque actuation",
+        "page_number": 35
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Software Component Susp (Suspension System)",
+        "page_number": 36
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Software Component TirePMon (Tire Pressure Monitoring)",
+        "page_number": 38
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Software Component DtTqDistbn (Drivetrain Torque Distribution)",
+        "page_number": 39
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Hang-on Coupling",
+        "page_number": 40
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Active Differentials",
+        "page_number": 40
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Software Component SurrndgsSnsr (Surroundings Sensor)",
+        "page_number": 42
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Software Component ChassisSnsr (Chassis Sensor)",
+        "page_number": 42
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Software Component PrkgAid (Parking Aid)",
+        "page_number": 43
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'page': 7}, {'structure': '2.1', 'title': 'Axis System', 'page': 7}, {'structure': '2.2', 'title': 'Definitions', 'page': 7}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'page': 7}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'page': 10}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'page': 11}, {'structure': '2.3', 'title': 'Glossary', 'page': 17}, {'structure': '2.4', 'title': 'References', 'page': 17}, {'structure': '2.5', 'title': 'General remarks', 'page': 18}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'page': 18}, {'structure': '2.5.2', 'title': 'Functional safety', 'page': 18}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'page': 18}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'page': 19}, {'structure': '2.5.5', 'title': 'Limitations', 'page': 19}, {'structure': '3', 'title': 'Architecture Overview', 'page': 21}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'page': 24}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'page': 24}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'page': 27}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'page': 27}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'page': 27}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'page': 28}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'page': 28}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'page': 28}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'page': 28}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'page': 29}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'page': 30}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'page': 32}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'page': 32}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'page': 32}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'page': 34}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'page': 34}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'page': 35}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'page': 35}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'page': 36}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'page': 38}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'page': 39}, {'structure': '4.12.1', 'title': 'Hang-on Coupling', 'page': 40}, {'structure': '4.12.2', 'title': 'Active Differentials', 'page': 40}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'page': 41}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'page': 42}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'page': 42}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'page': 43}, {'structure': '5', 'title': 'Outlook', 'page': 44}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'page': 44}, {'structure': '5.2', 'title': 'Scalability', 'page': 45}]"
+  },
+  {
+    "message": "len(group_texts): 1"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': '<physical_index_7>'}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': '<physical_index_7>'}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': '<physical_index_17>'}, {'structure': '2.4', 'title': 'References', 'physical_index': '<physical_index_17>'}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': '<physical_index_19>'}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': '<physical_index_19>'}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': '<physical_index_21>'}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': '<physical_index_24>'}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': '<physical_index_28>'}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': '<physical_index_28>'}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': '<physical_index_29>'}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': '<physical_index_30>'}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'physical_index': '<physical_index_32>'}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'physical_index': '<physical_index_32>'}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'physical_index': '<physical_index_32>'}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'physical_index': '<physical_index_34>'}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'physical_index': '<physical_index_34>'}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'physical_index': '<physical_index_35>'}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'physical_index': '<physical_index_35>'}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'physical_index': '<physical_index_36>'}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'physical_index': '<physical_index_38>'}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'physical_index': '<physical_index_39>'}, {'structure': '4.12.1', 'title': 'Hang-on Coupling', 'physical_index': '<physical_index_40>'}, {'structure': '4.12.2', 'title': 'Active Differentials', 'physical_index': '<physical_index_40>'}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'physical_index': '<physical_index_41>'}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'physical_index': '<physical_index_42>'}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'physical_index': '<physical_index_42>'}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'physical_index': '<physical_index_43>'}, {'structure': '5', 'title': 'Outlook', 'physical_index': '<physical_index_44>'}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'physical_index': '<physical_index_44>'}, {'structure': '5.2', 'title': 'Scalability', 'physical_index': '<physical_index_45>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 7}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': 7}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': 7}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': 7}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': 10}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': 11}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': 17}, {'structure': '2.4', 'title': 'References', 'physical_index': 17}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': 18}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': 18}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': 18}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': 18}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': 19}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': 19}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 21}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': 24}, {'structure': '4.1', 'title': 'Software Composition CrsCt rlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': 24}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': 27}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': 27}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': 27}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': 28}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': 28}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': 28}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': 28}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': 29}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': 30}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'physical_index': 32}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'physical_index': 32}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'physical_index': 32}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'physical_index': 34}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'physical_index': 34}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'physical_index': 35}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'physical_index': 35}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'physical_index': 36}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'physical_index': 38}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'physical_index': 39}, {'structure': '4.12.1', 'title': 'Hang-on Coupling', 'physical_index': 40}, {'structure': '4.12.2', 'title': 'Active Differentials', 'physical_index': 40}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'physical_index': 41}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'physical_index': 42}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'physical_index': 42}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'physical_index': 43}, {'structure': '5', 'title': 'Outlook', 'physical_index': 44}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'physical_index': 44}, {'structure': '5.2', 'title': 'Scalability', 'physical_index': 45}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.5217391304347826,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "CrsCtrlFree (Free Cruise Control)",
+        "page_number": 27
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)",
+        "page_number": 28
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)",
+        "page_number": 28
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)",
+        "page_number": 28
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Software Component Esc (Electronic Stability Control)",
+        "page_number": 28
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Software Component Ssm (Stand Still Manager)",
+        "page_number": 29
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Software Component Epb (Electronic Parking Brake)",
+        "page_number": 30
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Software Component Vlc (Vehicle Longitudinal Control)",
+        "page_number": 32
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Software Component Rsc (Roll Stability Control)",
+        "page_number": 32
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Software Component Steer (Steering System)",
+        "page_number": 32
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Software Component Steer DrvrAsscSys (Steering Driver Assistance System)",
+        "page_number": 34
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)",
+        "page_number": 34
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Superposition steering angle actuation",
+        "page_number": 35
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Superposition steering torque actuation",
+        "page_number": 35
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Software Component Susp (Suspension System)",
+        "page_number": 36
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Software Component TirePMon (Tire Pressure Monitoring)",
+        "page_number": 38
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Software Component DtTqDistbn (Drivetrain Torque Distribution)",
+        "page_number": 39
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Active Differentials",
+        "page_number": 40
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Torque Vectoring Device",
+        "page_number": 41
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Software Component SurrndgsSnsr (Surroundings Sensor)",
+        "page_number": 42
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Software Component ChassisSnsr (Chassis Sensor)",
+        "page_number": 42
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Software Component PrkgAid (Parking Aid)",
+        "page_number": 43
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 1"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': '<physical_index_7>'}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': '<physical_index_7>'}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': '<physical_index_17>'}, {'structure': '2.4', 'title': 'References', 'physical_index': '<physical_index_17>'}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': '<physical_index_18>'}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': '<physical_index_19>'}, {'structure': '2.5.4.1', 'title': 'internal state sensors', 'physical_index': '<physical_index_19>'}, {'structure': '2.5.4.2', 'title': 'Surrounding sensors', 'physical_index': '<physical_index_19>'}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': '<physical_index_20>'}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': '<physical_index_21>'}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': '<physical_index_24>'}, {'structure': '4.1', 'title': 'Software Composition CrsCtrlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': '<physical_index_28>'}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': '<physical_index_28>'}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': '<physical_index_29>'}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': '<physical_index_30>'}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'physical_index': '<physical_index_32>'}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'physical_index': '<physical_index_32>'}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'physical_index': '<physical_index_32>'}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'physical_index': '<physical_index_34>'}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'physical_index': '<physical_index_34>'}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'physical_index': '<physical_index_35>'}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'physical_index': '<physical_index_36>'}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'physical_index': '<physical_index_36>'}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'physical_index': '<physical_index_38>'}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'physical_index': '<physical_index_39>'}, {'structure': '4.12.1', 'title': 'Hang -on Coupling', 'physical_index': '<physical_index_40>'}, {'structure': '4.12.2', 'title': 'Active Differentials', 'physical_index': '<physical_index_40>'}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'physical_index': '<physical_index_41>'}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'physical_index': '<physical_index_42>'}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'physical_index': '<physical_index_42>'}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'physical_index': '<physical_index_43>'}, {'structure': '5', 'title': 'Outlook', 'physical_index': '<physical_index_44>'}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'physical_index': '<physical_index_44>'}, {'structure': '5.2', 'title': 'Scalability', 'physical_index': '<physical_index_45>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 7}, {'structure': '2.1', 'title': 'Axis System', 'physical_index': 7}, {'structure': '2.2', 'title': 'Definitions', 'physical_index': 7}, {'structure': '2.2.1', 'title': 'Methodology for Optimization of Interface Definition in the Chassis Domain', 'physical_index': 7}, {'structure': '2.2.2', 'title': 'Centre of gravity of passenger car', 'physical_index': 10}, {'structure': '2.2.3', 'title': 'Definition of the car surroundings (e.g. Used for ACC)', 'physical_index': 11}, {'structure': '2.3', 'title': 'Glossary', 'physical_index': 17}, {'structure': '2.4', 'title': 'References', 'physical_index': 17}, {'structure': '2.5', 'title': 'General remarks', 'physical_index': 18}, {'structure': '2.5.1', 'title': 'Differences between SW -Components and ECUs', 'physical_index': 18}, {'structure': '2.5.2', 'title': 'Functional safety', 'physical_index': 18}, {'structure': '2.5.3', 'title': 'Concept of core -, conditional - and optional - ports', 'physical_index': 18}, {'structure': '2.5.4', 'title': 'Concept of sensors', 'physical_index': 19}, {'structure': '2.5.4.1', 'title': 'internal state sensors', 'physical_index': 19}, {'structure': '2.5.4.2', 'title': 'Surrounding sensors', 'physical_index': 19}, {'structure': '2.5.5', 'title': 'Limitations', 'physical_index': 20}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 21}, {'structure': '4', 'title': 'Description of the Chassis Domain Software Compositions and Components', 'physical_index': 24}, {'structure': '4.1', 'title': 'Software Composition CrsCtrlAndAcc (Cruise Control and Adaptive Cruise Control)', 'physical_index': 24}, {'structure': '4.1.1', 'title': 'AccSnsrDataFusion (ACC Sensor Data Fusion)', 'physical_index': 27}, {'structure': '4.1.2', 'title': 'AccObjTarSeln (ACC Object Target Selection)', 'physical_index': 27}, {'structure': '4.1.3', 'title': 'CrsCtrlFree (Free Cruise Control)', 'physical_index': 27}, {'structure': '4.1.4', 'title': 'FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)', 'physical_index': 28}, {'structure': '4.1.5', 'title': 'CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)', 'physical_index': 28}, {'structure': '4.1.6', 'title': 'CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)', 'physical_index': 28}, {'structure': '4.2', 'title': 'Software Component Esc (Electronic Stability Control)', 'physical_index': 28}, {'structure': '4.3', 'title': 'Software Component Ssm (Stand Still Manager)', 'physical_index': 29}, {'structure': '4.4', 'title': 'Software Component Epb (Electronic Parking Brake)', 'physical_index': 30}, {'structure': '4.5', 'title': 'Software Component Vlc (Vehicle Longitudinal Control)', 'physical_index': 32}, {'structure': '4.6', 'title': 'Software Component Rsc (Roll Stability Control)', 'physical_index': 32}, {'structure': '4.7', 'title': 'Software Component Steer (Steering System)', 'physical_index': 32}, {'structure': '4.8', 'title': 'Software Component Steer DrvrAsscSys (Steering Driver Assistance System)', 'physical_index': 34}, {'structure': '4.9', 'title': 'Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)', 'physical_index': 34}, {'structure': '4.9.1', 'title': 'Superposition steering angle actuation', 'physical_index': 35}, {'structure': '4.9.2', 'title': 'Superposition steering torque actuation', 'physical_index': 36}, {'structure': '4.10', 'title': 'Software Component Susp (Suspension System)', 'physical_index': 36}, {'structure': '4.11', 'title': 'Software Component TirePMon (Tire Pressure Monitoring)', 'physical_index': 38}, {'structure': '4.12', 'title': 'Software Component DtTqDistbn (Drivetrain Torque Distribution)', 'physical_index': 39}, {'structure': '4.12.1', 'title': 'Hang -on Coupling', 'physical_index': 40}, {'structure': '4.12.2', 'title': 'Active Differentials', 'physical_index': 40}, {'structure': '4.12.3', 'title': 'Torque Vectoring Device', 'physical_index': 41}, {'structure': '4.13', 'title': 'Software Component SurrndgsSnsr (Surroundings Sensor)', 'physical_index': 42}, {'structure': '4.14', 'title': 'Software Component ChassisSnsr (Chassis Sensor)', 'physical_index': 42}, {'structure': '4.15', 'title': 'Software Component PrkgAid (Parking Aid)', 'physical_index': 43}, {'structure': '5', 'title': 'Outlook', 'physical_index': 44}, {'structure': '5.1', 'title': 'Chassis Domain Structure', 'physical_index': 44}, {'structure': '5.2', 'title': 'Scalability', 'physical_index': 45}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.4583333333333333,
+    "incorrect_results": [
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "Limitations",
+        "page_number": 20
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "AccSnsrDataFusion (ACC Sensor Data Fusion)",
+        "page_number": 27
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "AccObjTarSeln (ACC Object Target Selection)",
+        "page_number": 27
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "CrsCtrlFree (Free Cruise Control)",
+        "page_number": 27
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "FolwCtrlAndAArbn (Follow Control and Acceleration Arbitration)",
+        "page_number": 28
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "CrsCtrlAndAcc StCtrl (Cruise Control and ACC State Machine)",
+        "page_number": 28
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "CrsCtrlAndAccObsvrForVehSt (Cruise Control and ACC Vehicle State Observer)",
+        "page_number": 28
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Software Component Esc (Electronic Stability Control)",
+        "page_number": 28
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Software Component Ssm (Stand Still Manager)",
+        "page_number": 29
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Software Component Epb (Electronic Parking Brake)",
+        "page_number": 30
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Software Component Vlc (Vehicle Longitudinal Control)",
+        "page_number": 32
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Software Component Rsc (Roll Stability Control)",
+        "page_number": 32
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Software Component Steer (Steering System)",
+        "page_number": 32
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Software Component Steer DrvrAsscSys (Steering Driver Assistance System)",
+        "page_number": 34
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Software Component SteerVehStabyCtrl (Steering Vehicle Stabilizing Control)",
+        "page_number": 34
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Superposition steering angle actuation",
+        "page_number": 35
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Superposition steering torque actuation",
+        "page_number": 36
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Software Component Susp (Suspension System)",
+        "page_number": 36
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Software Component DtTqDistbn (Drivetrain Torque Distribution)",
+        "page_number": 39
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Hang -on Coupling",
+        "page_number": 40
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Torque Vectoring Device",
+        "page_number": 41
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Software Component SurrndgsSnsr (Surroundings Sensor)",
+        "page_number": 42
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Software Component PrkgAid (Parking Aid)",
+        "page_number": 43
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Outlook",
+        "page_number": 44
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Chassis Domain Structure",
+        "page_number": 44
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Scalability",
+        "page_number": 45
+      }
+    ]
+  }
+]

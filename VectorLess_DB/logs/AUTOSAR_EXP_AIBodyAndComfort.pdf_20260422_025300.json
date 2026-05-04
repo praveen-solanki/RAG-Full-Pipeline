@@ -1,0 +1,1798 @@
+[
+  {
+    "total_page_number": 98
+  },
+  {
+    "total_token": 61651
+  },
+  {
+    "toc_content": "                   Explanation of Application Inte rfaces of \nthe Body and Comfort Domain  \nAUTOSAR CP Release 4.4.0   \n4 of 98 Document ID 268: AUTOSAR _EXP_AIBodyAndComfort  \n- AUTOSAR CONFIDENTIAL - Table of Contents  \n \n1 Purpose of this Document  :  :  :   6 \n2 Description of Terms and Concepts of the Body - and Comfort Domain  :   7 \n2.1 Design Rationale  :  :  :   7 \n2.2 Abbreviations  :  :  :  .. 7 \n3 Decomposition Overview  :  :  :   9 \n4 Description of Software Compositions and Components  :  .... 10 \n4.1 Wiper/Washer  :  :  :   10 \n4.1.1  Rain sensing  :  :  :   13 \n4.2 Mirror Adjustment & Tinting  :  :  :   13 \n4.2.1  Mirror Adjustment  :  :  :   13 \n4.2.2  Mirror Tinting :  :  :   16 \n4.3 Interior Light  :  :  :  .. 17 \n4.3.1  InteriorLightManager  :  :  :   19 \n4.3.2  Body Sensors for Interior Light (HMI)  :  :   19 \n4.3.3  CentralLocking (including Doorlocks) / Remote Key / PASE  :   21 \n4.3.4  Exterior Light :  :  :   21 \n4.3.5  Anti-Theft -System  :  :  :   21 \n4.3.6  ProfileManager  :  :  :   21 \n4.3.7  TerminalClampControl  :  :  :   21 \n4.3.8  Inter-Domain Interfaces  :  :  :   21 \n4.3.9  Battery Monitor (Future function)  :  :   22 \n4.3.10  Actuators  :  :  :   22 \n4.3.11  List of interior light sources \u2013 groups of light sources  :   22 \n4.3.12  Scope definition / possible future enhancements  :   24 \n4.4 Seat Adjustment  :  :  :   25 \n4.4.1  Seat Configurations  :  :  :   25 \n4.4.2  Seat Adjustment Decomposition  :  :   26 \n4.4.3  Personalization Issues  :  :  :   31 \n4.4.4  Design Rationale  :  :  :   31 \n4.5 Central Locking  :  :  :   32 \n4.5.1  Central Locking Decomposition main view  :  :   32 \n4.5.2  Explanation of SW -Cs :  :  :   34 \n4.5.3  Further Issues con cerning Central Locking  :  :   37 \n4.5.4  Known Defects :  :  :   38 \n4.6 Exterior Light  :  :  :  . 38 \n4.6.1  Overview on Exterior Light  :  :  :  44 \n4.6.2  ExteriorLightManager  :  :  :   45 \n4.6.3  BrakeLight Manager  :  :  :   46 \n4.6.4  Flash Manager  :  :  :   47 \n4.6.5  Use case descriptions  :  :  :   48 \n4.6.6  Autolight Adapter  :  :  :   50 \n4.6.7  Cornering Adapter  :  :  :   51 \n4.6.8  CHLH Adapter  :  :  :   51 \n4.6.9  ExteriorLight AdapterFront/Rear/Trailer  :  :   51 \n4.6.10  Exterior Light Actuator  :  :  :   53 \n4.6.11  Headlamp -Leve ling Manager  :  :   54                    Explanation of Application Inte rfaces of \nthe Body and Comfort Domain  \nAUTOSAR CP Release 4.4.0   \n5 of 98 Document ID 268: AUTOSAR _EXP_AIBodyAndComfort  \n- AUTOSAR CONFIDENTIAL - 4.6.12  External interfaces  :  :  :   54 \n4.6.13  ports to AUTOSAR -Services  :  :   54 \n4.6.14  Terminology Definitions  :  :  :  54 \n4.6.15  List of light sources  :  :  :   60 \n4.6.16  Known Deficienc ies :  :  :   61 \n4.7 Antitheft Warning System  :  :  :   61 \n4.7.1  Alarm triggers  :  :  :   61 \n4.7.2  Alarm system status indications :  :   62 \n4.7.3  Alarm St ates :  :  :   62 \n4.7.4  Panic Alarm  :  :  :   62 \n4.7.5  ATWS decomposition  :  :  :   62 \n4.8 Horn  :  :  :  :   65 \n4.8.1  Horn decomposition  :  :  :   66 \n4.9 Defrost Control  :  :  :   66 \n4.9.1  Introduction  :  :  :   66 \n4.9.2  Sensors and actuators overview  :  :   66 \n4.9.3  Defrost Control Decomposition  :  :   68 \n4.10  Terminal Clamp Control  :  :  :   70 \n4.10.1  Explanation of SW -Cs :  :  :   72 \n4.10.2  Use case descriptions  :  :  :   73 \n4.11  Immobilizer  :  :  :  ... 76 \n4.11.1  Constraints/Limitations  :  :  :   78 \n4.12  Seat Climatization  :  :  :   79 \n4.12.1  Introduction  :  :  :   79 \n4.12.2  Seat Climatization Decomposition  :  :   79 \n4.13  PASE (P ASsive Entry)  :  :  :   81 \n4.13.1  Introduction  :  :  :   81 \n4.13.2  PASE Decomposition  :  :  :   81 \n4.14  RKE (Remote Keyless Entry) :  :  :   88 \n4.14.1  Introduction  :  :  :   88 \n4.14.2 RKE Decomposition  :  :  :   90 \n4.15  Convertible Control  :  :  :   92 \n4.15.1  Introduction  :  :  :   92 \n4.15.2  Convertible Control decomposition  :  :   92 \n4.16  BodySensors  :  :  :   94 \n4.16.1  Introduction  :  :  :   94 \n4.16.2  BodySensors decomposition  :  :   94 \n4.17  KeyPad  :  :  :  :   97 \n5 Additional Information (Optional)  :  :  :   98 \n ",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'page': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'page': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'page': 7}, {'structure': '3', 'title': 'Decomposition Overview', 'page': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'page': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'page': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'page': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'page': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'page': 13}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'page': 16}, {'structure': '4.3', 'title': 'Interior Light', 'page': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'page': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'page': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'page': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'page': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'page': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'page': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'page': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'page': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'page': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'page': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'page': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'page': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'page': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'page': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'page': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'page': 31}, {'structure': '4.4.4', 'title': 'Design Rationale', 'page': 31}, {'structure': '4.5', 'title': 'Central Locking', 'page': 32}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'page': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'page': 34}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'page': 37}, {'structure': '4.5.4', 'title': 'Known Defects', 'page': 38}, {'structure': '4.6', 'title': 'Exterior Light', 'page': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'page': 44}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'page': 45}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'page': 46}, {'structure': '4.6.4', 'title': 'Flash Manager', 'page': 47}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'page': 48}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'page': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'page': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'page': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'page': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'page': 53}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'page': 54}, {'structure': '4.6.12', 'title': 'External interfaces', 'page': 54}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'page': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'page': 54}, {'structure': '4.6.15', 'title': 'List of light sources', 'page': 60}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'page': 61}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'page': 61}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'page': 61}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'page': 62}, {'structure': '4.7.3', 'title': 'Alarm States', 'page': 62}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'page': 62}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'page': 62}, {'structure': '4.8', 'title': 'Horn', 'page': 65}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'page': 66}, {'structure': '4.9', 'title': 'Defrost Control', 'page': 66}, {'structure': '4.9.1', 'title': 'Introduction', 'page': 66}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'page': 66}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'page': 68}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'page': 70}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'page': 72}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'page': 73}, {'structure': '4.11', 'title': 'Immobilizer', 'page': 76}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'page': 78}, {'structure': '4.12', 'title': 'Seat Climatization', 'page': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'page': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'page': 79}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'page': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'page': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'page': 81}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'page': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'page': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'page': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'page': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'page': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'page': 92}, {'structure': '4.16', 'title': 'BodySensors', 'page': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'page': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'page': 94}, {'structure': '4.17', 'title': 'KeyPad', 'page': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'page': 98}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': '<physical_index_10>'}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': '<physical_index_10>'}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': '<physical_index_13>'}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': '<physical_index_13>'}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': '<physical_index_14>'}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': '<physical_index_16>'}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': '<physical_index_17>'}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': '<physical_index_19>'}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': '<physical_index_19>'}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': '<physical_index_24>'}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': '<physical_index_25>'}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': '<physical_index_26>'}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': '<physical_index_31>'}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': '<physical_index_31>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': 7}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': 14}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': 16}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': 26}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': 27}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': 31}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': 31}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Purpose of this Document', 'page': 6, 'physical_index': 6}, {'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'page': 7, 'physical_index': 7}, {'title': 'Design Rationale', 'page': 7, 'physical_index': 7}, {'title': 'Design Rationale', 'page': 31, 'physical_index': 7}, {'title': 'Abbreviations', 'page': 7, 'physical_index': 7}, {'title': 'Decomposition Overview', 'page': 9, 'physical_index': 9}, {'title': 'Description of Software Compositions and Components', 'page': 10, 'physical_index': 10}, {'title': 'Wiper/Washer', 'page': 10, 'physical_index': 10}, {'title': 'Rain sensing', 'page': 13, 'physical_index': 13}, {'title': 'Mirror Adjustment & Tinting', 'page': 13, 'physical_index': 13}, {'title': 'Mirror Adjustment', 'page': 13, 'physical_index': 14}, {'title': 'Mirror Tinting', 'page': 16, 'physical_index': 16}, {'title': 'Interior Light', 'page': 17, 'physical_index': 17}, {'title': 'InteriorLightManager', 'page': 19, 'physical_index': 19}, {'title': 'Body Sensors for Interior Light (HMI)', 'page': 19, 'physical_index': 19}, {'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'page': 21, 'physical_index': 21}, {'title': 'Exterior Light', 'page': 21, 'physical_index': 21}, {'title': 'Exterior Light', 'page': 38, 'physical_index': 21}, {'title': 'Anti-Theft -System', 'page': 21, 'physical_index': 21}, {'title': 'ProfileManager', 'page': 21, 'physical_index': 21}, {'title': 'TerminalClampControl', 'page': 21, 'physical_index': 21}, {'title': 'Inter-Domain Interfaces', 'page': 21, 'physical_index': 21}, {'title': 'Battery Monitor (Future function)', 'page': 22, 'physical_index': 22}, {'title': 'Actuators', 'page': 22, 'physical_index': 22}, {'title': 'List of interior light sources \u2013 groups of light sources', 'page': 22, 'physical_index': 22}, {'title': 'Scope definition / possible future enhancements', 'page': 24, 'physical_index': 24}, {'title': 'Seat Adjustment', 'page': 25, 'physical_index': 25}, {'title': 'Seat Configurations', 'page': 25, 'physical_index': 26}, {'title': 'Seat Adjustment Decomposition', 'page': 26, 'physical_index': 27}, {'title': 'Personalization Issues', 'page': 31, 'physical_index': 31}, {'title': 'Design Rationale', 'page': 7, 'physical_index': 31}, {'title': 'Design Rationale', 'page': 31, 'physical_index': 31}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': 7}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': 13}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': 16}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': 31}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': 31}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': 32}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': 34}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': 37}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': 38}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': 44}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': 45}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': 46}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': 47}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': 48}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': 53}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': 54}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': 54}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': 54}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': 60}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': 61}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': 61}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': 61}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': 62}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': 62}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': 62}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': 62}, {'structure': '4.8', 'title': 'Horn', 'physical_index': 65}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': 66}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': 66}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': 66}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': 66}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': 68}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': 70}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': 72}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': 73}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': 76}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': 78}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': 79}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': 81}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': 92}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': 94}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': 98}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': 7}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': 13}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': 16}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': 31}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': 31}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': 32}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': 34}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': 37}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': 38}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': 44}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': 45}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': 46}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': 47}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': 48}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': 53}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': 54}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': 54}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': 54}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': 60}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': 61}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': 61}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': 61}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': 62}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': 62}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': 62}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': 62}, {'structure': '4.8', 'title': 'Horn', 'physical_index': 65}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': 66}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': 66}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': 66}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': 66}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': 68}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': 70}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': 72}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': 73}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': 76}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': 78}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': 79}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': 81}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': 92}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': 94}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': 98}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.27058823529411763,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Battery Monitor (Future function)",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Actuators",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "List of interior light sources \u2013 groups of light sources",
+        "page_number": 22
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Scope definition / possible future enhancements",
+        "page_number": 24
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Seat Adjustment",
+        "page_number": 25
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Seat Configurations",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Seat Adjustment Decomposition",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Personalization Issues",
+        "page_number": 31
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Design Rationale",
+        "page_number": 31
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Central Locking",
+        "page_number": 32
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Central Locking Decomposition main view",
+        "page_number": 32
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 34
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Further Issues concerning Central Locking",
+        "page_number": 37
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Known Defects",
+        "page_number": 38
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Exterior Light",
+        "page_number": 38
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Overview on Exterior Light",
+        "page_number": 44
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "ExteriorLightManager",
+        "page_number": 45
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "BrakeLight Manager",
+        "page_number": 46
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Flash Manager",
+        "page_number": 47
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 48
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Autolight Adapter",
+        "page_number": 50
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Cornering Adapter",
+        "page_number": 51
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "CHLH Adapter",
+        "page_number": 51
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "ExteriorLight AdapterFront/Rear/Trailer",
+        "page_number": 51
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Exterior Light Actuator",
+        "page_number": 53
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Headlamp -Leve ling Manager",
+        "page_number": 54
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "External interfaces",
+        "page_number": 54
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "ports to AUTOSAR -Services",
+        "page_number": 54
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Terminology Definitions",
+        "page_number": 54
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "List of light sources",
+        "page_number": 60
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Known Deficiencies",
+        "page_number": 61
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Antitheft Warning System",
+        "page_number": 61
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Alarm triggers",
+        "page_number": 61
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Alarm system status indications",
+        "page_number": 62
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Alarm States",
+        "page_number": 62
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Panic Alarm",
+        "page_number": 62
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "ATWS decomposition",
+        "page_number": 62
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Horn",
+        "page_number": 65
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Horn decomposition",
+        "page_number": 66
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Defrost Control",
+        "page_number": 66
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 66
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Sensors and actuators overview",
+        "page_number": 66
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Defrost Control Decomposition",
+        "page_number": 68
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Terminal Clamp Control",
+        "page_number": 70
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 72
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 73
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Immobilizer",
+        "page_number": 76
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Constraints/Limitations",
+        "page_number": 78
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Seat Climatization",
+        "page_number": 79
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 79
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Seat Climatization Decomposition",
+        "page_number": 79
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "PASE (P ASsive Entry)",
+        "page_number": 81
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 81
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "PASE Decomposition",
+        "page_number": 81
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "RKE (Remote Keyless Entry)",
+        "page_number": 88
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 88
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "RKE Decomposition",
+        "page_number": 90
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Convertible Control",
+        "page_number": 92
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 92
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "BodySensors",
+        "page_number": 94
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 94
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "BodySensors decomposition",
+        "page_number": 94
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'page': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'page': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'page': 7}, {'structure': '3', 'title': 'Decomposition Overview', 'page': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'page': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'page': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'page': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'page': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'page': 13}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'page': 16}, {'structure': '4.3', 'title': 'Interior Light', 'page': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'page': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'page': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'page': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'page': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'page': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'page': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'page': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'page': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'page': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'page': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'page': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'page': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'page': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'page': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'page': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'page': 31}, {'structure': '4.4.4', 'title': 'Design Rationale', 'page': 31}, {'structure': '4.5', 'title': 'Central Locking', 'page': 32}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'page': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'page': 34}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'page': 37}, {'structure': '4.5.4', 'title': 'Known Defects', 'page': 38}, {'structure': '4.6', 'title': 'Exterior Light', 'page': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'page': 44}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'page': 45}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'page': 46}, {'structure': '4.6.4', 'title': 'Flash Manager', 'page': 47}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'page': 48}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'page': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'page': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'page': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'page': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'page': 53}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'page': 54}, {'structure': '4.6.12', 'title': 'External interfaces', 'page': 54}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'page': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'page': 54}, {'structure': '4.6.15', 'title': 'List of light sources', 'page': 60}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'page': 61}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'page': 61}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'page': 61}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'page': 62}, {'structure': '4.7.3', 'title': 'Alarm States', 'page': 62}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'page': 62}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'page': 62}, {'structure': '4.8', 'title': 'Horn', 'page': 65}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'page': 66}, {'structure': '4.9', 'title': 'Defrost Control', 'page': 66}, {'structure': '4.9.1', 'title': 'Introduction', 'page': 66}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'page': 66}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'page': 68}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'page': 70}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'page': 72}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'page': 73}, {'structure': '4.11', 'title': 'Immobilizer', 'page': 76}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'page': 78}, {'structure': '4.12', 'title': 'Seat Climatization', 'page': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'page': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'page': 79}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'page': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'page': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'page': 81}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'page': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'page': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'page': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'page': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'page': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'page': 92}, {'structure': '4.16', 'title': 'BodySensors', 'page': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'page': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'page': 94}, {'structure': '4.17', 'title': 'KeyPad', 'page': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'page': 98}]"
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': '<physical_index_10>'}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': '<physical_index_10>'}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': '<physical_index_11>'}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': '<physical_index_13>'}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': '<physical_index_13>'}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': '<physical_index_16>'}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': '<physical_index_17>'}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': '<physical_index_19>'}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': '<physical_index_19>'}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': '<physical_index_24>'}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': '<physical_index_25>'}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': '<physical_index_25>'}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': '<physical_index_26>'}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': '<physical_index_27>'}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': '<physical_index_27>'}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': '<physical_index_28>'}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': '<physical_index_28>'}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_29>'}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': '<physical_index_30>'}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': '<physical_index_30>'}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': '<physical_index_31>'}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': '<physical_index_35>'}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': '<physical_index_36>'}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': '<physical_index_37>'}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': '<physical_index_39>'}, {'structure': '4.6.5.1', 'title': 'Blink mode transitions', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2', 'title': 'Timing/Synchronization', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.1', 'title': 'Timing information of a blink sequence', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.2', 'title': 'Trigger a limited number of sequences', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.3', 'title': 'Trigger a continuous blink sequence', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.4', 'title': 'Trigger on/off cycles by the Flash Manager directly', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.4.1', 'title': 'Example Timing Use Case', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.3', 'title': 'Miscellaneous', 'physical_index': '<physical_index_50>'}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': '<physical_index_41>'}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': '<physical_index_42>'}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': '<physical_index_42>'}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': '<physical_index_42>'}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': '<physical_index_44>'}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': '<physical_index_45>'}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': '<physical_index_45>'}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': '<physical_index_45>'}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': '<physical_index_45>'}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': '<physical_index_51>'}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': '<physical_index_52>'}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': '<physical_index_52>'}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': '<physical_index_52>'}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': '<physical_index_53>'}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': '<physical_index_53>'}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': '<physical_index_53>'}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': '<physical_index_53>'}, {'structure': '4.8', 'title': 'Horn', 'physical_index': '<physical_index_54>'}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': '<physical_index_55>'}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': '<physical_index_55>'}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': '<physical_index_55>'}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': '<physical_index_55>'}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': '<physical_index_57>'}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': '<physical_index_58>'}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_59>'}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': '<physical_index_60>'}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': '<physical_index_61>'}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': '<physical_index_62>'}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': '<physical_index_63>'}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': '<physical_index_63>'}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': '<physical_index_63>'}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': '<physical_index_64>'}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': '<physical_index_64>'}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': '<physical_index_64>'}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': '<physical_index_65>'}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': '<physical_index_65>'}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': '<physical_index_66>'}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': '<physical_index_67>'}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': '<physical_index_67>'}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': '<physical_index_67>'}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': '<physical_index_68>'}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': '<physical_index_68>'}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': '<physical_index_68>'}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': '<physical_index_69>'}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': '<physical_index_70>'}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': '<physical_index_79>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': 11}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': 13}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': 13}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': 16}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': 19}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': 21}, {'structure': '4.3.8', 'title': 'Inter-Domain Interfaces', 'physical_index': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': 27}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': 27}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': 28}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': 28}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': 29}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': 30}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': 30}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': 31}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': 35}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': 36}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': 37}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': 38}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': 39}, {'structure': '4.6.5.1', 'title': 'Blink mode transitions', 'physical_index': 49}, {'structure': '4.6.5.2', 'title': 'Timing/Synchronization', 'physical_index': 49}, {'structure': '4.6.5.2.1', 'title': 'Timing information of a blink sequence', 'physical_index': 49}, {'structure': '4.6.5.2.2', 'title': 'Trigger a limited number of sequences', 'physical_index': 49}, {'structure': '4.6.5.2.3', 'title': 'Trigger a continuous blink sequence', 'physical_index': 49}, {'structure': '4.6.5.2.4', 'title': 'Trigger on/off cycles by the Flash Manager directly', 'physical_index': 49}, {'structure': '4.6.5.2.4.1', 'title': 'Example Timing Use Case', 'physical_index': 49}, {'structure': '4.6.5.3', 'title': 'Miscellaneous', 'physical_index': 50}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': 41}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': 42}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': 42}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': 42}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': 44}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': 45}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': 45}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': 45}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': 45}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': 51}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': 52}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': 52}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': 52}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': 53}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': 53}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': 53}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': 53}, {'structure': '4.8', 'title': 'Horn', 'physical_index': 54}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': 55}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': 55}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': 55}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': 55}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': 57}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': 58}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': 59}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': 60}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': 61}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': 62}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': 63}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': 63}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': 63}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': 64}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': 64}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': 64}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': 65}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': 65}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': 66}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': 67}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': 67}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': 67}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': 68}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': 68}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': 68}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': 69}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': 70}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': 79}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.20212765957446807,
+    "incorrect_results": [
+      {
+        "list_index": 7,
+        "answer": "no",
+        "title": "Rain sensing",
+        "page_number": 11
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Battery Monitor (Future function)",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Actuators",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "List of interior light sources \u2013 groups of light sources",
+        "page_number": 22
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Scope definition / possible future enhancements",
+        "page_number": 24
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Seat Adjustment",
+        "page_number": 25
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Seat Configurations",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Seat Adjustment Decomposition",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Personalization Issues",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Design Rationale",
+        "page_number": 27
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Central Locking",
+        "page_number": 28
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Central Locking Decomposition main view",
+        "page_number": 28
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 29
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Further Issues concerning Central Locking",
+        "page_number": 30
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Known Defects",
+        "page_number": 30
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Exterior Light",
+        "page_number": 31
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Overview on Exterior Light",
+        "page_number": 35
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "ExteriorLightManager",
+        "page_number": 36
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "BrakeLight Manager",
+        "page_number": 37
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Flash Manager",
+        "page_number": 38
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 39
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Blink mode transitions",
+        "page_number": 49
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Timing/Synchronization",
+        "page_number": 49
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Timing information of a blink sequence",
+        "page_number": 49
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Trigger a limited number of sequences",
+        "page_number": 49
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Trigger a continuous blink sequence",
+        "page_number": 49
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Trigger on/off cycles by the Flash Manager directly",
+        "page_number": 49
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Example Timing Use Case",
+        "page_number": 49
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Miscellaneous",
+        "page_number": 50
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Autolight Adapter",
+        "page_number": 41
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Cornering Adapter",
+        "page_number": 42
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "CHLH Adapter",
+        "page_number": 42
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "ExteriorLight AdapterFront/Rear/Trailer",
+        "page_number": 42
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Exterior Light Actuator",
+        "page_number": 44
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Headlamp -Leve ling Manager",
+        "page_number": 45
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "External interfaces",
+        "page_number": 45
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "ports to AUTOSAR -Services",
+        "page_number": 45
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Terminology Definitions",
+        "page_number": 45
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "List of light sources",
+        "page_number": 51
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Known Deficiencies",
+        "page_number": 52
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Antitheft Warning System",
+        "page_number": 52
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Alarm triggers",
+        "page_number": 52
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Alarm system status indications",
+        "page_number": 53
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Alarm States",
+        "page_number": 53
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Panic Alarm",
+        "page_number": 53
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "ATWS decomposition",
+        "page_number": 53
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Horn",
+        "page_number": 54
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Horn decomposition",
+        "page_number": 55
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Defrost Control",
+        "page_number": 55
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 55
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Sensors and actuators overview",
+        "page_number": 55
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Defrost Control Decomposition",
+        "page_number": 57
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Terminal Clamp Control",
+        "page_number": 58
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 59
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 60
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Immobilizer",
+        "page_number": 61
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Constraints/Limitations",
+        "page_number": 62
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Seat Climatization",
+        "page_number": 63
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 63
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Seat Climatization Decomposition",
+        "page_number": 63
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "PASE (P ASsive Entry)",
+        "page_number": 64
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 64
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "PASE Decomposition",
+        "page_number": 64
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "RKE (Remote Keyless Entry)",
+        "page_number": 65
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 65
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "RKE Decomposition",
+        "page_number": 66
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Convertible Control",
+        "page_number": 67
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 67
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Convertible Control decomposition",
+        "page_number": 67
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "BodySensors",
+        "page_number": 68
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 68
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "BodySensors decomposition",
+        "page_number": 68
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "KeyPad",
+        "page_number": 69
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Additional Information (Optional)",
+        "page_number": 70
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Seat Climatization",
+        "page_number": 79
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': '<physical_index_10>'}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': '<physical_index_10>'}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': '<physical_index_13>'}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': '<physical_index_14>'}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': '<physical_index_14>'}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': '<physical_index_16>'}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': '<physical_index_17>'}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': '<physical_index_19>'}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': '<physical_index_20>'}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.8', 'title': 'Inter -Domain Interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': '<physical_index_22>'}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': '<physical_index_24>'}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': '<physical_index_25>'}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': '<physical_index_25>'}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': '<physical_index_26>'}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': '<physical_index_27>'}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': '<physical_index_27>'}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': '<physical_index_27>'}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': '<physical_index_27>'}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_27>'}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': '<physical_index_27>'}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': '<physical_index_27>'}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': '<physical_index_27>'}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': '<physical_index_27>'}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': '<physical_index_27>'}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': '<physical_index_27>'}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': '<physical_index_27>'}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': '<physical_index_27>'}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': '<physical_index_27>'}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.8', 'title': 'Horn', 'physical_index': '<physical_index_27>'}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': '<physical_index_27>'}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': '<physical_index_27>'}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': '<physical_index_27>'}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': '<physical_index_27>'}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_27>'}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': '<physical_index_27>'}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': '<physical_index_27>'}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': '<physical_index_27>'}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': '<physical_index_27>'}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': '<physical_index_27>'}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': '<physical_index_27>'}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': '<physical_index_27>'}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': '<physical_index_27>'}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': '<physical_index_27>'}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': '<physical_index_27>'}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': '<physical_index_27>'}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': '<physical_index_27>'}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': '<physical_index_27>'}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': '<physical_index_27>'}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': '<physical_index_27>'}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': '<physical_index_27>'}, {'structure': '4.4.2.1', 'title': 'Body Sensors for Seat Adjustement (HMI)', 'physical_index': '<physical_index_29>'}, {'structure': '4.4.2.2', 'title': 'Doors, KeylessAccess and RemoteKey', 'physical_index': '<physical_index_29>'}, {'structure': '4.4.2.3', 'title': 'Inter -Domain Interfaces', 'physical_index': '<physical_index_30>'}, {'structure': '4.4.2.4', 'title': 'AutoAdjustUserRequestManager', 'physical_index': '<physical_index_30>'}, {'structure': '4.4.2.5', 'title': 'SeatAxisActuatorAdapter', 'physical_index': '<physical_index_30>'}, {'structure': '4.4.2.6', 'title': 'SeatAxisActuator', 'physical_index': '<physical_index_30>'}, {'structure': '4.4.2.7', 'title': 'SeatAxisMemoryAdapter', 'physical_index': '<physical_index_31>'}, {'structure': '4.4.2.8', 'title': 'SeatAdjustManager', 'physical_index': '<physical_index_31>'}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': '<physical_index_32>'}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_32>'}, {'structure': '4.5.2.1', 'title': 'CentralLockingMaster', 'physical_index': '<physical_index_34>'}, {'structure': '4.5.2.2', 'title': 'HMI', 'physical_index': '<physical_index_34>'}, {'structure': '4.5.2.3', 'title': 'RemoteKey / Keyless Access', 'physical_index': '<physical_index_34>'}, {'structure': '4.5.2.4', 'title': 'DoorLock', 'physical_index': '<physical_index_34>'}, {'structure': '4.5.2.5', 'title': 'KeyPad Manager', 'physical_index': '<physical_index_35>'}, {'structure': '4.5.2.6', 'title': 'GloveBox / Tankflap', 'physical_index': '<physical_index_36>'}, {'structure': '4.5.2.7', 'title': 'Intra -Domain -Interfaces', 'physical_index': '<physical_index_36>'}, {'structure': '4.5.2.8', 'title': 'Inter -Domain -Interfaces', 'physical_index': '<physical_index_36>'}, {'structure': '4.5.2.9', 'title': 'ProfileManager', 'physical_index': '<physical_index_37>'}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': '<physical_index_37>'}, {'structure': '4.5.3.1', 'title': 'Personalization', 'physical_index': '<physical_index_37>'}, {'structure': '4.5.3.2', 'title': 'Mechanical decomposition door', 'physical_index': '<physical_index_37>'}, {'structure': '4.5.3.3', 'title': 'Mechanical actions vs. SWCs interfaces (door only)', 'physical_index': '<physical_index_38>'}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.1.1', 'title': 'ExteriorLightManager', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.1.2', 'title': 'ExteriorLightAdapter', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.1.3', 'title': 'ExteriorLightActuator', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.1.4', 'title': 'Body Sensors for Exterior Light (HMI)', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.1.5', 'title': 'Other Functionalities', 'physical_index': '<physical_index_38>'}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': '<physical_index_39>'}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': '<physical_index_39>'}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': '<physical_index_39>'}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': '<physical_index_39>'}, {'structure': '4.6.5.1', 'title': 'Blink mode transitions', 'physical_index': '<physical_index_48>'}, {'structure': '4.6.5.2', 'title': 'Timing/Synchronization', 'physical_index': '<physical_index_48>'}, {'structure': '4.6.5.2.1', 'title': 'Timing information of a blink sequence', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.2', 'title': 'Trigger a limited number of sequences', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.3', 'title': 'Trigger a continuous blink sequence', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.4', 'title': 'Trigger on/off cycles by the Flash Manager directly', 'physical_index': '<physical_index_49>'}, {'structure': '4.6.5.2.4.1', 'title': 'Example Timing Use Case', 'physical_index': '<physical_index_50>'}, {'structure': '4.6.5.3', 'title': 'Miscellaneous', 'physical_index': '<physical_index_50>'}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': '<physical_index_50>'}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': '<physical_index_51>'}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': '<physical_index_51>'}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': '<physical_index_51>'}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': '<physical_index_52>'}, {'structure': '4.6.11', 'title': 'Headlamp -Leveling Manager', 'physical_index': '<physical_index_53>'}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': '<physical_index_53>'}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': '<physical_index_54>'}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': '<physical_index_54>'}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': '<physical_index_55>'}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': '<physical_index_56>'}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': '<physical_index_57>'}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': '<physical_index_57>'}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': '<physical_index_57>'}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': '<physical_index_57>'}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': '<physical_index_57>'}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': '<physical_index_57>'}, {'structure': '4.8', 'title': 'Horn', 'physical_index': '<physical_index_58>'}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': '<physical_index_58>'}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': '<physical_index_59>'}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': '<physical_index_59>'}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': '<physical_index_59>'}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': '<physical_index_59>'}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': '<physical_index_60>'}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': '<physical_index_60>'}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': '<physical_index_60>'}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': '<physical_index_61>'}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': '<physical_index_77>'}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': '<physical_index_79>'}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': '<physical_index_79>'}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': '<physical_index_80>'}, {'structure': '4.13', 'title': 'PASE (PASsive Entry)', 'physical_index': '<physical_index_81>'}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': '<physical_index_81>'}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': '<physical_index_82>'}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': '<physical_index_88>'}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': '<physical_index_88>'}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': '<physical_index_90>'}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': '<physical_index_92>'}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': '<physical_index_92>'}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': '<physical_index_93>'}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': '<physical_index_94>'}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': '<physical_index_94>'}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': '<physical_index_95>'}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': '<physical_index_97>'}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': '<physical_index_98>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 6}, {'structure': '2', 'title': 'Description of Terms and Concepts of the Body - and Comfort Domain', 'physical_index': 7}, {'structure': '2.1', 'title': 'Design Rationale', 'physical_index': 7}, {'structure': '2.2', 'title': 'Abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Decomposition Overview', 'physical_index': 9}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 10}, {'structure': '4.1', 'title': 'Wiper/Washer', 'physical_index': 10}, {'structure': '4.1.1', 'title': 'Rain sensing', 'physical_index': 13}, {'structure': '4.2', 'title': 'Mirror Adjustment & Tinting', 'physical_index': 14}, {'structure': '4.2.1', 'title': 'Mirror Adjustment', 'physical_index': 14}, {'structure': '4.2.2', 'title': 'Mirror Tinting', 'physical_index': 16}, {'structure': '4.3', 'title': 'Interior Light', 'physical_index': 17}, {'structure': '4.3.1', 'title': 'InteriorLightManager', 'physical_index': 19}, {'structure': '4.3.2', 'title': 'Body Sensors for Interior Light (HMI)', 'physical_index': 20}, {'structure': '4.3.3', 'title': 'CentralLocking (including Doorlocks) / Remote Key / PASE', 'physical_index': 21}, {'structure': '4.3.4', 'title': 'Exterior Light', 'physical_index': 21}, {'structure': '4.3.5', 'title': 'Anti-Theft -System', 'physical_index': 21}, {'structure': '4.3.6', 'title': 'ProfileManager', 'physical_index': 21}, {'structure': '4.3.7', 'title': 'TerminalClampControl', 'physical_index': 21}, {'structure': '4.3.8', 'title': 'Inter -Domain Interfaces', 'physical_index': 21}, {'structure': '4.3.9', 'title': 'Battery Monitor (Future function)', 'physical_index': 22}, {'structure': '4.3.10', 'title': 'Actuators', 'physical_index': 22}, {'structure': '4.3.11', 'title': 'List of interior light sources \u2013 groups of light sources', 'physical_index': 22}, {'structure': '4.3.12', 'title': 'Scope definition / possible future enhancements', 'physical_index': 24}, {'structure': '4.4', 'title': 'Seat Adjustment', 'physical_index': 25}, {'structure': '4.4.1', 'title': 'Seat Configurations', 'physical_index': 25}, {'structure': '4.4.2', 'title': 'Seat Adjustment Decomposition', 'physical_index': 26}, {'structure': '4.4.3', 'title': 'Personalization Issues', 'physical_index': 27}, {'structure': '4.4.4', 'title': 'Design Rationale', 'physical_index': 27}, {'structure': '4.5', 'title': 'Central Locking', 'physical_index': 27}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': 27}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': 27}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': 27}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': 27}, {'structure': '4.6', 'title': 'Exterior Light', 'physical_index': 27}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': 27}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': 27}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': 27}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': 27}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': 27}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': 27}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': 27}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': 27}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': 27}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': 27}, {'structure': '4.6.11', 'title': 'Headlamp -Leve ling Manager', 'physical_index': 27}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': 27}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': 27}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': 27}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': 27}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': 27}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': 27}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': 27}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': 27}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': 27}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': 27}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': 27}, {'structure': '4.8', 'title': 'Horn', 'physical_index': 27}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': 27}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': 27}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': 27}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': 27}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': 27}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': 27}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': 27}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': 27}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': 27}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': 27}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': 27}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': 27}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': 27}, {'structure': '4.13', 'title': 'PASE (P ASsive Entry)', 'physical_index': 27}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': 27}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': 27}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': 27}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': 27}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': 27}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': 27}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': 27}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': 27}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': 27}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': 27}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': 27}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': 27}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': 27}, {'structure': '4.4.2.1', 'title': 'Body Sensors for Seat Adjustement (HMI)', 'physical_index': 29}, {'structure': '4.4.2.2', 'title': 'Doors, KeylessAccess and RemoteKey', 'physical_index': 29}, {'structure': '4.4.2.3', 'title': 'Inter -Domain Interfaces', 'physical_index': 30}, {'structure': '4.4.2.4', 'title': 'AutoAdjustUserRequestManager', 'physical_index': 30}, {'structure': '4.4.2.5', 'title': 'SeatAxisActuatorAdapter', 'physical_index': 30}, {'structure': '4.4.2.6', 'title': 'SeatAxisActuator', 'physical_index': 30}, {'structure': '4.4.2.7', 'title': 'SeatAxisMemoryAdapter', 'physical_index': 31}, {'structure': '4.4.2.8', 'title': 'SeatAdjustManager', 'physical_index': 31}, {'structure': '4.5.1', 'title': 'Central Locking Decomposition main view', 'physical_index': 32}, {'structure': '4.5.2', 'title': 'Explanation of SW -Cs', 'physical_index': 32}, {'structure': '4.5.2.1', 'title': 'CentralLockingMaster', 'physical_index': 34}, {'structure': '4.5.2.2', 'title': 'HMI', 'physical_index': 34}, {'structure': '4.5.2.3', 'title': 'RemoteKey / Keyless Access', 'physical_index': 34}, {'structure': '4.5.2.4', 'title': 'DoorLock', 'physical_index': 34}, {'structure': '4.5.2.5', 'title': 'KeyPad Manager', 'physical_index': 35}, {'structure': '4.5.2.6', 'title': 'GloveBox / Tankflap', 'physical_index': 36}, {'structure': '4.5.2.7', 'title': 'Intra -Domain -Interfaces', 'physical_index': 36}, {'structure': '4.5.2.8', 'title': 'Inter -Domain -Interfaces', 'physical_index': 36}, {'structure': '4.5.2.9', 'title': 'ProfileManager', 'physical_index': 37}, {'structure': '4.5.3', 'title': 'Further Issues concerning Central Locking', 'physical_index': 37}, {'structure': '4.5.3.1', 'title': 'Personalization', 'physical_index': 37}, {'structure': '4.5.3.2', 'title': 'Mechanical decomposition door', 'physical_index': 37}, {'structure': '4.5.3.3', 'title': 'Mechanical actions vs. SWCs interfaces (door only)', 'physical_index': 38}, {'structure': '4.5.4', 'title': 'Known Defects', 'physical_index': 38}, {'structure': '4.6.1', 'title': 'Overview on Exterior Light', 'physical_index': 38}, {'structure': '4.6.1.1', 'title': 'ExteriorLightManager', 'physical_index': 38}, {'structure': '4.6.1.2', 'title': 'ExteriorLightAdapter', 'physical_index': 38}, {'structure': '4.6.1.3', 'title': 'ExteriorLightActuator', 'physical_index': 38}, {'structure': '4.6.1.4', 'title': 'Body Sensors for Exterior Light (HMI)', 'physical_index': 38}, {'structure': '4.6.1.5', 'title': 'Other Functionalities', 'physical_index': 38}, {'structure': '4.6.2', 'title': 'ExteriorLightManager', 'physical_index': 39}, {'structure': '4.6.3', 'title': 'BrakeLight Manager', 'physical_index': 39}, {'structure': '4.6.4', 'title': 'Flash Manager', 'physical_index': 39}, {'structure': '4.6.5', 'title': 'Use case descriptions', 'physical_index': 39}, {'structure': '4.6.5.1', 'title': 'Blink mode transitions', 'physical_index': 48}, {'structure': '4.6.5.2', 'title': 'Timing/Synchronization', 'physical_index': 48}, {'structure': '4.6.5.2.1', 'title': 'Timing information of a blink sequence', 'physical_index': 49}, {'structure': '4.6.5.2.2', 'title': 'Trigger a limited number of sequences', 'physical_index': 49}, {'structure': '4.6.5.2.3', 'title': 'Trigger a continuous blink sequence', 'physical_index': 49}, {'structure': '4.6.5.2.4', 'title': 'Trigger on/off cycles by the Flash Manager directly', 'physical_index': 49}, {'structure': '4.6.5.2.4.1', 'title': 'Example Timing Use Case', 'physical_index': 50}, {'structure': '4.6.5.3', 'title': 'Miscellaneous', 'physical_index': 50}, {'structure': '4.6.6', 'title': 'Autolight Adapter', 'physical_index': 50}, {'structure': '4.6.7', 'title': 'Cornering Adapter', 'physical_index': 51}, {'structure': '4.6.8', 'title': 'CHLH Adapter', 'physical_index': 51}, {'structure': '4.6.9', 'title': 'ExteriorLight AdapterFront/Rear/Trailer', 'physical_index': 51}, {'structure': '4.6.10', 'title': 'Exterior Light Actuator', 'physical_index': 52}, {'structure': '4.6.11', 'title': 'Headlamp -Leveling Manager', 'physical_index': 53}, {'structure': '4.6.12', 'title': 'External interfaces', 'physical_index': 53}, {'structure': '4.6.13', 'title': 'ports to AUTOSAR -Services', 'physical_index': 54}, {'structure': '4.6.14', 'title': 'Terminology Definitions', 'physical_index': 54}, {'structure': '4.6.15', 'title': 'List of light sources', 'physical_index': 55}, {'structure': '4.6.16', 'title': 'Known Deficiencies', 'physical_index': 56}, {'structure': '4.7', 'title': 'Antitheft Warning System', 'physical_index': 57}, {'structure': '4.7.1', 'title': 'Alarm triggers', 'physical_index': 57}, {'structure': '4.7.2', 'title': 'Alarm system status indications', 'physical_index': 57}, {'structure': '4.7.3', 'title': 'Alarm States', 'physical_index': 57}, {'structure': '4.7.4', 'title': 'Panic Alarm', 'physical_index': 57}, {'structure': '4.7.5', 'title': 'ATWS decomposition', 'physical_index': 57}, {'structure': '4.8', 'title': 'Horn', 'physical_index': 58}, {'structure': '4.8.1', 'title': 'Horn decomposition', 'physical_index': 58}, {'structure': '4.9', 'title': 'Defrost Control', 'physical_index': 59}, {'structure': '4.9.1', 'title': 'Introduction', 'physical_index': 59}, {'structure': '4.9.2', 'title': 'Sensors and actuators overview', 'physical_index': 59}, {'structure': '4.9.3', 'title': 'Defrost Control Decomposition', 'physical_index': 59}, {'structure': '4.10', 'title': 'Terminal Clamp Control', 'physical_index': 60}, {'structure': '4.10.1', 'title': 'Explanation of SW -Cs', 'physical_index': 60}, {'structure': '4.10.2', 'title': 'Use case descriptions', 'physical_index': 60}, {'structure': '4.11', 'title': 'Immobilizer', 'physical_index': 61}, {'structure': '4.11.1', 'title': 'Constraints/Limitations', 'physical_index': 77}, {'structure': '4.12', 'title': 'Seat Climatization', 'physical_index': 79}, {'structure': '4.12.1', 'title': 'Introduction', 'physical_index': 79}, {'structure': '4.12.2', 'title': 'Seat Climatization Decomposition', 'physical_index': 80}, {'structure': '4.13', 'title': 'PASE (PASsive Entry)', 'physical_index': 81}, {'structure': '4.13.1', 'title': 'Introduction', 'physical_index': 81}, {'structure': '4.13.2', 'title': 'PASE Decomposition', 'physical_index': 82}, {'structure': '4.14', 'title': 'RKE (Remote Keyless Entry)', 'physical_index': 88}, {'structure': '4.14.1', 'title': 'Introduction', 'physical_index': 88}, {'structure': '4.14.2', 'title': 'RKE Decomposition', 'physical_index': 90}, {'structure': '4.15', 'title': 'Convertible Control', 'physical_index': 92}, {'structure': '4.15.1', 'title': 'Introduction', 'physical_index': 92}, {'structure': '4.15.2', 'title': 'Convertible Control decomposition', 'physical_index': 93}, {'structure': '4.16', 'title': 'BodySensors', 'physical_index': 94}, {'structure': '4.16.1', 'title': 'Introduction', 'physical_index': 94}, {'structure': '4.16.2', 'title': 'BodySensors decomposition', 'physical_index': 95}, {'structure': '4.17', 'title': 'KeyPad', 'physical_index': 97}, {'structure': '5', 'title': 'Additional Information (Optional)', 'physical_index': 98}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.12790697674418605,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Battery Monitor (Future function)",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Actuators",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "List of interior light sources \u2013 groups of light sources",
+        "page_number": 22
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Scope definition / possible future enhancements",
+        "page_number": 24
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Seat Adjustment",
+        "page_number": 25
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Seat Configurations",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Seat Adjustment Decomposition",
+        "page_number": 26
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Personalization Issues",
+        "page_number": 27
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Design Rationale",
+        "page_number": 27
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Central Locking",
+        "page_number": 27
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Central Locking Decomposition main view",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 27
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Further Issues concerning Central Locking",
+        "page_number": 27
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Known Defects",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Exterior Light",
+        "page_number": 27
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Overview on Exterior Light",
+        "page_number": 27
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "ExteriorLightManager",
+        "page_number": 27
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "BrakeLight Manager",
+        "page_number": 27
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Flash Manager",
+        "page_number": 27
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 27
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Autolight Adapter",
+        "page_number": 27
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Cornering Adapter",
+        "page_number": 27
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "CHLH Adapter",
+        "page_number": 27
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "ExteriorLight AdapterFront/Rear/Trailer",
+        "page_number": 27
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Exterior Light Actuator",
+        "page_number": 27
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Headlamp -Leve ling Manager",
+        "page_number": 27
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "External interfaces",
+        "page_number": 27
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "ports to AUTOSAR -Services",
+        "page_number": 27
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Terminology Definitions",
+        "page_number": 27
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "List of light sources",
+        "page_number": 27
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Known Deficiencies",
+        "page_number": 27
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Antitheft Warning System",
+        "page_number": 27
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Alarm triggers",
+        "page_number": 27
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Alarm system status indications",
+        "page_number": 27
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Alarm States",
+        "page_number": 27
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Panic Alarm",
+        "page_number": 27
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "ATWS decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Horn",
+        "page_number": 27
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Horn decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Defrost Control",
+        "page_number": 27
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 27
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Sensors and actuators overview",
+        "page_number": 27
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Defrost Control Decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Terminal Clamp Control",
+        "page_number": 27
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 27
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 27
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Immobilizer",
+        "page_number": 27
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Constraints/Limitations",
+        "page_number": 27
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Seat Climatization",
+        "page_number": 27
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 27
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Seat Climatization Decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "PASE (P ASsive Entry)",
+        "page_number": 27
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 27
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "PASE Decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "RKE (Remote Keyless Entry)",
+        "page_number": 27
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 27
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "RKE Decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Convertible Control",
+        "page_number": 27
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 27
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Convertible Control decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "BodySensors",
+        "page_number": 27
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 27
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "BodySensors decomposition",
+        "page_number": 27
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "KeyPad",
+        "page_number": 27
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Additional Information (Optional)",
+        "page_number": 27
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Body Sensors for Seat Adjustement (HMI)",
+        "page_number": 29
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Doors, KeylessAccess and RemoteKey",
+        "page_number": 29
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Inter -Domain Interfaces",
+        "page_number": 30
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "AutoAdjustUserRequestManager",
+        "page_number": 30
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "SeatAxisActuatorAdapter",
+        "page_number": 30
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "SeatAxisActuator",
+        "page_number": 30
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "SeatAxisMemoryAdapter",
+        "page_number": 31
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "SeatAdjustManager",
+        "page_number": 31
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Central Locking Decomposition main view",
+        "page_number": 32
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 32
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "CentralLockingMaster",
+        "page_number": 34
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "HMI",
+        "page_number": 34
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "RemoteKey / Keyless Access",
+        "page_number": 34
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "DoorLock",
+        "page_number": 34
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "KeyPad Manager",
+        "page_number": 35
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "GloveBox / Tankflap",
+        "page_number": 36
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Intra -Domain -Interfaces",
+        "page_number": 36
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Inter -Domain -Interfaces",
+        "page_number": 36
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "ProfileManager",
+        "page_number": 37
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Further Issues concerning Central Locking",
+        "page_number": 37
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Personalization",
+        "page_number": 37
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "Mechanical decomposition door",
+        "page_number": 37
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Mechanical actions vs. SWCs interfaces (door only)",
+        "page_number": 38
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "Known Defects",
+        "page_number": 38
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "Overview on Exterior Light",
+        "page_number": 38
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "ExteriorLightManager",
+        "page_number": 38
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "ExteriorLightAdapter",
+        "page_number": 38
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "ExteriorLightActuator",
+        "page_number": 38
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Body Sensors for Exterior Light (HMI)",
+        "page_number": 38
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Other Functionalities",
+        "page_number": 38
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "ExteriorLightManager",
+        "page_number": 39
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "BrakeLight Manager",
+        "page_number": 39
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "Flash Manager",
+        "page_number": 39
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 39
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Blink mode transitions",
+        "page_number": 48
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "Timing/Synchronization",
+        "page_number": 48
+      },
+      {
+        "list_index": 121,
+        "answer": "no",
+        "title": "Timing information of a blink sequence",
+        "page_number": 49
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "Trigger a limited number of sequences",
+        "page_number": 49
+      },
+      {
+        "list_index": 123,
+        "answer": "no",
+        "title": "Trigger a continuous blink sequence",
+        "page_number": 49
+      },
+      {
+        "list_index": 124,
+        "answer": "no",
+        "title": "Trigger on/off cycles by the Flash Manager directly",
+        "page_number": 49
+      },
+      {
+        "list_index": 125,
+        "answer": "no",
+        "title": "Example Timing Use Case",
+        "page_number": 50
+      },
+      {
+        "list_index": 126,
+        "answer": "no",
+        "title": "Miscellaneous",
+        "page_number": 50
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "Autolight Adapter",
+        "page_number": 50
+      },
+      {
+        "list_index": 128,
+        "answer": "no",
+        "title": "Cornering Adapter",
+        "page_number": 51
+      },
+      {
+        "list_index": 129,
+        "answer": "no",
+        "title": "CHLH Adapter",
+        "page_number": 51
+      },
+      {
+        "list_index": 130,
+        "answer": "no",
+        "title": "ExteriorLight AdapterFront/Rear/Trailer",
+        "page_number": 51
+      },
+      {
+        "list_index": 131,
+        "answer": "no",
+        "title": "Exterior Light Actuator",
+        "page_number": 52
+      },
+      {
+        "list_index": 132,
+        "answer": "no",
+        "title": "Headlamp -Leveling Manager",
+        "page_number": 53
+      },
+      {
+        "list_index": 133,
+        "answer": "no",
+        "title": "External interfaces",
+        "page_number": 53
+      },
+      {
+        "list_index": 134,
+        "answer": "no",
+        "title": "ports to AUTOSAR -Services",
+        "page_number": 54
+      },
+      {
+        "list_index": 135,
+        "answer": "no",
+        "title": "Terminology Definitions",
+        "page_number": 54
+      },
+      {
+        "list_index": 136,
+        "answer": "no",
+        "title": "List of light sources",
+        "page_number": 55
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "Known Deficiencies",
+        "page_number": 56
+      },
+      {
+        "list_index": 138,
+        "answer": "no",
+        "title": "Antitheft Warning System",
+        "page_number": 57
+      },
+      {
+        "list_index": 139,
+        "answer": "no",
+        "title": "Alarm triggers",
+        "page_number": 57
+      },
+      {
+        "list_index": 140,
+        "answer": "no",
+        "title": "Alarm system status indications",
+        "page_number": 57
+      },
+      {
+        "list_index": 141,
+        "answer": "no",
+        "title": "Alarm States",
+        "page_number": 57
+      },
+      {
+        "list_index": 142,
+        "answer": "no",
+        "title": "Panic Alarm",
+        "page_number": 57
+      },
+      {
+        "list_index": 143,
+        "answer": "no",
+        "title": "ATWS decomposition",
+        "page_number": 57
+      },
+      {
+        "list_index": 144,
+        "answer": "no",
+        "title": "Horn",
+        "page_number": 58
+      },
+      {
+        "list_index": 145,
+        "answer": "no",
+        "title": "Horn decomposition",
+        "page_number": 58
+      },
+      {
+        "list_index": 146,
+        "answer": "no",
+        "title": "Defrost Control",
+        "page_number": 59
+      },
+      {
+        "list_index": 147,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 59
+      },
+      {
+        "list_index": 148,
+        "answer": "no",
+        "title": "Sensors and actuators overview",
+        "page_number": 59
+      },
+      {
+        "list_index": 149,
+        "answer": "no",
+        "title": "Defrost Control Decomposition",
+        "page_number": 59
+      },
+      {
+        "list_index": 150,
+        "answer": "no",
+        "title": "Terminal Clamp Control",
+        "page_number": 60
+      },
+      {
+        "list_index": 151,
+        "answer": "no",
+        "title": "Explanation of SW -Cs",
+        "page_number": 60
+      },
+      {
+        "list_index": 152,
+        "answer": "no",
+        "title": "Use case descriptions",
+        "page_number": 60
+      },
+      {
+        "list_index": 153,
+        "answer": "no",
+        "title": "Immobilizer",
+        "page_number": 61
+      },
+      {
+        "list_index": 154,
+        "answer": "no",
+        "title": "Constraints/Limitations",
+        "page_number": 77
+      },
+      {
+        "list_index": 155,
+        "answer": "no",
+        "title": "Seat Climatization",
+        "page_number": 79
+      },
+      {
+        "list_index": 156,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 79
+      },
+      {
+        "list_index": 157,
+        "answer": "no",
+        "title": "Seat Climatization Decomposition",
+        "page_number": 80
+      },
+      {
+        "list_index": 158,
+        "answer": "no",
+        "title": "PASE (PASsive Entry)",
+        "page_number": 81
+      },
+      {
+        "list_index": 159,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 81
+      },
+      {
+        "list_index": 160,
+        "answer": "no",
+        "title": "PASE Decomposition",
+        "page_number": 82
+      },
+      {
+        "list_index": 161,
+        "answer": "no",
+        "title": "RKE (Remote Keyless Entry)",
+        "page_number": 88
+      },
+      {
+        "list_index": 162,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 88
+      },
+      {
+        "list_index": 163,
+        "answer": "no",
+        "title": "RKE Decomposition",
+        "page_number": 90
+      },
+      {
+        "list_index": 164,
+        "answer": "no",
+        "title": "Convertible Control",
+        "page_number": 92
+      },
+      {
+        "list_index": 165,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 92
+      },
+      {
+        "list_index": 168,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 94
+      },
+      {
+        "list_index": 169,
+        "answer": "no",
+        "title": "BodySensors decomposition",
+        "page_number": 95
+      },
+      {
+        "list_index": 170,
+        "answer": "no",
+        "title": "KeyPad",
+        "page_number": 97
+      },
+      {
+        "list_index": 171,
+        "answer": "no",
+        "title": "Additional Information (Optional)",
+        "page_number": 98
+      }
+    ]
+  }
+]

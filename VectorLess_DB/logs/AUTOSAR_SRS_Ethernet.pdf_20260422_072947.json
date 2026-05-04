@@ -1,0 +1,670 @@
+[
+  {
+    "total_page_number": 52
+  },
+  {
+    "total_token": 24728
+  },
+  {
+    "toc_content": "Requirements on Ethernet Support i n AUTOSAR  \nAUTOSAR CP Release 4.4.0   \n4 of 52 Document ID 419: AUTOSAR_SRS_Ethernet  \n- AUTOSAR confidential - \nTable of Contents  \n \n1 Scope of Document  :  :  :   6 \n2 Conventions to be used  :  :  :   7 \n2.1 Acronyms and abbreviation s :  :  :   8 \n3 Functional Overview  :  :  :   9 \n3.1 TCP/IP Protocol Stack (TCPIP)  :  :  .... 9 \n3.2 SWS Socket Adaptor (SoAd) :  :  :   9 \n3.3 SWS Diagnostics ov er IP (DoIP)  :  :  .. 9 \n3.4 SWS Ethernet Interface (EthIf)  :  :  :  9 \n3.5 SWS Ethernet Driver (Eth)  :  :  :   10 \n3.6 SWS Ethernet Transceiver Driver (EthTrcv)  :  :   10 \n3.7 SWS Ethernet Switch Driver (EthSwt)  :  :   10 \n3.8 SWS Ethernet State Manager (EthSM)  :  :   10 \n3.9 SWS UDP Network Management (UdpNm)  :  :   11 \n3.10  SWS Service Discovery (Sd)  :  :  :  11 \n4 Requirements Tracing  :  :  :   12 \n5 Requirements Specification  :  :  :   14 \n5.1 General Requirements  :  :  :   14 \n5.1.1  Configuration  :  :  :   14 \n5.1.2  Operation  :  :  :   14 \n5.1.3  AUTOSAR Interfaces  :  :  :   15 \n5.2 Functional Requirement  :  :  :   16 \n5.2.1  SWS TCP/IP Protocol Stack  :  :  . 16 \n5.2.2  TCP/IP Internet Protocol  :  :  :  17 \n5.2.3  TCP/IP Sub Module: IPv4  :  :  :  17 \n5.2.4  TCP/IP Sub Module: IPv6  :  :  :  18 \n5.2.5  TCP/IP ICMP  :  :  :   22 \n5.2.1  TCP/IP Sub Module: ICMPv4  :  :   22 \n5.2.2  TCP/IP Sub Module: ICMPv6  :  :   23 \n5.2.3  TCP/IP TCP  :  :  :   23 \n5.2.4  TCP/IP TLS  :  :  :   24 \n5.2.5  TCP/IP UDP  :  :  :   27 \n5.2.6  TCP/IP DHCP  :  :  :   27 \n5.2.7  TCP/IP Sub -Module: DHCPv4  :  :   28 \n5.2.8  TCP/IP Sub -Module: DHCPv6  :  :   29 \n5.3 SWS Socket Adaptor (SoAd) :  :  :  30 \n5.4 SWS Diagnostics over IP (DoIP)  :  :   35 \n5.5 SWS Ethernet Interface (EthIf)  :  :  ... 38 \n5.6 SWS Ethernet Driver (Eth)  :  :  :   40 \n5.7 SWS Ethernet Trans ceiver Driver (EthTrcv)  :  :   41 \n5.8 SWS Ethernet Switch Driver (EthSwt)  :  :   44 \n5.9 SWS Ethernet State Manager (EthSM)  :  :   47 \n5.10  SWS UDP  Network Management (UdpNm)  :  :   47 \n5.11  SWS Service Discovery (Sd)  :  :  :  48 \n5.12  Non-Functional Requirements  :  :  .... 48 \n5.12.1  SWS TCP/IP Protocol Stack  :  :   48 Requirements on Ethernet Support i n AUTOSAR  \nAUTOSAR CP Release 4.4.0   \n5 of 52 Document ID 419: AUTOSAR_SRS_Ethernet  \n- AUTOSAR confidential - \n5.12.2  SWS Socket Adaptor (SoAd)  :  :   48 \n5.12.3  SWS Ethernet Interface (EthIf)  :  :   49 \n5.12.4  SWS Ethernet Driver (Eth)  :  :  . 49 \n5.12.5  SWS Ethernet Transceiver Driver (EthTrcv)  :  :  49 \n5.12.6  SWS Ethernet State Manager (EthSM)  :  :   50 \n5.12.7  SWS UDP Network Management (UdpNm)  :  :  50 \n6 References  :  :  :  :   51 \n6.1 Deliverables of AUTOSAR  :  :  :   51 \n6.2 Related standards and norms  :  :  .... 51 \n6.2.1  IETF Requests For Comments (RFCs)  :  :   51 \n ",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of Document', 'page': 6}, {'structure': '2', 'title': 'Conventions to be used', 'page': 7}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'page': 8}, {'structure': '3', 'title': 'Functional Overview', 'page': 9}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'page': 9}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'page': 9}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'page': 9}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'page': 9}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'page': 10}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 10}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'page': 10}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'page': 10}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'page': 11}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'page': 11}, {'structure': '4', 'title': 'Requirements Tracing', 'page': 12}, {'structure': '5', 'title': 'Requirements Specification', 'page': 14}, {'structure': '5.1', 'title': 'General Requirements', 'page': 14}, {'structure': '5.1.1', 'title': 'Configuration', 'page': 14}, {'structure': '5.1.2', 'title': 'Operation', 'page': 14}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'page': 15}, {'structure': '5.2', 'title': 'Functional Requirement', 'page': 16}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'page': 16}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'page': 17}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'page': 17}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'page': 18}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'page': 22}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'page': 22}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'page': 23}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'page': 23}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'page': 24}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'page': 27}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'page': 27}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'page': 28}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'page': 29}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'page': 30}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'page': 35}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'page': 38}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'page': 40}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 41}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'page': 44}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'page': 47}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'page': 47}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'page': 48}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'page': 48}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'page': 48}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'page': 48}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'page': 49}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'page': 49}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 49}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'page': 50}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'page': 50}, {'structure': '6', 'title': 'References', 'page': 51}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'page': 51}, {'structure': '6.2', 'title': 'Related standards and norms', 'page': 51}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'page': 51}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': '<physical_index_9>'}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': '<physical_index_9>'}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_9>'}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': '<physical_index_9>'}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': '<physical_index_9>'}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': '<physical_index_10>'}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': '<physical_index_10>'}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': '<physical_index_10>'}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': '<physical_index_10>'}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': '<physical_index_11>'}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': '<physical_index_11>'}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_12>'}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': '<physical_index_14>'}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': '<physical_index_15>'}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': '<physical_index_16>'}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': '<physical_index_16>'}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': '<physical_index_17>'}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': '<physical_index_17>'}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': '<physical_index_18>'}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': '<physical_index_22>'}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': '<physical_index_23>'}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': '<physical_index_23>'}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': '<physical_index_23>'}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': '<physical_index_24>'}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': '<physical_index_27>'}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': '<physical_index_27>'}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'physical_index': '<physical_index_28>'}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'physical_index': '<physical_index_29>'}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': 7}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': 9}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': 9}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 9}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 9}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 9}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 10}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 10}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 10}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 10}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 11}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': 14}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': 14}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': 14}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': 14}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': 15}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': 16}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 16}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': 17}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': 17}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': 18}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': 22}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': 23}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': 23}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': 23}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': 24}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': 27}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': 27}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'physical_index': 28}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'physical_index': 29}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Scope of Document', 'page': 6, 'physical_index': 6}, {'title': 'Conventions to be used', 'page': 7, 'physical_index': 7}, {'title': 'Acronyms and abbreviations', 'page': 8, 'physical_index': 8}, {'title': 'Functional Overview', 'page': 9, 'physical_index': 9}, {'title': 'TCP/IP Protocol Stack (TCPIP)', 'page': 9, 'physical_index': 9}, {'title': 'SWS Socket Adaptor (SoAd)', 'page': 9, 'physical_index': 9}, {'title': 'SWS Socket Adaptor (SoAd)', 'page': 30, 'physical_index': 9}, {'title': 'SWS Socket Adaptor (SoAd)', 'page': 48, 'physical_index': 9}, {'title': 'SWS Diagnostics over IP (DoIP)', 'page': 9, 'physical_index': 9}, {'title': 'SWS Diagnostics over IP (DoIP)', 'page': 35, 'physical_index': 9}, {'title': 'SWS Ethernet Interface (EthIf)', 'page': 9, 'physical_index': 9}, {'title': 'SWS Ethernet Interface (EthIf)', 'page': 38, 'physical_index': 9}, {'title': 'SWS Ethernet Interface (EthIf)', 'page': 49, 'physical_index': 9}, {'title': 'SWS Ethernet Driver (Eth)', 'page': 10, 'physical_index': 10}, {'title': 'SWS Ethernet Driver (Eth)', 'page': 40, 'physical_index': 10}, {'title': 'SWS Ethernet Driver (Eth)', 'page': 49, 'physical_index': 10}, {'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 10, 'physical_index': 10}, {'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 41, 'physical_index': 10}, {'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 49, 'physical_index': 10}, {'title': 'SWS Ethernet Switch Driver (EthSwt)', 'page': 10, 'physical_index': 10}, {'title': 'SWS Ethernet Switch Driver (EthSwt)', 'page': 44, 'physical_index': 10}, {'title': 'SWS Ethernet State Manager (EthSM)', 'page': 10, 'physical_index': 10}, {'title': 'SWS Ethernet State Manager (EthSM)', 'page': 47, 'physical_index': 10}, {'title': 'SWS Ethernet State Manager (EthSM)', 'page': 50, 'physical_index': 10}, {'title': 'SWS UDP Network Management (UdpNm)', 'page': 11, 'physical_index': 11}, {'title': 'SWS UDP Network Management (UdpNm)', 'page': 47, 'physical_index': 11}, {'title': 'SWS UDP Network Management (UdpNm)', 'page': 50, 'physical_index': 11}, {'title': 'SWS Service Discovery (Sd)', 'page': 11, 'physical_index': 11}, {'title': 'SWS Service Discovery (Sd)', 'page': 48, 'physical_index': 11}, {'title': 'Requirements Tracing', 'page': 12, 'physical_index': 12}, {'title': 'Requirements Specification', 'page': 14, 'physical_index': 14}, {'title': 'General Requirements', 'page': 14, 'physical_index': 14}, {'title': 'Configuration', 'page': 14, 'physical_index': 14}, {'title': 'Operation', 'page': 14, 'physical_index': 14}, {'title': 'AUTOSAR Interfaces', 'page': 15, 'physical_index': 15}, {'title': 'Functional Requirement', 'page': 16, 'physical_index': 16}, {'title': 'SWS TCP/IP Protocol Stack', 'page': 16, 'physical_index': 16}, {'title': 'SWS TCP/IP Protocol Stack', 'page': 48, 'physical_index': 16}, {'title': 'TCP/IP Internet Protocol', 'page': 17, 'physical_index': 17}, {'title': 'TCP/IP Sub Module: IPv4', 'page': 17, 'physical_index': 17}, {'title': 'TCP/IP Sub Module: IPv6', 'page': 18, 'physical_index': 18}, {'title': 'TCP/IP ICMP', 'page': 22, 'physical_index': 22}, {'title': 'TCP/IP Sub Module: ICMPv4', 'page': 22, 'physical_index': 23}, {'title': 'TCP/IP Sub Module: ICMPv6', 'page': 23, 'physical_index': 23}, {'title': 'TCP/IP TCP', 'page': 23, 'physical_index': 23}, {'title': 'TCP/IP TLS', 'page': 24, 'physical_index': 24}, {'title': 'TCP/IP UDP', 'page': 27, 'physical_index': 27}, {'title': 'TCP/IP DHCP', 'page': 27, 'physical_index': 27}, {'title': 'TCP/IP Sub Module: DHCPv4', 'page': 28, 'physical_index': 28}, {'title': 'TCP/IP Sub Module: DHCPv6', 'page': 29, 'physical_index': 29}, {'title': 'SWS Socket Adaptor (SoAd)', 'page': 9, 'physical_index': 30}, {'title': 'SWS Socket Adaptor (SoAd)', 'page': 30, 'physical_index': 30}, {'title': 'SWS Socket Adaptor (SoAd)', 'page': 48, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': 7}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': 9}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': 9}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 9}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 9}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 9}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 10}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 10}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 10}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 10}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 11}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': 14}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': 14}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': 14}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': 14}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': 15}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': 16}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 16}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': 17}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': 17}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': 18}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': 22}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': 22}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': 23}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': 23}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': 24}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': 27}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': 27}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'physical_index': 28}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'physical_index': 29}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 30}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 35}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 38}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 40}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 41}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 44}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 47}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 47}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 48}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'physical_index': 48}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 48}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 48}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 49}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 49}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 49}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 50}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 50}, {'structure': '6', 'title': 'References', 'physical_index': 51}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': 51}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': 51}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'physical_index': 51}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': 7}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': 9}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': 9}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 9}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 9}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 9}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 10}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 10}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 10}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 10}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 11}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': 14}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': 14}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': 14}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': 14}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': 15}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': 16}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 16}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': 17}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': 17}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': 18}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': 22}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': 22}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': 23}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': 23}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': 24}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': 27}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': 27}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'physical_index': 28}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'physical_index': 29}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 30}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 35}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 38}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 40}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 41}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 44}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 47}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 47}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 48}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'physical_index': 48}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 48}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 48}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 49}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 49}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 49}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 50}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 50}, {'structure': '6', 'title': 'References', 'physical_index': 51}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': 51}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': 51}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'physical_index': 51}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.4727272727272727,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Functional Requirement",
+        "page_number": 16
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "SWS TCP/IP Protocol Stack",
+        "page_number": 16
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "TCP/IP Internet Protocol",
+        "page_number": 17
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: IPv4",
+        "page_number": 17
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: IPv6",
+        "page_number": 18
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "TCP/IP ICMP",
+        "page_number": 22
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: ICMPv4",
+        "page_number": 22
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: ICMPv6",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "TCP/IP TCP",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "TCP/IP TLS",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "TCP/IP UDP",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "TCP/IP DHCP",
+        "page_number": 27
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: DHCPv4",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: DHCPv6",
+        "page_number": 29
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "SWS Socket Adaptor (SoAd)",
+        "page_number": 30
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "SWS Diagnostics over IP (DoIP)",
+        "page_number": 35
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "SWS Ethernet Interface (EthIf)",
+        "page_number": 38
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "SWS Ethernet Driver (Eth)",
+        "page_number": 40
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "SWS Ethernet Transceiver Driver (EthTrcv)",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "SWS Ethernet Switch Driver (EthSwt)",
+        "page_number": 44
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "SWS Ethernet State Manager (EthSM)",
+        "page_number": 47
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "SWS UDP Network Management (UdpNm)",
+        "page_number": 47
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "SWS Service Discovery (Sd)",
+        "page_number": 48
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Non-Functional Requirements",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "SWS TCP/IP Protocol Stack",
+        "page_number": 48
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "SWS Ethernet Interface (EthIf)",
+        "page_number": 49
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "SWS Ethernet Driver (Eth)",
+        "page_number": 49
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Deliverables of AUTOSAR",
+        "page_number": 51
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Related standards and norms",
+        "page_number": 51
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Scope of Document', 'page': 6}, {'structure': '2', 'title': 'Conventions to be used', 'page': 7}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'page': 8}, {'structure': '3', 'title': 'Functional Overview', 'page': 9}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'page': 9}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'page': 9}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'page': 9}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'page': 9}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'page': 10}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 10}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'page': 10}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'page': 10}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'page': 11}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'page': 11}, {'structure': '4', 'title': 'Requirements Tracing', 'page': 12}, {'structure': '5', 'title': 'Requirements Specification', 'page': 14}, {'structure': '5.1', 'title': 'General Requirements', 'page': 14}, {'structure': '5.1.1', 'title': 'Configuration', 'page': 14}, {'structure': '5.1.2', 'title': 'Operation', 'page': 14}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'page': 15}, {'structure': '5.2', 'title': 'Functional Requirement', 'page': 16}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'page': 16}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'page': 17}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'page': 17}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'page': 18}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'page': 22}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'page': 22}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'page': 23}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'page': 23}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'page': 24}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'page': 27}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'page': 27}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'page': 28}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'page': 29}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'page': 30}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'page': 35}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'page': 38}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'page': 40}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 41}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'page': 44}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'page': 47}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'page': 47}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'page': 48}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'page': 48}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'page': 48}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'page': 48}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'page': 49}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'page': 49}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'page': 49}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'page': 50}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'page': 50}, {'structure': '6', 'title': 'References', 'page': 51}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'page': 51}, {'structure': '6.2', 'title': 'Related standards and norms', 'page': 51}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'page': 51}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': '<physical_index_9>'}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': '<physical_index_9>'}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_9>'}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': '<physical_index_9>'}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': '<physical_index_9>'}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': '<physical_index_10>'}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': '<physical_index_10>'}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': '<physical_index_10>'}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': '<physical_index_10>'}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': '<physical_index_11>'}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': '<physical_index_11>'}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_12>'}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': '<physical_index_14>'}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': '<physical_index_15>'}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': '<physical_index_16>'}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': '<physical_index_16>'}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': '<physical_index_17>'}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': '<physical_index_17>'}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': '<physical_index_18>'}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': '<physical_index_22>'}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': '<physical_index_22>'}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': '<physical_index_23>'}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': '<physical_index_23>'}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': '<physical_index_24>'}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': '<physical_index_27>'}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': '<physical_index_27>'}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'physical_index': '<physical_index_28>'}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'physical_index': '<physical_index_29>'}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_30>'}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': '<physical_index_35>'}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': '<physical_index_38>'}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': '<physical_index_40>'}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': '<physical_index_41>'}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': '<physical_index_44>'}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': '<physical_index_47>'}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': '<physical_index_47>'}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'physical_index': '<physical_index_48>'}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'physical_index': '<physical_index_48>'}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': '<physical_index_48>'}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_48>'}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': '<physical_index_49>'}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': '<physical_index_49>'}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': '<physical_index_49>'}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': '<physical_index_50>'}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': '<physical_index_50>'}, {'structure': '6', 'title': 'References', 'physical_index': '<physical_index_51>'}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': '<physical_index_51>'}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_51>'}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'physical_index': '<physical_index_51>'}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_33>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': 7}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': 9}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': 9}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 9}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 9}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 9}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 10}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 10}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 10}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 10}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 11}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': 14}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': 14}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': 14}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': 14}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': 15}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': 16}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 16}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': 17}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': 17}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': 18}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': 22}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': 22}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': 23}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': 23}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': 24}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': 27}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': 27}, {'structure': '5.2.7', 'title': 'TCP/IP Sub Module: DHCPv4', 'physical_index': 28}, {'structure': '5.2.8', 'title': 'TCP/IP Sub Module: DHCPv6', 'physical_index': 29}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 30}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 35}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 38}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 40}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 41}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 44}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 47}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 47}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 48}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'physical_index': 48}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 48}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 48}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 49}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 49}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 49}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 50}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 50}, {'structure': '6', 'title': 'References', 'physical_index': 51}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': 51}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': 51}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'physical_index': 51}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 33}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.48214285714285715,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Functional Requirement",
+        "page_number": 16
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "SWS TCP/IP Protocol Stack",
+        "page_number": 16
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "TCP/IP Internet Protocol",
+        "page_number": 17
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: IPv4",
+        "page_number": 17
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: IPv6",
+        "page_number": 18
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "TCP/IP ICMP",
+        "page_number": 22
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: ICMPv4",
+        "page_number": 22
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: ICMPv6",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "TCP/IP TCP",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "TCP/IP TLS",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "TCP/IP UDP",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "TCP/IP DHCP",
+        "page_number": 27
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: DHCPv4",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: DHCPv6",
+        "page_number": 29
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "SWS Socket Adaptor (SoAd)",
+        "page_number": 30
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "SWS Diagnostics over IP (DoIP)",
+        "page_number": 35
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "SWS Ethernet Interface (EthIf)",
+        "page_number": 38
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "SWS Ethernet Driver (Eth)",
+        "page_number": 40
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "SWS Ethernet Transceiver Driver (EthTrcv)",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "SWS Ethernet Switch Driver (EthSwt)",
+        "page_number": 44
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "SWS Ethernet State Manager (EthSM)",
+        "page_number": 47
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "SWS UDP Network Management (UdpNm)",
+        "page_number": 47
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "SWS Service Discovery (Sd)",
+        "page_number": 48
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Non-Functional Requirements",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "SWS TCP/IP Protocol Stack",
+        "page_number": 48
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "SWS Socket Adaptor (SoAd)",
+        "page_number": 48
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "SWS Ethernet Driver (Eth)",
+        "page_number": 49
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "SWS Ethernet Transceiver Driver (EthTrcv)",
+        "page_number": 49
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "SWS UDP Network Management (UdpNm)",
+        "page_number": 50
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': '<physical_index_9>'}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': '<physical_index_9>'}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_9>'}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': '<physical_index_9>'}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': '<physical_index_9>'}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': '<physical_index_10>'}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': '<physical_index_10>'}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': '<physical_index_10>'}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': '<physical_index_10>'}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': '<physical_index_11>'}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': '<physical_index_11>'}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_12>'}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': '<physical_index_14>'}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': '<physical_index_14>'}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': '<physical_index_14>'}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': '<physical_index_16>'}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': '<physical_index_16>'}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': '<physical_index_17>'}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': '<physical_index_17>'}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': '<physical_index_18>'}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': '<physical_index_22>'}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': '<physical_index_22>'}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': '<physical_index_23>'}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': '<physical_index_23>'}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': '<physical_index_24>'}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': '<physical_index_27>'}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': '<physical_index_27>'}, {'structure': '5.2.7', 'title': 'TCP/IP Sub-Module: DHCPv4', 'physical_index': '<physical_index_28>'}, {'structure': '5.2.8', 'title': 'TCP/IP Sub-Module: DHCPv6', 'physical_index': '<physical_index_29>'}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_30>'}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': '<physical_index_35>'}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': '<physical_index_38>'}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': '<physical_index_40>'}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': '<physical_index_41>'}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': '<physical_index_44>'}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': '<physical_index_47>'}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': '<physical_index_47>'}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'physical_index': '<physical_index_48>'}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'physical_index': '<physical_index_48>'}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': '<physical_index_48>'}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': '<physical_index_48>'}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': '<physical_index_49>'}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': '<physical_index_49>'}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': '<physical_index_49>'}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': '<physical_index_50>'}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': '<physical_index_50>'}, {'structure': '6', 'title': 'References', 'physical_index': '<physical_index_51>'}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': '<physical_index_51>'}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_51>'}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'physical_index': '<physical_index_51>'}, {'structure': '6.2.2', 'title': 'IEEE Standards', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.3', 'title': 'ISO Standards', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.4', 'title': 'Other Relevant Documents', 'physical_index': '<physical_index_52>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of Document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions to be used', 'physical_index': 7}, {'structure': '2.1', 'title': 'Acronyms and abbreviations', 'physical_index': 8}, {'structure': '3', 'title': 'Functional Overview', 'physical_index': 9}, {'structure': '3.1', 'title': 'TCP/IP Protocol Stack (TCPIP)', 'physical_index': 9}, {'structure': '3.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 9}, {'structure': '3.3', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 9}, {'structure': '3.4', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 9}, {'structure': '3.5', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 10}, {'structure': '3.6', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 10}, {'structure': '3.7', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 10}, {'structure': '3.8', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 10}, {'structure': '3.9', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 11}, {'structure': '3.10', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements Tracing', 'physical_index': 12}, {'structure': '5', 'title': 'Requirements Specification', 'physical_index': 14}, {'structure': '5.1', 'title': 'General Requirements', 'physical_index': 14}, {'structure': '5.1.1', 'title': 'Configuration', 'physical_index': 14}, {'structure': '5.1.2', 'title': 'Operation', 'physical_index': 14}, {'structure': '5.1.3', 'title': 'AUTOSAR Interfaces', 'physical_index': 14}, {'structure': '5.2', 'title': 'Functional Requirement', 'physical_index': 16}, {'structure': '5.2.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 16}, {'structure': '5.2.2', 'title': 'TCP/IP Internet Protocol', 'physical_index': 17}, {'structure': '5.2.3', 'title': 'TCP/IP Sub Module: IPv4', 'physical_index': 17}, {'structure': '5.2.4', 'title': 'TCP/IP Sub Module: IPv6', 'physical_index': 18}, {'structure': '5.2.5', 'title': 'TCP/IP ICMP', 'physical_index': 22}, {'structure': '5.2.1', 'title': 'TCP/IP Sub Module: ICMPv4', 'physical_index': 22}, {'structure': '5.2.2', 'title': 'TCP/IP Sub Module: ICMPv6', 'physical_index': 23}, {'structure': '5.2.3', 'title': 'TCP/IP TCP', 'physical_index': 23}, {'structure': '5.2.4', 'title': 'TCP/IP TLS', 'physical_index': 24}, {'structure': '5.2.5', 'title': 'TCP/IP UDP', 'physical_index': 27}, {'structure': '5.2.6', 'title': 'TCP/IP DHCP', 'physical_index': 27}, {'structure': '5.2.7', 'title': 'TCP/IP Sub-Module: DHCPv4', 'physical_index': 28}, {'structure': '5.2.8', 'title': 'TCP/IP Sub-Module: DHCPv6', 'physical_index': 29}, {'structure': '5.3', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 30}, {'structure': '5.4', 'title': 'SWS Diagnostics over IP (DoIP)', 'physical_index': 35}, {'structure': '5.5', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 38}, {'structure': '5.6', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 40}, {'structure': '5.7', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 41}, {'structure': '5.8', 'title': 'SWS Ethernet Switch Driver (EthSwt)', 'physical_index': 44}, {'structure': '5.9', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 47}, {'structure': '5.10', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 47}, {'structure': '5.11', 'title': 'SWS Service Discovery (Sd)', 'physical_index': 48}, {'structure': '5.12', 'title': 'Non-Functional Requirements', 'physical_index': 48}, {'structure': '5.12.1', 'title': 'SWS TCP/IP Protocol Stack', 'physical_index': 48}, {'structure': '5.12.2', 'title': 'SWS Socket Adaptor (SoAd)', 'physical_index': 48}, {'structure': '5.12.3', 'title': 'SWS Ethernet Interface (EthIf)', 'physical_index': 49}, {'structure': '5.12.4', 'title': 'SWS Ethernet Driver (Eth)', 'physical_index': 49}, {'structure': '5.12.5', 'title': 'SWS Ethernet Transceiver Driver (EthTrcv)', 'physical_index': 49}, {'structure': '5.12.6', 'title': 'SWS Ethernet State Manager (EthSM)', 'physical_index': 50}, {'structure': '5.12.7', 'title': 'SWS UDP Network Management (UdpNm)', 'physical_index': 50}, {'structure': '6', 'title': 'References', 'physical_index': 51}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': 51}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': 51}, {'structure': '6.2.1', 'title': 'IETF Requests For Comments (RFCs)', 'physical_index': 51}, {'structure': '6.2.2', 'title': 'IEEE Standards', 'physical_index': 52}, {'structure': '6.2.3', 'title': 'ISO Standards', 'physical_index': 52}, {'structure': '6.2.4', 'title': 'Other Relevant Documents', 'physical_index': 52}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.29310344827586204,
+    "incorrect_results": [
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "SWS Ethernet Transceiver Driver (EthTrcv)",
+        "page_number": 10
+      },
+      {
+        "list_index": 10,
+        "answer": "no",
+        "title": "SWS Ethernet Switch Driver (EthSwt)",
+        "page_number": 10
+      },
+      {
+        "list_index": 11,
+        "answer": "no",
+        "title": "SWS Ethernet State Manager (EthSM)",
+        "page_number": 10
+      },
+      {
+        "list_index": 12,
+        "answer": "no",
+        "title": "SWS UDP Network Management (UdpNm)",
+        "page_number": 11
+      },
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "SWS Service Discovery (Sd)",
+        "page_number": 11
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "Requirements Tracing",
+        "page_number": 12
+      },
+      {
+        "list_index": 15,
+        "answer": "no",
+        "title": "Requirements Specification",
+        "page_number": 14
+      },
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "General Requirements",
+        "page_number": 14
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "Configuration",
+        "page_number": 14
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "Operation",
+        "page_number": 14
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "AUTOSAR Interfaces",
+        "page_number": 14
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Functional Requirement",
+        "page_number": 16
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "SWS TCP/IP Protocol Stack",
+        "page_number": 16
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "TCP/IP Internet Protocol",
+        "page_number": 17
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: IPv4",
+        "page_number": 17
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: IPv6",
+        "page_number": 18
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "TCP/IP ICMP",
+        "page_number": 22
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: ICMPv4",
+        "page_number": 22
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "TCP/IP Sub Module: ICMPv6",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "TCP/IP TCP",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "TCP/IP TLS",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "TCP/IP UDP",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "TCP/IP DHCP",
+        "page_number": 27
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "TCP/IP Sub-Module: DHCPv4",
+        "page_number": 28
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "TCP/IP Sub-Module: DHCPv6",
+        "page_number": 29
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "SWS Socket Adaptor (SoAd)",
+        "page_number": 30
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "SWS Diagnostics over IP (DoIP)",
+        "page_number": 35
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "SWS Ethernet Interface (EthIf)",
+        "page_number": 38
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "SWS Ethernet Driver (Eth)",
+        "page_number": 40
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "SWS Ethernet Transceiver Driver (EthTrcv)",
+        "page_number": 41
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "SWS Ethernet Switch Driver (EthSwt)",
+        "page_number": 44
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "SWS Ethernet State Manager (EthSM)",
+        "page_number": 47
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "SWS UDP Network Management (UdpNm)",
+        "page_number": 47
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "SWS Service Discovery (Sd)",
+        "page_number": 48
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Non-Functional Requirements",
+        "page_number": 48
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "SWS TCP/IP Protocol Stack",
+        "page_number": 48
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "SWS Socket Adaptor (SoAd)",
+        "page_number": 48
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "SWS Ethernet Driver (Eth)",
+        "page_number": 49
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "IEEE Standards",
+        "page_number": 52
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "ISO Standards",
+        "page_number": 52
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Other Relevant Documents",
+        "page_number": 52
+      }
+    ]
+  }
+]

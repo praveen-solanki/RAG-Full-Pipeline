@@ -1,0 +1,942 @@
+[
+  {
+    "total_page_number": 64
+  },
+  {
+    "total_token": 27789
+  },
+  {
+    "toc_content": "Guide to BSW Distribution  \nAUTOSAR CP Release 4.4.0   \n3 of 64 Document ID  631:  AUTOSAR_EXP_BSWDistributionGuide  \n- AUTOSAR Confidential - \nTable of Contents  \n \n1 Introduction  :  :  :  :   5 \n2 BSW Distribution in Multi -Core Systems  :  :   6 \n2.1 Overview  :  :  :  :  6 \n2.1.1  Supp orted Scenarios  :  :  :   6 \n2.1.2  Performance Use Cases and Hardware Assigned to Different Cores  ... 6 \n2.1.3  Technical Overview  :  :  :   7 \n2.2 Parallel Execution of BSW modules  :  :   10 \n2.2.1  Core -Dependent Branching :  :  . 10 \n2.2.2  Master/Satellite -approach  :  :  ... 10 \n2.2.3  Using the BSW Scheduler for Inter -Partition -Communication  :   12 \n2.2.4  Using Shared Buffers (in systems without memory protection)  :   13 \n2.2.5  Accessing Hardware/Drivers  :  :   14 \n2.2.6  Concurrency safe implementation of modules  :  .... 14 \n2.3 SchM Interfaces for Parallel BSW execution  :  :   15 \n2.4 Configuration of Basic Software in Partitioned Systems  :   16 \n2.4.1  Task Mapping  :  :  :   16 \n2.4.2  General Configuration of Master and Satellites  :  ... 21 \n2.4.3  Configuring the BswM (per Partition)  :  :   21 \n2.4.4  Configuring the EcuM (per Core)  :  :   22 \n2.5 MCAL Distr ibution  :  :  :   22 \n2.5.1  Introduction  :  :  :   22 \n2.5.2  Assumptions of Use  :  :  :   22 \n2.5.3  Constraints  :  :  :   23 \n2.5.4  Definition of MCAL Users  :  :  .... 24 \n2.5.5  Multi -Core Capabilities Classification Criteria :  :  24 \n2.5.6  Definition of MCAL Multi -Core Types  :  :   25 \n2.5.7  Mappi ng MCAL Modules to Multi -Core Types  :  :  30 \n2.5.8  Seperation Stragies and Mapping of Elements  :  ... 32 \n2.5.9  Separation Strategies  :  :  :   33 \n2.5.10  Mapping of Elements  :  :  :   35 \n2.5.11  Examples  :  :  :   38 \n3 BSW Distribution in Safety Systems  :  :  .. 41 \n3.1 General ov erview on safety  :  :  :   41 \n3.2 Safety solutions in AUTOSAR  :  :  .... 41 \n3.2.1  Some modules are always ASIL  :  :   43 \n3.2.2  Overall configuration  :  :  :   44 \n3.2.3  Crossing partition  boundaries :  :   45 \n3.2.4  Access to peripherals / hardware  :  :   54 \n3.2.5  Startup, Shutdown and Sleep/Wakeup  :  :   55 \n3.2.6  Error handling  :  :  :   56 \n3.2.7  Timing protection  :  :  :   57 \n3.2.8  Combining Safety and Multi -Core  :  :   58 \n3.2.9  Performance Considerations  :  :   58 \n3.2.10  Constraints  :  :  :   58 \n4 Outlook on Upcoming AUTOSAR Versions  :  :   60 \n4.1 Known li mitations  :  :  :   60 \n4.2 Inter BSW module calls in distributed BSW  :  :   60 \n4.3 Standardized BSW functional clusters  :  :   60 Guide to BSW Distribution  \nAUTOSAR CP Release 4.4.0   \n4 of 64 Document ID  631:  AUTOSAR_EXP_BSWDistributionGuide  \n- AUTOSAR Confidential - \n5 Glossary  :  :  :  :   62 \n5.1 Acronyms and abbreviations  :  :  :  62 \n5.2 Technical Terms  :  :  :   62 \n6 References  :  :  :  :   64 \n Guide to BSW Distribution  \nAUTOSAR CP Release 4.4.0   \n5 of 64 Document ID  631:  AUTOSAR_EXP_BSWDistributionGuide  \n- AUTOSAR Confidential - \n1  Introduction  \nThis document i s a general introduction to the distribution of BSW in AUTOSAR \nsystems. It consists of two parts, one focusing on the distribution of BSW in case of \nmulti -core and the other focusing on distribution in case of safety.   \n \nChapter 2 guides to the development and configuration of AUTOSAR -comp liant \nsoftware for multi -core systems. As of release 4.1, it addresses the allocation of \nAUTOSAR BSW modules [1] to partitions on multi -core systems  and their interaction \nonly. The allocation of BSW modules to different BSW partitions allows for both \nenhan ced functional safety and increased performance.  \nAll concept parts of \u201cMCAL Multicore Distribution\u201d and hence chapter  2.5 MCAL \nDistrib ution  have the status \u201cdraft\u201d.  \n \nIn chapter 3 the BSW distribution i n safety cases is described. As of release 4.2  \nAUTOSAR allows to map BSW modules into different partitions and to protect those \npartitions against each other.  \n \nChapter 4 gives an outlook of possible future extensions in the area of BSW \ndistribution.  \n \nA glo ssary of technical terms and a list of references to external information are \nprovided in chapters 5 and 6. \n Guide to BSW Distribution  \nAUTOSAR CP Release 4.4.0   \n6 of 64 Document ID  631:  AUTOSAR_EXP_BSWDistributionGuide  \n- AUTOSAR Confidential - \n2 BSW Distribution in Multi -Core Systems  \n2.1 Overview  \nThis chapter contains a description of th e supported scenarios for distributed \nexecution of BSW modules on several partitions and cores and a number of use \ncases in which a distribution of the BSW can enhance performance. It also \nintroduces basic synchronization concepts applicable to distributed  BSW execution, \nand an introduction to inter -partition communication.  \n \n2.1.1  Supported Scenarios  \nIt is possible to assign functional clusters of BSW modules  (\u201c\"BSW Functional \ncluster\" ), which are used by applications to access buses, non -volatile memory, I/O \nchannels, and watchdogs , to different BSW partitions for safety or performance \nreasons.  The clustering of BSW modules is currently not standardized. Except for the \nMCAL, p arallel usage of the same type of functional clusters in different  partitions \n(\"duplicat ion\") is not generally supported , but it is possible by using a master satellite \napproach . Functional clusters to partitions may be assigned such that  \n\uf0b7 a BSW  functional cluster is only available in one partition  \n\uf0b7 a BSW  functional cluster is available on all partitions with all interfaces  \n\uf0b7 a BSW  functional cluster is distributed over multiple partitions, possibly with \npartition specific subsets of functionality, to allow a high grade of concurrency.  \n \nIn either of these scenarios, the following restrictions appl y: \n\uf0b7 There is currently at most  one QM BSW partition per core.   \n \nWith the aforementioned restrictions, AUTOSAR supports the scenarios listed above. \nIn doing so, it addresses the following essential features:  \n\uf0b7 All code for communication between BSW partitions can be generated for \nautomatic adaptation to different system configurations. The cross partiti on \ncommunication mechanism  can be generated with focus on efficiency , or, in \nfuture releases to help to provide freedom of interference .  \n\uf0b7 If access to system ser vices (which are not part of a BSW  functional cluster) is \nrequired, the according interfaces shall be provided to each BSW partition that \nneeds the system service.  \n\uf0b7 Efficient access to HW abstraction and drivers is supported in each BSW \npartition . \n \nIn all s cenarios, the communication between different module entities remains \nunchanged (in comparison to BSW running in a single partition).  \n \n2.1.2  Performance Use Cases  and Hardware Assigned to Different Cores  \nThe following use cases are examples for how system perfor mance can be improved \nby allocation of the BSW to multiple partitions and cores , and how systems where the \naccess to the peripheral hardware is assigned to multiple cores benefit from the \nallocation of the BSW to multiple partitions and cores . \n \n\uf0b7 To increase  system performance and to reduce resource consumption in \nsystems that are distributed over several cores, it may be necessary to \nallocate functional clusters of BSW modules to different cores, e.g. ",
+    "toc_page_list": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 5}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'page': 6}, {'structure': '2.1', 'title': 'Overview', 'page': 6}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'page': 6}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'page': 6}, {'structure': '2.1.3', 'title': 'Technical Overview', 'page': 7}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'page': 10}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'page': 10}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'page': 10}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'page': 12}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'page': 13}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'page': 14}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'page': 14}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'page': 15}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'page': 16}, {'structure': '2.4.1', 'title': 'Task Mapping', 'page': 16}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'page': 21}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'page': 21}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'page': 22}, {'structure': '2.5', 'title': 'MCAL Distribution', 'page': 22}, {'structure': '2.5.1', 'title': 'Introduction', 'page': 22}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'page': 22}, {'structure': '2.5.3', 'title': 'Constraints', 'page': 23}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'page': 24}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'page': 24}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'page': 25}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'page': 30}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'page': 32}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'page': 33}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'page': 35}, {'structure': '2.5.11', 'title': 'Examples', 'page': 38}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'page': 41}, {'structure': '3.1', 'title': 'General overview on safety', 'page': 41}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'page': 41}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'page': 43}, {'structure': '3.2.2', 'title': 'Overall configuration', 'page': 44}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'page': 45}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'page': 54}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'page': 55}, {'structure': '3.2.6', 'title': 'Error handling', 'page': 56}, {'structure': '3.2.7', 'title': 'Timing protection', 'page': 57}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'page': 58}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'page': 58}, {'structure': '3.2.10', 'title': 'Constraints', 'page': 58}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'page': 60}, {'structure': '4.1', 'title': 'Known limitations', 'page': 60}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'page': 60}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'page': 60}, {'structure': '5', 'title': 'Glossary', 'page': 62}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'page': 62}, {'structure': '5.2', 'title': 'Technical Terms', 'page': 62}, {'structure': '6', 'title': 'References', 'page': 64}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': None}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'physical_index': None}, {'structure': '2.1', 'title': 'Overview', 'physical_index': None}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': None}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': None}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'physical_index': '<physical_index_11>'}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'physical_index': '<physical_index_12>'}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': '<physical_index_13>'}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': '<physical_index_14>'}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': '<physical_index_14>'}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': '<physical_index_15>'}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': '<physical_index_16>'}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': '<physical_index_16>'}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': '<physical_index_21>'}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': '<physical_index_21>'}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': '<physical_index_22>'}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': '<physical_index_23>'}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': '<physical_index_23>'}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': '<physical_index_24>'}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'physical_index': '<physical_index_25>'}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'physical_index': '<physical_index_26>'}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'physical_index': '<physical_index_30>'}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': None}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': None}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': None}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': None}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': None}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': None}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': None}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': None}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': None}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': None}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': None}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': None}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': None}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': None}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'physical_index': None}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': None}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': None}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': None}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': None}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': None}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': None}, {'structure': '5', 'title': 'Glossary', 'physical_index': None}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': None}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': None}, {'structure': '6', 'title': 'References', 'physical_index': None}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': None}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'physical_index': None}, {'structure': '2.1', 'title': 'Overview', 'physical_index': None}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': None}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': None}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': 7}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': 10}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'physical_index': 10}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'physical_index': 11}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'physical_index': 12}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': 13}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': 14}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': 14}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': 15}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': 16}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': 16}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': 21}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': 21}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': 22}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': 22}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': 22}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': 23}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': 23}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': 24}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'physical_index': 25}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'physical_index': 26}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'physical_index': 30}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': None}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': None}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': None}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': None}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': None}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': None}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': None}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': None}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': None}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': None}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': None}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': None}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': None}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': None}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'physical_index': None}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': None}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': None}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': None}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': None}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': None}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': None}, {'structure': '5', 'title': 'Glossary', 'physical_index': None}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': None}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': None}, {'structure': '6', 'title': 'References', 'physical_index': None}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Technical Overview', 'page': 7, 'physical_index': 7}, {'title': 'Parallel Execution of BSW modules', 'page': 10, 'physical_index': 10}, {'title': 'Core-Dependent Branching', 'page': 10, 'physical_index': 10}, {'title': 'Master/Satellite-approach', 'page': 10, 'physical_index': 11}, {'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'page': 12, 'physical_index': 12}, {'title': 'Using Shared Buffers (in systems without memory protection)', 'page': 13, 'physical_index': 13}, {'title': 'Accessing Hardware/Drivers', 'page': 14, 'physical_index': 14}, {'title': 'Concurrency safe implementation of modules', 'page': 14, 'physical_index': 14}, {'title': 'SchM Interfaces for Parallel BSW execution', 'page': 15, 'physical_index': 15}, {'title': 'Configuration of Basic Software in Partitioned Systems', 'page': 16, 'physical_index': 16}, {'title': 'Task Mapping', 'page': 16, 'physical_index': 16}, {'title': 'General Configuration of Master and Satellites', 'page': 21, 'physical_index': 21}, {'title': 'Configuring the BswM (per Partition)', 'page': 21, 'physical_index': 21}, {'title': 'Configuring the EcuM (per Core)', 'page': 22, 'physical_index': 22}, {'title': 'MCAL Distribution', 'page': 22, 'physical_index': 22}, {'title': 'Introduction', 'page': 5, 'physical_index': 22}, {'title': 'Introduction', 'page': 22, 'physical_index': 22}, {'title': 'Assumptions of Use', 'page': 22, 'physical_index': 23}, {'title': 'Constraints', 'page': 23, 'physical_index': 23}, {'title': 'Constraints', 'page': 58, 'physical_index': 23}, {'title': 'Definition of MCAL Users', 'page': 24, 'physical_index': 24}, {'title': 'Multi-Core Capabilities Classification Criteria', 'page': 24, 'physical_index': 25}, {'title': 'Definition of MCAL Multi-Core Types', 'page': 25, 'physical_index': 26}, {'title': 'Mapping MCAL Modules to Multi-Core Types', 'page': 30, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'physical_index': 6}, {'structure': '2.1', 'title': 'Overview', 'physical_index': 6}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': 6}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': 6}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': 7}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': 10}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'physical_index': 10}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'physical_index': 10}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'physical_index': 12}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': 13}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': 14}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': 14}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': 15}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': 16}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': 16}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': 21}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': 21}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': 22}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': 22}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': 22}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': 22}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': 23}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': 24}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'physical_index': 24}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'physical_index': 25}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'physical_index': 30}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': 32}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': 33}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': 35}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': 38}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': 41}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': 41}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': 41}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': 43}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': 44}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': 45}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': 54}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': 55}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': 56}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': 57}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'physical_index': 58}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': 58}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': 58}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': 60}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': 60}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': 60}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': 60}, {'structure': '5', 'title': 'Glossary', 'physical_index': 62}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 62}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': 62}, {'structure': '6', 'title': 'References', 'physical_index': 64}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'physical_index': 6}, {'structure': '2.1', 'title': 'Overview', 'physical_index': 6}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': 6}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': 6}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': 7}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': 10}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'physical_index': 10}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'physical_index': 10}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'physical_index': 12}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': 13}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': 14}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': 14}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': 15}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': 16}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': 16}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': 21}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': 21}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': 22}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': 22}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': 22}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': 22}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': 23}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': 24}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'physical_index': 24}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'physical_index': 25}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'physical_index': 30}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': 32}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': 33}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': 35}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': 38}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': 41}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': 41}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': 41}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': 43}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': 44}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': 45}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': 54}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': 55}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': 56}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': 57}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'physical_index': 58}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': 58}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': 58}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': 60}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': 60}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': 60}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': 60}, {'structure': '5', 'title': 'Glossary', 'physical_index': 62}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 62}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': 62}, {'structure': '6', 'title': 'References', 'physical_index': 64}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.38461538461538464,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Assumptions of Use",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Constraints",
+        "page_number": 23
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Definition of MCAL Users",
+        "page_number": 24
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Multi-Core Capabilities Classification Criteria",
+        "page_number": 24
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Definition of MCAL Multi-Core Types",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Mapping MCAL Modules to Multi-Core Types",
+        "page_number": 30
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Seperation Stragies and Mapping of Elements",
+        "page_number": 32
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Separation Strategies",
+        "page_number": 33
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Mapping of Elements",
+        "page_number": 35
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Examples",
+        "page_number": 38
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "BSW Distribution in Safety Systems",
+        "page_number": 41
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "General overview on safety",
+        "page_number": 41
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Safety solutions in AUTOSAR",
+        "page_number": 41
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Some modules are always ASIL",
+        "page_number": 43
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Overall configuration",
+        "page_number": 44
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Crossing partition boundaries",
+        "page_number": 45
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Access to peripherals / hardware",
+        "page_number": 54
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Startup, Shutdown and Sleep/Wakeup",
+        "page_number": 55
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Error handling",
+        "page_number": 56
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Timing protection",
+        "page_number": 57
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Combining Safety and Multi-Core",
+        "page_number": 58
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Performance Considerations",
+        "page_number": 58
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Constraints",
+        "page_number": 58
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Outlook on Upcoming AUTOSAR Versions",
+        "page_number": 60
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Known limitations",
+        "page_number": 60
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Inter BSW module calls in distributed BSW",
+        "page_number": 60
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Standardized BSW functional clusters",
+        "page_number": 60
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Glossary",
+        "page_number": 62
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 62
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Technical Terms",
+        "page_number": 62
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "References",
+        "page_number": 64
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 5}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'page': 6}, {'structure': '2.1', 'title': 'Overview', 'page': 6}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'page': 6}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'page': 6}, {'structure': '2.1.3', 'title': 'Technical Overview', 'page': 7}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'page': 10}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'page': 10}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'page': 10}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'page': 12}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'page': 13}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'page': 14}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'page': 14}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'page': 15}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'page': 16}, {'structure': '2.4.1', 'title': 'Task Mapping', 'page': 16}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'page': 21}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'page': 21}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'page': 22}, {'structure': '2.5', 'title': 'MCAL Distribution', 'page': 22}, {'structure': '2.5.1', 'title': 'Introduction', 'page': 22}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'page': 22}, {'structure': '2.5.3', 'title': 'Constraints', 'page': 23}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'page': 24}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'page': 24}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'page': 25}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'page': 30}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'page': 32}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'page': 33}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'page': 35}, {'structure': '2.5.11', 'title': 'Examples', 'page': 38}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'page': 41}, {'structure': '3.1', 'title': 'General overview on safety', 'page': 41}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'page': 41}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'page': 43}, {'structure': '3.2.2', 'title': 'Overall configuration', 'page': 44}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'page': 45}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'page': 54}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'page': 55}, {'structure': '3.2.6', 'title': 'Error handling', 'page': 56}, {'structure': '3.2.7', 'title': 'Timing protection', 'page': 57}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'page': 58}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'page': 58}, {'structure': '3.2.10', 'title': 'Constraints', 'page': 58}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'page': 60}, {'structure': '4.1', 'title': 'Known limitations', 'page': 60}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'page': 60}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'page': 60}, {'structure': '5', 'title': 'Glossary', 'page': 62}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'page': 62}, {'structure': '5.2', 'title': 'Technical Terms', 'page': 62}, {'structure': '6', 'title': 'References', 'page': 64}]"
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'physical_index': '<physical_index_6>'}, {'structure': '2.1', 'title': 'Overview', 'physical_index': '<physical_index_6>'}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': '<physical_index_6>'}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': '<physical_index_6>'}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'physical_index': '<physical_index_11>'}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'physical_index': '<physical_index_12>'}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': '<physical_index_13>'}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': '<physical_index_14>'}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': '<physical_index_14>'}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': '<physical_index_15>'}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': '<physical_index_16>'}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': '<physical_index_16>'}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': '<physical_index_21>'}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': '<physical_index_21>'}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': '<physical_index_22>'}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': '<physical_index_23>'}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': '<physical_index_24>'}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'physical_index': '<physical_index_24>'}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'physical_index': '<physical_index_25>'}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'physical_index': '<physical_index_30>'}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': '<physical_index_32>'}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': '<physical_index_33>'}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': '<physical_index_35>'}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': '<physical_index_38>'}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': '<physical_index_41>'}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': '<physical_index_41>'}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': '<physical_index_41>'}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': '<physical_index_43>'}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': '<physical_index_44>'}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': '<physical_index_45>'}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': '<physical_index_54>'}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': '<physical_index_55>'}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': '<physical_index_56>'}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': '<physical_index_57>'}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'physical_index': '<physical_index_58>'}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': '<physical_index_58>'}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': '<physical_index_58>'}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': '<physical_index_60>'}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': '<physical_index_60>'}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': '<physical_index_60>'}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': '<physical_index_60>'}, {'structure': '5', 'title': 'Glossary', 'physical_index': '<physical_index_62>'}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_62>'}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': '<physical_index_62>'}, {'structure': '6', 'title': 'References', 'physical_index': '<physical_index_64>'}, {'structure': '3.2.3.1', 'title': 'QM modules calls ASIL', 'physical_index': '<physical_index_46>'}, {'structure': '3.2.3.1.1', 'title': 'Static stub', 'physical_index': '<physical_index_47>'}, {'structure': '3.2.3.1.2', 'title': 'Generated stub', 'physical_index': '<physical_index_47>'}, {'structure': '3.2.3.2', 'title': 'ASIL calls QM partition', 'physical_index': '<physical_index_49>'}, {'structure': '3.2.3.2.1', 'title': 'Static wrapper', 'physical_index': '<physical_index_51>'}, {'structure': '3.2.3.2.2', 'title': 'Generated wrapper', 'physical_index': '<physical_index_51>'}, {'structure': '3.2.3.3', 'title': 'ASIL calls ASIL', 'physical_index': '<physical_index_52>'}, {'structure': '3.2.3.4', 'title': 'QM calls QM', 'physical_index': '<physical_index_52>'}, {'structure': '3.2.3.5', 'title': 'Parameter passing', 'physical_index': '<physical_index_52>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '2', 'title': 'BSW Distribution in Multi-Core Systems', 'physical_index': 6}, {'structure': '2.1', 'title': 'Overview', 'physical_index': 6}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': 6}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': 6}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': 7}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': 10}, {'structure': '2.2.1', 'title': 'Core-Dependent Branching', 'physical_index': 10}, {'structure': '2.2.2', 'title': 'Master/Satellite-approach', 'physical_index': 11}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter-Partition-Communication', 'physical_index': 12}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': 13}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': 14}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': 14}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': 15}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': 16}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': 16}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': 21}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': 21}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': 22}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': 22}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': 22}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': 22}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': 23}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': 24}, {'structure': '2.5.5', 'title': 'Multi-Core Capabilities Classification Criteria', 'physical_index': 24}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi-Core Types', 'physical_index': 25}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi-Core Types', 'physical_index': 30}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': 32}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': 33}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': 35}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': 38}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': 41}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': 41}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': 41}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': 43}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': 44}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': 45}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': 54}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': 55}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': 56}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': 57}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi-Core', 'physical_index': 58}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': 58}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': 58}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': 60}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': 60}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': 60}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': 60}, {'structure': '5', 'title': 'Glossary', 'physical_index': 62}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 62}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': 62}, {'structure': '6', 'title': 'References', 'physical_index': 64}, {'structure': '3.2.3.1', 'title': 'QM modules calls ASIL', 'physical_index': 46}, {'structure': '3.2.3.1.1', 'title': 'Static stub', 'physical_index': 47}, {'structure': '3.2.3.1.2', 'title': 'Generated stub', 'physical_index': 47}, {'structure': '3.2.3.2', 'title': 'ASIL calls QM partition', 'physical_index': 49}, {'structure': '3.2.3.2.1', 'title': 'Static wrapper', 'physical_index': 51}, {'structure': '3.2.3.2.2', 'title': 'Generated wrapper', 'physical_index': 51}, {'structure': '3.2.3.3', 'title': 'ASIL calls ASIL', 'physical_index': 52}, {'structure': '3.2.3.4', 'title': 'QM calls QM', 'physical_index': 52}, {'structure': '3.2.3.5', 'title': 'Parameter passing', 'physical_index': 52}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.32786885245901637,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Assumptions of Use",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Constraints",
+        "page_number": 23
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Definition of MCAL Users",
+        "page_number": 24
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Multi-Core Capabilities Classification Criteria",
+        "page_number": 24
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Definition of MCAL Multi-Core Types",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Mapping MCAL Modules to Multi-Core Types",
+        "page_number": 30
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Seperation Stragies and Mapping of Elements",
+        "page_number": 32
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Separation Strategies",
+        "page_number": 33
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Mapping of Elements",
+        "page_number": 35
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Examples",
+        "page_number": 38
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "BSW Distribution in Safety Systems",
+        "page_number": 41
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "General overview on safety",
+        "page_number": 41
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Safety solutions in AUTOSAR",
+        "page_number": 41
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Some modules are always ASIL",
+        "page_number": 43
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Overall configuration",
+        "page_number": 44
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Crossing partition boundaries",
+        "page_number": 45
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Access to peripherals / hardware",
+        "page_number": 54
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Startup, Shutdown and Sleep/Wakeup",
+        "page_number": 55
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Error handling",
+        "page_number": 56
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Timing protection",
+        "page_number": 57
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Combining Safety and Multi-Core",
+        "page_number": 58
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Performance Considerations",
+        "page_number": 58
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Constraints",
+        "page_number": 58
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Outlook on Upcoming AUTOSAR Versions",
+        "page_number": 60
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Known limitations",
+        "page_number": 60
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Inter BSW module calls in distributed BSW",
+        "page_number": 60
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Standardized BSW functional clusters",
+        "page_number": 60
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Glossary",
+        "page_number": 62
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 62
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Technical Terms",
+        "page_number": 62
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "References",
+        "page_number": 64
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "QM modules calls ASIL",
+        "page_number": 46
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Static stub",
+        "page_number": 47
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Generated stub",
+        "page_number": 47
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "ASIL calls QM partition",
+        "page_number": 49
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Static wrapper",
+        "page_number": 51
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Generated wrapper",
+        "page_number": 51
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "ASIL calls ASIL",
+        "page_number": 52
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "QM calls QM",
+        "page_number": 52
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Parameter passing",
+        "page_number": 52
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'BSW Distribution in Multi -Core Systems', 'physical_index': '<physical_index_6>'}, {'structure': '2.1', 'title': 'Overview', 'physical_index': '<physical_index_6>'}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': '<physical_index_6>'}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': '<physical_index_6>'}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.1', 'title': 'Core -Dependent Branching', 'physical_index': '<physical_index_10>'}, {'structure': '2.2.2', 'title': 'Master/Satellite -approach', 'physical_index': '<physical_index_11>'}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter -Partition -Communication', 'physical_index': '<physical_index_12>'}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': '<physical_index_13>'}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': '<physical_index_14>'}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': '<physical_index_15>'}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': '<physical_index_15>'}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': '<physical_index_16>'}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': '<physical_index_16>'}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': '<physical_index_21>'}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': '<physical_index_21>'}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': '<physical_index_22>'}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.5', 'title': 'Multi -Core Capabilities Classification Criteria', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi -Core Types', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi -Core Types', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': '<physical_index_22>'}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': '<physical_index_22>'}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': '<physical_index_22>'}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi -Core', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': '<physical_index_22>'}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': '<physical_index_22>'}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': '<physical_index_22>'}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': '<physical_index_22>'}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': '<physical_index_22>'}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': '<physical_index_22>'}, {'structure': '5', 'title': 'Glossary', 'physical_index': '<physical_index_22>'}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_22>'}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': '<physical_index_22>'}, {'structure': '6', 'title': 'References', 'physical_index': '<physical_index_22>'}, {'structure': '2.5.9.1', 'title': 'Separation on HW Level', 'physical_index': '<physical_index_33>'}, {'structure': '2.5.9.2', 'title': 'Separation on SW Level', 'physical_index': '<physical_index_33>'}, {'structure': '2.5.10.1', 'title': 'The Single -Core Module as Mappable Element', 'physical_index': '<physical_index_35>'}, {'structure': '2.5.10.2', 'title': 'The Independent Hardware Element as Mappable Element', 'physical_index': '<physical_index_36>'}, {'structure': '2.5.10.3', 'title': 'The Atomic Hardware Element as Mappable Element', 'physical_index': '<physical_index_37>'}, {'structure': '2.5.10.4', 'title': 'The Multi -Core -Module as Mappable Element', 'physical_index': '<physical_index_38>'}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': '<physical_index_38>'}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': '<physical_index_41>'}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': '<physical_index_41>'}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': '<physical_index_43>'}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': '<physical_index_44>'}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': '<physical_index_45>'}, {'structure': '3.2.3.1', 'title': 'QM modules calls ASIL', 'physical_index': '<physical_index_46>'}, {'structure': '3.2.3.1.1', 'title': 'Static stub', 'physical_index': '<physical_index_47>'}, {'structure': '3.2.3.1.2', 'title': 'Generated stub', 'physical_index': '<physical_index_47>'}, {'structure': '3.2.3.2', 'title': 'ASIL calls QM partition', 'physical_index': '<physical_index_49>'}, {'structure': '3.2.3.2.1', 'title': 'Static wrapper', 'physical_index': '<physical_index_51>'}, {'structure': '3.2.3.2.2', 'title': 'Generated wrapper', 'physical_index': '<physical_index_51>'}, {'structure': '3.2.3.3', 'title': 'ASIL calls ASIL', 'physical_index': '<physical_index_52>'}, {'structure': '3.2.3.4', 'title': 'QM calls QM', 'physical_index': '<physical_index_52>'}, {'structure': '3.2.3.5', 'title': 'Parameter passing', 'physical_index': '<physical_index_52>'}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': '<physical_index_54>'}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': '<physical_index_55>'}, {'structure': '3.2.5.1', 'title': 'Startup', 'physical_index': '<physical_index_56>'}, {'structure': '3.2.5.2', 'title': 'Shutdown', 'physical_index': '<physical_index_56>'}, {'structure': '3.2.5.3', 'title': 'Sleep / Wakeup', 'physical_index': '<physical_index_56>'}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': '<physical_index_57>'}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': '<physical_index_57>'}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi -Core', 'physical_index': '<physical_index_58>'}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': '<physical_index_58>'}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': '<physical_index_59>'}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': '<physical_index_60>'}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': '<physical_index_60>'}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': '<physical_index_60>'}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': '<physical_index_60>'}, {'structure': '5', 'title': 'Glossary', 'physical_index': '<physical_index_61>'}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': '<physical_index_61>'}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': '<physical_index_61>'}, {'structure': '6', 'title': 'References', 'physical_index': '<physical_index_63>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 5}, {'structure': '2', 'title': 'BSW Distribution in Multi -Core Systems', 'physical_index': 6}, {'structure': '2.1', 'title': 'Overview', 'physical_index': 6}, {'structure': '2.1.1', 'title': 'Supported Scenarios', 'physical_index': 6}, {'structure': '2.1.2', 'title': 'Performance Use Cases and Hardware Assigned to Different Cores', 'physical_index': 6}, {'structure': '2.1.3', 'title': 'Technical Overview', 'physical_index': 7}, {'structure': '2.2', 'title': 'Parallel Execution of BSW modules', 'physical_index': 10}, {'structure': '2.2.1', 'title': 'Core -Dependent Branching', 'physical_index': 10}, {'structure': '2.2.2', 'title': 'Master/Satellite -approach', 'physical_index': 11}, {'structure': '2.2.3', 'title': 'Using the BSW Scheduler for Inter -Partition -Communication', 'physical_index': 12}, {'structure': '2.2.4', 'title': 'Using Shared Buffers (in systems without memory protection)', 'physical_index': 13}, {'structure': '2.2.5', 'title': 'Accessing Hardware/Drivers', 'physical_index': 14}, {'structure': '2.2.6', 'title': 'Concurrency safe implementation of modules', 'physical_index': 15}, {'structure': '2.3', 'title': 'SchM Interfaces for Parallel BSW execution', 'physical_index': 15}, {'structure': '2.4', 'title': 'Configuration of Basic Software in Partitioned Systems', 'physical_index': 16}, {'structure': '2.4.1', 'title': 'Task Mapping', 'physical_index': 16}, {'structure': '2.4.2', 'title': 'General Configuration of Master and Satellites', 'physical_index': 21}, {'structure': '2.4.3', 'title': 'Configuring the BswM (per Partition)', 'physical_index': 21}, {'structure': '2.4.4', 'title': 'Configuring the EcuM (per Core)', 'physical_index': 22}, {'structure': '2.5', 'title': 'MCAL Distribution', 'physical_index': 22}, {'structure': '2.5.1', 'title': 'Introduction', 'physical_index': 22}, {'structure': '2.5.2', 'title': 'Assumptions of Use', 'physical_index': 22}, {'structure': '2.5.3', 'title': 'Constraints', 'physical_index': 22}, {'structure': '2.5.4', 'title': 'Definition of MCAL Users', 'physical_index': 22}, {'structure': '2.5.5', 'title': 'Multi -Core Capabilities Classification Criteria', 'physical_index': 22}, {'structure': '2.5.6', 'title': 'Definition of MCAL Multi -Core Types', 'physical_index': 22}, {'structure': '2.5.7', 'title': 'Mapping MCAL Modules to Multi -Core Types', 'physical_index': 22}, {'structure': '2.5.8', 'title': 'Seperation Stragies and Mapping of Elements', 'physical_index': 22}, {'structure': '2.5.9', 'title': 'Separation Strategies', 'physical_index': 22}, {'structure': '2.5.10', 'title': 'Mapping of Elements', 'physical_index': 22}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': 22}, {'structure': '3', 'title': 'BSW Distribution in Safety Systems', 'physical_index': 22}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': 22}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': 22}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': 22}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': 22}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': 22}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': 22}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': 22}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': 22}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': 22}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi -Core', 'physical_index': 22}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': 22}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': 22}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': 22}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': 22}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': 22}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': 22}, {'structure': '5', 'title': 'Glossary', 'physical_index': 22}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 22}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': 22}, {'structure': '6', 'title': 'References', 'physical_index': 22}, {'structure': '2.5.9.1', 'title': 'Separation on HW Level', 'physical_index': 33}, {'structure': '2.5.9.2', 'title': 'Separation on SW Level', 'physical_index': 33}, {'structure': '2.5.10.1', 'title': 'The Single -Core Module as Mappable Element', 'physical_index': 35}, {'structure': '2.5.10.2', 'title': 'The Independent Hardware Element as Mappable Element', 'physical_index': 36}, {'structure': '2.5.10.3', 'title': 'The Atomic Hardware Element as Mappable Element', 'physical_index': 37}, {'structure': '2.5.10.4', 'title': 'The Multi -Core -Module as Mappable Element', 'physical_index': 38}, {'structure': '2.5.11', 'title': 'Examples', 'physical_index': 38}, {'structure': '3.1', 'title': 'General overview on safety', 'physical_index': 41}, {'structure': '3.2', 'title': 'Safety solutions in AUTOSAR', 'physical_index': 41}, {'structure': '3.2.1', 'title': 'Some modules are always ASIL', 'physical_index': 43}, {'structure': '3.2.2', 'title': 'Overall configuration', 'physical_index': 44}, {'structure': '3.2.3', 'title': 'Crossing partition boundaries', 'physical_index': 45}, {'structure': '3.2.3.1', 'title': 'QM modules calls ASIL', 'physical_index': 46}, {'structure': '3.2.3.1.1', 'title': 'Static stub', 'physical_index': 47}, {'structure': '3.2.3.1.2', 'title': 'Generated stub', 'physical_index': 47}, {'structure': '3.2.3.2', 'title': 'ASIL calls QM partition', 'physical_index': 49}, {'structure': '3.2.3.2.1', 'title': 'Static wrapper', 'physical_index': 51}, {'structure': '3.2.3.2.2', 'title': 'Generated wrapper', 'physical_index': 51}, {'structure': '3.2.3.3', 'title': 'ASIL calls ASIL', 'physical_index': 52}, {'structure': '3.2.3.4', 'title': 'QM calls QM', 'physical_index': 52}, {'structure': '3.2.3.5', 'title': 'Parameter passing', 'physical_index': 52}, {'structure': '3.2.4', 'title': 'Access to peripherals / hardware', 'physical_index': 54}, {'structure': '3.2.5', 'title': 'Startup, Shutdown and Sleep/Wakeup', 'physical_index': 55}, {'structure': '3.2.5.1', 'title': 'Startup', 'physical_index': 56}, {'structure': '3.2.5.2', 'title': 'Shutdown', 'physical_index': 56}, {'structure': '3.2.5.3', 'title': 'Sleep / Wakeup', 'physical_index': 56}, {'structure': '3.2.6', 'title': 'Error handling', 'physical_index': 57}, {'structure': '3.2.7', 'title': 'Timing protection', 'physical_index': 57}, {'structure': '3.2.8', 'title': 'Combining Safety and Multi -Core', 'physical_index': 58}, {'structure': '3.2.9', 'title': 'Performance Considerations', 'physical_index': 58}, {'structure': '3.2.10', 'title': 'Constraints', 'physical_index': 59}, {'structure': '4', 'title': 'Outlook on Upcoming AUTOSAR Versions', 'physical_index': 60}, {'structure': '4.1', 'title': 'Known limitations', 'physical_index': 60}, {'structure': '4.2', 'title': 'Inter BSW module calls in distributed BSW', 'physical_index': 60}, {'structure': '4.3', 'title': 'Standardized BSW functional clusters', 'physical_index': 60}, {'structure': '5', 'title': 'Glossary', 'physical_index': 61}, {'structure': '5.1', 'title': 'Acronyms and abbreviations', 'physical_index': 61}, {'structure': '5.2', 'title': 'Technical Terms', 'physical_index': 61}, {'structure': '6', 'title': 'References', 'physical_index': 63}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.21978021978021978,
+    "incorrect_results": [
+      {
+        "list_index": 12,
+        "answer": "no",
+        "title": "Concurrency safe implementation of modules",
+        "page_number": 15
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Introduction",
+        "page_number": 22
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Assumptions of Use",
+        "page_number": 22
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Constraints",
+        "page_number": 22
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Definition of MCAL Users",
+        "page_number": 22
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Multi -Core Capabilities Classification Criteria",
+        "page_number": 22
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Definition of MCAL Multi -Core Types",
+        "page_number": 22
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Mapping MCAL Modules to Multi -Core Types",
+        "page_number": 22
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Seperation Stragies and Mapping of Elements",
+        "page_number": 22
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Separation Strategies",
+        "page_number": 22
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Mapping of Elements",
+        "page_number": 22
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Examples",
+        "page_number": 22
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "BSW Distribution in Safety Systems",
+        "page_number": 22
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "General overview on safety",
+        "page_number": 22
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Safety solutions in AUTOSAR",
+        "page_number": 22
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Some modules are always ASIL",
+        "page_number": 22
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Overall configuration",
+        "page_number": 22
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Crossing partition boundaries",
+        "page_number": 22
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Access to peripherals / hardware",
+        "page_number": 22
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Startup, Shutdown and Sleep/Wakeup",
+        "page_number": 22
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Error handling",
+        "page_number": 22
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Timing protection",
+        "page_number": 22
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Combining Safety and Multi -Core",
+        "page_number": 22
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Performance Considerations",
+        "page_number": 22
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Constraints",
+        "page_number": 22
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Outlook on Upcoming AUTOSAR Versions",
+        "page_number": 22
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Known limitations",
+        "page_number": 22
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Inter BSW module calls in distributed BSW",
+        "page_number": 22
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Standardized BSW functional clusters",
+        "page_number": 22
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Glossary",
+        "page_number": 22
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 22
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Technical Terms",
+        "page_number": 22
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "References",
+        "page_number": 22
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Separation on HW Level",
+        "page_number": 33
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Separation on SW Level",
+        "page_number": 33
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "The Single -Core Module as Mappable Element",
+        "page_number": 35
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "The Independent Hardware Element as Mappable Element",
+        "page_number": 36
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "The Atomic Hardware Element as Mappable Element",
+        "page_number": 37
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "The Multi -Core -Module as Mappable Element",
+        "page_number": 38
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Examples",
+        "page_number": 38
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "General overview on safety",
+        "page_number": 41
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Safety solutions in AUTOSAR",
+        "page_number": 41
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Some modules are always ASIL",
+        "page_number": 43
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Overall configuration",
+        "page_number": 44
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Crossing partition boundaries",
+        "page_number": 45
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "QM modules calls ASIL",
+        "page_number": 46
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Static stub",
+        "page_number": 47
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Generated stub",
+        "page_number": 47
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "ASIL calls QM partition",
+        "page_number": 49
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Static wrapper",
+        "page_number": 51
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Generated wrapper",
+        "page_number": 51
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "ASIL calls ASIL",
+        "page_number": 52
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "QM calls QM",
+        "page_number": 52
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Parameter passing",
+        "page_number": 52
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Access to peripherals / hardware",
+        "page_number": 54
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Startup, Shutdown and Sleep/Wakeup",
+        "page_number": 55
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Startup",
+        "page_number": 56
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Shutdown",
+        "page_number": 56
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Sleep / Wakeup",
+        "page_number": 56
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Error handling",
+        "page_number": 57
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Timing protection",
+        "page_number": 57
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Combining Safety and Multi -Core",
+        "page_number": 58
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Performance Considerations",
+        "page_number": 58
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Constraints",
+        "page_number": 59
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Outlook on Upcoming AUTOSAR Versions",
+        "page_number": 60
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Known limitations",
+        "page_number": 60
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Inter BSW module calls in distributed BSW",
+        "page_number": 60
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Glossary",
+        "page_number": 61
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Acronyms and abbreviations",
+        "page_number": 61
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Technical Terms",
+        "page_number": 61
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "References",
+        "page_number": 63
+      }
+    ]
+  }
+]

@@ -1,0 +1,845 @@
+[
+  {
+    "total_page_number": 140
+  },
+  {
+    "total_token": 69493
+  },
+  {
+    "toc_content": "E2E Protocol Specification\nAUTOSAR FO Release 1.5.0\nTable of Contents\n1 Introduction and functional overview 7\n2 Acronyms and Abbreviations 9\n3 Related documentation 9\n3.1 Input documents & related standards and norms : 9\n3.2 Related specification : 9\n4 Constraints and assumptions 10\n4.1 Limitations : 10\n4.2 Applicability to car domains : 10\n4.3 Background information concerning functional safety : 10\n4.3.1 Functional safety and communication : 10\n4.3.2 Sources of faults in E2E communication : 11\n4.3.2.1 Software faults : 11\n4.3.2.2 Random hardware faults : 11\n4.3.2.3 External influences, environmental stress : 12\n4.3.3 Communication faults : 12\n4.3.3.1 Repetition of information : 12\n4.3.3.2 Loss of information : 12\n4.3.3.3 Delay of information : 12\n4.3.3.4 Insertion of information : 12\n4.3.3.5 Masquerading : 12\n4.3.3.6 Incorrect addressing : 12\n4.3.3.7 Incorrect sequence of information : 13\n4.3.3.8 Corruption of information : 13\n4.3.3.9 Asymmetric information sent from a sender to multi-\nple receivers : 13\n4.3.3.10 Information from a sender received by only a subset\nof the receivers : 13\n4.3.3.11 Blocking access to a communication channel . . . . 13\n5 Requirements Tracing 14\n6 Functional specification 19\n6.1 Overview of communication protection : 19\n6.2 Overview of E2E Profiles : 19\n6.2.1 Error detection : 20\n6.3 Specification of E2E Profile 1 (Only for CP) : 21\n6.3.1 Data Layout : 22\n6.3.2 Counter : 22\n6.3.3 Data ID : 23\n6.3.4 CRC calculation : 24\n6.3.5 Timeout detection : 25\n3 of 140\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 849: AUTOSAR_PRS_E2EProtocolE2E Protocol Specification\nAUTOSAR FO Release 1.5.0\n6.3.6 E2E Profile 1 variants : 26\n6.3.7 E2E_P01Protect : 26\n6.3.8 Calculate CRC : 28\n6.3.9 E2E_P01Check : 29\n6.3.10 E2E Profile 1 Protocol Examples : 31\n6.3.10.1 DataIDMode set to E2E_P01_DATAID_ALT : 31\n6.3.10.2 DataIDMode set to E2E_P01DATAID_LOW : 32\n6.3.10.3 DataIDMode set to E2E_P01DATAID_NIBBLE . . . . 32\n6.4 Specification of E2E Profile 2 (only for CP) : 33\n6.4.1 E2E_P02Protect : 35\n6.4.2 E2E_P02Check : 37\n6.4.3 E2E Profile 2 Protocol Examples : 43\n6.5 Specification of E2E Profile 4 : 44\n6.5.1 Data Layout : 45\n6.5.1.1 User data layout : 45\n6.5.1.2 Header layout : 45\n6.5.2 Counter : 46\n6.5.3 Data ID : 46\n6.5.4 Length : 47\n6.5.5 CRC : 47\n6.5.6 Timeout detection : 47\n6.5.7 E2E Profile 4 variants : 47\n6.5.8 E2E_P04Protect : 48\n6.5.9 E2E_P04Check : 52\n6.5.10 E2E Profile 4 Protocol Examples : 56\n6.6 Specification of E2E Profile 5 : 57\n6.6.1 Data Layout : 58\n6.6.1.1 User data layout : 58\n6.6.1.2 Header layout : 58\n6.6.2 Counter : 58\n6.6.3 Data ID : 59\n6.6.4 Length : 59\n6.6.5 CRC : 59\n6.6.6 Timeout detection : 60\n6.6.7 E2E_P05Protect : 60\n6.6.8 E2E_P05Check : 64\n6.6.9 E2E Profile 5 Protocol Examples : 66\n6.7 Specification of E2E Profile 6 : 67\n6.7.1 Data Layout : 68\n6.7.1.1 User data layout : 68\n6.7.1.2 Header layout : 68\n6.7.2 Counter : 69\n6.7.3 Data ID : 69\n6.7.4 Length : 70\n6.7.5 CRC : 70\n6.7.6 Timeout detection : 70\n4 of 140\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 849: AUTOSAR_PRS_E2EProtocolE2E Protocol Specification\nAUTOSAR FO Release 1.5.0\n6.7.7 E2E_P06Protect : 71\n6.7.8 E2E_P06Check : 74\n6.7.9 E2E Profile 6 Protocol Examples : 78\n6.8 Specification of E2E Profile 7 : 79\n6.8.1 Data Layout : 80\n6.8.1.1 User data layout : 80\n6.8.1.2 Header layout : 80\n6.8.2 Counter : 81\n6.8.3 Data ID : 81\n6.8.4 Length : 82\n6.8.5 CRC : 82\n6.8.6 Timeout detection : 82\n6.8.7 E2E Profile 7 variants : 83\n6.8.8 E2E_P07Protect : 83\n6.8.9 E2E_P07Check : 87\n6.8.10 E2E Profile 7 Protocol Examples : 90\n6.9 Specification of E2E Profile 11 : 91\n6.9.1 Data Layout : 92\n6.9.1.1 User data layout : 92\n6.9.1.2 Header layout : 93\n6.9.2 Counter : 94\n6.9.3 Data ID : 95\n6.9.4 Length : 95\n6.9.5 CRC : 95\n6.9.6 Timeout detection : 96\n6.9.7 E2E_P11Protect : 96\n6.9.8 E2E_P11Check : 100\n6.9.9 E2E Profile 11 Protocol Examples : 103\n6.9.9.1 DataIDMode set to E2E_P11DATAID_NIBBLE . . . . 104\n6.9.9.2 DataIDMode set to E2E_P11DATAID_NIBBLE, Off-\nset set to 64 : 105\n6.10 Specification of E2E Profile 22 : 105\n6.10.1 Data Layout : 106\n6.10.1.1 User data layout : 106\n6.10.1.2 Header layout : 106\n6.10.2 Counter : 107\n6.10.3 Data ID : 107\n6.10.4 Length : 108\n6.10.5 CRC : 108\n6.10.6 Timeout detection : 108\n6.10.7 E2E_P22Protect : 109\n6.10.8 E2E_P22Check : 111\n6.10.9 E2E Profile 22 Protocol Examples : 114\n6.10.9.1 Offset set to 64 : 115\n6.11 Specification of E2E state machine : 116\n6.11.1 Overview of the state machine : 116\n5 of 140\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 849: AUTOSAR_PRS_E2EProtocolE2E Protocol Specification\nAUTOSAR FO Release 1.5.0\n6.11.2 State machine specification : 117\n6.12 Basic Concepts of CRC Codes : 121\n6.12.1 Mathematical Description : 121\n6.12.2 Euclidian Algorithm for Binary Polynomials and Bit-Sequences 124\n6.12.3 CRC calculation, Variations and Parameter : 125\n6.13 CRC Standard Parameters : 125\n6.13.1 8-bit CRC calculation : 127\n6.13.1.1 8-bit SAE J1850 CRC Calculation : 127\n6.13.1.2 8-bit 0x2F polynomial CRC Calculation : 127\n6.13.2 16-bit CRC calculation : 128\n6.13.2.1 16-bit CCITT -FALSE CRC16 : 128\n6.13.3 32-bit CRC calculation : 129\n6.13.3.1 32-bit Ethernet CRC Calculation : 129\n6.13.3.2 32-bit 0xF4ACFB13 polynomial CRC calculation . . 130\n6.13.4 64-bit CRC calculation : 131\n6.13.4.1 64-bit ECMA polynomial CRC calculation : 131\n7 E2E API specification 133\n7.1 API of middleware to applications : 133\n7.2 API of E2E : 133\n8 Configuration Parameters 135\n9 Protocol usage and guidelines 137\n9.1 E2E and SOME/IP : 137\n9.2 Periodic use of E2E check : 137\n9.3 Error handling : 138\n9.4 Maximal lengths of Data, communication buses : 138\n6 of 140\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 849: AUTOSAR_PRS_E2EProtocol",
+    "toc_page_list": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'page': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 9}, {'structure': '3', 'title': 'Related documentation', 'page': 9}, {'structure': '3.1', 'title': 'Input documents & related standards and norms', 'page': 9}, {'structure': '3.2', 'title': 'Related specification', 'page': 9}, {'structure': '4', 'title': 'Constraints and assumptions', 'page': 10}, {'structure': '4.1', 'title': 'Limitations', 'page': 10}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 10}, {'structure': '4.3', 'title': 'Background information concerning functional safety', 'page': 10}, {'structure': '4.3.1', 'title': 'Functional safety and communication', 'page': 10}, {'structure': '4.3.2', 'title': 'Sources of faults in E2E communication', 'page': 11}, {'structure': '4.3.2.1', 'title': 'Software faults', 'page': 11}, {'structure': '4.3.2.2', 'title': 'Random hardware faults', 'page': 11}, {'structure': '4.3.2.3', 'title': 'External influences, environmental stress', 'page': 12}, {'structure': '4.3.3', 'title': 'Communication faults', 'page': 12}, {'structure': '4.3.3.1', 'title': 'Repetition of information', 'page': 12}, {'structure': '4.3.3.2', 'title': 'Loss of information', 'page': 12}, {'structure': '4.3.3.3', 'title': 'Delay of information', 'page': 12}, {'structure': '4.3.3.4', 'title': 'Insertion of information', 'page': 12}, {'structure': '4.3.3.5', 'title': 'Masquerading', 'page': 12}, {'structure': '4.3.3.6', 'title': 'Incorrect addressing', 'page': 12}, {'structure': '4.3.3.7', 'title': 'Incorrect sequence of information', 'page': 13}, {'structure': '4.3.3.8', 'title': 'Corruption of information', 'page': 13}, {'structure': '4.3.3.9', 'title': 'Asymmetric information sent from a sender to multiple receivers', 'page': 13}, {'structure': '4.3.3.10', 'title': 'Information from a sender received by only a subset of the receivers', 'page': 13}, {'structure': '4.3.3.11', 'title': 'Blocking access to a communication channel', 'page': 13}, {'structure': '5', 'title': 'Requirements Tracing', 'page': 14}, {'structure': '6', 'title': 'Functional specification', 'page': 19}, {'structure': '6.1', 'title': 'Overview of communication protection', 'page': 19}, {'structure': '6.2', 'title': 'Overview of E2E Profiles', 'page': 19}, {'structure': '6.2.1', 'title': 'Error detection', 'page': 20}, {'structure': '6.3', 'title': 'Specification of E2E Profile 1 (Only for CP)', 'page': 21}, {'structure': '6.3.1', 'title': 'Data Layout', 'page': 22}, {'structure': '6.3.2', 'title': 'Counter', 'page': 22}, {'structure': '6.3.3', 'title': 'Data ID', 'page': 23}, {'structure': '6.3.4', 'title': 'CRC calculation', 'page': 24}, {'structure': '6.3.5', 'title': 'Timeout detection', 'page': 25}, {'structure': '6.3.6', 'title': 'E2E Profile 1 variants', 'page': 26}, {'structure': '6.3.7', 'title': 'E2E_P01Protect', 'page': 26}, {'structure': '6.3.8', 'title': 'Calculate CRC', 'page': 28}, {'structure': '6.3.9', 'title': 'E2E_P01Check', 'page': 29}, {'structure': '6.3.10', 'title': 'E2E Profile 1 Protocol Examples', 'page': 31}, {'structure': '6.3.10.1', 'title': 'DataIDMode set to E2E_P01_DATAID_ALT', 'page': 31}, {'structure': '6.3.10.2', 'title': 'DataIDMode set to E2E_P01DATAID_LOW', 'page': 32}, {'structure': '6.3.10.3', 'title': 'DataIDMode set to E2E_P01DATAID_NIBBLE', 'page': 32}, {'structure': '6.4', 'title': 'Specification of E2E Profile 2 (only for CP)', 'page': 33}, {'structure': '6.4.1', 'title': 'E2E_P02Protect', 'page': 35}, {'structure': '6.4.2', 'title': 'E2E_P02Check', 'page': 37}, {'structure': '6.4.3', 'title': 'E2E Profile 2 Protocol Examples', 'page': 43}, {'structure': '6.5', 'title': 'Specification of E2E Profile 4', 'page': 44}, {'structure': '6.5.1', 'title': 'Data Layout', 'page': 45}, {'structure': '6.5.1.1', 'title': 'User data layout', 'page': 45}, {'structure': '6.5.1.2', 'title': 'Header layout', 'page': 45}, {'structure': '6.5.2', 'title': 'Counter', 'page': 46}, {'structure': '6.5.3', 'title': 'Data ID', 'page': 46}, {'structure': '6.5.4', 'title': 'Length', 'page': 47}, {'structure': '6.5.5', 'title': 'CRC', 'page': 47}, {'structure': '6.5.6', 'title': 'Timeout detection', 'page': 47}, {'structure': '6.5.7', 'title': 'E2E Profile 4 variants', 'page': 47}, {'structure': '6.5.8', 'title': 'E2E_P04Protect', 'page': 48}, {'structure': '6.5.9', 'title': 'E2E_P04Check', 'page': 52}, {'structure': '6.5.10', 'title': 'E2E Profile 4 Protocol Examples', 'page': 56}, {'structure': '6.6', 'title': 'Specification of E2E Profile 5', 'page': 57}, {'structure': '6.6.1', 'title': 'Data Layout', 'page': 58}, {'structure': '6.6.1.1', 'title': 'User data layout', 'page': 58}, {'structure': '6.6.1.2', 'title': 'Header layout', 'page': 58}, {'structure': '6.6.2', 'title': 'Counter', 'page': 58}, {'structure': '6.6.3', 'title': 'Data ID', 'page': 59}, {'structure': '6.6.4', 'title': 'Length', 'page': 59}, {'structure': '6.6.5', 'title': 'CRC', 'page': 59}, {'structure': '6.6.6', 'title': 'Timeout detection', 'page': 60}, {'structure': '6.6.7', 'title': 'E2E_P05Protect', 'page': 60}, {'structure': '6.6.8', 'title': 'E2E_P05Check', 'page': 64}, {'structure': '6.6.9', 'title': 'E2E Profile 5 Protocol Examples', 'page': 66}, {'structure': '6.7', 'title': 'Specification of E2E Profile 6', 'page': 67}, {'structure': '6.7.1', 'title': 'Data Layout', 'page': 68}, {'structure': '6.7.1.1', 'title': 'User data layout', 'page': 68}, {'structure': '6.7.1.2', 'title': 'Header layout', 'page': 68}, {'structure': '6.7.2', 'title': 'Counter', 'page': 69}, {'structure': '6.7.3', 'title': 'Data ID', 'page': 69}, {'structure': '6.7.4', 'title': 'Length', 'page': 70}, {'structure': '6.7.5', 'title': 'CRC', 'page': 70}, {'structure': '6.7.6', 'title': 'Timeout detection', 'page': 70}, {'structure': '6.7.7', 'title': 'E2E_P06Protect', 'page': 71}, {'structure': '6.7.8', 'title': 'E2E_P06Check', 'page': 74}, {'structure': '6.7.9', 'title': 'E2E Profile 6 Protocol Examples', 'page': 78}, {'structure': '6.8', 'title': 'Specification of E2E Profile 7', 'page': 79}, {'structure': '6.8.1', 'title': 'Data Layout', 'page': 80}, {'structure': '6.8.1.1', 'title': 'User data layout', 'page': 80}, {'structure': '6.8.1.2', 'title': 'Header layout', 'page': 80}, {'structure': '6.8.2', 'title': 'Counter', 'page': 81}, {'structure': '6.8.3', 'title': 'Data ID', 'page': 81}, {'structure': '6.8.4', 'title': 'Length', 'page': 82}, {'structure': '6.8.5', 'title': 'CRC', 'page': 82}, {'structure': '6.8.6', 'title': 'Timeout detection', 'page': 82}, {'structure': '6.8.7', 'title': 'E2E Profile 7 variants', 'page': 83}, {'structure': '6.8.8', 'title': 'E2E_P07Protect', 'page': 83}, {'structure': '6.8.9', 'title': 'E2E_P07Check', 'page': 87}, {'structure': '6.8.10', 'title': 'E2E Profile 7 Protocol Examples', 'page': 90}, {'structure': '6.9', 'title': 'Specification of E2E Profile 11', 'page': 91}, {'structure': '6.9.1', 'title': 'Data Layout', 'page': 92}, {'structure': '6.9.1.1', 'title': 'User data layout', 'page': 92}, {'structure': '6.9.1.2', 'title': 'Header layout', 'page': 93}, {'structure': '6.9.2', 'title': 'Counter', 'page': 94}, {'structure': '6.9.3', 'title': 'Data ID', 'page': 95}, {'structure': '6.9.4', 'title': 'Length', 'page': 95}, {'structure': '6.9.5', 'title': 'CRC', 'page': 95}, {'structure': '6.9.6', 'title': 'Timeout detection', 'page': 96}, {'structure': '6.9.7', 'title': 'E2E_P11Protect', 'page': 96}, {'structure': '6.9.8', 'title': 'E2E_P11Check', 'page': 100}, {'structure': '6.9.9', 'title': 'E2E Profile 11 Protocol Examples', 'page': 103}, {'structure': '6.9.9.1', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE', 'page': 104}, {'structure': '6.9.9.2', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE, Offset set to 64', 'page': 105}, {'structure': '6.10', 'title': 'Specification of E2E Profile 22', 'page': 105}, {'structure': '6.10.1', 'title': 'Data Layout', 'page': 106}, {'structure': '6.10.1.1', 'title': 'User data layout', 'page': 106}, {'structure': '6.10.1.2', 'title': 'Header layout', 'page': 106}, {'structure': '6.10.2', 'title': 'Counter', 'page': 107}, {'structure': '6.10.3', 'title': 'Data ID', 'page': 107}, {'structure': '6.10.4', 'title': 'Length', 'page': 108}, {'structure': '6.10.5', 'title': 'CRC', 'page': 108}, {'structure': '6.10.6', 'title': 'Timeout detection', 'page': 108}, {'structure': '6.10.7', 'title': 'E2E_P22Protect', 'page': 109}, {'structure': '6.10.8', 'title': 'E2E_P22Check', 'page': 111}, {'structure': '6.10.9', 'title': 'E2E Profile 22 Protocol Examples', 'page': 114}, {'structure': '6.10.9.1', 'title': 'Offset set to 64', 'page': 115}, {'structure': '6.11', 'title': 'Specification of E2E state machine', 'page': 116}, {'structure': '6.11.1', 'title': 'Overview of the state machine', 'page': 116}, {'structure': '6.11.2', 'title': 'State machine specification', 'page': 117}, {'structure': '6.12', 'title': 'Basic Concepts of CRC Codes', 'page': 121}, {'structure': '6.12.1', 'title': 'Mathematical Description', 'page': 121}, {'structure': '6.12.2', 'title': 'Euclidian Algorithm for Binary Polynomials and Bit-Sequences', 'page': 124}, {'structure': '6.12.3', 'title': 'CRC calculation, Variations and Parameter', 'page': 125}, {'structure': '6.13', 'title': 'CRC Standard Parameters', 'page': 125}, {'structure': '6.13.1', 'title': '8-bit CRC calculation', 'page': 127}, {'structure': '6.13.1.1', 'title': '8-bit SAE J1850 CRC Calculation', 'page': 127}, {'structure': '6.13.1.2', 'title': '8-bit 0x2F polynomial CRC Calculation', 'page': 127}, {'structure': '6.13.2', 'title': '16-bit CRC calculation', 'page': 128}, {'structure': '6.13.2.1', 'title': '16-bit CCITT -FALSE CRC16', 'page': 128}, {'structure': '6.13.3', 'title': '32-bit CRC calculation', 'page': 129}, {'structure': '6.13.3.1', 'title': '32-bit Ethernet CRC Calculation', 'page': 129}, {'structure': '6.13.3.2', 'title': '32-bit 0xF4ACFB13 polynomial CRC calculation', 'page': 130}, {'structure': '6.13.4', 'title': '64-bit CRC calculation', 'page': 131}, {'structure': '6.13.4.1', 'title': '64-bit ECMA polynomial CRC calculation', 'page': 131}, {'structure': '7', 'title': 'E2E API specification', 'page': 133}, {'structure': '7.1', 'title': 'API of middleware to applications', 'page': 133}, {'structure': '7.2', 'title': 'API of E2E', 'page': 133}, {'structure': '8', 'title': 'Configuration Parameters', 'page': 135}, {'structure': '9', 'title': 'Protocol usage and guidelines', 'page': 137}, {'structure': '9.1', 'title': 'E2E and SOME/IP', 'page': 137}, {'structure': '9.2', 'title': 'Periodic use of E2E check', 'page': 137}, {'structure': '9.3', 'title': 'Error handling', 'page': 138}, {'structure': '9.4', 'title': 'Maximal lengths of Data, communication buses', 'page': 138}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_9>'}, {'structure': '3', 'title': 'Related documentation', 'physical_index': '<physical_index_9>'}, {'structure': '3.1', 'title': 'Input documents & related standards and norms', 'physical_index': '<physical_index_9>'}, {'structure': '3.2', 'title': 'Related specification', 'physical_index': '<physical_index_9>'}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': '<physical_index_10>'}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': '<physical_index_10>'}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': '<physical_index_10>'}, {'structure': '4.3', 'title': 'Background information concerning functional safety', 'physical_index': '<physical_index_10>'}, {'structure': '4.3.1', 'title': 'Functional safety and communication', 'physical_index': '<physical_index_10>'}, {'structure': '4.3.2', 'title': 'Sources of faults in E2E communication', 'physical_index': '<physical_index_11>'}, {'structure': '4.3.2.1', 'title': 'Software faults', 'physical_index': '<physical_index_11>'}, {'structure': '4.3.2.2', 'title': 'Random hardware faults', 'physical_index': '<physical_index_11>'}, {'structure': '4.3.2.3', 'title': 'External influences, environmental stress', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3', 'title': 'Communication faults', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3.1', 'title': 'Repetition of information', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3.2', 'title': 'Loss of information', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3.3', 'title': 'Delay of information', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3.4', 'title': 'Insertion of information', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3.5', 'title': 'Masquerading', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3.6', 'title': 'Incorrect addressing', 'physical_index': '<physical_index_12>'}, {'structure': '4.3.3.7', 'title': 'Incorrect sequence of information', 'physical_index': '<physical_index_13>'}, {'structure': '4.3.3.8', 'title': 'Corruption of information', 'physical_index': '<physical_index_13>'}, {'structure': '4.3.3.9', 'title': 'Asymmetric information sent from a sender to multiple receivers', 'physical_index': '<physical_index_13>'}, {'structure': '4.3.3.10', 'title': 'Information from a sender received by only a subset of the receivers', 'physical_index': '<physical_index_13>'}, {'structure': '4.3.3.11', 'title': 'Blocking access to a communication channel', 'physical_index': '<physical_index_13>'}, {'structure': '5', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_14>'}, {'structure': '6', 'title': 'Functional specification', 'physical_index': '<physical_index_19>'}, {'structure': '6.1', 'title': 'Overview of communication protection', 'physical_index': '<physical_index_19>'}, {'structure': '6.2', 'title': 'Overview of E2E Profiles', 'physical_index': '<physical_index_19>'}, {'structure': '6.2.1', 'title': 'Error detection', 'physical_index': '<physical_index_20>'}, {'structure': '6.3', 'title': 'Specification of E2E Profile 1 (Only for CP)', 'physical_index': '<physical_index_21>'}, {'structure': '6.3.1', 'title': 'Data Layout', 'physical_index': '<physical_index_22>'}, {'structure': '6.3.2', 'title': 'Counter', 'physical_index': '<physical_index_22>'}, {'structure': '6.3.3', 'title': 'Data ID', 'physical_index': '<physical_index_23>'}, {'structure': '6.3.4', 'title': 'CRC calculation', 'physical_index': '<physical_index_24>'}, {'structure': '6.3.5', 'title': 'Timeout detection', 'physical_index': '<physical_index_25>'}, {'structure': '6.3.6', 'title': 'E2E Profile 1 variants', 'physical_index': '<physical_index_26>'}, {'structure': '6.3.7', 'title': 'E2E_P01Protect', 'physical_index': '<physical_index_27>'}, {'structure': '6.3.8', 'title': 'Calculate CRC', 'physical_index': '<physical_index_28>'}, {'structure': '6.3.9', 'title': 'E2E_P01Check', 'physical_index': '<physical_index_29>'}, {'structure': '6.3.10', 'title': 'E2E Profile 1 Protocol Examples', 'physical_index': '<physical_index_31>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 9}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 9}, {'structure': '3.1', 'title': 'Input documents & related standards and norms', 'physical_index': 9}, {'structure': '3.2', 'title': 'Related specification', 'physical_index': 9}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 10}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 10}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 10}, {'structure': '4.3', 'title': 'Background information concerning functional safety', 'physical_index': 10}, {'structure': '4.3.1', 'title': 'Functional safety and communication', 'physical_index': 10}, {'structure': '4.3.2', 'title': 'Sources of faults in E2E communication', 'physical_index': 11}, {'structure': '4.3.2.1', 'title': 'Software faults', 'physical_index': 11}, {'structure': '4.3.2.2', 'title': 'Random hardware faults', 'physical_index': 11}, {'structure': '4.3.2.3', 'title': 'External influences, environmental stress', 'physical_index': 12}, {'structure': '4.3.3', 'title': 'Communication faults', 'physical_index': 12}, {'structure': '4.3.3.1', 'title': 'Repetition of information', 'physical_index': 12}, {'structure': '4.3.3.2', 'title': 'Loss of information', 'physical_index': 12}, {'structure': '4.3.3.3', 'title': 'Delay of information', 'physical_index': 12}, {'structure': '4.3.3.4', 'title': 'Insertion of information', 'physical_index': 12}, {'structure': '4.3.3.5', 'title': 'Masquerading', 'physical_index': 12}, {'structure': '4.3.3.6', 'title': 'Incorrect addressing', 'physical_index': 12}, {'structure': '4.3.3.7', 'title': 'Incorrect sequence of information', 'physical_index': 13}, {'structure': '4.3.3.8', 'title': 'Corruption of information', 'physical_index': 13}, {'structure': '4.3.3.9', 'title': 'Asymmetric information sent from a sender to multiple receivers', 'physical_index': 13}, {'structure': '4.3.3.10', 'title': 'Information from a sender received by only a subset of the receivers', 'physical_index': 13}, {'structure': '4.3.3.11', 'title': 'Blocking access to a communication channel', 'physical_index': 13}, {'structure': '5', 'title': 'Requirements Tracing', 'physical_index': 14}, {'structure': '6', 'title': 'Functional specification', 'physical_index': 19}, {'structure': '6.1', 'title': 'Overview of communication protection', 'physical_index': 19}, {'structure': '6.2', 'title': 'Overview of E2E Profiles', 'physical_index': 19}, {'structure': '6.2.1', 'title': 'Error detection', 'physical_index': 20}, {'structure': '6.3', 'title': 'Specification of E2E Profile 1 (Only for CP)', 'physical_index': 21}, {'structure': '6.3.1', 'title': 'Data Layout', 'physical_index': 22}, {'structure': '6.3.2', 'title': 'Counter', 'physical_index': 22}, {'structure': '6.3.3', 'title': 'Data ID', 'physical_index': 23}, {'structure': '6.3.4', 'title': 'CRC calculation', 'physical_index': 24}, {'structure': '6.3.5', 'title': 'Timeout detection', 'physical_index': 25}, {'structure': '6.3.6', 'title': 'E2E Profile 1 variants', 'physical_index': 26}, {'structure': '6.3.7', 'title': 'E2E_P01Protect', 'physical_index': 27}, {'structure': '6.3.8', 'title': 'Calculate CRC', 'physical_index': 28}, {'structure': '6.3.9', 'title': 'E2E_P01Check', 'physical_index': 29}, {'structure': '6.3.10', 'title': 'E2E Profile 1 Protocol Examples', 'physical_index': 31}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction and functional overview', 'page': 7, 'physical_index': 7}, {'title': 'Acronyms and Abbreviations', 'page': 9, 'physical_index': 9}, {'title': 'Related documentation', 'page': 9, 'physical_index': 9}, {'title': 'Input documents & related standards and norms', 'page': 9, 'physical_index': 9}, {'title': 'Related specification', 'page': 9, 'physical_index': 9}, {'title': 'Constraints and assumptions', 'page': 10, 'physical_index': 10}, {'title': 'Limitations', 'page': 10, 'physical_index': 10}, {'title': 'Applicability to car domains', 'page': 10, 'physical_index': 10}, {'title': 'Background information concerning functional safety', 'page': 10, 'physical_index': 10}, {'title': 'Functional safety and communication', 'page': 10, 'physical_index': 10}, {'title': 'Sources of faults in E2E communication', 'page': 11, 'physical_index': 11}, {'title': 'Software faults', 'page': 11, 'physical_index': 11}, {'title': 'Random hardware faults', 'page': 11, 'physical_index': 11}, {'title': 'External influences, environmental stress', 'page': 12, 'physical_index': 12}, {'title': 'Communication faults', 'page': 12, 'physical_index': 12}, {'title': 'Repetition of information', 'page': 12, 'physical_index': 12}, {'title': 'Loss of information', 'page': 12, 'physical_index': 12}, {'title': 'Delay of information', 'page': 12, 'physical_index': 12}, {'title': 'Insertion of information', 'page': 12, 'physical_index': 12}, {'title': 'Masquerading', 'page': 12, 'physical_index': 12}, {'title': 'Incorrect addressing', 'page': 12, 'physical_index': 12}, {'title': 'Incorrect sequence of information', 'page': 13, 'physical_index': 13}, {'title': 'Corruption of information', 'page': 13, 'physical_index': 13}, {'title': 'Asymmetric information sent from a sender to multiple receivers', 'page': 13, 'physical_index': 13}, {'title': 'Information from a sender received by only a subset of the receivers', 'page': 13, 'physical_index': 13}, {'title': 'Blocking access to a communication channel', 'page': 13, 'physical_index': 13}, {'title': 'Requirements Tracing', 'page': 14, 'physical_index': 14}, {'title': 'Functional specification', 'page': 19, 'physical_index': 19}, {'title': 'Overview of communication protection', 'page': 19, 'physical_index': 19}, {'title': 'Overview of E2E Profiles', 'page': 19, 'physical_index': 19}, {'title': 'Error detection', 'page': 20, 'physical_index': 20}, {'title': 'Specification of E2E Profile 1 (Only for CP)', 'page': 21, 'physical_index': 21}, {'title': 'Data Layout', 'page': 22, 'physical_index': 22}, {'title': 'Data Layout', 'page': 45, 'physical_index': 22}, {'title': 'Data Layout', 'page': 58, 'physical_index': 22}, {'title': 'Data Layout', 'page': 68, 'physical_index': 22}, {'title': 'Data Layout', 'page': 80, 'physical_index': 22}, {'title': 'Data Layout', 'page': 92, 'physical_index': 22}, {'title': 'Data Layout', 'page': 106, 'physical_index': 22}, {'title': 'Counter', 'page': 22, 'physical_index': 22}, {'title': 'Counter', 'page': 46, 'physical_index': 22}, {'title': 'Counter', 'page': 58, 'physical_index': 22}, {'title': 'Counter', 'page': 69, 'physical_index': 22}, {'title': 'Counter', 'page': 81, 'physical_index': 22}, {'title': 'Counter', 'page': 94, 'physical_index': 22}, {'title': 'Counter', 'page': 107, 'physical_index': 22}, {'title': 'Data ID', 'page': 23, 'physical_index': 23}, {'title': 'Data ID', 'page': 46, 'physical_index': 23}, {'title': 'Data ID', 'page': 59, 'physical_index': 23}, {'title': 'Data ID', 'page': 69, 'physical_index': 23}, {'title': 'Data ID', 'page': 81, 'physical_index': 23}, {'title': 'Data ID', 'page': 95, 'physical_index': 23}, {'title': 'Data ID', 'page': 107, 'physical_index': 23}, {'title': 'CRC calculation', 'page': 24, 'physical_index': 24}, {'title': 'Timeout detection', 'page': 25, 'physical_index': 25}, {'title': 'Timeout detection', 'page': 47, 'physical_index': 25}, {'title': 'Timeout detection', 'page': 60, 'physical_index': 25}, {'title': 'Timeout detection', 'page': 70, 'physical_index': 25}, {'title': 'Timeout detection', 'page': 82, 'physical_index': 25}, {'title': 'Timeout detection', 'page': 96, 'physical_index': 25}, {'title': 'Timeout detection', 'page': 108, 'physical_index': 25}, {'title': 'E2E Profile 1 variants', 'page': 26, 'physical_index': 26}, {'title': 'E2E_P01Protect', 'page': 26, 'physical_index': 27}, {'title': 'Calculate CRC', 'page': 28, 'physical_index': 28}, {'title': 'E2E_P01Check', 'page': 29, 'physical_index': 29}, {'title': 'E2E Profile 1 Protocol Examples', 'page': 31, 'physical_index': 31}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 9}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 9}, {'structure': '3.1', 'title': 'Input documents & related standards and norms', 'physical_index': 9}, {'structure': '3.2', 'title': 'Related specification', 'physical_index': 9}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 10}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 10}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 10}, {'structure': '4.3', 'title': 'Background information concerning functional safety', 'physical_index': 10}, {'structure': '4.3.1', 'title': 'Functional safety and communication', 'physical_index': 10}, {'structure': '4.3.2', 'title': 'Sources of faults in E2E communication', 'physical_index': 11}, {'structure': '4.3.2.1', 'title': 'Software faults', 'physical_index': 11}, {'structure': '4.3.2.2', 'title': 'Random hardware faults', 'physical_index': 11}, {'structure': '4.3.2.3', 'title': 'External influences, environmental stress', 'physical_index': 12}, {'structure': '4.3.3', 'title': 'Communication faults', 'physical_index': 12}, {'structure': '4.3.3.1', 'title': 'Repetition of information', 'physical_index': 12}, {'structure': '4.3.3.2', 'title': 'Loss of information', 'physical_index': 12}, {'structure': '4.3.3.3', 'title': 'Delay of information', 'physical_index': 12}, {'structure': '4.3.3.4', 'title': 'Insertion of information', 'physical_index': 12}, {'structure': '4.3.3.5', 'title': 'Masquerading', 'physical_index': 12}, {'structure': '4.3.3.6', 'title': 'Incorrect addressing', 'physical_index': 12}, {'structure': '4.3.3.7', 'title': 'Incorrect sequence of information', 'physical_index': 13}, {'structure': '4.3.3.8', 'title': 'Corruption of information', 'physical_index': 13}, {'structure': '4.3.3.9', 'title': 'Asymmetric information sent from a sender to multiple receivers', 'physical_index': 13}, {'structure': '4.3.3.10', 'title': 'Information from a sender received by only a subset of the receivers', 'physical_index': 13}, {'structure': '4.3.3.11', 'title': 'Blocking access to a communication channel', 'physical_index': 13}, {'structure': '5', 'title': 'Requirements Tracing', 'physical_index': 14}, {'structure': '6', 'title': 'Functional specification', 'physical_index': 19}, {'structure': '6.1', 'title': 'Overview of communication protection', 'physical_index': 19}, {'structure': '6.2', 'title': 'Overview of E2E Profiles', 'physical_index': 19}, {'structure': '6.2.1', 'title': 'Error detection', 'physical_index': 20}, {'structure': '6.3', 'title': 'Specification of E2E Profile 1 (Only for CP)', 'physical_index': 21}, {'structure': '6.3.1', 'title': 'Data Layout', 'physical_index': 22}, {'structure': '6.3.2', 'title': 'Counter', 'physical_index': 22}, {'structure': '6.3.3', 'title': 'Data ID', 'physical_index': 23}, {'structure': '6.3.4', 'title': 'CRC calculation', 'physical_index': 24}, {'structure': '6.3.5', 'title': 'Timeout detection', 'physical_index': 25}, {'structure': '6.3.6', 'title': 'E2E Profile 1 variants', 'physical_index': 26}, {'structure': '6.3.7', 'title': 'E2E_P01Protect', 'physical_index': 26}, {'structure': '6.3.8', 'title': 'Calculate CRC', 'physical_index': 28}, {'structure': '6.3.9', 'title': 'E2E_P01Check', 'physical_index': 29}, {'structure': '6.3.10', 'title': 'E2E Profile 1 Protocol Examples', 'physical_index': 31}, {'structure': '6.3.10.1', 'title': 'DataIDMode set to E2E_P01_DATAID_ALT', 'physical_index': 31}, {'structure': '6.3.10.2', 'title': 'DataIDMode set to E2E_P01DATAID_LOW', 'physical_index': 32}, {'structure': '6.3.10.3', 'title': 'DataIDMode set to E2E_P01DATAID_NIBBLE', 'physical_index': 32}, {'structure': '6.4', 'title': 'Specification of E2E Profile 2 (only for CP)', 'physical_index': 33}, {'structure': '6.4.1', 'title': 'E2E_P02Protect', 'physical_index': 35}, {'structure': '6.4.2', 'title': 'E2E_P02Check', 'physical_index': 37}, {'structure': '6.4.3', 'title': 'E2E Profile 2 Protocol Examples', 'physical_index': 43}, {'structure': '6.5', 'title': 'Specification of E2E Profile 4', 'physical_index': 44}, {'structure': '6.5.1', 'title': 'Data Layout', 'physical_index': 45}, {'structure': '6.5.1.1', 'title': 'User data layout', 'physical_index': 45}, {'structure': '6.5.1.2', 'title': 'Header layout', 'physical_index': 45}, {'structure': '6.5.2', 'title': 'Counter', 'physical_index': 46}, {'structure': '6.5.3', 'title': 'Data ID', 'physical_index': 46}, {'structure': '6.5.4', 'title': 'Length', 'physical_index': 47}, {'structure': '6.5.5', 'title': 'CRC', 'physical_index': 47}, {'structure': '6.5.6', 'title': 'Timeout detection', 'physical_index': 47}, {'structure': '6.5.7', 'title': 'E2E Profile 4 variants', 'physical_index': 47}, {'structure': '6.5.8', 'title': 'E2E_P04Protect', 'physical_index': 48}, {'structure': '6.5.9', 'title': 'E2E_P04Check', 'physical_index': 52}, {'structure': '6.5.10', 'title': 'E2E Profile 4 Protocol Examples', 'physical_index': 56}, {'structure': '6.6', 'title': 'Specification of E2E Profile 5', 'physical_index': 57}, {'structure': '6.6.1', 'title': 'Data Layout', 'physical_index': 58}, {'structure': '6.6.1.1', 'title': 'User data layout', 'physical_index': 58}, {'structure': '6.6.1.2', 'title': 'Header layout', 'physical_index': 58}, {'structure': '6.6.2', 'title': 'Counter', 'physical_index': 58}, {'structure': '6.6.3', 'title': 'Data ID', 'physical_index': 59}, {'structure': '6.6.4', 'title': 'Length', 'physical_index': 59}, {'structure': '6.6.5', 'title': 'CRC', 'physical_index': 59}, {'structure': '6.6.6', 'title': 'Timeout detection', 'physical_index': 60}, {'structure': '6.6.7', 'title': 'E2E_P05Protect', 'physical_index': 60}, {'structure': '6.6.8', 'title': 'E2E_P05Check', 'physical_index': 64}, {'structure': '6.6.9', 'title': 'E2E Profile 5 Protocol Examples', 'physical_index': 66}, {'structure': '6.7', 'title': 'Specification of E2E Profile 6', 'physical_index': 67}, {'structure': '6.7.1', 'title': 'Data Layout', 'physical_index': 68}, {'structure': '6.7.1.1', 'title': 'User data layout', 'physical_index': 68}, {'structure': '6.7.1.2', 'title': 'Header layout', 'physical_index': 68}, {'structure': '6.7.2', 'title': 'Counter', 'physical_index': 69}, {'structure': '6.7.3', 'title': 'Data ID', 'physical_index': 69}, {'structure': '6.7.4', 'title': 'Length', 'physical_index': 70}, {'structure': '6.7.5', 'title': 'CRC', 'physical_index': 70}, {'structure': '6.7.6', 'title': 'Timeout detection', 'physical_index': 70}, {'structure': '6.7.7', 'title': 'E2E_P06Protect', 'physical_index': 71}, {'structure': '6.7.8', 'title': 'E2E_P06Check', 'physical_index': 74}, {'structure': '6.7.9', 'title': 'E2E Profile 6 Protocol Examples', 'physical_index': 78}, {'structure': '6.8', 'title': 'Specification of E2E Profile 7', 'physical_index': 79}, {'structure': '6.8.1', 'title': 'Data Layout', 'physical_index': 80}, {'structure': '6.8.1.1', 'title': 'User data layout', 'physical_index': 80}, {'structure': '6.8.1.2', 'title': 'Header layout', 'physical_index': 80}, {'structure': '6.8.2', 'title': 'Counter', 'physical_index': 81}, {'structure': '6.8.3', 'title': 'Data ID', 'physical_index': 81}, {'structure': '6.8.4', 'title': 'Length', 'physical_index': 82}, {'structure': '6.8.5', 'title': 'CRC', 'physical_index': 82}, {'structure': '6.8.6', 'title': 'Timeout detection', 'physical_index': 82}, {'structure': '6.8.7', 'title': 'E2E Profile 7 variants', 'physical_index': 83}, {'structure': '6.8.8', 'title': 'E2E_P07Protect', 'physical_index': 83}, {'structure': '6.8.9', 'title': 'E2E_P07Check', 'physical_index': 87}, {'structure': '6.8.10', 'title': 'E2E Profile 7 Protocol Examples', 'physical_index': 90}, {'structure': '6.9', 'title': 'Specification of E2E Profile 11', 'physical_index': 91}, {'structure': '6.9.1', 'title': 'Data Layout', 'physical_index': 92}, {'structure': '6.9.1.1', 'title': 'User data layout', 'physical_index': 92}, {'structure': '6.9.1.2', 'title': 'Header layout', 'physical_index': 93}, {'structure': '6.9.2', 'title': 'Counter', 'physical_index': 94}, {'structure': '6.9.3', 'title': 'Data ID', 'physical_index': 95}, {'structure': '6.9.4', 'title': 'Length', 'physical_index': 95}, {'structure': '6.9.5', 'title': 'CRC', 'physical_index': 95}, {'structure': '6.9.6', 'title': 'Timeout detection', 'physical_index': 96}, {'structure': '6.9.7', 'title': 'E2E_P11Protect', 'physical_index': 96}, {'structure': '6.9.8', 'title': 'E2E_P11Check', 'physical_index': 100}, {'structure': '6.9.9', 'title': 'E2E Profile 11 Protocol Examples', 'physical_index': 103}, {'structure': '6.9.9.1', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE', 'physical_index': 104}, {'structure': '6.9.9.2', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE, Offset set to 64', 'physical_index': 105}, {'structure': '6.10', 'title': 'Specification of E2E Profile 22', 'physical_index': 105}, {'structure': '6.10.1', 'title': 'Data Layout', 'physical_index': 106}, {'structure': '6.10.1.1', 'title': 'User data layout', 'physical_index': 106}, {'structure': '6.10.1.2', 'title': 'Header layout', 'physical_index': 106}, {'structure': '6.10.2', 'title': 'Counter', 'physical_index': 107}, {'structure': '6.10.3', 'title': 'Data ID', 'physical_index': 107}, {'structure': '6.10.4', 'title': 'Length', 'physical_index': 108}, {'structure': '6.10.5', 'title': 'CRC', 'physical_index': 108}, {'structure': '6.10.6', 'title': 'Timeout detection', 'physical_index': 108}, {'structure': '6.10.7', 'title': 'E2E_P22Protect', 'physical_index': 109}, {'structure': '6.10.8', 'title': 'E2E_P22Check', 'physical_index': 111}, {'structure': '6.10.9', 'title': 'E2E Profile 22 Protocol Examples', 'physical_index': 114}, {'structure': '6.10.9.1', 'title': 'Offset set to 64', 'physical_index': 115}, {'structure': '6.11', 'title': 'Specification of E2E state machine', 'physical_index': 116}, {'structure': '6.11.1', 'title': 'Overview of the state machine', 'physical_index': 116}, {'structure': '6.11.2', 'title': 'State machine specification', 'physical_index': 117}, {'structure': '6.12', 'title': 'Basic Concepts of CRC Codes', 'physical_index': 121}, {'structure': '6.12.1', 'title': 'Mathematical Description', 'physical_index': 121}, {'structure': '6.12.2', 'title': 'Euclidian Algorithm for Binary Polynomials and Bit-Sequences', 'physical_index': 124}, {'structure': '6.12.3', 'title': 'CRC calculation, Variations and Parameter', 'physical_index': 125}, {'structure': '6.13', 'title': 'CRC Standard Parameters', 'physical_index': 125}, {'structure': '6.13.1', 'title': '8-bit CRC calculation', 'physical_index': 127}, {'structure': '6.13.1.1', 'title': '8-bit SAE J1850 CRC Calculation', 'physical_index': 127}, {'structure': '6.13.1.2', 'title': '8-bit 0x2F polynomial CRC Calculation', 'physical_index': 127}, {'structure': '6.13.2', 'title': '16-bit CRC calculation', 'physical_index': 128}, {'structure': '6.13.2.1', 'title': '16-bit CCITT -FALSE CRC16', 'physical_index': 128}, {'structure': '6.13.3', 'title': '32-bit CRC calculation', 'physical_index': 129}, {'structure': '6.13.3.1', 'title': '32-bit Ethernet CRC Calculation', 'physical_index': 129}, {'structure': '6.13.3.2', 'title': '32-bit 0xF4ACFB13 polynomial CRC calculation', 'physical_index': 130}, {'structure': '6.13.4', 'title': '64-bit CRC calculation', 'physical_index': 131}, {'structure': '6.13.4.1', 'title': '64-bit ECMA polynomial CRC calculation', 'physical_index': 131}, {'structure': '7', 'title': 'E2E API specification', 'physical_index': 133}, {'structure': '7.1', 'title': 'API of middleware to applications', 'physical_index': 133}, {'structure': '7.2', 'title': 'API of E2E', 'physical_index': 133}, {'structure': '8', 'title': 'Configuration Parameters', 'physical_index': 135}, {'structure': '9', 'title': 'Protocol usage and guidelines', 'physical_index': 137}, {'structure': '9.1', 'title': 'E2E and SOME/IP', 'physical_index': 137}, {'structure': '9.2', 'title': 'Periodic use of E2E check', 'physical_index': 137}, {'structure': '9.3', 'title': 'Error handling', 'physical_index': 138}, {'structure': '9.4', 'title': 'Maximal lengths of Data, communication buses', 'physical_index': 138}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction and functional overview', 'physical_index': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 9}, {'structure': '3', 'title': 'Related documentation', 'physical_index': 9}, {'structure': '3.1', 'title': 'Input documents & related standards and norms', 'physical_index': 9}, {'structure': '3.2', 'title': 'Related specification', 'physical_index': 9}, {'structure': '4', 'title': 'Constraints and assumptions', 'physical_index': 10}, {'structure': '4.1', 'title': 'Limitations', 'physical_index': 10}, {'structure': '4.2', 'title': 'Applicability to car domains', 'physical_index': 10}, {'structure': '4.3', 'title': 'Background information concerning functional safety', 'physical_index': 10}, {'structure': '4.3.1', 'title': 'Functional safety and communication', 'physical_index': 10}, {'structure': '4.3.2', 'title': 'Sources of faults in E2E communication', 'physical_index': 11}, {'structure': '4.3.2.1', 'title': 'Software faults', 'physical_index': 11}, {'structure': '4.3.2.2', 'title': 'Random hardware faults', 'physical_index': 11}, {'structure': '4.3.2.3', 'title': 'External influences, environmental stress', 'physical_index': 12}, {'structure': '4.3.3', 'title': 'Communication faults', 'physical_index': 12}, {'structure': '4.3.3.1', 'title': 'Repetition of information', 'physical_index': 12}, {'structure': '4.3.3.2', 'title': 'Loss of information', 'physical_index': 12}, {'structure': '4.3.3.3', 'title': 'Delay of information', 'physical_index': 12}, {'structure': '4.3.3.4', 'title': 'Insertion of information', 'physical_index': 12}, {'structure': '4.3.3.5', 'title': 'Masquerading', 'physical_index': 12}, {'structure': '4.3.3.6', 'title': 'Incorrect addressing', 'physical_index': 12}, {'structure': '4.3.3.7', 'title': 'Incorrect sequence of information', 'physical_index': 13}, {'structure': '4.3.3.8', 'title': 'Corruption of information', 'physical_index': 13}, {'structure': '4.3.3.9', 'title': 'Asymmetric information sent from a sender to multiple receivers', 'physical_index': 13}, {'structure': '4.3.3.10', 'title': 'Information from a sender received by only a subset of the receivers', 'physical_index': 13}, {'structure': '4.3.3.11', 'title': 'Blocking access to a communication channel', 'physical_index': 13}, {'structure': '5', 'title': 'Requirements Tracing', 'physical_index': 14}, {'structure': '6', 'title': 'Functional specification', 'physical_index': 19}, {'structure': '6.1', 'title': 'Overview of communication protection', 'physical_index': 19}, {'structure': '6.2', 'title': 'Overview of E2E Profiles', 'physical_index': 19}, {'structure': '6.2.1', 'title': 'Error detection', 'physical_index': 20}, {'structure': '6.3', 'title': 'Specification of E2E Profile 1 (Only for CP)', 'physical_index': 21}, {'structure': '6.3.1', 'title': 'Data Layout', 'physical_index': 22}, {'structure': '6.3.2', 'title': 'Counter', 'physical_index': 22}, {'structure': '6.3.3', 'title': 'Data ID', 'physical_index': 23}, {'structure': '6.3.4', 'title': 'CRC calculation', 'physical_index': 24}, {'structure': '6.3.5', 'title': 'Timeout detection', 'physical_index': 25}, {'structure': '6.3.6', 'title': 'E2E Profile 1 variants', 'physical_index': 26}, {'structure': '6.3.7', 'title': 'E2E_P01Protect', 'physical_index': 26}, {'structure': '6.3.8', 'title': 'Calculate CRC', 'physical_index': 28}, {'structure': '6.3.9', 'title': 'E2E_P01Check', 'physical_index': 29}, {'structure': '6.3.10', 'title': 'E2E Profile 1 Protocol Examples', 'physical_index': 31}, {'structure': '6.3.10.1', 'title': 'DataIDMode set to E2E_P01_DATAID_ALT', 'physical_index': 31}, {'structure': '6.3.10.2', 'title': 'DataIDMode set to E2E_P01DATAID_LOW', 'physical_index': 32}, {'structure': '6.3.10.3', 'title': 'DataIDMode set to E2E_P01DATAID_NIBBLE', 'physical_index': 32}, {'structure': '6.4', 'title': 'Specification of E2E Profile 2 (only for CP)', 'physical_index': 33}, {'structure': '6.4.1', 'title': 'E2E_P02Protect', 'physical_index': 35}, {'structure': '6.4.2', 'title': 'E2E_P02Check', 'physical_index': 37}, {'structure': '6.4.3', 'title': 'E2E Profile 2 Protocol Examples', 'physical_index': 43}, {'structure': '6.5', 'title': 'Specification of E2E Profile 4', 'physical_index': 44}, {'structure': '6.5.1', 'title': 'Data Layout', 'physical_index': 45}, {'structure': '6.5.1.1', 'title': 'User data layout', 'physical_index': 45}, {'structure': '6.5.1.2', 'title': 'Header layout', 'physical_index': 45}, {'structure': '6.5.2', 'title': 'Counter', 'physical_index': 46}, {'structure': '6.5.3', 'title': 'Data ID', 'physical_index': 46}, {'structure': '6.5.4', 'title': 'Length', 'physical_index': 47}, {'structure': '6.5.5', 'title': 'CRC', 'physical_index': 47}, {'structure': '6.5.6', 'title': 'Timeout detection', 'physical_index': 47}, {'structure': '6.5.7', 'title': 'E2E Profile 4 variants', 'physical_index': 47}, {'structure': '6.5.8', 'title': 'E2E_P04Protect', 'physical_index': 48}, {'structure': '6.5.9', 'title': 'E2E_P04Check', 'physical_index': 52}, {'structure': '6.5.10', 'title': 'E2E Profile 4 Protocol Examples', 'physical_index': 56}, {'structure': '6.6', 'title': 'Specification of E2E Profile 5', 'physical_index': 57}, {'structure': '6.6.1', 'title': 'Data Layout', 'physical_index': 58}, {'structure': '6.6.1.1', 'title': 'User data layout', 'physical_index': 58}, {'structure': '6.6.1.2', 'title': 'Header layout', 'physical_index': 58}, {'structure': '6.6.2', 'title': 'Counter', 'physical_index': 58}, {'structure': '6.6.3', 'title': 'Data ID', 'physical_index': 59}, {'structure': '6.6.4', 'title': 'Length', 'physical_index': 59}, {'structure': '6.6.5', 'title': 'CRC', 'physical_index': 59}, {'structure': '6.6.6', 'title': 'Timeout detection', 'physical_index': 60}, {'structure': '6.6.7', 'title': 'E2E_P05Protect', 'physical_index': 60}, {'structure': '6.6.8', 'title': 'E2E_P05Check', 'physical_index': 64}, {'structure': '6.6.9', 'title': 'E2E Profile 5 Protocol Examples', 'physical_index': 66}, {'structure': '6.7', 'title': 'Specification of E2E Profile 6', 'physical_index': 67}, {'structure': '6.7.1', 'title': 'Data Layout', 'physical_index': 68}, {'structure': '6.7.1.1', 'title': 'User data layout', 'physical_index': 68}, {'structure': '6.7.1.2', 'title': 'Header layout', 'physical_index': 68}, {'structure': '6.7.2', 'title': 'Counter', 'physical_index': 69}, {'structure': '6.7.3', 'title': 'Data ID', 'physical_index': 69}, {'structure': '6.7.4', 'title': 'Length', 'physical_index': 70}, {'structure': '6.7.5', 'title': 'CRC', 'physical_index': 70}, {'structure': '6.7.6', 'title': 'Timeout detection', 'physical_index': 70}, {'structure': '6.7.7', 'title': 'E2E_P06Protect', 'physical_index': 71}, {'structure': '6.7.8', 'title': 'E2E_P06Check', 'physical_index': 74}, {'structure': '6.7.9', 'title': 'E2E Profile 6 Protocol Examples', 'physical_index': 78}, {'structure': '6.8', 'title': 'Specification of E2E Profile 7', 'physical_index': 79}, {'structure': '6.8.1', 'title': 'Data Layout', 'physical_index': 80}, {'structure': '6.8.1.1', 'title': 'User data layout', 'physical_index': 80}, {'structure': '6.8.1.2', 'title': 'Header layout', 'physical_index': 80}, {'structure': '6.8.2', 'title': 'Counter', 'physical_index': 81}, {'structure': '6.8.3', 'title': 'Data ID', 'physical_index': 81}, {'structure': '6.8.4', 'title': 'Length', 'physical_index': 82}, {'structure': '6.8.5', 'title': 'CRC', 'physical_index': 82}, {'structure': '6.8.6', 'title': 'Timeout detection', 'physical_index': 82}, {'structure': '6.8.7', 'title': 'E2E Profile 7 variants', 'physical_index': 83}, {'structure': '6.8.8', 'title': 'E2E_P07Protect', 'physical_index': 83}, {'structure': '6.8.9', 'title': 'E2E_P07Check', 'physical_index': 87}, {'structure': '6.8.10', 'title': 'E2E Profile 7 Protocol Examples', 'physical_index': 90}, {'structure': '6.9', 'title': 'Specification of E2E Profile 11', 'physical_index': 91}, {'structure': '6.9.1', 'title': 'Data Layout', 'physical_index': 92}, {'structure': '6.9.1.1', 'title': 'User data layout', 'physical_index': 92}, {'structure': '6.9.1.2', 'title': 'Header layout', 'physical_index': 93}, {'structure': '6.9.2', 'title': 'Counter', 'physical_index': 94}, {'structure': '6.9.3', 'title': 'Data ID', 'physical_index': 95}, {'structure': '6.9.4', 'title': 'Length', 'physical_index': 95}, {'structure': '6.9.5', 'title': 'CRC', 'physical_index': 95}, {'structure': '6.9.6', 'title': 'Timeout detection', 'physical_index': 96}, {'structure': '6.9.7', 'title': 'E2E_P11Protect', 'physical_index': 96}, {'structure': '6.9.8', 'title': 'E2E_P11Check', 'physical_index': 100}, {'structure': '6.9.9', 'title': 'E2E Profile 11 Protocol Examples', 'physical_index': 103}, {'structure': '6.9.9.1', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE', 'physical_index': 104}, {'structure': '6.9.9.2', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE, Offset set to 64', 'physical_index': 105}, {'structure': '6.10', 'title': 'Specification of E2E Profile 22', 'physical_index': 105}, {'structure': '6.10.1', 'title': 'Data Layout', 'physical_index': 106}, {'structure': '6.10.1.1', 'title': 'User data layout', 'physical_index': 106}, {'structure': '6.10.1.2', 'title': 'Header layout', 'physical_index': 106}, {'structure': '6.10.2', 'title': 'Counter', 'physical_index': 107}, {'structure': '6.10.3', 'title': 'Data ID', 'physical_index': 107}, {'structure': '6.10.4', 'title': 'Length', 'physical_index': 108}, {'structure': '6.10.5', 'title': 'CRC', 'physical_index': 108}, {'structure': '6.10.6', 'title': 'Timeout detection', 'physical_index': 108}, {'structure': '6.10.7', 'title': 'E2E_P22Protect', 'physical_index': 109}, {'structure': '6.10.8', 'title': 'E2E_P22Check', 'physical_index': 111}, {'structure': '6.10.9', 'title': 'E2E Profile 22 Protocol Examples', 'physical_index': 114}, {'structure': '6.10.9.1', 'title': 'Offset set to 64', 'physical_index': 115}, {'structure': '6.11', 'title': 'Specification of E2E state machine', 'physical_index': 116}, {'structure': '6.11.1', 'title': 'Overview of the state machine', 'physical_index': 116}, {'structure': '6.11.2', 'title': 'State machine specification', 'physical_index': 117}, {'structure': '6.12', 'title': 'Basic Concepts of CRC Codes', 'physical_index': 121}, {'structure': '6.12.1', 'title': 'Mathematical Description', 'physical_index': 121}, {'structure': '6.12.2', 'title': 'Euclidian Algorithm for Binary Polynomials and Bit-Sequences', 'physical_index': 124}, {'structure': '6.12.3', 'title': 'CRC calculation, Variations and Parameter', 'physical_index': 125}, {'structure': '6.13', 'title': 'CRC Standard Parameters', 'physical_index': 125}, {'structure': '6.13.1', 'title': '8-bit CRC calculation', 'physical_index': 127}, {'structure': '6.13.1.1', 'title': '8-bit SAE J1850 CRC Calculation', 'physical_index': 127}, {'structure': '6.13.1.2', 'title': '8-bit 0x2F polynomial CRC Calculation', 'physical_index': 127}, {'structure': '6.13.2', 'title': '16-bit CRC calculation', 'physical_index': 128}, {'structure': '6.13.2.1', 'title': '16-bit CCITT -FALSE CRC16', 'physical_index': 128}, {'structure': '6.13.3', 'title': '32-bit CRC calculation', 'physical_index': 129}, {'structure': '6.13.3.1', 'title': '32-bit Ethernet CRC Calculation', 'physical_index': 129}, {'structure': '6.13.3.2', 'title': '32-bit 0xF4ACFB13 polynomial CRC calculation', 'physical_index': 130}, {'structure': '6.13.4', 'title': '64-bit CRC calculation', 'physical_index': 131}, {'structure': '6.13.4.1', 'title': '64-bit ECMA polynomial CRC calculation', 'physical_index': 131}, {'structure': '7', 'title': 'E2E API specification', 'physical_index': 133}, {'structure': '7.1', 'title': 'API of middleware to applications', 'physical_index': 133}, {'structure': '7.2', 'title': 'API of E2E', 'physical_index': 133}, {'structure': '8', 'title': 'Configuration Parameters', 'physical_index': 135}, {'structure': '9', 'title': 'Protocol usage and guidelines', 'physical_index': 137}, {'structure': '9.1', 'title': 'E2E and SOME/IP', 'physical_index': 137}, {'structure': '9.2', 'title': 'Periodic use of E2E check', 'physical_index': 137}, {'structure': '9.3', 'title': 'Error handling', 'physical_index': 138}, {'structure': '9.4', 'title': 'Maximal lengths of Data, communication buses', 'physical_index': 138}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.16993464052287582,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Incorrect addressing",
+        "page_number": 12
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Incorrect sequence of information",
+        "page_number": 13
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Corruption of information",
+        "page_number": 13
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Asymmetric information sent from a sender to multiple receivers",
+        "page_number": 13
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Information from a sender received by only a subset of the receivers",
+        "page_number": 13
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Blocking access to a communication channel",
+        "page_number": 13
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Requirements Tracing",
+        "page_number": 14
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Functional specification",
+        "page_number": 19
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Overview of communication protection",
+        "page_number": 19
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Overview of E2E Profiles",
+        "page_number": 19
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Error detection",
+        "page_number": 20
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Specification of E2E Profile 1 (Only for CP)",
+        "page_number": 21
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Data Layout",
+        "page_number": 22
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Counter",
+        "page_number": 22
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Data ID",
+        "page_number": 23
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "CRC calculation",
+        "page_number": 24
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Timeout detection",
+        "page_number": 25
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "E2E Profile 1 variants",
+        "page_number": 26
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "E2E_P01Protect",
+        "page_number": 26
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Calculate CRC",
+        "page_number": 28
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "E2E_P01Check",
+        "page_number": 29
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "E2E Profile 1 Protocol Examples",
+        "page_number": 31
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "DataIDMode set to E2E_P01_DATAID_ALT",
+        "page_number": 31
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "DataIDMode set to E2E_P01DATAID_LOW",
+        "page_number": 32
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "DataIDMode set to E2E_P01DATAID_NIBBLE",
+        "page_number": 32
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Specification of E2E Profile 2 (only for CP)",
+        "page_number": 33
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "E2E_P02Protect",
+        "page_number": 35
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "E2E_P02Check",
+        "page_number": 37
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "E2E Profile 2 Protocol Examples",
+        "page_number": 43
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Specification of E2E Profile 4",
+        "page_number": 44
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Data Layout",
+        "page_number": 45
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "User data layout",
+        "page_number": 45
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Header layout",
+        "page_number": 45
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Counter",
+        "page_number": 46
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Data ID",
+        "page_number": 46
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Length",
+        "page_number": 47
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "CRC",
+        "page_number": 47
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Timeout detection",
+        "page_number": 47
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "E2E Profile 4 variants",
+        "page_number": 47
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "E2E_P04Protect",
+        "page_number": 48
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "E2E_P04Check",
+        "page_number": 52
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "E2E Profile 4 Protocol Examples",
+        "page_number": 56
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Specification of E2E Profile 5",
+        "page_number": 57
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Data Layout",
+        "page_number": 58
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "User data layout",
+        "page_number": 58
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Header layout",
+        "page_number": 58
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Counter",
+        "page_number": 58
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Data ID",
+        "page_number": 59
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Length",
+        "page_number": 59
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "CRC",
+        "page_number": 59
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Timeout detection",
+        "page_number": 60
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "E2E_P05Protect",
+        "page_number": 60
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "E2E_P05Check",
+        "page_number": 64
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "E2E Profile 5 Protocol Examples",
+        "page_number": 66
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Specification of E2E Profile 6",
+        "page_number": 67
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Data Layout",
+        "page_number": 68
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "User data layout",
+        "page_number": 68
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Header layout",
+        "page_number": 68
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Counter",
+        "page_number": 69
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Data ID",
+        "page_number": 69
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Length",
+        "page_number": 70
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "CRC",
+        "page_number": 70
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Timeout detection",
+        "page_number": 70
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "E2E_P06Protect",
+        "page_number": 71
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "E2E_P06Check",
+        "page_number": 74
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "E2E Profile 6 Protocol Examples",
+        "page_number": 78
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Specification of E2E Profile 7",
+        "page_number": 79
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Data Layout",
+        "page_number": 80
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "User data layout",
+        "page_number": 80
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Header layout",
+        "page_number": 80
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Counter",
+        "page_number": 81
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Data ID",
+        "page_number": 81
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Length",
+        "page_number": 82
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "CRC",
+        "page_number": 82
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Timeout detection",
+        "page_number": 82
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "E2E Profile 7 variants",
+        "page_number": 83
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "E2E_P07Protect",
+        "page_number": 83
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "E2E_P07Check",
+        "page_number": 87
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "E2E Profile 7 Protocol Examples",
+        "page_number": 90
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Specification of E2E Profile 11",
+        "page_number": 91
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Data Layout",
+        "page_number": 92
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "User data layout",
+        "page_number": 92
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Header layout",
+        "page_number": 93
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Counter",
+        "page_number": 94
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Data ID",
+        "page_number": 95
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Length",
+        "page_number": 95
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "CRC",
+        "page_number": 95
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Timeout detection",
+        "page_number": 96
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "E2E_P11Protect",
+        "page_number": 96
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "E2E_P11Check",
+        "page_number": 100
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "E2E Profile 11 Protocol Examples",
+        "page_number": 103
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "DataIDMode set to E2E_P11DATAID_NIBBLE",
+        "page_number": 104
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "DataIDMode set to E2E_P11DATAID_NIBBLE, Offset set to 64",
+        "page_number": 105
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Specification of E2E Profile 22",
+        "page_number": 105
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Data Layout",
+        "page_number": 106
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "User data layout",
+        "page_number": 106
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "Header layout",
+        "page_number": 106
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "Counter",
+        "page_number": 107
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "Data ID",
+        "page_number": 107
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Length",
+        "page_number": 108
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "CRC",
+        "page_number": 108
+      },
+      {
+        "list_index": 121,
+        "answer": "no",
+        "title": "Timeout detection",
+        "page_number": 108
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "E2E_P22Protect",
+        "page_number": 109
+      },
+      {
+        "list_index": 123,
+        "answer": "no",
+        "title": "E2E_P22Check",
+        "page_number": 111
+      },
+      {
+        "list_index": 124,
+        "answer": "no",
+        "title": "E2E Profile 22 Protocol Examples",
+        "page_number": 114
+      },
+      {
+        "list_index": 125,
+        "answer": "no",
+        "title": "Offset set to 64",
+        "page_number": 115
+      },
+      {
+        "list_index": 126,
+        "answer": "no",
+        "title": "Specification of E2E state machine",
+        "page_number": 116
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "Overview of the state machine",
+        "page_number": 116
+      },
+      {
+        "list_index": 128,
+        "answer": "no",
+        "title": "State machine specification",
+        "page_number": 117
+      },
+      {
+        "list_index": 129,
+        "answer": "no",
+        "title": "Basic Concepts of CRC Codes",
+        "page_number": 121
+      },
+      {
+        "list_index": 130,
+        "answer": "no",
+        "title": "Mathematical Description",
+        "page_number": 121
+      },
+      {
+        "list_index": 131,
+        "answer": "no",
+        "title": "Euclidian Algorithm for Binary Polynomials and Bit-Sequences",
+        "page_number": 124
+      },
+      {
+        "list_index": 132,
+        "answer": "no",
+        "title": "CRC calculation, Variations and Parameter",
+        "page_number": 125
+      },
+      {
+        "list_index": 133,
+        "answer": "no",
+        "title": "CRC Standard Parameters",
+        "page_number": 125
+      },
+      {
+        "list_index": 134,
+        "answer": "no",
+        "title": "8-bit CRC calculation",
+        "page_number": 127
+      },
+      {
+        "list_index": 135,
+        "answer": "no",
+        "title": "8-bit SAE J1850 CRC Calculation",
+        "page_number": 127
+      },
+      {
+        "list_index": 136,
+        "answer": "no",
+        "title": "8-bit 0x2F polynomial CRC Calculation",
+        "page_number": 127
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "16-bit CRC calculation",
+        "page_number": 128
+      },
+      {
+        "list_index": 138,
+        "answer": "no",
+        "title": "16-bit CCITT -FALSE CRC16",
+        "page_number": 128
+      },
+      {
+        "list_index": 139,
+        "answer": "no",
+        "title": "32-bit CRC calculation",
+        "page_number": 129
+      },
+      {
+        "list_index": 140,
+        "answer": "no",
+        "title": "32-bit Ethernet CRC Calculation",
+        "page_number": 129
+      },
+      {
+        "list_index": 141,
+        "answer": "no",
+        "title": "32-bit 0xF4ACFB13 polynomial CRC calculation",
+        "page_number": 130
+      },
+      {
+        "list_index": 142,
+        "answer": "no",
+        "title": "64-bit CRC calculation",
+        "page_number": 131
+      },
+      {
+        "list_index": 143,
+        "answer": "no",
+        "title": "64-bit ECMA polynomial CRC calculation",
+        "page_number": 131
+      },
+      {
+        "list_index": 144,
+        "answer": "no",
+        "title": "E2E API specification",
+        "page_number": 133
+      },
+      {
+        "list_index": 151,
+        "answer": "no",
+        "title": "Error handling",
+        "page_number": 138
+      },
+      {
+        "list_index": 152,
+        "answer": "no",
+        "title": "Maximal lengths of Data, communication buses",
+        "page_number": 138
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction and functional overview', 'page': 7}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 9}, {'structure': '3', 'title': 'Related documentation', 'page': 9}, {'structure': '3.1', 'title': 'Input documents & related standards and norms', 'page': 9}, {'structure': '3.2', 'title': 'Related specification', 'page': 9}, {'structure': '4', 'title': 'Constraints and assumptions', 'page': 10}, {'structure': '4.1', 'title': 'Limitations', 'page': 10}, {'structure': '4.2', 'title': 'Applicability to car domains', 'page': 10}, {'structure': '4.3', 'title': 'Background information concerning functional safety', 'page': 10}, {'structure': '4.3.1', 'title': 'Functional safety and communication', 'page': 10}, {'structure': '4.3.2', 'title': 'Sources of faults in E2E communication', 'page': 11}, {'structure': '4.3.2.1', 'title': 'Software faults', 'page': 11}, {'structure': '4.3.2.2', 'title': 'Random hardware faults', 'page': 11}, {'structure': '4.3.2.3', 'title': 'External influences, environmental stress', 'page': 12}, {'structure': '4.3.3', 'title': 'Communication faults', 'page': 12}, {'structure': '4.3.3.1', 'title': 'Repetition of information', 'page': 12}, {'structure': '4.3.3.2', 'title': 'Loss of information', 'page': 12}, {'structure': '4.3.3.3', 'title': 'Delay of information', 'page': 12}, {'structure': '4.3.3.4', 'title': 'Insertion of information', 'page': 12}, {'structure': '4.3.3.5', 'title': 'Masquerading', 'page': 12}, {'structure': '4.3.3.6', 'title': 'Incorrect addressing', 'page': 12}, {'structure': '4.3.3.7', 'title': 'Incorrect sequence of information', 'page': 13}, {'structure': '4.3.3.8', 'title': 'Corruption of information', 'page': 13}, {'structure': '4.3.3.9', 'title': 'Asymmetric information sent from a sender to multiple receivers', 'page': 13}, {'structure': '4.3.3.10', 'title': 'Information from a sender received by only a subset of the receivers', 'page': 13}, {'structure': '4.3.3.11', 'title': 'Blocking access to a communication channel', 'page': 13}, {'structure': '5', 'title': 'Requirements Tracing', 'page': 14}, {'structure': '6', 'title': 'Functional specification', 'page': 19}, {'structure': '6.1', 'title': 'Overview of communication protection', 'page': 19}, {'structure': '6.2', 'title': 'Overview of E2E Profiles', 'page': 19}, {'structure': '6.2.1', 'title': 'Error detection', 'page': 20}, {'structure': '6.3', 'title': 'Specification of E2E Profile 1 (Only for CP)', 'page': 21}, {'structure': '6.3.1', 'title': 'Data Layout', 'page': 22}, {'structure': '6.3.2', 'title': 'Counter', 'page': 22}, {'structure': '6.3.3', 'title': 'Data ID', 'page': 23}, {'structure': '6.3.4', 'title': 'CRC calculation', 'page': 24}, {'structure': '6.3.5', 'title': 'Timeout detection', 'page': 25}, {'structure': '6.3.6', 'title': 'E2E Profile 1 variants', 'page': 26}, {'structure': '6.3.7', 'title': 'E2E_P01Protect', 'page': 26}, {'structure': '6.3.8', 'title': 'Calculate CRC', 'page': 28}, {'structure': '6.3.9', 'title': 'E2E_P01Check', 'page': 29}, {'structure': '6.3.10', 'title': 'E2E Profile 1 Protocol Examples', 'page': 31}, {'structure': '6.3.10.1', 'title': 'DataIDMode set to E2E_P01_DATAID_ALT', 'page': 31}, {'structure': '6.3.10.2', 'title': 'DataIDMode set to E2E_P01DATAID_LOW', 'page': 32}, {'structure': '6.3.10.3', 'title': 'DataIDMode set to E2E_P01DATAID_NIBBLE', 'page': 32}, {'structure': '6.4', 'title': 'Specification of E2E Profile 2 (only for CP)', 'page': 33}, {'structure': '6.4.1', 'title': 'E2E_P02Protect', 'page': 35}, {'structure': '6.4.2', 'title': 'E2E_P02Check', 'page': 37}, {'structure': '6.4.3', 'title': 'E2E Profile 2 Protocol Examples', 'page': 43}, {'structure': '6.5', 'title': 'Specification of E2E Profile 4', 'page': 44}, {'structure': '6.5.1', 'title': 'Data Layout', 'page': 45}, {'structure': '6.5.1.1', 'title': 'User data layout', 'page': 45}, {'structure': '6.5.1.2', 'title': 'Header layout', 'page': 45}, {'structure': '6.5.2', 'title': 'Counter', 'page': 46}, {'structure': '6.5.3', 'title': 'Data ID', 'page': 46}, {'structure': '6.5.4', 'title': 'Length', 'page': 47}, {'structure': '6.5.5', 'title': 'CRC', 'page': 47}, {'structure': '6.5.6', 'title': 'Timeout detection', 'page': 47}, {'structure': '6.5.7', 'title': 'E2E Profile 4 variants', 'page': 47}, {'structure': '6.5.8', 'title': 'E2E_P04Protect', 'page': 48}, {'structure': '6.5.9', 'title': 'E2E_P04Check', 'page': 52}, {'structure': '6.5.10', 'title': 'E2E Profile 4 Protocol Examples', 'page': 56}, {'structure': '6.6', 'title': 'Specification of E2E Profile 5', 'page': 57}, {'structure': '6.6.1', 'title': 'Data Layout', 'page': 58}, {'structure': '6.6.1.1', 'title': 'User data layout', 'page': 58}, {'structure': '6.6.1.2', 'title': 'Header layout', 'page': 58}, {'structure': '6.6.2', 'title': 'Counter', 'page': 58}, {'structure': '6.6.3', 'title': 'Data ID', 'page': 59}, {'structure': '6.6.4', 'title': 'Length', 'page': 59}, {'structure': '6.6.5', 'title': 'CRC', 'page': 59}, {'structure': '6.6.6', 'title': 'Timeout detection', 'page': 60}, {'structure': '6.6.7', 'title': 'E2E_P05Protect', 'page': 60}, {'structure': '6.6.8', 'title': 'E2E_P05Check', 'page': 64}, {'structure': '6.6.9', 'title': 'E2E Profile 5 Protocol Examples', 'page': 66}, {'structure': '6.7', 'title': 'Specification of E2E Profile 6', 'page': 67}, {'structure': '6.7.1', 'title': 'Data Layout', 'page': 68}, {'structure': '6.7.1.1', 'title': 'User data layout', 'page': 68}, {'structure': '6.7.1.2', 'title': 'Header layout', 'page': 68}, {'structure': '6.7.2', 'title': 'Counter', 'page': 69}, {'structure': '6.7.3', 'title': 'Data ID', 'page': 69}, {'structure': '6.7.4', 'title': 'Length', 'page': 70}, {'structure': '6.7.5', 'title': 'CRC', 'page': 70}, {'structure': '6.7.6', 'title': 'Timeout detection', 'page': 70}, {'structure': '6.7.7', 'title': 'E2E_P06Protect', 'page': 71}, {'structure': '6.7.8', 'title': 'E2E_P06Check', 'page': 74}, {'structure': '6.7.9', 'title': 'E2E Profile 6 Protocol Examples', 'page': 78}, {'structure': '6.8', 'title': 'Specification of E2E Profile 7', 'page': 79}, {'structure': '6.8.1', 'title': 'Data Layout', 'page': 80}, {'structure': '6.8.1.1', 'title': 'User data layout', 'page': 80}, {'structure': '6.8.1.2', 'title': 'Header layout', 'page': 80}, {'structure': '6.8.2', 'title': 'Counter', 'page': 81}, {'structure': '6.8.3', 'title': 'Data ID', 'page': 81}, {'structure': '6.8.4', 'title': 'Length', 'page': 82}, {'structure': '6.8.5', 'title': 'CRC', 'page': 82}, {'structure': '6.8.6', 'title': 'Timeout detection', 'page': 82}, {'structure': '6.8.7', 'title': 'E2E Profile 7 variants', 'page': 83}, {'structure': '6.8.8', 'title': 'E2E_P07Protect', 'page': 83}, {'structure': '6.8.9', 'title': 'E2E_P07Check', 'page': 87}, {'structure': '6.8.10', 'title': 'E2E Profile 7 Protocol Examples', 'page': 90}, {'structure': '6.9', 'title': 'Specification of E2E Profile 11', 'page': 91}, {'structure': '6.9.1', 'title': 'Data Layout', 'page': 92}, {'structure': '6.9.1.1', 'title': 'User data layout', 'page': 92}, {'structure': '6.9.1.2', 'title': 'Header layout', 'page': 93}, {'structure': '6.9.2', 'title': 'Counter', 'page': 94}, {'structure': '6.9.3', 'title': 'Data ID', 'page': 95}, {'structure': '6.9.4', 'title': 'Length', 'page': 95}, {'structure': '6.9.5', 'title': 'CRC', 'page': 95}, {'structure': '6.9.6', 'title': 'Timeout detection', 'page': 96}, {'structure': '6.9.7', 'title': 'E2E_P11Protect', 'page': 96}, {'structure': '6.9.8', 'title': 'E2E_P11Check', 'page': 100}, {'structure': '6.9.9', 'title': 'E2E Profile 11 Protocol Examples', 'page': 103}, {'structure': '6.9.9.1', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE', 'page': 104}, {'structure': '6.9.9.2', 'title': 'DataIDMode set to E2E_P11DATAID_NIBBLE, Offset set to 64', 'page': 105}, {'structure': '6.10', 'title': 'Specification of E2E Profile 22', 'page': 105}, {'structure': '6.10.1', 'title': 'Data Layout', 'page': 106}, {'structure': '6.10.1.1', 'title': 'User data layout', 'page': 106}, {'structure': '6.10.1.2', 'title': 'Header layout', 'page': 106}, {'structure': '6.10.2', 'title': 'Counter', 'page': 107}, {'structure': '6.10.3', 'title': 'Data ID', 'page': 107}, {'structure': '6.10.4', 'title': 'Length', 'page': 108}, {'structure': '6.10.5', 'title': 'CRC', 'page': 108}, {'structure': '6.10.6', 'title': 'Timeout detection', 'page': 108}, {'structure': '6.10.7', 'title': 'E2E_P22Protect', 'page': 109}, {'structure': '6.10.8', 'title': 'E2E_P22Check', 'page': 111}, {'structure': '6.10.9', 'title': 'E2E Profile 22 Protocol Examples', 'page': 114}, {'structure': '6.10.9.1', 'title': 'Offset set to 64', 'page': 115}, {'structure': '6.11', 'title': 'Specification of E2E state machine', 'page': 116}, {'structure': '6.11.1', 'title': 'Overview of the state machine', 'page': 116}, {'structure': '6.11.2', 'title': 'State machine specification', 'page': 117}, {'structure': '6.12', 'title': 'Basic Concepts of CRC Codes', 'page': 121}, {'structure': '6.12.1', 'title': 'Mathematical Description', 'page': 121}, {'structure': '6.12.2', 'title': 'Euclidian Algorithm for Binary Polynomials and Bit-Sequences', 'page': 124}, {'structure': '6.12.3', 'title': 'CRC calculation, Variations and Parameter', 'page': 125}, {'structure': '6.13', 'title': 'CRC Standard Parameters', 'page': 125}, {'structure': '6.13.1', 'title': '8-bit CRC calculation', 'page': 127}, {'structure': '6.13.1.1', 'title': '8-bit SAE J1850 CRC Calculation', 'page': 127}, {'structure': '6.13.1.2', 'title': '8-bit 0x2F polynomial CRC Calculation', 'page': 127}, {'structure': '6.13.2', 'title': '16-bit CRC calculation', 'page': 128}, {'structure': '6.13.2.1', 'title': '16-bit CCITT -FALSE CRC16', 'page': 128}, {'structure': '6.13.3', 'title': '32-bit CRC calculation', 'page': 129}, {'structure': '6.13.3.1', 'title': '32-bit Ethernet CRC Calculation', 'page': 129}, {'structure': '6.13.3.2', 'title': '32-bit 0xF4ACFB13 polynomial CRC calculation', 'page': 130}, {'structure': '6.13.4', 'title': '64-bit CRC calculation', 'page': 131}, {'structure': '6.13.4.1', 'title': '64-bit ECMA polynomial CRC calculation', 'page': 131}, {'structure': '7', 'title': 'E2E API specification', 'page': 133}, {'structure': '7.1', 'title': 'API of middleware to applications', 'page': 133}, {'structure': '7.2', 'title': 'API of E2E', 'page': 133}, {'structure': '8', 'title': 'Configuration Parameters', 'page': 135}, {'structure': '9', 'title': 'Protocol usage and guidelines', 'page': 137}, {'structure': '9.1', 'title': 'E2E and SOME/IP', 'page': 137}, {'structure': '9.2', 'title': 'Periodic use of E2E check', 'page': 137}, {'structure': '9.3', 'title': 'Error handling', 'page': 138}, {'structure': '9.4', 'title': 'Maximal lengths of Data, communication buses', 'page': 138}]"
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '6.3.10.2', 'title': 'DataIDMode set to E2E_P01DATAID_LOW', 'physical_index': '<physical_index_32>'}, {'structure': '6.3.10.3', 'title': 'DataIDMode set to E2E_P01DATAID_NIBBLE', 'physical_index': '<physical_index_32>'}, {'structure': '6.4', 'title': 'Specification of E2E Profile 2 (only for CP)', 'physical_index': '<physical_index_33>'}, {'structure': '6.7.2', 'title': 'Counter', 'physical_index': '<physical_index_69>'}, {'structure': '6.10.2', 'title': 'Counter', 'physical_index': '<physical_index_107>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '6.3.10.2', 'title': 'DataIDMode set to E2E_P01DATAID_LOW', 'physical_index': 32}, {'structure': '6.3.10.3', 'title': 'DataIDMode set to E2E_P01DATAID_NIBBLE', 'physical_index': 32}, {'structure': '6.4', 'title': 'Specification of E2E Profile 2 (only for CP)', 'physical_index': 33}, {'structure': '6.7.2', 'title': 'Counter', 'physical_index': 69}, {'structure': '6.10.2', 'title': 'Counter', 'physical_index': 107}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 1.0,
+    "incorrect_results": []
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' does not appear at the beginning of the given page_text. The page_text starts with document metadata and change history, which precedes any section titles.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'DataIDMode set to E2E_P01DATAID_LOW' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Counter' appears in the page_text, but it is not the first content. There are other contents before the section title, such as the E2E Protocol Specification and bit numbering information.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'DataIDMode set to E2E_P01DATAID_NIBBLE' is found in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Counter' appears in the page_text, but it is not the first content. There are other contents (like 'E2E Protocol Specification AUTOSAR FO Release 1.5.0') before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Specification of E2E Profile 2 (only for CP)' appears in the page_text, but it is not the first content. There are other contents before it, such as 'E2E Protocol Specification AUTOSAR FO Release 1.5.0 Byte 0 1 2 3 4 5 6 7 0x77 0x11 0x00 0x00 0x00 0x00 0x00 0x00 Table 6.12: E2E Profile 1 protect result DataIDMode = E2E_P01DATAID_NIBBLE, counter 1'.\", 'start_begin': 'no'}"
+  }
+]

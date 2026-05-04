@@ -1,0 +1,1078 @@
+[
+  {
+    "total_page_number": 79
+  },
+  {
+    "total_token": 32908
+  },
+  {
+    "toc_content": " Description of the AUTOSAR standard errors  \nAUTOSAR CP Release 4.4.0    \n3 of 79 Document ID 377: AUTOSAR_EXP_ErrorDescription  \n  - AUTOSAR confidential - \nTable of Contents  \n \n1 Purpose  :  :  :  :   5 \n2 Relation to other documents  :  :  :   6 \n3 Guide to the document  :  :  :   7 \n4 Generic Mechanisms  :  :  :   8 \n4.1 Report to the Diagnostic Event Manager (DEM)  :  :   8 \n4.1.1  Summary  :  :  :   8 \n4.1.2  Roles of the modules  :  :  :   8 \n5 Communication related errors  :  :  :   11 \n5.1 Overview  :  :  :  .... 11 \n5.1.1  Error handling mechanisms  :  :   11 \n5.1.2  Error list for CAN stack  :  :  :   11 \n5.1.3  Mappings of EH mechanisms to hardware failure modes  :   12 \n5.2 Loss of communication channel  :  :  . 15 \n5.2.1  CAN Bus Off  :  :  :   15 \n5.2.2  CAN Controller Hardware Timeout  :  :   18 \n5.3 Signal err or :  :  :  . 21 \n5.3.1  CAN Transmission buffer full  :  :   21 \n5.3.2  CAN Reception DLC error  :  :  ... 23 \n5.3.3  COM RX Deadline Monitoring  :  :   24 \n5.3.4  COM TX Deadl ine Monitoring  :  :   26 \n5.3.5  CAN Transport Protocol error during transmission  :   27 \n5.3.6  CAN Transport Protocol error during reception  :  ... 30 \n5.3.7  CANNM TX Deadline Monitoring  :  :   31 \n5.3.8  PDU replication error  :  :  :   32 \n5.3.9  PDU counter error  :  :  :   33 \n5.3.10  Client  / Server timeout  :  :  :   34 \n6 NVRAM related errors  :  :  :   36 \n6.1 Overview  :  :  :  .... 36 \n6.1.1  Error handling mechanisms  :  :   36 \n6.1.2  Error list for NVRAM stack  :  :  .. 37 \n6.1.3  Mappings of EH mechanisms to NVRAM hardware failure modes  :  38 \n6.2 Driver level errors  :  :  :   41 \n6.2.1  Flash write job error  :  :  :   41 \n6.2.2  Flash erase job error  :  :  :   44 \n6.2.3  Flash read job error  :  :  :   47 \n6.2.4  Flash compare job error  :  :  :  50 \n6.2.5  External Flash Hardware ID Mismatch  :  :   52 \n6.2.6  EEPROM write job error  :  :  :  54 \n6.2.7  EEPROM erase job error  :  :  .... 57 \n6.2.8  EEPROM read job error  :  :  :  60 \n6.2.9  EEPROM compare job error  :  :   63 \n6.3 EEPROM Abstracti on / Flash Emulation level errors  :  .. 65 \n6.3.1  FEE consistency check error :  :   65 \n6.3.2  EA consistency check error  :  :  . 68 \n6.4 NVRAM manager level errors  :  :  .... 71 \n6.4.1  NVM CRC check  :  :  :   71 \n6.4.2  NVM write verification error  :  :  . 73 \n6.4.3  Static block check error  :  :  :  74  Description of the AUTOSAR standard errors  \nAUTOSAR CP Release 4.4.0    \n4 of 79 Document ID 377: AUTOSAR_EXP_ErrorDescription  \n  - AUTOSAR confidential - \n6.4.4  Loss of redundancy  :  :  :   76 \n6.4.5  NVM API request failure  :  :  :  78 ",
+    "toc_page_list": [
+      2,
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose', 'page': 5}, {'structure': '2', 'title': 'Relation to other documents', 'page': 6}, {'structure': '3', 'title': 'Guide to the document', 'page': 7}, {'structure': '4', 'title': 'Generic Mechanisms', 'page': 8}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'page': 8}, {'structure': '4.1.1', 'title': 'Summary', 'page': 8}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'page': 8}, {'structure': '5', 'title': 'Communication related errors', 'page': 11}, {'structure': '5.1', 'title': 'Overview', 'page': 11}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'page': 11}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'page': 11}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'page': 12}, {'structure': '5.2', 'title': 'Loss of communication channel', 'page': 15}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'page': 15}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'page': 18}, {'structure': '5.3', 'title': 'Signal error', 'page': 21}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'page': 21}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'page': 23}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'page': 24}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'page': 26}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'page': 27}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'page': 30}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'page': 31}, {'structure': '5.3.8', 'title': 'PDU replication error', 'page': 32}, {'structure': '5.3.9', 'title': 'PDU counter error', 'page': 33}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'page': 34}, {'structure': '6', 'title': 'NVRAM related errors', 'page': 36}, {'structure': '6.1', 'title': 'Overview', 'page': 36}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'page': 36}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'page': 37}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'page': 38}, {'structure': '6.2', 'title': 'Driver level errors', 'page': 41}, {'structure': '6.2.1', 'title': 'Flash write job error', 'page': 41}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'page': 44}, {'structure': '6.2.3', 'title': 'Flash read job error', 'page': 47}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'page': 50}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'page': 52}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'page': 54}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'page': 57}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'page': 60}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'page': 63}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'page': 65}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'page': 65}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'page': 68}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'page': 71}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'page': 71}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'page': 73}, {'structure': '6.4.3', 'title': 'Static block check error', 'page': 74}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'page': 76}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'page': 78}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': '<physical_index_7>'}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': '<physical_index_8>'}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': '<physical_index_8>'}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': '<physical_index_8>'}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_8>'}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': '<physical_index_11>'}, {'structure': '5.1', 'title': 'Overview', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': '<physical_index_12>'}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': '<physical_index_18>'}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': '<physical_index_24>'}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': '<physical_index_27>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 6}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': 7}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': 8}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': 8}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': 8}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': 8}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': 11}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 11}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': 11}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': 11}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': 12}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': 15}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': 15}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': 18}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': 21}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': 21}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': 24}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': 26}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': 27}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Purpose', 'page': 5, 'physical_index': 5}, {'title': 'Relation to other documents', 'page': 6, 'physical_index': 6}, {'title': 'Guide to the document', 'page': 7, 'physical_index': 7}, {'title': 'Generic Mechanisms', 'page': 8, 'physical_index': 8}, {'title': 'Report to the Diagnostic Event Manager (DEM)', 'page': 8, 'physical_index': 8}, {'title': 'Summary', 'page': 8, 'physical_index': 8}, {'title': 'Roles of the modules', 'page': 8, 'physical_index': 8}, {'title': 'Communication related errors', 'page': 11, 'physical_index': 11}, {'title': 'Overview', 'page': 11, 'physical_index': 11}, {'title': 'Overview', 'page': 36, 'physical_index': 11}, {'title': 'Error handling mechanisms', 'page': 11, 'physical_index': 11}, {'title': 'Error handling mechanisms', 'page': 36, 'physical_index': 11}, {'title': 'Error list for CAN stack', 'page': 11, 'physical_index': 11}, {'title': 'Mappings of EH mechanisms to hardware failure modes', 'page': 12, 'physical_index': 12}, {'title': 'Loss of communication channel', 'page': 15, 'physical_index': 15}, {'title': 'CAN Bus Off', 'page': 15, 'physical_index': 15}, {'title': 'CAN Controller Hardware Timeout', 'page': 18, 'physical_index': 18}, {'title': 'Signal error', 'page': 21, 'physical_index': 21}, {'title': 'CAN Transmission buffer full', 'page': 21, 'physical_index': 21}, {'title': 'CAN Reception DLC error', 'page': 23, 'physical_index': 23}, {'title': 'COM RX Deadline Monitoring', 'page': 24, 'physical_index': 24}, {'title': 'COM TX Deadline Monitoring', 'page': 26, 'physical_index': 26}, {'title': 'CAN Transport Protocol error during transmission', 'page': 27, 'physical_index': 27}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 6}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': 7}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': 8}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': 8}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': 8}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': 8}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': 11}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 11}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': 11}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': 11}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': 12}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': 15}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': 15}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': 18}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': 21}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': 21}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': 24}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': 26}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': 27}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'physical_index': 30}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'physical_index': 31}, {'structure': '5.3.8', 'title': 'PDU replication error', 'physical_index': 32}, {'structure': '5.3.9', 'title': 'PDU counter error', 'physical_index': 33}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'physical_index': 34}, {'structure': '6', 'title': 'NVRAM related errors', 'physical_index': 36}, {'structure': '6.1', 'title': 'Overview', 'physical_index': 36}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'physical_index': 36}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'physical_index': 37}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'physical_index': 38}, {'structure': '6.2', 'title': 'Driver level errors', 'physical_index': 41}, {'structure': '6.2.1', 'title': 'Flash write job error', 'physical_index': 41}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'physical_index': 44}, {'structure': '6.2.3', 'title': 'Flash read job error', 'physical_index': 47}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'physical_index': 50}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'physical_index': 52}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'physical_index': 54}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'physical_index': 57}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'physical_index': 60}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'physical_index': 63}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'physical_index': 65}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'physical_index': 65}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'physical_index': 68}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'physical_index': 71}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'physical_index': 71}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'physical_index': 73}, {'structure': '6.4.3', 'title': 'Static block check error', 'physical_index': 74}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'physical_index': 76}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'physical_index': 78}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 6}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': 7}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': 8}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': 8}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': 8}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': 8}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': 11}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 11}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': 11}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': 11}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': 12}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': 15}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': 15}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': 18}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': 21}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': 21}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': 24}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': 26}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': 27}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'physical_index': 30}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'physical_index': 31}, {'structure': '5.3.8', 'title': 'PDU replication error', 'physical_index': 32}, {'structure': '5.3.9', 'title': 'PDU counter error', 'physical_index': 33}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'physical_index': 34}, {'structure': '6', 'title': 'NVRAM related errors', 'physical_index': 36}, {'structure': '6.1', 'title': 'Overview', 'physical_index': 36}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'physical_index': 36}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'physical_index': 37}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'physical_index': 38}, {'structure': '6.2', 'title': 'Driver level errors', 'physical_index': 41}, {'structure': '6.2.1', 'title': 'Flash write job error', 'physical_index': 41}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'physical_index': 44}, {'structure': '6.2.3', 'title': 'Flash read job error', 'physical_index': 47}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'physical_index': 50}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'physical_index': 52}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'physical_index': 54}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'physical_index': 57}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'physical_index': 60}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'physical_index': 63}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'physical_index': 65}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'physical_index': 65}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'physical_index': 68}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'physical_index': 71}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'physical_index': 71}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'physical_index': 73}, {'structure': '6.4.3', 'title': 'Static block check error', 'physical_index': 74}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'physical_index': 76}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'physical_index': 78}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.6,
+    "incorrect_results": [
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "CANNM TX Deadline Monitoring",
+        "page_number": 31
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "PDU replication error",
+        "page_number": 32
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "PDU counter error",
+        "page_number": 33
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Client / Server timeout",
+        "page_number": 34
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "NVRAM related errors",
+        "page_number": 36
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 36
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Error handling mechanisms",
+        "page_number": 36
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Error list for NVRAM stack",
+        "page_number": 37
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Mappings of EH mechanisms to NVRAM hardware failure modes",
+        "page_number": 38
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Driver level errors",
+        "page_number": 41
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Flash write job error",
+        "page_number": 41
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Flash erase job error",
+        "page_number": 44
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Flash read job error",
+        "page_number": 47
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Flash compare job error",
+        "page_number": 50
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "External Flash Hardware ID Mismatch",
+        "page_number": 52
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "EEPROM write job error",
+        "page_number": 54
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "EEPROM erase job error",
+        "page_number": 57
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "EEPROM read job error",
+        "page_number": 60
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "NVM write verification error",
+        "page_number": 73
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Static block check error",
+        "page_number": 74
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Purpose', 'page': 5}, {'structure': '2', 'title': 'Relation to other documents', 'page': 6}, {'structure': '3', 'title': 'Guide to the document', 'page': 7}, {'structure': '4', 'title': 'Generic Mechanisms', 'page': 8}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'page': 8}, {'structure': '4.1.1', 'title': 'Summary', 'page': 8}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'page': 8}, {'structure': '5', 'title': 'Communication related errors', 'page': 11}, {'structure': '5.1', 'title': 'Overview', 'page': 11}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'page': 11}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'page': 11}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'page': 12}, {'structure': '5.2', 'title': 'Loss of communication channel', 'page': 15}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'page': 15}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'page': 18}, {'structure': '5.3', 'title': 'Signal error', 'page': 21}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'page': 21}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'page': 23}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'page': 24}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'page': 26}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'page': 27}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'page': 30}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'page': 31}, {'structure': '5.3.8', 'title': 'PDU replication error', 'page': 32}, {'structure': '5.3.9', 'title': 'PDU counter error', 'page': 33}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'page': 34}, {'structure': '6', 'title': 'NVRAM related errors', 'page': 36}, {'structure': '6.1', 'title': 'Overview', 'page': 36}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'page': 36}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'page': 37}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'page': 38}, {'structure': '6.2', 'title': 'Driver level errors', 'page': 41}, {'structure': '6.2.1', 'title': 'Flash write job error', 'page': 41}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'page': 44}, {'structure': '6.2.3', 'title': 'Flash read job error', 'page': 47}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'page': 50}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'page': 52}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'page': 54}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'page': 57}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'page': 60}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'page': 63}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'page': 65}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'page': 65}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'page': 68}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'page': 71}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'page': 71}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'page': 73}, {'structure': '6.4.3', 'title': 'Static block check error', 'page': 74}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'page': 76}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'page': 78}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': '<physical_index_7>'}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': '<physical_index_8>'}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': '<physical_index_8>'}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': '<physical_index_8>'}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_8>'}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': '<physical_index_11>'}, {'structure': '5.1', 'title': 'Overview', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': '<physical_index_12>'}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': '<physical_index_18>'}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': '<physical_index_24>'}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': '<physical_index_27>'}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'physical_index': '<physical_index_30>'}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'physical_index': '<physical_index_31>'}, {'structure': '5.3.8', 'title': 'PDU replication error', 'physical_index': '<physical_index_32>'}, {'structure': '5.3.9', 'title': 'PDU counter error', 'physical_index': '<physical_index_33>'}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'physical_index': '<physical_index_34>'}, {'structure': '6', 'title': 'NVRAM related errors', 'physical_index': '<physical_index_36>'}, {'structure': '6.1', 'title': 'Overview', 'physical_index': '<physical_index_36>'}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_36>'}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'physical_index': '<physical_index_37>'}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'physical_index': '<physical_index_38>'}, {'structure': '6.2', 'title': 'Driver level errors', 'physical_index': '<physical_index_41>'}, {'structure': '6.2.1', 'title': 'Flash write job error', 'physical_index': '<physical_index_41>'}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'physical_index': '<physical_index_44>'}, {'structure': '6.2.3', 'title': 'Flash read job error', 'physical_index': '<physical_index_47>'}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'physical_index': '<physical_index_50>'}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'physical_index': '<physical_index_54>'}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'physical_index': '<physical_index_57>'}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'physical_index': '<physical_index_60>'}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'physical_index': '<physical_index_63>'}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'physical_index': '<physical_index_65>'}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'physical_index': '<physical_index_65>'}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'physical_index': '<physical_index_68>'}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'physical_index': '<physical_index_71>'}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'physical_index': '<physical_index_71>'}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'physical_index': '<physical_index_73>'}, {'structure': '6.4.3', 'title': 'Static block check error', 'physical_index': '<physical_index_74>'}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'physical_index': '<physical_index_76>'}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'physical_index': '<physical_index_78>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 6}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': 7}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': 8}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': 8}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': 8}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': 8}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': 11}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 11}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': 11}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': 11}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': 12}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': 15}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': 15}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': 18}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': 21}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': 21}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': 24}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': 26}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': 27}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'physical_index': 30}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'physical_index': 31}, {'structure': '5.3.8', 'title': 'PDU replication error', 'physical_index': 32}, {'structure': '5.3.9', 'title': 'PDU counter error', 'physical_index': 33}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'physical_index': 34}, {'structure': '6', 'title': 'NVRAM related errors', 'physical_index': 36}, {'structure': '6.1', 'title': 'Overview', 'physical_index': 36}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'physical_index': 36}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'physical_index': 37}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'physical_index': 38}, {'structure': '6.2', 'title': 'Driver level errors', 'physical_index': 41}, {'structure': '6.2.1', 'title': 'Flash write job error', 'physical_index': 41}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'physical_index': 44}, {'structure': '6.2.3', 'title': 'Flash read job error', 'physical_index': 47}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'physical_index': 50}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'physical_index': 52}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'physical_index': 54}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'physical_index': 57}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'physical_index': 60}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'physical_index': 63}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'physical_index': 65}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'physical_index': 65}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'physical_index': 68}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'physical_index': 71}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'physical_index': 71}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'physical_index': 73}, {'structure': '6.4.3', 'title': 'Static block check error', 'physical_index': 74}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'physical_index': 76}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'physical_index': 78}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.56,
+    "incorrect_results": [
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "CAN Transport Protocol error during reception",
+        "page_number": 30
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "CANNM TX Deadline Monitoring",
+        "page_number": 31
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "PDU replication error",
+        "page_number": 32
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "PDU counter error",
+        "page_number": 33
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Client / Server timeout",
+        "page_number": 34
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "NVRAM related errors",
+        "page_number": 36
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 36
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Error handling mechanisms",
+        "page_number": 36
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Error list for NVRAM stack",
+        "page_number": 37
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Mappings of EH mechanisms to NVRAM hardware failure modes",
+        "page_number": 38
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Driver level errors",
+        "page_number": 41
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Flash write job error",
+        "page_number": 41
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Flash erase job error",
+        "page_number": 44
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Flash read job error",
+        "page_number": 47
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Flash compare job error",
+        "page_number": 50
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "External Flash Hardware ID Mismatch",
+        "page_number": 52
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "EEPROM erase job error",
+        "page_number": 57
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "EEPROM read job error",
+        "page_number": 60
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "EEPROM compare job error",
+        "page_number": 63
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "EEPROM Abstraction / Flash Emulation level errors",
+        "page_number": 65
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "FEE consistency check error",
+        "page_number": 65
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "EA consistency check error",
+        "page_number": 68
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Purpose', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': '<physical_index_6>'}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': '<physical_index_7>'}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': '<physical_index_8>'}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': '<physical_index_8>'}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': '<physical_index_8>'}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_8>'}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': '<physical_index_11>'}, {'structure': '5.1', 'title': 'Overview', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': '<physical_index_11>'}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': '<physical_index_12>'}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.1.1', 'title': 'Summary', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_15>'}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': '<physical_index_18>'}, {'structure': '5.2.2.1', 'title': 'Summary', 'physical_index': '<physical_index_18>'}, {'structure': '5.2.2.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_18>'}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.1.1', 'title': 'Summary', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_21>'}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.2.1', 'title': 'Summary', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.2.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_23>'}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': '<physical_index_24>'}, {'structure': '5.3.3.1', 'title': 'Summary', 'physical_index': '<physical_index_24>'}, {'structure': '5.3.3.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_24>'}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.4.1', 'title': 'Summary', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.4.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': '<physical_index_27>'}, {'structure': '5.3.5.1', 'title': 'Summary', 'physical_index': '<physical_index_27>'}, {'structure': '5.3.5.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_27>'}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'physical_index': '<physical_index_28>'}, {'structure': '5.3.6.1', 'title': 'Summary', 'physical_index': '<physical_index_28>'}, {'structure': '5.3.6.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_28>'}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'physical_index': '<physical_index_31>'}, {'structure': '5.3.8', 'title': 'PDU replication error', 'physical_index': '<physical_index_32>'}, {'structure': '5.3.8.1', 'title': 'Summary', 'physical_index': '<physical_index_32>'}, {'structure': '5.3.8.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_32>'}, {'structure': '5.3.9', 'title': 'PDU counter error', 'physical_index': '<physical_index_33>'}, {'structure': '5.3.9.1', 'title': 'Summary', 'physical_index': '<physical_index_33>'}, {'structure': '5.3.9.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_33>'}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'physical_index': '<physical_index_34>'}, {'structure': '5.3.10.1', 'title': 'Summary', 'physical_index': '<physical_index_34>'}, {'structure': '5.3.10.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_34>'}, {'structure': '6', 'title': 'NVRAM related errors', 'physical_index': '<physical_index_36>'}, {'structure': '6.1', 'title': 'Overview', 'physical_index': '<physical_index_36>'}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'physical_index': '<physical_index_36>'}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'physical_index': '<physical_index_37>'}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'physical_index': '<physical_index_38>'}, {'structure': '6.2', 'title': 'Driver level errors', 'physical_index': '<physical_index_41>'}, {'structure': '6.2.1', 'title': 'Flash write job error', 'physical_index': '<physical_index_41>'}, {'structure': '6.2.1.1', 'title': 'Summary', 'physical_index': '<physical_index_41>'}, {'structure': '6.2.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_41>'}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'physical_index': '<physical_index_44>'}, {'structure': '6.2.2.1', 'title': 'Summary', 'physical_index': '<physical_index_44>'}, {'structure': '6.2.2.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_44>'}, {'structure': '6.2.3', 'title': 'Flash read job error', 'physical_index': '<physical_index_47>'}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'physical_index': '<physical_index_50>'}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'physical_index': '<physical_index_54>'}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'physical_index': '<physical_index_57>'}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'physical_index': '<physical_index_60>'}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'physical_index': '<physical_index_63>'}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'physical_index': '<physical_index_65>'}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'physical_index': '<physical_index_65>'}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'physical_index': '<physical_index_68>'}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'physical_index': '<physical_index_71>'}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'physical_index': '<physical_index_71>'}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'physical_index': '<physical_index_73>'}, {'structure': '6.4.3', 'title': 'Static block check error', 'physical_index': '<physical_index_74>'}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'physical_index': '<physical_index_76>'}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'physical_index': '<physical_index_78>'}, {'structure': '6.2.3.1', 'title': 'Summary', 'physical_index': '<physical_index_47>'}, {'structure': '6.2.3.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_48>'}, {'structure': '6.2.3.2.1', 'title': 'Flash controller', 'physical_index': '<physical_index_48>'}, {'structure': '6.2.3.2.2', 'title': 'Flash driver', 'physical_index': '<physical_index_48>'}, {'structure': '6.2.3.2.3', 'title': 'Flash Eeprom emulation', 'physical_index': '<physical_index_48>'}, {'structure': '6.2.3.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': '<physical_index_48>'}, {'structure': '6.2.3.2.5', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_49>'}, {'structure': '6.2.3.2.6', 'title': 'Application Software Component', 'physical_index': '<physical_index_49>'}, {'structure': '6.2.4.1', 'title': 'Summary', 'physical_index': '<physical_index_50>'}, {'structure': '6.2.4.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_51>'}, {'structure': '6.2.4.2.1', 'title': 'Flash controller', 'physical_index': '<physical_index_51>'}, {'structure': '6.2.4.2.2', 'title': 'Flash driver', 'physical_index': '<physical_index_51>'}, {'structure': '6.2.4.2.3', 'title': 'Flash Eeprom emulation', 'physical_index': '<physical_index_51>'}, {'structure': '6.2.5.1', 'title': 'Summary', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.5.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.5.2.1', 'title': 'External Flash driver', 'physical_index': '<physical_index_52>'}, {'structure': '6.2.5.2.2', 'title': 'Flash Eeprom emulation', 'physical_index': '<physical_index_53>'}, {'structure': '6.2.5.2.3', 'title': 'Memory Abstraction Interface', 'physical_index': '<physical_index_53>'}, {'structure': '6.2.6.1', 'title': 'Summary', 'physical_index': '<physical_index_54>'}, {'structure': '6.2.6.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_55>'}, {'structure': '6.2.6.2.1', 'title': 'EEPROM controller', 'physical_index': '<physical_index_55>'}, {'structure': '6.2.6.2.2', 'title': 'EEPROM driver', 'physical_index': '<physical_index_55>'}, {'structure': '6.2.6.2.3', 'title': 'EEPROM Abstraction', 'physical_index': '<physical_index_55>'}, {'structure': '6.2.6.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': '<physical_index_55>'}, {'structure': '6.2.6.2.5', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_56>'}, {'structure': '6.2.6.2.6', 'title': 'Application Software Component', 'physical_index': '<physical_index_56>'}, {'structure': '6.2.7.1', 'title': 'Summary', 'physical_index': '<physical_index_57>'}, {'structure': '6.2.7.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_58>'}, {'structure': '6.2.7.2.1', 'title': 'EEPROM controller', 'physical_index': '<physical_index_58>'}, {'structure': '6.2.7.2.2', 'title': 'EEPROM driver', 'physical_index': '<physical_index_58>'}, {'structure': '6.2.7.2.3', 'title': 'EEPROM Abstraction', 'physical_index': '<physical_index_58>'}, {'structure': '6.2.7.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': '<physical_index_58>'}, {'structure': '6.2.7.2.5', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_59>'}, {'structure': '6.2.7.2.6', 'title': 'Application Software Component', 'physical_index': '<physical_index_59>'}, {'structure': '6.2.8.1', 'title': 'Summary', 'physical_index': '<physical_index_60>'}, {'structure': '6.2.8.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_61>'}, {'structure': '6.2.8.2.1', 'title': 'EEPROM controller', 'physical_index': '<physical_index_61>'}, {'structure': '6.2.8.2.2', 'title': 'EEPROM driver', 'physical_index': '<physical_index_61>'}, {'structure': '6.2.8.2.3', 'title': 'EEPROM Abstraction', 'physical_index': '<physical_index_61>'}, {'structure': '6.2.8.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': '<physical_index_62>'}, {'structure': '6.2.8.2.5', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_62>'}, {'structure': '6.2.8.2.6', 'title': 'Application Software Component', 'physical_index': '<physical_index_62>'}, {'structure': '6.2.9.1', 'title': 'Summary', 'physical_index': '<physical_index_63>'}, {'structure': '6.2.9.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_64>'}, {'structure': '6.2.9.2.1', 'title': 'EEPROM controller', 'physical_index': '<physical_index_64>'}, {'structure': '6.2.9.2.2', 'title': 'EEPROM driver', 'physical_index': '<physical_index_64>'}, {'structure': '6.2.9.2.3', 'title': 'EEPROM Abstraction', 'physical_index': '<physical_index_64>'}, {'structure': '6.3.1.1', 'title': 'Summary', 'physical_index': '<physical_index_65>'}, {'structure': '6.3.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_66>'}, {'structure': '6.3.1.2.1', 'title': 'Flash Eeprom emulation', 'physical_index': '<physical_index_66>'}, {'structure': '6.3.1.2.2', 'title': 'Memory Abstraction Interface', 'physical_index': '<physical_index_66>'}, {'structure': '6.3.1.2.3', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_66>'}, {'structure': '6.3.1.2.4', 'title': 'Application Software Component', 'physical_index': '<physical_index_67>'}, {'structure': '6.3.2.1', 'title': 'Summary', 'physical_index': '<physical_index_68>'}, {'structure': '6.3.2.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_69>'}, {'structure': '6.3.2.2.1', 'title': 'Eeprom Abstraction', 'physical_index': '<physical_index_69>'}, {'structure': '6.3.2.2.2', 'title': 'Memory Abstraction Interface', 'physical_index': '<physical_index_69>'}, {'structure': '6.3.2.2.3', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_69>'}, {'structure': '6.3.2.2.4', 'title': 'Application Software Component', 'physical_index': '<physical_index_70>'}, {'structure': '6.4.1.1', 'title': 'Summary', 'physical_index': '<physical_index_71>'}, {'structure': '6.4.1.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_72>'}, {'structure': '6.4.1.2.1', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_72>'}, {'structure': '6.4.2.1', 'title': 'Summary', 'physical_index': '<physical_index_73>'}, {'structure': '6.4.2.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_73>'}, {'structure': '6.4.2.2.1', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_74>'}, {'structure': '6.4.3.1', 'title': 'Summary', 'physical_index': '<physical_index_74>'}, {'structure': '6.4.3.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_75>'}, {'structure': '6.4.3.2.1', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_75>'}, {'structure': '6.4.4.1', 'title': 'Summary', 'physical_index': '<physical_index_76>'}, {'structure': '6.4.4.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_77>'}, {'structure': '6.4.4.2.1', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_77>'}, {'structure': '6.4.4.2.2', 'title': 'Application Software Component', 'physical_index': '<physical_index_77>'}, {'structure': '6.4.5.1', 'title': 'Summary', 'physical_index': '<physical_index_78>'}, {'structure': '6.4.5.2', 'title': 'Roles of the modules', 'physical_index': '<physical_index_79>'}, {'structure': '6.4.5.2.1', 'title': 'NVRAM Manager', 'physical_index': '<physical_index_79>'}, {'structure': '6.4.5.2.2', 'title': 'Application Software Component', 'physical_index': '<physical_index_79>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Purpose', 'physical_index': 5}, {'structure': '2', 'title': 'Relation to other documents', 'physical_index': 6}, {'structure': '3', 'title': 'Guide to the document', 'physical_index': 7}, {'structure': '4', 'title': 'Generic Mechanisms', 'physical_index': 8}, {'structure': '4.1', 'title': 'Report to the Diagnostic Event Manager (DEM)', 'physical_index': 8}, {'structure': '4.1.1', 'title': 'Summary', 'physical_index': 8}, {'structure': '4.1.2', 'title': 'Roles of the modules', 'physical_index': 8}, {'structure': '5', 'title': 'Communication related errors', 'physical_index': 11}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 11}, {'structure': '5.1.1', 'title': 'Error handling mechanisms', 'physical_index': 11}, {'structure': '5.1.2', 'title': 'Error list for CAN stack', 'physical_index': 11}, {'structure': '5.1.3', 'title': 'Mappings of EH mechanisms to hardware failure modes', 'physical_index': 12}, {'structure': '5.2', 'title': 'Loss of communication channel', 'physical_index': 15}, {'structure': '5.2.1', 'title': 'CAN Bus Off', 'physical_index': 15}, {'structure': '5.2.1.1', 'title': 'Summary', 'physical_index': 15}, {'structure': '5.2.1.2', 'title': 'Roles of the modules', 'physical_index': 15}, {'structure': '5.2.2', 'title': 'CAN Controller Hardware Timeout', 'physical_index': 18}, {'structure': '5.2.2.1', 'title': 'Summary', 'physical_index': 18}, {'structure': '5.2.2.2', 'title': 'Roles of the modules', 'physical_index': 18}, {'structure': '5.3', 'title': 'Signal error', 'physical_index': 21}, {'structure': '5.3.1', 'title': 'CAN Transmission buffer full', 'physical_index': 21}, {'structure': '5.3.1.1', 'title': 'Summary', 'physical_index': 21}, {'structure': '5.3.1.2', 'title': 'Roles of the modules', 'physical_index': 21}, {'structure': '5.3.2', 'title': 'CAN Reception DLC error', 'physical_index': 23}, {'structure': '5.3.2.1', 'title': 'Summary', 'physical_index': 23}, {'structure': '5.3.2.2', 'title': 'Roles of the modules', 'physical_index': 23}, {'structure': '5.3.3', 'title': 'COM RX Deadline Monitoring', 'physical_index': 24}, {'structure': '5.3.3.1', 'title': 'Summary', 'physical_index': 24}, {'structure': '5.3.3.2', 'title': 'Roles of the modules', 'physical_index': 24}, {'structure': '5.3.4', 'title': 'COM TX Deadline Monitoring', 'physical_index': 26}, {'structure': '5.3.4.1', 'title': 'Summary', 'physical_index': 26}, {'structure': '5.3.4.2', 'title': 'Roles of the modules', 'physical_index': 26}, {'structure': '5.3.5', 'title': 'CAN Transport Protocol error during transmission', 'physical_index': 27}, {'structure': '5.3.5.1', 'title': 'Summary', 'physical_index': 27}, {'structure': '5.3.5.2', 'title': 'Roles of the modules', 'physical_index': 27}, {'structure': '5.3.6', 'title': 'CAN Transport Protocol error during reception', 'physical_index': 28}, {'structure': '5.3.6.1', 'title': 'Summary', 'physical_index': 28}, {'structure': '5.3.6.2', 'title': 'Roles of the modules', 'physical_index': 28}, {'structure': '5.3.7', 'title': 'CANNM TX Deadline Monitoring', 'physical_index': 31}, {'structure': '5.3.8', 'title': 'PDU replication error', 'physical_index': 32}, {'structure': '5.3.8.1', 'title': 'Summary', 'physical_index': 32}, {'structure': '5.3.8.2', 'title': 'Roles of the modules', 'physical_index': 32}, {'structure': '5.3.9', 'title': 'PDU counter error', 'physical_index': 33}, {'structure': '5.3.9.1', 'title': 'Summary', 'physical_index': 33}, {'structure': '5.3.9.2', 'title': 'Roles of the modules', 'physical_index': 33}, {'structure': '5.3.10', 'title': 'Client / Server timeout', 'physical_index': 34}, {'structure': '5.3.10.1', 'title': 'Summary', 'physical_index': 34}, {'structure': '5.3.10.2', 'title': 'Roles of the modules', 'physical_index': 34}, {'structure': '6', 'title': 'NVRAM related errors', 'physical_index': 36}, {'structure': '6.1', 'title': 'Overview', 'physical_index': 36}, {'structure': '6.1.1', 'title': 'Error handling mechanisms', 'physical_index': 36}, {'structure': '6.1.2', 'title': 'Error list for NVRAM stack', 'physical_index': 37}, {'structure': '6.1.3', 'title': 'Mappings of EH mechanisms to NVRAM hardware failure modes', 'physical_index': 38}, {'structure': '6.2', 'title': 'Driver level errors', 'physical_index': 41}, {'structure': '6.2.1', 'title': 'Flash write job error', 'physical_index': 41}, {'structure': '6.2.1.1', 'title': 'Summary', 'physical_index': 41}, {'structure': '6.2.1.2', 'title': 'Roles of the modules', 'physical_index': 41}, {'structure': '6.2.2', 'title': 'Flash erase job error', 'physical_index': 44}, {'structure': '6.2.2.1', 'title': 'Summary', 'physical_index': 44}, {'structure': '6.2.2.2', 'title': 'Roles of the modules', 'physical_index': 44}, {'structure': '6.2.3', 'title': 'Flash read job error', 'physical_index': 47}, {'structure': '6.2.4', 'title': 'Flash compare job error', 'physical_index': 50}, {'structure': '6.2.5', 'title': 'External Flash Hardware ID Mismatch', 'physical_index': 52}, {'structure': '6.2.6', 'title': 'EEPROM write job error', 'physical_index': 54}, {'structure': '6.2.7', 'title': 'EEPROM erase job error', 'physical_index': 57}, {'structure': '6.2.8', 'title': 'EEPROM read job error', 'physical_index': 60}, {'structure': '6.2.9', 'title': 'EEPROM compare job error', 'physical_index': 63}, {'structure': '6.3', 'title': 'EEPROM Abstraction / Flash Emulation level errors', 'physical_index': 65}, {'structure': '6.3.1', 'title': 'FEE consistency check error', 'physical_index': 65}, {'structure': '6.3.2', 'title': 'EA consistency check error', 'physical_index': 68}, {'structure': '6.4', 'title': 'NVRAM manager level errors', 'physical_index': 71}, {'structure': '6.4.1', 'title': 'NVM CRC check', 'physical_index': 71}, {'structure': '6.4.2', 'title': 'NVM write verification error', 'physical_index': 73}, {'structure': '6.4.3', 'title': 'Static block check error', 'physical_index': 74}, {'structure': '6.4.4', 'title': 'Loss of redundancy', 'physical_index': 76}, {'structure': '6.4.5', 'title': 'NVM API request failure', 'physical_index': 78}, {'structure': '6.2.3.1', 'title': 'Summary', 'physical_index': 47}, {'structure': '6.2.3.2', 'title': 'Roles of the modules', 'physical_index': 48}, {'structure': '6.2.3.2.1', 'title': 'Flash controller', 'physical_index': 48}, {'structure': '6.2.3.2.2', 'title': 'Flash driver', 'physical_index': 48}, {'structure': '6.2.3.2.3', 'title': 'Flash Eeprom emulation', 'physical_index': 48}, {'structure': '6.2.3.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': 48}, {'structure': '6.2.3.2.5', 'title': 'NVRAM Manager', 'physical_index': 49}, {'structure': '6.2.3.2.6', 'title': 'Application Software Component', 'physical_index': 49}, {'structure': '6.2.4.1', 'title': 'Summary', 'physical_index': 50}, {'structure': '6.2.4.2', 'title': 'Roles of the modules', 'physical_index': 51}, {'structure': '6.2.4.2.1', 'title': 'Flash controller', 'physical_index': 51}, {'structure': '6.2.4.2.2', 'title': 'Flash driver', 'physical_index': 51}, {'structure': '6.2.4.2.3', 'title': 'Flash Eeprom emulation', 'physical_index': 51}, {'structure': '6.2.5.1', 'title': 'Summary', 'physical_index': 52}, {'structure': '6.2.5.2', 'title': 'Roles of the modules', 'physical_index': 52}, {'structure': '6.2.5.2.1', 'title': 'External Flash driver', 'physical_index': 52}, {'structure': '6.2.5.2.2', 'title': 'Flash Eeprom emulation', 'physical_index': 53}, {'structure': '6.2.5.2.3', 'title': 'Memory Abstraction Interface', 'physical_index': 53}, {'structure': '6.2.6.1', 'title': 'Summary', 'physical_index': 54}, {'structure': '6.2.6.2', 'title': 'Roles of the modules', 'physical_index': 55}, {'structure': '6.2.6.2.1', 'title': 'EEPROM controller', 'physical_index': 55}, {'structure': '6.2.6.2.2', 'title': 'EEPROM driver', 'physical_index': 55}, {'structure': '6.2.6.2.3', 'title': 'EEPROM Abstraction', 'physical_index': 55}, {'structure': '6.2.6.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': 55}, {'structure': '6.2.6.2.5', 'title': 'NVRAM Manager', 'physical_index': 56}, {'structure': '6.2.6.2.6', 'title': 'Application Software Component', 'physical_index': 56}, {'structure': '6.2.7.1', 'title': 'Summary', 'physical_index': 57}, {'structure': '6.2.7.2', 'title': 'Roles of the modules', 'physical_index': 58}, {'structure': '6.2.7.2.1', 'title': 'EEPROM controller', 'physical_index': 58}, {'structure': '6.2.7.2.2', 'title': 'EEPROM driver', 'physical_index': 58}, {'structure': '6.2.7.2.3', 'title': 'EEPROM Abstraction', 'physical_index': 58}, {'structure': '6.2.7.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': 58}, {'structure': '6.2.7.2.5', 'title': 'NVRAM Manager', 'physical_index': 59}, {'structure': '6.2.7.2.6', 'title': 'Application Software Component', 'physical_index': 59}, {'structure': '6.2.8.1', 'title': 'Summary', 'physical_index': 60}, {'structure': '6.2.8.2', 'title': 'Roles of the modules', 'physical_index': 61}, {'structure': '6.2.8.2.1', 'title': 'EEPROM controller', 'physical_index': 61}, {'structure': '6.2.8.2.2', 'title': 'EEPROM driver', 'physical_index': 61}, {'structure': '6.2.8.2.3', 'title': 'EEPROM Abstraction', 'physical_index': 61}, {'structure': '6.2.8.2.4', 'title': 'Memory Abstraction Interface', 'physical_index': 62}, {'structure': '6.2.8.2.5', 'title': 'NVRAM Manager', 'physical_index': 62}, {'structure': '6.2.8.2.6', 'title': 'Application Software Component', 'physical_index': 62}, {'structure': '6.2.9.1', 'title': 'Summary', 'physical_index': 63}, {'structure': '6.2.9.2', 'title': 'Roles of the modules', 'physical_index': 64}, {'structure': '6.2.9.2.1', 'title': 'EEPROM controller', 'physical_index': 64}, {'structure': '6.2.9.2.2', 'title': 'EEPROM driver', 'physical_index': 64}, {'structure': '6.2.9.2.3', 'title': 'EEPROM Abstraction', 'physical_index': 64}, {'structure': '6.3.1.1', 'title': 'Summary', 'physical_index': 65}, {'structure': '6.3.1.2', 'title': 'Roles of the modules', 'physical_index': 66}, {'structure': '6.3.1.2.1', 'title': 'Flash Eeprom emulation', 'physical_index': 66}, {'structure': '6.3.1.2.2', 'title': 'Memory Abstraction Interface', 'physical_index': 66}, {'structure': '6.3.1.2.3', 'title': 'NVRAM Manager', 'physical_index': 66}, {'structure': '6.3.1.2.4', 'title': 'Application Software Component', 'physical_index': 67}, {'structure': '6.3.2.1', 'title': 'Summary', 'physical_index': 68}, {'structure': '6.3.2.2', 'title': 'Roles of the modules', 'physical_index': 69}, {'structure': '6.3.2.2.1', 'title': 'Eeprom Abstraction', 'physical_index': 69}, {'structure': '6.3.2.2.2', 'title': 'Memory Abstraction Interface', 'physical_index': 69}, {'structure': '6.3.2.2.3', 'title': 'NVRAM Manager', 'physical_index': 69}, {'structure': '6.3.2.2.4', 'title': 'Application Software Component', 'physical_index': 70}, {'structure': '6.4.1.1', 'title': 'Summary', 'physical_index': 71}, {'structure': '6.4.1.2', 'title': 'Roles of the modules', 'physical_index': 72}, {'structure': '6.4.1.2.1', 'title': 'NVRAM Manager', 'physical_index': 72}, {'structure': '6.4.2.1', 'title': 'Summary', 'physical_index': 73}, {'structure': '6.4.2.2', 'title': 'Roles of the modules', 'physical_index': 73}, {'structure': '6.4.2.2.1', 'title': 'NVRAM Manager', 'physical_index': 74}, {'structure': '6.4.3.1', 'title': 'Summary', 'physical_index': 74}, {'structure': '6.4.3.2', 'title': 'Roles of the modules', 'physical_index': 75}, {'structure': '6.4.3.2.1', 'title': 'NVRAM Manager', 'physical_index': 75}, {'structure': '6.4.4.1', 'title': 'Summary', 'physical_index': 76}, {'structure': '6.4.4.2', 'title': 'Roles of the modules', 'physical_index': 77}, {'structure': '6.4.4.2.1', 'title': 'NVRAM Manager', 'physical_index': 77}, {'structure': '6.4.4.2.2', 'title': 'Application Software Component', 'physical_index': 77}, {'structure': '6.4.5.1', 'title': 'Summary', 'physical_index': 78}, {'structure': '6.4.5.2', 'title': 'Roles of the modules', 'physical_index': 79}, {'structure': '6.4.5.2.1', 'title': 'NVRAM Manager', 'physical_index': 79}, {'structure': '6.4.5.2.2', 'title': 'Application Software Component', 'physical_index': 79}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.17763157894736842,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "CAN Transmission buffer full",
+        "page_number": 21
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 21
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 21
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "CAN Reception DLC error",
+        "page_number": 23
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 23
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 23
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "COM RX Deadline Monitoring",
+        "page_number": 24
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 24
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 24
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "COM TX Deadline Monitoring",
+        "page_number": 26
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 26
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 26
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "CAN Transport Protocol error during transmission",
+        "page_number": 27
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 27
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "CAN Transport Protocol error during reception",
+        "page_number": 28
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 28
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 28
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "CANNM TX Deadline Monitoring",
+        "page_number": 31
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "PDU replication error",
+        "page_number": 32
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 32
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 32
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "PDU counter error",
+        "page_number": 33
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 33
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 33
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Client / Server timeout",
+        "page_number": 34
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 34
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 34
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "NVRAM related errors",
+        "page_number": 36
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 36
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Error handling mechanisms",
+        "page_number": 36
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Error list for NVRAM stack",
+        "page_number": 37
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Mappings of EH mechanisms to NVRAM hardware failure modes",
+        "page_number": 38
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Driver level errors",
+        "page_number": 41
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Flash write job error",
+        "page_number": 41
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 41
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 41
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Flash erase job error",
+        "page_number": 44
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 44
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 44
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Flash read job error",
+        "page_number": 47
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Flash compare job error",
+        "page_number": 50
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "External Flash Hardware ID Mismatch",
+        "page_number": 52
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "EEPROM write job error",
+        "page_number": 54
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "EEPROM erase job error",
+        "page_number": 57
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "EEPROM read job error",
+        "page_number": 60
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "EEPROM compare job error",
+        "page_number": 63
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "EEPROM Abstraction / Flash Emulation level errors",
+        "page_number": 65
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "FEE consistency check error",
+        "page_number": 65
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "EA consistency check error",
+        "page_number": 68
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "NVRAM manager level errors",
+        "page_number": 71
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "NVM CRC check",
+        "page_number": 71
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "NVM write verification error",
+        "page_number": 73
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Static block check error",
+        "page_number": 74
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Loss of redundancy",
+        "page_number": 76
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "NVM API request failure",
+        "page_number": 78
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 47
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 48
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Flash controller",
+        "page_number": 48
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Flash driver",
+        "page_number": 48
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Flash Eeprom emulation",
+        "page_number": 48
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Memory Abstraction Interface",
+        "page_number": 48
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 49
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Application Software Component",
+        "page_number": 49
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 50
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 51
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Flash controller",
+        "page_number": 51
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Flash driver",
+        "page_number": 51
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Flash Eeprom emulation",
+        "page_number": 51
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 52
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 52
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "External Flash driver",
+        "page_number": 52
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Flash Eeprom emulation",
+        "page_number": 53
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Memory Abstraction Interface",
+        "page_number": 53
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 54
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 55
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "EEPROM controller",
+        "page_number": 55
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "EEPROM driver",
+        "page_number": 55
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "EEPROM Abstraction",
+        "page_number": 55
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Memory Abstraction Interface",
+        "page_number": 55
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 56
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Application Software Component",
+        "page_number": 56
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 57
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 58
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "EEPROM controller",
+        "page_number": 58
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "EEPROM driver",
+        "page_number": 58
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "EEPROM Abstraction",
+        "page_number": 58
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Memory Abstraction Interface",
+        "page_number": 58
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 59
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "Application Software Component",
+        "page_number": 59
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 60
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 61
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "EEPROM controller",
+        "page_number": 61
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "EEPROM driver",
+        "page_number": 61
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "EEPROM Abstraction",
+        "page_number": 61
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "Memory Abstraction Interface",
+        "page_number": 62
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 62
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "Application Software Component",
+        "page_number": 62
+      },
+      {
+        "list_index": 118,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 63
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 64
+      },
+      {
+        "list_index": 120,
+        "answer": "no",
+        "title": "EEPROM controller",
+        "page_number": 64
+      },
+      {
+        "list_index": 121,
+        "answer": "no",
+        "title": "EEPROM driver",
+        "page_number": 64
+      },
+      {
+        "list_index": 122,
+        "answer": "no",
+        "title": "EEPROM Abstraction",
+        "page_number": 64
+      },
+      {
+        "list_index": 123,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 65
+      },
+      {
+        "list_index": 124,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 66
+      },
+      {
+        "list_index": 125,
+        "answer": "no",
+        "title": "Flash Eeprom emulation",
+        "page_number": 66
+      },
+      {
+        "list_index": 126,
+        "answer": "no",
+        "title": "Memory Abstraction Interface",
+        "page_number": 66
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 66
+      },
+      {
+        "list_index": 128,
+        "answer": "no",
+        "title": "Application Software Component",
+        "page_number": 67
+      },
+      {
+        "list_index": 129,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 68
+      },
+      {
+        "list_index": 130,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 69
+      },
+      {
+        "list_index": 131,
+        "answer": "no",
+        "title": "Eeprom Abstraction",
+        "page_number": 69
+      },
+      {
+        "list_index": 132,
+        "answer": "no",
+        "title": "Memory Abstraction Interface",
+        "page_number": 69
+      },
+      {
+        "list_index": 133,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 69
+      },
+      {
+        "list_index": 134,
+        "answer": "no",
+        "title": "Application Software Component",
+        "page_number": 70
+      },
+      {
+        "list_index": 135,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 71
+      },
+      {
+        "list_index": 136,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 72
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 72
+      },
+      {
+        "list_index": 138,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 73
+      },
+      {
+        "list_index": 139,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 73
+      },
+      {
+        "list_index": 140,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 74
+      },
+      {
+        "list_index": 141,
+        "answer": "no",
+        "title": "Summary",
+        "page_number": 74
+      },
+      {
+        "list_index": 145,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 77
+      },
+      {
+        "list_index": 146,
+        "answer": "no",
+        "title": "NVRAM Manager",
+        "page_number": 77
+      },
+      {
+        "list_index": 149,
+        "answer": "no",
+        "title": "Roles of the modules",
+        "page_number": 79
+      }
+    ]
+  }
+]

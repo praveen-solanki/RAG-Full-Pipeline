@@ -1,0 +1,207 @@
+[
+  {
+    "total_page_number": 29
+  },
+  {
+    "total_token": 17930
+  },
+  {
+    "toc_content": " Explanation of Application Interfaces of Occupant \nand P edestrian Safety Systems Domain  \nAUTOSAR CP Release 4.4.0    \n \n4 of 29 Document ID 271: AUTOSAR_EXP_AIOccupa ntAndPedestrianSafety  \n \n- AUTOSAR confidential - \nTable of Contents  \n \n \n1 Purpose of this Document  :  :  :   5 \n1.1 References  :  :  :  :  5 \n2 Description of Terms and Concepts  :  :  :  5 \n2.1 List of terms  and abbreviations  :  :  :  5 \n2.2 Introduction into domain \u201cOccupant and Pedestrian Safety\u201d  :   6 \n2.3 OPS Phases (Event Timeline)  :  :  :   6 \n2.3.1  Pre-Crash Phase  :  :  :   6 \n2.3.2  Post-Crash Phases:  :  :  :   7 \n2.4 Domain Modeling  :  :  :   8 \n2.5 Reference System  :  :  :   9 \n2.5.1  Reference Coordinate System  :  :  .. 9 \n2.5.2  Naming convention for Seat Positions  :  :   10 \n3 Architecture Overview  :  :  :   12 \n3.1 Variant Handling  :  :  :   13 \n4 Description of Software Compositions and Components  :  .... 14 \n4.1 Sensor Pool (SWCo 001 SP)  :  :  :   14 \n4.2 Actuator Pool (SWCo 002 AP)  :  :  :  16 \n4.3 Crash Status (SWCo 003 CS)  :  :  :  18 \n4.4 Seat Belt Reminder (SWCo 102 SBR)  :  :   19 \n4.4.1  SWC Seat  Belt Reminder Calculation  :  :   20 \n4.4.2  SWC Seat Belt Reminder Belt State  :  :   20 \n4.4.3  SWC Seat Belt Reminder Warn Control  :  :   20 \n4.5 Vehicle Crash Detection (SWCo 301 VCD)  :  :   21 \n4.6 Roll- and Pitch - over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)  :   23 \n4.7 Occupant Restraint System Activation (SWCo 304 ORA)  :   23 \n4.8 Pedestrian Protection Crash Detection (SWCo 305 PCD)  :   24 \n4.9 Pedestrian Protection System Activation (SWCo 306 PPA)  :   24 \n4.10  Occupant Detection (SWCo 101 OD)  :  :   25 \n5 Additional Information  :  :  :   26 \n5.1 Detailed Explanation of the Sensor Pool Port Names.  :  .. 26 \n5.2 Detailed Explanation of the Actuator Pool Port Names.  :   27 \n \n ",
+    "toc_page_list": [
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'page': 5}, {'structure': '1.1', 'title': 'References', 'page': 5}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'page': 5}, {'structure': '2.1', 'title': 'List of terms and abbreviations', 'page': 5}, {'structure': '2.2', 'title': 'Introduction into domain \u201cOccupant and Pedestrian Safety\u201d', 'page': 6}, {'structure': '2.3', 'title': 'OPS Phases (Event Timeline)', 'page': 6}, {'structure': '2.3.1', 'title': 'Pre-Crash Phase', 'page': 6}, {'structure': '2.3.2', 'title': 'Post-Crash Phases', 'page': 7}, {'structure': '2.4', 'title': 'Domain Modeling', 'page': 8}, {'structure': '2.5', 'title': 'Reference System', 'page': 9}, {'structure': '2.5.1', 'title': 'Reference Coordinate System', 'page': 9}, {'structure': '2.5.2', 'title': 'Naming convention for Seat Positions', 'page': 10}, {'structure': '3', 'title': 'Architecture Overview', 'page': 12}, {'structure': '3.1', 'title': 'Variant Handling', 'page': 13}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'page': 14}, {'structure': '4.1', 'title': 'Sensor Pool (SWCo 001 SP)', 'page': 14}, {'structure': '4.2', 'title': 'Actuator Pool (SWCo 002 AP)', 'page': 16}, {'structure': '4.3', 'title': 'Crash Status (SWCo 003 CS)', 'page': 18}, {'structure': '4.4', 'title': 'Seat Belt Reminder (SWCo 102 SBR)', 'page': 19}, {'structure': '4.4.1', 'title': 'SWC Seat Belt Reminder Calculation', 'page': 20}, {'structure': '4.4.2', 'title': 'SWC Seat Belt Reminder Belt State', 'page': 20}, {'structure': '4.4.3', 'title': 'SWC Seat Belt Reminder Warn Control', 'page': 20}, {'structure': '4.5', 'title': 'Vehicle Crash Detection (SWCo 301 VCD)', 'page': 21}, {'structure': '4.6', 'title': 'Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)', 'page': 23}, {'structure': '4.7', 'title': 'Occupant Restraint System Activation (SWCo 304 ORA)', 'page': 23}, {'structure': '4.8', 'title': 'Pedestrian Protection Crash Detection (SWCo 305 PCD)', 'page': 24}, {'structure': '4.9', 'title': 'Pedestrian Protection System Activation (SWCo 306 PPA)', 'page': 24}, {'structure': '4.10', 'title': 'Occupant Detection (SWCo 101 OD)', 'page': 25}, {'structure': '5', 'title': 'Additional Information', 'page': 26}, {'structure': '5.1', 'title': 'Detailed Explanation of the Sensor Pool Port Names.', 'page': 26}, {'structure': '5.2', 'title': 'Detailed Explanation of the Actuator Pool Port Names.', 'page': 27}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': '<physical_index_5>'}, {'structure': '1.1', 'title': 'References', 'physical_index': '<physical_index_5>'}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': '<physical_index_5>'}, {'structure': '2.1', 'title': 'List of terms and abbreviations', 'physical_index': '<physical_index_5>'}, {'structure': '2.2', 'title': 'Introduction into domain \u201cOccupant and Pedestrian Safety\u201d', 'physical_index': '<physical_index_6>'}, {'structure': '2.3', 'title': 'OPS Phases (Event Timeline)', 'physical_index': '<physical_index_6>'}, {'structure': '2.3.1', 'title': 'Pre-Crash Phase', 'physical_index': '<physical_index_6>'}, {'structure': '2.3.2', 'title': 'Post-Crash Phases', 'physical_index': '<physical_index_7>'}, {'structure': '2.4', 'title': 'Domain Modeling', 'physical_index': '<physical_index_8>'}, {'structure': '2.5', 'title': 'Reference System', 'physical_index': '<physical_index_9>'}, {'structure': '2.5.1', 'title': 'Reference Coordinate System', 'physical_index': '<physical_index_9>'}, {'structure': '2.5.2', 'title': 'Naming convention for Seat Positions', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Variant Handling', 'physical_index': '<physical_index_13>'}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Sensor Pool (SWCo 001 SP)', 'physical_index': '<physical_index_14>'}, {'structure': '4.2', 'title': 'Actuator Pool (SWCo 002 AP)', 'physical_index': '<physical_index_16>'}, {'structure': '4.3', 'title': 'Crash Status (SWCo 003 CS)', 'physical_index': '<physical_index_18>'}, {'structure': '4.4', 'title': 'Seat Belt Reminder (SWCo 102 SBR)', 'physical_index': '<physical_index_19>'}, {'structure': '4.4.1', 'title': 'SWC Seat Belt Reminder Calculation', 'physical_index': '<physical_index_20>'}, {'structure': '4.4.2', 'title': 'SWC Seat Belt Reminder Belt State', 'physical_index': '<physical_index_20>'}, {'structure': '4.4.3', 'title': 'SWC Seat Belt Reminder Warn Control', 'physical_index': '<physical_index_20>'}, {'structure': '4.5', 'title': 'Vehicle Crash Detection (SWCo 301 VCD)', 'physical_index': '<physical_index_21>'}, {'structure': '4.6', 'title': 'Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)', 'physical_index': '<physical_index_23>'}, {'structure': '4.7', 'title': 'Occupant Restraint System Activation (SWCo 304 ORA)', 'physical_index': '<physical_index_23>'}, {'structure': '4.8', 'title': 'Pedestrian Protection Crash Detection (SWCo 305 PCD)', 'physical_index': '<physical_index_24>'}, {'structure': '4.9', 'title': 'Pedestrian Protection System Activation (SWCo 306 PPA)', 'physical_index': '<physical_index_24>'}, {'structure': '4.10', 'title': 'Occupant Detection (SWCo 101 OD)', 'physical_index': '<physical_index_25>'}, {'structure': '5', 'title': 'Additional Information', 'physical_index': '<physical_index_26>'}, {'structure': '5.1', 'title': 'Detailed Explanation of the Sensor Pool Port Names.', 'physical_index': '<physical_index_26>'}, {'structure': '5.2', 'title': 'Detailed Explanation of the Actuator Pool Port Names.', 'physical_index': '<physical_index_27>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 5}, {'structure': '1.1', 'title': 'References', 'physical_index': 5}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 5}, {'structure': '2.1', 'title': 'List of terms and abbreviations', 'physical_index': 5}, {'structure': '2.2', 'title': 'Introduction into domain \u201cOccupant and Pedestrian Safety\u201d', 'physical_index': 6}, {'structure': '2.3', 'title': 'OPS Phases (Event Timeline)', 'physical_index': 6}, {'structure': '2.3.1', 'title': 'Pre-Crash Phase', 'physical_index': 6}, {'structure': '2.3.2', 'title': 'Post-Crash Phases', 'physical_index': 7}, {'structure': '2.4', 'title': 'Domain Modeling', 'physical_index': 8}, {'structure': '2.5', 'title': 'Reference System', 'physical_index': 9}, {'structure': '2.5.1', 'title': 'Reference Coordinate System', 'physical_index': 9}, {'structure': '2.5.2', 'title': 'Naming convention for Seat Positions', 'physical_index': 10}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 12}, {'structure': '3.1', 'title': 'Variant Handling', 'physical_index': 13}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 14}, {'structure': '4.1', 'title': 'Sensor Pool (SWCo 001 SP)', 'physical_index': 14}, {'structure': '4.2', 'title': 'Actuator Pool (SWCo 002 AP)', 'physical_index': 16}, {'structure': '4.3', 'title': 'Crash Status (SWCo 003 CS)', 'physical_index': 18}, {'structure': '4.4', 'title': 'Seat Belt Reminder (SWCo 102 SBR)', 'physical_index': 19}, {'structure': '4.4.1', 'title': 'SWC Seat Belt Reminder Calculation', 'physical_index': 20}, {'structure': '4.4.2', 'title': 'SWC Seat Belt Reminder Belt State', 'physical_index': 20}, {'structure': '4.4.3', 'title': 'SWC Seat Belt Reminder Warn Control', 'physical_index': 20}, {'structure': '4.5', 'title': 'Vehicle Crash Detection (SWCo 301 VCD)', 'physical_index': 21}, {'structure': '4.6', 'title': 'Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)', 'physical_index': 23}, {'structure': '4.7', 'title': 'Occupant Restraint System Activation (SWCo 304 ORA)', 'physical_index': 23}, {'structure': '4.8', 'title': 'Pedestrian Protection Crash Detection (SWCo 305 PCD)', 'physical_index': 24}, {'structure': '4.9', 'title': 'Pedestrian Protection System Activation (SWCo 306 PPA)', 'physical_index': 24}, {'structure': '4.10', 'title': 'Occupant Detection (SWCo 101 OD)', 'physical_index': 25}, {'structure': '5', 'title': 'Additional Information', 'physical_index': 26}, {'structure': '5.1', 'title': 'Detailed Explanation of the Sensor Pool Port Names.', 'physical_index': 26}, {'structure': '5.2', 'title': 'Detailed Explanation of the Actuator Pool Port Names.', 'physical_index': 27}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Purpose of this Document', 'page': 5, 'physical_index': 5}, {'title': 'References', 'page': 5, 'physical_index': 5}, {'title': 'Description of Terms and Concepts', 'page': 5, 'physical_index': 5}, {'title': 'List of terms and abbreviations', 'page': 5, 'physical_index': 5}, {'title': 'Introduction into domain \u201cOccupant and Pedestrian Safety\u201d', 'page': 6, 'physical_index': 6}, {'title': 'OPS Phases (Event Timeline)', 'page': 6, 'physical_index': 6}, {'title': 'Pre-Crash Phase', 'page': 6, 'physical_index': 6}, {'title': 'Post-Crash Phases', 'page': 7, 'physical_index': 7}, {'title': 'Domain Modeling', 'page': 8, 'physical_index': 8}, {'title': 'Reference System', 'page': 9, 'physical_index': 9}, {'title': 'Reference Coordinate System', 'page': 9, 'physical_index': 9}, {'title': 'Naming convention for Seat Positions', 'page': 10, 'physical_index': 10}, {'title': 'Architecture Overview', 'page': 12, 'physical_index': 12}, {'title': 'Variant Handling', 'page': 13, 'physical_index': 13}, {'title': 'Description of Software Compositions and Components', 'page': 14, 'physical_index': 14}, {'title': 'Sensor Pool (SWCo 001 SP)', 'page': 14, 'physical_index': 14}, {'title': 'Actuator Pool (SWCo 002 AP)', 'page': 16, 'physical_index': 16}, {'title': 'Crash Status (SWCo 003 CS)', 'page': 18, 'physical_index': 18}, {'title': 'Seat Belt Reminder (SWCo 102 SBR)', 'page': 19, 'physical_index': 19}, {'title': 'SWC Seat Belt Reminder Calculation', 'page': 20, 'physical_index': 20}, {'title': 'SWC Seat Belt Reminder Belt State', 'page': 20, 'physical_index': 20}, {'title': 'SWC Seat Belt Reminder Warn Control', 'page': 20, 'physical_index': 20}, {'title': 'Vehicle Crash Detection (SWCo 301 VCD)', 'page': 21, 'physical_index': 21}, {'title': 'Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)', 'page': 23, 'physical_index': 23}, {'title': 'Occupant Restraint System Activation (SWCo 304 ORA)', 'page': 23, 'physical_index': 23}, {'title': 'Pedestrian Protection Crash Detection (SWCo 305 PCD)', 'page': 24, 'physical_index': 24}, {'title': 'Pedestrian Protection System Activation (SWCo 306 PPA)', 'page': 24, 'physical_index': 24}, {'title': 'Occupant Detection (SWCo 101 OD)', 'page': 25, 'physical_index': 25}, {'title': 'Additional Information', 'page': 26, 'physical_index': 26}, {'title': 'Detailed Explanation of the Sensor Pool Port Names.', 'page': 26, 'physical_index': 26}, {'title': 'Detailed Explanation of the Actuator Pool Port Names.', 'page': 27, 'physical_index': 27}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 5}, {'structure': '1.1', 'title': 'References', 'physical_index': 5}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 5}, {'structure': '2.1', 'title': 'List of terms and abbreviations', 'physical_index': 5}, {'structure': '2.2', 'title': 'Introduction into domain \u201cOccupant and Pedestrian Safety\u201d', 'physical_index': 6}, {'structure': '2.3', 'title': 'OPS Phases (Event Timeline)', 'physical_index': 6}, {'structure': '2.3.1', 'title': 'Pre-Crash Phase', 'physical_index': 6}, {'structure': '2.3.2', 'title': 'Post-Crash Phases', 'physical_index': 7}, {'structure': '2.4', 'title': 'Domain Modeling', 'physical_index': 8}, {'structure': '2.5', 'title': 'Reference System', 'physical_index': 9}, {'structure': '2.5.1', 'title': 'Reference Coordinate System', 'physical_index': 9}, {'structure': '2.5.2', 'title': 'Naming convention for Seat Positions', 'physical_index': 10}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 12}, {'structure': '3.1', 'title': 'Variant Handling', 'physical_index': 13}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 14}, {'structure': '4.1', 'title': 'Sensor Pool (SWCo 001 SP)', 'physical_index': 14}, {'structure': '4.2', 'title': 'Actuator Pool (SWCo 002 AP)', 'physical_index': 16}, {'structure': '4.3', 'title': 'Crash Status (SWCo 003 CS)', 'physical_index': 18}, {'structure': '4.4', 'title': 'Seat Belt Reminder (SWCo 102 SBR)', 'physical_index': 19}, {'structure': '4.4.1', 'title': 'SWC Seat Belt Reminder Calculation', 'physical_index': 20}, {'structure': '4.4.2', 'title': 'SWC Seat Belt Reminder Belt State', 'physical_index': 20}, {'structure': '4.4.3', 'title': 'SWC Seat Belt Reminder Warn Control', 'physical_index': 20}, {'structure': '4.5', 'title': 'Vehicle Crash Detection (SWCo 301 VCD)', 'physical_index': 21}, {'structure': '4.6', 'title': 'Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)', 'physical_index': 23}, {'structure': '4.7', 'title': 'Occupant Restraint System Activation (SWCo 304 ORA)', 'physical_index': 23}, {'structure': '4.8', 'title': 'Pedestrian Protection Crash Detection (SWCo 305 PCD)', 'physical_index': 24}, {'structure': '4.9', 'title': 'Pedestrian Protection System Activation (SWCo 306 PPA)', 'physical_index': 24}, {'structure': '4.10', 'title': 'Occupant Detection (SWCo 101 OD)', 'physical_index': 25}, {'structure': '5', 'title': 'Additional Information', 'physical_index': 26}, {'structure': '5.1', 'title': 'Detailed Explanation of the Sensor Pool Port Names.', 'physical_index': 26}, {'structure': '5.2', 'title': 'Detailed Explanation of the Actuator Pool Port Names.', 'physical_index': 27}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Purpose of this Document', 'physical_index': 5}, {'structure': '1.1', 'title': 'References', 'physical_index': 5}, {'structure': '2', 'title': 'Description of Terms and Concepts', 'physical_index': 5}, {'structure': '2.1', 'title': 'List of terms and abbreviations', 'physical_index': 5}, {'structure': '2.2', 'title': 'Introduction into domain \u201cOccupant and Pedestrian Safety\u201d', 'physical_index': 6}, {'structure': '2.3', 'title': 'OPS Phases (Event Timeline)', 'physical_index': 6}, {'structure': '2.3.1', 'title': 'Pre-Crash Phase', 'physical_index': 6}, {'structure': '2.3.2', 'title': 'Post-Crash Phases', 'physical_index': 7}, {'structure': '2.4', 'title': 'Domain Modeling', 'physical_index': 8}, {'structure': '2.5', 'title': 'Reference System', 'physical_index': 9}, {'structure': '2.5.1', 'title': 'Reference Coordinate System', 'physical_index': 9}, {'structure': '2.5.2', 'title': 'Naming convention for Seat Positions', 'physical_index': 10}, {'structure': '3', 'title': 'Architecture Overview', 'physical_index': 12}, {'structure': '3.1', 'title': 'Variant Handling', 'physical_index': 13}, {'structure': '4', 'title': 'Description of Software Compositions and Components', 'physical_index': 14}, {'structure': '4.1', 'title': 'Sensor Pool (SWCo 001 SP)', 'physical_index': 14}, {'structure': '4.2', 'title': 'Actuator Pool (SWCo 002 AP)', 'physical_index': 16}, {'structure': '4.3', 'title': 'Crash Status (SWCo 003 CS)', 'physical_index': 18}, {'structure': '4.4', 'title': 'Seat Belt Reminder (SWCo 102 SBR)', 'physical_index': 19}, {'structure': '4.4.1', 'title': 'SWC Seat Belt Reminder Calculation', 'physical_index': 20}, {'structure': '4.4.2', 'title': 'SWC Seat Belt Reminder Belt State', 'physical_index': 20}, {'structure': '4.4.3', 'title': 'SWC Seat Belt Reminder Warn Control', 'physical_index': 20}, {'structure': '4.5', 'title': 'Vehicle Crash Detection (SWCo 301 VCD)', 'physical_index': 21}, {'structure': '4.6', 'title': 'Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)', 'physical_index': 23}, {'structure': '4.7', 'title': 'Occupant Restraint System Activation (SWCo 304 ORA)', 'physical_index': 23}, {'structure': '4.8', 'title': 'Pedestrian Protection Crash Detection (SWCo 305 PCD)', 'physical_index': 24}, {'structure': '4.9', 'title': 'Pedestrian Protection System Activation (SWCo 306 PPA)', 'physical_index': 24}, {'structure': '4.10', 'title': 'Occupant Detection (SWCo 101 OD)', 'physical_index': 25}, {'structure': '5', 'title': 'Additional Information', 'physical_index': 26}, {'structure': '5.1', 'title': 'Detailed Explanation of the Sensor Pool Port Names.', 'physical_index': 26}, {'structure': '5.2', 'title': 'Detailed Explanation of the Actuator Pool Port Names.', 'physical_index': 27}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.6774193548387096,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "SWC Seat Belt Reminder Belt State",
+        "page_number": 20
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "SWC Seat Belt Reminder Warn Control",
+        "page_number": 20
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Vehicle Crash Detection (SWCo 301 VCD)",
+        "page_number": 21
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)",
+        "page_number": 23
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Occupant Restraint System Activation (SWCo 304 ORA)",
+        "page_number": 23
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Pedestrian Protection System Activation (SWCo 306 PPA)",
+        "page_number": 24
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Occupant Detection (SWCo 101 OD)",
+        "page_number": 25
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Additional Information",
+        "page_number": 26
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Detailed Explanation of the Sensor Pool Port Names.",
+        "page_number": 26
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Detailed Explanation of the Actuator Pool Port Names.",
+        "page_number": 27
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 20, 'title': 'SWC Seat Belt Reminder Belt State', 'prev_correct': 20, 'next_correct': 24}, {'list_index': 21, 'title': 'SWC Seat Belt Reminder Warn Control', 'prev_correct': 20, 'next_correct': 24}, {'list_index': 22, 'title': 'Vehicle Crash Detection (SWCo 301 VCD)', 'prev_correct': 20, 'next_correct': 24}, {'list_index': 23, 'title': 'Roll- and Pitch-over Crash Detection (SWCo\u2019s 302 ROD, 303 POD)', 'prev_correct': 20, 'next_correct': 24}, {'list_index': 24, 'title': 'Occupant Restraint System Activation (SWCo 304 ORA)', 'prev_correct': 20, 'next_correct': 24}, {'list_index': 26, 'title': 'Pedestrian Protection System Activation (SWCo 306 PPA)', 'prev_correct': 24, 'next_correct': 29}, {'list_index': 27, 'title': 'Occupant Detection (SWCo 101 OD)', 'prev_correct': 24, 'next_correct': 29}, {'list_index': 28, 'title': 'Additional Information', 'prev_correct': 24, 'next_correct': 29}, {'list_index': 29, 'title': 'Detailed Explanation of the Sensor Pool Port Names.', 'prev_correct': 24, 'next_correct': 29}, {'list_index': 30, 'title': 'Detailed Explanation of the Actuator Pool Port Names.', 'prev_correct': 24, 'next_correct': 29}]"
+  },
+  {
+    "message": "invalid_results: []"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Purpose of this Document' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'References' appears in the page_text, but it is not at the beginning. It is found under the 'Purpose of this Document' section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Reference System' appears in the page_text, but it is not the first content. There are several lines of text and a figure before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Reference Coordinate System' appears in the page_text, but it is not the first content. There are several lines of text and a figure before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Naming convention for Seat Positions' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'List of terms and abbreviations' appears in the page_text, but it is not at the beginning. It is found under section 2.1, after other content.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Actuator Pool (SWCo 002 AP)' appears after some introductory text and document information, which means it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction into domain \u201cOccupant and Pedestrian Safety\u201d' appears after some introductory text and document metadata, indicating that it is not the first content in the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given section title 'Preface' does not appear at the beginning of the provided page_text. The page_text starts with information about the document, such as its title, owner, and change history.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Domain Modeling' appears after a significant amount of text, including an explanation of application interfaces, a figure description, and other content. Therefore, it does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Description of Terms and Concepts' appears in the page_text, but it is not the first content. There are several lines of text before it, including the document title, version information, and the purpose of the document.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Pre-Crash Phase' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including an introduction to the domain and a description of OPS phases.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Crash Status (SWCo 003 CS)' appears after a significant amount of text, including explanations of other components and a list of actuator SWCs. Therefore, it does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '2.3 OPS Phases (Event Timeline)' appears in the page_text, but it is not the first content. There is a significant amount of text before this section title, including an introduction to the domain 'Occupant and Pedestrian Safety'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Post-Crash Phases' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including explanations of other phases and a section on 'In-Crash: Undetermined collision'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Architecture Overview' appears after some introductory text and document information, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Variant Handling' appears in the page_text, but it is not the first content. There are several lines of text and a figure before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Description of Software Compositions and Components' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Detailed Explanation of the Actuator Pool Port Names' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Sensor Pool (SWCo 001 SP)' appears after several lines of introductory text and other content. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '4.4 Seat Belt Reminder (SWCo 102 SBR)' appears after some introductory text and document metadata, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  }
+]

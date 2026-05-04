@@ -1,0 +1,234 @@
+[
+  {
+    "total_page_number": 70
+  },
+  {
+    "total_token": 31172
+  },
+  {
+    "toc_content": "Guide to Mode Management\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Introduction 8\n1.1 Further Work : 8\n2 Overall mechanisms and concepts 9\n2.1 Declaration of modes : 9\n2.2 Mode managers and mode users : 11\n2.3 Modes in the RTE : 11\n2.4 Modes in the Basic Software Scheduler : 12\n2.5 Communication of modes : 12\n2.5.1 Mode switch : 13\n2.5.2 Mode request : 14\n2.5.3 Conformance of mode switches and mode requests : 14\n2.5.4 Mode proxies : 14\n2.5.5 Mode communication on multi core ECUs : 15\n3 Configuration of the Basic Software Modemanager 18\n3.1 Process how to configure and integrate a BswM : 18\n3.2 Semantics of BswM Configuration: Interfaces and behavioral aspects . 19\n3.2.1 Interface of the BswM : 19\n3.2.1.1 Mode Requests : 19\n3.2.1.2 Available Actions : 20\n3.2.2 Definition of the interface in pseudo code : 21\n3.2.2.1 Mode switch and mode request interfaces : 21\n3.2.2.2 ModeRequestPorts defined by the standardized in-\nterface of the BswM : 23\n3.2.2.3 Configurable ModeRequestPorts : 30\n3.2.2.4 Configurable ModeSwitchPorts : 31\n3.2.3 Configuration of the BswM behavior : 31\n3.3 ECU state management : 33\n3.3.1 ECU Mode Handling : 33\n3.3.1.1 Startup : 34\n3.3.1.2 Running : 34\n3.3.1.3 Shutdown and Sleep : 35\n3.3.2 Startup : 35\n3.3.3 Run : 37\n3.3.4 Shutdown : 38\n3.3.5 Sleep : 38\n3.3.6 Wakeup : 39\n3.3.7 Reset of partitions : 39\n3.4 Communication Management : 40\n3.4.1 Startup and Shutdown : 40\n3.4.2 I-PDU Group Switching : 41\n3.4.3 J1939 Networkmanagement : 45\n3.4.4 J1939 diagnostic mode management : 46\n5 of 70\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 440: AUTOSAR_EXP_ModeManagementGuideGuide to Mode Management\nAUTOSAR CP Release 4.4.0\n3.4.5 Pretended Networking : 47\n3.4.5.1 Activation of Pretended Networking : 47\n3.4.5.2 Deactivation of Pretended Networking : 48\n3.4.6 LIN Schedule Table Switch : 49\n3.5 Diagnostics : 50\n3.5.1 Diagnostic Session Control : 50\n3.5.2 ECU Reset : 51\n3.5.3 Rapid Power Shutdown : 53\n3.5.4 Communciation Control diagnostic service : 54\n3.5.5 Control DTC Setting : 57\n3.5.6 Roe Status : 57\n3.6 BswM to BswM interaction on multicore ECUs : 58\n3.7 Inter-partition Actions : 59\n3.8 Inter-partition Requests/Indications : 59\n4 Backward Compatibility 61\n4.1 Example for BswM Configuration : 63\n4.1.1 Startup : 63\n4.1.2 Shutdown : 64\n4.1.3 Wakeup : 66\n5 Acronyms and abbreviations 67\n5.1 Technical Terms : 67\n6 of 70\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 440: AUTOSAR_EXP_ModeManagementGuide",
+    "toc_page_list": [
+      4,
+      5
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 8}, {'structure': '1.1', 'title': 'Further Work', 'page': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'page': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'page': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'page': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'page': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'page': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'page': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'page': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'page': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'page': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'page': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'page': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'page': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'page': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'page': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'page': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'page': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'page': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'page': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'page': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'page': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'page': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'page': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'page': 31}, {'structure': '3.3', 'title': 'ECU state management', 'page': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'page': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'page': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'page': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'page': 35}, {'structure': '3.3.2', 'title': 'Startup', 'page': 35}, {'structure': '3.3.3', 'title': 'Run', 'page': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'page': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'page': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'page': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'page': 39}, {'structure': '3.4', 'title': 'Communication Management', 'page': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'page': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'page': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'page': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'page': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'page': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'page': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'page': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'page': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'page': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'page': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'page': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'page': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'page': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'page': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'page': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'page': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'page': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'page': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'page': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'page': 63}, {'structure': '4.1.1', 'title': 'Startup', 'page': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'page': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'page': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'page': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'page': 67}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': '<physical_index_8>'}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': '<physical_index_9>'}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': '<physical_index_9>'}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': '<physical_index_11>'}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': '<physical_index_11>'}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': '<physical_index_12>'}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': '<physical_index_12>'}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': '<physical_index_13>'}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': '<physical_index_14>'}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': '<physical_index_15>'}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': '<physical_index_18>'}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': '<physical_index_18>'}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': '<physical_index_19>'}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': '<physical_index_20>'}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': '<physical_index_23>'}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': '<physical_index_30>'}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': '<physical_index_31>'}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': '<physical_index_31>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 31}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 8, 'physical_index': 8}, {'title': 'Further Work', 'page': 8, 'physical_index': 8}, {'title': 'Overall mechanisms and concepts', 'page': 9, 'physical_index': 9}, {'title': 'Declaration of modes', 'page': 9, 'physical_index': 9}, {'title': 'Mode managers and mode users', 'page': 11, 'physical_index': 11}, {'title': 'Modes in the RTE', 'page': 11, 'physical_index': 11}, {'title': 'Modes in the Basic Software Scheduler', 'page': 12, 'physical_index': 12}, {'title': 'Communication of modes', 'page': 12, 'physical_index': 12}, {'title': 'Mode switch', 'page': 13, 'physical_index': 13}, {'title': 'Mode request', 'page': 14, 'physical_index': 14}, {'title': 'Conformance of mode switches and mode requests', 'page': 14, 'physical_index': 14}, {'title': 'Mode proxies', 'page': 14, 'physical_index': 14}, {'title': 'Mode communication on multi core ECUs', 'page': 15, 'physical_index': 15}, {'title': 'Configuration of the Basic Software Modemanager', 'page': 18, 'physical_index': 18}, {'title': 'Process how to configure and integrate a BswM', 'page': 18, 'physical_index': 18}, {'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'page': 19, 'physical_index': 19}, {'title': 'Interface of the BswM', 'page': 19, 'physical_index': 19}, {'title': 'Mode Requests', 'page': 19, 'physical_index': 19}, {'title': 'Available Actions', 'page': 20, 'physical_index': 20}, {'title': 'Definition of the interface in pseudo code', 'page': 21, 'physical_index': 21}, {'title': 'Mode switch and mode request interfaces', 'page': 21, 'physical_index': 21}, {'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'page': 23, 'physical_index': 23}, {'title': 'Configurable ModeRequestPorts', 'page': 30, 'physical_index': 30}, {'title': 'Configurable ModeSwitchPorts', 'page': 31, 'physical_index': 31}, {'title': 'Configuration of the BswM behavior', 'page': 31, 'physical_index': 31}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 31}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': 35}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': 35}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': 39}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': 63}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': 67}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Further Work', 'physical_index': 8}, {'structure': '2', 'title': 'Overall mechanisms and concepts', 'physical_index': 9}, {'structure': '2.1', 'title': 'Declaration of modes', 'physical_index': 9}, {'structure': '2.2', 'title': 'Mode managers and mode users', 'physical_index': 11}, {'structure': '2.3', 'title': 'Modes in the RTE', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modes in the Basic Software Scheduler', 'physical_index': 12}, {'structure': '2.5', 'title': 'Communication of modes', 'physical_index': 12}, {'structure': '2.5.1', 'title': 'Mode switch', 'physical_index': 13}, {'structure': '2.5.2', 'title': 'Mode request', 'physical_index': 14}, {'structure': '2.5.3', 'title': 'Conformance of mode switches and mode requests', 'physical_index': 14}, {'structure': '2.5.4', 'title': 'Mode proxies', 'physical_index': 14}, {'structure': '2.5.5', 'title': 'Mode communication on multi core ECUs', 'physical_index': 15}, {'structure': '3', 'title': 'Configuration of the Basic Software Modemanager', 'physical_index': 18}, {'structure': '3.1', 'title': 'Process how to configure and integrate a BswM', 'physical_index': 18}, {'structure': '3.2', 'title': 'Semantics of BswM Configuration: Interfaces and behavioral aspects', 'physical_index': 19}, {'structure': '3.2.1', 'title': 'Interface of the BswM', 'physical_index': 19}, {'structure': '3.2.1.1', 'title': 'Mode Requests', 'physical_index': 19}, {'structure': '3.2.1.2', 'title': 'Available Actions', 'physical_index': 20}, {'structure': '3.2.2', 'title': 'Definition of the interface in pseudo code', 'physical_index': 21}, {'structure': '3.2.2.1', 'title': 'Mode switch and mode request interfaces', 'physical_index': 21}, {'structure': '3.2.2.2', 'title': 'ModeRequestPorts defined by the standardized interface of the BswM', 'physical_index': 23}, {'structure': '3.2.2.3', 'title': 'Configurable ModeRequestPorts', 'physical_index': 30}, {'structure': '3.2.2.4', 'title': 'Configurable ModeSwitchPorts', 'physical_index': 31}, {'structure': '3.2.3', 'title': 'Configuration of the BswM behavior', 'physical_index': 31}, {'structure': '3.3', 'title': 'ECU state management', 'physical_index': 33}, {'structure': '3.3.1', 'title': 'ECU Mode Handling', 'physical_index': 33}, {'structure': '3.3.1.1', 'title': 'Startup', 'physical_index': 34}, {'structure': '3.3.1.2', 'title': 'Running', 'physical_index': 34}, {'structure': '3.3.1.3', 'title': 'Shutdown and Sleep', 'physical_index': 35}, {'structure': '3.3.2', 'title': 'Startup', 'physical_index': 35}, {'structure': '3.3.3', 'title': 'Run', 'physical_index': 37}, {'structure': '3.3.4', 'title': 'Shutdown', 'physical_index': 38}, {'structure': '3.3.5', 'title': 'Sleep', 'physical_index': 38}, {'structure': '3.3.6', 'title': 'Wakeup', 'physical_index': 39}, {'structure': '3.3.7', 'title': 'Reset of partitions', 'physical_index': 39}, {'structure': '3.4', 'title': 'Communication Management', 'physical_index': 40}, {'structure': '3.4.1', 'title': 'Startup and Shutdown', 'physical_index': 40}, {'structure': '3.4.2', 'title': 'I-PDU Group Switching', 'physical_index': 41}, {'structure': '3.4.3', 'title': 'J1939 Networkmanagement', 'physical_index': 45}, {'structure': '3.4.4', 'title': 'J1939 diagnostic mode management', 'physical_index': 46}, {'structure': '3.4.5', 'title': 'Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.1', 'title': 'Activation of Pretended Networking', 'physical_index': 47}, {'structure': '3.4.5.2', 'title': 'Deactivation of Pretended Networking', 'physical_index': 48}, {'structure': '3.4.6', 'title': 'LIN Schedule Table Switch', 'physical_index': 49}, {'structure': '3.5', 'title': 'Diagnostics', 'physical_index': 50}, {'structure': '3.5.1', 'title': 'Diagnostic Session Control', 'physical_index': 50}, {'structure': '3.5.2', 'title': 'ECU Reset', 'physical_index': 51}, {'structure': '3.5.3', 'title': 'Rapid Power Shutdown', 'physical_index': 53}, {'structure': '3.5.4', 'title': 'Communciation Control diagnostic service', 'physical_index': 54}, {'structure': '3.5.5', 'title': 'Control DTC Setting', 'physical_index': 57}, {'structure': '3.5.6', 'title': 'Roe Status', 'physical_index': 57}, {'structure': '3.6', 'title': 'BswM to BswM interaction on multicore ECUs', 'physical_index': 58}, {'structure': '3.7', 'title': 'Inter-partition Actions', 'physical_index': 59}, {'structure': '3.8', 'title': 'Inter-partition Requests/Indications', 'physical_index': 59}, {'structure': '4', 'title': 'Backward Compatibility', 'physical_index': 61}, {'structure': '4.1', 'title': 'Example for BswM Configuration', 'physical_index': 63}, {'structure': '4.1.1', 'title': 'Startup', 'physical_index': 63}, {'structure': '4.1.2', 'title': 'Shutdown', 'physical_index': 64}, {'structure': '4.1.3', 'title': 'Wakeup', 'physical_index': 66}, {'structure': '5', 'title': 'Acronyms and abbreviations', 'physical_index': 67}, {'structure': '5.1', 'title': 'Technical Terms', 'physical_index': 67}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 1.0,
+    "incorrect_results": []
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The given page_text starts with document metadata and a change history, and does not begin with the section title 'Preface'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Communication of modes' appears in the page_text, but it is not the first content. There is a significant amount of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Further Work' appears in the page_text, but it is not the first content. There are several paragraphs and a chapter before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Overall mechanisms and concepts' appears after some introductory text about the guide and release version. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Modes in the RTE' is found in the page_text, but it is not the first content. There are several paragraphs before it, discussing mode managers and mode users.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Interface of the BswM' appears after some introductory text about the semantics of BswM configuration. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '2.5.2 Mode request' appears after some introductory text about the guide and version information. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mode communication on multi core ECUs' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '2.2 Mode managers and mode users' appears after some introductory text about the guide and release version, indicating that the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mode Requests' appears in the page_text, but it is not at the very beginning. There is content before it, including a general introduction to the BswM and its semantics.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mode proxies' is found in the given page_text, but it is not at the very beginning. There is a significant amount of text before the section title, including other section titles and content.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mode switch' appears after some introductory text and a sub-section number (2.5.1) in the given page_text. Therefore, it is not the first content in the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Declaration of modes' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including an introduction to modes and their usage in AUTOSAR.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Modes in the Basic Software Scheduler' appears after a significant amount of text, which includes an introduction to mode management and a discussion of ECU states and modes. Therefore, the section does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Conformance of mode switches and mode requests' appears in the page_text, but it is not at the very beginning. There is content before it, including a discussion about mode requests and how they are handled in the AUTOSAR system.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' appears as '1 Introduction' at the beginning of the page_text, after some initial text. There are other contents before the section title, such as 'Guide to Mode Management AUTOSAR CP Release 4.4.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Available Actions' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ECU state management' appears after some introductory text and a table reference, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Process how to configure and integrate a BswM' appears in the page_text, but it is not at the very beginning. There is content before it, including the introduction to the BSW Mode Manager and a brief overview of its responsibilities.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configuration of the BswM behavior' appears in the page_text, but it is not the first content. There are several paragraphs and listings before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configurable ModeSwitchPorts' appears in the page_text, but it is not at the very beginning. There is content before it, including a discussion about mode notifications and listings.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ModeRequestPorts defined by the standardized interface of the BswM' appears in the page_text, but it is not at the very beginning. There are several lines of text and XML tags before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Startup' does not appear at the beginning of the page_text. There are several lines of text before the section title '3.3.1.1 Startup'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Mode switch and mode request interfaces' appears in the page_text, but it is not at the very beginning. There are other contents before it, such as information about the PPort and ProvidedModeDeclarationGroupPrototype.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Definition of the interface in pseudo code' appears in the page_text, but it is not the first content. There are other contents before it, such as the guide introduction and other section titles.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Semantics of BswM Configuration: Interfaces and behavioral aspects' appears in the page_text, but it is not the first content. There is text before it, including 'Guide to Mode Management AUTOSAR CP Release 4.4.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configurable ModeRequestPorts' is found in the page_text, but it is not the first content. There are several lines of text before it, including information about BswMJ1939DcmBroadcastStatus.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '3.3.1.3 Shutdown and Sleep' appears in the page_text, but it is not the first content. There are several lines of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configuration of the Basic Software Modemanager' matches the content in the page_text, but it is not the first content. There are other texts before the section title, such as 'Guide to Mode Management AUTOSAR CP Release 4.4.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Running' appears in the page_text, but it is not the first content. There are several lines of text before the section title '3.3.1.2 Running'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Startup' is found in the page_text, but it is not the first content. There are several paragraphs and rules described before the '3.3.2 Startup' section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ECU Mode Handling' appears after other content in the page_text, specifically after the '3.3 ECU state management' section and a listing of ModeDeclarationGroup. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Shutdown' appears after some introductory text and a previous section. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Run' appears after a significant amount of text, including a discussion about the RTE initialization and mode management. Therefore, it does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Reset of partitions' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Communication Management' appears in the page_text, but it is not the first content. There are several lines of text and code before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Sleep' is found in the page_text, but it is not at the very beginning. There is a significant amount of content before the section title '3.3.5 Sleep'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'I-PDU Group Switching' appears after some introductory text about the guide and release version. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Pretended Networking' appears in the page_text, but it is not the first content. There are several lines of text and code before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Wakeup' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Guide to Mode Management AUTOSAR CP Release 4.4.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Startup and Shutdown' appears in the page_text, but it is not at the beginning. It is found under the 'Communication Management' section, which indicates that there are other contents before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Diagnostics' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Deactivation of Pretended Networking' appears in the page_text, but it is not the first content. There are several paragraphs and points before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'J1939 Networkmanagement' appears in the page_text, but it is not the first content. There are other contents before it, such as the guide to mode management and some code snippets.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'LIN Schedule Table Switch' appears in the page_text, but it is not the first content. There are other contents before it, such as the guide introduction and other sections.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Diagnostic Session Control' appears in the page_text, but it is not at the very beginning. There is content before it, including a discussion about mode management and LIN schedule tables.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Activation of Pretended Networking' appears in the page_text, but it is not the first content. There are other contents before it, including a section titled '3.4.5 Pretended Networking'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'J1939 diagnostic mode management' appears in the page_text, but it is not at the very beginning. There is content before it, including a guide to mode management, rules for network management, and actions for different network states.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ECU Reset' is not the first content in the given page_text. There are several lines of text before the section title appears.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Rapid Power Shutdown' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Inter-partition Actions' appears in the page_text, but it is not the first content. There are several paragraphs before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Control DTC Setting' appears in the page_text, but it is not the first content. There are several lines of text and code before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Startup' appears in the page_text, but it is not at the beginning. There are other contents before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Roe Status' is found in the page_text, but it is not at the very beginning. There is a significant amount of content before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Shutdown' does not appear at the beginning of the page_text. There are several lines of content before the section title '4.1.2 Shutdown'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'BswM to BswM interaction on multicore ECUs' appears after some introductory text about the guide and release version. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Inter-partition Requests/Indications' appears in the page_text, but it is not the first content. There are several paragraphs and another section title ('Inter-partition Actions') before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Acronyms and abbreviations' appears after some introductory text about the guide and release version. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Communciation Control diagnostic service' is found at the beginning of the page_text, after some introductory text. However, the introductory text includes 'Guide to Mode Management AUTOSAR CP Release 4.4.0', which means the section does not start at the very beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Backward Compatibility' is found in the given page_text, but it is not the first content. There are other contents before it, such as 'Guide to Mode Management AUTOSAR CP Release 4.4.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Example for BswM Configuration' appears in the page_text, but it is not the first content. There are other contents (such as 'Guide to Mode Management AUTOSAR CP Release 4.4.0') before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Technical Terms' appears after some other content ('Guide to Mode Management AUTOSAR CP Release 4.4.0 5 Acronyms and abbreviations') in the given page_text, so it does not start at the beginning.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': 'The section title \\'Wakeup\\' appears in the page_text, but it is not the first content. There are other contents before it, such as \\'Guide to Mode Management AUTOSAR CP Release 4.4.0 actions GoOff2Actions on condition { custom \"EcuM_GoDown()\" }\\'.', 'start_begin': 'no'}"
+  }
+]

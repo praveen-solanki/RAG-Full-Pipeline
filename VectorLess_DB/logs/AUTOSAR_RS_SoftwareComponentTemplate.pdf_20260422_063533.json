@@ -1,0 +1,921 @@
+[
+  {
+    "total_page_number": 58
+  },
+  {
+    "total_token": 22565
+  },
+  {
+    "toc_content": "Requirements on Software Component Template\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Introduction 8\n1.1 Scope of this document : 8\n1.2 Document Conventions : 9\n1.3 Guidelines : 10\n1.4 Requirements Tracing : 11\n2 Requirements 12\n2.1 Category: AUTOSAR Main Requirements : 12\n2.1.1 Support of ECU-communication : 12\n2.1.2 Interfaces to application software and basic software modules 13\n2.1.3 Abstraction and Independence of the application software . . 13\n2.1.4 Functional interface view : 14\n2.1.5 Protection/unlock mechanisms for software : 14\n2.1.6 Protection of SW-Components from malicious SW-\nComponents : 15\n2.1.7 Compositionality : 15\n2.1.8 Diagnostics during runtime, for production and services pur-\nposes : 15\n2.1.9 Hierarchical design methods : 16\n2.1.10 Relations between SW components : 16\n2.1.11 Protection from illegal access : 16\n2.1.12 Management of vehicle diversity : 17\n2.1.13 Naming conventions : 17\n2.2 Category: AUTOSAR Feature Definition Requirements : 18\n2.2.1 Top-down hierarchical design : 18\n2.2.2 Interfaces of atomic software-components : 18\n2.2.3 Bottom-up design of CompositionTypes : 19\n2.2.4 Specification of Communications : 19\n2.2.5 Interaction with basic software : 19\n2.2.6 Sensor Actuator Components : 20\n2.2.7 Data-consistency for communication among RunnableEntities 20\n2.2.8 Physical units : 21\n2.2.9 Comments : 21\n2.3 Category: Software Component Template Requirements : 21\n2.3.1 Compositions : 21\n2.3.2 Interfaces : 22\n2.3.3 Behavior : 22\n2.3.4 RTE Events : 23\n2.3.5 Schedulability : 24\n2.3.6 Runnable Entities : 24\n2.3.7 Needed and usable sensors and actuators : 25\n2.3.8 Variants : 25\n2.3.9 Modes : 26\n2.3.10 Connections between PortInterfaces : 28\n4 of 58\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 212: AUTOSAR_RS_SoftwareComponentTemplateRequirements on Software Component Template\nAUTOSAR CP Release 4.4.0\n2.3.11 Conditional existence of Prototypes due to variant handling . 29\n2.3.12 Configurable size of Arrays : 30\n2.3.13 Attributes swMinAxisPoints and swMaxAxisPoints shall be\nadjustable by an System Constant Definition : 31\n2.3.14 Conditional existence of RunnableEntitys : 31\n2.3.15 Conditional existence of RTEEvents : 32\n2.3.16 Conditional existence of InterRunnableVariables : 32\n2.3.17 Conditional accessibility for measurement : 33\n2.3.18 Conditional existence of parameter prototypes : 33\n2.3.19 Support of conditional ports for SW-C : 33\n2.3.20 Support of Interfaces with different resolutions : 34\n2.3.21 Fixed data exchange : 35\n2.3.22 M2 support for definition of calibration datasets : 35\n2.3.23 Support of SAE J1939 Protocol Features : 36\n2.3.24 Need data type and access support for arrays of variable\nnumber of elements within the maximum size : 37\n2.3.25 Need data type and access support for byte arrays of variable\nnumber of elements : 37\n2.3.26 Ability to publish/specify the diagnostic capabilities and its re-\nsources of an SWC : 38\n2.3.27 Add support for Vehicle and Application Mode Management\nConcept : 38\n2.3.28 Add support for Portgroups : 39\n2.3.29 Integrity and Scaling at Ports : 39\n2.3.30 Need to add application data type on top of implementation\ndata type : 40\n2.3.31 Application data type : 41\n2.3.32 Implementation data type : 41\n2.3.33 Data Types for Primitive Data Mapping : 42\n2.3.34 Allow Communication Attributes on Compositions : 42\n2.3.35 Allow Port Specific Configuration of Data Transformation\nProperties : 43\n2.3.36 Error notification of data transformation : 43\n2.3.37 Enhancing the Non-Volatile (NV) memory interface : 44\n2.3.38 Documentation of M1 artifacts : 44\n2.3.39 Support end-to-end communication protection : 45\n2.3.40 Partial Networking : 46\n2.3.41 Bidirectional communication : 46\n2.3.42 Initialization of Data : 47\n2.3.43 Instance specific timing : 47\n2.3.44 Rapid Prototyping support : 48\n2.3.45 Initialization of Runnables : 49\n2.3.46 Diagnostics over IP : 50\n2.3.47 Optional Elements : 50\n3 Change History 52\n5 of 58\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 212: AUTOSAR_RS_SoftwareComponentTemplate",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 8}, {'structure': '1.1', 'title': 'Scope of this document', 'page': 8}, {'structure': '1.2', 'title': 'Document Conventions', 'page': 9}, {'structure': '1.3', 'title': 'Guidelines', 'page': 10}, {'structure': '1.4', 'title': 'Requirements Tracing', 'page': 11}, {'structure': '2', 'title': 'Requirements', 'page': 12}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'page': 12}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'page': 12}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'page': 13}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'page': 13}, {'structure': '2.1.4', 'title': 'Functional interface view', 'page': 14}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'page': 14}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'page': 15}, {'structure': '2.1.7', 'title': 'Compositionality', 'page': 15}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'page': 15}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'page': 16}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'page': 16}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'page': 16}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'page': 17}, {'structure': '2.1.13', 'title': 'Naming conventions', 'page': 17}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'page': 18}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'page': 18}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'page': 18}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'page': 19}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'page': 19}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'page': 19}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'page': 20}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'page': 20}, {'structure': '2.2.8', 'title': 'Physical units', 'page': 21}, {'structure': '2.2.9', 'title': 'Comments', 'page': 21}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'page': 21}, {'structure': '2.3.1', 'title': 'Compositions', 'page': 21}, {'structure': '2.3.2', 'title': 'Interfaces', 'page': 22}, {'structure': '2.3.3', 'title': 'Behavior', 'page': 22}, {'structure': '2.3.4', 'title': 'RTE Events', 'page': 23}, {'structure': '2.3.5', 'title': 'Schedulability', 'page': 24}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'page': 24}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'page': 25}, {'structure': '2.3.8', 'title': 'Variants', 'page': 25}, {'structure': '2.3.9', 'title': 'Modes', 'page': 26}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'page': 28}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'page': 29}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'page': 30}, {'structure': '2.3.13', 'title': 'Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition', 'page': 31}, {'structure': '2.3.14', 'title': 'Conditional existence of RunnableEntitys', 'page': 31}, {'structure': '2.3.15', 'title': 'Conditional existence of RTEEvents', 'page': 32}, {'structure': '2.3.16', 'title': 'Conditional existence of InterRunnableVariables', 'page': 32}, {'structure': '2.3.17', 'title': 'Conditional accessibility for measurement', 'page': 33}, {'structure': '2.3.18', 'title': 'Conditional existence of parameter prototypes', 'page': 33}, {'structure': '2.3.19', 'title': 'Support of conditional ports for SW-C', 'page': 33}, {'structure': '2.3.20', 'title': 'Support of Interfaces with different resolutions', 'page': 34}, {'structure': '2.3.21', 'title': 'Fixed data exchange', 'page': 35}, {'structure': '2.3.22', 'title': 'M2 support for definition of calibration datasets', 'page': 35}, {'structure': '2.3.23', 'title': 'Support of SAE J1939 Protocol Features', 'page': 36}, {'structure': '2.3.24', 'title': 'Need data type and access support for arrays of variable number of elements within the maximum size', 'page': 37}, {'structure': '2.3.25', 'title': 'Need data type and access support for byte arrays of variable number of elements', 'page': 37}, {'structure': '2.3.26', 'title': 'Ability to publish/specify the diagnostic capabilities and its resources of an SWC', 'page': 38}, {'structure': '2.3.27', 'title': 'Add support for Vehicle and Application Mode Management Concept', 'page': 38}, {'structure': '2.3.28', 'title': 'Add support for Portgroups', 'page': 39}, {'structure': '2.3.29', 'title': 'Integrity and Scaling at Ports', 'page': 39}, {'structure': '2.3.30', 'title': 'Need to add application data type on top of implementation data type', 'page': 40}, {'structure': '2.3.31', 'title': 'Application data type', 'page': 41}, {'structure': '2.3.32', 'title': 'Implementation data type', 'page': 41}, {'structure': '2.3.33', 'title': 'Data Types for Primitive Data Mapping', 'page': 42}, {'structure': '2.3.34', 'title': 'Allow Communication Attributes on Compositions', 'page': 42}, {'structure': '2.3.35', 'title': 'Allow Port Specific Configuration of Data Transformation Properties', 'page': 43}, {'structure': '2.3.36', 'title': 'Error notification of data transformation', 'page': 43}, {'structure': '2.3.37', 'title': 'Enhancing the Non-Volatile (NV) memory interface', 'page': 44}, {'structure': '2.3.38', 'title': 'Documentation of M1 artifacts', 'page': 44}, {'structure': '2.3.39', 'title': 'Support end-to-end communication protection', 'page': 45}, {'structure': '2.3.40', 'title': 'Partial Networking', 'page': 46}, {'structure': '2.3.41', 'title': 'Bidirectional communication', 'page': 46}, {'structure': '2.3.42', 'title': 'Initialization of Data', 'page': 47}, {'structure': '2.3.43', 'title': 'Instance specific timing', 'page': 47}, {'structure': '2.3.44', 'title': 'Rapid Prototyping support', 'page': 48}, {'structure': '2.3.45', 'title': 'Initialization of Runnables', 'page': 49}, {'structure': '2.3.46', 'title': 'Diagnostics over IP', 'page': 50}, {'structure': '2.3.47', 'title': 'Optional Elements', 'page': 50}, {'structure': '3', 'title': 'Change History', 'page': 52}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': '<physical_index_9>'}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': '<physical_index_10>'}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_11>'}, {'structure': '2', 'title': 'Requirements', 'physical_index': '<physical_index_12>'}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'physical_index': '<physical_index_12>'}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'physical_index': '<physical_index_12>'}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'physical_index': '<physical_index_13>'}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'physical_index': '<physical_index_13>'}, {'structure': '2.1.4', 'title': 'Functional interface view', 'physical_index': '<physical_index_14>'}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'physical_index': '<physical_index_14>'}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'physical_index': '<physical_index_15>'}, {'structure': '2.1.7', 'title': 'Compositionality', 'physical_index': '<physical_index_15>'}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'physical_index': '<physical_index_15>'}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'physical_index': '<physical_index_17>'}, {'structure': '2.1.13', 'title': 'Naming conventions', 'physical_index': '<physical_index_17>'}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'physical_index': '<physical_index_18>'}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'physical_index': '<physical_index_18>'}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'physical_index': '<physical_index_18>'}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'physical_index': '<physical_index_19>'}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'physical_index': '<physical_index_19>'}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'physical_index': '<physical_index_19>'}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'physical_index': '<physical_index_20>'}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'physical_index': '<physical_index_20>'}, {'structure': '2.2.8', 'title': 'Physical units', 'physical_index': '<physical_index_21>'}, {'structure': '2.2.9', 'title': 'Comments', 'physical_index': '<physical_index_21>'}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'physical_index': '<physical_index_21>'}, {'structure': '2.3.1', 'title': 'Compositions', 'physical_index': '<physical_index_22>'}, {'structure': '2.3.2', 'title': 'Interfaces', 'physical_index': '<physical_index_22>'}, {'structure': '2.3.3', 'title': 'Behavior', 'physical_index': '<physical_index_23>'}, {'structure': '2.3.4', 'title': 'RTE Events', 'physical_index': '<physical_index_23>'}, {'structure': '2.3.5', 'title': 'Schedulability', 'physical_index': '<physical_index_24>'}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'physical_index': '<physical_index_24>'}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'physical_index': '<physical_index_25>'}, {'structure': '2.3.8', 'title': 'Variants', 'physical_index': '<physical_index_26>'}, {'structure': '2.3.9', 'title': 'Modes', 'physical_index': '<physical_index_26>'}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'physical_index': '<physical_index_28>'}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'physical_index': '<physical_index_29>'}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': 10}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '2', 'title': 'Requirements', 'physical_index': 12}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'physical_index': 12}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'physical_index': 12}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'physical_index': 13}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'physical_index': 13}, {'structure': '2.1.4', 'title': 'Functional interface view', 'physical_index': 14}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'physical_index': 14}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'physical_index': 15}, {'structure': '2.1.7', 'title': 'Compositionality', 'physical_index': 15}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'physical_index': 15}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'physical_index': 16}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'physical_index': 16}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'physical_index': 16}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'physical_index': 17}, {'structure': '2.1.13', 'title': 'Naming conventions', 'physical_index': 17}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'physical_index': 18}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'physical_index': 18}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'physical_index': 18}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'physical_index': 19}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'physical_index': 19}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'physical_index': 19}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'physical_index': 20}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'physical_index': 20}, {'structure': '2.2.8', 'title': 'Physical units', 'physical_index': 21}, {'structure': '2.2.9', 'title': 'Comments', 'physical_index': 21}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'physical_index': 21}, {'structure': '2.3.1', 'title': 'Compositions', 'physical_index': 22}, {'structure': '2.3.2', 'title': 'Interfaces', 'physical_index': 22}, {'structure': '2.3.3', 'title': 'Behavior', 'physical_index': 23}, {'structure': '2.3.4', 'title': 'RTE Events', 'physical_index': 23}, {'structure': '2.3.5', 'title': 'Schedulability', 'physical_index': 24}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'physical_index': 24}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'physical_index': 25}, {'structure': '2.3.8', 'title': 'Variants', 'physical_index': 26}, {'structure': '2.3.9', 'title': 'Modes', 'physical_index': 26}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'physical_index': 28}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'physical_index': 29}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 8, 'physical_index': 8}, {'title': 'Scope of this document', 'page': 8, 'physical_index': 8}, {'title': 'Document Conventions', 'page': 9, 'physical_index': 9}, {'title': 'Guidelines', 'page': 10, 'physical_index': 10}, {'title': 'Requirements Tracing', 'page': 11, 'physical_index': 11}, {'title': 'Requirements', 'page': 12, 'physical_index': 12}, {'title': 'Category: AUTOSAR Main Requirements', 'page': 12, 'physical_index': 12}, {'title': 'Support of ECU-communication', 'page': 12, 'physical_index': 12}, {'title': 'Interfaces to application software and basic software modules', 'page': 13, 'physical_index': 13}, {'title': 'Abstraction and Independence of the application software', 'page': 13, 'physical_index': 13}, {'title': 'Functional interface view', 'page': 14, 'physical_index': 14}, {'title': 'Protection/unlock mechanisms for software', 'page': 14, 'physical_index': 14}, {'title': 'Protection of SW-Components from malicious SW-Components', 'page': 15, 'physical_index': 15}, {'title': 'Compositionality', 'page': 15, 'physical_index': 15}, {'title': 'Diagnostics during runtime, for production and services purposes', 'page': 15, 'physical_index': 15}, {'title': 'Hierarchical design methods', 'page': 16, 'physical_index': 16}, {'title': 'Relations between SW components', 'page': 16, 'physical_index': 16}, {'title': 'Protection from illegal access', 'page': 16, 'physical_index': 16}, {'title': 'Management of vehicle diversity', 'page': 17, 'physical_index': 17}, {'title': 'Naming conventions', 'page': 17, 'physical_index': 17}, {'title': 'Category: AUTOSAR Feature Definition Requirements', 'page': 18, 'physical_index': 18}, {'title': 'Top-down hierarchical design', 'page': 18, 'physical_index': 18}, {'title': 'Interfaces of atomic software-components', 'page': 18, 'physical_index': 18}, {'title': 'Bottom-up design of CompositionTypes', 'page': 19, 'physical_index': 19}, {'title': 'Specification of Communications', 'page': 19, 'physical_index': 19}, {'title': 'Interaction with basic software', 'page': 19, 'physical_index': 19}, {'title': 'Sensor Actuator Components', 'page': 20, 'physical_index': 20}, {'title': 'Data-consistency for communication among RunnableEntities', 'page': 20, 'physical_index': 20}, {'title': 'Physical units', 'page': 21, 'physical_index': 21}, {'title': 'Comments', 'page': 21, 'physical_index': 21}, {'title': 'Category: Software Component Template Requirements', 'page': 21, 'physical_index': 21}, {'title': 'Compositions', 'page': 21, 'physical_index': 22}, {'title': 'Interfaces', 'page': 22, 'physical_index': 22}, {'title': 'Behavior', 'page': 22, 'physical_index': 23}, {'title': 'RTE Events', 'page': 23, 'physical_index': 23}, {'title': 'Schedulability', 'page': 24, 'physical_index': 24}, {'title': 'Runnable Entities', 'page': 24, 'physical_index': 24}, {'title': 'Needed and usable sensors and actuators', 'page': 25, 'physical_index': 25}, {'title': 'Variants', 'page': 25, 'physical_index': 26}, {'title': 'Modes', 'page': 26, 'physical_index': 26}, {'title': 'Connections between PortInterfaces', 'page': 28, 'physical_index': 28}, {'title': 'Conditional existence of Prototypes due to variant handling', 'page': 29, 'physical_index': 29}, {'title': 'Configurable size of Arrays', 'page': 30, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': 10}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '2', 'title': 'Requirements', 'physical_index': 12}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'physical_index': 12}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'physical_index': 12}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'physical_index': 13}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'physical_index': 13}, {'structure': '2.1.4', 'title': 'Functional interface view', 'physical_index': 14}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'physical_index': 14}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'physical_index': 15}, {'structure': '2.1.7', 'title': 'Compositionality', 'physical_index': 15}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'physical_index': 15}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'physical_index': 16}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'physical_index': 16}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'physical_index': 16}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'physical_index': 17}, {'structure': '2.1.13', 'title': 'Naming conventions', 'physical_index': 17}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'physical_index': 18}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'physical_index': 18}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'physical_index': 18}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'physical_index': 19}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'physical_index': 19}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'physical_index': 19}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'physical_index': 20}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'physical_index': 20}, {'structure': '2.2.8', 'title': 'Physical units', 'physical_index': 21}, {'structure': '2.2.9', 'title': 'Comments', 'physical_index': 21}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'physical_index': 21}, {'structure': '2.3.1', 'title': 'Compositions', 'physical_index': 21}, {'structure': '2.3.2', 'title': 'Interfaces', 'physical_index': 22}, {'structure': '2.3.3', 'title': 'Behavior', 'physical_index': 22}, {'structure': '2.3.4', 'title': 'RTE Events', 'physical_index': 23}, {'structure': '2.3.5', 'title': 'Schedulability', 'physical_index': 24}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'physical_index': 24}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'physical_index': 25}, {'structure': '2.3.8', 'title': 'Variants', 'physical_index': 25}, {'structure': '2.3.9', 'title': 'Modes', 'physical_index': 26}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'physical_index': 28}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'physical_index': 29}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'physical_index': 30}, {'structure': '2.3.13', 'title': 'Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition', 'physical_index': 31}, {'structure': '2.3.14', 'title': 'Conditional existence of RunnableEntitys', 'physical_index': 31}, {'structure': '2.3.15', 'title': 'Conditional existence of RTEEvents', 'physical_index': 32}, {'structure': '2.3.16', 'title': 'Conditional existence of InterRunnableVariables', 'physical_index': 32}, {'structure': '2.3.17', 'title': 'Conditional accessibility for measurement', 'physical_index': 33}, {'structure': '2.3.18', 'title': 'Conditional existence of parameter prototypes', 'physical_index': 33}, {'structure': '2.3.19', 'title': 'Support of conditional ports for SW-C', 'physical_index': 33}, {'structure': '2.3.20', 'title': 'Support of Interfaces with different resolutions', 'physical_index': 34}, {'structure': '2.3.21', 'title': 'Fixed data exchange', 'physical_index': 35}, {'structure': '2.3.22', 'title': 'M2 support for definition of calibration datasets', 'physical_index': 35}, {'structure': '2.3.23', 'title': 'Support of SAE J1939 Protocol Features', 'physical_index': 36}, {'structure': '2.3.24', 'title': 'Need data type and access support for arrays of variable number of elements within the maximum size', 'physical_index': 37}, {'structure': '2.3.25', 'title': 'Need data type and access support for byte arrays of variable number of elements', 'physical_index': 37}, {'structure': '2.3.26', 'title': 'Ability to publish/specify the diagnostic capabilities and its resources of an SWC', 'physical_index': 38}, {'structure': '2.3.27', 'title': 'Add support for Vehicle and Application Mode Management Concept', 'physical_index': 38}, {'structure': '2.3.28', 'title': 'Add support for Portgroups', 'physical_index': 39}, {'structure': '2.3.29', 'title': 'Integrity and Scaling at Ports', 'physical_index': 39}, {'structure': '2.3.30', 'title': 'Need to add application data type on top of implementation data type', 'physical_index': 40}, {'structure': '2.3.31', 'title': 'Application data type', 'physical_index': 41}, {'structure': '2.3.32', 'title': 'Implementation data type', 'physical_index': 41}, {'structure': '2.3.33', 'title': 'Data Types for Primitive Data Mapping', 'physical_index': 42}, {'structure': '2.3.34', 'title': 'Allow Communication Attributes on Compositions', 'physical_index': 42}, {'structure': '2.3.35', 'title': 'Allow Port Specific Configuration of Data Transformation Properties', 'physical_index': 43}, {'structure': '2.3.36', 'title': 'Error notification of data transformation', 'physical_index': 43}, {'structure': '2.3.37', 'title': 'Enhancing the Non-Volatile (NV) memory interface', 'physical_index': 44}, {'structure': '2.3.38', 'title': 'Documentation of M1 artifacts', 'physical_index': 44}, {'structure': '2.3.39', 'title': 'Support end-to-end communication protection', 'physical_index': 45}, {'structure': '2.3.40', 'title': 'Partial Networking', 'physical_index': 46}, {'structure': '2.3.41', 'title': 'Bidirectional communication', 'physical_index': 46}, {'structure': '2.3.42', 'title': 'Initialization of Data', 'physical_index': 47}, {'structure': '2.3.43', 'title': 'Instance specific timing', 'physical_index': 47}, {'structure': '2.3.44', 'title': 'Rapid Prototyping support', 'physical_index': 48}, {'structure': '2.3.45', 'title': 'Initialization of Runnables', 'physical_index': 49}, {'structure': '2.3.46', 'title': 'Diagnostics over IP', 'physical_index': 50}, {'structure': '2.3.47', 'title': 'Optional Elements', 'physical_index': 50}, {'structure': '3', 'title': 'Change History', 'physical_index': 52}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': 10}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '2', 'title': 'Requirements', 'physical_index': 12}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'physical_index': 12}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'physical_index': 12}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'physical_index': 13}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'physical_index': 13}, {'structure': '2.1.4', 'title': 'Functional interface view', 'physical_index': 14}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'physical_index': 14}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'physical_index': 15}, {'structure': '2.1.7', 'title': 'Compositionality', 'physical_index': 15}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'physical_index': 15}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'physical_index': 16}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'physical_index': 16}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'physical_index': 16}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'physical_index': 17}, {'structure': '2.1.13', 'title': 'Naming conventions', 'physical_index': 17}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'physical_index': 18}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'physical_index': 18}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'physical_index': 18}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'physical_index': 19}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'physical_index': 19}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'physical_index': 19}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'physical_index': 20}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'physical_index': 20}, {'structure': '2.2.8', 'title': 'Physical units', 'physical_index': 21}, {'structure': '2.2.9', 'title': 'Comments', 'physical_index': 21}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'physical_index': 21}, {'structure': '2.3.1', 'title': 'Compositions', 'physical_index': 21}, {'structure': '2.3.2', 'title': 'Interfaces', 'physical_index': 22}, {'structure': '2.3.3', 'title': 'Behavior', 'physical_index': 22}, {'structure': '2.3.4', 'title': 'RTE Events', 'physical_index': 23}, {'structure': '2.3.5', 'title': 'Schedulability', 'physical_index': 24}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'physical_index': 24}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'physical_index': 25}, {'structure': '2.3.8', 'title': 'Variants', 'physical_index': 25}, {'structure': '2.3.9', 'title': 'Modes', 'physical_index': 26}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'physical_index': 28}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'physical_index': 29}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'physical_index': 30}, {'structure': '2.3.13', 'title': 'Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition', 'physical_index': 31}, {'structure': '2.3.14', 'title': 'Conditional existence of RunnableEntitys', 'physical_index': 31}, {'structure': '2.3.15', 'title': 'Conditional existence of RTEEvents', 'physical_index': 32}, {'structure': '2.3.16', 'title': 'Conditional existence of InterRunnableVariables', 'physical_index': 32}, {'structure': '2.3.17', 'title': 'Conditional accessibility for measurement', 'physical_index': 33}, {'structure': '2.3.18', 'title': 'Conditional existence of parameter prototypes', 'physical_index': 33}, {'structure': '2.3.19', 'title': 'Support of conditional ports for SW-C', 'physical_index': 33}, {'structure': '2.3.20', 'title': 'Support of Interfaces with different resolutions', 'physical_index': 34}, {'structure': '2.3.21', 'title': 'Fixed data exchange', 'physical_index': 35}, {'structure': '2.3.22', 'title': 'M2 support for definition of calibration datasets', 'physical_index': 35}, {'structure': '2.3.23', 'title': 'Support of SAE J1939 Protocol Features', 'physical_index': 36}, {'structure': '2.3.24', 'title': 'Need data type and access support for arrays of variable number of elements within the maximum size', 'physical_index': 37}, {'structure': '2.3.25', 'title': 'Need data type and access support for byte arrays of variable number of elements', 'physical_index': 37}, {'structure': '2.3.26', 'title': 'Ability to publish/specify the diagnostic capabilities and its resources of an SWC', 'physical_index': 38}, {'structure': '2.3.27', 'title': 'Add support for Vehicle and Application Mode Management Concept', 'physical_index': 38}, {'structure': '2.3.28', 'title': 'Add support for Portgroups', 'physical_index': 39}, {'structure': '2.3.29', 'title': 'Integrity and Scaling at Ports', 'physical_index': 39}, {'structure': '2.3.30', 'title': 'Need to add application data type on top of implementation data type', 'physical_index': 40}, {'structure': '2.3.31', 'title': 'Application data type', 'physical_index': 41}, {'structure': '2.3.32', 'title': 'Implementation data type', 'physical_index': 41}, {'structure': '2.3.33', 'title': 'Data Types for Primitive Data Mapping', 'physical_index': 42}, {'structure': '2.3.34', 'title': 'Allow Communication Attributes on Compositions', 'physical_index': 42}, {'structure': '2.3.35', 'title': 'Allow Port Specific Configuration of Data Transformation Properties', 'physical_index': 43}, {'structure': '2.3.36', 'title': 'Error notification of data transformation', 'physical_index': 43}, {'structure': '2.3.37', 'title': 'Enhancing the Non-Volatile (NV) memory interface', 'physical_index': 44}, {'structure': '2.3.38', 'title': 'Documentation of M1 artifacts', 'physical_index': 44}, {'structure': '2.3.39', 'title': 'Support end-to-end communication protection', 'physical_index': 45}, {'structure': '2.3.40', 'title': 'Partial Networking', 'physical_index': 46}, {'structure': '2.3.41', 'title': 'Bidirectional communication', 'physical_index': 46}, {'structure': '2.3.42', 'title': 'Initialization of Data', 'physical_index': 47}, {'structure': '2.3.43', 'title': 'Instance specific timing', 'physical_index': 47}, {'structure': '2.3.44', 'title': 'Rapid Prototyping support', 'physical_index': 48}, {'structure': '2.3.45', 'title': 'Initialization of Runnables', 'physical_index': 49}, {'structure': '2.3.46', 'title': 'Diagnostics over IP', 'physical_index': 50}, {'structure': '2.3.47', 'title': 'Optional Elements', 'physical_index': 50}, {'structure': '3', 'title': 'Change History', 'physical_index': 52}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3670886075949367,
+    "incorrect_results": [
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Top-down hierarchical design",
+        "page_number": 18
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Interfaces of atomic software-components",
+        "page_number": 18
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Bottom-up design of CompositionTypes",
+        "page_number": 19
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Specification of Communications",
+        "page_number": 19
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Interaction with basic software",
+        "page_number": 19
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Sensor Actuator Components",
+        "page_number": 20
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Data-consistency for communication among RunnableEntities",
+        "page_number": 20
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Physical units",
+        "page_number": 21
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Comments",
+        "page_number": 21
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Category: Software Component Template Requirements",
+        "page_number": 21
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Compositions",
+        "page_number": 21
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Interfaces",
+        "page_number": 22
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Behavior",
+        "page_number": 22
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "RTE Events",
+        "page_number": 23
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Schedulability",
+        "page_number": 24
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Runnable Entities",
+        "page_number": 24
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Needed and usable sensors and actuators",
+        "page_number": 25
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Variants",
+        "page_number": 25
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Modes",
+        "page_number": 26
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Connections between PortInterfaces",
+        "page_number": 28
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Conditional existence of Prototypes due to variant handling",
+        "page_number": 29
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Configurable size of Arrays",
+        "page_number": 30
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition",
+        "page_number": 31
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Conditional existence of RunnableEntitys",
+        "page_number": 31
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Conditional existence of RTEEvents",
+        "page_number": 32
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Conditional existence of InterRunnableVariables",
+        "page_number": 32
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Conditional accessibility for measurement",
+        "page_number": 33
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Conditional existence of parameter prototypes",
+        "page_number": 33
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Support of conditional ports for SW-C",
+        "page_number": 33
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Support of Interfaces with different resolutions",
+        "page_number": 34
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Fixed data exchange",
+        "page_number": 35
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "M2 support for definition of calibration datasets",
+        "page_number": 35
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Support of SAE J1939 Protocol Features",
+        "page_number": 36
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Need data type and access support for arrays of variable number of elements within the maximum size",
+        "page_number": 37
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Need data type and access support for byte arrays of variable number of elements",
+        "page_number": 37
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Ability to publish/specify the diagnostic capabilities and its resources of an SWC",
+        "page_number": 38
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Add support for Vehicle and Application Mode Management Concept",
+        "page_number": 38
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Add support for Portgroups",
+        "page_number": 39
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Integrity and Scaling at Ports",
+        "page_number": 39
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Need to add application data type on top of implementation data type",
+        "page_number": 40
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Application data type",
+        "page_number": 41
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Implementation data type",
+        "page_number": 41
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Data Types for Primitive Data Mapping",
+        "page_number": 42
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Allow Communication Attributes on Compositions",
+        "page_number": 42
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Allow Port Specific Configuration of Data Transformation Properties",
+        "page_number": 43
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Error notification of data transformation",
+        "page_number": 43
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Documentation of M1 artifacts",
+        "page_number": 44
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Instance specific timing",
+        "page_number": 47
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Rapid Prototyping support",
+        "page_number": 48
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Initialization of Runnables",
+        "page_number": 49
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 8}, {'structure': '1.1', 'title': 'Scope of this document', 'page': 8}, {'structure': '1.2', 'title': 'Document Conventions', 'page': 9}, {'structure': '1.3', 'title': 'Guidelines', 'page': 10}, {'structure': '1.4', 'title': 'Requirements Tracing', 'page': 11}, {'structure': '2', 'title': 'Requirements', 'page': 12}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'page': 12}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'page': 12}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'page': 13}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'page': 13}, {'structure': '2.1.4', 'title': 'Functional interface view', 'page': 14}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'page': 14}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'page': 15}, {'structure': '2.1.7', 'title': 'Compositionality', 'page': 15}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'page': 15}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'page': 16}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'page': 16}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'page': 16}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'page': 17}, {'structure': '2.1.13', 'title': 'Naming conventions', 'page': 17}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'page': 18}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'page': 18}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'page': 18}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'page': 19}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'page': 19}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'page': 19}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'page': 20}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'page': 20}, {'structure': '2.2.8', 'title': 'Physical units', 'page': 21}, {'structure': '2.2.9', 'title': 'Comments', 'page': 21}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'page': 21}, {'structure': '2.3.1', 'title': 'Compositions', 'page': 21}, {'structure': '2.3.2', 'title': 'Interfaces', 'page': 22}, {'structure': '2.3.3', 'title': 'Behavior', 'page': 22}, {'structure': '2.3.4', 'title': 'RTE Events', 'page': 23}, {'structure': '2.3.5', 'title': 'Schedulability', 'page': 24}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'page': 24}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'page': 25}, {'structure': '2.3.8', 'title': 'Variants', 'page': 25}, {'structure': '2.3.9', 'title': 'Modes', 'page': 26}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'page': 28}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'page': 29}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'page': 30}, {'structure': '2.3.13', 'title': 'Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition', 'page': 31}, {'structure': '2.3.14', 'title': 'Conditional existence of RunnableEntitys', 'page': 31}, {'structure': '2.3.15', 'title': 'Conditional existence of RTEEvents', 'page': 32}, {'structure': '2.3.16', 'title': 'Conditional existence of InterRunnableVariables', 'page': 32}, {'structure': '2.3.17', 'title': 'Conditional accessibility for measurement', 'page': 33}, {'structure': '2.3.18', 'title': 'Conditional existence of parameter prototypes', 'page': 33}, {'structure': '2.3.19', 'title': 'Support of conditional ports for SW-C', 'page': 33}, {'structure': '2.3.20', 'title': 'Support of Interfaces with different resolutions', 'page': 34}, {'structure': '2.3.21', 'title': 'Fixed data exchange', 'page': 35}, {'structure': '2.3.22', 'title': 'M2 support for definition of calibration datasets', 'page': 35}, {'structure': '2.3.23', 'title': 'Support of SAE J1939 Protocol Features', 'page': 36}, {'structure': '2.3.24', 'title': 'Need data type and access support for arrays of variable number of elements within the maximum size', 'page': 37}, {'structure': '2.3.25', 'title': 'Need data type and access support for byte arrays of variable number of elements', 'page': 37}, {'structure': '2.3.26', 'title': 'Ability to publish/specify the diagnostic capabilities and its resources of an SWC', 'page': 38}, {'structure': '2.3.27', 'title': 'Add support for Vehicle and Application Mode Management Concept', 'page': 38}, {'structure': '2.3.28', 'title': 'Add support for Portgroups', 'page': 39}, {'structure': '2.3.29', 'title': 'Integrity and Scaling at Ports', 'page': 39}, {'structure': '2.3.30', 'title': 'Need to add application data type on top of implementation data type', 'page': 40}, {'structure': '2.3.31', 'title': 'Application data type', 'page': 41}, {'structure': '2.3.32', 'title': 'Implementation data type', 'page': 41}, {'structure': '2.3.33', 'title': 'Data Types for Primitive Data Mapping', 'page': 42}, {'structure': '2.3.34', 'title': 'Allow Communication Attributes on Compositions', 'page': 42}, {'structure': '2.3.35', 'title': 'Allow Port Specific Configuration of Data Transformation Properties', 'page': 43}, {'structure': '2.3.36', 'title': 'Error notification of data transformation', 'page': 43}, {'structure': '2.3.37', 'title': 'Enhancing the Non-Volatile (NV) memory interface', 'page': 44}, {'structure': '2.3.38', 'title': 'Documentation of M1 artifacts', 'page': 44}, {'structure': '2.3.39', 'title': 'Support end-to-end communication protection', 'page': 45}, {'structure': '2.3.40', 'title': 'Partial Networking', 'page': 46}, {'structure': '2.3.41', 'title': 'Bidirectional communication', 'page': 46}, {'structure': '2.3.42', 'title': 'Initialization of Data', 'page': 47}, {'structure': '2.3.43', 'title': 'Instance specific timing', 'page': 47}, {'structure': '2.3.44', 'title': 'Rapid Prototyping support', 'page': 48}, {'structure': '2.3.45', 'title': 'Initialization of Runnables', 'page': 49}, {'structure': '2.3.46', 'title': 'Diagnostics over IP', 'page': 50}, {'structure': '2.3.47', 'title': 'Optional Elements', 'page': 50}, {'structure': '3', 'title': 'Change History', 'page': 52}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: {}"
+  },
+  {
+    "message": "convert_physical_index_to_int: {}"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0,
+    "incorrect_results": []
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_8>'}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': '<physical_index_8>'}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': '<physical_index_9>'}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': '<physical_index_10>'}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_11>'}, {'structure': '2', 'title': 'Requirements', 'physical_index': '<physical_index_12>'}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'physical_index': '<physical_index_12>'}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'physical_index': '<physical_index_12>'}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'physical_index': '<physical_index_13>'}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'physical_index': '<physical_index_13>'}, {'structure': '2.1.4', 'title': 'Functional interface view', 'physical_index': '<physical_index_14>'}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'physical_index': '<physical_index_14>'}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'physical_index': '<physical_index_15>'}, {'structure': '2.1.7', 'title': 'Compositionality', 'physical_index': '<physical_index_15>'}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'physical_index': '<physical_index_15>'}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'physical_index': '<physical_index_16>'}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'physical_index': '<physical_index_17>'}, {'structure': '2.1.13', 'title': 'Naming conventions', 'physical_index': '<physical_index_17>'}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'physical_index': '<physical_index_18>'}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'physical_index': '<physical_index_18>'}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'physical_index': '<physical_index_18>'}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'physical_index': '<physical_index_19>'}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'physical_index': '<physical_index_19>'}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'physical_index': '<physical_index_19>'}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'physical_index': '<physical_index_20>'}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'physical_index': '<physical_index_20>'}, {'structure': '2.2.8', 'title': 'Physical units', 'physical_index': '<physical_index_21>'}, {'structure': '2.2.9', 'title': 'Comments', 'physical_index': '<physical_index_21>'}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'physical_index': '<physical_index_21>'}, {'structure': '2.3.1', 'title': 'Compositions', 'physical_index': '<physical_index_21>'}, {'structure': '2.3.2', 'title': 'Interfaces', 'physical_index': '<physical_index_22>'}, {'structure': '2.3.3', 'title': 'Behavior', 'physical_index': '<physical_index_22>'}, {'structure': '2.3.4', 'title': 'RTE Events', 'physical_index': '<physical_index_23>'}, {'structure': '2.3.5', 'title': 'Schedulability', 'physical_index': '<physical_index_24>'}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'physical_index': '<physical_index_24>'}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'physical_index': '<physical_index_25>'}, {'structure': '2.3.8', 'title': 'Variants', 'physical_index': '<physical_index_25>'}, {'structure': '2.3.9', 'title': 'Modes', 'physical_index': '<physical_index_26>'}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'physical_index': '<physical_index_28>'}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'physical_index': '<physical_index_29>'}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'physical_index': '<physical_index_30>'}, {'structure': '2.3.13', 'title': 'Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition', 'physical_index': '<physical_index_30>'}, {'structure': '2.3.14', 'title': 'Conditional existence of RunnableEntitys', 'physical_index': '<physical_index_31>'}, {'structure': '2.3.15', 'title': 'Conditional existence of RTEEvents', 'physical_index': '<physical_index_32>'}, {'structure': '2.3.16', 'title': 'Conditional existence of InterRunnableVariables', 'physical_index': '<physical_index_32>'}, {'structure': '2.3.17', 'title': 'Conditional accessibility for measurement', 'physical_index': '<physical_index_32>'}, {'structure': '2.3.18', 'title': 'Conditional existence of parameter prototypes', 'physical_index': '<physical_index_32>'}, {'structure': '2.3.19', 'title': 'Support of conditional ports for SW-C', 'physical_index': '<physical_index_33>'}, {'structure': '2.3.20', 'title': 'Support of Interfaces with different resolutions', 'physical_index': '<physical_index_34>'}, {'structure': '2.3.21', 'title': 'Fixed data exchange', 'physical_index': '<physical_index_34>'}, {'structure': '2.3.22', 'title': 'M2 support for definition of calibration datasets', 'physical_index': '<physical_index_35>'}, {'structure': '2.3.23', 'title': 'Support of SAE J1939 Protocol Features', 'physical_index': '<physical_index_36>'}, {'structure': '2.3.24', 'title': 'Need data type and access support for arrays of variable number of elements within the maximum size', 'physical_index': '<physical_index_37>'}, {'structure': '2.3.25', 'title': 'Need data type and access support for byte arrays of variable number of elements', 'physical_index': '<physical_index_37>'}, {'structure': '2.3.26', 'title': 'Ability to publish/specify the diagnostic capabilities and its resources of an SWC', 'physical_index': '<physical_index_38>'}, {'structure': '2.3.27', 'title': 'Add support for Vehicle and Application Mode Management Concept', 'physical_index': '<physical_index_38>'}, {'structure': '2.3.28', 'title': 'Add support for Portgroups', 'physical_index': '<physical_index_39>'}, {'structure': '2.3.29', 'title': 'Integrity and Scaling at Ports', 'physical_index': '<physical_index_39>'}, {'structure': '3', 'title': 'Change History', 'physical_index': '<physical_index_6>'}, {'structure': '3.1', 'title': 'Change History for AUTOSAR 4.0.1 against 3.1.5', 'physical_index': '<physical_index_6>'}, {'structure': '3.1.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.1.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.1.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.2', 'title': 'Change History for AUTOSAR 4.0.2 against 4.0.1', 'physical_index': '<physical_index_6>'}, {'structure': '3.2.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.2.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.2.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.3', 'title': 'Change History for AUTOSAR 4.0.3 against 4.0.2', 'physical_index': '<physical_index_6>'}, {'structure': '3.3.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.3.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.3.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.4', 'title': 'Change History for AUTOSAR 4.1.1 against 4.0.3', 'physical_index': '<physical_index_6>'}, {'structure': '3.4.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.4.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.4.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.5', 'title': 'Change History for AUTOSAR 4.1.2 against 4.1.1', 'physical_index': '<physical_index_6>'}, {'structure': '3.5.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.5.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.5.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.6', 'title': 'Change History for AUTOSAR 4.2.1 against 4.1.2', 'physical_index': '<physical_index_6>'}, {'structure': '3.6.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.6.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.6.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.7', 'title': 'Change History for AUTOSAR 4.2.2 against 4.2.1', 'physical_index': '<physical_index_6>'}, {'structure': '3.7.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.7.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.7.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.8', 'title': 'Change History for AUTOSAR 4.3.0 against 4.2.2', 'physical_index': '<physical_index_6>'}, {'structure': '3.8.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.8.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.8.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.9', 'title': 'Change History for AUTOSAR 4.3.1 against 4.3.0', 'physical_index': '<physical_index_6>'}, {'structure': '3.9.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.9.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.9.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.10', 'title': 'Change History for AUTOSAR 4.4.0 against 4.3.1', 'physical_index': '<physical_index_6>'}, {'structure': '3.10.1', 'title': 'Added Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.10.2', 'title': 'Changed Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '3.10.3', 'title': 'Deleted Specification Items', 'physical_index': '<physical_index_6>'}, {'structure': '2.3.30', 'title': 'Need to add application data type on top of implementation data type', 'physical_index': '<physical_index_40>'}, {'structure': '2.3.31', 'title': 'Application data type', 'physical_index': '<physical_index_41>'}, {'structure': '2.3.32', 'title': 'Implementation data type', 'physical_index': '<physical_index_41>'}, {'structure': '2.3.33', 'title': 'Data Types for Primitive Data Mapping', 'physical_index': '<physical_index_42>'}, {'structure': '2.3.34', 'title': 'Allow Communication Attributes on Compositions', 'physical_index': '<physical_index_42>'}, {'structure': '2.3.35', 'title': 'Allow Port Specific Configuration of Data Transformation Properties', 'physical_index': '<physical_index_43>'}, {'structure': '2.3.36', 'title': 'Error notification of data transformation', 'physical_index': '<physical_index_43>'}, {'structure': '2.3.37', 'title': 'Enhancing the Non-Volatile (NV) memory interface', 'physical_index': '<physical_index_44>'}, {'structure': '2.3.38', 'title': 'Documentation of M1 artifacts', 'physical_index': '<physical_index_44>'}, {'structure': '2.3.39', 'title': 'Support end-to-end communication protection', 'physical_index': '<physical_index_45>'}, {'structure': '2.3.40', 'title': 'Partial Networking', 'physical_index': '<physical_index_46>'}, {'structure': '2.3.41', 'title': 'Bidirectional communication', 'physical_index': '<physical_index_46>'}, {'structure': '2.3.42', 'title': 'Initialization of Data', 'physical_index': '<physical_index_47>'}, {'structure': '2.3.43', 'title': 'Instance specific timing', 'physical_index': '<physical_index_47>'}, {'structure': '2.3.44', 'title': 'Rapid Prototyping support', 'physical_index': '<physical_index_48>'}, {'structure': '2.3.45', 'title': 'Initialization of Runnables', 'physical_index': '<physical_index_49>'}, {'structure': '2.3.46', 'title': 'Diagnostics over IP', 'physical_index': '<physical_index_50>'}, {'structure': '2.3.47', 'title': 'Optional Elements', 'physical_index': '<physical_index_51>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 8}, {'structure': '1.1', 'title': 'Scope of this document', 'physical_index': 8}, {'structure': '1.2', 'title': 'Document Conventions', 'physical_index': 9}, {'structure': '1.3', 'title': 'Guidelines', 'physical_index': 10}, {'structure': '1.4', 'title': 'Requirements Tracing', 'physical_index': 11}, {'structure': '2', 'title': 'Requirements', 'physical_index': 12}, {'structure': '2.1', 'title': 'Category: AUTOSAR Main Requirements', 'physical_index': 12}, {'structure': '2.1.1', 'title': 'Support of ECU-communication', 'physical_index': 12}, {'structure': '2.1.2', 'title': 'Interfaces to application software and basic software modules', 'physical_index': 13}, {'structure': '2.1.3', 'title': 'Abstraction and Independence of the application software', 'physical_index': 13}, {'structure': '2.1.4', 'title': 'Functional interface view', 'physical_index': 14}, {'structure': '2.1.5', 'title': 'Protection/unlock mechanisms for software', 'physical_index': 14}, {'structure': '2.1.6', 'title': 'Protection of SW-Components from malicious SW-Components', 'physical_index': 15}, {'structure': '2.1.7', 'title': 'Compositionality', 'physical_index': 15}, {'structure': '2.1.8', 'title': 'Diagnostics during runtime, for production and services purposes', 'physical_index': 15}, {'structure': '2.1.9', 'title': 'Hierarchical design methods', 'physical_index': 16}, {'structure': '2.1.10', 'title': 'Relations between SW components', 'physical_index': 16}, {'structure': '2.1.11', 'title': 'Protection from illegal access', 'physical_index': 16}, {'structure': '2.1.12', 'title': 'Management of vehicle diversity', 'physical_index': 17}, {'structure': '2.1.13', 'title': 'Naming conventions', 'physical_index': 17}, {'structure': '2.2', 'title': 'Category: AUTOSAR Feature Definition Requirements', 'physical_index': 18}, {'structure': '2.2.1', 'title': 'Top-down hierarchical design', 'physical_index': 18}, {'structure': '2.2.2', 'title': 'Interfaces of atomic software-components', 'physical_index': 18}, {'structure': '2.2.3', 'title': 'Bottom-up design of CompositionTypes', 'physical_index': 19}, {'structure': '2.2.4', 'title': 'Specification of Communications', 'physical_index': 19}, {'structure': '2.2.5', 'title': 'Interaction with basic software', 'physical_index': 19}, {'structure': '2.2.6', 'title': 'Sensor Actuator Components', 'physical_index': 20}, {'structure': '2.2.7', 'title': 'Data-consistency for communication among RunnableEntities', 'physical_index': 20}, {'structure': '2.2.8', 'title': 'Physical units', 'physical_index': 21}, {'structure': '2.2.9', 'title': 'Comments', 'physical_index': 21}, {'structure': '2.3', 'title': 'Category: Software Component Template Requirements', 'physical_index': 21}, {'structure': '2.3.1', 'title': 'Compositions', 'physical_index': 21}, {'structure': '2.3.2', 'title': 'Interfaces', 'physical_index': 22}, {'structure': '2.3.3', 'title': 'Behavior', 'physical_index': 22}, {'structure': '2.3.4', 'title': 'RTE Events', 'physical_index': 23}, {'structure': '2.3.5', 'title': 'Schedulability', 'physical_index': 24}, {'structure': '2.3.6', 'title': 'Runnable Entities', 'physical_index': 24}, {'structure': '2.3.7', 'title': 'Needed and usable sensors and actuators', 'physical_index': 25}, {'structure': '2.3.8', 'title': 'Variants', 'physical_index': 25}, {'structure': '2.3.9', 'title': 'Modes', 'physical_index': 26}, {'structure': '2.3.10', 'title': 'Connections between PortInterfaces', 'physical_index': 28}, {'structure': '2.3.11', 'title': 'Conditional existence of Prototypes due to variant handling', 'physical_index': 29}, {'structure': '2.3.12', 'title': 'Configurable size of Arrays', 'physical_index': 30}, {'structure': '2.3.13', 'title': 'Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition', 'physical_index': 30}, {'structure': '2.3.14', 'title': 'Conditional existence of RunnableEntitys', 'physical_index': 31}, {'structure': '2.3.15', 'title': 'Conditional existence of RTEEvents', 'physical_index': 32}, {'structure': '2.3.16', 'title': 'Conditional existence of InterRunnableVariables', 'physical_index': 32}, {'structure': '2.3.17', 'title': 'Conditional accessibility for measurement', 'physical_index': 32}, {'structure': '2.3.18', 'title': 'Conditional existence of parameter prototypes', 'physical_index': 32}, {'structure': '2.3.19', 'title': 'Support of conditional ports for SW-C', 'physical_index': 33}, {'structure': '2.3.20', 'title': 'Support of Interfaces with different resolutions', 'physical_index': 34}, {'structure': '2.3.21', 'title': 'Fixed data exchange', 'physical_index': 34}, {'structure': '2.3.22', 'title': 'M2 support for definition of calibration datasets', 'physical_index': 35}, {'structure': '2.3.23', 'title': 'Support of SAE J1939 Protocol Features', 'physical_index': 36}, {'structure': '2.3.24', 'title': 'Need data type and access support for arrays of variable number of elements within the maximum size', 'physical_index': 37}, {'structure': '2.3.25', 'title': 'Need data type and access support for byte arrays of variable number of elements', 'physical_index': 37}, {'structure': '2.3.26', 'title': 'Ability to publish/specify the diagnostic capabilities and its resources of an SWC', 'physical_index': 38}, {'structure': '2.3.27', 'title': 'Add support for Vehicle and Application Mode Management Concept', 'physical_index': 38}, {'structure': '2.3.28', 'title': 'Add support for Portgroups', 'physical_index': 39}, {'structure': '2.3.29', 'title': 'Integrity and Scaling at Ports', 'physical_index': 39}, {'structure': '3', 'title': 'Change History', 'physical_index': 6}, {'structure': '3.1', 'title': 'Change History for AUTOSAR 4.0.1 against 3.1.5', 'physical_index': 6}, {'structure': '3.1.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.1.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.1.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.2', 'title': 'Change History for AUTOSAR 4.0.2 against 4.0.1', 'physical_index': 6}, {'structure': '3.2.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.2.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.2.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.3', 'title': 'Change History for AUTOSAR 4.0.3 against 4.0.2', 'physical_index': 6}, {'structure': '3.3.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.3.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.3.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.4', 'title': 'Change History for AUTOSAR 4.1.1 against 4.0.3', 'physical_index': 6}, {'structure': '3.4.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.4.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.4.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.5', 'title': 'Change History for AUTOSAR 4.1.2 against 4.1.1', 'physical_index': 6}, {'structure': '3.5.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.5.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.5.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.6', 'title': 'Change History for AUTOSAR 4.2.1 against 4.1.2', 'physical_index': 6}, {'structure': '3.6.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.6.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.6.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.7', 'title': 'Change History for AUTOSAR 4.2.2 against 4.2.1', 'physical_index': 6}, {'structure': '3.7.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.7.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.7.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.8', 'title': 'Change History for AUTOSAR 4.3.0 against 4.2.2', 'physical_index': 6}, {'structure': '3.8.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.8.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.8.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.9', 'title': 'Change History for AUTOSAR 4.3.1 against 4.3.0', 'physical_index': 6}, {'structure': '3.9.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.9.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.9.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '3.10', 'title': 'Change History for AUTOSAR 4.4.0 against 4.3.1', 'physical_index': 6}, {'structure': '3.10.1', 'title': 'Added Specification Items', 'physical_index': 6}, {'structure': '3.10.2', 'title': 'Changed Specification Items', 'physical_index': 6}, {'structure': '3.10.3', 'title': 'Deleted Specification Items', 'physical_index': 6}, {'structure': '2.3.30', 'title': 'Need to add application data type on top of implementation data type', 'physical_index': 40}, {'structure': '2.3.31', 'title': 'Application data type', 'physical_index': 41}, {'structure': '2.3.32', 'title': 'Implementation data type', 'physical_index': 41}, {'structure': '2.3.33', 'title': 'Data Types for Primitive Data Mapping', 'physical_index': 42}, {'structure': '2.3.34', 'title': 'Allow Communication Attributes on Compositions', 'physical_index': 42}, {'structure': '2.3.35', 'title': 'Allow Port Specific Configuration of Data Transformation Properties', 'physical_index': 43}, {'structure': '2.3.36', 'title': 'Error notification of data transformation', 'physical_index': 43}, {'structure': '2.3.37', 'title': 'Enhancing the Non-Volatile (NV) memory interface', 'physical_index': 44}, {'structure': '2.3.38', 'title': 'Documentation of M1 artifacts', 'physical_index': 44}, {'structure': '2.3.39', 'title': 'Support end-to-end communication protection', 'physical_index': 45}, {'structure': '2.3.40', 'title': 'Partial Networking', 'physical_index': 46}, {'structure': '2.3.41', 'title': 'Bidirectional communication', 'physical_index': 46}, {'structure': '2.3.42', 'title': 'Initialization of Data', 'physical_index': 47}, {'structure': '2.3.43', 'title': 'Instance specific timing', 'physical_index': 47}, {'structure': '2.3.44', 'title': 'Rapid Prototyping support', 'physical_index': 48}, {'structure': '2.3.45', 'title': 'Initialization of Runnables', 'physical_index': 49}, {'structure': '2.3.46', 'title': 'Diagnostics over IP', 'physical_index': 50}, {'structure': '2.3.47', 'title': 'Optional Elements', 'physical_index': 51}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.23529411764705882,
+    "incorrect_results": [
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Bottom-up design of CompositionTypes",
+        "page_number": 19
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Specification of Communications",
+        "page_number": 19
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Interaction with basic software",
+        "page_number": 19
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Sensor Actuator Components",
+        "page_number": 20
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Data-consistency for communication among RunnableEntities",
+        "page_number": 20
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Physical units",
+        "page_number": 21
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Comments",
+        "page_number": 21
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Category: Software Component Template Requirements",
+        "page_number": 21
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Compositions",
+        "page_number": 21
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Interfaces",
+        "page_number": 22
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Behavior",
+        "page_number": 22
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "RTE Events",
+        "page_number": 23
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Schedulability",
+        "page_number": 24
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Runnable Entities",
+        "page_number": 24
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Needed and usable sensors and actuators",
+        "page_number": 25
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Variants",
+        "page_number": 25
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Modes",
+        "page_number": 26
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Connections between PortInterfaces",
+        "page_number": 28
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Conditional existence of Prototypes due to variant handling",
+        "page_number": 29
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Configurable size of Arrays",
+        "page_number": 30
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Attributes swMinAxisPoints and swMaxAxisPoints shall be adjustable by an System Constant Definition",
+        "page_number": 30
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Conditional existence of RunnableEntitys",
+        "page_number": 31
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Conditional existence of RTEEvents",
+        "page_number": 32
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Conditional existence of InterRunnableVariables",
+        "page_number": 32
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Conditional accessibility for measurement",
+        "page_number": 32
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Conditional existence of parameter prototypes",
+        "page_number": 32
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Support of conditional ports for SW-C",
+        "page_number": 33
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Support of Interfaces with different resolutions",
+        "page_number": 34
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Fixed data exchange",
+        "page_number": 34
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "M2 support for definition of calibration datasets",
+        "page_number": 35
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Support of SAE J1939 Protocol Features",
+        "page_number": 36
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Need data type and access support for arrays of variable number of elements within the maximum size",
+        "page_number": 37
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Need data type and access support for byte arrays of variable number of elements",
+        "page_number": 37
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Ability to publish/specify the diagnostic capabilities and its resources of an SWC",
+        "page_number": 38
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Add support for Vehicle and Application Mode Management Concept",
+        "page_number": 38
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Add support for Portgroups",
+        "page_number": 39
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Integrity and Scaling at Ports",
+        "page_number": 39
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Change History",
+        "page_number": 6
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.0.1 against 3.1.5",
+        "page_number": 6
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.0.2 against 4.0.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.0.3 against 4.0.2",
+        "page_number": 6
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.1.1 against 4.0.3",
+        "page_number": 6
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.1.2 against 4.1.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.2.1 against 4.1.2",
+        "page_number": 6
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.2.2 against 4.2.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.3.0 against 4.2.2",
+        "page_number": 6
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.3.1 against 4.3.0",
+        "page_number": 6
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Change History for AUTOSAR 4.4.0 against 4.3.1",
+        "page_number": 6
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Added Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Changed Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Deleted Specification Items",
+        "page_number": 6
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Need to add application data type on top of implementation data type",
+        "page_number": 40
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Application data type",
+        "page_number": 41
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Implementation data type",
+        "page_number": 41
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Data Types for Primitive Data Mapping",
+        "page_number": 42
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Allow Communication Attributes on Compositions",
+        "page_number": 42
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "Allow Port Specific Configuration of Data Transformation Properties",
+        "page_number": 43
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "Documentation of M1 artifacts",
+        "page_number": 44
+      },
+      {
+        "list_index": 110,
+        "answer": "no",
+        "title": "Support end-to-end communication protection",
+        "page_number": 45
+      },
+      {
+        "list_index": 111,
+        "answer": "no",
+        "title": "Partial Networking",
+        "page_number": 46
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "Bidirectional communication",
+        "page_number": 46
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Initialization of Data",
+        "page_number": 47
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Instance specific timing",
+        "page_number": 47
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "Rapid Prototyping support",
+        "page_number": 48
+      }
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+# ---------------------------------------------------------------------------
+# Provider selection: openai | nvidia | vllm
+#   openai  — uses OpenAI API (default, no api_base needed)
+#   nvidia  — uses NVIDIA NIM endpoint (set api_base + api_key)
+#   vllm    — uses a local/remote vLLM server (set api_base; api_key optional)
+# ---------------------------------------------------------------------------
+provider: "vllm"
+
+# API base URL
+#   openai  — leave empty (uses OpenAI default)
+#   nvidia  — leave empty to use "https://integrate.api.nvidia.com/v1", or set explicitly
+#   vllm    — REQUIRED: set to your vLLM server, e.g. "http://localhost:8000/v1"
+#             The URL must end with /v1 (no trailing slash)
+api_base: "http://localhost:8011/v1"
+
+# API key — leave empty to fall back to env vars (OPENAI_API_KEY / NVIDIA_API_KEY)
+api_key: ""
+
+# Default model per provider — auto-selected when model: "" (empty)
+#   openai  -> gpt-4o-2024-11-20
+#   nvidia  -> meta/llama-3.1-70b-instruct
+#   vllm    -> Qwen/Qwen2.5-72B-Instruct-AWQ
+# Set model explicitly here to override the provider default.
+model: ""
+
+retrieve_model: ""  # defaults to `model` if not set
+
+toc_check_page_num: 25
+max_page_num_each_node: 10
+# Lowered from 20000 to 12000 to leave room for output tokens within Qwen's 32768 context window.
+# At max_output_tokens=16384: safe input budget = 32768 - 16384 - 1000 overhead ≈ 15384 tokens.
+# 12000 gives comfortable margin. (Issue 7 / Problem 7)
+max_token_num_each_node: 12000
+if_add_node_id: "yes"
+if_add_node_summary: "yes"
+if_add_doc_description: "no"
+if_add_node_text: "no"
+
+# Max output tokens for LLM calls. Raise to handle large JSON tree generation without truncation.
+# Qwen 32768 context: 16384 output + 12000 input + ~1000 overhead = ~29384 tokens (within limit).
+# (Problem 1)
+max_output_tokens: 10000          
+
+# Max concurrent async LLM calls (relevant for nvidia/vllm rate limiting)
+# nvidia free tier: 3-5  |  nvidia standard: 10-15  |  vllm local: 10-20
+async_concurrency: 20

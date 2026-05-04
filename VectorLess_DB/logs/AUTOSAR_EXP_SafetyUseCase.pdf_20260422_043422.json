@@ -1,0 +1,887 @@
+[
+  {
+    "total_page_number": 61
+  },
+  {
+    "total_token": 29331
+  },
+  {
+    "toc_content": "Safety Use Case Example  \nAUTOSAR CP Release 4.4.0    \n3 of 61 Document ID 641: AUTOSAR_EXP_SafetyUseCase  \n- AUTOSAR Confidential - \nTable of Contents  \n \n1 Introduction  :  :  :  :  6 \n2 Item Description  :  :  :   7 \n2.1 Functional Behavior  :  :  :   7 \n2.2 Preliminary Architecture  :  :  :   8 \n2.3 Assumptions and Limitations of Exemplary Safety Analysis  :   10 \n3 Safety Concept on Vehicle Level  :  :  ... 12 \n3.1 Outcome of Haza rd Analysis and Risk Assessment  :  ... 12 \n3.2 Relevant Failure Modes  :  :  :   12 \n3.3 Functional Safety Concept  :  :  :   13 \n3.3.1  FunSafReq01 -01: :  :  :   13 \n3.3.2  FunSafReq01 -02: :  :  :   13 \n3.3.3  FunSafReq01 -03: :  :  :   13 \n3.4 Safety Requirements on Vehicle Level  :  :   13 \n3.4.1  Warning and Degradation Concept  :  :   14 \n3.4.2  Technical Safety Requirements (on Vehicle Level)  :   14 \n3.4.3  Allocation of (Functional) System Safety Requirements  :   16 \n3.4.4  Summary of Technical System Safety Requirements (Vehicle  \nLevel)  :  :  :   17 \n4 Technical Safety Concept on FLM -ECU Level  :  :   19 \n4.1 Assumptions and Limitations on ECU Level  :  :   19 \n4.2 Safet y Goals to be Fulfilled  :  :  :   19 \n4.3 Relevant System Safety Requirements  :  :   19 \n4.4 Overview of Concept on ECU Level  :  :   19 \n4.5 Requirements on ECU Level  :  :  :  21 \n4.6 ECU Functionality  :  :  :   23 \n4.6.1  Reading Light Switch State :  :   23 \n4.6.2  Reading Ignition Key State (via Body  Controller)  :   23 \n4.6.3  Activating Lights (physical)  :  :   23 \n4.6.4  Monitoring Lights  :  :  :   23 \n4.6.5  Providing Driver Feedb ack :  :   23 \n4.6.6  Controlling Lights (logical)  :  :  . 24 \n5 SW Architecture and SW Safety Requirements  :  :   25 \n5.1 Software Architecture  :  :  :   25 \n5.1.1  Software Components  :  :  :  27 \n5.1.2  RTE Runtime Environment  :  :   27 \n5.1.3  AUTOSAR BSW View :  :  :  28 \n5.1.4  General Overview of BSW Function  :  :   29 \n5.2 Failure Modes  :  :  :   31 \n5.2.1  HW Failure Modes  :  :  :   31 \n5.2.2  SW Failure Modes  :  :  :   31 \n5.3 Software Aspects and Potential Failure Modes  :  :   33 \n5.3.1  Analysis of ECU02 The correct transformation of CAN BUS \nCAN_CL15 to the logical CL15_01 message shall be ensured.  :   34 \n5.3.2  Analysis of ECU03 The correct routing of the CL15_01 message \nthrough the AUTOSAR BSW/RTE shall be ensured. The signal \nCL15_01.CL15ON is to be extracted and provided to the \napplicatio n-SWCs properly.  :  :   35 Safety Use Case Example  \nAUTOSAR CP Release 4.4.0    \n4 of 61 Document ID 641: AUTOSAR_EXP_SafetyUseCase  \n- AUTOSAR Confidential - \n5.3.3  Analysis of ECU27 The transmission of CL15_01.CL15ON \nbetween sender and receiver must be ensured (ASIL  B). :   36 \n5.3.4  Analysis of ECU04 The ECU shall detect any potential \ncommunication faults affecting the signal CL15ON that could \nlead to a violation of the safety goal.  :  :   37 \n5.3.5  Analysis of ECU06 The correct reading of the HW_LB_OFF input \nshall be ensured.  :  :  :   38 \n5.3.6  Analysis of ECU07 The correct configuration of the HW_LB_OFF \ninput port and pin shall be ensured.  :  :   39 \n5.3.7  Analysis of ECU08 The correct transformation of the \nHW_LB_OFF input to the logical LB_OFF signal shall be \nensured.  :  :  :   40 \n5.3.8  Analysis of ECU09 The correct routing of LB_OFF through the \nAUTOSAR BSW/RTE shall be ensured.  :  :   41 \n5.3.9  Analysis of ECU10 The ECU shall detect potential faults affecting \nLB_OFF that could lead to a violation of the safety goal.  :   42 \n5.3.10  Analysi s of ECU12 The Application -SWC shall determine the \nLB_OFF and CL15ON status as specified. :  :   43 \n5.3.11  Analysis of ECU13 The Applica tion-SWC shall evaluate the light \nrequest conditions based on LB_OFF and CL15ON and their \ntiming as specified.  :  :  :   44 \n5.3.12  Analysis of ECU14 The Application -SWC shall set or reset the \nlight on command (Lights_ON) based on the LB_OFF and \nCL15ON evaluation results or if any fault is detected - set the \nlight on command, if a communication fault of CL15_01 message \nis detected cont inuously for more than 200ms or set the light on \ncommand, if a fault on LB_OFF is detected continuously for more \nthan 200ms.  :  :  :   45 \n5.3.13  Analysis of ECU15 The Application -SWC shall activate both \ndaytime running lights (DRL_ON) if a failure of both LB bulbs is \ndetected continuously for 200ms (read_current_L, \nread_current_R).  :  :  :   46 \n5.3.14  Analysis of ECU16 The correct powering of the bulbs according \nto the Lightsreqest and the specification are to be signaled via \nset_pwm command.  :  :  :   47 \n5.3.15  Analysis of ECU 29 The correct transformation of the logical \nPWM -l-Signal to the SPI BUS message shall be ensured.  :   48 \n5.3.16  Analysis of ECU17 The correct routing of the set_pwm request to \nthe \u00b5C SPI output shall be ensured.  :  :   49 \n5.3.17  Analysis of ECU20 When the bulbs are powered, the Application -\nSWC shall evaluate the status of the bulbs.  :  :  50 \n5.3.18  Analysis of ECU30 When the bulbs are powered, the Actuator -\nSWC shall read and provide the status of the bulbs \n(read_current_L, read_current_R).  :  :   51 \n5.3.19  Analysis of ECU21 Detected faults shall be signaled via CAN \nBUS LBFailure.  :  :  :   52 \n5.3.20  Analysis of ECU23 The Actuator -SWC shall initiate a diagnosis \nof each element of the bulb health measurement path and \nevaluate the results.  :  :  :   53 Safety Use Case Example  \nAUTOSAR CP Release 4.4.0    \n5 of 61 Document ID 641: AUTOSAR_EXP_SafetyUseCase  \n- AUTOSAR Confidential - \n5.3.21  Analysis of ECU24 The correct routing of bulb health \nmeasurement values read_current_L, read_current_R through \nthe AUTOSAR BSW/RTE shall be ensured. :  :  54 \n5.3.22  Analysis of ECU25 The ADC -HW shall convert the measured \ncurrent to read_current_L, read_current_R  :  :  55 \n5.3.23  Analysis of ECU26 The correct data exchange (timing and \ncontent) between the SW -components shall be ensured.  :   56 \n6 Conclusion  :  :  :  :  57 \n6.1 Potential Safety Improvement for Future AUTOSAR Releases  :   57 \n7 Abbreviation/Glossary  :  :  :   59 \n8 References  :  :  :  :  60 \n9 Figures and Tables  :  :  :   61 \n \n ",
+    "toc_page_list": [
+      2,
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 6}, {'structure': '2', 'title': 'Item Description', 'page': 7}, {'structure': '2.1', 'title': 'Functional Behavior', 'page': 7}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'page': 8}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'page': 10}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'page': 12}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'page': 12}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'page': 12}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'page': 13}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'page': 13}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'page': 13}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'page': 13}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'page': 13}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'page': 14}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'page': 14}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'page': 16}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'page': 17}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'page': 19}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'page': 19}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'page': 19}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'page': 19}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'page': 19}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'page': 21}, {'structure': '4.6', 'title': 'ECU Functionality', 'page': 23}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'page': 23}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'page': 23}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'page': 23}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'page': 23}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'page': 23}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'page': 24}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'page': 25}, {'structure': '5.1', 'title': 'Software Architecture', 'page': 25}, {'structure': '5.1.1', 'title': 'Software Components', 'page': 27}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'page': 27}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'page': 28}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'page': 29}, {'structure': '5.2', 'title': 'Failure Modes', 'page': 31}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'page': 31}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'page': 31}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'page': 33}, {'structure': '5.3.1', 'title': 'Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.', 'page': 34}, {'structure': '5.3.2', 'title': 'Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.', 'page': 35}, {'structure': '5.3.3', 'title': 'Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).', 'page': 36}, {'structure': '5.3.4', 'title': 'Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.', 'page': 37}, {'structure': '5.3.5', 'title': 'Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.', 'page': 38}, {'structure': '5.3.6', 'title': 'Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.', 'page': 39}, {'structure': '5.3.7', 'title': 'Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.', 'page': 40}, {'structure': '5.3.8', 'title': 'Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.', 'page': 41}, {'structure': '5.3.9', 'title': 'Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.', 'page': 42}, {'structure': '5.3.10', 'title': 'Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.', 'page': 43}, {'structure': '5.3.11', 'title': 'Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.', 'page': 44}, {'structure': '5.3.12', 'title': 'Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.', 'page': 45}, {'structure': '5.3.13', 'title': 'Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).', 'page': 46}, {'structure': '5.3.14', 'title': 'Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.', 'page': 47}, {'structure': '5.3.15', 'title': 'Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.', 'page': 48}, {'structure': '5.3.16', 'title': 'Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.', 'page': 49}, {'structure': '5.3.17', 'title': 'Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.', 'page': 50}, {'structure': '5.3.18', 'title': 'Analysis of ECU30 When the bulbs are powered, the Actuator-SWC shall read and provide the status of the bulbs (read_current_L, read_current_R).', 'page': 51}, {'structure': '5.3.19', 'title': 'Analysis of ECU21 Detected faults shall be signaled via CAN BUS LBFailure.', 'page': 52}, {'structure': '5.3.20', 'title': 'Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.', 'page': 53}, {'structure': '5.3.21', 'title': 'Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.', 'page': 54}, {'structure': '5.3.22', 'title': 'Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R', 'page': 55}, {'structure': '5.3.23', 'title': 'Analysis of ECU26 The correct data exchange (timing and content) between the SW-components shall be ensured.', 'page': 56}, {'structure': '6', 'title': 'Conclusion', 'page': 57}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'page': 57}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'page': 59}, {'structure': '8', 'title': 'References', 'page': 60}, {'structure': '9', 'title': 'Figures and Tables', 'page': 61}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Item Description', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': '<physical_index_8>'}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': '<physical_index_12>'}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': '<physical_index_12>'}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'physical_index': '<physical_index_13>'}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': '<physical_index_13>'}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': '<physical_index_16>'}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': '<physical_index_17>'}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': '<physical_index_19>'}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': '<physical_index_19>'}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': '<physical_index_21>'}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': '<physical_index_24>'}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': '<physical_index_25>'}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': '<physical_index_26>'}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': '<physical_index_27>'}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': '<physical_index_27>'}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': '<physical_index_28>'}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': '<physical_index_29>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '2', 'title': 'Item Description', 'physical_index': 7}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': 7}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': 8}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': 10}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': 12}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': 12}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': 12}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': 13}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'physical_index': 13}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'physical_index': 13}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'physical_index': 13}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': 13}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': 14}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': 14}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': 16}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': 17}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': 19}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': 19}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': 19}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': 19}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': 19}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': 21}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': 23}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': 23}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': 23}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': 23}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': 23}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': 23}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': 24}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': 25}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': 26}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': 27}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': 27}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': 28}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': 29}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 6, 'physical_index': 6}, {'title': 'Item Description', 'page': 7, 'physical_index': 7}, {'title': 'Functional Behavior', 'page': 7, 'physical_index': 7}, {'title': 'Preliminary Architecture', 'page': 8, 'physical_index': 8}, {'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'page': 10, 'physical_index': 10}, {'title': 'Safety Concept on Vehicle Level', 'page': 12, 'physical_index': 12}, {'title': 'Outcome of Hazard Analysis and Risk Assessment', 'page': 12, 'physical_index': 12}, {'title': 'Relevant Failure Modes', 'page': 12, 'physical_index': 12}, {'title': 'Functional Safety Concept', 'page': 13, 'physical_index': 13}, {'title': 'FunSafReq01 -01', 'page': 13, 'physical_index': 13}, {'title': 'FunSafReq01 -02', 'page': 13, 'physical_index': 13}, {'title': 'FunSafReq01 -03', 'page': 13, 'physical_index': 13}, {'title': 'Safety Requirements on Vehicle Level', 'page': 13, 'physical_index': 13}, {'title': 'Warning and Degradation Concept', 'page': 14, 'physical_index': 14}, {'title': 'Technical Safety Requirements (on Vehicle Level)', 'page': 14, 'physical_index': 14}, {'title': 'Allocation of (Functional) System Safety Requirements', 'page': 16, 'physical_index': 16}, {'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'page': 17, 'physical_index': 17}, {'title': 'Technical Safety Concept on FLM -ECU Level', 'page': 19, 'physical_index': 19}, {'title': 'Assumptions and Limitations on ECU Level', 'page': 19, 'physical_index': 19}, {'title': 'Safety Goals to be Fulfilled', 'page': 19, 'physical_index': 19}, {'title': 'Relevant System Safety Requirements', 'page': 19, 'physical_index': 19}, {'title': 'Overview of Concept on ECU Level', 'page': 19, 'physical_index': 19}, {'title': 'Requirements on ECU Level', 'page': 21, 'physical_index': 21}, {'title': 'ECU Functionality', 'page': 23, 'physical_index': 23}, {'title': 'Reading Light Switch State', 'page': 23, 'physical_index': 23}, {'title': 'Reading Ignition Key State (via Body Controller)', 'page': 23, 'physical_index': 23}, {'title': 'Activating Lights (physical)', 'page': 23, 'physical_index': 23}, {'title': 'Monitoring Lights', 'page': 23, 'physical_index': 23}, {'title': 'Providing Driver Feedback', 'page': 23, 'physical_index': 23}, {'title': 'Controlling Lights (logical)', 'page': 24, 'physical_index': 24}, {'title': 'SW Architecture and SW Safety Requirements', 'page': 25, 'physical_index': 25}, {'title': 'Software Architecture', 'page': 25, 'physical_index': 26}, {'title': 'Software Components', 'page': 27, 'physical_index': 27}, {'title': 'RTE Runtime Environment', 'page': 27, 'physical_index': 27}, {'title': 'AUTOSAR BSW View', 'page': 28, 'physical_index': 28}, {'title': 'General Overview of BSW Function', 'page': 29, 'physical_index': 29}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '2', 'title': 'Item Description', 'physical_index': 7}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': 7}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': 8}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': 10}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': 12}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': 12}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': 12}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': 13}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'physical_index': 13}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'physical_index': 13}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'physical_index': 13}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': 13}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': 14}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': 14}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': 16}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': 17}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': 19}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': 19}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': 19}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': 19}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': 19}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': 21}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': 23}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': 23}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': 23}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': 23}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': 23}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': 23}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': 24}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': 25}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': 25}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': 27}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': 27}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': 28}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': 29}, {'structure': '5.2', 'title': 'Failure Modes', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'physical_index': 31}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'physical_index': 33}, {'structure': '5.3.1', 'title': 'Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.', 'physical_index': 34}, {'structure': '5.3.2', 'title': 'Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.', 'physical_index': 35}, {'structure': '5.3.3', 'title': 'Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).', 'physical_index': 36}, {'structure': '5.3.4', 'title': 'Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.', 'physical_index': 37}, {'structure': '5.3.5', 'title': 'Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.', 'physical_index': 38}, {'structure': '5.3.6', 'title': 'Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.', 'physical_index': 39}, {'structure': '5.3.7', 'title': 'Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.', 'physical_index': 40}, {'structure': '5.3.8', 'title': 'Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': 41}, {'structure': '5.3.9', 'title': 'Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.', 'physical_index': 42}, {'structure': '5.3.10', 'title': 'Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.', 'physical_index': 43}, {'structure': '5.3.11', 'title': 'Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.', 'physical_index': 44}, {'structure': '5.3.12', 'title': 'Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.', 'physical_index': 45}, {'structure': '5.3.13', 'title': 'Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).', 'physical_index': 46}, {'structure': '5.3.14', 'title': 'Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.', 'physical_index': 47}, {'structure': '5.3.15', 'title': 'Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.', 'physical_index': 48}, {'structure': '5.3.16', 'title': 'Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.', 'physical_index': 49}, {'structure': '5.3.17', 'title': 'Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.', 'physical_index': 50}, {'structure': '5.3.18', 'title': 'Analysis of ECU30 When the bulbs are powered, the Actuator-SWC shall read and provide the status of the bulbs (read_current_L, read_current_R).', 'physical_index': 51}, {'structure': '5.3.19', 'title': 'Analysis of ECU21 Detected faults shall be signaled via CAN BUS LBFailure.', 'physical_index': 52}, {'structure': '5.3.20', 'title': 'Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.', 'physical_index': 53}, {'structure': '5.3.21', 'title': 'Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': 54}, {'structure': '5.3.22', 'title': 'Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R', 'physical_index': 55}, {'structure': '5.3.23', 'title': 'Analysis of ECU26 The correct data exchange (timing and content) between the SW-components shall be ensured.', 'physical_index': 56}, {'structure': '6', 'title': 'Conclusion', 'physical_index': 57}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'physical_index': 57}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'physical_index': 59}, {'structure': '8', 'title': 'References', 'physical_index': 60}, {'structure': '9', 'title': 'Figures and Tables', 'physical_index': 61}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '2', 'title': 'Item Description', 'physical_index': 7}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': 7}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': 8}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': 10}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': 12}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': 12}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': 12}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': 13}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'physical_index': 13}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'physical_index': 13}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'physical_index': 13}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': 13}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': 14}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': 14}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': 16}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': 17}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': 19}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': 19}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': 19}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': 19}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': 19}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': 21}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': 23}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': 23}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': 23}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': 23}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': 23}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': 23}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': 24}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': 25}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': 25}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': 27}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': 27}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': 28}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': 29}, {'structure': '5.2', 'title': 'Failure Modes', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'physical_index': 31}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'physical_index': 33}, {'structure': '5.3.1', 'title': 'Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.', 'physical_index': 34}, {'structure': '5.3.2', 'title': 'Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.', 'physical_index': 35}, {'structure': '5.3.3', 'title': 'Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).', 'physical_index': 36}, {'structure': '5.3.4', 'title': 'Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.', 'physical_index': 37}, {'structure': '5.3.5', 'title': 'Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.', 'physical_index': 38}, {'structure': '5.3.6', 'title': 'Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.', 'physical_index': 39}, {'structure': '5.3.7', 'title': 'Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.', 'physical_index': 40}, {'structure': '5.3.8', 'title': 'Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': 41}, {'structure': '5.3.9', 'title': 'Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.', 'physical_index': 42}, {'structure': '5.3.10', 'title': 'Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.', 'physical_index': 43}, {'structure': '5.3.11', 'title': 'Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.', 'physical_index': 44}, {'structure': '5.3.12', 'title': 'Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.', 'physical_index': 45}, {'structure': '5.3.13', 'title': 'Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).', 'physical_index': 46}, {'structure': '5.3.14', 'title': 'Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.', 'physical_index': 47}, {'structure': '5.3.15', 'title': 'Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.', 'physical_index': 48}, {'structure': '5.3.16', 'title': 'Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.', 'physical_index': 49}, {'structure': '5.3.17', 'title': 'Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.', 'physical_index': 50}, {'structure': '5.3.18', 'title': 'Analysis of ECU30 When the bulbs are powered, the Actuator-SWC shall read and provide the status of the bulbs (read_current_L, read_current_R).', 'physical_index': 51}, {'structure': '5.3.19', 'title': 'Analysis of ECU21 Detected faults shall be signaled via CAN BUS LBFailure.', 'physical_index': 52}, {'structure': '5.3.20', 'title': 'Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.', 'physical_index': 53}, {'structure': '5.3.21', 'title': 'Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': 54}, {'structure': '5.3.22', 'title': 'Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R', 'physical_index': 55}, {'structure': '5.3.23', 'title': 'Analysis of ECU26 The correct data exchange (timing and content) between the SW-components shall be ensured.', 'physical_index': 56}, {'structure': '6', 'title': 'Conclusion', 'physical_index': 57}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'physical_index': 57}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'physical_index': 59}, {'structure': '8', 'title': 'References', 'physical_index': 60}, {'structure': '9', 'title': 'Figures and Tables', 'physical_index': 61}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.35294117647058826,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Relevant System Safety Requirements",
+        "page_number": 19
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Overview of Concept on ECU Level",
+        "page_number": 19
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Requirements on ECU Level",
+        "page_number": 21
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "ECU Functionality",
+        "page_number": 23
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Reading Light Switch State",
+        "page_number": 23
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Reading Ignition Key State (via Body Controller)",
+        "page_number": 23
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Activating Lights (physical)",
+        "page_number": 23
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Monitoring Lights",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Providing Driver Feedback",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Controlling Lights (logical)",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "SW Architecture and SW Safety Requirements",
+        "page_number": 25
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Software Architecture",
+        "page_number": 25
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Software Components",
+        "page_number": 27
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "RTE Runtime Environment",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "AUTOSAR BSW View",
+        "page_number": 28
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "General Overview of BSW Function",
+        "page_number": 29
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "HW Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "SW Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Software Aspects and Potential Failure Modes",
+        "page_number": 33
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.",
+        "page_number": 34
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.",
+        "page_number": 35
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).",
+        "page_number": 36
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.",
+        "page_number": 37
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.",
+        "page_number": 38
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.",
+        "page_number": 39
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.",
+        "page_number": 40
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.",
+        "page_number": 41
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.",
+        "page_number": 42
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.",
+        "page_number": 43
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.",
+        "page_number": 44
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.",
+        "page_number": 45
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).",
+        "page_number": 46
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.",
+        "page_number": 47
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.",
+        "page_number": 48
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.",
+        "page_number": 49
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.",
+        "page_number": 50
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.",
+        "page_number": 53
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.",
+        "page_number": 54
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R",
+        "page_number": 55
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Analysis of ECU26 The correct data exchange (timing and content) between the SW-components shall be ensured.",
+        "page_number": 56
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Conclusion",
+        "page_number": 57
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "References",
+        "page_number": 60
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Figures and Tables",
+        "page_number": 61
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 6}, {'structure': '2', 'title': 'Item Description', 'page': 7}, {'structure': '2.1', 'title': 'Functional Behavior', 'page': 7}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'page': 8}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'page': 10}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'page': 12}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'page': 12}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'page': 12}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'page': 13}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'page': 13}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'page': 13}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'page': 13}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'page': 13}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'page': 14}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'page': 14}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'page': 16}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'page': 17}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'page': 19}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'page': 19}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'page': 19}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'page': 19}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'page': 19}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'page': 21}, {'structure': '4.6', 'title': 'ECU Functionality', 'page': 23}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'page': 23}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'page': 23}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'page': 23}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'page': 23}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'page': 23}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'page': 24}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'page': 25}, {'structure': '5.1', 'title': 'Software Architecture', 'page': 25}, {'structure': '5.1.1', 'title': 'Software Components', 'page': 27}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'page': 27}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'page': 28}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'page': 29}, {'structure': '5.2', 'title': 'Failure Modes', 'page': 31}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'page': 31}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'page': 31}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'page': 33}, {'structure': '5.3.1', 'title': 'Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.', 'page': 34}, {'structure': '5.3.2', 'title': 'Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.', 'page': 35}, {'structure': '5.3.3', 'title': 'Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).', 'page': 36}, {'structure': '5.3.4', 'title': 'Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.', 'page': 37}, {'structure': '5.3.5', 'title': 'Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.', 'page': 38}, {'structure': '5.3.6', 'title': 'Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.', 'page': 39}, {'structure': '5.3.7', 'title': 'Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.', 'page': 40}, {'structure': '5.3.8', 'title': 'Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.', 'page': 41}, {'structure': '5.3.9', 'title': 'Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.', 'page': 42}, {'structure': '5.3.10', 'title': 'Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.', 'page': 43}, {'structure': '5.3.11', 'title': 'Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.', 'page': 44}, {'structure': '5.3.12', 'title': 'Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.', 'page': 45}, {'structure': '5.3.13', 'title': 'Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).', 'page': 46}, {'structure': '5.3.14', 'title': 'Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.', 'page': 47}, {'structure': '5.3.15', 'title': 'Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.', 'page': 48}, {'structure': '5.3.16', 'title': 'Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.', 'page': 49}, {'structure': '5.3.17', 'title': 'Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.', 'page': 50}, {'structure': '5.3.18', 'title': 'Analysis of ECU30 When the bulbs are powered, the Actuator-SWC shall read and provide the status of the bulbs (read_current_L, read_current_R).', 'page': 51}, {'structure': '5.3.19', 'title': 'Analysis of ECU21 Detected faults shall be signaled via CAN BUS LBFailure.', 'page': 52}, {'structure': '5.3.20', 'title': 'Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.', 'page': 53}, {'structure': '5.3.21', 'title': 'Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.', 'page': 54}, {'structure': '5.3.22', 'title': 'Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R', 'page': 55}, {'structure': '5.3.23', 'title': 'Analysis of ECU26 The correct data exchange (timing and content) between the SW-components shall be ensured.', 'page': 56}, {'structure': '6', 'title': 'Conclusion', 'page': 57}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'page': 57}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'page': 59}, {'structure': '8', 'title': 'References', 'page': 60}, {'structure': '9', 'title': 'Figures and Tables', 'page': 61}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Item Description', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': '<physical_index_8>'}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': '<physical_index_12>'}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': '<physical_index_12>'}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'physical_index': '<physical_index_13>'}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': '<physical_index_16>'}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': '<physical_index_17>'}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': '<physical_index_19>'}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': '<physical_index_19>'}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': '<physical_index_21>'}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': '<physical_index_24>'}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': '<physical_index_25>'}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': '<physical_index_25>'}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': '<physical_index_27>'}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': '<physical_index_27>'}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': '<physical_index_28>'}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': '<physical_index_29>'}, {'structure': '5.2', 'title': 'Failure Modes', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'physical_index': '<physical_index_31>'}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'physical_index': '<physical_index_33>'}, {'structure': '5.3.1', 'title': 'Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.', 'physical_index': '<physical_index_34>'}, {'structure': '5.3.2', 'title': 'Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.', 'physical_index': '<physical_index_35>'}, {'structure': '5.3.3', 'title': 'Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).', 'physical_index': '<physical_index_36>'}, {'structure': '5.3.4', 'title': 'Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.', 'physical_index': '<physical_index_37>'}, {'structure': '5.3.5', 'title': 'Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.', 'physical_index': '<physical_index_38>'}, {'structure': '5.3.6', 'title': 'Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.', 'physical_index': '<physical_index_39>'}, {'structure': '5.3.7', 'title': 'Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.', 'physical_index': '<physical_index_40>'}, {'structure': '5.3.8', 'title': 'Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': '<physical_index_41>'}, {'structure': '5.3.9', 'title': 'Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.', 'physical_index': '<physical_index_42>'}, {'structure': '5.3.10', 'title': 'Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.', 'physical_index': '<physical_index_43>'}, {'structure': '5.3.11', 'title': 'Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.', 'physical_index': '<physical_index_44>'}, {'structure': '5.3.12', 'title': 'Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.', 'physical_index': '<physical_index_45>'}, {'structure': '5.3.13', 'title': 'Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).', 'physical_index': '<physical_index_46>'}, {'structure': '5.3.14', 'title': 'Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.', 'physical_index': '<physical_index_47>'}, {'structure': '5.3.15', 'title': 'Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.', 'physical_index': '<physical_index_48>'}, {'structure': '5.3.16', 'title': 'Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.17', 'title': 'Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.18', 'title': 'Analysis of ECU30 When the bulbs are powered, the Actuator-SWC shall read and provide the status of the bulbs (read_current_L, read_current_R).', 'physical_index': '<physical_index_51>'}, {'structure': '5.3.19', 'title': 'Analysis of ECU21 Detected faults shall be signaled via CAN BUS LBFailure.', 'physical_index': '<physical_index_52>'}, {'structure': '5.3.20', 'title': 'Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.21', 'title': 'Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.22', 'title': 'Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.23', 'title': 'Analysis of ECU26 The correct data exchange (timing and content) between the SW-components shall be ensured.', 'physical_index': '<physical_index_56>'}, {'structure': '6', 'title': 'Conclusion', 'physical_index': '<physical_index_57>'}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'physical_index': '<physical_index_57>'}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'physical_index': '<physical_index_59>'}, {'structure': '8', 'title': 'References', 'physical_index': '<physical_index_60>'}, {'structure': '9', 'title': 'Figures and Tables', 'physical_index': '<physical_index_61>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '2', 'title': 'Item Description', 'physical_index': 7}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': 7}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': 8}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': 10}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': 12}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': 12}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': 12}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': 13}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01', 'physical_index': 13}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02', 'physical_index': 13}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03', 'physical_index': 13}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': 14}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': 14}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': 14}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': 16}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': 17}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': 19}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': 19}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': 19}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': 19}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': 19}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': 21}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': 23}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': 23}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': 23}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': 23}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': 23}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': 23}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': 24}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': 25}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': 25}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': 27}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': 27}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': 28}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': 29}, {'structure': '5.2', 'title': 'Failure Modes', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'physical_index': 31}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'physical_index': 33}, {'structure': '5.3.1', 'title': 'Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.', 'physical_index': 34}, {'structure': '5.3.2', 'title': 'Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.', 'physical_index': 35}, {'structure': '5.3.3', 'title': 'Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).', 'physical_index': 36}, {'structure': '5.3.4', 'title': 'Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.', 'physical_index': 37}, {'structure': '5.3.5', 'title': 'Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.', 'physical_index': 38}, {'structure': '5.3.6', 'title': 'Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.', 'physical_index': 39}, {'structure': '5.3.7', 'title': 'Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.', 'physical_index': 40}, {'structure': '5.3.8', 'title': 'Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': 41}, {'structure': '5.3.9', 'title': 'Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.', 'physical_index': 42}, {'structure': '5.3.10', 'title': 'Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.', 'physical_index': 43}, {'structure': '5.3.11', 'title': 'Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.', 'physical_index': 44}, {'structure': '5.3.12', 'title': 'Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.', 'physical_index': 45}, {'structure': '5.3.13', 'title': 'Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).', 'physical_index': 46}, {'structure': '5.3.14', 'title': 'Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.', 'physical_index': 47}, {'structure': '5.3.15', 'title': 'Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.', 'physical_index': 48}, {'structure': '5.3.16', 'title': 'Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.', 'physical_index': 49}, {'structure': '5.3.17', 'title': 'Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.', 'physical_index': 50}, {'structure': '5.3.18', 'title': 'Analysis of ECU30 When the bulbs are powered, the Actuator-SWC shall read and provide the status of the bulbs (read_current_L, read_current_R).', 'physical_index': 51}, {'structure': '5.3.19', 'title': 'Analysis of ECU21 Detected faults shall be signaled via CAN BUS LBFailure.', 'physical_index': 52}, {'structure': '5.3.20', 'title': 'Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.', 'physical_index': 53}, {'structure': '5.3.21', 'title': 'Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.', 'physical_index': 54}, {'structure': '5.3.22', 'title': 'Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R', 'physical_index': 55}, {'structure': '5.3.23', 'title': 'Analysis of ECU26 The correct data exchange (timing and content) between the SW-components shall be ensured.', 'physical_index': 56}, {'structure': '6', 'title': 'Conclusion', 'physical_index': 57}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'physical_index': 57}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'physical_index': 59}, {'structure': '8', 'title': 'References', 'physical_index': 60}, {'structure': '9', 'title': 'Figures and Tables', 'physical_index': 61}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.35294117647058826,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Relevant System Safety Requirements",
+        "page_number": 19
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Overview of Concept on ECU Level",
+        "page_number": 19
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Requirements on ECU Level",
+        "page_number": 21
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "ECU Functionality",
+        "page_number": 23
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Reading Light Switch State",
+        "page_number": 23
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Reading Ignition Key State (via Body Controller)",
+        "page_number": 23
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Activating Lights (physical)",
+        "page_number": 23
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Monitoring Lights",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Providing Driver Feedback",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Controlling Lights (logical)",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "SW Architecture and SW Safety Requirements",
+        "page_number": 25
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Software Architecture",
+        "page_number": 25
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Software Components",
+        "page_number": 27
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "RTE Runtime Environment",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "AUTOSAR BSW View",
+        "page_number": 28
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "General Overview of BSW Function",
+        "page_number": 29
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "HW Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "SW Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Software Aspects and Potential Failure Modes",
+        "page_number": 33
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Analysis of ECU02 The correct transformation of CAN BUS CAN_CL15 to the logical CL15_01 message shall be ensured.",
+        "page_number": 34
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Analysis of ECU03 The correct routing of the CL15_01 message through the AUTOSAR BSW/RTE shall be ensured. The signal CL15_01.CL15ON is to be extracted and provided to the application-SWCs properly.",
+        "page_number": 35
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Analysis of ECU27 The transmission of CL15_01.CL15ON between sender and receiver must be ensured (ASIL B).",
+        "page_number": 36
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Analysis of ECU04 The ECU shall detect any potential communication faults affecting the signal CL15ON that could lead to a violation of the safety goal.",
+        "page_number": 37
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Analysis of ECU06 The correct reading of the HW_LB_OFF input shall be ensured.",
+        "page_number": 38
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Analysis of ECU07 The correct configuration of the HW_LB_OFF input port and pin shall be ensured.",
+        "page_number": 39
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Analysis of ECU08 The correct transformation of the HW_LB_OFF input to the logical LB_OFF signal shall be ensured.",
+        "page_number": 40
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Analysis of ECU09 The correct routing of LB_OFF through the AUTOSAR BSW/RTE shall be ensured.",
+        "page_number": 41
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Analysis of ECU10 The ECU shall detect potential faults affecting LB_OFF that could lead to a violation of the safety goal.",
+        "page_number": 42
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Analysis of ECU12 The Application-SWC shall determine the LB_OFF and CL15ON status as specified.",
+        "page_number": 43
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Analysis of ECU13 The Application-SWC shall evaluate the light request conditions based on LB_OFF and CL15ON and their timing as specified.",
+        "page_number": 44
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Analysis of ECU14 The Application-SWC shall set or reset the light on command (Lights_ON) based on the LB_OFF and CL15ON evaluation results or if any fault is detected - set the light on command, if a communication fault of CL15_01 message is detected continuously for more than 200ms or set the light on command, if a fault on LB_OFF is detected continuously for more than 200ms.",
+        "page_number": 45
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Analysis of ECU15 The Application-SWC shall activate both daytime running lights (DRL_ON) if a failure of both LB bulbs is detected continuously for 200ms (read_current_L, read_current_R).",
+        "page_number": 46
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Analysis of ECU16 The correct powering of the bulbs according to the Lightsreqest and the specification are to be signaled via set_pwm command.",
+        "page_number": 47
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Analysis of ECU29 The correct transformation of the logical PWM-l-Signal to the SPI BUS message shall be ensured.",
+        "page_number": 48
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Analysis of ECU17 The correct routing of the set_pwm request to the \u00b5C SPI output shall be ensured.",
+        "page_number": 49
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Analysis of ECU20 When the bulbs are powered, the Application-SWC shall evaluate the status of the bulbs.",
+        "page_number": 50
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Analysis of ECU30 When the bulbs are powered, the Actuator-SWC shall read and provide the status of the bulbs (read_current_L, read_current_R).",
+        "page_number": 51
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Analysis of ECU21 Detected faults shall be signaled via CAN BUS LBFailure.",
+        "page_number": 52
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Analysis of ECU23 The Actuator-SWC shall initiate a diagnosis of each element of the bulb health measurement path and evaluate the results.",
+        "page_number": 53
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Analysis of ECU24 The correct routing of bulb health measurement values read_current_L, read_current_R through the AUTOSAR BSW/RTE shall be ensured.",
+        "page_number": 54
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Analysis of ECU25 The ADC-HW shall convert the measured current to read_current_L, read_current_R",
+        "page_number": 55
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "References",
+        "page_number": 60
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Figures and Tables",
+        "page_number": 61
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Item Description', 'physical_index': '<physical_index_7>'}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': '<physical_index_7>'}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': '<physical_index_8>'}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': '<physical_index_10>'}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': '<physical_index_12>'}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': '<physical_index_12>'}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': '<physical_index_12>'}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01:', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02:', 'physical_index': '<physical_index_13>'}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03:', 'physical_index': '<physical_index_13>'}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': '<physical_index_14>'}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': '<physical_index_16>'}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': '<physical_index_17>'}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': '<physical_index_19>'}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': '<physical_index_19>'}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': '<physical_index_19>'}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': '<physical_index_20>'}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': '<physical_index_21>'}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': '<physical_index_23>'}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': '<physical_index_24>'}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': '<physical_index_24>'}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': '<physical_index_25>'}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': '<physical_index_26>'}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': '<physical_index_27>'}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': '<physical_index_27>'}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': '<physical_index_28>'}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': '<physical_index_29>'}, {'structure': '5.2', 'title': 'Failure Modes', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'physical_index': '<physical_index_31>'}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'physical_index': '<physical_index_32>'}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'physical_index': '<physical_index_33>'}, {'structure': '5.3.1', 'title': 'Analysis of ECU02', 'physical_index': '<physical_index_34>'}, {'structure': '5.3.2', 'title': 'Analysis of ECU03', 'physical_index': '<physical_index_35>'}, {'structure': '5.3.3', 'title': 'Analysis of ECU27', 'physical_index': '<physical_index_36>'}, {'structure': '5.3.4', 'title': 'Analysis of ECU04', 'physical_index': '<physical_index_37>'}, {'structure': '5.3.5', 'title': 'Analysis of ECU06', 'physical_index': '<physical_index_38>'}, {'structure': '5.3.6', 'title': 'Analysis of ECU07', 'physical_index': '<physical_index_39>'}, {'structure': '5.3.7', 'title': 'Analysis of ECU08', 'physical_index': '<physical_index_40>'}, {'structure': '5.3.8', 'title': 'Analysis of ECU09', 'physical_index': '<physical_index_41>'}, {'structure': '5.3.9', 'title': 'Analysis of ECU10', 'physical_index': '<physical_index_42>'}, {'structure': '5.3.10', 'title': 'Analysis of ECU12', 'physical_index': '<physical_index_43>'}, {'structure': '5.3.11', 'title': 'Analysis of ECU13', 'physical_index': '<physical_index_44>'}, {'structure': '5.3.12', 'title': 'Analysis of ECU14', 'physical_index': '<physical_index_45>'}, {'structure': '5.3.13', 'title': 'Analysis of ECU15', 'physical_index': '<physical_index_46>'}, {'structure': '5.3.14', 'title': 'Analysis of ECU16', 'physical_index': '<physical_index_47>'}, {'structure': '5.3.15', 'title': 'Analysis of ECU29', 'physical_index': '<physical_index_48>'}, {'structure': '5.3.16', 'title': 'Analysis of ECU17', 'physical_index': '<physical_index_49>'}, {'structure': '5.3.17', 'title': 'Analysis of ECU20', 'physical_index': '<physical_index_50>'}, {'structure': '5.3.18', 'title': 'Analysis of ECU30', 'physical_index': '<physical_index_51>'}, {'structure': '5.3.19', 'title': 'Analysis of ECU21', 'physical_index': '<physical_index_52>'}, {'structure': '5.3.20', 'title': 'Analysis of ECU23', 'physical_index': '<physical_index_53>'}, {'structure': '5.3.21', 'title': 'Analysis of ECU24', 'physical_index': '<physical_index_54>'}, {'structure': '5.3.22', 'title': 'Analysis of ECU25', 'physical_index': '<physical_index_55>'}, {'structure': '5.3.23', 'title': 'Analysis of ECU26', 'physical_index': '<physical_index_56>'}, {'structure': '6', 'title': 'Conclusion', 'physical_index': '<physical_index_57>'}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'physical_index': '<physical_index_57>'}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'physical_index': '<physical_index_59>'}, {'structure': '8', 'title': 'References', 'physical_index': '<physical_index_60>'}, {'structure': '9', 'title': 'Figures and Tables', 'physical_index': '<physical_index_61>'}, {'structure': '5.3.24', 'title': 'Analysis of ECU26', 'physical_index': '<physical_index_56>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '2', 'title': 'Item Description', 'physical_index': 7}, {'structure': '2.1', 'title': 'Functional Behavior', 'physical_index': 7}, {'structure': '2.2', 'title': 'Preliminary Architecture', 'physical_index': 8}, {'structure': '2.3', 'title': 'Assumptions and Limitations of Exemplary Safety Analysis', 'physical_index': 10}, {'structure': '3', 'title': 'Safety Concept on Vehicle Level', 'physical_index': 12}, {'structure': '3.1', 'title': 'Outcome of Hazard Analysis and Risk Assessment', 'physical_index': 12}, {'structure': '3.2', 'title': 'Relevant Failure Modes', 'physical_index': 12}, {'structure': '3.3', 'title': 'Functional Safety Concept', 'physical_index': 13}, {'structure': '3.3.1', 'title': 'FunSafReq01 -01:', 'physical_index': 13}, {'structure': '3.3.2', 'title': 'FunSafReq01 -02:', 'physical_index': 13}, {'structure': '3.3.3', 'title': 'FunSafReq01 -03:', 'physical_index': 13}, {'structure': '3.4', 'title': 'Safety Requirements on Vehicle Level', 'physical_index': 14}, {'structure': '3.4.1', 'title': 'Warning and Degradation Concept', 'physical_index': 14}, {'structure': '3.4.2', 'title': 'Technical Safety Requirements (on Vehicle Level)', 'physical_index': 14}, {'structure': '3.4.3', 'title': 'Allocation of (Functional) System Safety Requirements', 'physical_index': 16}, {'structure': '3.4.4', 'title': 'Summary of Technical System Safety Requirements (Vehicle Level)', 'physical_index': 17}, {'structure': '4', 'title': 'Technical Safety Concept on FLM -ECU Level', 'physical_index': 19}, {'structure': '4.1', 'title': 'Assumptions and Limitations on ECU Level', 'physical_index': 19}, {'structure': '4.2', 'title': 'Safety Goals to be Fulfilled', 'physical_index': 19}, {'structure': '4.3', 'title': 'Relevant System Safety Requirements', 'physical_index': 19}, {'structure': '4.4', 'title': 'Overview of Concept on ECU Level', 'physical_index': 20}, {'structure': '4.5', 'title': 'Requirements on ECU Level', 'physical_index': 21}, {'structure': '4.6', 'title': 'ECU Functionality', 'physical_index': 23}, {'structure': '4.6.1', 'title': 'Reading Light Switch State', 'physical_index': 23}, {'structure': '4.6.2', 'title': 'Reading Ignition Key State (via Body Controller)', 'physical_index': 23}, {'structure': '4.6.3', 'title': 'Activating Lights (physical)', 'physical_index': 23}, {'structure': '4.6.4', 'title': 'Monitoring Lights', 'physical_index': 23}, {'structure': '4.6.5', 'title': 'Providing Driver Feedback', 'physical_index': 24}, {'structure': '4.6.6', 'title': 'Controlling Lights (logical)', 'physical_index': 24}, {'structure': '5', 'title': 'SW Architecture and SW Safety Requirements', 'physical_index': 25}, {'structure': '5.1', 'title': 'Software Architecture', 'physical_index': 26}, {'structure': '5.1.1', 'title': 'Software Components', 'physical_index': 27}, {'structure': '5.1.2', 'title': 'RTE Runtime Environment', 'physical_index': 27}, {'structure': '5.1.3', 'title': 'AUTOSAR BSW View', 'physical_index': 28}, {'structure': '5.1.4', 'title': 'General Overview of BSW Function', 'physical_index': 29}, {'structure': '5.2', 'title': 'Failure Modes', 'physical_index': 31}, {'structure': '5.2.1', 'title': 'HW Failure Modes', 'physical_index': 31}, {'structure': '5.2.2', 'title': 'SW Failure Modes', 'physical_index': 32}, {'structure': '5.3', 'title': 'Software Aspects and Potential Failure Modes', 'physical_index': 33}, {'structure': '5.3.1', 'title': 'Analysis of ECU02', 'physical_index': 34}, {'structure': '5.3.2', 'title': 'Analysis of ECU03', 'physical_index': 35}, {'structure': '5.3.3', 'title': 'Analysis of ECU27', 'physical_index': 36}, {'structure': '5.3.4', 'title': 'Analysis of ECU04', 'physical_index': 37}, {'structure': '5.3.5', 'title': 'Analysis of ECU06', 'physical_index': 38}, {'structure': '5.3.6', 'title': 'Analysis of ECU07', 'physical_index': 39}, {'structure': '5.3.7', 'title': 'Analysis of ECU08', 'physical_index': 40}, {'structure': '5.3.8', 'title': 'Analysis of ECU09', 'physical_index': 41}, {'structure': '5.3.9', 'title': 'Analysis of ECU10', 'physical_index': 42}, {'structure': '5.3.10', 'title': 'Analysis of ECU12', 'physical_index': 43}, {'structure': '5.3.11', 'title': 'Analysis of ECU13', 'physical_index': 44}, {'structure': '5.3.12', 'title': 'Analysis of ECU14', 'physical_index': 45}, {'structure': '5.3.13', 'title': 'Analysis of ECU15', 'physical_index': 46}, {'structure': '5.3.14', 'title': 'Analysis of ECU16', 'physical_index': 47}, {'structure': '5.3.15', 'title': 'Analysis of ECU29', 'physical_index': 48}, {'structure': '5.3.16', 'title': 'Analysis of ECU17', 'physical_index': 49}, {'structure': '5.3.17', 'title': 'Analysis of ECU20', 'physical_index': 50}, {'structure': '5.3.18', 'title': 'Analysis of ECU30', 'physical_index': 51}, {'structure': '5.3.19', 'title': 'Analysis of ECU21', 'physical_index': 52}, {'structure': '5.3.20', 'title': 'Analysis of ECU23', 'physical_index': 53}, {'structure': '5.3.21', 'title': 'Analysis of ECU24', 'physical_index': 54}, {'structure': '5.3.22', 'title': 'Analysis of ECU25', 'physical_index': 55}, {'structure': '5.3.23', 'title': 'Analysis of ECU26', 'physical_index': 56}, {'structure': '6', 'title': 'Conclusion', 'physical_index': 57}, {'structure': '6.1', 'title': 'Potential Safety Improvement for Future AUTOSAR Releases', 'physical_index': 57}, {'structure': '7', 'title': 'Abbreviation/Glossary', 'physical_index': 59}, {'structure': '8', 'title': 'References', 'physical_index': 60}, {'structure': '9', 'title': 'Figures and Tables', 'physical_index': 61}, {'structure': '5.3.24', 'title': 'Analysis of ECU26', 'physical_index': 56}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3188405797101449,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Relevant System Safety Requirements",
+        "page_number": 19
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Overview of Concept on ECU Level",
+        "page_number": 20
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Requirements on ECU Level",
+        "page_number": 21
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "ECU Functionality",
+        "page_number": 23
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Reading Light Switch State",
+        "page_number": 23
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Reading Ignition Key State (via Body Controller)",
+        "page_number": 23
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Activating Lights (physical)",
+        "page_number": 23
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Monitoring Lights",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Providing Driver Feedback",
+        "page_number": 24
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Controlling Lights (logical)",
+        "page_number": 24
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "SW Architecture and SW Safety Requirements",
+        "page_number": 25
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Software Architecture",
+        "page_number": 26
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Software Components",
+        "page_number": 27
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "RTE Runtime Environment",
+        "page_number": 27
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "AUTOSAR BSW View",
+        "page_number": 28
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "General Overview of BSW Function",
+        "page_number": 29
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "HW Failure Modes",
+        "page_number": 31
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "SW Failure Modes",
+        "page_number": 32
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Software Aspects and Potential Failure Modes",
+        "page_number": 33
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Analysis of ECU02",
+        "page_number": 34
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Analysis of ECU03",
+        "page_number": 35
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Analysis of ECU27",
+        "page_number": 36
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Analysis of ECU04",
+        "page_number": 37
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Analysis of ECU06",
+        "page_number": 38
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Analysis of ECU07",
+        "page_number": 39
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Analysis of ECU08",
+        "page_number": 40
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Analysis of ECU09",
+        "page_number": 41
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Analysis of ECU10",
+        "page_number": 42
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Analysis of ECU12",
+        "page_number": 43
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Analysis of ECU13",
+        "page_number": 44
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Analysis of ECU14",
+        "page_number": 45
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Analysis of ECU15",
+        "page_number": 46
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Analysis of ECU16",
+        "page_number": 47
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Analysis of ECU29",
+        "page_number": 48
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Analysis of ECU17",
+        "page_number": 49
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Analysis of ECU20",
+        "page_number": 50
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Analysis of ECU30",
+        "page_number": 51
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Analysis of ECU21",
+        "page_number": 52
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Analysis of ECU23",
+        "page_number": 53
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Analysis of ECU26",
+        "page_number": 56
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Conclusion",
+        "page_number": 57
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Potential Safety Improvement for Future AUTOSAR Releases",
+        "page_number": 57
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Abbreviation/Glossary",
+        "page_number": 59
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "References",
+        "page_number": 60
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Figures and Tables",
+        "page_number": 61
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Analysis of ECU26",
+        "page_number": 56
+      }
+    ]
+  }
+]

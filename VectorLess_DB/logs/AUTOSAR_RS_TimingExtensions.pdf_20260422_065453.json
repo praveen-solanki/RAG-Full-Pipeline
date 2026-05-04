@@ -1,0 +1,1108 @@
+[
+  {
+    "total_page_number": 32
+  },
+  {
+    "total_token": 13804
+  },
+  {
+    "toc_content": "Requirements on Timing Extensions\nAUTOSAR CP Release 4.4.0\nTable of Contents\n1 Scope of this document 6\n2 Conventions Used 7\n3 Use Case and Requirements Tracing 8\n4 Requirements 11\n4.1 Timing properties : 11\n4.2 Timing constraints : 11\n4.3 Optionality of timing constraints : 12\n4.4 Event chains : 12\n4.5 Structure of event chains : 13\n4.6 Triggering behavior of event chains : 13\n4.7 Synchronization of event chains : 14\n4.8 Multiple asynchronous time bases : 14\n4.9 Loop-back signal flow in sender-receiver communication : 14\n4.10 Validity of timing properties and constraints : 15\n4.11 Mode dependency : 16\n4.12 Sensor/actuator delay : 16\n4.13 Specification of timing resources : 16\n4.14 Runnable Entities : 17\n4.15 Timing Requirements of SW-Components : 17\n4.16 Some elements of the Timing Extensions shall be blueprintable . . . . 18\n4.17 Synchronization constraint on events : 18\n4.18 Predefined events for port interfaces at VFB level : 19\n4.19 AUTOSAR Methodology support : 19\n4.20 Support for events indicating variable accesses : 20\n4.21 Age constraint on assembly connector : 20\n4.22 Support for Logical Execution Time : 21\n4.23 Support for Specifying Synchronization : 22\n5 Supported use cases 23\n5.1 End-to-end timing : 23\n5.1.1 Local Timing Analysis (Scheduling Analysis) : 23\n5.1.2 Analysis of end-to-end timing in open loop control systems . 24\n5.1.3 Analysis of end-to-end timing in closed loop control systems 24\n5.1.4 Validation of end-to-end timing : 24\n5.2 Synchronization : 25\n5.2.1 Sensor data fusion in multi-sensor systems : 25\n5.2.2 Actuator synchronization : 25\n5.2.3 Bus synchronization / Gateway : 26\n5.3 Early prediction : 26\n5.3.1 Modification impacts due to adding a component : 26\n5.3.2 Support for hardware dimensioning : 27\n3 of 32\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 410: AUTOSAR_RS_TimingExtensionsRequirements on Timing Extensions\nAUTOSAR CP Release 4.4.0\n5.3.3 Topology decisions : 27\n6 Change History 29\n6.1 Change History for AUTOSAR R4.0.3 against R4.0.1 : 29\n6.1.1 Removed SRS Items : 29\n6.1.2 Changed SRS Items : 29\n6.1.3 Added SRS Items : 29\n6.2 Change History for AUTOSAR R4.1.1 against R4.0.3 : 29\n6.2.1 Removed SRS Items : 29\n6.2.2 Changed SRS Items : 29\n6.2.3 Added SRS Items : 29\n6.3 Change History for AUTOSAR R4.1.2 against R4.1.1 : 30\n6.3.1 Removed SRS Items : 30\n6.3.2 Changed SRS Items : 30\n6.3.3 Added SRS Items : 30\n6.4 Change History for AUTOSAR R4.1.3 against R4.1.2 : 30\n6.4.1 Removed SRS Items : 30\n6.4.2 Changed SRS Items : 30\n6.4.3 Added SRS Items : 30\n6.5 Change History for AUTOSAR R4.2.1 against R4.1.3 : 31\n6.5.1 Removed SRS Items : 31\n6.5.2 Changed SRS Items : 31\n6.5.3 Added SRS Items : 31\n6.6 Change History for AUTOSAR R4.2.2 against R4.2.1 : 31\n6.6.1 Removed SRS Items : 31\n6.6.2 Changed SRS Items : 31\n6.6.3 Added SRS Items : 31\n6.7 Change History for AUTOSAR R4.3.0 against R4.2.2 : 31\n6.7.1 Removed SRS Items : 31\n6.7.2 Changed SRS Items : 31\n6.7.3 Added SRS Items : 32\n6.8 Change History for AUTOSAR R4.3.1 against R4.3.0 : 32\n6.8.1 Removed SRS Items : 32\n6.8.2 Changed SRS Items : 32\n6.8.3 Added SRS Items : 32\n6.9 Change History for AUTOSAR R4.4.0 against R4.3.1 : 32\n6.9.1 Removed SRS Items : 32\n6.9.2 Changed SRS Items : 32\n6.9.3 Added SRS Items : 32\n4 of 32\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 410: AUTOSAR_RS_TimingExtensions",
+    "toc_page_list": [
+      2,
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'page': 6}, {'structure': '2', 'title': 'Conventions Used', 'page': 7}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'page': 8}, {'structure': '4', 'title': 'Requirements', 'page': 11}, {'structure': '4.1', 'title': 'Timing properties', 'page': 11}, {'structure': '4.2', 'title': 'Timing constraints', 'page': 11}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'page': 12}, {'structure': '4.4', 'title': 'Event chains', 'page': 12}, {'structure': '4.5', 'title': 'Structure of event chains', 'page': 13}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'page': 13}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'page': 14}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'page': 14}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'page': 14}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'page': 15}, {'structure': '4.11', 'title': 'Mode dependency', 'page': 16}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'page': 16}, {'structure': '4.13', 'title': 'Specification of timing resources', 'page': 16}, {'structure': '4.14', 'title': 'Runnable Entities', 'page': 17}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'page': 17}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'page': 18}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'page': 18}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'page': 19}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'page': 19}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'page': 20}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'page': 20}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'page': 21}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'page': 22}, {'structure': '5', 'title': 'Supported use cases', 'page': 23}, {'structure': '5.1', 'title': 'End-to-end timing', 'page': 23}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'page': 23}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'page': 24}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'page': 24}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'page': 24}, {'structure': '5.2', 'title': 'Synchronization', 'page': 25}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'page': 25}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'page': 25}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'page': 26}, {'structure': '5.3', 'title': 'Early prediction', 'page': 26}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'page': 26}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'page': 27}, {'structure': '5.3.3', 'title': 'Topology decisions', 'page': 27}, {'structure': '6', 'title': 'Change History', 'page': 29}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'page': 29}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'page': 29}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'page': 29}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'page': 29}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'page': 29}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'page': 29}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'page': 29}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'page': 29}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'page': 30}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'page': 30}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'page': 30}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'page': 30}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'page': 30}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'page': 30}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'page': 30}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'page': 30}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'page': 31}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'page': 31}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'page': 31}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'page': 31}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'page': 31}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'page': 31}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'page': 31}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'page': 31}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'page': 31}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'page': 31}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'page': 31}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'page': 32}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'page': 32}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'page': 32}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'page': 32}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'page': 32}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'page': 32}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'page': 32}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'page': 32}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'page': 32}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': '<physical_index_8>'}, {'structure': '4', 'title': 'Requirements', 'physical_index': '<physical_index_11>'}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': '<physical_index_11>'}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': '<physical_index_11>'}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': '<physical_index_12>'}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': '<physical_index_12>'}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': '<physical_index_13>'}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': '<physical_index_13>'}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': '<physical_index_14>'}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': '<physical_index_14>'}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': '<physical_index_14>'}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': '<physical_index_15>'}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': '<physical_index_16>'}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': '<physical_index_16>'}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': '<physical_index_16>'}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': '<physical_index_17>'}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': '<physical_index_17>'}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': '<physical_index_18>'}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': '<physical_index_18>'}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': '<physical_index_19>'}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': '<physical_index_19>'}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': '<physical_index_20>'}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': '<physical_index_20>'}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': '<physical_index_21>'}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': '<physical_index_22>'}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': '<physical_index_23>'}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': '<physical_index_24>'}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': '<physical_index_24>'}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': '<physical_index_24>'}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': '<physical_index_26>'}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': '<physical_index_27>'}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': '<physical_index_27>'}, {'structure': '6', 'title': 'Change History', 'physical_index': '<physical_index_29>'}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_29>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': 7}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': 8}, {'structure': '4', 'title': 'Requirements', 'physical_index': 11}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': 11}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': 11}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': 12}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': 12}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': 13}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': 13}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': 14}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': 14}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': 14}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': 15}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': 16}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': 16}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': 16}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': 17}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': 17}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': 18}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': 18}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': 19}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': 19}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': 20}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': 20}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': 21}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': 22}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': 23}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': 23}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': 23}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': 24}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': 24}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': 24}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': 25}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': 25}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': 25}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': 26}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': 26}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': 26}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': 27}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': 27}, {'structure': '6', 'title': 'Change History', 'physical_index': 29}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 29}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 29}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': 29}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Scope of this document', 'page': 6, 'physical_index': 6}, {'title': 'Conventions Used', 'page': 7, 'physical_index': 7}, {'title': 'Use Case and Requirements Tracing', 'page': 8, 'physical_index': 8}, {'title': 'Requirements', 'page': 11, 'physical_index': 11}, {'title': 'Timing properties', 'page': 11, 'physical_index': 11}, {'title': 'Timing constraints', 'page': 11, 'physical_index': 11}, {'title': 'Optionality of timing constraints', 'page': 12, 'physical_index': 12}, {'title': 'Event chains', 'page': 12, 'physical_index': 12}, {'title': 'Structure of event chains', 'page': 13, 'physical_index': 13}, {'title': 'Triggering behavior of event chains', 'page': 13, 'physical_index': 13}, {'title': 'Synchronization of event chains', 'page': 14, 'physical_index': 14}, {'title': 'Multiple asynchronous time bases', 'page': 14, 'physical_index': 14}, {'title': 'Loop-back signal flow in sender-receiver communication', 'page': 14, 'physical_index': 14}, {'title': 'Validity of timing properties and constraints', 'page': 15, 'physical_index': 15}, {'title': 'Mode dependency', 'page': 16, 'physical_index': 16}, {'title': 'Sensor/actuator delay', 'page': 16, 'physical_index': 16}, {'title': 'Specification of timing resources', 'page': 16, 'physical_index': 16}, {'title': 'Runnable Entities', 'page': 17, 'physical_index': 17}, {'title': 'Timing Requirements of SW-Components', 'page': 17, 'physical_index': 17}, {'title': 'Some elements of the Timing Extensions shall be blueprintable', 'page': 18, 'physical_index': 18}, {'title': 'Synchronization constraint on events', 'page': 18, 'physical_index': 18}, {'title': 'Predefined events for port interfaces at VFB level', 'page': 19, 'physical_index': 19}, {'title': 'AUTOSAR Methodology support', 'page': 19, 'physical_index': 19}, {'title': 'Support for events indicating variable accesses', 'page': 20, 'physical_index': 20}, {'title': 'Age constraint on assembly connector', 'page': 20, 'physical_index': 20}, {'title': 'Support for Logical Execution Time', 'page': 21, 'physical_index': 21}, {'title': 'Support for Specifying Synchronization', 'page': 22, 'physical_index': 22}, {'title': 'Supported use cases', 'page': 23, 'physical_index': 23}, {'title': 'End-to-end timing', 'page': 23, 'physical_index': 23}, {'title': 'Local Timing Analysis (Scheduling Analysis)', 'page': 23, 'physical_index': 23}, {'title': 'Analysis of end-to-end timing in open loop control systems', 'page': 24, 'physical_index': 24}, {'title': 'Analysis of end-to-end timing in closed loop control systems', 'page': 24, 'physical_index': 24}, {'title': 'Validation of end-to-end timing', 'page': 24, 'physical_index': 24}, {'title': 'Synchronization', 'page': 25, 'physical_index': 25}, {'title': 'Sensor data fusion in multi-sensor systems', 'page': 25, 'physical_index': 25}, {'title': 'Actuator synchronization', 'page': 25, 'physical_index': 25}, {'title': 'Bus synchronization / Gateway', 'page': 26, 'physical_index': 26}, {'title': 'Early prediction', 'page': 26, 'physical_index': 26}, {'title': 'Modification impacts due to adding a component', 'page': 26, 'physical_index': 26}, {'title': 'Support for hardware dimensioning', 'page': 27, 'physical_index': 27}, {'title': 'Topology decisions', 'page': 27, 'physical_index': 27}, {'title': 'Change History', 'page': 29, 'physical_index': 29}, {'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'page': 29, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'page': 29, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Removed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Changed SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 29, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 30, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 31, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 32, 'physical_index': 29}, {'title': 'Added SRS Items', 'page': 32, 'physical_index': 29}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': 7}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': 8}, {'structure': '4', 'title': 'Requirements', 'physical_index': 11}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': 11}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': 11}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': 12}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': 12}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': 13}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': 13}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': 14}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': 14}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': 14}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': 15}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': 16}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': 16}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': 16}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': 17}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': 17}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': 18}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': 18}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': 19}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': 19}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': 20}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': 20}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': 21}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': 22}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': 23}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': 23}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': 23}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': 24}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': 24}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': 24}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': 25}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': 25}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': 25}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': 26}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': 26}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': 26}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': 27}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': 27}, {'structure': '6', 'title': 'Change History', 'physical_index': 29}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 29}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 29}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 30}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 30}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 31}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 31}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 31}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'physical_index': 32}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 32}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'physical_index': 32}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'physical_index': 32}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'physical_index': 32}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 32}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'physical_index': 32}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'physical_index': 32}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'physical_index': 32}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': 7}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': 8}, {'structure': '4', 'title': 'Requirements', 'physical_index': 11}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': 11}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': 11}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': 12}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': 12}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': 13}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': 13}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': 14}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': 14}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': 14}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': 15}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': 16}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': 16}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': 16}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': 17}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': 17}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': 18}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': 18}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': 19}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': 19}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': 20}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': 20}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': 21}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': 22}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': 23}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': 23}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': 23}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': 24}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': 24}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': 24}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': 25}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': 25}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': 25}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': 26}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': 26}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': 26}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': 27}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': 27}, {'structure': '6', 'title': 'Change History', 'physical_index': 29}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 29}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 29}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 30}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 30}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 31}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 31}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 31}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'physical_index': 32}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 32}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'physical_index': 32}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'physical_index': 32}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'physical_index': 32}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 32}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'physical_index': 32}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'physical_index': 32}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'physical_index': 32}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.28205128205128205,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Synchronization constraint on events",
+        "page_number": 18
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Predefined events for port interfaces at VFB level",
+        "page_number": 19
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "AUTOSAR Methodology support",
+        "page_number": 19
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Support for events indicating variable accesses",
+        "page_number": 20
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Age constraint on assembly connector",
+        "page_number": 20
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Support for Logical Execution Time",
+        "page_number": 21
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Support for Specifying Synchronization",
+        "page_number": 22
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Supported use cases",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "End-to-end timing",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Local Timing Analysis (Scheduling Analysis)",
+        "page_number": 23
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Analysis of end-to-end timing in open loop control systems",
+        "page_number": 24
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Analysis of end-to-end timing in closed loop control systems",
+        "page_number": 24
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Validation of end-to-end timing",
+        "page_number": 24
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Synchronization",
+        "page_number": 25
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Sensor data fusion in multi-sensor systems",
+        "page_number": 25
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Actuator synchronization",
+        "page_number": 25
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Bus synchronization / Gateway",
+        "page_number": 26
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Early prediction",
+        "page_number": 26
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Modification impacts due to adding a component",
+        "page_number": 26
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Support for hardware dimensioning",
+        "page_number": 27
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Topology decisions",
+        "page_number": 27
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Change History",
+        "page_number": 29
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.0.3 against R4.0.1",
+        "page_number": 29
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.1 against R4.0.3",
+        "page_number": 29
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.2 against R4.1.1",
+        "page_number": 30
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.3 against R4.1.2",
+        "page_number": 30
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.1 against R4.1.3",
+        "page_number": 31
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.2 against R4.2.1",
+        "page_number": 31
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.0 against R4.2.2",
+        "page_number": 31
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.1 against R4.3.0",
+        "page_number": 32
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.4.0 against R4.3.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 32
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Scope of this document', 'page': 6}, {'structure': '2', 'title': 'Conventions Used', 'page': 7}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'page': 8}, {'structure': '4', 'title': 'Requirements', 'page': 11}, {'structure': '4.1', 'title': 'Timing properties', 'page': 11}, {'structure': '4.2', 'title': 'Timing constraints', 'page': 11}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'page': 12}, {'structure': '4.4', 'title': 'Event chains', 'page': 12}, {'structure': '4.5', 'title': 'Structure of event chains', 'page': 13}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'page': 13}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'page': 14}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'page': 14}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'page': 14}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'page': 15}, {'structure': '4.11', 'title': 'Mode dependency', 'page': 16}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'page': 16}, {'structure': '4.13', 'title': 'Specification of timing resources', 'page': 16}, {'structure': '4.14', 'title': 'Runnable Entities', 'page': 17}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'page': 17}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'page': 18}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'page': 18}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'page': 19}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'page': 19}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'page': 20}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'page': 20}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'page': 21}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'page': 22}, {'structure': '5', 'title': 'Supported use cases', 'page': 23}, {'structure': '5.1', 'title': 'End-to-end timing', 'page': 23}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'page': 23}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'page': 24}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'page': 24}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'page': 24}, {'structure': '5.2', 'title': 'Synchronization', 'page': 25}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'page': 25}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'page': 25}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'page': 26}, {'structure': '5.3', 'title': 'Early prediction', 'page': 26}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'page': 26}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'page': 27}, {'structure': '5.3.3', 'title': 'Topology decisions', 'page': 27}, {'structure': '6', 'title': 'Change History', 'page': 29}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'page': 29}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'page': 29}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'page': 29}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'page': 29}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'page': 29}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'page': 29}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'page': 29}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'page': 29}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'page': 30}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'page': 30}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'page': 30}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'page': 30}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'page': 30}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'page': 30}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'page': 30}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'page': 30}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'page': 31}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'page': 31}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'page': 31}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'page': 31}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'page': 31}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'page': 31}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'page': 31}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'page': 31}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'page': 31}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'page': 31}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'page': 31}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'page': 32}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'page': 32}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'page': 32}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'page': 32}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'page': 32}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'page': 32}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'page': 32}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'page': 32}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'page': 32}]"
+  },
+  {
+    "message": "len(group_texts): 1"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': '<physical_index_8>'}, {'structure': '4', 'title': 'Requirements', 'physical_index': '<physical_index_11>'}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': '<physical_index_11>'}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': '<physical_index_11>'}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': '<physical_index_11>'}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': '<physical_index_11>'}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': '<physical_index_13>'}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': '<physical_index_13>'}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': '<physical_index_14>'}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': '<physical_index_14>'}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': '<physical_index_14>'}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': '<physical_index_15>'}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': '<physical_index_15>'}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': '<physical_index_15>'}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': '<physical_index_16>'}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': '<physical_index_17>'}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': '<physical_index_17>'}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': '<physical_index_18>'}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': '<physical_index_18>'}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': '<physical_index_18>'}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': '<physical_index_19>'}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': '<physical_index_19>'}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': '<physical_index_20>'}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': '<physical_index_21>'}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': '<physical_index_22>'}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': '<physical_index_23>'}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': '<physical_index_24>'}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': '<physical_index_24>'}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': '<physical_index_24>'}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': '<physical_index_26>'}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': '<physical_index_27>'}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': '<physical_index_27>'}, {'structure': '6', 'title': 'Change History', 'physical_index': '<physical_index_29>'}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': '<physical_index_30>'}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': '<physical_index_30>'}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': '<physical_index_31>'}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': '<physical_index_31>'}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': '<physical_index_31>'}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': '<physical_index_32>'}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': '<physical_index_32>'}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_32>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': 7}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': 8}, {'structure': '4', 'title': 'Requirements', 'physical_index': 11}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': 11}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': 11}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': 11}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': 11}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': 13}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': 13}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': 14}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': 14}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': 14}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': 15}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': 15}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': 15}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': 16}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': 17}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': 17}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': 18}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': 18}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': 18}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': 19}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': 19}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': 20}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': 21}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': 22}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': 23}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': 23}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': 23}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': 24}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': 24}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': 24}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': 25}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': 25}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': 25}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': 26}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': 26}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': 26}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': 27}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': 27}, {'structure': '6', 'title': 'Change History', 'physical_index': 29}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 29}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 29}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 30}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 30}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 31}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 31}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 31}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'physical_index': 32}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 32}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'physical_index': 32}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'physical_index': 32}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'physical_index': 32}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 32}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'physical_index': 32}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'physical_index': 32}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'physical_index': 32}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.2564102564102564,
+    "incorrect_results": [
+      {
+        "list_index": 6,
+        "answer": "no",
+        "title": "Optionality of timing constraints",
+        "page_number": 11
+      },
+      {
+        "list_index": 7,
+        "answer": "no",
+        "title": "Event chains",
+        "page_number": 11
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "Mode dependency",
+        "page_number": 15
+      },
+      {
+        "list_index": 15,
+        "answer": "no",
+        "title": "Sensor/actuator delay",
+        "page_number": 15
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Synchronization constraint on events",
+        "page_number": 18
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Predefined events for port interfaces at VFB level",
+        "page_number": 18
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "AUTOSAR Methodology support",
+        "page_number": 19
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Support for events indicating variable accesses",
+        "page_number": 19
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Age constraint on assembly connector",
+        "page_number": 20
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Support for Logical Execution Time",
+        "page_number": 21
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Support for Specifying Synchronization",
+        "page_number": 22
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Supported use cases",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "End-to-end timing",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Local Timing Analysis (Scheduling Analysis)",
+        "page_number": 23
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Analysis of end-to-end timing in open loop control systems",
+        "page_number": 24
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Analysis of end-to-end timing in closed loop control systems",
+        "page_number": 24
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Validation of end-to-end timing",
+        "page_number": 24
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Synchronization",
+        "page_number": 25
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Sensor data fusion in multi-sensor systems",
+        "page_number": 25
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Actuator synchronization",
+        "page_number": 25
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Bus synchronization / Gateway",
+        "page_number": 26
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Early prediction",
+        "page_number": 26
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Modification impacts due to adding a component",
+        "page_number": 26
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Support for hardware dimensioning",
+        "page_number": 27
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Topology decisions",
+        "page_number": 27
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Change History",
+        "page_number": 29
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.0.3 against R4.0.1",
+        "page_number": 29
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.1 against R4.0.3",
+        "page_number": 29
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.2 against R4.1.1",
+        "page_number": 30
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.3 against R4.1.2",
+        "page_number": 30
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.1 against R4.1.3",
+        "page_number": 31
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.2 against R4.2.1",
+        "page_number": 31
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.0 against R4.2.2",
+        "page_number": 31
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.4.0 against R4.3.1",
+        "page_number": 32
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 32
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 1"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': '<physical_index_7>'}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': '<physical_index_8>'}, {'structure': '4', 'title': 'Requirements', 'physical_index': '<physical_index_11>'}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': '<physical_index_11>'}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': '<physical_index_11>'}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': '<physical_index_11>'}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': '<physical_index_12>'}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': '<physical_index_12>'}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': '<physical_index_13>'}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': '<physical_index_14>'}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': '<physical_index_14>'}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': '<physical_index_14>'}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': '<physical_index_15>'}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': '<physical_index_16>'}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': '<physical_index_16>'}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': '<physical_index_16>'}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': '<physical_index_17>'}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': '<physical_index_17>'}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': '<physical_index_18>'}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': '<physical_index_18>'}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': '<physical_index_18>'}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': '<physical_index_19>'}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': '<physical_index_19>'}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': '<physical_index_20>'}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': '<physical_index_21>'}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': '<physical_index_22>'}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': '<physical_index_23>'}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': '<physical_index_23>'}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': '<physical_index_24>'}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': '<physical_index_24>'}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': '<physical_index_24>'}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': '<physical_index_25>'}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': '<physical_index_26>'}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': '<physical_index_26>'}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': '<physical_index_27>'}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': '<physical_index_27>'}, {'structure': '6', 'title': 'Change History', 'physical_index': '<physical_index_29>'}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_29>'}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': '<physical_index_30>'}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': '<physical_index_30>'}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': '<physical_index_30>'}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': '<physical_index_30>'}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_30>'}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': '<physical_index_31>'}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': '<physical_index_31>'}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_31>'}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': '<physical_index_32>'}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'physical_index': '<physical_index_32>'}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'physical_index': '<physical_index_32>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of this document', 'physical_index': 6}, {'structure': '2', 'title': 'Conventions Used', 'physical_index': 7}, {'structure': '3', 'title': 'Use Case and Requirements Tracing', 'physical_index': 8}, {'structure': '4', 'title': 'Requirements', 'physical_index': 11}, {'structure': '4.1', 'title': 'Timing properties', 'physical_index': 11}, {'structure': '4.2', 'title': 'Timing constraints', 'physical_index': 11}, {'structure': '4.3', 'title': 'Optionality of timing constraints', 'physical_index': 11}, {'structure': '4.4', 'title': 'Event chains', 'physical_index': 12}, {'structure': '4.5', 'title': 'Structure of event chains', 'physical_index': 12}, {'structure': '4.6', 'title': 'Triggering behavior of event chains', 'physical_index': 13}, {'structure': '4.7', 'title': 'Synchronization of event chains', 'physical_index': 14}, {'structure': '4.8', 'title': 'Multiple asynchronous time bases', 'physical_index': 14}, {'structure': '4.9', 'title': 'Loop-back signal flow in sender-receiver communication', 'physical_index': 14}, {'structure': '4.10', 'title': 'Validity of timing properties and constraints', 'physical_index': 15}, {'structure': '4.11', 'title': 'Mode dependency', 'physical_index': 16}, {'structure': '4.12', 'title': 'Sensor/actuator delay', 'physical_index': 16}, {'structure': '4.13', 'title': 'Specification of timing resources', 'physical_index': 16}, {'structure': '4.14', 'title': 'Runnable Entities', 'physical_index': 17}, {'structure': '4.15', 'title': 'Timing Requirements of SW-Components', 'physical_index': 17}, {'structure': '4.16', 'title': 'Some elements of the Timing Extensions shall be blueprintable', 'physical_index': 18}, {'structure': '4.17', 'title': 'Synchronization constraint on events', 'physical_index': 18}, {'structure': '4.18', 'title': 'Predefined events for port interfaces at VFB level', 'physical_index': 18}, {'structure': '4.19', 'title': 'AUTOSAR Methodology support', 'physical_index': 19}, {'structure': '4.20', 'title': 'Support for events indicating variable accesses', 'physical_index': 19}, {'structure': '4.21', 'title': 'Age constraint on assembly connector', 'physical_index': 20}, {'structure': '4.22', 'title': 'Support for Logical Execution Time', 'physical_index': 21}, {'structure': '4.23', 'title': 'Support for Specifying Synchronization', 'physical_index': 22}, {'structure': '5', 'title': 'Supported use cases', 'physical_index': 23}, {'structure': '5.1', 'title': 'End-to-end timing', 'physical_index': 23}, {'structure': '5.1.1', 'title': 'Local Timing Analysis (Scheduling Analysis)', 'physical_index': 23}, {'structure': '5.1.2', 'title': 'Analysis of end-to-end timing in open loop control systems', 'physical_index': 24}, {'structure': '5.1.3', 'title': 'Analysis of end-to-end timing in closed loop control systems', 'physical_index': 24}, {'structure': '5.1.4', 'title': 'Validation of end-to-end timing', 'physical_index': 24}, {'structure': '5.2', 'title': 'Synchronization', 'physical_index': 25}, {'structure': '5.2.1', 'title': 'Sensor data fusion in multi-sensor systems', 'physical_index': 25}, {'structure': '5.2.2', 'title': 'Actuator synchronization', 'physical_index': 25}, {'structure': '5.2.3', 'title': 'Bus synchronization / Gateway', 'physical_index': 26}, {'structure': '5.3', 'title': 'Early prediction', 'physical_index': 26}, {'structure': '5.3.1', 'title': 'Modification impacts due to adding a component', 'physical_index': 26}, {'structure': '5.3.2', 'title': 'Support for hardware dimensioning', 'physical_index': 27}, {'structure': '5.3.3', 'title': 'Topology decisions', 'physical_index': 27}, {'structure': '6', 'title': 'Change History', 'physical_index': 29}, {'structure': '6.1', 'title': 'Change History for AUTOSAR R4.0.3 against R4.0.1', 'physical_index': 29}, {'structure': '6.1.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.1.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.1.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.2', 'title': 'Change History for AUTOSAR R4.1.1 against R4.0.3', 'physical_index': 29}, {'structure': '6.2.1', 'title': 'Removed SRS Items', 'physical_index': 29}, {'structure': '6.2.2', 'title': 'Changed SRS Items', 'physical_index': 29}, {'structure': '6.2.3', 'title': 'Added SRS Items', 'physical_index': 29}, {'structure': '6.3', 'title': 'Change History for AUTOSAR R4.1.2 against R4.1.1', 'physical_index': 30}, {'structure': '6.3.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.3.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.3.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.4', 'title': 'Change History for AUTOSAR R4.1.3 against R4.1.2', 'physical_index': 30}, {'structure': '6.4.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.4.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.4.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.5', 'title': 'Change History for AUTOSAR R4.2.1 against R4.1.3', 'physical_index': 30}, {'structure': '6.5.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.5.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.5.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.6', 'title': 'Change History for AUTOSAR R4.2.2 against R4.2.1', 'physical_index': 30}, {'structure': '6.6.1', 'title': 'Removed SRS Items', 'physical_index': 30}, {'structure': '6.6.2', 'title': 'Changed SRS Items', 'physical_index': 30}, {'structure': '6.6.3', 'title': 'Added SRS Items', 'physical_index': 30}, {'structure': '6.7', 'title': 'Change History for AUTOSAR R4.3.0 against R4.2.2', 'physical_index': 31}, {'structure': '6.7.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.7.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.7.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.8', 'title': 'Change History for AUTOSAR R4.3.1 against R4.3.0', 'physical_index': 31}, {'structure': '6.8.1', 'title': 'Removed SRS Items', 'physical_index': 31}, {'structure': '6.8.2', 'title': 'Changed SRS Items', 'physical_index': 31}, {'structure': '6.8.3', 'title': 'Added SRS Items', 'physical_index': 31}, {'structure': '6.9', 'title': 'Change History for AUTOSAR R4.4.0 against R4.3.1', 'physical_index': 32}, {'structure': '6.9.1', 'title': 'Removed SRS Items', 'physical_index': 32}, {'structure': '6.9.2', 'title': 'Changed SRS Items', 'physical_index': 32}, {'structure': '6.9.3', 'title': 'Added SRS Items', 'physical_index': 32}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.2564102564102564,
+    "incorrect_results": [
+      {
+        "list_index": 6,
+        "answer": "no",
+        "title": "Optionality of timing constraints",
+        "page_number": 11
+      },
+      {
+        "list_index": 8,
+        "answer": "no",
+        "title": "Structure of event chains",
+        "page_number": 12
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Synchronization constraint on events",
+        "page_number": 18
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Predefined events for port interfaces at VFB level",
+        "page_number": 18
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "AUTOSAR Methodology support",
+        "page_number": 19
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Support for events indicating variable accesses",
+        "page_number": 19
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Age constraint on assembly connector",
+        "page_number": 20
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Support for Logical Execution Time",
+        "page_number": 21
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Support for Specifying Synchronization",
+        "page_number": 22
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Supported use cases",
+        "page_number": 23
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "End-to-end timing",
+        "page_number": 23
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Local Timing Analysis (Scheduling Analysis)",
+        "page_number": 23
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Analysis of end-to-end timing in open loop control systems",
+        "page_number": 24
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Analysis of end-to-end timing in closed loop control systems",
+        "page_number": 24
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Validation of end-to-end timing",
+        "page_number": 24
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Synchronization",
+        "page_number": 25
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Sensor data fusion in multi-sensor systems",
+        "page_number": 25
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Actuator synchronization",
+        "page_number": 25
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Bus synchronization / Gateway",
+        "page_number": 26
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Early prediction",
+        "page_number": 26
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Modification impacts due to adding a component",
+        "page_number": 26
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Support for hardware dimensioning",
+        "page_number": 27
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Topology decisions",
+        "page_number": 27
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Change History",
+        "page_number": 29
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.0.3 against R4.0.1",
+        "page_number": 29
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.1 against R4.0.3",
+        "page_number": 29
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 29
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.2 against R4.1.1",
+        "page_number": 30
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.1.3 against R4.1.2",
+        "page_number": 30
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.1 against R4.1.3",
+        "page_number": 30
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.2.2 against R4.2.1",
+        "page_number": 30
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 30
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.0 against R4.2.2",
+        "page_number": 31
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Change History for AUTOSAR R4.3.1 against R4.3.0",
+        "page_number": 31
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 31
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Removed SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Changed SRS Items",
+        "page_number": 32
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Added SRS Items",
+        "page_number": 32
+      }
+    ]
+  }
+]

@@ -1,0 +1,234 @@
+[
+  {
+    "total_page_number": 112
+  },
+  {
+    "total_token": 49996
+  },
+  {
+    "toc_content": "Explanation of ara::com API\nAUTOSAR AP Release 18-10\nTable of Contents\n1 Preface 7\n2 Introduction 8\n3 Acronyms and Abbreviations 10\n4 API Design Visions and Guidelines 11\n5 High Level API Structure 12\n5.1 Proxy/Skeleton Architecture : 12\n5.2 Runtime Interface : 13\n5.3 Data Type Abstractions : 13\n5.4 Error Notification : 14\n5.4.1 Checked Errors/Exceptions : 14\n5.4.2 Unchecked Errors/Exceptions : 14\n6 API Elements 16\n6.1 Instance Identifiers : 18\n6.1.1 When to use InstanceIdentifier versus InstanceSpecifier . . . 21\n6.2 Proxy Class : 23\n6.2.1 Constructor and Handle Concept : 26\n6.2.2 Finding Services : 28\n6.2.2.1 Auto Update Proxy instance : 29\n6.2.3 Events : 34\n6.2.3.1 Event Subscription and Cache Semantics : 36\n6.2.3.2 Monitoring Event Subscription : 39\n6.2.3.3 Event-Driven vs Polling-Based access : 43\n6.2.3.4 Buffering Strategies : 47\n6.2.4 Methods : 50\n6.2.4.1 One-Way aka Fire-and-Forget Methods : 52\n6.2.4.2 Event-Driven vs Polling access to method results . . 53\n6.2.4.3 Canceling Method Result : 61\n6.2.4.4 Checked Exception Handling : 63\n6.2.5 Fields : 64\n6.3 Skeleton Class : 67\n6.3.1 Instantiation : 69\n6.3.2 Offering Service instance : 70\n6.3.3 Polling and event-driven processing modes : 71\n6.3.3.1 Polling Mode : 72\n6.3.3.2 Event-Driven Mode : 74\n6.3.4 Methods : 75\n6.3.4.1 One-Way aka Fire-and-Forget Methods : 78\n6.3.4.2 Raising Application Errors : 78\n6.3.5 Events : 80\n4 of 112\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 846: AUTOSAR_EXP_ARAComAPIExplanation of ara::com API\nAUTOSAR AP Release 18-10\n6.3.6 Fields : 84\n6.3.6.1 Registering Getters : 85\n6.3.6.2 Registering Setters : 86\n6.3.6.3 Ensuring existence of \u201cSetHandler\u201d : 87\n6.3.6.4 Ensuring existence of valid Field values : 87\n6.4 Runtime : 88\n7 Data Types on Service Interface level 89\n7.1 Optional data elements : 89\n8 Appendix 93\n8.1 Serialization : 93\n8.1.1 Zero-Copy implications : 94\n8.2 Service Discovery Implementation Strategies : 95\n8.2.1 Central vs Distributed approach : 95\n8.3 Multi-Binding implications : 98\n8.3.1 Simple Multi-Binding use case : 98\n8.3.2 Local/Network Multi-Binding use case : 101\n8.3.3 Typical SOME/IP Multi-Binding use case : 102\n8.4 ara::com and AUTOSAR meta-model relationship : 104\n8.4.1 Service Interface : 105\n8.4.2 Software Component : 105\n8.4.3 Adaptive Application/Executables and Processes : 107\n8.4.4 Usage of meta-model identifiers within ara::com based ap-\nplication code : 108\n8.5 Abstract Protocol Network Binding Examples : 110\n5 of 112\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 846: AUTOSAR_EXP_ARAComAPI",
+    "toc_page_list": [
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Preface', 'page': 7}, {'structure': '2', 'title': 'Introduction', 'page': 8}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'page': 10}, {'structure': '4', 'title': 'API Design Visions and Guidelines', 'page': 11}, {'structure': '5', 'title': 'High Level API Structure', 'page': 12}, {'structure': '5.1', 'title': 'Proxy/Skeleton Architecture', 'page': 12}, {'structure': '5.2', 'title': 'Runtime Interface', 'page': 13}, {'structure': '5.3', 'title': 'Data Type Abstractions', 'page': 13}, {'structure': '5.4', 'title': 'Error Notification', 'page': 14}, {'structure': '5.4.1', 'title': 'Checked Errors/Exceptions', 'page': 14}, {'structure': '5.4.2', 'title': 'Unchecked Errors/Exceptions', 'page': 14}, {'structure': '6', 'title': 'API Elements', 'page': 16}, {'structure': '6.1', 'title': 'Instance Identifiers', 'page': 18}, {'structure': '6.1.1', 'title': 'When to use InstanceIdentifier versus InstanceSpecifier', 'page': 21}, {'structure': '6.2', 'title': 'Proxy Class', 'page': 23}, {'structure': '6.2.1', 'title': 'Constructor and Handle Concept', 'page': 26}, {'structure': '6.2.2', 'title': 'Finding Services', 'page': 28}, {'structure': '6.2.2.1', 'title': 'Auto Update Proxy instance', 'page': 29}, {'structure': '6.2.3', 'title': 'Events', 'page': 34}, {'structure': '6.2.3.1', 'title': 'Event Subscription and Cache Semantics', 'page': 36}, {'structure': '6.2.3.2', 'title': 'Monitoring Event Subscription', 'page': 39}, {'structure': '6.2.3.3', 'title': 'Event-Driven vs Polling-Based access', 'page': 43}, {'structure': '6.2.3.4', 'title': 'Buffering Strategies', 'page': 47}, {'structure': '6.2.4', 'title': 'Methods', 'page': 50}, {'structure': '6.2.4.1', 'title': 'One-Way aka Fire-and-Forget Methods', 'page': 52}, {'structure': '6.2.4.2', 'title': 'Event-Driven vs Polling access to method results', 'page': 53}, {'structure': '6.2.4.3', 'title': 'Canceling Method Result', 'page': 61}, {'structure': '6.2.4.4', 'title': 'Checked Exception Handling', 'page': 63}, {'structure': '6.2.5', 'title': 'Fields', 'page': 64}, {'structure': '6.3', 'title': 'Skeleton Class', 'page': 67}, {'structure': '6.3.1', 'title': 'Instantiation', 'page': 69}, {'structure': '6.3.2', 'title': 'Offering Service instance', 'page': 70}, {'structure': '6.3.3', 'title': 'Polling and event-driven processing modes', 'page': 71}, {'structure': '6.3.3.1', 'title': 'Polling Mode', 'page': 72}, {'structure': '6.3.3.2', 'title': 'Event-Driven Mode', 'page': 74}, {'structure': '6.3.4', 'title': 'Methods', 'page': 75}, {'structure': '6.3.4.1', 'title': 'One-Way aka Fire-and-Forget Methods', 'page': 78}, {'structure': '6.3.4.2', 'title': 'Raising Application Errors', 'page': 78}, {'structure': '6.3.5', 'title': 'Events', 'page': 80}, {'structure': '6.3.6', 'title': 'Fields', 'page': 84}, {'structure': '6.3.6.1', 'title': 'Registering Getters', 'page': 85}, {'structure': '6.3.6.2', 'title': 'Registering Setters', 'page': 86}, {'structure': '6.3.6.3', 'title': 'Ensuring existence of \u201cSetHandler\u201d', 'page': 87}, {'structure': '6.3.6.4', 'title': 'Ensuring existence of valid Field values', 'page': 87}, {'structure': '6.4', 'title': 'Runtime', 'page': 88}, {'structure': '7', 'title': 'Data Types on Service Interface level', 'page': 89}, {'structure': '7.1', 'title': 'Optional data elements', 'page': 89}, {'structure': '8', 'title': 'Appendix', 'page': 93}, {'structure': '8.1', 'title': 'Serialization', 'page': 93}, {'structure': '8.1.1', 'title': 'Zero-Copy implications', 'page': 94}, {'structure': '8.2', 'title': 'Service Discovery Implementation Strategies', 'page': 95}, {'structure': '8.2.1', 'title': 'Central vs Distributed approach', 'page': 95}, {'structure': '8.3', 'title': 'Multi-Binding implications', 'page': 98}, {'structure': '8.3.1', 'title': 'Simple Multi-Binding use case', 'page': 98}, {'structure': '8.3.2', 'title': 'Local/Network Multi-Binding use case', 'page': 101}, {'structure': '8.3.3', 'title': 'Typical SOME/IP Multi-Binding use case', 'page': 102}, {'structure': '8.4', 'title': 'ara::com and AUTOSAR meta-model relationship', 'page': 104}, {'structure': '8.4.1', 'title': 'Service Interface', 'page': 105}, {'structure': '8.4.2', 'title': 'Software Component', 'page': 105}, {'structure': '8.4.3', 'title': 'Adaptive Application/Executables and Processes', 'page': 107}, {'structure': '8.4.4', 'title': 'Usage of meta-model identifiers within ara::com based application code', 'page': 108}, {'structure': '8.5', 'title': 'Abstract Protocol Network Binding Examples', 'page': 110}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Preface', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Introduction', 'physical_index': '<physical_index_8>'}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_10>'}, {'structure': '4', 'title': 'API Design Visions and Guidelines', 'physical_index': '<physical_index_11>'}, {'structure': '5', 'title': 'High Level API Structure', 'physical_index': '<physical_index_12>'}, {'structure': '5.1', 'title': 'Proxy/Skeleton Architecture', 'physical_index': '<physical_index_12>'}, {'structure': '5.2', 'title': 'Runtime Interface', 'physical_index': '<physical_index_13>'}, {'structure': '5.3', 'title': 'Data Type Abstractions', 'physical_index': '<physical_index_13>'}, {'structure': '5.4', 'title': 'Error Notification', 'physical_index': '<physical_index_14>'}, {'structure': '5.4.1', 'title': 'Checked Errors/Exceptions', 'physical_index': '<physical_index_14>'}, {'structure': '5.4.2', 'title': 'Unchecked Errors/Exceptions', 'physical_index': '<physical_index_14>'}, {'structure': '6', 'title': 'API Elements', 'physical_index': '<physical_index_16>'}, {'structure': '6.1', 'title': 'Instance Identifiers', 'physical_index': '<physical_index_18>'}, {'structure': '6.1.1', 'title': 'When to use InstanceIdentifier versus InstanceSpecifier', 'physical_index': '<physical_index_21>'}, {'structure': '6.2', 'title': 'Proxy Class', 'physical_index': '<physical_index_23>'}, {'structure': '6.2.1', 'title': 'Constructor and Handle Concept', 'physical_index': '<physical_index_27>'}, {'structure': '6.2.2', 'title': 'Finding Services', 'physical_index': '<physical_index_28>'}, {'structure': '6.2.2.1', 'title': 'Auto Update Proxy instance', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Preface', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction', 'physical_index': 8}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': 10}, {'structure': '4', 'title': 'API Design Visions and Guidelines', 'physical_index': 11}, {'structure': '5', 'title': 'High Level API Structure', 'physical_index': 12}, {'structure': '5.1', 'title': 'Proxy/Skeleton Architecture', 'physical_index': 12}, {'structure': '5.2', 'title': 'Runtime Interface', 'physical_index': 13}, {'structure': '5.3', 'title': 'Data Type Abstractions', 'physical_index': 13}, {'structure': '5.4', 'title': 'Error Notification', 'physical_index': 14}, {'structure': '5.4.1', 'title': 'Checked Errors/Exceptions', 'physical_index': 14}, {'structure': '5.4.2', 'title': 'Unchecked Errors/Exceptions', 'physical_index': 14}, {'structure': '6', 'title': 'API Elements', 'physical_index': 16}, {'structure': '6.1', 'title': 'Instance Identifiers', 'physical_index': 18}, {'structure': '6.1.1', 'title': 'When to use InstanceIdentifier versus InstanceSpecifier', 'physical_index': 21}, {'structure': '6.2', 'title': 'Proxy Class', 'physical_index': 23}, {'structure': '6.2.1', 'title': 'Constructor and Handle Concept', 'physical_index': 27}, {'structure': '6.2.2', 'title': 'Finding Services', 'physical_index': 28}, {'structure': '6.2.2.1', 'title': 'Auto Update Proxy instance', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Preface', 'page': 7, 'physical_index': 7}, {'title': 'Introduction', 'page': 8, 'physical_index': 8}, {'title': 'Acronyms and Abbreviations', 'page': 10, 'physical_index': 10}, {'title': 'API Design Visions and Guidelines', 'page': 11, 'physical_index': 11}, {'title': 'High Level API Structure', 'page': 12, 'physical_index': 12}, {'title': 'Proxy/Skeleton Architecture', 'page': 12, 'physical_index': 12}, {'title': 'Runtime Interface', 'page': 13, 'physical_index': 13}, {'title': 'Data Type Abstractions', 'page': 13, 'physical_index': 13}, {'title': 'Error Notification', 'page': 14, 'physical_index': 14}, {'title': 'Checked Errors/Exceptions', 'page': 14, 'physical_index': 14}, {'title': 'Unchecked Errors/Exceptions', 'page': 14, 'physical_index': 14}, {'title': 'API Elements', 'page': 16, 'physical_index': 16}, {'title': 'Instance Identifiers', 'page': 18, 'physical_index': 18}, {'title': 'When to use InstanceIdentifier versus InstanceSpecifier', 'page': 21, 'physical_index': 21}, {'title': 'Proxy Class', 'page': 23, 'physical_index': 23}, {'title': 'Constructor and Handle Concept', 'page': 26, 'physical_index': 27}, {'title': 'Finding Services', 'page': 28, 'physical_index': 28}, {'title': 'Auto Update Proxy instance', 'page': 29, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Preface', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction', 'physical_index': 8}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': 10}, {'structure': '4', 'title': 'API Design Visions and Guidelines', 'physical_index': 11}, {'structure': '5', 'title': 'High Level API Structure', 'physical_index': 12}, {'structure': '5.1', 'title': 'Proxy/Skeleton Architecture', 'physical_index': 12}, {'structure': '5.2', 'title': 'Runtime Interface', 'physical_index': 13}, {'structure': '5.3', 'title': 'Data Type Abstractions', 'physical_index': 13}, {'structure': '5.4', 'title': 'Error Notification', 'physical_index': 14}, {'structure': '5.4.1', 'title': 'Checked Errors/Exceptions', 'physical_index': 14}, {'structure': '5.4.2', 'title': 'Unchecked Errors/Exceptions', 'physical_index': 14}, {'structure': '6', 'title': 'API Elements', 'physical_index': 16}, {'structure': '6.1', 'title': 'Instance Identifiers', 'physical_index': 18}, {'structure': '6.1.1', 'title': 'When to use InstanceIdentifier versus InstanceSpecifier', 'physical_index': 21}, {'structure': '6.2', 'title': 'Proxy Class', 'physical_index': 23}, {'structure': '6.2.1', 'title': 'Constructor and Handle Concept', 'physical_index': 26}, {'structure': '6.2.2', 'title': 'Finding Services', 'physical_index': 28}, {'structure': '6.2.2.1', 'title': 'Auto Update Proxy instance', 'physical_index': 29}, {'structure': '6.2.3', 'title': 'Events', 'physical_index': 34}, {'structure': '6.2.3.1', 'title': 'Event Subscription and Cache Semantics', 'physical_index': 36}, {'structure': '6.2.3.2', 'title': 'Monitoring Event Subscription', 'physical_index': 39}, {'structure': '6.2.3.3', 'title': 'Event-Driven vs Polling-Based access', 'physical_index': 43}, {'structure': '6.2.3.4', 'title': 'Buffering Strategies', 'physical_index': 47}, {'structure': '6.2.4', 'title': 'Methods', 'physical_index': 50}, {'structure': '6.2.4.1', 'title': 'One-Way aka Fire-and-Forget Methods', 'physical_index': 52}, {'structure': '6.2.4.2', 'title': 'Event-Driven vs Polling access to method results', 'physical_index': 53}, {'structure': '6.2.4.3', 'title': 'Canceling Method Result', 'physical_index': 61}, {'structure': '6.2.4.4', 'title': 'Checked Exception Handling', 'physical_index': 63}, {'structure': '6.2.5', 'title': 'Fields', 'physical_index': 64}, {'structure': '6.3', 'title': 'Skeleton Class', 'physical_index': 67}, {'structure': '6.3.1', 'title': 'Instantiation', 'physical_index': 69}, {'structure': '6.3.2', 'title': 'Offering Service instance', 'physical_index': 70}, {'structure': '6.3.3', 'title': 'Polling and event-driven processing modes', 'physical_index': 71}, {'structure': '6.3.3.1', 'title': 'Polling Mode', 'physical_index': 72}, {'structure': '6.3.3.2', 'title': 'Event-Driven Mode', 'physical_index': 74}, {'structure': '6.3.4', 'title': 'Methods', 'physical_index': 75}, {'structure': '6.3.4.1', 'title': 'One-Way aka Fire-and-Forget Methods', 'physical_index': 78}, {'structure': '6.3.4.2', 'title': 'Raising Application Errors', 'physical_index': 78}, {'structure': '6.3.5', 'title': 'Events', 'physical_index': 80}, {'structure': '6.3.6', 'title': 'Fields', 'physical_index': 84}, {'structure': '6.3.6.1', 'title': 'Registering Getters', 'physical_index': 85}, {'structure': '6.3.6.2', 'title': 'Registering Setters', 'physical_index': 86}, {'structure': '6.3.6.3', 'title': 'Ensuring existence of \u201cSetHandler\u201d', 'physical_index': 87}, {'structure': '6.3.6.4', 'title': 'Ensuring existence of valid Field values', 'physical_index': 87}, {'structure': '6.4', 'title': 'Runtime', 'physical_index': 88}, {'structure': '7', 'title': 'Data Types on Service Interface level', 'physical_index': 89}, {'structure': '7.1', 'title': 'Optional data elements', 'physical_index': 89}, {'structure': '8', 'title': 'Appendix', 'physical_index': 93}, {'structure': '8.1', 'title': 'Serialization', 'physical_index': 93}, {'structure': '8.1.1', 'title': 'Zero-Copy implications', 'physical_index': 94}, {'structure': '8.2', 'title': 'Service Discovery Implementation Strategies', 'physical_index': 95}, {'structure': '8.2.1', 'title': 'Central vs Distributed approach', 'physical_index': 95}, {'structure': '8.3', 'title': 'Multi-Binding implications', 'physical_index': 98}, {'structure': '8.3.1', 'title': 'Simple Multi-Binding use case', 'physical_index': 98}, {'structure': '8.3.2', 'title': 'Local/Network Multi-Binding use case', 'physical_index': 101}, {'structure': '8.3.3', 'title': 'Typical SOME/IP Multi-Binding use case', 'physical_index': 102}, {'structure': '8.4', 'title': 'ara::com and AUTOSAR meta-model relationship', 'physical_index': 104}, {'structure': '8.4.1', 'title': 'Service Interface', 'physical_index': 105}, {'structure': '8.4.2', 'title': 'Software Component', 'physical_index': 105}, {'structure': '8.4.3', 'title': 'Adaptive Application/Executables and Processes', 'physical_index': 107}, {'structure': '8.4.4', 'title': 'Usage of meta-model identifiers within ara::com based application code', 'physical_index': 108}, {'structure': '8.5', 'title': 'Abstract Protocol Network Binding Examples', 'physical_index': 110}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Preface', 'physical_index': 7}, {'structure': '2', 'title': 'Introduction', 'physical_index': 8}, {'structure': '3', 'title': 'Acronyms and Abbreviations', 'physical_index': 10}, {'structure': '4', 'title': 'API Design Visions and Guidelines', 'physical_index': 11}, {'structure': '5', 'title': 'High Level API Structure', 'physical_index': 12}, {'structure': '5.1', 'title': 'Proxy/Skeleton Architecture', 'physical_index': 12}, {'structure': '5.2', 'title': 'Runtime Interface', 'physical_index': 13}, {'structure': '5.3', 'title': 'Data Type Abstractions', 'physical_index': 13}, {'structure': '5.4', 'title': 'Error Notification', 'physical_index': 14}, {'structure': '5.4.1', 'title': 'Checked Errors/Exceptions', 'physical_index': 14}, {'structure': '5.4.2', 'title': 'Unchecked Errors/Exceptions', 'physical_index': 14}, {'structure': '6', 'title': 'API Elements', 'physical_index': 16}, {'structure': '6.1', 'title': 'Instance Identifiers', 'physical_index': 18}, {'structure': '6.1.1', 'title': 'When to use InstanceIdentifier versus InstanceSpecifier', 'physical_index': 21}, {'structure': '6.2', 'title': 'Proxy Class', 'physical_index': 23}, {'structure': '6.2.1', 'title': 'Constructor and Handle Concept', 'physical_index': 26}, {'structure': '6.2.2', 'title': 'Finding Services', 'physical_index': 28}, {'structure': '6.2.2.1', 'title': 'Auto Update Proxy instance', 'physical_index': 29}, {'structure': '6.2.3', 'title': 'Events', 'physical_index': 34}, {'structure': '6.2.3.1', 'title': 'Event Subscription and Cache Semantics', 'physical_index': 36}, {'structure': '6.2.3.2', 'title': 'Monitoring Event Subscription', 'physical_index': 39}, {'structure': '6.2.3.3', 'title': 'Event-Driven vs Polling-Based access', 'physical_index': 43}, {'structure': '6.2.3.4', 'title': 'Buffering Strategies', 'physical_index': 47}, {'structure': '6.2.4', 'title': 'Methods', 'physical_index': 50}, {'structure': '6.2.4.1', 'title': 'One-Way aka Fire-and-Forget Methods', 'physical_index': 52}, {'structure': '6.2.4.2', 'title': 'Event-Driven vs Polling access to method results', 'physical_index': 53}, {'structure': '6.2.4.3', 'title': 'Canceling Method Result', 'physical_index': 61}, {'structure': '6.2.4.4', 'title': 'Checked Exception Handling', 'physical_index': 63}, {'structure': '6.2.5', 'title': 'Fields', 'physical_index': 64}, {'structure': '6.3', 'title': 'Skeleton Class', 'physical_index': 67}, {'structure': '6.3.1', 'title': 'Instantiation', 'physical_index': 69}, {'structure': '6.3.2', 'title': 'Offering Service instance', 'physical_index': 70}, {'structure': '6.3.3', 'title': 'Polling and event-driven processing modes', 'physical_index': 71}, {'structure': '6.3.3.1', 'title': 'Polling Mode', 'physical_index': 72}, {'structure': '6.3.3.2', 'title': 'Event-Driven Mode', 'physical_index': 74}, {'structure': '6.3.4', 'title': 'Methods', 'physical_index': 75}, {'structure': '6.3.4.1', 'title': 'One-Way aka Fire-and-Forget Methods', 'physical_index': 78}, {'structure': '6.3.4.2', 'title': 'Raising Application Errors', 'physical_index': 78}, {'structure': '6.3.5', 'title': 'Events', 'physical_index': 80}, {'structure': '6.3.6', 'title': 'Fields', 'physical_index': 84}, {'structure': '6.3.6.1', 'title': 'Registering Getters', 'physical_index': 85}, {'structure': '6.3.6.2', 'title': 'Registering Setters', 'physical_index': 86}, {'structure': '6.3.6.3', 'title': 'Ensuring existence of \u201cSetHandler\u201d', 'physical_index': 87}, {'structure': '6.3.6.4', 'title': 'Ensuring existence of valid Field values', 'physical_index': 87}, {'structure': '6.4', 'title': 'Runtime', 'physical_index': 88}, {'structure': '7', 'title': 'Data Types on Service Interface level', 'physical_index': 89}, {'structure': '7.1', 'title': 'Optional data elements', 'physical_index': 89}, {'structure': '8', 'title': 'Appendix', 'physical_index': 93}, {'structure': '8.1', 'title': 'Serialization', 'physical_index': 93}, {'structure': '8.1.1', 'title': 'Zero-Copy implications', 'physical_index': 94}, {'structure': '8.2', 'title': 'Service Discovery Implementation Strategies', 'physical_index': 95}, {'structure': '8.2.1', 'title': 'Central vs Distributed approach', 'physical_index': 95}, {'structure': '8.3', 'title': 'Multi-Binding implications', 'physical_index': 98}, {'structure': '8.3.1', 'title': 'Simple Multi-Binding use case', 'physical_index': 98}, {'structure': '8.3.2', 'title': 'Local/Network Multi-Binding use case', 'physical_index': 101}, {'structure': '8.3.3', 'title': 'Typical SOME/IP Multi-Binding use case', 'physical_index': 102}, {'structure': '8.4', 'title': 'ara::com and AUTOSAR meta-model relationship', 'physical_index': 104}, {'structure': '8.4.1', 'title': 'Service Interface', 'physical_index': 105}, {'structure': '8.4.2', 'title': 'Software Component', 'physical_index': 105}, {'structure': '8.4.3', 'title': 'Adaptive Application/Executables and Processes', 'physical_index': 107}, {'structure': '8.4.4', 'title': 'Usage of meta-model identifiers within ara::com based application code', 'physical_index': 108}, {'structure': '8.5', 'title': 'Abstract Protocol Network Binding Examples', 'physical_index': 110}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 1.0,
+    "incorrect_results": []
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Proxy/Skeleton Architecture' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'High Level API Structure' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Error Notification' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Runtime Interface' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Unchecked Errors/Exceptions' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Checked Errors/Exceptions' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Auto Update Proxy instance' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Data Type Abstractions' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including other sections and explanations.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Instance Identifiers' appears in the given page_text, but it is not the first content. There is text before the section title, including an explanation of the 'LogCurrentState' method and some introductory material.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' appears after some initial text, specifically after 'Explanation of ara::com API AUTOSAR AP Release 18-10'. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'API Elements' is found at the beginning of the page_text, after some introductory text. However, the question asks if the section title is the very first content, which it is not, as there is preceding text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' appears in the page_text, but it is not the first content. There are other texts before it, such as 'Explanation of ara::com API AUTOSAR AP Release 18-10'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Acronyms and Abbreviations' appears after some introductory text about the AUTOSAR AP Release 18-10 and the explanation of the ara::com API. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given page_text starts with 'Explanation of ara::com API AUTOSAR AP Release 18-10', which is not the section title 'Preface'. Therefore, the section 'Preface' does not start at the beginning of the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '6.2 Proxy Class' is found at the beginning of the page_text, after some introductory text. However, since the question asks specifically about 'Proxy Class' and not '6.2 Proxy Class', and there is content before the section title, the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '4 API Design Visions and Guidelines' appears at the beginning of the page_text, after some introductory text. However, the section title is preceded by 'Explanation of ara::com API AUTOSAR AP Release 18-10', which means the section does not start at the very beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Constructor and Handle Concept' appears after some other content in the page_text, specifically after a listing and some code snippets. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Finding Services' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Events' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Explanation of ara::com API AUTOSAR AP Release 18-10'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event-Driven vs Polling access to method results' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Buffering Strategies' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including code listings and comments.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'When to use InstanceIdentifier versus InstanceSpecifier' appears after a significant amount of text, including an explanation of the API and details about multi-binding. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event Subscription and Cache Semantics' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title, including API documentation and a listing.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event-Driven vs Polling-Based access' appears after some introductory text about the ara::com API and the AUTOSAR release version. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Monitoring Event Subscription' appears after some introductory text, including 'Explanation of ara::com API AUTOSAR AP Release 18-10'. Therefore, the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Fields' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title 'Fields'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Checked Exception Handling' appears after some code listing and text about the AUTOSAR API. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Methods' appears after some introductory text about the ara::com API and the AUTOSAR AP Release 18-10. Therefore, it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'One-Way aka Fire-and-Forget Methods' appears after some introductory text in the page_text, which includes the document title and version information. Therefore, the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Instantiation' appears in the page_text, but it is not the first content. There are several lines of code and text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Canceling Method Result' appears in the page_text, but it is not the first content. There is text before the section title, including an explanation of the ara::com API and details about the ara::core::Future::is_ready() method.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Skeleton Class' is found at the beginning of the page_text, after some introductory text. However, since there is content before the section title, it does not start at the very beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Polling and event-driven processing modes' appears after a code listing and some introductory text. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Offering Service instance' appears in the page_text, but it is not the first content. There is text before it, including explanations about service instances and their creation.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event-Driven Mode' is found at the beginning of the page_text, following the header information. There are no other contents before the section title.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Raising Application Errors' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'One-Way aka Fire-and-Forget Methods' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including code examples and explanations.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Polling Mode' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title, including an explanation of the ara::com API and details about the MethodCallProcessingMode enum.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Methods' is found in the page_text, but it is not the first content. There are other contents before it, such as 'Explanation of ara::com API AUTOSAR AP Release 18-10'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Data Types on Service Interface level' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Events' is found in the page_text, but it is not the first content. There are other contents before it, such as 'Explanation of ara::com API AUTOSAR AP Release 18-10'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Registering Setters' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, discussing the 'RegisterGetHandler' and other related topics.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Fields' is present in the page_text, but it is not the first content. There are other contents (like 'Explanation of ara::com API AUTOSAR AP Release 18-10') before the section title 'Fields'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Registering Getters' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including explanations about the ara::com API, the Update method, and other details.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Ensuring existence of valid Field values' appears in the page_text, but it is not the first content. There are other contents before it, including the explanation of 'Ensuring existence of \u201cSetHandler\u201d'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Runtime' appears after some introductory text about the AUTOSAR AP Release and the explanation of the ara::com API. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Optional data elements' appears after some introductory text about data types and the AUTOSAR API. It is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Ensuring existence of \u201cSetHandler\u201d' is found in the page_text, but it is not the first content. There are other contents before it, such as 'Explanation of ara::com API AUTOSAR AP Release 18-10'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '8.2 Service Discovery Implementation Strategies' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Serialization' appears after some introductory text about the appendix and a brief explanation of the ara::com API. Therefore, it does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Appendix' is found at the beginning of the page_text, after some introductory text. However, the introductory text is not part of the section itself, so the section does start at the beginning of the page_text.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Zero-Copy implications' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including explanations about the ara::com API, serialization, and alignment issues.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Typical SOME/IP Multi-Binding use case' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Software Component' appears in the page_text, but it is not the first content. There are other contents before it, including explanations about the ServiceInterface.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Simple Multi-Binding use case' appears in the page_text, but it is not the first content. There are several paragraphs and a section title '8.3 Multi-Binding implications' before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Central vs Distributed approach' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including explanations about service discovery implementation strategies and the expectations for ara::com binding implementers.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Local/Network Multi-Binding use case' appears in the page_text, but it is not the first content. There is text before the section title, including an explanation of the ara::com API and a discussion about multi-binding.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Abstract Protocol Network Binding Examples' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Adaptive Application/Executables and Processes' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including explanations and figures.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Usage of meta-model identifiers within ara::com based application code' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Multi-Binding implications' is found at the beginning of the page_text, after some introductory text. However, the introductory text includes 'Explanation of ara::com API AUTOSAR AP Release 18-10', which means the section does not start at the very beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ara::com and AUTOSAR meta-model relationship' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, discussing the reasons for different transport mechanisms and the relationship between service discovery and the SOME/IP bridge.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Service Interface' appears as '8.4.1 Service Interface' at the beginning of the given page_text, after some introductory text. However, since there is content before the section title, the section does not start at the very beginning of the page_text.\", 'start_begin': 'no'}"
+  }
+]

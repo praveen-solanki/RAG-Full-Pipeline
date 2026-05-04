@@ -1,0 +1,406 @@
+[
+  {
+    "total_page_number": 75
+  },
+  {
+    "total_token": 40322
+  },
+  {
+    "toc_content": "Adaptive Platform Machine Configuration\nAUTOSAR AP R25-11\nTable of Contents\n1 Introduction 6\n1.1 Document Conventions : 6\n2 Conceptual Aspects 8\n2.1 Design and Target Configuration Models : 8\n2.1.1 Design Model : 8\n2.1.2 Target Configuration Models : 9\n2.2 Overview : 9\n2.3 Benefits of using an M1 model-based configuration approach : 11\n2.4 Modeling Strategies for deriving M1 Model Content : 11\n2.4.1 Only Design exists : 11\n2.4.2 Fully derive Design Model to Configuration Model : 12\n2.4.3 Partially derive Design Model to Configuration Model : 12\n2.4.4 Only Configuration exists : 13\n2.5 Vendor Specific Functional Cluster Definition : 14\n3 Overview 15\n3.1 Abstract Structure : 15\n3.2 Definition Side : 16\n3.2.1 Definition Elements : 17\n3.2.2 Grouping of Configuration Elements : 21\n3.2.3 Emulation of Inheritance : 23\n3.2.4 Parameter : 24\n3.2.5 Reference : 25\n3.3 Value Side : 25\n3.3.1 Grouping of Configuration Values : 28\n3.3.2 Parameter : 29\n3.3.3 Reference : 29\n4 Details 31\n4.1 Definition Side : 31\n4.1.1 Parameter : 31\n4.1.1.1 Enumeration Parameter : 31\n4.1.1.2 Boolean Parameter : 33\n4.1.1.3 Integer Parameter : 33\n4.1.1.4 Float Parameter : 34\n4.1.1.5 Unrestricted String Parameter : 35\n4.1.1.6 Restricted String Parameter : 35\n4.1.2 Reference : 40\n4.1.2.1 Reference to Container : 41\n4.1.2.2 Foreign Reference : 42\n4.1.2.3 Instance Reference : 45\n4.2 Value Side : 48\n3 of 75 Document ID 1112: AUTOSAR_AP_TPS_MachineConfigurationAdaptive Platform Machine Configuration\nAUTOSAR AP R25-11\n4.2.1 Parameter : 48\n4.2.1.1 Numerical Parameter Value : 49\n4.2.1.2 Unrestricted Textual Parameter Value : 49\n4.2.1.3 Restricted Textual Parameter Value : 50\n4.2.2 Reference : 54\n5 Modeling Use Cases 61\n5.1 Functional Cluster interacts with Functional Cluster : 61\nA Reference Material 63\nA.1 Terms and Abbreviations : 63\nA.2 Imposition Times of Constraints : 63\nB Examples 65\nC Change History of AUTOSAR Traceable Items 66\nC.1 Traceable item history of this document according to AUTOSAR Release\nR24-11 : 66\nC.1.1 Added Specification Items in R24-11 : 66\nC.1.2 Changed Specification Items in R24-11 : 67\nC.1.3 Deleted Specification Items in R24-11 : 67\nC.1.4 Added Constraints in R24-11 : 68\nC.1.5 Changed Constraints in R24-11 : 68\nC.1.6 Deleted Constraints in R24-11 : 68\nC.2 Traceable item history of this document according to AUTOSAR Release\nR25-11 : 68\nC.2.1 Added Specification Items in R25-11 : 68\nC.2.2 Changed Specification Items in R25-11 : 68\nC.2.3 Deleted Specification Items in R25-11 : 69\nC.2.4 Added Constraints in R25-11 : 69\nC.2.5 Changed Constraints in R25-11 : 69\nC.2.6 Deleted Constraints in R25-11 : 69\nD Mentioned Class Tables 70\n4 of 75 Document ID 1112: AUTOSAR_AP_TPS_MachineConfiguration",
+    "toc_page_list": [
+      2,
+      3
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'page': 6}, {'structure': '1.1', 'title': 'Document Conventions', 'page': 6}, {'structure': '2', 'title': 'Conceptual Aspects', 'page': 8}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'page': 8}, {'structure': '2.1.1', 'title': 'Design Model', 'page': 8}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'page': 9}, {'structure': '2.2', 'title': 'Overview', 'page': 9}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'page': 11}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'page': 11}, {'structure': '2.4.1', 'title': 'Only Design exists', 'page': 11}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'page': 12}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'page': 12}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'page': 13}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'page': 14}, {'structure': '3', 'title': 'Overview', 'page': 15}, {'structure': '3.1', 'title': 'Abstract Structure', 'page': 15}, {'structure': '3.2', 'title': 'Definition Side', 'page': 16}, {'structure': '3.2.1', 'title': 'Definition Elements', 'page': 17}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'page': 21}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'page': 23}, {'structure': '3.2.4', 'title': 'Parameter', 'page': 24}, {'structure': '3.2.5', 'title': 'Reference', 'page': 25}, {'structure': '3.3', 'title': 'Value Side', 'page': 25}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'page': 28}, {'structure': '3.3.2', 'title': 'Parameter', 'page': 29}, {'structure': '3.3.3', 'title': 'Reference', 'page': 29}, {'structure': '4', 'title': 'Details', 'page': 31}, {'structure': '4.1', 'title': 'Definition Side', 'page': 31}, {'structure': '4.1.1', 'title': 'Parameter', 'page': 31}, {'structure': '4.1.1.1', 'title': 'Enumeration Parameter', 'page': 31}, {'structure': '4.1.1.2', 'title': 'Boolean Parameter', 'page': 33}, {'structure': '4.1.1.3', 'title': 'Integer Parameter', 'page': 33}, {'structure': '4.1.1.4', 'title': 'Float Parameter', 'page': 34}, {'structure': '4.1.1.5', 'title': 'Unrestricted String Parameter', 'page': 35}, {'structure': '4.1.1.6', 'title': 'Restricted String Parameter', 'page': 35}, {'structure': '4.1.2', 'title': 'Reference', 'page': 40}, {'structure': '4.1.2.1', 'title': 'Reference to Container', 'page': 41}, {'structure': '4.1.2.2', 'title': 'Foreign Reference', 'page': 42}, {'structure': '4.1.2.3', 'title': 'Instance Reference', 'page': 45}, {'structure': '4.2', 'title': 'Value Side', 'page': 48}, {'structure': '4.2.1', 'title': 'Parameter', 'page': 48}, {'structure': '4.2.1.1', 'title': 'Numerical Parameter Value', 'page': 49}, {'structure': '4.2.1.2', 'title': 'Unrestricted Textual Parameter Value', 'page': 49}, {'structure': '4.2.1.3', 'title': 'Restricted Textual Parameter Value', 'page': 50}, {'structure': '4.2.2', 'title': 'Reference', 'page': 54}, {'structure': '5', 'title': 'Modeling Use Cases', 'page': 61}, {'structure': '5.1', 'title': 'Functional Cluster interacts with Functional Cluster', 'page': 61}, {'structure': 'A', 'title': 'Reference Material', 'page': 63}, {'structure': 'A.1', 'title': 'Terms and Abbreviations', 'page': 63}, {'structure': 'A.2', 'title': 'Imposition Times of Constraints', 'page': 63}, {'structure': 'B', 'title': 'Examples', 'page': 65}, {'structure': 'C', 'title': 'Change History of AUTOSAR Traceable Items', 'page': 66}, {'structure': 'C.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'page': 66}, {'structure': 'C.1.1', 'title': 'Added Specification Items in R24-11', 'page': 66}, {'structure': 'C.1.2', 'title': 'Changed Specification Items in R24-11', 'page': 67}, {'structure': 'C.1.3', 'title': 'Deleted Specification Items in R24-11', 'page': 67}, {'structure': 'C.1.4', 'title': 'Added Constraints in R24-11', 'page': 68}, {'structure': 'C.1.5', 'title': 'Changed Constraints in R24-11', 'page': 68}, {'structure': 'C.1.6', 'title': 'Deleted Constraints in R24-11', 'page': 68}, {'structure': 'C.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'page': 68}, {'structure': 'C.2.1', 'title': 'Added Specification Items in R25-11', 'page': 68}, {'structure': 'C.2.2', 'title': 'Changed Specification Items in R25-11', 'page': 68}, {'structure': 'C.2.3', 'title': 'Deleted Specification Items in R25-11', 'page': 69}, {'structure': 'C.2.4', 'title': 'Added Constraints in R25-11', 'page': 69}, {'structure': 'C.2.5', 'title': 'Changed Constraints in R25-11', 'page': 69}, {'structure': 'C.2.6', 'title': 'Deleted Constraints in R25-11', 'page': 69}, {'structure': 'D', 'title': 'Mentioned Class Tables', 'page': 70}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_6>'}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conceptual Aspects', 'physical_index': '<physical_index_8>'}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.1', 'title': 'Design Model', 'physical_index': '<physical_index_8>'}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'physical_index': '<physical_index_9>'}, {'structure': '2.2', 'title': 'Overview', 'physical_index': '<physical_index_9>'}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'physical_index': '<physical_index_11>'}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'physical_index': '<physical_index_11>'}, {'structure': '2.4.1', 'title': 'Only Design exists', 'physical_index': '<physical_index_11>'}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'physical_index': '<physical_index_12>'}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'physical_index': '<physical_index_12>'}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'physical_index': '<physical_index_13>'}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'physical_index': '<physical_index_14>'}, {'structure': '3', 'title': 'Overview', 'physical_index': '<physical_index_15>'}, {'structure': '3.1', 'title': 'Abstract Structure', 'physical_index': '<physical_index_15>'}, {'structure': '3.2', 'title': 'Definition Side', 'physical_index': '<physical_index_16>'}, {'structure': '3.2.1', 'title': 'Definition Elements', 'physical_index': '<physical_index_17>'}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'physical_index': '<physical_index_21>'}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'physical_index': '<physical_index_23>'}, {'structure': '3.2.4', 'title': 'Parameter', 'physical_index': '<physical_index_24>'}, {'structure': '3.2.5', 'title': 'Reference', 'physical_index': '<physical_index_25>'}, {'structure': '3.3', 'title': 'Value Side', 'physical_index': '<physical_index_26>'}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'physical_index': '<physical_index_28>'}, {'structure': '3.3.2', 'title': 'Parameter', 'physical_index': '<physical_index_29>'}, {'structure': '3.3.3', 'title': 'Reference', 'physical_index': '<physical_index_29>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 6}, {'structure': '2', 'title': 'Conceptual Aspects', 'physical_index': 8}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Design Model', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'physical_index': 9}, {'structure': '2.2', 'title': 'Overview', 'physical_index': 9}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'physical_index': 11}, {'structure': '2.4.1', 'title': 'Only Design exists', 'physical_index': 11}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'physical_index': 12}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'physical_index': 12}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'physical_index': 13}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'physical_index': 14}, {'structure': '3', 'title': 'Overview', 'physical_index': 15}, {'structure': '3.1', 'title': 'Abstract Structure', 'physical_index': 15}, {'structure': '3.2', 'title': 'Definition Side', 'physical_index': 16}, {'structure': '3.2.1', 'title': 'Definition Elements', 'physical_index': 17}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'physical_index': 21}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'physical_index': 23}, {'structure': '3.2.4', 'title': 'Parameter', 'physical_index': 24}, {'structure': '3.2.5', 'title': 'Reference', 'physical_index': 25}, {'structure': '3.3', 'title': 'Value Side', 'physical_index': 26}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'physical_index': 28}, {'structure': '3.3.2', 'title': 'Parameter', 'physical_index': 29}, {'structure': '3.3.3', 'title': 'Reference', 'physical_index': 29}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction', 'page': 6, 'physical_index': 6}, {'title': 'Document Conventions', 'page': 6, 'physical_index': 6}, {'title': 'Conceptual Aspects', 'page': 8, 'physical_index': 8}, {'title': 'Design and Target Configuration Models', 'page': 8, 'physical_index': 8}, {'title': 'Design Model', 'page': 8, 'physical_index': 8}, {'title': 'Target Configuration Models', 'page': 9, 'physical_index': 9}, {'title': 'Overview', 'page': 9, 'physical_index': 9}, {'title': 'Overview', 'page': 15, 'physical_index': 9}, {'title': 'Benefits of using an M1 model-based configuration approach', 'page': 11, 'physical_index': 11}, {'title': 'Modeling Strategies for deriving M1 Model Content', 'page': 11, 'physical_index': 11}, {'title': 'Only Design exists', 'page': 11, 'physical_index': 11}, {'title': 'Fully derive Design Model to Configuration Model', 'page': 12, 'physical_index': 12}, {'title': 'Partially derive Design Model to Configuration Model', 'page': 12, 'physical_index': 12}, {'title': 'Only Configuration exists', 'page': 13, 'physical_index': 13}, {'title': 'Vendor Specific Functional Cluster Definition', 'page': 14, 'physical_index': 14}, {'title': 'Overview', 'page': 9, 'physical_index': 15}, {'title': 'Overview', 'page': 15, 'physical_index': 15}, {'title': 'Abstract Structure', 'page': 15, 'physical_index': 15}, {'title': 'Definition Side', 'page': 16, 'physical_index': 16}, {'title': 'Definition Side', 'page': 31, 'physical_index': 16}, {'title': 'Definition Elements', 'page': 17, 'physical_index': 17}, {'title': 'Grouping of Configuration Elements', 'page': 21, 'physical_index': 21}, {'title': 'Emulation of Inheritance', 'page': 23, 'physical_index': 23}, {'title': 'Parameter', 'page': 24, 'physical_index': 24}, {'title': 'Parameter', 'page': 29, 'physical_index': 24}, {'title': 'Parameter', 'page': 31, 'physical_index': 24}, {'title': 'Parameter', 'page': 48, 'physical_index': 24}, {'title': 'Reference', 'page': 25, 'physical_index': 25}, {'title': 'Reference', 'page': 29, 'physical_index': 25}, {'title': 'Reference', 'page': 40, 'physical_index': 25}, {'title': 'Reference', 'page': 54, 'physical_index': 25}, {'title': 'Value Side', 'page': 25, 'physical_index': 26}, {'title': 'Value Side', 'page': 48, 'physical_index': 26}, {'title': 'Grouping of Configuration Values', 'page': 28, 'physical_index': 28}, {'title': 'Parameter', 'page': 24, 'physical_index': 29}, {'title': 'Parameter', 'page': 29, 'physical_index': 29}, {'title': 'Parameter', 'page': 31, 'physical_index': 29}, {'title': 'Parameter', 'page': 48, 'physical_index': 29}, {'title': 'Reference', 'page': 25, 'physical_index': 29}, {'title': 'Reference', 'page': 29, 'physical_index': 29}, {'title': 'Reference', 'page': 40, 'physical_index': 29}, {'title': 'Reference', 'page': 54, 'physical_index': 29}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 6}, {'structure': '2', 'title': 'Conceptual Aspects', 'physical_index': 8}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Design Model', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'physical_index': 9}, {'structure': '2.2', 'title': 'Overview', 'physical_index': 9}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'physical_index': 11}, {'structure': '2.4.1', 'title': 'Only Design exists', 'physical_index': 11}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'physical_index': 12}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'physical_index': 12}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'physical_index': 13}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'physical_index': 14}, {'structure': '3', 'title': 'Overview', 'physical_index': 15}, {'structure': '3.1', 'title': 'Abstract Structure', 'physical_index': 15}, {'structure': '3.2', 'title': 'Definition Side', 'physical_index': 16}, {'structure': '3.2.1', 'title': 'Definition Elements', 'physical_index': 17}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'physical_index': 21}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'physical_index': 23}, {'structure': '3.2.4', 'title': 'Parameter', 'physical_index': 24}, {'structure': '3.2.5', 'title': 'Reference', 'physical_index': 25}, {'structure': '3.3', 'title': 'Value Side', 'physical_index': 25}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'physical_index': 28}, {'structure': '3.3.2', 'title': 'Parameter', 'physical_index': 29}, {'structure': '3.3.3', 'title': 'Reference', 'physical_index': 29}, {'structure': '4', 'title': 'Details', 'physical_index': 31}, {'structure': '4.1', 'title': 'Definition Side', 'physical_index': 31}, {'structure': '4.1.1', 'title': 'Parameter', 'physical_index': 31}, {'structure': '4.1.1.1', 'title': 'Enumeration Parameter', 'physical_index': 31}, {'structure': '4.1.1.2', 'title': 'Boolean Parameter', 'physical_index': 33}, {'structure': '4.1.1.3', 'title': 'Integer Parameter', 'physical_index': 33}, {'structure': '4.1.1.4', 'title': 'Float Parameter', 'physical_index': 34}, {'structure': '4.1.1.5', 'title': 'Unrestricted String Parameter', 'physical_index': 35}, {'structure': '4.1.1.6', 'title': 'Restricted String Parameter', 'physical_index': 35}, {'structure': '4.1.2', 'title': 'Reference', 'physical_index': 40}, {'structure': '4.1.2.1', 'title': 'Reference to Container', 'physical_index': 41}, {'structure': '4.1.2.2', 'title': 'Foreign Reference', 'physical_index': 42}, {'structure': '4.1.2.3', 'title': 'Instance Reference', 'physical_index': 45}, {'structure': '4.2', 'title': 'Value Side', 'physical_index': 48}, {'structure': '4.2.1', 'title': 'Parameter', 'physical_index': 48}, {'structure': '4.2.1.1', 'title': 'Numerical Parameter Value', 'physical_index': 49}, {'structure': '4.2.1.2', 'title': 'Unrestricted Textual Parameter Value', 'physical_index': 49}, {'structure': '4.2.1.3', 'title': 'Restricted Textual Parameter Value', 'physical_index': 50}, {'structure': '4.2.2', 'title': 'Reference', 'physical_index': 54}, {'structure': '5', 'title': 'Modeling Use Cases', 'physical_index': 61}, {'structure': '5.1', 'title': 'Functional Cluster interacts with Functional Cluster', 'physical_index': 61}, {'structure': 'A', 'title': 'Reference Material', 'physical_index': 63}, {'structure': 'A.1', 'title': 'Terms and Abbreviations', 'physical_index': 63}, {'structure': 'A.2', 'title': 'Imposition Times of Constraints', 'physical_index': 63}, {'structure': 'B', 'title': 'Examples', 'physical_index': 65}, {'structure': 'C', 'title': 'Change History of AUTOSAR Traceable Items', 'physical_index': 66}, {'structure': 'C.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'physical_index': 66}, {'structure': 'C.1.1', 'title': 'Added Specification Items in R24-11', 'physical_index': 66}, {'structure': 'C.1.2', 'title': 'Changed Specification Items in R24-11', 'physical_index': 67}, {'structure': 'C.1.3', 'title': 'Deleted Specification Items in R24-11', 'physical_index': 67}, {'structure': 'C.1.4', 'title': 'Added Constraints in R24-11', 'physical_index': 68}, {'structure': 'C.1.5', 'title': 'Changed Constraints in R24-11', 'physical_index': 68}, {'structure': 'C.1.6', 'title': 'Deleted Constraints in R24-11', 'physical_index': 68}, {'structure': 'C.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'physical_index': 68}, {'structure': 'C.2.1', 'title': 'Added Specification Items in R25-11', 'physical_index': 68}, {'structure': 'C.2.2', 'title': 'Changed Specification Items in R25-11', 'physical_index': 68}, {'structure': 'C.2.3', 'title': 'Deleted Specification Items in R25-11', 'physical_index': 69}, {'structure': 'C.2.4', 'title': 'Added Constraints in R25-11', 'physical_index': 69}, {'structure': 'C.2.5', 'title': 'Changed Constraints in R25-11', 'physical_index': 69}, {'structure': 'C.2.6', 'title': 'Deleted Constraints in R25-11', 'physical_index': 69}, {'structure': 'D', 'title': 'Mentioned Class Tables', 'physical_index': 70}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 6}, {'structure': '2', 'title': 'Conceptual Aspects', 'physical_index': 8}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'physical_index': 8}, {'structure': '2.1.1', 'title': 'Design Model', 'physical_index': 8}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'physical_index': 9}, {'structure': '2.2', 'title': 'Overview', 'physical_index': 9}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'physical_index': 11}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'physical_index': 11}, {'structure': '2.4.1', 'title': 'Only Design exists', 'physical_index': 11}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'physical_index': 12}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'physical_index': 12}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'physical_index': 13}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'physical_index': 14}, {'structure': '3', 'title': 'Overview', 'physical_index': 15}, {'structure': '3.1', 'title': 'Abstract Structure', 'physical_index': 15}, {'structure': '3.2', 'title': 'Definition Side', 'physical_index': 16}, {'structure': '3.2.1', 'title': 'Definition Elements', 'physical_index': 17}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'physical_index': 21}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'physical_index': 23}, {'structure': '3.2.4', 'title': 'Parameter', 'physical_index': 24}, {'structure': '3.2.5', 'title': 'Reference', 'physical_index': 25}, {'structure': '3.3', 'title': 'Value Side', 'physical_index': 25}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'physical_index': 28}, {'structure': '3.3.2', 'title': 'Parameter', 'physical_index': 29}, {'structure': '3.3.3', 'title': 'Reference', 'physical_index': 29}, {'structure': '4', 'title': 'Details', 'physical_index': 31}, {'structure': '4.1', 'title': 'Definition Side', 'physical_index': 31}, {'structure': '4.1.1', 'title': 'Parameter', 'physical_index': 31}, {'structure': '4.1.1.1', 'title': 'Enumeration Parameter', 'physical_index': 31}, {'structure': '4.1.1.2', 'title': 'Boolean Parameter', 'physical_index': 33}, {'structure': '4.1.1.3', 'title': 'Integer Parameter', 'physical_index': 33}, {'structure': '4.1.1.4', 'title': 'Float Parameter', 'physical_index': 34}, {'structure': '4.1.1.5', 'title': 'Unrestricted String Parameter', 'physical_index': 35}, {'structure': '4.1.1.6', 'title': 'Restricted String Parameter', 'physical_index': 35}, {'structure': '4.1.2', 'title': 'Reference', 'physical_index': 40}, {'structure': '4.1.2.1', 'title': 'Reference to Container', 'physical_index': 41}, {'structure': '4.1.2.2', 'title': 'Foreign Reference', 'physical_index': 42}, {'structure': '4.1.2.3', 'title': 'Instance Reference', 'physical_index': 45}, {'structure': '4.2', 'title': 'Value Side', 'physical_index': 48}, {'structure': '4.2.1', 'title': 'Parameter', 'physical_index': 48}, {'structure': '4.2.1.1', 'title': 'Numerical Parameter Value', 'physical_index': 49}, {'structure': '4.2.1.2', 'title': 'Unrestricted Textual Parameter Value', 'physical_index': 49}, {'structure': '4.2.1.3', 'title': 'Restricted Textual Parameter Value', 'physical_index': 50}, {'structure': '4.2.2', 'title': 'Reference', 'physical_index': 54}, {'structure': '5', 'title': 'Modeling Use Cases', 'physical_index': 61}, {'structure': '5.1', 'title': 'Functional Cluster interacts with Functional Cluster', 'physical_index': 61}, {'structure': 'A', 'title': 'Reference Material', 'physical_index': 63}, {'structure': 'A.1', 'title': 'Terms and Abbreviations', 'physical_index': 63}, {'structure': 'A.2', 'title': 'Imposition Times of Constraints', 'physical_index': 63}, {'structure': 'B', 'title': 'Examples', 'physical_index': 65}, {'structure': 'C', 'title': 'Change History of AUTOSAR Traceable Items', 'physical_index': 66}, {'structure': 'C.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'physical_index': 66}, {'structure': 'C.1.1', 'title': 'Added Specification Items in R24-11', 'physical_index': 66}, {'structure': 'C.1.2', 'title': 'Changed Specification Items in R24-11', 'physical_index': 67}, {'structure': 'C.1.3', 'title': 'Deleted Specification Items in R24-11', 'physical_index': 67}, {'structure': 'C.1.4', 'title': 'Added Constraints in R24-11', 'physical_index': 68}, {'structure': 'C.1.5', 'title': 'Changed Constraints in R24-11', 'physical_index': 68}, {'structure': 'C.1.6', 'title': 'Deleted Constraints in R24-11', 'physical_index': 68}, {'structure': 'C.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'physical_index': 68}, {'structure': 'C.2.1', 'title': 'Added Specification Items in R25-11', 'physical_index': 68}, {'structure': 'C.2.2', 'title': 'Changed Specification Items in R25-11', 'physical_index': 68}, {'structure': 'C.2.3', 'title': 'Deleted Specification Items in R25-11', 'physical_index': 69}, {'structure': 'C.2.4', 'title': 'Added Constraints in R25-11', 'physical_index': 69}, {'structure': 'C.2.5', 'title': 'Changed Constraints in R25-11', 'physical_index': 69}, {'structure': 'C.2.6', 'title': 'Deleted Constraints in R25-11', 'physical_index': 69}, {'structure': 'D', 'title': 'Mentioned Class Tables', 'physical_index': 70}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.3283582089552239,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Parameter",
+        "page_number": 24
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Reference",
+        "page_number": 25
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Value Side",
+        "page_number": 25
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Grouping of Configuration Values",
+        "page_number": 28
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Parameter",
+        "page_number": 29
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Reference",
+        "page_number": 29
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Details",
+        "page_number": 31
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "Definition Side",
+        "page_number": 31
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Parameter",
+        "page_number": 31
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Enumeration Parameter",
+        "page_number": 31
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Boolean Parameter",
+        "page_number": 33
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Integer Parameter",
+        "page_number": 33
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Float Parameter",
+        "page_number": 34
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Unrestricted String Parameter",
+        "page_number": 35
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Restricted String Parameter",
+        "page_number": 35
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Reference",
+        "page_number": 40
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Reference to Container",
+        "page_number": 41
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Foreign Reference",
+        "page_number": 42
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Instance Reference",
+        "page_number": 45
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Value Side",
+        "page_number": 48
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Parameter",
+        "page_number": 48
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Numerical Parameter Value",
+        "page_number": 49
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Unrestricted Textual Parameter Value",
+        "page_number": 49
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Restricted Textual Parameter Value",
+        "page_number": 50
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Reference",
+        "page_number": 54
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Modeling Use Cases",
+        "page_number": 61
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Functional Cluster interacts with Functional Cluster",
+        "page_number": 61
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Reference Material",
+        "page_number": 63
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Terms and Abbreviations",
+        "page_number": 63
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Imposition Times of Constraints",
+        "page_number": 63
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Examples",
+        "page_number": 65
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Change History of AUTOSAR Traceable Items",
+        "page_number": 66
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Traceable item history of this document according to AUTOSAR Release R24-11",
+        "page_number": 66
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Added Specification Items in R24-11",
+        "page_number": 66
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Changed Specification Items in R24-11",
+        "page_number": 67
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Deleted Specification Items in R24-11",
+        "page_number": 67
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Added Constraints in R24-11",
+        "page_number": 68
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Changed Constraints in R24-11",
+        "page_number": 68
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Deleted Constraints in R24-11",
+        "page_number": 68
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Traceable item history of this document according to AUTOSAR Release R25-11",
+        "page_number": 68
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Added Specification Items in R25-11",
+        "page_number": 68
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Changed Specification Items in R25-11",
+        "page_number": 68
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Changed Constraints in R25-11",
+        "page_number": 69
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Deleted Constraints in R25-11",
+        "page_number": 69
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Mentioned Class Tables",
+        "page_number": 70
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction', 'page': 6}, {'structure': '1.1', 'title': 'Document Conventions', 'page': 6}, {'structure': '2', 'title': 'Conceptual Aspects', 'page': 8}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'page': 8}, {'structure': '2.1.1', 'title': 'Design Model', 'page': 8}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'page': 9}, {'structure': '2.2', 'title': 'Overview', 'page': 9}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'page': 11}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'page': 11}, {'structure': '2.4.1', 'title': 'Only Design exists', 'page': 11}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'page': 12}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'page': 12}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'page': 13}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'page': 14}, {'structure': '3', 'title': 'Overview', 'page': 15}, {'structure': '3.1', 'title': 'Abstract Structure', 'page': 15}, {'structure': '3.2', 'title': 'Definition Side', 'page': 16}, {'structure': '3.2.1', 'title': 'Definition Elements', 'page': 17}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'page': 21}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'page': 23}, {'structure': '3.2.4', 'title': 'Parameter', 'page': 24}, {'structure': '3.2.5', 'title': 'Reference', 'page': 25}, {'structure': '3.3', 'title': 'Value Side', 'page': 25}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'page': 28}, {'structure': '3.3.2', 'title': 'Parameter', 'page': 29}, {'structure': '3.3.3', 'title': 'Reference', 'page': 29}, {'structure': '4', 'title': 'Details', 'page': 31}, {'structure': '4.1', 'title': 'Definition Side', 'page': 31}, {'structure': '4.1.1', 'title': 'Parameter', 'page': 31}, {'structure': '4.1.1.1', 'title': 'Enumeration Parameter', 'page': 31}, {'structure': '4.1.1.2', 'title': 'Boolean Parameter', 'page': 33}, {'structure': '4.1.1.3', 'title': 'Integer Parameter', 'page': 33}, {'structure': '4.1.1.4', 'title': 'Float Parameter', 'page': 34}, {'structure': '4.1.1.5', 'title': 'Unrestricted String Parameter', 'page': 35}, {'structure': '4.1.1.6', 'title': 'Restricted String Parameter', 'page': 35}, {'structure': '4.1.2', 'title': 'Reference', 'page': 40}, {'structure': '4.1.2.1', 'title': 'Reference to Container', 'page': 41}, {'structure': '4.1.2.2', 'title': 'Foreign Reference', 'page': 42}, {'structure': '4.1.2.3', 'title': 'Instance Reference', 'page': 45}, {'structure': '4.2', 'title': 'Value Side', 'page': 48}, {'structure': '4.2.1', 'title': 'Parameter', 'page': 48}, {'structure': '4.2.1.1', 'title': 'Numerical Parameter Value', 'page': 49}, {'structure': '4.2.1.2', 'title': 'Unrestricted Textual Parameter Value', 'page': 49}, {'structure': '4.2.1.3', 'title': 'Restricted Textual Parameter Value', 'page': 50}, {'structure': '4.2.2', 'title': 'Reference', 'page': 54}, {'structure': '5', 'title': 'Modeling Use Cases', 'page': 61}, {'structure': '5.1', 'title': 'Functional Cluster interacts with Functional Cluster', 'page': 61}, {'structure': 'A', 'title': 'Reference Material', 'page': 63}, {'structure': 'A.1', 'title': 'Terms and Abbreviations', 'page': 63}, {'structure': 'A.2', 'title': 'Imposition Times of Constraints', 'page': 63}, {'structure': 'B', 'title': 'Examples', 'page': 65}, {'structure': 'C', 'title': 'Change History of AUTOSAR Traceable Items', 'page': 66}, {'structure': 'C.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'page': 66}, {'structure': 'C.1.1', 'title': 'Added Specification Items in R24-11', 'page': 66}, {'structure': 'C.1.2', 'title': 'Changed Specification Items in R24-11', 'page': 67}, {'structure': 'C.1.3', 'title': 'Deleted Specification Items in R24-11', 'page': 67}, {'structure': 'C.1.4', 'title': 'Added Constraints in R24-11', 'page': 68}, {'structure': 'C.1.5', 'title': 'Changed Constraints in R24-11', 'page': 68}, {'structure': 'C.1.6', 'title': 'Deleted Constraints in R24-11', 'page': 68}, {'structure': 'C.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'page': 68}, {'structure': 'C.2.1', 'title': 'Added Specification Items in R25-11', 'page': 68}, {'structure': 'C.2.2', 'title': 'Changed Specification Items in R25-11', 'page': 68}, {'structure': 'C.2.3', 'title': 'Deleted Specification Items in R25-11', 'page': 69}, {'structure': 'C.2.4', 'title': 'Added Constraints in R25-11', 'page': 69}, {'structure': 'C.2.5', 'title': 'Changed Constraints in R25-11', 'page': 69}, {'structure': 'C.2.6', 'title': 'Deleted Constraints in R25-11', 'page': 69}, {'structure': 'D', 'title': 'Mentioned Class Tables', 'page': 70}]"
+  },
+  {
+    "message": "len(group_texts): 3"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Introduction', 'physical_index': '<physical_index_6>'}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': '<physical_index_6>'}, {'structure': '2', 'title': 'Conceptual Aspects', 'physical_index': None}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'physical_index': None}, {'structure': '2.1.1', 'title': 'Design Model', 'physical_index': None}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'physical_index': None}, {'structure': '2.2', 'title': 'Overview', 'physical_index': None}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'physical_index': None}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'physical_index': None}, {'structure': '2.4.1', 'title': 'Only Design exists', 'physical_index': None}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'physical_index': None}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'physical_index': None}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'physical_index': None}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'physical_index': None}, {'structure': '3', 'title': 'Overview', 'physical_index': None}, {'structure': '3.1', 'title': 'Abstract Structure', 'physical_index': None}, {'structure': '3.2', 'title': 'Definition Side', 'physical_index': None}, {'structure': '3.2.1', 'title': 'Definition Elements', 'physical_index': None}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'physical_index': None}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'physical_index': None}, {'structure': '3.2.4', 'title': 'Parameter', 'physical_index': None}, {'structure': '3.2.5', 'title': 'Reference', 'physical_index': None}, {'structure': '3.3', 'title': 'Value Side', 'physical_index': None}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'physical_index': None}, {'structure': '3.3.2', 'title': 'Parameter', 'physical_index': None}, {'structure': '3.3.3', 'title': 'Reference', 'physical_index': None}, {'structure': '4', 'title': 'Details', 'physical_index': None}, {'structure': '4.1', 'title': 'Definition Side', 'physical_index': None}, {'structure': '4.1.1', 'title': 'Parameter', 'physical_index': None}, {'structure': '4.1.1.1', 'title': 'Enumeration Parameter', 'physical_index': None}, {'structure': '4.1.1.2', 'title': 'Boolean Parameter', 'physical_index': '<physical_index_33>'}, {'structure': '4.1.1.3', 'title': 'Integer Parameter', 'physical_index': '<physical_index_34>'}, {'structure': '4.1.1.4', 'title': 'Float Parameter', 'physical_index': '<physical_index_35>'}, {'structure': '4.1.1.5', 'title': 'Unrestricted String Parameter', 'physical_index': '<physical_index_35>'}, {'structure': '4.1.1.6', 'title': 'Restricted String Parameter', 'physical_index': '<physical_index_36>'}, {'structure': '4.1.2', 'title': 'Reference', 'physical_index': '<physical_index_40>'}, {'structure': '4.1.2.1', 'title': 'Reference to Container', 'physical_index': '<physical_index_41>'}, {'structure': '4.1.2.2', 'title': 'Foreign Reference', 'physical_index': '<physical_index_42>'}, {'structure': '4.1.2.3', 'title': 'Instance Reference', 'physical_index': '<physical_index_46>'}, {'structure': '4.2', 'title': 'Value Side', 'physical_index': '<physical_index_48>'}, {'structure': '4.2.1', 'title': 'Parameter', 'physical_index': '<physical_index_48>'}, {'structure': '4.2.1.1', 'title': 'Numerical Parameter Value', 'physical_index': '<physical_index_49>'}, {'structure': '4.2.1.2', 'title': 'Unrestricted Textual Parameter Value', 'physical_index': '<physical_index_49>'}, {'structure': '4.2.1.3', 'title': 'Restricted Textual Parameter Value', 'physical_index': '<physical_index_50>'}, {'structure': '4.2.2', 'title': 'Reference', 'physical_index': '<physical_index_54>'}, {'structure': '5', 'title': 'Modeling Use Cases', 'physical_index': '<physical_index_61>'}, {'structure': '5.1', 'title': 'Functional Cluster interacts with Functional Cluster', 'physical_index': '<physical_index_61>'}, {'structure': 'A', 'title': 'Reference Material', 'physical_index': None}, {'structure': 'A.1', 'title': 'Terms and Abbreviations', 'physical_index': None}, {'structure': 'A.2', 'title': 'Imposition Times of Constraints', 'physical_index': None}, {'structure': 'B', 'title': 'Examples', 'physical_index': None}, {'structure': 'C', 'title': 'Change History of AUTOSAR Traceable Items', 'physical_index': None}, {'structure': 'C.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'physical_index': None}, {'structure': 'C.1.1', 'title': 'Added Specification Items in R24-11', 'physical_index': None}, {'structure': 'C.1.2', 'title': 'Changed Specification Items in R24-11', 'physical_index': None}, {'structure': 'C.1.3', 'title': 'Deleted Specification Items in R24-11', 'physical_index': None}, {'structure': 'C.1.4', 'title': 'Added Constraints in R24-11', 'physical_index': None}, {'structure': 'C.1.5', 'title': 'Changed Constraints in R24-11', 'physical_index': None}, {'structure': 'C.1.6', 'title': 'Deleted Constraints in R24-11', 'physical_index': None}, {'structure': 'C.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'physical_index': None}, {'structure': 'C.2.1', 'title': 'Added Specification Items in R25-11', 'physical_index': None}, {'structure': 'C.2.2', 'title': 'Changed Specification Items in R25-11', 'physical_index': None}, {'structure': 'C.2.3', 'title': 'Deleted Specification Items in R25-11', 'physical_index': None}, {'structure': 'C.2.4', 'title': 'Added Constraints in R25-11', 'physical_index': None}, {'structure': 'C.2.5', 'title': 'Changed Constraints in R25-11', 'physical_index': None}, {'structure': 'C.2.6', 'title': 'Deleted Constraints in R25-11', 'physical_index': None}, {'structure': 'D', 'title': 'Mentioned Class Tables', 'physical_index': None}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction', 'physical_index': 6}, {'structure': '1.1', 'title': 'Document Conventions', 'physical_index': 6}, {'structure': '2', 'title': 'Conceptual Aspects', 'physical_index': None}, {'structure': '2.1', 'title': 'Design and Target Configuration Models', 'physical_index': None}, {'structure': '2.1.1', 'title': 'Design Model', 'physical_index': None}, {'structure': '2.1.2', 'title': 'Target Configuration Models', 'physical_index': None}, {'structure': '2.2', 'title': 'Overview', 'physical_index': None}, {'structure': '2.3', 'title': 'Benefits of using an M1 model-based configuration approach', 'physical_index': None}, {'structure': '2.4', 'title': 'Modeling Strategies for deriving M1 Model Content', 'physical_index': None}, {'structure': '2.4.1', 'title': 'Only Design exists', 'physical_index': None}, {'structure': '2.4.2', 'title': 'Fully derive Design Model to Configuration Model', 'physical_index': None}, {'structure': '2.4.3', 'title': 'Partially derive Design Model to Configuration Model', 'physical_index': None}, {'structure': '2.4.4', 'title': 'Only Configuration exists', 'physical_index': None}, {'structure': '2.5', 'title': 'Vendor Specific Functional Cluster Definition', 'physical_index': None}, {'structure': '3', 'title': 'Overview', 'physical_index': None}, {'structure': '3.1', 'title': 'Abstract Structure', 'physical_index': None}, {'structure': '3.2', 'title': 'Definition Side', 'physical_index': None}, {'structure': '3.2.1', 'title': 'Definition Elements', 'physical_index': None}, {'structure': '3.2.2', 'title': 'Grouping of Configuration Elements', 'physical_index': None}, {'structure': '3.2.3', 'title': 'Emulation of Inheritance', 'physical_index': None}, {'structure': '3.2.4', 'title': 'Parameter', 'physical_index': None}, {'structure': '3.2.5', 'title': 'Reference', 'physical_index': None}, {'structure': '3.3', 'title': 'Value Side', 'physical_index': None}, {'structure': '3.3.1', 'title': 'Grouping of Configuration Values', 'physical_index': None}, {'structure': '3.3.2', 'title': 'Parameter', 'physical_index': None}, {'structure': '3.3.3', 'title': 'Reference', 'physical_index': None}, {'structure': '4', 'title': 'Details', 'physical_index': None}, {'structure': '4.1', 'title': 'Definition Side', 'physical_index': None}, {'structure': '4.1.1', 'title': 'Parameter', 'physical_index': None}, {'structure': '4.1.1.1', 'title': 'Enumeration Parameter', 'physical_index': None}, {'structure': '4.1.1.2', 'title': 'Boolean Parameter', 'physical_index': 33}, {'structure': '4.1.1.3', 'title': 'Integer Parameter', 'physical_index': 34}, {'structure': '4.1.1.4', 'title': 'Float Parameter', 'physical_index': 35}, {'structure': '4.1.1.5', 'title': 'Unrestricted String Parameter', 'physical_index': 35}, {'structure': '4.1.1.6', 'title': 'Restricted String Parameter', 'physical_index': 36}, {'structure': '4.1.2', 'title': 'Reference', 'physical_index': 40}, {'structure': '4.1.2.1', 'title': 'Reference to Container', 'physical_index': 41}, {'structure': '4.1.2.2', 'title': 'Foreign Reference', 'physical_index': 42}, {'structure': '4.1.2.3', 'title': 'Instance Reference', 'physical_index': 46}, {'structure': '4.2', 'title': 'Value Side', 'physical_index': 48}, {'structure': '4.2.1', 'title': 'Parameter', 'physical_index': 48}, {'structure': '4.2.1.1', 'title': 'Numerical Parameter Value', 'physical_index': 49}, {'structure': '4.2.1.2', 'title': 'Unrestricted Textual Parameter Value', 'physical_index': 49}, {'structure': '4.2.1.3', 'title': 'Restricted Textual Parameter Value', 'physical_index': 50}, {'structure': '4.2.2', 'title': 'Reference', 'physical_index': 54}, {'structure': '5', 'title': 'Modeling Use Cases', 'physical_index': 61}, {'structure': '5.1', 'title': 'Functional Cluster interacts with Functional Cluster', 'physical_index': 61}, {'structure': 'A', 'title': 'Reference Material', 'physical_index': None}, {'structure': 'A.1', 'title': 'Terms and Abbreviations', 'physical_index': None}, {'structure': 'A.2', 'title': 'Imposition Times of Constraints', 'physical_index': None}, {'structure': 'B', 'title': 'Examples', 'physical_index': None}, {'structure': 'C', 'title': 'Change History of AUTOSAR Traceable Items', 'physical_index': None}, {'structure': 'C.1', 'title': 'Traceable item history of this document according to AUTOSAR Release R24-11', 'physical_index': None}, {'structure': 'C.1.1', 'title': 'Added Specification Items in R24-11', 'physical_index': None}, {'structure': 'C.1.2', 'title': 'Changed Specification Items in R24-11', 'physical_index': None}, {'structure': 'C.1.3', 'title': 'Deleted Specification Items in R24-11', 'physical_index': None}, {'structure': 'C.1.4', 'title': 'Added Constraints in R24-11', 'physical_index': None}, {'structure': 'C.1.5', 'title': 'Changed Constraints in R24-11', 'physical_index': None}, {'structure': 'C.1.6', 'title': 'Deleted Constraints in R24-11', 'physical_index': None}, {'structure': 'C.2', 'title': 'Traceable item history of this document according to AUTOSAR Release R25-11', 'physical_index': None}, {'structure': 'C.2.1', 'title': 'Added Specification Items in R25-11', 'physical_index': None}, {'structure': 'C.2.2', 'title': 'Changed Specification Items in R25-11', 'physical_index': None}, {'structure': 'C.2.3', 'title': 'Deleted Specification Items in R25-11', 'physical_index': None}, {'structure': 'C.2.4', 'title': 'Added Constraints in R25-11', 'physical_index': None}, {'structure': 'C.2.5', 'title': 'Changed Constraints in R25-11', 'physical_index': None}, {'structure': 'C.2.6', 'title': 'Deleted Constraints in R25-11', 'physical_index': None}, {'structure': 'D', 'title': 'Mentioned Class Tables', 'physical_index': None}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.9473684210526315,
+    "incorrect_results": [
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Float Parameter",
+        "page_number": 35
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 4, 'title': 'Float Parameter', 'prev_correct': 34, 'next_correct': 35}]"
+  },
+  {
+    "message": "invalid_results: []"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Unrestricted String Parameter' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Foreign Reference' appears in the page_text, but it is not the first content. There are several paragraphs and a table before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Reference' is found in the page_text, but it is not the first content. There is a significant amount of text before the section title 'Reference'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Restricted Textual Parameter Value' appears in the page_text, but it is not the first content. There are several lines of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Numerical Parameter Value' appears after some other content in the page_text, specifically after a table and some text about the ApmcIndexableValue class.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '4.1.2.1 Reference to Container' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Restricted String Parameter' does not appear at the beginning of the given page_text. The page_text starts with 'Adaptive Platform Machine Configuration', which is unrelated to the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Document Conventions' appears in the page_text, but it is not the first content. There are several lines of text before the section title, including the document introduction and other headings.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Integer Parameter' does not appear at the beginning of the given page_text. The page_text starts with 'Adaptive Platform Machine Configuration', which indicates that the section does not start at the beginning.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Instance Reference' does not appear at the beginning of the provided page_text. The text starts with 'Adaptive Platform Machine Configuration', which indicates that the section does not start at the beginning of the page.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Boolean Parameter' appears after some other content in the page_text, specifically after a table and some text about 'ApmcEnumerationLiteralDef'. Therefore, the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Preface' does not appear at the beginning of the given page_text. The page_text starts with 'Adaptive Platform Machine Configuration', which indicates the beginning of the document metadata rather than the preface section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Float Parameter' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title, including details about the 'ApmcIntegerParamDef' class.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Introduction' is found in the page_text, but it is not the first content. There are other contents before it, such as 'Adaptive Platform Machine Configuration AUTOSAR AP R25-11'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Value Side' is not the first content in the given page_text. There are other contents before it, such as 'Adaptive Platform Machine Configuration AUTOSAR AP R25-11 evant model semantics and serves only as a protocol of how the enclosing container came into existence. \u230b'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Reference' appears in the page_text, but it is not the first content. There is a significant amount of text before the section title 'Reference'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Unrestricted Textual Parameter Value' appears in the page_text, but it is not the first content. There are several lines of text and a table before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Functional Cluster interacts with Functional Cluster' appears in the page_text, but it is not the first content. There are other contents before it, including the chapter title and some introductory text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Modeling Use Cases' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Adaptive Platform Machine Configuration AUTOSAR AP R25-11'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Parameter' is found in the page_text, but it is not at the very beginning. There are other contents before it, such as 'Adaptive Platform Machine Configuration AUTOSAR AP R25-11 evant model semantics and serves only as a protocol of how the enclosing container came into existence. \u230b 4.2 Value Side This section contains a detailed description of configuration elements on the \u201cvalue side\u201d. 4.2.1 Parameter'.\", 'start_begin': 'no'}"
+  }
+]

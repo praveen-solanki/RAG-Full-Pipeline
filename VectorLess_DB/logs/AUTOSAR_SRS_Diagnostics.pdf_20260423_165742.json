@@ -1,0 +1,1164 @@
+[
+  {
+    "total_page_number": 73
+  },
+  {
+    "total_token": 33649
+  },
+  {
+    "toc_content": "Requirements on Diagnostics\nAUTOSAR FO Release 1.5.0\nTable of Contents\n1 Scope of the Document 11\n2 Acronyms and Abbreviations 11\n3 Conventions to be used 12\n4 Requirements Specification 13\n4.1 Common Diagnostic requirements for Classic and Adaptive Platform . 13\n[SRS_Diag_04200] Support event combination : 13\n[SRS_Diag_04150] Support the primary fault memory defined by ISO\n14229-1 : 13\n[SRS_Diag_04214] Support the user defined fault memories defined by\nISO 14229-1 : 14\n[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event\nspecific debounce counters to improve signal quality inter-\nnally (According to ISO 14229-1 Appendix D) : 14\n[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event\nspecific time base debounce counters : 15\n[SRS_Diag_04115] The optional parameter DTCSettingControlOption-\nRecord as part of UDS service ControlDTCSetting shall be\nlimited to GroupOfDTC : 15\n[SRS_Diag_04164] Independent event memories for multiple diagnostic\nserver instances (virtual ECUs) : 16\n[SRS_Diag_04064] Provide configurable buffer sizes for storage of the\nevents, status information and environmental data : 16\n[SRS_Diag_04172] Inform external service processors about outcome\nof the final response : 17\n[SRS_Diag_04127] Configurable record numbers and trigger options for\nDTCSnapshotRecords and DTCExtendedDataRecords . . . 17\n[SRS_Diag_04177] Custom diagnostic services : 17\n[SRS_Diag_04059] Configuration of timing parameters : 18\n[SRS_Diag_04033] Support the upload/download services for read-\ning/writing data in an ECU in an extended and manufacturer\nspecific diagnostic session : 18\n[SRS_Diag_04020] Suppress responses to diagnostic tool requests . . 19\n[SRS_Diag_04119] Handle the execution of diagnostic services accord-\ning to the assigned diagnostic session : 19\n[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative re-\nsponse 0x78 : 20\n[SRS_Diag_04006] Manage session handling : 20\n[SRS_Diag_04005] Manage Security Access level handling : 20\n[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer) . . 21\n[SRS_Diag_04100] Interface for logging and tracing : 21\n[SRS_Diag_04098] Interact with standard bootloader : 22\n5 of 73\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 004: AUTOSAR_SRS_DiagnosticsRequirements on Diagnostics\nAUTOSAR FO Release 1.5.0\n[SRS_Diag_04159] Control of DTC storage : 22\n[SRS_Diag_04157] Reporting of DTCs and related data : 23\n[SRS_Diag_04156] Support DTCFunctionalUnit : 23\n[SRS_Diag_04077] Uses standard mechanisms provided by persistency\nmodules : 23\n[SRS_Diag_04131] Consistent event management mechanisms . . . . 24\n[SRS_Diag_04117] Configurable behavior for DTC deletion : 24\n[SRS_Diag_04107] Provide defensive behavior : 24\n[SRS_Diag_04105] Event memory management : 25\n[SRS_Diag_04091] Notification about valid freeze frame data to applica-\ntions : 25\n[SRS_Diag_04151] Event status handling : 26\n[SRS_Diag_04071] Process events according to their defined impor-\ntance like priority and/or severity : 26\n[SRS_Diag_04125] Event debounce counter shall be configurable . . . 26\n[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold : 27\n[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtest-\nFailedSinceLastClear\u201d : 27\n[SRS_Diag_04141] Ability to synchronize the event data capturing with\nthe reported event : 28\n[SRS_Diag_04230] Support of UDS service 0x29 (Authentication) . . . 28\n[SRS_Diag_04231] Supported client certificates : 29\n[SRS_Diag_04232] Access rights in client certificates : 29\n[SRS_Diag_04233] Access granularity of diagnostic services : 30\n[SRS_Diag_04234] Binary compatibility of white list for individual access 30\n[SRS_Diag_04235] Client certificate validity : 31\n[SRS_Diag_04236] Client certificate target identification : 31\n[SRS_Diag_04237] Client certificate evaluation : 31\n[SRS_Diag_04238] Logging certificate evaluation : 32\n[SRS_Diag_04239] Diagnostic services in deauthenticated state . . . . 32\n[SRS_Diag_04240] Application based authentication : 33\n[SRS_Diag_04133] Aging for event memory entries : 33\n[SRS_Diag_04063] Process a dedicated event identifier for each mon-\nitoring path to support an autonomous handling of different\nevents/faults : 33\n[SRS_Diag_04148] Provide capabilities to inform applications about di-\nagnostic data changes : 34\n[SRS_Diag_04097] Decentralized and modular diagnostic configuration\nin applications : 34\n[SRS_Diag_04067] Provide the diagnostic status information according\nto ISO 14229-1 : 35\n[SRS_Diag_04179] Provide interfaces for monitoring application: 35\n[SRS_Diag_04178] Support operation cycles according to ISO 14229-1 36\n[SRS_Diag_04201] Support a configuration to assign specific events to\na customer specific DTC : 36\n6 of 73\n\u2014 AUTOSAR CONFIDENTIAL \u2014Document ID 004: AUTOSAR_SRS_Diagnostics",
+    "toc_page_list": [
+      4,
+      5
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of the Document', 'page': 11}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 11}, {'structure': '3', 'title': 'Conventions to be used', 'page': 12}, {'structure': '4', 'title': 'Requirements Specification', 'page': 13}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'page': 13}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'page': 13}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'page': 13}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'page': 14}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'page': 14}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'page': 15}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'page': 15}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'page': 16}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'page': 16}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'page': 17}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'page': 17}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'page': 17}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'page': 18}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'page': 18}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'page': 19}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'page': 19}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative response 0x78', 'page': 20}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'page': 20}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'page': 20}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'page': 21}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'page': 21}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'page': 22}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'page': 22}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'page': 23}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'page': 23}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'page': 23}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'page': 24}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'page': 24}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'page': 24}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'page': 25}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'page': 25}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'page': 26}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'page': 26}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'page': 26}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold', 'page': 27}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d', 'page': 27}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'page': 28}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'page': 28}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'page': 29}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'page': 29}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'page': 30}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'page': 30}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'page': 31}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'page': 31}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'page': 31}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'page': 32}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'page': 32}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'page': 33}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'page': 33}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'page': 33}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'page': 34}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'page': 34}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'page': 35}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'page': 35}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'page': 36}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'page': 36}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': '<physical_index_11>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': '<physical_index_12>'}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': '<physical_index_13>'}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': '<physical_index_13>'}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'physical_index': '<physical_index_13>'}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'physical_index': '<physical_index_14>'}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'physical_index': '<physical_index_15>'}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'physical_index': '<physical_index_16>'}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'physical_index': '<physical_index_17>'}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'physical_index': '<physical_index_17>'}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'physical_index': '<physical_index_18>'}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'physical_index': '<physical_index_19>'}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative response 0x78', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'physical_index': '<physical_index_21>'}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'physical_index': '<physical_index_22>'}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'physical_index': '<physical_index_22>'}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'physical_index': '<physical_index_23>'}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'physical_index': '<physical_index_24>'}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'physical_index': '<physical_index_25>'}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'physical_index': '<physical_index_25>'}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'physical_index': '<physical_index_26>'}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d', 'physical_index': '<physical_index_27>'}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'physical_index': '<physical_index_28>'}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'physical_index': '<physical_index_29>'}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'physical_index': '<physical_index_29>'}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'physical_index': '<physical_index_30>'}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'physical_index': '<physical_index_30>'}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'physical_index': '<physical_index_31>'}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'physical_index': '<physical_index_31>'}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'physical_index': '<physical_index_31>'}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'physical_index': '<physical_index_32>'}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'physical_index': '<physical_index_32>'}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'physical_index': '<physical_index_33>'}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'physical_index': '<physical_index_33>'}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'physical_index': '<physical_index_33>'}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'physical_index': '<physical_index_34>'}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'physical_index': '<physical_index_34>'}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'physical_index': '<physical_index_35>'}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'physical_index': '<physical_index_35>'}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'physical_index': '<physical_index_36>'}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'physical_index': '<physical_index_36>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': 11}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': 13}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 13}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'physical_index': 13}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'physical_index': 14}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'physical_index': 14}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'physical_index': 14}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'physical_index': 15}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'physical_index': 15}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'physical_index': 16}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'physical_index': 16}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'physical_index': 17}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'physical_index': 17}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'physical_index': 18}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'physical_index': 18}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'physical_index': 18}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'physical_index': 19}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'physical_index': 19}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative response 0x78', 'physical_index': 20}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'physical_index': 20}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'physical_index': 20}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'physical_index': 21}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'physical_index': 21}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'physical_index': 22}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'physical_index': 22}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'physical_index': 23}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'physical_index': 23}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'physical_index': 23}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'physical_index': 24}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'physical_index': 24}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'physical_index': 24}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'physical_index': 25}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'physical_index': 25}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'physical_index': 26}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'physical_index': 26}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'physical_index': 27}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold', 'physical_index': 27}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d', 'physical_index': 27}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'physical_index': 28}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'physical_index': 28}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'physical_index': 29}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'physical_index': 29}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'physical_index': 30}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'physical_index': 30}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'physical_index': 31}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'physical_index': 31}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'physical_index': 31}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'physical_index': 32}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'physical_index': 32}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'physical_index': 33}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'physical_index': 33}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'physical_index': 33}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'physical_index': 34}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'physical_index': 34}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'physical_index': 35}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'physical_index': 35}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'physical_index': 36}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'physical_index': 36}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Scope of the Document', 'page': 11, 'physical_index': 11}, {'title': 'Acronyms and Abbreviations', 'page': 11, 'physical_index': 11}, {'title': 'Conventions to be used', 'page': 12, 'physical_index': 12}, {'title': 'Requirements Specification', 'page': 13, 'physical_index': 13}, {'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'page': 13, 'physical_index': 13}, {'title': '[SRS_Diag_04200] Support event combination', 'page': 13, 'physical_index': 13}, {'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'page': 13, 'physical_index': 14}, {'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'page': 14, 'physical_index': 14}, {'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'page': 14, 'physical_index': 14}, {'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'page': 15, 'physical_index': 15}, {'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'page': 15, 'physical_index': 15}, {'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'page': 16, 'physical_index': 16}, {'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'page': 16, 'physical_index': 16}, {'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'page': 17, 'physical_index': 17}, {'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'page': 17, 'physical_index': 17}, {'title': '[SRS_Diag_04177] Custom diagnostic services', 'page': 17, 'physical_index': 18}, {'title': '[SRS_Diag_04059] Configuration of timing parameters', 'page': 18, 'physical_index': 18}, {'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'page': 18, 'physical_index': 18}, {'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'page': 19, 'physical_index': 19}, {'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'page': 19, 'physical_index': 19}, {'title': '[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative response 0x78', 'page': 20, 'physical_index': 20}, {'title': '[SRS_Diag_04006] Manage session handling', 'page': 20, 'physical_index': 20}, {'title': '[SRS_Diag_04005] Manage Security Access level handling', 'page': 20, 'physical_index': 20}, {'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'page': 21, 'physical_index': 21}, {'title': '[SRS_Diag_04100] Interface for logging and tracing', 'page': 21, 'physical_index': 21}, {'title': '[SRS_Diag_04098] Interact with standard bootloader', 'page': 22, 'physical_index': 22}, {'title': '[SRS_Diag_04159] Control of DTC storage', 'page': 22, 'physical_index': 22}, {'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'page': 23, 'physical_index': 23}, {'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'page': 23, 'physical_index': 23}, {'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'page': 23, 'physical_index': 23}, {'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'page': 24, 'physical_index': 24}, {'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'page': 24, 'physical_index': 24}, {'title': '[SRS_Diag_04107] Provide defensive behavior', 'page': 24, 'physical_index': 24}, {'title': '[SRS_Diag_04105] Event memory management', 'page': 25, 'physical_index': 25}, {'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'page': 25, 'physical_index': 25}, {'title': '[SRS_Diag_04151] Event status handling', 'page': 26, 'physical_index': 26}, {'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'page': 26, 'physical_index': 26}, {'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'page': 26, 'physical_index': 27}, {'title': '[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold', 'page': 27, 'physical_index': 27}, {'title': '[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d', 'page': 27, 'physical_index': 27}, {'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'page': 28, 'physical_index': 28}, {'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'page': 28, 'physical_index': 28}, {'title': '[SRS_Diag_04231] Supported client certificates', 'page': 29, 'physical_index': 29}, {'title': '[SRS_Diag_04232] Access rights in client certificates', 'page': 29, 'physical_index': 29}, {'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'page': 30, 'physical_index': 30}, {'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'page': 30, 'physical_index': 30}, {'title': '[SRS_Diag_04235] Client certificate validity', 'page': 31, 'physical_index': 31}, {'title': '[SRS_Diag_04236] Client certificate target identification', 'page': 31, 'physical_index': 31}, {'title': '[SRS_Diag_04237] Client certificate evaluation', 'page': 31, 'physical_index': 31}, {'title': '[SRS_Diag_04238] Logging certificate evaluation', 'page': 32, 'physical_index': 32}, {'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'page': 32, 'physical_index': 32}, {'title': '[SRS_Diag_04240] Application based authentication', 'page': 33, 'physical_index': 33}, {'title': '[SRS_Diag_04133] Aging for event memory entries', 'page': 33, 'physical_index': 33}, {'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'page': 33, 'physical_index': 33}, {'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'page': 34, 'physical_index': 34}, {'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'page': 34, 'physical_index': 34}, {'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'page': 35, 'physical_index': 35}, {'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'page': 35, 'physical_index': 35}, {'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'page': 36, 'physical_index': 36}, {'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'page': 36, 'physical_index': 36}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': 11}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': 13}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 13}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'physical_index': 13}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'physical_index': 13}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'physical_index': 14}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'physical_index': 14}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'physical_index': 15}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'physical_index': 15}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'physical_index': 16}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'physical_index': 16}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'physical_index': 17}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'physical_index': 17}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'physical_index': 17}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'physical_index': 18}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'physical_index': 18}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'physical_index': 19}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'physical_index': 19}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative response 0x78', 'physical_index': 20}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'physical_index': 20}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'physical_index': 20}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'physical_index': 21}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'physical_index': 21}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'physical_index': 22}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'physical_index': 22}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'physical_index': 23}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'physical_index': 23}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'physical_index': 23}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'physical_index': 24}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'physical_index': 24}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'physical_index': 24}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'physical_index': 25}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'physical_index': 25}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'physical_index': 26}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'physical_index': 26}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'physical_index': 26}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold', 'physical_index': 27}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d', 'physical_index': 27}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'physical_index': 28}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'physical_index': 28}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'physical_index': 29}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'physical_index': 29}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'physical_index': 30}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'physical_index': 30}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'physical_index': 31}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'physical_index': 31}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'physical_index': 31}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'physical_index': 32}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'physical_index': 32}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'physical_index': 33}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'physical_index': 33}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'physical_index': 33}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'physical_index': 34}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'physical_index': 34}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'physical_index': 35}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'physical_index': 35}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'physical_index': 36}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'physical_index': 36}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': 11}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 12}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': 13}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 13}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'physical_index': 13}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'physical_index': 13}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'physical_index': 14}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'physical_index': 14}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'physical_index': 15}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'physical_index': 15}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'physical_index': 16}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'physical_index': 16}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'physical_index': 17}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'physical_index': 17}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'physical_index': 17}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'physical_index': 18}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'physical_index': 18}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'physical_index': 19}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'physical_index': 19}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative response 0x78', 'physical_index': 20}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'physical_index': 20}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'physical_index': 20}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'physical_index': 21}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'physical_index': 21}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'physical_index': 22}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'physical_index': 22}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'physical_index': 23}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'physical_index': 23}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'physical_index': 23}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'physical_index': 24}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'physical_index': 24}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'physical_index': 24}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'physical_index': 25}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'physical_index': 25}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'physical_index': 26}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'physical_index': 26}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'physical_index': 26}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold', 'physical_index': 27}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d', 'physical_index': 27}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'physical_index': 28}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'physical_index': 28}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'physical_index': 29}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'physical_index': 29}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'physical_index': 30}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'physical_index': 30}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'physical_index': 31}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'physical_index': 31}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'physical_index': 31}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'physical_index': 32}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'physical_index': 32}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'physical_index': 33}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'physical_index': 33}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'physical_index': 33}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'physical_index': 34}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'physical_index': 34}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'physical_index': 35}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'physical_index': 35}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'physical_index': 36}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'physical_index': 36}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": -1,
+    "incorrect_results": []
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Scope of the Document', 'page': 11}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'page': 11}, {'structure': '3', 'title': 'Conventions to be used', 'page': 12}, {'structure': '4', 'title': 'Requirements Specification', 'page': 13}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'page': 13}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'page': 13}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'page': 13}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'page': 14}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'page': 14}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'page': 15}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'page': 15}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'page': 16}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'page': 16}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'page': 17}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'page': 17}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'page': 17}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'page': 18}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'page': 18}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'page': 19}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'page': 19}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201dBusy handling\u201d by sending a negative response 0x78', 'page': 20}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'page': 20}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'page': 20}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'page': 21}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'page': 21}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'page': 22}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'page': 22}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'page': 23}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'page': 23}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'page': 23}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'page': 24}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'page': 24}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'page': 24}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'page': 25}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'page': 25}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'page': 26}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'page': 26}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'page': 26}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201dconfirmed\u201d threshold', 'page': 27}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d', 'page': 27}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'page': 28}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'page': 28}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'page': 29}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'page': 29}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'page': 30}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'page': 30}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'page': 31}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'page': 31}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'page': 31}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'page': 32}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'page': 32}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'page': 33}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'page': 33}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'page': 33}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'page': 34}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'page': 34}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'page': 35}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'page': 35}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'page': 36}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'page': 36}]"
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': '<physical_index_11>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_11>'}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': '<physical_index_11>'}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': '<physical_index_11>'}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201cBusy handling\u201d by sending a negative response 0x78', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201cconfirmed\u201d threshold', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201cconfirmedDTC\u201d and \u201ctestFailedSinceLastClear\u201d', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'physical_index': '<physical_index_11>'}, {'structure': '4.1.56', 'title': '[SRS_Diag_04180] Process all UDS Services related to diagnostic fault memory of ISO 14229-1 internally', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.57', 'title': '[SRS_Diag_04182] Provide an application interface to change operation cycles states', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.58', 'title': '[SRS_Diag_04183] Notify interested parties about event status changes', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.59', 'title': '[SRS_Diag_04185] Notify applications about the clearing of an event', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.60', 'title': '[SRS_Diag_04186] Notify applications about the start or restart of an operation cycle', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.61', 'title': '[SRS_Diag_04204] Provide the current status of each warning indicator', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.62', 'title': '[SRS_Diag_04202] Report DTCs getting active to the error logging module/system', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.63', 'title': '[SRS_Diag_04205] Support of SnapshotRecords', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.64', 'title': '[SRS_Diag_04206] Support of ExtendedDataRecords', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.65', 'title': '[SRS_Diag_04189] Support a fine grained configuration for SnapshotRecords and ExtendedDataRecords', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.66', 'title': '[SRS_Diag_04190] Usage of internal data elements in SnapshotRecords and ExtendedDataRecords', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.67', 'title': '[SRS_Diag_04192] Provide the ability to handle event specific enable conditions', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.68', 'title': '[SRS_Diag_04219] Provide the ability to handle event specific storage conditions', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.69', 'title': '[SRS_Diag_04194] ClearDTC shall be accessible for applications', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.70', 'title': '[SRS_Diag_04195] Chronological reporting order of the DTCs located in the configured event memory', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.71', 'title': '[SRS_Diag_04211] Persistent storage of DTC status and environmental data', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.72', 'title': '[SRS_Diag_04196] UDS Service handling for all diagnostic services defined in ISO 14229-2', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.73', 'title': '[SRS_Diag_04203] Common checks on all supported UDS Services Requests', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.74', 'title': '[SRS_Diag_04226] Diagnostic session check', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.75', 'title': '[SRS_Diag_04227] Common check for Security Access', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.76', 'title': '[SRS_Diag_04228] Common check for Message lengths', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.77', 'title': '[SRS_Diag_04197] Clearing the user defined fault memory', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.78', 'title': '[SRS_Diag_04198] Process all UDS Services related to session and security management of ISO 14229 internally', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.79', 'title': '[SRS_Diag_04199] Provide a configurable UDS service execution mechanism at runtime to decide if a UDS request shall be processed or not', 'physical_index': '<physical_index_20>'}, {'structure': '4.1.80', 'title': '[SRS_Diag_04208] Inform the application about diagnostic session and diagnostic security level changes on each tester connection', 'physical_index': '<physical_index_46>'}, {'structure': '4.1.81', 'title': '[SRS_Diag_04218] Support of UDS service 0x2F InputOutputControlByIDentifier', 'physical_index': '<physical_index_46>'}, {'structure': '4.1.82', 'title': '[SRS_Diag_04222] Independence of clearing DTC status and system degradation', 'physical_index': '<physical_index_46>'}, {'structure': '4.2', 'title': 'Requirements on Diagnostics', 'physical_index': '<physical_index_71>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': 11}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 11}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 11}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': 11}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 11}, {'structure': '4.1.1', 'title': '[SRS_Diag_04200] Support event combination', 'physical_index': 11}, {'structure': '4.1.2', 'title': '[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1', 'physical_index': 11}, {'structure': '4.1.3', 'title': '[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1', 'physical_index': 11}, {'structure': '4.1.4', 'title': '[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)', 'physical_index': 11}, {'structure': '4.1.5', 'title': '[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters', 'physical_index': 11}, {'structure': '4.1.6', 'title': '[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC', 'physical_index': 11}, {'structure': '4.1.7', 'title': '[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)', 'physical_index': 11}, {'structure': '4.1.8', 'title': '[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data', 'physical_index': 11}, {'structure': '4.1.9', 'title': '[SRS_Diag_04172] Inform external service processors about outcome of the final response', 'physical_index': 11}, {'structure': '4.1.10', 'title': '[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords', 'physical_index': 11}, {'structure': '4.1.11', 'title': '[SRS_Diag_04177] Custom diagnostic services', 'physical_index': 11}, {'structure': '4.1.12', 'title': '[SRS_Diag_04059] Configuration of timing parameters', 'physical_index': 11}, {'structure': '4.1.13', 'title': '[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session', 'physical_index': 11}, {'structure': '4.1.14', 'title': '[SRS_Diag_04020] Suppress responses to diagnostic tool requests', 'physical_index': 11}, {'structure': '4.1.15', 'title': '[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session', 'physical_index': 11}, {'structure': '4.1.16', 'title': '[SRS_Diag_04016] Support \u201cBusy handling\u201d by sending a negative response 0x78', 'physical_index': 11}, {'structure': '4.1.17', 'title': '[SRS_Diag_04006] Manage session handling', 'physical_index': 11}, {'structure': '4.1.18', 'title': '[SRS_Diag_04005] Manage Security Access level handling', 'physical_index': 11}, {'structure': '4.1.19', 'title': '[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)', 'physical_index': 11}, {'structure': '4.1.20', 'title': '[SRS_Diag_04100] Interface for logging and tracing', 'physical_index': 11}, {'structure': '4.1.21', 'title': '[SRS_Diag_04098] Interact with standard bootloader', 'physical_index': 11}, {'structure': '4.1.22', 'title': '[SRS_Diag_04159] Control of DTC storage', 'physical_index': 11}, {'structure': '4.1.23', 'title': '[SRS_Diag_04157] Reporting of DTCs and related data', 'physical_index': 11}, {'structure': '4.1.24', 'title': '[SRS_Diag_04156] Support DTCFunctionalUnit', 'physical_index': 11}, {'structure': '4.1.25', 'title': '[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules', 'physical_index': 11}, {'structure': '4.1.26', 'title': '[SRS_Diag_04131] Consistent event management mechanisms', 'physical_index': 11}, {'structure': '4.1.27', 'title': '[SRS_Diag_04117] Configurable behavior for DTC deletion', 'physical_index': 11}, {'structure': '4.1.28', 'title': '[SRS_Diag_04107] Provide defensive behavior', 'physical_index': 11}, {'structure': '4.1.29', 'title': '[SRS_Diag_04105] Event memory management', 'physical_index': 11}, {'structure': '4.1.30', 'title': '[SRS_Diag_04091] Notification about valid freeze frame data to applications', 'physical_index': 11}, {'structure': '4.1.31', 'title': '[SRS_Diag_04151] Event status handling', 'physical_index': 11}, {'structure': '4.1.32', 'title': '[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity', 'physical_index': 11}, {'structure': '4.1.33', 'title': '[SRS_Diag_04125] Event debounce counter shall be configurable', 'physical_index': 11}, {'structure': '4.1.34', 'title': '[SRS_Diag_04136] Configurable \u201cconfirmed\u201d threshold', 'physical_index': 11}, {'structure': '4.1.35', 'title': '[SRS_Diag_04140] Aging for UDS status bits \u201cconfirmedDTC\u201d and \u201ctestFailedSinceLastClear\u201d', 'physical_index': 11}, {'structure': '4.1.36', 'title': '[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event', 'physical_index': 11}, {'structure': '4.1.37', 'title': '[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)', 'physical_index': 11}, {'structure': '4.1.38', 'title': '[SRS_Diag_04231] Supported client certificates', 'physical_index': 11}, {'structure': '4.1.39', 'title': '[SRS_Diag_04232] Access rights in client certificates', 'physical_index': 11}, {'structure': '4.1.40', 'title': '[SRS_Diag_04233] Access granularity of diagnostic services', 'physical_index': 11}, {'structure': '4.1.41', 'title': '[SRS_Diag_04234] Binary compatibility of white list for individual access', 'physical_index': 11}, {'structure': '4.1.42', 'title': '[SRS_Diag_04235] Client certificate validity', 'physical_index': 11}, {'structure': '4.1.43', 'title': '[SRS_Diag_04236] Client certificate target identification', 'physical_index': 11}, {'structure': '4.1.44', 'title': '[SRS_Diag_04237] Client certificate evaluation', 'physical_index': 11}, {'structure': '4.1.45', 'title': '[SRS_Diag_04238] Logging certificate evaluation', 'physical_index': 11}, {'structure': '4.1.46', 'title': '[SRS_Diag_04239] Diagnostic services in deauthenticated state', 'physical_index': 11}, {'structure': '4.1.47', 'title': '[SRS_Diag_04240] Application based authentication', 'physical_index': 11}, {'structure': '4.1.48', 'title': '[SRS_Diag_04133] Aging for event memory entries', 'physical_index': 11}, {'structure': '4.1.49', 'title': '[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults', 'physical_index': 11}, {'structure': '4.1.50', 'title': '[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes', 'physical_index': 11}, {'structure': '4.1.51', 'title': '[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications', 'physical_index': 11}, {'structure': '4.1.52', 'title': '[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1', 'physical_index': 11}, {'structure': '4.1.53', 'title': '[SRS_Diag_04179] Provide interfaces for monitoring application', 'physical_index': 11}, {'structure': '4.1.54', 'title': '[SRS_Diag_04178] Support operation cycles according to ISO 14229-1', 'physical_index': 11}, {'structure': '4.1.55', 'title': '[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC', 'physical_index': 11}, {'structure': '4.1.56', 'title': '[SRS_Diag_04180] Process all UDS Services related to diagnostic fault memory of ISO 14229-1 internally', 'physical_index': 20}, {'structure': '4.1.57', 'title': '[SRS_Diag_04182] Provide an application interface to change operation cycles states', 'physical_index': 20}, {'structure': '4.1.58', 'title': '[SRS_Diag_04183] Notify interested parties about event status changes', 'physical_index': 20}, {'structure': '4.1.59', 'title': '[SRS_Diag_04185] Notify applications about the clearing of an event', 'physical_index': 20}, {'structure': '4.1.60', 'title': '[SRS_Diag_04186] Notify applications about the start or restart of an operation cycle', 'physical_index': 20}, {'structure': '4.1.61', 'title': '[SRS_Diag_04204] Provide the current status of each warning indicator', 'physical_index': 20}, {'structure': '4.1.62', 'title': '[SRS_Diag_04202] Report DTCs getting active to the error logging module/system', 'physical_index': 20}, {'structure': '4.1.63', 'title': '[SRS_Diag_04205] Support of SnapshotRecords', 'physical_index': 20}, {'structure': '4.1.64', 'title': '[SRS_Diag_04206] Support of ExtendedDataRecords', 'physical_index': 20}, {'structure': '4.1.65', 'title': '[SRS_Diag_04189] Support a fine grained configuration for SnapshotRecords and ExtendedDataRecords', 'physical_index': 20}, {'structure': '4.1.66', 'title': '[SRS_Diag_04190] Usage of internal data elements in SnapshotRecords and ExtendedDataRecords', 'physical_index': 20}, {'structure': '4.1.67', 'title': '[SRS_Diag_04192] Provide the ability to handle event specific enable conditions', 'physical_index': 20}, {'structure': '4.1.68', 'title': '[SRS_Diag_04219] Provide the ability to handle event specific storage conditions', 'physical_index': 20}, {'structure': '4.1.69', 'title': '[SRS_Diag_04194] ClearDTC shall be accessible for applications', 'physical_index': 20}, {'structure': '4.1.70', 'title': '[SRS_Diag_04195] Chronological reporting order of the DTCs located in the configured event memory', 'physical_index': 20}, {'structure': '4.1.71', 'title': '[SRS_Diag_04211] Persistent storage of DTC status and environmental data', 'physical_index': 20}, {'structure': '4.1.72', 'title': '[SRS_Diag_04196] UDS Service handling for all diagnostic services defined in ISO 14229-2', 'physical_index': 20}, {'structure': '4.1.73', 'title': '[SRS_Diag_04203] Common checks on all supported UDS Services Requests', 'physical_index': 20}, {'structure': '4.1.74', 'title': '[SRS_Diag_04226] Diagnostic session check', 'physical_index': 20}, {'structure': '4.1.75', 'title': '[SRS_Diag_04227] Common check for Security Access', 'physical_index': 20}, {'structure': '4.1.76', 'title': '[SRS_Diag_04228] Common check for Message lengths', 'physical_index': 20}, {'structure': '4.1.77', 'title': '[SRS_Diag_04197] Clearing the user defined fault memory', 'physical_index': 20}, {'structure': '4.1.78', 'title': '[SRS_Diag_04198] Process all UDS Services related to session and security management of ISO 14229 internally', 'physical_index': 20}, {'structure': '4.1.79', 'title': '[SRS_Diag_04199] Provide a configurable UDS service execution mechanism at runtime to decide if a UDS request shall be processed or not', 'physical_index': 20}, {'structure': '4.1.80', 'title': '[SRS_Diag_04208] Inform the application about diagnostic session and diagnostic security level changes on each tester connection', 'physical_index': 46}, {'structure': '4.1.81', 'title': '[SRS_Diag_04218] Support of UDS service 0x2F InputOutputControlByIDentifier', 'physical_index': 46}, {'structure': '4.1.82', 'title': '[SRS_Diag_04222] Independence of clearing DTC status and system degradation', 'physical_index': 46}, {'structure': '4.2', 'title': 'Requirements on Diagnostics', 'physical_index': 71}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.06818181818181818,
+    "incorrect_results": [
+      {
+        "list_index": 2,
+        "answer": "no",
+        "title": "Conventions to be used",
+        "page_number": 11
+      },
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Requirements Specification",
+        "page_number": 11
+      },
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Common Diagnostic requirements for Classic and Adaptive Platform",
+        "page_number": 11
+      },
+      {
+        "list_index": 5,
+        "answer": "no",
+        "title": "[SRS_Diag_04200] Support event combination",
+        "page_number": 11
+      },
+      {
+        "list_index": 6,
+        "answer": "no",
+        "title": "[SRS_Diag_04150] Support the primary fault memory defined by ISO 14229-1",
+        "page_number": 11
+      },
+      {
+        "list_index": 7,
+        "answer": "no",
+        "title": "[SRS_Diag_04214] Support the user defined fault memories defined by ISO 14229-1",
+        "page_number": 11
+      },
+      {
+        "list_index": 8,
+        "answer": "no",
+        "title": "[SRS_Diag_04068] The diagnostic in AUTOSAR shall support event specific debounce counters to improve signal quality internally (According to ISO 14229-1 Appendix D)",
+        "page_number": 11
+      },
+      {
+        "list_index": 9,
+        "answer": "no",
+        "title": "[SRS_Diag_04225] The diagnostic in AUTOSAR shall support event specific time base debounce counters",
+        "page_number": 11
+      },
+      {
+        "list_index": 10,
+        "answer": "no",
+        "title": "[SRS_Diag_04115] The optional parameter DTCSettingControlOption-Record as part of UDS service ControlDTCSetting shall be limited to GroupOfDTC",
+        "page_number": 11
+      },
+      {
+        "list_index": 11,
+        "answer": "no",
+        "title": "[SRS_Diag_04164] Independent event memories for multiple diagnostic server instances (virtual ECUs)",
+        "page_number": 11
+      },
+      {
+        "list_index": 12,
+        "answer": "no",
+        "title": "[SRS_Diag_04064] Provide configurable buffer sizes for storage of the events, status information and environmental data",
+        "page_number": 11
+      },
+      {
+        "list_index": 13,
+        "answer": "no",
+        "title": "[SRS_Diag_04172] Inform external service processors about outcome of the final response",
+        "page_number": 11
+      },
+      {
+        "list_index": 14,
+        "answer": "no",
+        "title": "[SRS_Diag_04127] Configurable record numbers and trigger options for DTCSnapshotRecords and DTCExtendedDataRecords",
+        "page_number": 11
+      },
+      {
+        "list_index": 15,
+        "answer": "no",
+        "title": "[SRS_Diag_04177] Custom diagnostic services",
+        "page_number": 11
+      },
+      {
+        "list_index": 16,
+        "answer": "no",
+        "title": "[SRS_Diag_04059] Configuration of timing parameters",
+        "page_number": 11
+      },
+      {
+        "list_index": 17,
+        "answer": "no",
+        "title": "[SRS_Diag_04033] Support the upload/download services for reading/writing data in an ECU in an extended and manufacturer specific diagnostic session",
+        "page_number": 11
+      },
+      {
+        "list_index": 18,
+        "answer": "no",
+        "title": "[SRS_Diag_04020] Suppress responses to diagnostic tool requests",
+        "page_number": 11
+      },
+      {
+        "list_index": 19,
+        "answer": "no",
+        "title": "[SRS_Diag_04119] Handle the execution of diagnostic services according to the assigned diagnostic session",
+        "page_number": 11
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "[SRS_Diag_04016] Support \u201cBusy handling\u201d by sending a negative response 0x78",
+        "page_number": 11
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "[SRS_Diag_04006] Manage session handling",
+        "page_number": 11
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "[SRS_Diag_04005] Manage Security Access level handling",
+        "page_number": 11
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "[SRS_Diag_04135] Support UDS service $38 (RequestFileTransfer)",
+        "page_number": 11
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "[SRS_Diag_04100] Interface for logging and tracing",
+        "page_number": 11
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "[SRS_Diag_04098] Interact with standard bootloader",
+        "page_number": 11
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "[SRS_Diag_04159] Control of DTC storage",
+        "page_number": 11
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "[SRS_Diag_04157] Reporting of DTCs and related data",
+        "page_number": 11
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "[SRS_Diag_04156] Support DTCFunctionalUnit",
+        "page_number": 11
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "[SRS_Diag_04077] Uses standard mechanisms provided by persistency modules",
+        "page_number": 11
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "[SRS_Diag_04131] Consistent event management mechanisms",
+        "page_number": 11
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "[SRS_Diag_04117] Configurable behavior for DTC deletion",
+        "page_number": 11
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "[SRS_Diag_04107] Provide defensive behavior",
+        "page_number": 11
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "[SRS_Diag_04105] Event memory management",
+        "page_number": 11
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "[SRS_Diag_04091] Notification about valid freeze frame data to applications",
+        "page_number": 11
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "[SRS_Diag_04151] Event status handling",
+        "page_number": 11
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "[SRS_Diag_04071] Process events according to their defined importance like priority and/or severity",
+        "page_number": 11
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "[SRS_Diag_04125] Event debounce counter shall be configurable",
+        "page_number": 11
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "[SRS_Diag_04136] Configurable \u201cconfirmed\u201d threshold",
+        "page_number": 11
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "[SRS_Diag_04140] Aging for UDS status bits \u201cconfirmedDTC\u201d and \u201ctestFailedSinceLastClear\u201d",
+        "page_number": 11
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "[SRS_Diag_04141] Ability to synchronize the event data capturing with the reported event",
+        "page_number": 11
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "[SRS_Diag_04230] Support of UDS service 0x29 (Authentication)",
+        "page_number": 11
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "[SRS_Diag_04231] Supported client certificates",
+        "page_number": 11
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "[SRS_Diag_04232] Access rights in client certificates",
+        "page_number": 11
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "[SRS_Diag_04233] Access granularity of diagnostic services",
+        "page_number": 11
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "[SRS_Diag_04234] Binary compatibility of white list for individual access",
+        "page_number": 11
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "[SRS_Diag_04235] Client certificate validity",
+        "page_number": 11
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "[SRS_Diag_04236] Client certificate target identification",
+        "page_number": 11
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "[SRS_Diag_04237] Client certificate evaluation",
+        "page_number": 11
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "[SRS_Diag_04238] Logging certificate evaluation",
+        "page_number": 11
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "[SRS_Diag_04239] Diagnostic services in deauthenticated state",
+        "page_number": 11
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "[SRS_Diag_04240] Application based authentication",
+        "page_number": 11
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "[SRS_Diag_04133] Aging for event memory entries",
+        "page_number": 11
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "[SRS_Diag_04063] Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults",
+        "page_number": 11
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "[SRS_Diag_04148] Provide capabilities to inform applications about diagnostic data changes",
+        "page_number": 11
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "[SRS_Diag_04097] Decentralized and modular diagnostic configuration in applications",
+        "page_number": 11
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "[SRS_Diag_04067] Provide the diagnostic status information according to ISO 14229-1",
+        "page_number": 11
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "[SRS_Diag_04179] Provide interfaces for monitoring application",
+        "page_number": 11
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "[SRS_Diag_04178] Support operation cycles according to ISO 14229-1",
+        "page_number": 11
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "[SRS_Diag_04201] Support a configuration to assign specific events to a customer specific DTC",
+        "page_number": 11
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "[SRS_Diag_04180] Process all UDS Services related to diagnostic fault memory of ISO 14229-1 internally",
+        "page_number": 20
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "[SRS_Diag_04182] Provide an application interface to change operation cycles states",
+        "page_number": 20
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "[SRS_Diag_04183] Notify interested parties about event status changes",
+        "page_number": 20
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "[SRS_Diag_04185] Notify applications about the clearing of an event",
+        "page_number": 20
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "[SRS_Diag_04186] Notify applications about the start or restart of an operation cycle",
+        "page_number": 20
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "[SRS_Diag_04204] Provide the current status of each warning indicator",
+        "page_number": 20
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "[SRS_Diag_04202] Report DTCs getting active to the error logging module/system",
+        "page_number": 20
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "[SRS_Diag_04205] Support of SnapshotRecords",
+        "page_number": 20
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "[SRS_Diag_04206] Support of ExtendedDataRecords",
+        "page_number": 20
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "[SRS_Diag_04189] Support a fine grained configuration for SnapshotRecords and ExtendedDataRecords",
+        "page_number": 20
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "[SRS_Diag_04190] Usage of internal data elements in SnapshotRecords and ExtendedDataRecords",
+        "page_number": 20
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "[SRS_Diag_04192] Provide the ability to handle event specific enable conditions",
+        "page_number": 20
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "[SRS_Diag_04219] Provide the ability to handle event specific storage conditions",
+        "page_number": 20
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "[SRS_Diag_04194] ClearDTC shall be accessible for applications",
+        "page_number": 20
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "[SRS_Diag_04195] Chronological reporting order of the DTCs located in the configured event memory",
+        "page_number": 20
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "[SRS_Diag_04211] Persistent storage of DTC status and environmental data",
+        "page_number": 20
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "[SRS_Diag_04196] UDS Service handling for all diagnostic services defined in ISO 14229-2",
+        "page_number": 20
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "[SRS_Diag_04203] Common checks on all supported UDS Services Requests",
+        "page_number": 20
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "[SRS_Diag_04226] Diagnostic session check",
+        "page_number": 20
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "[SRS_Diag_04227] Common check for Security Access",
+        "page_number": 20
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "[SRS_Diag_04228] Common check for Message lengths",
+        "page_number": 20
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "[SRS_Diag_04197] Clearing the user defined fault memory",
+        "page_number": 20
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "[SRS_Diag_04198] Process all UDS Services related to session and security management of ISO 14229 internally",
+        "page_number": 20
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "[SRS_Diag_04199] Provide a configurable UDS service execution mechanism at runtime to decide if a UDS request shall be processed or not",
+        "page_number": 20
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 4"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': '<physical_index_11>'}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': '<physical_index_12>'}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': '<physical_index_13>'}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': '<physical_index_14>'}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': '<physical_index_14>'}, {'structure': '4.2', 'title': 'Diagnostic requirements for the Classic Platform', 'physical_index': '<physical_index_8>'}, {'structure': '4.2.1', 'title': 'Functional Requirements', 'physical_index': '<physical_index_8>'}, {'structure': '4.2.2', 'title': 'Fault Memory Management', 'physical_index': '<physical_index_8>'}, {'structure': '4.2.2.1', 'title': 'DTC and event-related data', 'physical_index': '<physical_index_9>'}, {'structure': '4.2.3', 'title': 'Diagnostic Communication', 'physical_index': '<physical_index_9>'}, {'structure': '4.2.4', 'title': 'Function Inhibition Manager (FIM)', 'physical_index': '<physical_index_9>'}, {'structure': '4.3', 'title': 'Diagnostic requirements for the Adaptive Platform', 'physical_index': '<physical_index_9>'}, {'structure': '4.4', 'title': 'Configuration', 'physical_index': '<physical_index_10>'}, {'structure': '5', 'title': 'Requirements Tracing', 'physical_index': '<physical_index_10>'}, {'structure': '6', 'title': 'References', 'physical_index': '<physical_index_10>'}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': '<physical_index_10>'}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': '<physical_index_10>'}, {'structure': '6.2.1', 'title': 'ITEA-EAST', 'physical_index': '<physical_index_10>'}, {'structure': '6.2.2', 'title': 'ISO', 'physical_index': '<physical_index_10>'}, {'structure': '4.2.2.2', 'title': 'Support \u201dBusy handling\u201d by sending a negative response 0x78d', 'physical_index': '<physical_index_20>'}, {'structure': '4.2.2.3', 'title': 'Manage session handling d', 'physical_index': '<physical_index_20>'}, {'structure': '4.2.2.4', 'title': 'Manage Security Access level handling d', 'physical_index': '<physical_index_20>'}, {'structure': '4.2.2.5', 'title': 'Support UDS service 0x38 (RequestFileTransfer) d', 'physical_index': '<physical_index_21>'}, {'structure': '4.2.2.6', 'title': 'Interface for logging and tracing d', 'physical_index': '<physical_index_21>'}, {'structure': '4.2.2.7', 'title': 'Interact with standard bootloader d', 'physical_index': '<physical_index_22>'}, {'structure': '4.2.2.8', 'title': 'Control of DTC storage d', 'physical_index': '<physical_index_22>'}, {'structure': '4.2.2.9', 'title': 'Reporting of DTCs and related data d', 'physical_index': '<physical_index_23>'}, {'structure': '4.2.2.10', 'title': 'Support DTCFunctionalUnit d', 'physical_index': '<physical_index_23>'}, {'structure': '4.2.2.11', 'title': 'Uses standard mechanisms provided by persistency modules d', 'physical_index': '<physical_index_23>'}, {'structure': '4.2.2.12', 'title': 'Consistent event management mechanisms d', 'physical_index': '<physical_index_24>'}, {'structure': '4.2.2.13', 'title': 'Configurable behavior for DTC deletion d', 'physical_index': '<physical_index_24>'}, {'structure': '4.2.2.14', 'title': 'Provide defensive behavior d', 'physical_index': '<physical_index_24>'}, {'structure': '4.2.2.15', 'title': 'Event memory management d', 'physical_index': '<physical_index_25>'}, {'structure': '4.2.2.16', 'title': 'Notification about valid freeze frame data to applications d', 'physical_index': '<physical_index_25>'}, {'structure': '4.2.2.17', 'title': 'Event status handling d', 'physical_index': '<physical_index_26>'}, {'structure': '4.2.2.18', 'title': 'Process events according to their defined importance like priority and/or severity d', 'physical_index': '<physical_index_26>'}, {'structure': '4.2.2.19', 'title': 'Event debounce counter shall be configurable d', 'physical_index': '<physical_index_27>'}, {'structure': '4.2.2.20', 'title': 'Configurable \u201dconfirmed\u201d threshold d', 'physical_index': '<physical_index_27>'}, {'structure': '4.2.2.21', 'title': 'Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d d', 'physical_index': '<physical_index_28>'}, {'structure': '4.2.2.22', 'title': 'Ability to synchronize the event data capturing with the reported event d', 'physical_index': '<physical_index_28>'}, {'structure': '4.2.2.23', 'title': 'Support of UDS service 0x29 (Authentication) d', 'physical_index': '<physical_index_28>'}, {'structure': '4.2.2.24', 'title': 'Supported client certificates d', 'physical_index': '<physical_index_29>'}, {'structure': '4.2.2.25', 'title': 'Access rights in client certificates d', 'physical_index': '<physical_index_29>'}, {'structure': '4.2.2.26', 'title': 'Access granularity of diagnostic services d', 'physical_index': '<physical_index_30>'}, {'structure': '4.2.2.27', 'title': 'Binary compatibility of white list for individual access d', 'physical_index': '<physical_index_30>'}, {'structure': '4.2.2.28', 'title': 'Client certificate validity d', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.2.29', 'title': 'Client certificate target identification d', 'physical_index': '<physical_index_31>'}, {'structure': '4.2.2.30', 'title': 'Client certificate evaluation d', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.2.31', 'title': 'Logging certificate evaluation d', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.2.32', 'title': 'Diagnostic services in deauthenticated state d', 'physical_index': '<physical_index_32>'}, {'structure': '4.2.2.33', 'title': 'Application based authentication d', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.2.34', 'title': 'Aging for event memory entries d', 'physical_index': '<physical_index_33>'}, {'structure': '4.2.2.35', 'title': 'Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults d', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.2.36', 'title': 'Provide capabilities to inform applications about diagnostic data changes d', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.2.37', 'title': 'Decentralized and modular diagnostic configuration in applications d', 'physical_index': '<physical_index_34>'}, {'structure': '4.2.2.38', 'title': 'Provide the diagnostic status information according to ISO 14229-1 d', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.2.39', 'title': 'Provide interfaces for monitoring application d', 'physical_index': '<physical_index_35>'}, {'structure': '4.2.2.40', 'title': 'Support operation cycles according to ISO 14229-1 d', 'physical_index': '<physical_index_36>'}, {'structure': '4.2.2.41', 'title': 'Support a configuration to assign specific events to a customer specific DTC d', 'physical_index': '<physical_index_36>'}, {'structure': '4.2.2.42', 'title': 'Process all UDS Services related to diagnostic fault memory of ISO 14229-1 internally d', 'physical_index': '<physical_index_36>'}, {'structure': '4.2.2.43', 'title': 'Provide an application interface to change operation cycles states d', 'physical_index': '<physical_index_37>'}, {'structure': '4.2.2.44', 'title': 'Notify interested parties about event status changes d', 'physical_index': '<physical_index_37>'}, {'structure': '4.2.2.45', 'title': 'Notify applications about the clearing of an event d', 'physical_index': '<physical_index_37>'}, {'structure': '4.2.2.46', 'title': 'Notify applications about the start or restart of an operation cycle d', 'physical_index': '<physical_index_38>'}, {'structure': '4.2.2.47', 'title': 'Provide the current status of each warning indicator d', 'physical_index': '<physical_index_38>'}, {'structure': '4.2.2.48', 'title': 'Report DTCs getting active to the error logging module/system d', 'physical_index': '<physical_index_38>'}, {'structure': '4.2.2.49', 'title': 'Support of SnapshotRecords d', 'physical_index': '<physical_index_39>'}, {'structure': '4.2.2.50', 'title': 'Support of ExtendedDataRecords d', 'physical_index': '<physical_index_39>'}, {'structure': '4.2.2.51', 'title': 'Support a fine grained configuration for SnapshotRecords and ExtendedDataRecords d', 'physical_index': '<physical_index_39>'}, {'structure': '4.2.2.52', 'title': 'Usage of internal data elements in SnapshotRecords and ExtendedDataRecords d', 'physical_index': '<physical_index_40>'}, {'structure': '4.2.2.53', 'title': 'Provide the ability to handle event specific enable conditions d', 'physical_index': '<physical_index_41>'}, {'structure': '4.2.2.54', 'title': 'Provide the ability to handle event specific storage conditions d', 'physical_index': '<physical_index_41>'}, {'structure': '4.2.2.55', 'title': 'ClearDTC shall be accessible for applications d', 'physical_index': '<physical_index_41>'}, {'structure': '4.2.2.56', 'title': 'Chronological reporting order of the DTCs located in the configured event memory d', 'physical_index': '<physical_index_41>'}, {'structure': '4.2.2.57', 'title': 'Persistent storage of DTC status and environmental data d', 'physical_index': '<physical_index_41>'}, {'structure': '4.2.2.58', 'title': 'UDS Service handling for all diagnostic services defined in ISO 14229-2 d', 'physical_index': '<physical_index_42>'}, {'structure': '4.2.2.59', 'title': 'Common checks on all supported UDS Services Requests d', 'physical_index': '<physical_index_42>'}, {'structure': '4.2.2.60', 'title': 'Diagnostic session check d', 'physical_index': '<physical_index_43>'}, {'structure': '4.2.2.61', 'title': 'Common check for Security Access d', 'physical_index': '<physical_index_43>'}, {'structure': '4.2.2.62', 'title': 'Common check for Message lengths d', 'physical_index': '<physical_index_43>'}, {'structure': '4.2.2.63', 'title': 'Clearing the user defined fault memory d', 'physical_index': '<physical_index_44>'}, {'structure': '4.2.2.64', 'title': 'Process all UDS Services related to session and security management of ISO 14229 internally d', 'physical_index': '<physical_index_44>'}, {'structure': '4.2.2.65', 'title': 'Provide a configurable UDS service execution mechanism at runtime to decide if a UDS request shall be processed or not d', 'physical_index': '<physical_index_45>'}, {'structure': '4.2.2.66', 'title': 'Inform the application about diagnostic session and diagnostic security level changes on each tester connection d', 'physical_index': '<physical_index_45>'}, {'structure': '4.2.2.67', 'title': 'Support of UDS service 0x2F InputOutputControlByIDentifier d', 'physical_index': '<physical_index_45>'}, {'structure': '4.2.2.68', 'title': 'Independence of clearing DTC status and system degradation d', 'physical_index': '<physical_index_46>'}, {'structure': '4.2.2.69', 'title': 'Support the UDS service 0x31 (RoutineControl) according to ISO 14229-1 d', 'physical_index': '<physical_index_47>'}, {'structure': '4.2.2.70', 'title': 'Support the mirror fault memory defined by ISO 14229-1 d', 'physical_index': '<physical_index_48>'}, {'structure': '4.2.2.71', 'title': 'The DEM module shall support DTCs according to SAE J1939 d', 'physical_index': '<physical_index_48>'}, {'structure': '4.2.2.72', 'title': 'Support subfunction 0x42 of UDS service 0x19 d', 'physical_index': '<physical_index_48>'}, {'structure': '4.2.2.73', 'title': 'Provide OBD-specific configuration capabilities d', 'physical_index': '<physical_index_49>'}, {'structure': '4.2.2.74', 'title': 'Parallel OBD and UDS processing d', 'physical_index': '<physical_index_49>'}, {'structure': '4.2.2.75', 'title': 'Provide support for the ASMIP algorithm d', 'physical_index': '<physical_index_50>'}, {'structure': '4.2.2.76', 'title': 'The Diagnostic event (fault) management shall be established as Basic SW Module d', 'physical_index': '<physical_index_50>'}, {'structure': '4.2.2.77', 'title': 'Classification of events for series production, OBD and expert usage d', 'physical_index': '<physical_index_51>'}, {'structure': '4.2.2.78', 'title': 'Store the current debounce counter value nonvolatile to over a powerdown cycle d', 'physical_index': '<physical_index_51>'}, {'structure': '4.2.2.79', 'title': 'Optionally support event displacement d', 'physical_index': '<physical_index_52>'}, {'structure': '4.2.2.80', 'title': 'Harmonized Driving/WarmUp cycles d', 'physical_index': '<physical_index_52>'}, {'structure': '4.2.2.81', 'title': 'Memory overflow indication d', 'physical_index': '<physical_index_52>'}, {'structure': '4.2.2.82', 'title': 'Provide an interface to retrieve the number of event memory entries d', 'physical_index': '<physical_index_53>'}, {'structure': '4.2.2.83', 'title': 'Configurable suppression of events d', 'physical_index': '<physical_index_53>'}, {'structure': '4.2.2.84', 'title': 'SAE J1939 lamp status d', 'physical_index': '<physical_index_54>'}, {'structure': '4.2.2.85', 'title': 'SAE J1939 Expanded-FreezeFrame d', 'physical_index': '<physical_index_54>'}, {'structure': '4.2.2.86', 'title': 'Support a set of SAE J1939 DM-messages d', 'physical_index': '<physical_index_55>'}, {'structure': '4.2.2.87', 'title': 'Definition of replacement failure d', 'physical_index': '<physical_index_56>'}, {'structure': '4.2.2.88', 'title': 'Notify applications and BSW modules about updates of event related data d', 'physical_index': '<physical_index_56>'}, {'structure': '4.2.2.89', 'title': 'ResponseOnEvent according to ISO 14229-1 d', 'physical_index': '<physical_index_56>'}, {'structure': '4.2.2.90', 'title': 'Support of UDS service ReadDataByPeriodicIdentifier (0x2A) d', 'physical_index': '<physical_index_56>'}, {'structure': '4.2.2.91', 'title': 'Adding the Lamp status pertinent to a specific Fault Event/DTC available as DemInternalDataClass shall be codified in the same format of DM31 d', 'physical_index': '<physical_index_57>'}, {'structure': '4.2.2.92', 'title': 'Triggering of multiple events upon a master event is reported d', 'physical_index': '<physical_index_57>'}, {'structure': '4.2.2.93', 'title': 'Notify the Function Inhibition Manager (FIM) upon changes of the event status in order to process them according to the SW components dependencies d', 'physical_index': '<physical_index_58>'}, {'structure': '4.2.2.94', 'title': 'Support DTCs suppression d', 'physical_index': '<physical_index_58>'}, {'structure': '4.2.2.95', 'title': 'In-Use-Monitor Performance Ratio indicates how often the OBD system monitors particular components, compared to the amount of the vehicle operation d', 'physical_index': '<physical_index_58>'}, {'structure': '4.2.2.96', 'title': 'Support Snapshot Records data pre-storage d', 'physical_index': '<physical_index_59>'}, {'structure': '4.2.2.97', 'title': 'Parallel fault memory access d', 'physical_index': '<physical_index_59>'}, {'structure': '4.2.3.1', 'title': 'Provide a diagnostic service handling for the applications involved in diagnostic functionality d', 'physical_index': '<physical_index_60>'}, {'structure': '4.2.3.2', 'title': 'Handling of different diagnostic sessions in parallel d', 'physical_index': '<physical_index_60>'}, {'structure': '4.2.3.3', 'title': 'Different diagnostic addresses shall be supported by multiple (physical) channels d', 'physical_index': '<physical_index_61>'}, {'structure': '4.2.3.4', 'title': 'Ability to access different event memories d', 'physical_index': '<physical_index_61>'}, {'structure': '4.2.3.5', 'title': 'Access and handle specific data elements and data element groups if requested by an external scan tool d', 'physical_index': '<physical_index_62>'}, {'structure': '4.2.3.6', 'title': 'Timing handling according to ISO15765-3 d', 'physical_index': '<physical_index_62>'}, {'structure': '4.2.3.7', 'title': 'Provide confirmation after transmit diagnostic responses to the application d', 'physical_index': '<physical_index_62>'}, {'structure': '4.2.3.8', 'title': 'Support a predefined AddressAndLengthFormatIdentifier d', 'physical_index': '<physical_index_63>'}, {'structure': '4.2.3.9', 'title': 'Provide the handling of service DynamicallyDefineDataIdentifier according to ISO 14229-1 d', 'physical_index': '<physical_index_63>'}, {'structure': '4.2.3.10', 'title': 'Support generic connections d', 'physical_index': '<physical_index_63>'}, {'structure': '4.2.3.11', 'title': 'Provide diagnostic state information to applications d', 'physical_index': '<physical_index_64>'}, {'structure': '4.2.3.12', 'title': 'Network independent design d', 'physical_index': '<physical_index_64>'}, {'structure': '4.2.3.13', 'title': 'Communication with the transport layers to receive and send diagnostic data d', 'physical_index': '<physical_index_64>'}, {'structure': '4.3.1', 'title': 'Several tester conversations in parallel with assigned priorities d', 'physical_index': '<physical_index_65>'}, {'structure': '4.3.2', 'title': 'Pseudo parallel client interaction according to ISO d', 'physical_index': '<physical_index_66>'}, {'structure': '4.3.3', 'title': 'Fully parallel client interaction d', 'physical_index': '<physical_index_66>'}, {'structure': '4.3.4', 'title': 'Conversation preemption/abortion d', 'physical_index': '<physical_index_66>'}, {'structure': '4.3.5', 'title': 'Adding of user-defined transport layers d', 'physical_index': '<physical_index_67>'}, {'structure': '4.3.6', 'title': 'Provide an interface for external UDS service processors d', 'physical_index': '<physical_index_67>'}, {'structure': '4.3.7', 'title': 'Provide connection specific meta information to external service processors d', 'physical_index': '<physical_index_67>'}, {'structure': '4.3.8', 'title': 'Synchronous and asynchronous interaction with external service processors d', 'physical_index': '<physical_index_68>'}, {'structure': '4.3.9', 'title': 'Different signature types, when delegating processing of UDS service to the application d', 'physical_index': '<physical_index_68>'}, {'structure': '4.3.10', 'title': 'Provide SA and TA to external service processors d', 'physical_index': '<physical_index_68>'}, {'structure': '4.3.11', 'title': 'Support for multiple Diagnostic Server Instances d', 'physical_index': '<physical_index_69>'}, {'structure': '4.5', 'title': 'Requirements on Diagnostics', 'physical_index': '<physical_index_71>'}, {'structure': '4.5.1', 'title': '[RS_Main_00060] AUTOSAR shall provide a standardized software interface for communication between Applications', 'physical_index': '<physical_index_71>'}, {'structure': '4.5.2', 'title': '[RS_Main_00130] AUTOSAR shall provide an abstraction from hardware', 'physical_index': '<physical_index_71>'}, {'structure': '4.5.3', 'title': '[RS_Main_00170] AUTOSAR shall provide secure access to ECU data and services', 'physical_index': '<physical_index_71>'}, {'structure': '4.5.4', 'title': '[RS_Main_00260] AUTOSAR shall provide diagnostics means during runtime, for production and services purposes', 'physical_index': '<physical_index_71>'}, {'structure': '4.5.5', 'title': '[RS_Main_00420] AUTOSAR shall use established software standards and consolidate de-facto standards for basic software functionality', 'physical_index': '<physical_index_72>'}, {'structure': '4.5.6', 'title': '[RS_Main_00440] AUTOSAR shall standardize access to non-volatile memory', 'physical_index': '<physical_index_72>'}, {'structure': '6.2.2.1', 'title': 'ISO 14229-1 Unified diagnostic services (UDS) Part 1: Specification and Requirements (v.2013)', 'physical_index': '<physical_index_73>'}, {'structure': '6.2.2.2', 'title': 'ISO 15031-5 Communication between vehicle and external equipment for emissions related diagnostics Part 5: Emissions related diagnostic services (2005-01-13)', 'physical_index': '<physical_index_73>'}, {'structure': '6.2.2.3', 'title': 'ISO 15765-3 Diagnostics on controller area network (CAN) Part 3: Implementation of unified diagnostic services (UDS on CAN) (2004-10-06)', 'physical_index': '<physical_index_73>'}, {'structure': '6.2.2.4', 'title': 'ISO 15765-4 Diagnostics on controller area network (CAN) Part 4: Requirements for emissions-related systems (2005-01-04)', 'physical_index': '<physical_index_73>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Scope of the Document', 'physical_index': 11}, {'structure': '2', 'title': 'Acronyms and Abbreviations', 'physical_index': 12}, {'structure': '3', 'title': 'Conventions to be used', 'physical_index': 13}, {'structure': '4', 'title': 'Requirements Specification', 'physical_index': 14}, {'structure': '4.1', 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 14}, {'structure': '4.2', 'title': 'Diagnostic requirements for the Classic Platform', 'physical_index': 8}, {'structure': '4.2.1', 'title': 'Functional Requirements', 'physical_index': 8}, {'structure': '4.2.2', 'title': 'Fault Memory Management', 'physical_index': 8}, {'structure': '4.2.2.1', 'title': 'DTC and event-related data', 'physical_index': 9}, {'structure': '4.2.3', 'title': 'Diagnostic Communication', 'physical_index': 9}, {'structure': '4.2.4', 'title': 'Function Inhibition Manager (FIM)', 'physical_index': 9}, {'structure': '4.3', 'title': 'Diagnostic requirements for the Adaptive Platform', 'physical_index': 9}, {'structure': '4.4', 'title': 'Configuration', 'physical_index': 10}, {'structure': '5', 'title': 'Requirements Tracing', 'physical_index': 10}, {'structure': '6', 'title': 'References', 'physical_index': 10}, {'structure': '6.1', 'title': 'Deliverables of AUTOSAR', 'physical_index': 10}, {'structure': '6.2', 'title': 'Related standards and norms', 'physical_index': 10}, {'structure': '6.2.1', 'title': 'ITEA-EAST', 'physical_index': 10}, {'structure': '6.2.2', 'title': 'ISO', 'physical_index': 10}, {'structure': '4.2.2.2', 'title': 'Support \u201dBusy handling\u201d by sending a negative response 0x78d', 'physical_index': 20}, {'structure': '4.2.2.3', 'title': 'Manage session handling d', 'physical_index': 20}, {'structure': '4.2.2.4', 'title': 'Manage Security Access level handling d', 'physical_index': 20}, {'structure': '4.2.2.5', 'title': 'Support UDS service 0x38 (RequestFileTransfer) d', 'physical_index': 21}, {'structure': '4.2.2.6', 'title': 'Interface for logging and tracing d', 'physical_index': 21}, {'structure': '4.2.2.7', 'title': 'Interact with standard bootloader d', 'physical_index': 22}, {'structure': '4.2.2.8', 'title': 'Control of DTC storage d', 'physical_index': 22}, {'structure': '4.2.2.9', 'title': 'Reporting of DTCs and related data d', 'physical_index': 23}, {'structure': '4.2.2.10', 'title': 'Support DTCFunctionalUnit d', 'physical_index': 23}, {'structure': '4.2.2.11', 'title': 'Uses standard mechanisms provided by persistency modules d', 'physical_index': 23}, {'structure': '4.2.2.12', 'title': 'Consistent event management mechanisms d', 'physical_index': 24}, {'structure': '4.2.2.13', 'title': 'Configurable behavior for DTC deletion d', 'physical_index': 24}, {'structure': '4.2.2.14', 'title': 'Provide defensive behavior d', 'physical_index': 24}, {'structure': '4.2.2.15', 'title': 'Event memory management d', 'physical_index': 25}, {'structure': '4.2.2.16', 'title': 'Notification about valid freeze frame data to applications d', 'physical_index': 25}, {'structure': '4.2.2.17', 'title': 'Event status handling d', 'physical_index': 26}, {'structure': '4.2.2.18', 'title': 'Process events according to their defined importance like priority and/or severity d', 'physical_index': 26}, {'structure': '4.2.2.19', 'title': 'Event debounce counter shall be configurable d', 'physical_index': 27}, {'structure': '4.2.2.20', 'title': 'Configurable \u201dconfirmed\u201d threshold d', 'physical_index': 27}, {'structure': '4.2.2.21', 'title': 'Aging for UDS status bits \u201dconfirmedDTC\u201d and \u201dtestFailedSinceLastClear\u201d d', 'physical_index': 28}, {'structure': '4.2.2.22', 'title': 'Ability to synchronize the event data capturing with the reported event d', 'physical_index': 28}, {'structure': '4.2.2.23', 'title': 'Support of UDS service 0x29 (Authentication) d', 'physical_index': 28}, {'structure': '4.2.2.24', 'title': 'Supported client certificates d', 'physical_index': 29}, {'structure': '4.2.2.25', 'title': 'Access rights in client certificates d', 'physical_index': 29}, {'structure': '4.2.2.26', 'title': 'Access granularity of diagnostic services d', 'physical_index': 30}, {'structure': '4.2.2.27', 'title': 'Binary compatibility of white list for individual access d', 'physical_index': 30}, {'structure': '4.2.2.28', 'title': 'Client certificate validity d', 'physical_index': 31}, {'structure': '4.2.2.29', 'title': 'Client certificate target identification d', 'physical_index': 31}, {'structure': '4.2.2.30', 'title': 'Client certificate evaluation d', 'physical_index': 32}, {'structure': '4.2.2.31', 'title': 'Logging certificate evaluation d', 'physical_index': 32}, {'structure': '4.2.2.32', 'title': 'Diagnostic services in deauthenticated state d', 'physical_index': 32}, {'structure': '4.2.2.33', 'title': 'Application based authentication d', 'physical_index': 33}, {'structure': '4.2.2.34', 'title': 'Aging for event memory entries d', 'physical_index': 33}, {'structure': '4.2.2.35', 'title': 'Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults d', 'physical_index': 34}, {'structure': '4.2.2.36', 'title': 'Provide capabilities to inform applications about diagnostic data changes d', 'physical_index': 34}, {'structure': '4.2.2.37', 'title': 'Decentralized and modular diagnostic configuration in applications d', 'physical_index': 34}, {'structure': '4.2.2.38', 'title': 'Provide the diagnostic status information according to ISO 14229-1 d', 'physical_index': 35}, {'structure': '4.2.2.39', 'title': 'Provide interfaces for monitoring application d', 'physical_index': 35}, {'structure': '4.2.2.40', 'title': 'Support operation cycles according to ISO 14229-1 d', 'physical_index': 36}, {'structure': '4.2.2.41', 'title': 'Support a configuration to assign specific events to a customer specific DTC d', 'physical_index': 36}, {'structure': '4.2.2.42', 'title': 'Process all UDS Services related to diagnostic fault memory of ISO 14229-1 internally d', 'physical_index': 36}, {'structure': '4.2.2.43', 'title': 'Provide an application interface to change operation cycles states d', 'physical_index': 37}, {'structure': '4.2.2.44', 'title': 'Notify interested parties about event status changes d', 'physical_index': 37}, {'structure': '4.2.2.45', 'title': 'Notify applications about the clearing of an event d', 'physical_index': 37}, {'structure': '4.2.2.46', 'title': 'Notify applications about the start or restart of an operation cycle d', 'physical_index': 38}, {'structure': '4.2.2.47', 'title': 'Provide the current status of each warning indicator d', 'physical_index': 38}, {'structure': '4.2.2.48', 'title': 'Report DTCs getting active to the error logging module/system d', 'physical_index': 38}, {'structure': '4.2.2.49', 'title': 'Support of SnapshotRecords d', 'physical_index': 39}, {'structure': '4.2.2.50', 'title': 'Support of ExtendedDataRecords d', 'physical_index': 39}, {'structure': '4.2.2.51', 'title': 'Support a fine grained configuration for SnapshotRecords and ExtendedDataRecords d', 'physical_index': 39}, {'structure': '4.2.2.52', 'title': 'Usage of internal data elements in SnapshotRecords and ExtendedDataRecords d', 'physical_index': 40}, {'structure': '4.2.2.53', 'title': 'Provide the ability to handle event specific enable conditions d', 'physical_index': 41}, {'structure': '4.2.2.54', 'title': 'Provide the ability to handle event specific storage conditions d', 'physical_index': 41}, {'structure': '4.2.2.55', 'title': 'ClearDTC shall be accessible for applications d', 'physical_index': 41}, {'structure': '4.2.2.56', 'title': 'Chronological reporting order of the DTCs located in the configured event memory d', 'physical_index': 41}, {'structure': '4.2.2.57', 'title': 'Persistent storage of DTC status and environmental data d', 'physical_index': 41}, {'structure': '4.2.2.58', 'title': 'UDS Service handling for all diagnostic services defined in ISO 14229-2 d', 'physical_index': 42}, {'structure': '4.2.2.59', 'title': 'Common checks on all supported UDS Services Requests d', 'physical_index': 42}, {'structure': '4.2.2.60', 'title': 'Diagnostic session check d', 'physical_index': 43}, {'structure': '4.2.2.61', 'title': 'Common check for Security Access d', 'physical_index': 43}, {'structure': '4.2.2.62', 'title': 'Common check for Message lengths d', 'physical_index': 43}, {'structure': '4.2.2.63', 'title': 'Clearing the user defined fault memory d', 'physical_index': 44}, {'structure': '4.2.2.64', 'title': 'Process all UDS Services related to session and security management of ISO 14229 internally d', 'physical_index': 44}, {'structure': '4.2.2.65', 'title': 'Provide a configurable UDS service execution mechanism at runtime to decide if a UDS request shall be processed or not d', 'physical_index': 45}, {'structure': '4.2.2.66', 'title': 'Inform the application about diagnostic session and diagnostic security level changes on each tester connection d', 'physical_index': 45}, {'structure': '4.2.2.67', 'title': 'Support of UDS service 0x2F InputOutputControlByIDentifier d', 'physical_index': 45}, {'structure': '4.2.2.68', 'title': 'Independence of clearing DTC status and system degradation d', 'physical_index': 46}, {'structure': '4.2.2.69', 'title': 'Support the UDS service 0x31 (RoutineControl) according to ISO 14229-1 d', 'physical_index': 47}, {'structure': '4.2.2.70', 'title': 'Support the mirror fault memory defined by ISO 14229-1 d', 'physical_index': 48}, {'structure': '4.2.2.71', 'title': 'The DEM module shall support DTCs according to SAE J1939 d', 'physical_index': 48}, {'structure': '4.2.2.72', 'title': 'Support subfunction 0x42 of UDS service 0x19 d', 'physical_index': 48}, {'structure': '4.2.2.73', 'title': 'Provide OBD-specific configuration capabilities d', 'physical_index': 49}, {'structure': '4.2.2.74', 'title': 'Parallel OBD and UDS processing d', 'physical_index': 49}, {'structure': '4.2.2.75', 'title': 'Provide support for the ASMIP algorithm d', 'physical_index': 50}, {'structure': '4.2.2.76', 'title': 'The Diagnostic event (fault) management shall be established as Basic SW Module d', 'physical_index': 50}, {'structure': '4.2.2.77', 'title': 'Classification of events for series production, OBD and expert usage d', 'physical_index': 51}, {'structure': '4.2.2.78', 'title': 'Store the current debounce counter value nonvolatile to over a powerdown cycle d', 'physical_index': 51}, {'structure': '4.2.2.79', 'title': 'Optionally support event displacement d', 'physical_index': 52}, {'structure': '4.2.2.80', 'title': 'Harmonized Driving/WarmUp cycles d', 'physical_index': 52}, {'structure': '4.2.2.81', 'title': 'Memory overflow indication d', 'physical_index': 52}, {'structure': '4.2.2.82', 'title': 'Provide an interface to retrieve the number of event memory entries d', 'physical_index': 53}, {'structure': '4.2.2.83', 'title': 'Configurable suppression of events d', 'physical_index': 53}, {'structure': '4.2.2.84', 'title': 'SAE J1939 lamp status d', 'physical_index': 54}, {'structure': '4.2.2.85', 'title': 'SAE J1939 Expanded-FreezeFrame d', 'physical_index': 54}, {'structure': '4.2.2.86', 'title': 'Support a set of SAE J1939 DM-messages d', 'physical_index': 55}, {'structure': '4.2.2.87', 'title': 'Definition of replacement failure d', 'physical_index': 56}, {'structure': '4.2.2.88', 'title': 'Notify applications and BSW modules about updates of event related data d', 'physical_index': 56}, {'structure': '4.2.2.89', 'title': 'ResponseOnEvent according to ISO 14229-1 d', 'physical_index': 56}, {'structure': '4.2.2.90', 'title': 'Support of UDS service ReadDataByPeriodicIdentifier (0x2A) d', 'physical_index': 56}, {'structure': '4.2.2.91', 'title': 'Adding the Lamp status pertinent to a specific Fault Event/DTC available as DemInternalDataClass shall be codified in the same format of DM31 d', 'physical_index': 57}, {'structure': '4.2.2.92', 'title': 'Triggering of multiple events upon a master event is reported d', 'physical_index': 57}, {'structure': '4.2.2.93', 'title': 'Notify the Function Inhibition Manager (FIM) upon changes of the event status in order to process them according to the SW components dependencies d', 'physical_index': 58}, {'structure': '4.2.2.94', 'title': 'Support DTCs suppression d', 'physical_index': 58}, {'structure': '4.2.2.95', 'title': 'In-Use-Monitor Performance Ratio indicates how often the OBD system monitors particular components, compared to the amount of the vehicle operation d', 'physical_index': 58}, {'structure': '4.2.2.96', 'title': 'Support Snapshot Records data pre-storage d', 'physical_index': 59}, {'structure': '4.2.2.97', 'title': 'Parallel fault memory access d', 'physical_index': 59}, {'structure': '4.2.3.1', 'title': 'Provide a diagnostic service handling for the applications involved in diagnostic functionality d', 'physical_index': 60}, {'structure': '4.2.3.2', 'title': 'Handling of different diagnostic sessions in parallel d', 'physical_index': 60}, {'structure': '4.2.3.3', 'title': 'Different diagnostic addresses shall be supported by multiple (physical) channels d', 'physical_index': 61}, {'structure': '4.2.3.4', 'title': 'Ability to access different event memories d', 'physical_index': 61}, {'structure': '4.2.3.5', 'title': 'Access and handle specific data elements and data element groups if requested by an external scan tool d', 'physical_index': 62}, {'structure': '4.2.3.6', 'title': 'Timing handling according to ISO15765-3 d', 'physical_index': 62}, {'structure': '4.2.3.7', 'title': 'Provide confirmation after transmit diagnostic responses to the application d', 'physical_index': 62}, {'structure': '4.2.3.8', 'title': 'Support a predefined AddressAndLengthFormatIdentifier d', 'physical_index': 63}, {'structure': '4.2.3.9', 'title': 'Provide the handling of service DynamicallyDefineDataIdentifier according to ISO 14229-1 d', 'physical_index': 63}, {'structure': '4.2.3.10', 'title': 'Support generic connections d', 'physical_index': 63}, {'structure': '4.2.3.11', 'title': 'Provide diagnostic state information to applications d', 'physical_index': 64}, {'structure': '4.2.3.12', 'title': 'Network independent design d', 'physical_index': 64}, {'structure': '4.2.3.13', 'title': 'Communication with the transport layers to receive and send diagnostic data d', 'physical_index': 64}, {'structure': '4.3.1', 'title': 'Several tester conversations in parallel with assigned priorities d', 'physical_index': 65}, {'structure': '4.3.2', 'title': 'Pseudo parallel client interaction according to ISO d', 'physical_index': 66}, {'structure': '4.3.3', 'title': 'Fully parallel client interaction d', 'physical_index': 66}, {'structure': '4.3.4', 'title': 'Conversation preemption/abortion d', 'physical_index': 66}, {'structure': '4.3.5', 'title': 'Adding of user-defined transport layers d', 'physical_index': 67}, {'structure': '4.3.6', 'title': 'Provide an interface for external UDS service processors d', 'physical_index': 67}, {'structure': '4.3.7', 'title': 'Provide connection specific meta information to external service processors d', 'physical_index': 67}, {'structure': '4.3.8', 'title': 'Synchronous and asynchronous interaction with external service processors d', 'physical_index': 68}, {'structure': '4.3.9', 'title': 'Different signature types, when delegating processing of UDS service to the application d', 'physical_index': 68}, {'structure': '4.3.10', 'title': 'Provide SA and TA to external service processors d', 'physical_index': 68}, {'structure': '4.3.11', 'title': 'Support for multiple Diagnostic Server Instances d', 'physical_index': 69}, {'structure': '4.5', 'title': 'Requirements on Diagnostics', 'physical_index': 71}, {'structure': '4.5.1', 'title': '[RS_Main_00060] AUTOSAR shall provide a standardized software interface for communication between Applications', 'physical_index': 71}, {'structure': '4.5.2', 'title': '[RS_Main_00130] AUTOSAR shall provide an abstraction from hardware', 'physical_index': 71}, {'structure': '4.5.3', 'title': '[RS_Main_00170] AUTOSAR shall provide secure access to ECU data and services', 'physical_index': 71}, {'structure': '4.5.4', 'title': '[RS_Main_00260] AUTOSAR shall provide diagnostics means during runtime, for production and services purposes', 'physical_index': 71}, {'structure': '4.5.5', 'title': '[RS_Main_00420] AUTOSAR shall use established software standards and consolidate de-facto standards for basic software functionality', 'physical_index': 72}, {'structure': '4.5.6', 'title': '[RS_Main_00440] AUTOSAR shall standardize access to non-volatile memory', 'physical_index': 72}, {'structure': '6.2.2.1', 'title': 'ISO 14229-1 Unified diagnostic services (UDS) Part 1: Specification and Requirements (v.2013)', 'physical_index': 73}, {'structure': '6.2.2.2', 'title': 'ISO 15031-5 Communication between vehicle and external equipment for emissions related diagnostics Part 5: Emissions related diagnostic services (2005-01-13)', 'physical_index': 73}, {'structure': '6.2.2.3', 'title': 'ISO 15765-3 Diagnostics on controller area network (CAN) Part 3: Implementation of unified diagnostic services (UDS on CAN) (2004-10-06)', 'physical_index': 73}, {'structure': '6.2.2.4', 'title': 'ISO 15765-4 Diagnostics on controller area network (CAN) Part 4: Requirements for emissions-related systems (2005-01-04)', 'physical_index': 73}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.8666666666666667,
+    "incorrect_results": [
+      {
+        "list_index": 2,
+        "answer": "no",
+        "title": "Conventions to be used",
+        "page_number": 13
+      },
+      {
+        "list_index": 3,
+        "answer": "no",
+        "title": "Requirements Specification",
+        "page_number": 14
+      },
+      {
+        "list_index": 4,
+        "answer": "no",
+        "title": "Common Diagnostic requirements for Classic and Adaptive Platform",
+        "page_number": 14
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Client certificate evaluation d",
+        "page_number": 32
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults d",
+        "page_number": 34
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Chronological reporting order of the DTCs located in the configured event memory d",
+        "page_number": 41
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Persistent storage of DTC status and environmental data d",
+        "page_number": 41
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Common checks on all supported UDS Services Requests d",
+        "page_number": 42
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Common check for Security Access d",
+        "page_number": 43
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Common check for Message lengths d",
+        "page_number": 43
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Process all UDS Services related to session and security management of ISO 14229 internally d",
+        "page_number": 44
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Inform the application about diagnostic session and diagnostic security level changes on each tester connection d",
+        "page_number": 45
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Support of UDS service 0x2F InputOutputControlByIDentifier d",
+        "page_number": 45
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Classification of events for series production, OBD and expert usage d",
+        "page_number": 51
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Definition of replacement failure d",
+        "page_number": 56
+      },
+      {
+        "list_index": 119,
+        "answer": "no",
+        "title": "Access and handle specific data elements and data element groups if requested by an external scan tool d",
+        "page_number": 62
+      },
+      {
+        "list_index": 127,
+        "answer": "no",
+        "title": "Communication with the transport layers to receive and send diagnostic data d",
+        "page_number": 64
+      },
+      {
+        "list_index": 134,
+        "answer": "no",
+        "title": "Provide connection specific meta information to external service processors d",
+        "page_number": 67
+      },
+      {
+        "list_index": 136,
+        "answer": "no",
+        "title": "Different signature types, when delegating processing of UDS service to the application d",
+        "page_number": 68
+      },
+      {
+        "list_index": 137,
+        "answer": "no",
+        "title": "Provide SA and TA to external service processors d",
+        "page_number": 68
+      }
+    ]
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 2, 'title': 'Conventions to be used', 'prev_correct': 12, 'next_correct': 8}, {'list_index': 3, 'title': 'Requirements Specification', 'prev_correct': 12, 'next_correct': 8}, {'list_index': 4, 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'prev_correct': 12, 'next_correct': 8}, {'list_index': 47, 'title': 'Client certificate evaluation d', 'prev_correct': 31, 'next_correct': 32}, {'list_index': 52, 'title': 'Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults d', 'prev_correct': 33, 'next_correct': 34}, {'list_index': 73, 'title': 'Chronological reporting order of the DTCs located in the configured event memory d', 'prev_correct': 41, 'next_correct': 42}, {'list_index': 74, 'title': 'Persistent storage of DTC status and environmental data d', 'prev_correct': 41, 'next_correct': 42}, {'list_index': 76, 'title': 'Common checks on all supported UDS Services Requests d', 'prev_correct': 42, 'next_correct': 43}, {'list_index': 78, 'title': 'Common check for Security Access d', 'prev_correct': 43, 'next_correct': 44}, {'list_index': 79, 'title': 'Common check for Message lengths d', 'prev_correct': 43, 'next_correct': 44}, {'list_index': 81, 'title': 'Process all UDS Services related to session and security management of ISO 14229 internally d', 'prev_correct': 44, 'next_correct': 45}, {'list_index': 83, 'title': 'Inform the application about diagnostic session and diagnostic security level changes on each tester connection d', 'prev_correct': 45, 'next_correct': 46}, {'list_index': 84, 'title': 'Support of UDS service 0x2F InputOutputControlByIDentifier d', 'prev_correct': 45, 'next_correct': 46}, {'list_index': 94, 'title': 'Classification of events for series production, OBD and expert usage d', 'prev_correct': 50, 'next_correct': 51}, {'list_index': 104, 'title': 'Definition of replacement failure d', 'prev_correct': 55, 'next_correct': 56}, {'list_index': 119, 'title': 'Access and handle specific data elements and data element groups if requested by an external scan tool d', 'prev_correct': 61, 'next_correct': 62}, {'list_index': 127, 'title': 'Communication with the transport layers to receive and send diagnostic data d', 'prev_correct': 64, 'next_correct': 65}, {'list_index': 134, 'title': 'Provide connection specific meta information to external service processors d', 'prev_correct': 67, 'next_correct': 68}, {'list_index': 136, 'title': 'Different signature types, when delegating processing of UDS service to the application d', 'prev_correct': 68, 'next_correct': 69}, {'list_index': 137, 'title': 'Provide SA and TA to external service processors d', 'prev_correct': 68, 'next_correct': 69}]"
+  },
+  {
+    "message": "invalid_results: [{'list_index': 2, 'title': 'Conventions to be used', 'physical_index': 3}, {'list_index': 3, 'title': 'Requirements Specification', 'physical_index': 3}, {'list_index': 4, 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 3}]"
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 2, 'title': 'Conventions to be used', 'prev_correct': 12, 'next_correct': 8}, {'list_index': 3, 'title': 'Requirements Specification', 'prev_correct': 12, 'next_correct': 8}, {'list_index': 4, 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'prev_correct': 12, 'next_correct': 8}]"
+  },
+  {
+    "message": "invalid_results: [{'list_index': 2, 'title': 'Conventions to be used', 'physical_index': 3}, {'list_index': 3, 'title': 'Requirements Specification', 'physical_index': 3}, {'list_index': 4, 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 3}]"
+  },
+  {
+    "message": "incorrect_results_and_range_logs: [{'list_index': 2, 'title': 'Conventions to be used', 'prev_correct': 12, 'next_correct': 8}, {'list_index': 3, 'title': 'Requirements Specification', 'prev_correct': 12, 'next_correct': 8}, {'list_index': 4, 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'prev_correct': 12, 'next_correct': 8}]"
+  },
+  {
+    "message": "invalid_results: [{'list_index': 2, 'title': 'Conventions to be used', 'physical_index': 3}, {'list_index': 3, 'title': 'Requirements Specification', 'physical_index': 3}, {'list_index': 4, 'title': 'Common Diagnostic requirements for Classic and Adaptive Platform', 'physical_index': 3}]"
+  },
+  {
+    "message": "Maximum fix attempts reached"
+  },
+  {
+    "message": "Checking title appearance in start concurrently"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Scope of the Document' is found at the beginning of the page_text, after the initial header information. There are no other contents before it.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Diagnostic Communication' appears in the page_text, but it is not the first content. There are several lines of text and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Fault Memory Management' appears in the page_text, but it is not at the very beginning. There are several lines of text and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Function Inhibition Manager (FIM)' appears in the page_text, but it is not the first content. There are several other sections and requirements listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configuration' appears as '4.4 Configuration' in the page_text, but it is not at the very beginning of the text. There are other contents before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Requirements Specification' does not appear at the beginning of the given page_text. The page_text starts with 'Requirements on Diagnostics', which is different from the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Diagnostic requirements for the Adaptive Platform' appears in the page_text, but it is not at the very beginning. There are several lines of text and other section titles before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section 'Related standards and norms' appears in the page_text, but it is not at the beginning. It is part of the references section, which starts with '6 References 72'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Conventions to be used' does not appear at the beginning of the given page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Diagnostic requirements for the Classic Platform' appears in the page_text, but it is not the first content. There are other contents before it, such as the UDS service requirement and the section number.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Requirements Tracing' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Requirements on Diagnostics', 'AUTOSAR FO Release 1.5.0', and several SRS items.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given section title 'Common Diagnostic requirements for Classic and Adaptive Platform' does not appear at the beginning of the provided page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0', which is different from the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Acronyms and Abbreviations' is not the first content in the given page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0', followed by a list of acronyms and abbreviations.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'DTC and event-related data' appears in the page_text, but it is not the first content. There are other contents before it, such as '[SRS_Diag_04221] In-Use-Monitor Performance Ratio indicates...'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given section title 'Preface' does not appear at the beginning of the provided page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0', which indicates that the section 'Preface' is not the first content in the given text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ISO' appears in the page_text, but it is not at the beginning. It is part of a subsection under 'References'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'References' appears in the page_text, but it is not the first content. There are other sections and requirements listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ITEA-EAST' appears in the page_text, but it is not at the beginning. It is part of a list under the 'References' section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Manage session handling d' appears in the page_text, but it is not the first content. There are other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Deliverables of AUTOSAR' appears in the page_text, but it is not at the beginning. It is part of the references section, which starts after several other sections.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Manage Security Access level handling d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interface for logging and tracing d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Control of DTC storage d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support DTCFunctionalUnit d' appears in the page_text, but it is not the first content. There are other requirements listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Uses standard mechanisms provided by persistency modules d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support \u201dBusy handling\u201d by sending a negative response 0x78d' appears in the page_text, but it is not the first content. There are other contents (like 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0') before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide defensive behavior d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Consistent event management mechanisms d' appears in the page_text, but it is not the first content. There are other contents such as 'Requirements on Diagnostics', 'AUTOSAR FO Release 1.5.0', and some metadata before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Functional Requirements' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 [SRS_Diag_04224] Support the UDS service 0x31 (RoutineControl) according to ISO 14229-1 . . . . . . . . . . . . . . . . . . . . . 47 4.2 Diagnostic requirements for the Classic Platform . . . . . . . . . . . . 47'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configurable behavior for DTC deletion d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Interact with standard bootloader d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 AppliesTo: CP , AP Dependencies:\u2013 Supporting Material:\u2013 c(RS_Main_00011)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Notification about valid freeze frame data to applications d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Reporting of DTCs and related data d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Supporting Material:\u2013 c(RS_Main_00011)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Process events according to their defined importance like priority and/or severity d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support UDS service 0x38 (RequestFileTransfer) d' appears in the page_text, but it is not at the beginning. There are other contents before it, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Use Case: Not all diagnostic services are allowed in each security level. AppliesTo: CP , AP Dependencies: Supporting Material:\u2013 c(RS_Main_00011)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configurable \u201dconfirmed\u201d threshold d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Ability to synchronize the event data capturing with the reported event d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event status handling d' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Supporting Material:\u2013 c(RS_Main_00260)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support of UDS service 0x29 (Authentication) d' appears in the page_text, but it is not the first content. There are other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Supported client certificates d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Access rights in client certificates d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Access granularity of diagnostic services d' appears in the page_text, but it is not the first content. There are several lines of text before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Client certificate validity d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Binary compatibility of white list for individual access d' appears in the page_text, but it is not at the beginning. There are several paragraphs and other content before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Client certificate evaluation d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Client certificate target identification d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Logging certificate evaluation d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event debounce counter shall be configurable d' does not appear at the beginning of the given page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 Type: Valid Description:It shall be configurable if the debounce counter shall be frozen or reset, when at least one enable condition for the event is set to \u201dnot fulfilled\u201d or when ControlDTCSetting is set to \u201ddisabled\u201d. ...'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Application based authentication d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Diagnostic services in deauthenticated state d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Aging for event memory entries d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Decentralized and modular diagnostic configuration in applications d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide capabilities to inform applications about diagnostic data changes d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Event memory management d' appears in the page_text, but it is not the first content. There are other contents before it, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 AppliesTo: CP , AP Dependencies:\u2013 Supporting Material:Use the optional CRC and redundancy capabilities provided by the AUTOSAR persistency modules for stored fault memory blocks. Only blocks assigned to error events of high severity can be protected. These blocks can be stored in non-volatile memory when the error event is confirmed (before shutdown of the ECU) c(RS_Main_00011)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Process a dedicated event identifier for each monitoring path to support an autonomous handling of different events/faults d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The given section title 'Aging for UDS status bits \u201cconfirmedDTC\u201d and \u201ctestFailedSinceLastClear\u201d' does not appear at the beginning of the page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Description:The diagnostic in AUTOSAR shall provide the capability to age both the confirmedDTC bit and the testFailedSinceLastClear bit after a configurable number of aging cycles has been reached...'. This indicates that the section title is part of a larger context and does not start the page.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide interfaces for monitoring application. d' appears in the page_text, but it is not at the beginning. There is a significant amount of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide the diagnostic status information according to ISO 14229-1 d' appears in the page_text, but it is not at the beginning. There are several paragraphs and other content before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support a configuration to assign specific events to a customer specific DTC d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support operation cycles according to ISO 14229-1 d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide an application interface to change operation cycles states d' appears in the page_text, but it is not the first content. There is other text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Notify interested parties about event status changes d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Notify applications about the clearing of an event d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Process all UDS Services related to diagnostic fault memory of ISO 14229-1 internally d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide the current status of each warning indicator. d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Notify applications about the start or restart of an operation cycle d' appears in the page_text, but it is not the first content. There are other requirements and descriptions listed before this section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Report DTCs getting active to the error logging module/systemd' appears in the page_text, but it is not at the beginning. There are several other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support of SnapshotRecords d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide the ability to handle event specific enable conditions d' appears after some introductory text and a use case description, so it is not the first content in the given page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support of ExtendedDataRecords d' appears in the page_text, but it is not at the very beginning. There is a significant amount of text before this section title, including another section about SnapshotRecords.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide the ability to handle event specific storage conditions d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Usage of internal data elements in SnapshotRecords and ExtendedDataRecords d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ClearDTC shall be accessible for applications d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support a fine grained configuration for SnapshotRecords and ExtendedDataRecords d' does not appear at the beginning of the page_text. The page_text starts with 'Requirements on Diagnostics', which is unrelated to the given section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Persistent storage of DTC status and environmental data d' appears in the page_text, but it is not the first content. There are other requirements and descriptions listed before this section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Diagnostic session check d' appears in the page_text, but it is not the first content. There are other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Chronological reporting order of the DTCs located in the configured event memory d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Common check for Message lengths d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Clearing the user defined fault memory d' appears in the page_text, but it is not at the beginning. There are several other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'UDS Service handling for all diagnostic services defined in ISO 14229-2 d' appears in the page_text, but it is not at the beginning. There are several other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Common checks on all supported UDS Services Requests d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as the requirements for diagnostics and the description of the AUTOSAR release.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Independence of clearing DTC status and system degradation' appears in the page_text, but it is not at the beginning. There are several other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide a configurable UDS service execution mechanism at runtime to decide if a UDS request shall be processed or not d' appears in the page_text, but it is not the first content. There are other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Inform the application about diagnostic session and diagnostic security level changes on each tester connection d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support of UDS service 0x2F InputOutputControlByIDentifier d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Process all UDS Services related to session and security management of ISO 14229 internally d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as requirements on diagnostics and descriptions related to clearing user-defined fault memory.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Parallel OBD and UDS processing d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Common check for Security Access d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Use Case: Session change should allow only specified changes. Supporting Material:ISO 14229 c(RS_Main_00260)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support the UDS service 0x31 (RoutineControl) according to ISO 14229-1 d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support subfunction 0x42 of UDS service 0x19 d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide OBD-specific configuration capabilities' does not appear at the beginning of the page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide support for the ASMIP algorithm d' does not appear at the beginning of the given page_text. The page_text starts with 'Requirements on Diagnostics', which is different from the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Classification of events for series production, OBD and expert usaged' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'The DEM module shall support DTCs according to SAE J1939 d' appears in the page_text, but it is not at the very beginning. There is other content before it, including a description of the mirror fault memory and some metadata.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'The Diagnostic event (fault) management shall be established as Basic SW Module d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Store the current debounce counter value nonvolatile to over a powerdown cycle d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Memory overflow indication d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support the mirror fault memory defined by ISO 14229-1 d' does not appear at the beginning of the given page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Use Case: Mirror fault memory is used by OEM and Tier1 during development or for storing warranty relevant information inside.' which does not match the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Definition of replacement failure d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Configurable suppression of events d' appears in the page_text, but it is not at the very beginning. There are other contents before it, such as requirements and use cases for other diagnostics.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'SAE J1939 Expanded-FreezeFrame d' appears in the page_text, but it is not the first content. There are other requirements and text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide an interface to retrieve the number of event memory entries d' appears in the page_text, but it is not the first content. There are other contents before it, such as the use case and requirements for diagnostics.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Harmonized Driving//WarmUp cycles d' appears in the page_text, but it is not the first content. There are other contents before it, such as the description of diagnostic requirements and the section title 'Requirements on Diagnostics'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ResponseOnEvent according to ISO 14229-1 d' appears in the page_text, but it is not the first content. There are other requirements listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Triggering of multiple events upon a master event is reported d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support of UDS service ReadDataByPeriodicIdentifier (0x2A) d' appears in the page_text, but it is not the first content. There are other requirements listed before this section.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'SAE J1939 lamp status d' appears in the page_text, but it is not the first content. There are other contents such as 'Requirements on Diagnostics', 'AUTOSAR FO Release 1.5.0', and some metadata before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Optionally support event displacement' is found in the page_text, but it is not at the beginning. The text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Description:The diagnostic in AUTOSAR shall optionally support event displacement...'. Therefore, the section does not start at the beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Notify applications and BSW modules about updates of event related data d' appears in the page_text, but it is not at the very beginning. There are other contents such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0' before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support a set of SAE J1939 DM-messages d' does not appear at the beginning of the given page_text. The page_text starts with 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Description:The following DM-messages shall be supported:' which is different from the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support DTCs suppression d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Parallel fault memory access d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Handling of different diagnostic sessions in parallel d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'In-Use-Monitor Performance Ratio indicates how often the OBD system monitors particular components, compared to the amount of the vehicle operation d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Ability to access different event memories d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Adding the Lamp status pertinent to a specific Fault Event/DTC available as DemInternalDataClass shall be codified in the same format of DM31 d' appears in the page_text, but it is not at the very beginning. There are other contents such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Supporting Material:\u2013 c(RS_Main_00260)' before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide confirmation after transmit diagnostic responses to the application d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support Snapshot Records data pre-storage d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as the 'Requirements on Diagnostics' and the use case for 'Calculation of IUMPR for legal regulation'.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Access and handle specific data elements and data element groups if requested by an external scan tool d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Notify the Function Inhibition Manager (FIM) upon changes of the event status in order to process them according to the SW components dependencies d' is found at the beginning of the page_text, after some introductory text. However, the introductory text includes 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 [SRS_Diag_04031]'. Therefore, the section does not start at the very beginning of the page_text.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support generic connections d' appears in the page_text, but it is not at the beginning. There are several other requirements and details listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide diagnostic state information to applications d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide the handling of service DynamicallyDefineDataIdentifier according to ISO 14229-1 d' appears in the page_text, but it is not at the beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Network independent design d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Different diagnostic addresses shall be supported by multiple (physical) channels d' appears in the page_text, but it is not the first content. There are other contents such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 AppliesTo: CP Dependencies:\u2013 Supporting Material:\u2013 c(RS_Main_00011)' before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide a diagnostic service handling for the applications involved in diagnostic functionality d' appears in the page_text, but it is not at the very beginning. There are other contents such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Supporting Material:\u2013 c(RS_Main_00011) 4.2.3 Diagnostic Communication' before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Several tester conversations in parallel with assigned priorities d' appears in the page_text, but it is not at the beginning. There are several lines of text before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Fully parallel client interaction d' appears in the page_text, but it is not the first content. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Communication with the transport layers to receive and send diagnostic data d' appears in the page_text, but it is not the first content. There are other contents before it, such as the section title 'Requirements on Diagnostics' and some metadata.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Conversation preemption/abortion d' appears in the page_text, but it is not the first content. There are several other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide an interface for external UDS service processors. d' appears in the page_text, but it is not the first content. There are other requirements and descriptions listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Adding of user-defined transport layers d' appears in the page_text, but it is not the first content. There are several lines of text before it, including a requirement description and other details.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support a predefined AddressAndLengthFormatIdentifier d' appears in the page_text, but it is not the first content. There are other contents such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 AppliesTo: CP , AP Dependencies: Supporting Material:ISO14229-1 v.2013 c(RS_Main_00011)' before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Pseudo parallel client interaction according to ISO d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as 'Requirements on Diagnostics', 'AUTOSAR FO Release 1.5.0', and other metadata.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Synchronous and asynchronous interaction with external service processors d' appears in the page_text, but it is not at the very beginning. There are other contents before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Requirements on Diagnostics' is the first content in the given page_text, ignoring any space inconsistencies.\", 'start_begin': 'yes'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide SA and TA to external service processors d' appears in the page_text, but it is not the first content. There are other requirements and descriptions before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Support for multiple Diagnostic Server Instances d' appears in the page_text, but it is not at the beginning. There are several other requirements and descriptions listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Provide connection specific meta information to external service processors d' appears in the page_text, but it is not at the very beginning. There are other contents such as 'Requirements on Diagnostics', 'AUTOSAR FO Release 1.5.0', and dependency information before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '[RS_Main_00130] AUTOSAR shall provide an abstraction from hardware' appears in the page_text, but it is not the first content. There are other requirements listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '[RS_Main_00170] AUTOSAR shall provide secure access to ECU data and services' appears in the page_text, but it is not the first content. There are other requirements listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '[RS_Main_00060] AUTOSAR shall provide a standardized software interface for communication between Applications' appears in the page_text, but it is not the first content. There are other contents such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0' before the section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Timing handling according to ISO15765-3 d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 Type: Valid Description:The diagnostic in AUTOSAR shall provide interfaces for applications to access diagnostic data and to process diagnostic services. The size of a diagnostic data element is derived by the interface or provided as an attribute of the API call itself. Rationale: Optimized usage of resources Use Case: Transfer environmental /FreezeFrame data of the diagnostic in AUTOSAR. AppliesTo: CP , AP Dependencies:\u2013 Supporting Material:\u2013 c(RS_Main_00011)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': 'The section title [RS_Main_00260] AUTOSAR shall provide diagnostics means during runtime, for production and services purposes is present in the page_text, but it is not the first content. There are several other requirements listed before this section.', 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '[RS_Main_00440] AUTOSAR shall standardize access to non-volatile memory' appears in the page_text, but it is not the first content. There are several other requirements and sections listed before it.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title '[RS_Main_00420] AUTOSAR shall use established software standards and consolidate de-facto standards for basic software functionality' appears in the page_text, but it is not the first content. There are several other requirements listed before this section title.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'Different signature types, when delegating processing of UDS service to the application d' appears in the page_text, but it is not the first content. There are other contents before this section title, such as 'Requirements on Diagnostics AUTOSAR FO Release 1.5.0 4 Dependencies: [SRS_Diag_04169] Use Case: Flexibility for service processor implementations. c(RS_Main_00260, RS_Main_00420)'\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ISO 15031-5 Communication between vehicle and external equipment for emissions related diagnostics Part 5: Emissions related diagnostic services (2005-01-13)' appears in the page_text, but it is not the first content. It is preceded by other ISO standard titles.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ISO 15765-4 Diagnostics on controller area network (CAN) Part 4: Requirements for emissions-related systems (2005-01-04)' appears in the page_text, but it is not the first content. It is listed after several other ISO standards.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ISO 15765-3 Diagnostics on controller area network (CAN) Part 3: Implementation of unified diagnostic services (UDS on CAN) (2004-10-06)' appears in the page_text, but it is not the first content. It is listed after several other ISO standards.\", 'start_begin': 'no'}"
+  },
+  {
+    "message": "Response: {'thinking': \"The section title 'ISO 14229-1 Unified diagnostic services (UDS) Part 1: Specification and Requirements (v.2013)' appears in the page_text, but it is not the first content. There are other contents (like 'Requirements on Diagnostics' and 'AUTOSAR FO Release 1.5.0') before the section title.\", 'start_begin': 'no'}"
+  }
+]

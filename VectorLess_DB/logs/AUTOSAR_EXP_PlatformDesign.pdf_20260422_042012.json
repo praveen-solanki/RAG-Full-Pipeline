@@ -1,0 +1,1331 @@
+[
+  {
+    "total_page_number": 81
+  },
+  {
+    "total_token": 30946
+  },
+  {
+    "toc_content": " Explanation of Adapti ve Platform Design  \nAUTOSAR AP Release 18-10  \n \n3 of 81 Document ID 706: AUTOSAR_EXP_PlatformDesign  \n- AUTOSAR Confidential - \nTable of Contents  \n1 Introduction to this document  :  :  :   7 \n1.1 Contents  :  :  :  :  7 \n1.2 Prereads  :  :  :  :  7 \n1.3 Relationship to other AUTOSAR specifications  :  :   7 \n2 Technical Scope and Approach  :  :  :   8 \n2.1 Overview \u2013 a landscape of intelligent ECUs  :  :   8 \n2.2 Technology Drivers  :  :  :   8 \n2.3 Adaptive Platform \u2013 Characteristics  :  :   9 \nC++:  :  :  :   9 \nSOA  :  :  :  :   9 \nParallel processing  :  :  :   10 \nLeveraging existing  standard  :  :  :   10 \nSafety and security  :  :  :   10 \nPlanned dynamics  :  :  :   11 \nAgile  :  :  :  :   11 \n2.4 Integration of Classic, Adaptive and Non -AUTOSAR ECUs  :   11 \n2.5 Scope of specification  :  :  :   13 \n3 Architecture  :  :  :  :  14 \n3.1 Logical view  :  :  :   14 \nARA :  :  :  :   14 \nLanguage binding, C++ Standard Library, and POSIX API  :   14 \nApplication launch and shutdown  :  :  :  15 \nApplication interactions  :  :  :   15 \nNon-standard interfaces  :  :  :   16 \n3.2 Physical view  :  :  :   16 \nOS, processes, and threads  :  :  :   16 \nLibrary -based or Service based Functional Cluster implementation  :   17 \nThe interaction between Functional Clusters  :  :   17 \nMachine/hardware  :  :  :   18 \n3.3 Methodology and Manifest  :  :  :   18 \n3.4 Manifest  :  :  :  :  19 \n3.5 Application Design  :  :  :   21 \n3.6 Execution manifest  :  :  :   21 \n3.7 Service Instance Manifest  :  :  :   22 \n3.8 Machine Manifest  :  :  :   22 \n4 Operating System  :  :  :   23 \n4.1 Overview  :  :  :  .... 23 \n4.2 POSIX  :  :  :  :   23 \n4.3 Scheduling  :  :  :  . 24 \n4.4 Memory management  :  :  :   24 \n4.5 Device management  :  :  :   24 \n5 Execution Management  :  :  :   25 \n5.1 Overview  :  :  :  .... 25 \n5.2 System Startup  :  :  :   25 \n5.3 Execution Management Respons ibilities  :  :   25 \n5.4 Deterministic Execution  :  :  :   26  Explanation of Adapti ve Platform Design  \nAUTOSAR AP Release 18-10  \n \n4 of 81 Document ID 706: AUTOSAR_EXP_PlatformDesign  \n- AUTOSAR Confidential - \n5.5 Resource Limitation  :  :  :   27 \n5.6 State Management  :  :  :   27 \n5.7 Application Recovery  :  :  :   29 \n6 State Management  :  :  :   30 \n7 Communication Management  :  :  :   32 \n7.1 Overview  :  :  :  .... 32 \n7.2 Service Oriented Communication  :  :   32 \n7.3 Language bin ding and Network binding  :  :   33 \n7.4 Generated Proxies and Skeletons of C++ Language Binding  :   34 \n7.5 Static and dynamic configuration :  :   34 \n8 RESTful Communication  :  :  :   36 \n8.1 Overview  :  :  :  .... 36 \n8.2 Architecture  :  :  :   36 \n8.3 Components  :  :  :   37 \n9 Diagnostics  :  :  :  :   38 \n9.1 Overview  :  :  :  .... 38 \n9.2 Diagnostic communication sub -cluster  :  :   38 \n9.3 Event memory sub -cluster  :  :  :   39 \n10 Persistency  :  :  :  .... 41 \n10.1  Overview  :  :  :  .... 41 \n10.2  Key-Value Storage  :  :  :   41 \n10.3  File-Proxy Storage  :  :  :   42 \n10.4  Use cases for handling persistent data for UCM  :  :   42 \n11 Time Synchronization  :  :  :   44 \n11.1  Overview  :  :  :  .... 44 \n11.2  Design  :  :  :  :   44 \n11.3  Architecture  :  :  :   45 \n12 Network Management  :  :  :   46 \n12.1  Overview  :  :  :  .... 46 \n12.2  Architecture  :  :  :   46 \n13 Update and Config Management  :  :  ... 48 \n13.1  Overview  :  :  :  .... 48 \n13.2  Update protocol  :  :  :   48 \n13.2.1  Data transfer  :  :  :   48 \n13.3  Packages  :  :  :  ... 48 \n13.3.1  Software package  :  :  :   48 \n13.3.2  Backend package  :  :  :   49 \n13.3.3  Vehicle Package Manif est :  :  :  51 \n13.3.4  Software release and packaging workflow  :  :   53 \n13.3.5  Processing and activating Software Packages  :  :  55 \n13.4  Software information reporting  :  :  ... 57 \n13.5  Software up date consistency and authentication  :  :  57 \n13.6  Securing the update process  :  :  :  57 \n13.7  Safe State Management during an update process  :  ... 58 \n14 Identity and Access Management  :  :   60 \n14.1  Terminology  :  :  :   60 \n14.2  Scope and Focus of the IAM framework:  :  :   61  Explanation of Adapti ve Platform Design  \nAUTOSAR AP Release 18-10  \n \n5 of 81 Document ID 706: AUTOSAR_EXP_PlatformDesign  \n- AUTOSAR Confidential - \n14.3  Contents of the AUTOSAR specification  :  :   61 \n14.4  The architecture of the IAM Framework  :  :   62 \n14.5  Inter Platform Communication  :  :   65 \n14.6  Implementation and Usage of IAM  :  :   66 \n15 Cryptography  :  :  :  . 68 \nSecurity Architecture  :  :  :   68 \nKey Management Architecture  :  :  :   69 \nRemarks on API Extension  :  :  :   70 \n16 Log and Trace  :  :  :   71 \n16.1  Overview  :  :  :  .... 71 \n16.2  Architecture  :  :  :   71 \n17 Safety  :  :  :  :   73 \n17.1  Safety Overview  :  :  :   73 \n17.2  Protection of information exchange (E2E -Protection) :  . 74 \n17.3  Platform Health Management  :  :  :  74 \n17.4  C++ coding guidelines  :  :  :   76 \n18 Core Types  :  :  :  .... 78 \n18.1  Error Handling  :  :  :   78 \nOverview  :  :  :  :   78 \nErrorCode  :  :  :  :   78 \nResult  :  :  :  :   78 \nFuture and Promise  :  :  :   79 \n18.2  Advanced da ta types  :  :  :   79 \n18.3  Primitive data types  :  :  :   80 \n19 References  :  :  :  .... 81 \n \n \n \nFigure 2 -1 Exemplary deployment of different platforms  :  :   12 \nFigure 2 -2 Exemplary interactions of AP and CP  :  :   12 \nFigure 3 -1 AP architecture logical view  :  :  .... 14 \nFigure 3 -2 Applications  :  :  :   15 \nFigure 3 -3 AP development workflow  :  :  :  19 \nFigure 5 -1 AP start -up sequence  :  :  :   25 \nFigure 5 -2 Deterministic Client  :  :  :   27 \nFigure 5 -3 Interaction between States  :  :  :  29 \nFigure 7 -1 Service -oriented communication  :  :   32 \nFigure 7 -2 Example Language and Network Binding  :  :   33 \nFigure 8 -1 ara::rest stack architecture overview  :  :   36 \nFigure 8 -2 ara::rest components  :  :  :   37 \nFigure 11 -1 Time Synchronization  :  :  :   44 \nFigure 12 -1 Overview NM  :  :  :   47 \nFigure 13 -1 Overview Software Package  :  :  . 49 \nFigure 13 -2 Overview Backend Package  :  :  . 50 \nFigure 13 -3 Dependency model example  :  :  . 51 \nFigure 13 -4 Overview Vehicle Package  :  :  .... 52 \nFigure 13 -5 Campaign orchestration example model  :  :   53 ",
+    "toc_page_list": [
+      2,
+      3,
+      4
+    ],
+    "page_index_given_in_toc": "yes"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction to this document', 'page': 7}, {'structure': '1.1', 'title': 'Contents', 'page': 7}, {'structure': '1.2', 'title': 'Prereads', 'page': 7}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'page': 7}, {'structure': '2', 'title': 'Technical Scope and Approach', 'page': 8}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'page': 8}, {'structure': '2.2', 'title': 'Technology Drivers', 'page': 8}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'page': 9}, {'structure': '2.3.1', 'title': 'C++', 'page': 9}, {'structure': '2.3.2', 'title': 'SOA', 'page': 9}, {'structure': '2.3.3', 'title': 'Parallel processing', 'page': 10}, {'structure': '2.3.4', 'title': 'Leveraging existing standard', 'page': 10}, {'structure': '2.3.5', 'title': 'Safety and security', 'page': 10}, {'structure': '2.3.6', 'title': 'Planned dynamics', 'page': 11}, {'structure': '2.3.7', 'title': 'Agile', 'page': 11}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'page': 11}, {'structure': '2.5', 'title': 'Scope of specification', 'page': 13}, {'structure': '3', 'title': 'Architecture', 'page': 14}, {'structure': '3.1', 'title': 'Logical view', 'page': 14}, {'structure': '3.1.1', 'title': 'ARA', 'page': 14}, {'structure': '3.1.2', 'title': 'Language binding, C++ Standard Library, and POSIX API', 'page': 14}, {'structure': '3.1.3', 'title': 'Application launch and shutdown', 'page': 15}, {'structure': '3.1.4', 'title': 'Application interactions', 'page': 15}, {'structure': '3.1.5', 'title': 'Non-standard interfaces', 'page': 16}, {'structure': '3.2', 'title': 'Physical view', 'page': 16}, {'structure': '3.2.1', 'title': 'OS, processes, and threads', 'page': 16}, {'structure': '3.2.2', 'title': 'Library-based or Service based Functional Cluster implementation', 'page': 17}, {'structure': '3.2.3', 'title': 'The interaction between Functional Clusters', 'page': 17}, {'structure': '3.2.4', 'title': 'Machine/hardware', 'page': 18}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'page': 18}, {'structure': '3.4', 'title': 'Manifest', 'page': 19}, {'structure': '3.5', 'title': 'Application Design', 'page': 21}, {'structure': '3.6', 'title': 'Execution manifest', 'page': 21}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'page': 22}, {'structure': '3.8', 'title': 'Machine Manifest', 'page': 22}, {'structure': '4', 'title': 'Operating System', 'page': 23}, {'structure': '4.1', 'title': 'Overview', 'page': 23}, {'structure': '4.2', 'title': 'POSIX', 'page': 23}, {'structure': '4.3', 'title': 'Scheduling', 'page': 24}, {'structure': '4.4', 'title': 'Memory management', 'page': 24}, {'structure': '4.5', 'title': 'Device management', 'page': 24}, {'structure': '5', 'title': 'Execution Management', 'page': 25}, {'structure': '5.1', 'title': 'Overview', 'page': 25}, {'structure': '5.2', 'title': 'System Startup', 'page': 25}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'page': 25}, {'structure': '5.4', 'title': 'Deterministic Execution', 'page': 26}, {'structure': '5.5', 'title': 'Resource Limitation', 'page': 27}, {'structure': '5.6', 'title': 'State Management', 'page': 27}, {'structure': '5.7', 'title': 'Application Recovery', 'page': 29}, {'structure': '6', 'title': 'State Management', 'page': 30}, {'structure': '7', 'title': 'Communication Management', 'page': 32}, {'structure': '7.1', 'title': 'Overview', 'page': 32}, {'structure': '7.2', 'title': 'Service Oriented Communication', 'page': 32}, {'structure': '7.3', 'title': 'Language binding and Network binding', 'page': 33}, {'structure': '7.4', 'title': 'Generated Proxies and Skeletons of C++ Language Binding', 'page': 34}, {'structure': '7.5', 'title': 'Static and dynamic configuration', 'page': 34}, {'structure': '8', 'title': 'RESTful Communication', 'page': 36}, {'structure': '8.1', 'title': 'Overview', 'page': 36}, {'structure': '8.2', 'title': 'Architecture', 'page': 36}, {'structure': '8.3', 'title': 'Components', 'page': 37}, {'structure': '9', 'title': 'Diagnostics', 'page': 38}, {'structure': '9.1', 'title': 'Overview', 'page': 38}, {'structure': '9.2', 'title': 'Diagnostic communication sub-cluster', 'page': 38}, {'structure': '9.3', 'title': 'Event memory sub-cluster', 'page': 39}, {'structure': '10', 'title': 'Persistency', 'page': 41}, {'structure': '10.1', 'title': 'Overview', 'page': 41}, {'structure': '10.2', 'title': 'Key-Value Storage', 'page': 41}, {'structure': '10.3', 'title': 'File-Proxy Storage', 'page': 42}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'page': 42}, {'structure': '11', 'title': 'Time Synchronization', 'page': 44}, {'structure': '11.1', 'title': 'Overview', 'page': 44}, {'structure': '11.2', 'title': 'Design', 'page': 44}, {'structure': '11.3', 'title': 'Architecture', 'page': 45}, {'structure': '12', 'title': 'Network Management', 'page': 46}, {'structure': '12.1', 'title': 'Overview', 'page': 46}, {'structure': '12.2', 'title': 'Architecture', 'page': 46}, {'structure': '13', 'title': 'Update and Config Management', 'page': 48}, {'structure': '13.1', 'title': 'Overview', 'page': 48}, {'structure': '13.2', 'title': 'Update protocol', 'page': 48}, {'structure': '13.2.1', 'title': 'Data transfer', 'page': 48}, {'structure': '13.3', 'title': 'Packages', 'page': 48}, {'structure': '13.3.1', 'title': 'Software package', 'page': 48}, {'structure': '13.3.2', 'title': 'Backend package', 'page': 49}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'page': 51}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'page': 53}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'page': 55}, {'structure': '13.4', 'title': 'Software information reporting', 'page': 57}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'page': 57}, {'structure': '13.6', 'title': 'Securing the update process', 'page': 57}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'page': 58}, {'structure': '14', 'title': 'Identity and Access Management', 'page': 60}, {'structure': '14.1', 'title': 'Terminology', 'page': 60}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'page': 61}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'page': 61}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'page': 62}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'page': 65}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'page': 66}, {'structure': '15', 'title': 'Cryptography', 'page': 68}, {'structure': '15.1', 'title': 'Security Architecture', 'page': 68}, {'structure': '15.2', 'title': 'Key Management Architecture', 'page': 69}, {'structure': '15.3', 'title': 'Remarks on API Extension', 'page': 70}, {'structure': '16', 'title': 'Log and Trace', 'page': 71}, {'structure': '16.1', 'title': 'Overview', 'page': 71}, {'structure': '16.2', 'title': 'Architecture', 'page': 71}, {'structure': '17', 'title': 'Safety', 'page': 73}, {'structure': '17.1', 'title': 'Safety Overview', 'page': 73}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'page': 74}, {'structure': '17.3', 'title': 'Platform Health Management', 'page': 74}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'page': 76}, {'structure': '18', 'title': 'Core Types', 'page': 78}, {'structure': '18.1', 'title': 'Error Handling', 'page': 78}, {'structure': '18.1.1', 'title': 'Overview', 'page': 78}, {'structure': '18.1.2', 'title': 'ErrorCode', 'page': 78}, {'structure': '18.1.3', 'title': 'Result', 'page': 78}, {'structure': '18.1.4', 'title': 'Future and Promise', 'page': 79}, {'structure': '18.2', 'title': 'Advanced data types', 'page': 79}, {'structure': '18.3', 'title': 'Primitive data types', 'page': 80}, {'structure': '19', 'title': 'References', 'page': 81}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Contents', 'physical_index': '<physical_index_7>'}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': '<physical_index_7>'}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Technical Scope and Approach', 'physical_index': '<physical_index_8>'}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'physical_index': '<physical_index_8>'}, {'structure': '2.2', 'title': 'Technology Drivers', 'physical_index': '<physical_index_8>'}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'physical_index': '<physical_index_9>'}, {'structure': '2.3.1', 'title': 'C++', 'physical_index': '<physical_index_9>'}, {'structure': '2.3.2', 'title': 'SOA', 'physical_index': '<physical_index_9>'}, {'structure': '2.3.3', 'title': 'Parallel processing', 'physical_index': '<physical_index_10>'}, {'structure': '2.3.4', 'title': 'Leveraging existing standard', 'physical_index': '<physical_index_10>'}, {'structure': '2.3.5', 'title': 'Safety and security', 'physical_index': '<physical_index_10>'}, {'structure': '2.3.6', 'title': 'Planned dynamics', 'physical_index': '<physical_index_11>'}, {'structure': '2.3.7', 'title': 'Agile', 'physical_index': '<physical_index_11>'}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'physical_index': '<physical_index_11>'}, {'structure': '2.5', 'title': 'Scope of specification', 'physical_index': '<physical_index_13>'}, {'structure': '3', 'title': 'Architecture', 'physical_index': '<physical_index_14>'}, {'structure': '3.1', 'title': 'Logical view', 'physical_index': '<physical_index_14>'}, {'structure': '3.1.1', 'title': 'ARA', 'physical_index': '<physical_index_14>'}, {'structure': '3.1.2', 'title': 'Language binding, C++ Standard Library, and POSIX API', 'physical_index': '<physical_index_14>'}, {'structure': '3.1.3', 'title': 'Application launch and shutdown', 'physical_index': '<physical_index_15>'}, {'structure': '3.1.4', 'title': 'Application interactions', 'physical_index': '<physical_index_15>'}, {'structure': '3.1.5', 'title': 'Non-standard interfaces', 'physical_index': '<physical_index_16>'}, {'structure': '3.2', 'title': 'Physical view', 'physical_index': '<physical_index_16>'}, {'structure': '3.2.1', 'title': 'OS, processes, and threads', 'physical_index': '<physical_index_16>'}, {'structure': '3.2.2', 'title': 'Library-based or Service based Functional Cluster implementation', 'physical_index': '<physical_index_17>'}, {'structure': '3.2.3', 'title': 'The interaction between Functional Clusters', 'physical_index': '<physical_index_17>'}, {'structure': '3.2.4', 'title': 'Machine/hardware', 'physical_index': '<physical_index_18>'}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'physical_index': '<physical_index_18>'}, {'structure': '3.4', 'title': 'Manifest', 'physical_index': '<physical_index_19>'}, {'structure': '3.5', 'title': 'Application Design', 'physical_index': '<physical_index_21>'}, {'structure': '3.6', 'title': 'Execution manifest', 'physical_index': '<physical_index_21>'}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'physical_index': '<physical_index_22>'}, {'structure': '3.8', 'title': 'Machine Manifest', 'physical_index': '<physical_index_22>'}, {'structure': '4', 'title': 'Operating System', 'physical_index': '<physical_index_23>'}, {'structure': '4.1', 'title': 'Overview', 'physical_index': '<physical_index_23>'}, {'structure': '4.2', 'title': 'POSIX', 'physical_index': '<physical_index_23>'}, {'structure': '4.3', 'title': 'Scheduling', 'physical_index': '<physical_index_24>'}, {'structure': '4.4', 'title': 'Memory management', 'physical_index': '<physical_index_24>'}, {'structure': '4.5', 'title': 'Device management', 'physical_index': '<physical_index_24>'}, {'structure': '5', 'title': 'Execution Management', 'physical_index': '<physical_index_25>'}, {'structure': '5.1', 'title': 'Overview', 'physical_index': '<physical_index_25>'}, {'structure': '5.2', 'title': 'System Startup', 'physical_index': '<physical_index_25>'}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'physical_index': '<physical_index_25>'}, {'structure': '5.4', 'title': 'Deterministic Execution', 'physical_index': '<physical_index_26>'}, {'structure': '5.5', 'title': 'Resource Limitation', 'physical_index': '<physical_index_27>'}, {'structure': '5.6', 'title': 'State Management', 'physical_index': '<physical_index_27>'}, {'structure': '5.7', 'title': 'Application Recovery', 'physical_index': '<physical_index_29>'}, {'structure': '6', 'title': 'State Management', 'physical_index': '<physical_index_30>'}]"
+  },
+  {
+    "message": "toc_with_physical_index: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 7}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 7}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 7}, {'structure': '2', 'title': 'Technical Scope and Approach', 'physical_index': 8}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'physical_index': 8}, {'structure': '2.2', 'title': 'Technology Drivers', 'physical_index': 8}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'physical_index': 9}, {'structure': '2.3.1', 'title': 'C++', 'physical_index': 9}, {'structure': '2.3.2', 'title': 'SOA', 'physical_index': 9}, {'structure': '2.3.3', 'title': 'Parallel processing', 'physical_index': 10}, {'structure': '2.3.4', 'title': 'Leveraging existing standard', 'physical_index': 10}, {'structure': '2.3.5', 'title': 'Safety and security', 'physical_index': 10}, {'structure': '2.3.6', 'title': 'Planned dynamics', 'physical_index': 11}, {'structure': '2.3.7', 'title': 'Agile', 'physical_index': 11}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'physical_index': 11}, {'structure': '2.5', 'title': 'Scope of specification', 'physical_index': 13}, {'structure': '3', 'title': 'Architecture', 'physical_index': 14}, {'structure': '3.1', 'title': 'Logical view', 'physical_index': 14}, {'structure': '3.1.1', 'title': 'ARA', 'physical_index': 14}, {'structure': '3.1.2', 'title': 'Language binding, C++ Standard Library, and POSIX API', 'physical_index': 14}, {'structure': '3.1.3', 'title': 'Application launch and shutdown', 'physical_index': 15}, {'structure': '3.1.4', 'title': 'Application interactions', 'physical_index': 15}, {'structure': '3.1.5', 'title': 'Non-standard interfaces', 'physical_index': 16}, {'structure': '3.2', 'title': 'Physical view', 'physical_index': 16}, {'structure': '3.2.1', 'title': 'OS, processes, and threads', 'physical_index': 16}, {'structure': '3.2.2', 'title': 'Library-based or Service based Functional Cluster implementation', 'physical_index': 17}, {'structure': '3.2.3', 'title': 'The interaction between Functional Clusters', 'physical_index': 17}, {'structure': '3.2.4', 'title': 'Machine/hardware', 'physical_index': 18}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'physical_index': 18}, {'structure': '3.4', 'title': 'Manifest', 'physical_index': 19}, {'structure': '3.5', 'title': 'Application Design', 'physical_index': 21}, {'structure': '3.6', 'title': 'Execution manifest', 'physical_index': 21}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'physical_index': 22}, {'structure': '3.8', 'title': 'Machine Manifest', 'physical_index': 22}, {'structure': '4', 'title': 'Operating System', 'physical_index': 23}, {'structure': '4.1', 'title': 'Overview', 'physical_index': 23}, {'structure': '4.2', 'title': 'POSIX', 'physical_index': 23}, {'structure': '4.3', 'title': 'Scheduling', 'physical_index': 24}, {'structure': '4.4', 'title': 'Memory management', 'physical_index': 24}, {'structure': '4.5', 'title': 'Device management', 'physical_index': 24}, {'structure': '5', 'title': 'Execution Management', 'physical_index': 25}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 25}, {'structure': '5.2', 'title': 'System Startup', 'physical_index': 25}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'physical_index': 25}, {'structure': '5.4', 'title': 'Deterministic Execution', 'physical_index': 26}, {'structure': '5.5', 'title': 'Resource Limitation', 'physical_index': 27}, {'structure': '5.6', 'title': 'State Management', 'physical_index': 27}, {'structure': '5.7', 'title': 'Application Recovery', 'physical_index': 29}, {'structure': '6', 'title': 'State Management', 'physical_index': 30}]"
+  },
+  {
+    "message": "matching_pairs: [{'title': 'Introduction to this document', 'page': 7, 'physical_index': 7}, {'title': 'Contents', 'page': 7, 'physical_index': 7}, {'title': 'Prereads', 'page': 7, 'physical_index': 7}, {'title': 'Relationship to other AUTOSAR specifications', 'page': 7, 'physical_index': 7}, {'title': 'Technical Scope and Approach', 'page': 8, 'physical_index': 8}, {'title': 'Overview \u2013 a landscape of intelligent ECUs', 'page': 8, 'physical_index': 8}, {'title': 'Technology Drivers', 'page': 8, 'physical_index': 8}, {'title': 'Adaptive Platform \u2013 Characteristics', 'page': 9, 'physical_index': 9}, {'title': 'C++', 'page': 9, 'physical_index': 9}, {'title': 'SOA', 'page': 9, 'physical_index': 9}, {'title': 'Parallel processing', 'page': 10, 'physical_index': 10}, {'title': 'Leveraging existing standard', 'page': 10, 'physical_index': 10}, {'title': 'Safety and security', 'page': 10, 'physical_index': 10}, {'title': 'Planned dynamics', 'page': 11, 'physical_index': 11}, {'title': 'Agile', 'page': 11, 'physical_index': 11}, {'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'page': 11, 'physical_index': 11}, {'title': 'Scope of specification', 'page': 13, 'physical_index': 13}, {'title': 'Architecture', 'page': 14, 'physical_index': 14}, {'title': 'Architecture', 'page': 36, 'physical_index': 14}, {'title': 'Architecture', 'page': 45, 'physical_index': 14}, {'title': 'Architecture', 'page': 46, 'physical_index': 14}, {'title': 'Architecture', 'page': 71, 'physical_index': 14}, {'title': 'Logical view', 'page': 14, 'physical_index': 14}, {'title': 'ARA', 'page': 14, 'physical_index': 14}, {'title': 'Language binding, C++ Standard Library, and POSIX API', 'page': 14, 'physical_index': 14}, {'title': 'Application launch and shutdown', 'page': 15, 'physical_index': 15}, {'title': 'Application interactions', 'page': 15, 'physical_index': 15}, {'title': 'Non-standard interfaces', 'page': 16, 'physical_index': 16}, {'title': 'Physical view', 'page': 16, 'physical_index': 16}, {'title': 'OS, processes, and threads', 'page': 16, 'physical_index': 16}, {'title': 'Library-based or Service based Functional Cluster implementation', 'page': 17, 'physical_index': 17}, {'title': 'The interaction between Functional Clusters', 'page': 17, 'physical_index': 17}, {'title': 'Machine/hardware', 'page': 18, 'physical_index': 18}, {'title': 'Methodology and Manifest', 'page': 18, 'physical_index': 18}, {'title': 'Manifest', 'page': 19, 'physical_index': 19}, {'title': 'Application Design', 'page': 21, 'physical_index': 21}, {'title': 'Execution manifest', 'page': 21, 'physical_index': 21}, {'title': 'Service Instance Manifest', 'page': 22, 'physical_index': 22}, {'title': 'Machine Manifest', 'page': 22, 'physical_index': 22}, {'title': 'Operating System', 'page': 23, 'physical_index': 23}, {'title': 'Overview', 'page': 23, 'physical_index': 23}, {'title': 'Overview', 'page': 25, 'physical_index': 23}, {'title': 'Overview', 'page': 32, 'physical_index': 23}, {'title': 'Overview', 'page': 36, 'physical_index': 23}, {'title': 'Overview', 'page': 38, 'physical_index': 23}, {'title': 'Overview', 'page': 41, 'physical_index': 23}, {'title': 'Overview', 'page': 44, 'physical_index': 23}, {'title': 'Overview', 'page': 46, 'physical_index': 23}, {'title': 'Overview', 'page': 48, 'physical_index': 23}, {'title': 'Overview', 'page': 71, 'physical_index': 23}, {'title': 'Overview', 'page': 78, 'physical_index': 23}, {'title': 'POSIX', 'page': 23, 'physical_index': 23}, {'title': 'Scheduling', 'page': 24, 'physical_index': 24}, {'title': 'Memory management', 'page': 24, 'physical_index': 24}, {'title': 'Device management', 'page': 24, 'physical_index': 24}, {'title': 'Execution Management', 'page': 25, 'physical_index': 25}, {'title': 'Overview', 'page': 23, 'physical_index': 25}, {'title': 'Overview', 'page': 25, 'physical_index': 25}, {'title': 'Overview', 'page': 32, 'physical_index': 25}, {'title': 'Overview', 'page': 36, 'physical_index': 25}, {'title': 'Overview', 'page': 38, 'physical_index': 25}, {'title': 'Overview', 'page': 41, 'physical_index': 25}, {'title': 'Overview', 'page': 44, 'physical_index': 25}, {'title': 'Overview', 'page': 46, 'physical_index': 25}, {'title': 'Overview', 'page': 48, 'physical_index': 25}, {'title': 'Overview', 'page': 71, 'physical_index': 25}, {'title': 'Overview', 'page': 78, 'physical_index': 25}, {'title': 'System Startup', 'page': 25, 'physical_index': 25}, {'title': 'Execution Management Responsibilities', 'page': 25, 'physical_index': 25}, {'title': 'Deterministic Execution', 'page': 26, 'physical_index': 26}, {'title': 'Resource Limitation', 'page': 27, 'physical_index': 27}, {'title': 'State Management', 'page': 27, 'physical_index': 27}, {'title': 'State Management', 'page': 30, 'physical_index': 27}, {'title': 'Application Recovery', 'page': 29, 'physical_index': 29}, {'title': 'State Management', 'page': 27, 'physical_index': 30}, {'title': 'State Management', 'page': 30, 'physical_index': 30}]"
+  },
+  {
+    "message": "offset: 0"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 7}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 7}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 7}, {'structure': '2', 'title': 'Technical Scope and Approach', 'physical_index': 8}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'physical_index': 8}, {'structure': '2.2', 'title': 'Technology Drivers', 'physical_index': 8}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'physical_index': 9}, {'structure': '2.3.1', 'title': 'C++', 'physical_index': 9}, {'structure': '2.3.2', 'title': 'SOA', 'physical_index': 9}, {'structure': '2.3.3', 'title': 'Parallel processing', 'physical_index': 10}, {'structure': '2.3.4', 'title': 'Leveraging existing standard', 'physical_index': 10}, {'structure': '2.3.5', 'title': 'Safety and security', 'physical_index': 10}, {'structure': '2.3.6', 'title': 'Planned dynamics', 'physical_index': 11}, {'structure': '2.3.7', 'title': 'Agile', 'physical_index': 11}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'physical_index': 11}, {'structure': '2.5', 'title': 'Scope of specification', 'physical_index': 13}, {'structure': '3', 'title': 'Architecture', 'physical_index': 14}, {'structure': '3.1', 'title': 'Logical view', 'physical_index': 14}, {'structure': '3.1.1', 'title': 'ARA', 'physical_index': 14}, {'structure': '3.1.2', 'title': 'Language binding, C++ Standard Library, and POSIX API', 'physical_index': 14}, {'structure': '3.1.3', 'title': 'Application launch and shutdown', 'physical_index': 15}, {'structure': '3.1.4', 'title': 'Application interactions', 'physical_index': 15}, {'structure': '3.1.5', 'title': 'Non-standard interfaces', 'physical_index': 16}, {'structure': '3.2', 'title': 'Physical view', 'physical_index': 16}, {'structure': '3.2.1', 'title': 'OS, processes, and threads', 'physical_index': 16}, {'structure': '3.2.2', 'title': 'Library-based or Service based Functional Cluster implementation', 'physical_index': 17}, {'structure': '3.2.3', 'title': 'The interaction between Functional Clusters', 'physical_index': 17}, {'structure': '3.2.4', 'title': 'Machine/hardware', 'physical_index': 18}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'physical_index': 18}, {'structure': '3.4', 'title': 'Manifest', 'physical_index': 19}, {'structure': '3.5', 'title': 'Application Design', 'physical_index': 21}, {'structure': '3.6', 'title': 'Execution manifest', 'physical_index': 21}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'physical_index': 22}, {'structure': '3.8', 'title': 'Machine Manifest', 'physical_index': 22}, {'structure': '4', 'title': 'Operating System', 'physical_index': 23}, {'structure': '4.1', 'title': 'Overview', 'physical_index': 23}, {'structure': '4.2', 'title': 'POSIX', 'physical_index': 23}, {'structure': '4.3', 'title': 'Scheduling', 'physical_index': 24}, {'structure': '4.4', 'title': 'Memory management', 'physical_index': 24}, {'structure': '4.5', 'title': 'Device management', 'physical_index': 24}, {'structure': '5', 'title': 'Execution Management', 'physical_index': 25}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 25}, {'structure': '5.2', 'title': 'System Startup', 'physical_index': 25}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'physical_index': 25}, {'structure': '5.4', 'title': 'Deterministic Execution', 'physical_index': 26}, {'structure': '5.5', 'title': 'Resource Limitation', 'physical_index': 27}, {'structure': '5.6', 'title': 'State Management', 'physical_index': 27}, {'structure': '5.7', 'title': 'Application Recovery', 'physical_index': 29}, {'structure': '6', 'title': 'State Management', 'physical_index': 30}, {'structure': '7', 'title': 'Communication Management', 'physical_index': 32}, {'structure': '7.1', 'title': 'Overview', 'physical_index': 32}, {'structure': '7.2', 'title': 'Service Oriented Communication', 'physical_index': 32}, {'structure': '7.3', 'title': 'Language binding and Network binding', 'physical_index': 33}, {'structure': '7.4', 'title': 'Generated Proxies and Skeletons of C++ Language Binding', 'physical_index': 34}, {'structure': '7.5', 'title': 'Static and dynamic configuration', 'physical_index': 34}, {'structure': '8', 'title': 'RESTful Communication', 'physical_index': 36}, {'structure': '8.1', 'title': 'Overview', 'physical_index': 36}, {'structure': '8.2', 'title': 'Architecture', 'physical_index': 36}, {'structure': '8.3', 'title': 'Components', 'physical_index': 37}, {'structure': '9', 'title': 'Diagnostics', 'physical_index': 38}, {'structure': '9.1', 'title': 'Overview', 'physical_index': 38}, {'structure': '9.2', 'title': 'Diagnostic communication sub-cluster', 'physical_index': 38}, {'structure': '9.3', 'title': 'Event memory sub-cluster', 'physical_index': 39}, {'structure': '10', 'title': 'Persistency', 'physical_index': 41}, {'structure': '10.1', 'title': 'Overview', 'physical_index': 41}, {'structure': '10.2', 'title': 'Key-Value Storage', 'physical_index': 41}, {'structure': '10.3', 'title': 'File-Proxy Storage', 'physical_index': 42}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'physical_index': 42}, {'structure': '11', 'title': 'Time Synchronization', 'physical_index': 44}, {'structure': '11.1', 'title': 'Overview', 'physical_index': 44}, {'structure': '11.2', 'title': 'Design', 'physical_index': 44}, {'structure': '11.3', 'title': 'Architecture', 'physical_index': 45}, {'structure': '12', 'title': 'Network Management', 'physical_index': 46}, {'structure': '12.1', 'title': 'Overview', 'physical_index': 46}, {'structure': '12.2', 'title': 'Architecture', 'physical_index': 46}, {'structure': '13', 'title': 'Update and Config Management', 'physical_index': 48}, {'structure': '13.1', 'title': 'Overview', 'physical_index': 48}, {'structure': '13.2', 'title': 'Update protocol', 'physical_index': 48}, {'structure': '13.2.1', 'title': 'Data transfer', 'physical_index': 48}, {'structure': '13.3', 'title': 'Packages', 'physical_index': 48}, {'structure': '13.3.1', 'title': 'Software package', 'physical_index': 48}, {'structure': '13.3.2', 'title': 'Backend package', 'physical_index': 49}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'physical_index': 51}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'physical_index': 53}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'physical_index': 55}, {'structure': '13.4', 'title': 'Software information reporting', 'physical_index': 57}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'physical_index': 57}, {'structure': '13.6', 'title': 'Securing the update process', 'physical_index': 57}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'physical_index': 58}, {'structure': '14', 'title': 'Identity and Access Management', 'physical_index': 60}, {'structure': '14.1', 'title': 'Terminology', 'physical_index': 60}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'physical_index': 61}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'physical_index': 61}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'physical_index': 62}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'physical_index': 65}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'physical_index': 66}, {'structure': '15', 'title': 'Cryptography', 'physical_index': 68}, {'structure': '15.1', 'title': 'Security Architecture', 'physical_index': 68}, {'structure': '15.2', 'title': 'Key Management Architecture', 'physical_index': 69}, {'structure': '15.3', 'title': 'Remarks on API Extension', 'physical_index': 70}, {'structure': '16', 'title': 'Log and Trace', 'physical_index': 71}, {'structure': '16.1', 'title': 'Overview', 'physical_index': 71}, {'structure': '16.2', 'title': 'Architecture', 'physical_index': 71}, {'structure': '17', 'title': 'Safety', 'physical_index': 73}, {'structure': '17.1', 'title': 'Safety Overview', 'physical_index': 73}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'physical_index': 74}, {'structure': '17.3', 'title': 'Platform Health Management', 'physical_index': 74}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'physical_index': 76}, {'structure': '18', 'title': 'Core Types', 'physical_index': 78}, {'structure': '18.1', 'title': 'Error Handling', 'physical_index': 78}, {'structure': '18.1.1', 'title': 'Overview', 'physical_index': 78}, {'structure': '18.1.2', 'title': 'ErrorCode', 'physical_index': 78}, {'structure': '18.1.3', 'title': 'Result', 'physical_index': 78}, {'structure': '18.1.4', 'title': 'Future and Promise', 'physical_index': 79}, {'structure': '18.2', 'title': 'Advanced data types', 'physical_index': 79}, {'structure': '18.3', 'title': 'Primitive data types', 'physical_index': 80}, {'structure': '19', 'title': 'References', 'physical_index': 81}]"
+  },
+  {
+    "message": "toc_with_page_number: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 7}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 7}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 7}, {'structure': '2', 'title': 'Technical Scope and Approach', 'physical_index': 8}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'physical_index': 8}, {'structure': '2.2', 'title': 'Technology Drivers', 'physical_index': 8}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'physical_index': 9}, {'structure': '2.3.1', 'title': 'C++', 'physical_index': 9}, {'structure': '2.3.2', 'title': 'SOA', 'physical_index': 9}, {'structure': '2.3.3', 'title': 'Parallel processing', 'physical_index': 10}, {'structure': '2.3.4', 'title': 'Leveraging existing standard', 'physical_index': 10}, {'structure': '2.3.5', 'title': 'Safety and security', 'physical_index': 10}, {'structure': '2.3.6', 'title': 'Planned dynamics', 'physical_index': 11}, {'structure': '2.3.7', 'title': 'Agile', 'physical_index': 11}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'physical_index': 11}, {'structure': '2.5', 'title': 'Scope of specification', 'physical_index': 13}, {'structure': '3', 'title': 'Architecture', 'physical_index': 14}, {'structure': '3.1', 'title': 'Logical view', 'physical_index': 14}, {'structure': '3.1.1', 'title': 'ARA', 'physical_index': 14}, {'structure': '3.1.2', 'title': 'Language binding, C++ Standard Library, and POSIX API', 'physical_index': 14}, {'structure': '3.1.3', 'title': 'Application launch and shutdown', 'physical_index': 15}, {'structure': '3.1.4', 'title': 'Application interactions', 'physical_index': 15}, {'structure': '3.1.5', 'title': 'Non-standard interfaces', 'physical_index': 16}, {'structure': '3.2', 'title': 'Physical view', 'physical_index': 16}, {'structure': '3.2.1', 'title': 'OS, processes, and threads', 'physical_index': 16}, {'structure': '3.2.2', 'title': 'Library-based or Service based Functional Cluster implementation', 'physical_index': 17}, {'structure': '3.2.3', 'title': 'The interaction between Functional Clusters', 'physical_index': 17}, {'structure': '3.2.4', 'title': 'Machine/hardware', 'physical_index': 18}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'physical_index': 18}, {'structure': '3.4', 'title': 'Manifest', 'physical_index': 19}, {'structure': '3.5', 'title': 'Application Design', 'physical_index': 21}, {'structure': '3.6', 'title': 'Execution manifest', 'physical_index': 21}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'physical_index': 22}, {'structure': '3.8', 'title': 'Machine Manifest', 'physical_index': 22}, {'structure': '4', 'title': 'Operating System', 'physical_index': 23}, {'structure': '4.1', 'title': 'Overview', 'physical_index': 23}, {'structure': '4.2', 'title': 'POSIX', 'physical_index': 23}, {'structure': '4.3', 'title': 'Scheduling', 'physical_index': 24}, {'structure': '4.4', 'title': 'Memory management', 'physical_index': 24}, {'structure': '4.5', 'title': 'Device management', 'physical_index': 24}, {'structure': '5', 'title': 'Execution Management', 'physical_index': 25}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 25}, {'structure': '5.2', 'title': 'System Startup', 'physical_index': 25}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'physical_index': 25}, {'structure': '5.4', 'title': 'Deterministic Execution', 'physical_index': 26}, {'structure': '5.5', 'title': 'Resource Limitation', 'physical_index': 27}, {'structure': '5.6', 'title': 'State Management', 'physical_index': 27}, {'structure': '5.7', 'title': 'Application Recovery', 'physical_index': 29}, {'structure': '6', 'title': 'State Management', 'physical_index': 30}, {'structure': '7', 'title': 'Communication Management', 'physical_index': 32}, {'structure': '7.1', 'title': 'Overview', 'physical_index': 32}, {'structure': '7.2', 'title': 'Service Oriented Communication', 'physical_index': 32}, {'structure': '7.3', 'title': 'Language binding and Network binding', 'physical_index': 33}, {'structure': '7.4', 'title': 'Generated Proxies and Skeletons of C++ Language Binding', 'physical_index': 34}, {'structure': '7.5', 'title': 'Static and dynamic configuration', 'physical_index': 34}, {'structure': '8', 'title': 'RESTful Communication', 'physical_index': 36}, {'structure': '8.1', 'title': 'Overview', 'physical_index': 36}, {'structure': '8.2', 'title': 'Architecture', 'physical_index': 36}, {'structure': '8.3', 'title': 'Components', 'physical_index': 37}, {'structure': '9', 'title': 'Diagnostics', 'physical_index': 38}, {'structure': '9.1', 'title': 'Overview', 'physical_index': 38}, {'structure': '9.2', 'title': 'Diagnostic communication sub-cluster', 'physical_index': 38}, {'structure': '9.3', 'title': 'Event memory sub-cluster', 'physical_index': 39}, {'structure': '10', 'title': 'Persistency', 'physical_index': 41}, {'structure': '10.1', 'title': 'Overview', 'physical_index': 41}, {'structure': '10.2', 'title': 'Key-Value Storage', 'physical_index': 41}, {'structure': '10.3', 'title': 'File-Proxy Storage', 'physical_index': 42}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'physical_index': 42}, {'structure': '11', 'title': 'Time Synchronization', 'physical_index': 44}, {'structure': '11.1', 'title': 'Overview', 'physical_index': 44}, {'structure': '11.2', 'title': 'Design', 'physical_index': 44}, {'structure': '11.3', 'title': 'Architecture', 'physical_index': 45}, {'structure': '12', 'title': 'Network Management', 'physical_index': 46}, {'structure': '12.1', 'title': 'Overview', 'physical_index': 46}, {'structure': '12.2', 'title': 'Architecture', 'physical_index': 46}, {'structure': '13', 'title': 'Update and Config Management', 'physical_index': 48}, {'structure': '13.1', 'title': 'Overview', 'physical_index': 48}, {'structure': '13.2', 'title': 'Update protocol', 'physical_index': 48}, {'structure': '13.2.1', 'title': 'Data transfer', 'physical_index': 48}, {'structure': '13.3', 'title': 'Packages', 'physical_index': 48}, {'structure': '13.3.1', 'title': 'Software package', 'physical_index': 48}, {'structure': '13.3.2', 'title': 'Backend package', 'physical_index': 49}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'physical_index': 51}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'physical_index': 53}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'physical_index': 55}, {'structure': '13.4', 'title': 'Software information reporting', 'physical_index': 57}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'physical_index': 57}, {'structure': '13.6', 'title': 'Securing the update process', 'physical_index': 57}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'physical_index': 58}, {'structure': '14', 'title': 'Identity and Access Management', 'physical_index': 60}, {'structure': '14.1', 'title': 'Terminology', 'physical_index': 60}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'physical_index': 61}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'physical_index': 61}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'physical_index': 62}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'physical_index': 65}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'physical_index': 66}, {'structure': '15', 'title': 'Cryptography', 'physical_index': 68}, {'structure': '15.1', 'title': 'Security Architecture', 'physical_index': 68}, {'structure': '15.2', 'title': 'Key Management Architecture', 'physical_index': 69}, {'structure': '15.3', 'title': 'Remarks on API Extension', 'physical_index': 70}, {'structure': '16', 'title': 'Log and Trace', 'physical_index': 71}, {'structure': '16.1', 'title': 'Overview', 'physical_index': 71}, {'structure': '16.2', 'title': 'Architecture', 'physical_index': 71}, {'structure': '17', 'title': 'Safety', 'physical_index': 73}, {'structure': '17.1', 'title': 'Safety Overview', 'physical_index': 73}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'physical_index': 74}, {'structure': '17.3', 'title': 'Platform Health Management', 'physical_index': 74}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'physical_index': 76}, {'structure': '18', 'title': 'Core Types', 'physical_index': 78}, {'structure': '18.1', 'title': 'Error Handling', 'physical_index': 78}, {'structure': '18.1.1', 'title': 'Overview', 'physical_index': 78}, {'structure': '18.1.2', 'title': 'ErrorCode', 'physical_index': 78}, {'structure': '18.1.3', 'title': 'Result', 'physical_index': 78}, {'structure': '18.1.4', 'title': 'Future and Promise', 'physical_index': 79}, {'structure': '18.2', 'title': 'Advanced data types', 'physical_index': 79}, {'structure': '18.3', 'title': 'Primitive data types', 'physical_index': 80}, {'structure': '19', 'title': 'References', 'physical_index': 81}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.1864406779661017,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Language binding, C++ Standard Library, and POSIX API",
+        "page_number": 14
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Application launch and shutdown",
+        "page_number": 15
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Application interactions",
+        "page_number": 15
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Non-standard interfaces",
+        "page_number": 16
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Physical view",
+        "page_number": 16
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "OS, processes, and threads",
+        "page_number": 16
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Library-based or Service based Functional Cluster implementation",
+        "page_number": 17
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "The interaction between Functional Clusters",
+        "page_number": 17
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Machine/hardware",
+        "page_number": 18
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Methodology and Manifest",
+        "page_number": 18
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Manifest",
+        "page_number": 19
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "Application Design",
+        "page_number": 21
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Execution manifest",
+        "page_number": 21
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Service Instance Manifest",
+        "page_number": 22
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Machine Manifest",
+        "page_number": 22
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Operating System",
+        "page_number": 23
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 23
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "POSIX",
+        "page_number": 23
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Scheduling",
+        "page_number": 24
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Memory management",
+        "page_number": 24
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Device management",
+        "page_number": 24
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Execution Management",
+        "page_number": 25
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 25
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "System Startup",
+        "page_number": 25
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Execution Management Responsibilities",
+        "page_number": 25
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Deterministic Execution",
+        "page_number": 26
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Resource Limitation",
+        "page_number": 27
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "State Management",
+        "page_number": 27
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Application Recovery",
+        "page_number": 29
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "State Management",
+        "page_number": 30
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Communication Management",
+        "page_number": 32
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 32
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Service Oriented Communication",
+        "page_number": 32
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Language binding and Network binding",
+        "page_number": 33
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Generated Proxies and Skeletons of C++ Language Binding",
+        "page_number": 34
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Static and dynamic configuration",
+        "page_number": 34
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "RESTful Communication",
+        "page_number": 36
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 36
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 36
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Components",
+        "page_number": 37
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Diagnostics",
+        "page_number": 38
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 38
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Diagnostic communication sub-cluster",
+        "page_number": 38
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Event memory sub-cluster",
+        "page_number": 39
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Persistency",
+        "page_number": 41
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 41
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Key-Value Storage",
+        "page_number": 41
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "File-Proxy Storage",
+        "page_number": 42
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Use cases for handling persistent data for UCM",
+        "page_number": 42
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Time Synchronization",
+        "page_number": 44
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 44
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Design",
+        "page_number": 44
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 45
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Network Management",
+        "page_number": 46
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 46
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 46
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Update and Config Management",
+        "page_number": 48
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 48
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "Update protocol",
+        "page_number": 48
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "Data transfer",
+        "page_number": 48
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Packages",
+        "page_number": 48
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Software package",
+        "page_number": 48
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "Backend package",
+        "page_number": 49
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Vehicle Package Manifest",
+        "page_number": 51
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Software release and packaging workflow",
+        "page_number": 53
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Processing and activating Software Packages",
+        "page_number": 55
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Software information reporting",
+        "page_number": 57
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Software update consistency and authentication",
+        "page_number": 57
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Securing the update process",
+        "page_number": 57
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Safe State Management during an update process",
+        "page_number": 58
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Identity and Access Management",
+        "page_number": 60
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Terminology",
+        "page_number": 60
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Scope and Focus of the IAM framework",
+        "page_number": 61
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Contents of the AUTOSAR specification",
+        "page_number": 61
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "The architecture of the IAM Framework",
+        "page_number": 62
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Inter Platform Communication",
+        "page_number": 65
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Implementation and Usage of IAM",
+        "page_number": 66
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Cryptography",
+        "page_number": 68
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "Security Architecture",
+        "page_number": 68
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Key Management Architecture",
+        "page_number": 69
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Remarks on API Extension",
+        "page_number": 70
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Log and Trace",
+        "page_number": 71
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 71
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 71
+      },
+      {
+        "list_index": 104,
+        "answer": "no",
+        "title": "Safety",
+        "page_number": 73
+      },
+      {
+        "list_index": 105,
+        "answer": "no",
+        "title": "Safety Overview",
+        "page_number": 73
+      },
+      {
+        "list_index": 106,
+        "answer": "no",
+        "title": "Protection of information exchange (E2E-Protection)",
+        "page_number": 74
+      },
+      {
+        "list_index": 107,
+        "answer": "no",
+        "title": "Platform Health Management",
+        "page_number": 74
+      },
+      {
+        "list_index": 108,
+        "answer": "no",
+        "title": "C++ coding guidelines",
+        "page_number": 76
+      },
+      {
+        "list_index": 109,
+        "answer": "no",
+        "title": "Core Types",
+        "page_number": 78
+      },
+      {
+        "list_index": 112,
+        "answer": "no",
+        "title": "ErrorCode",
+        "page_number": 78
+      },
+      {
+        "list_index": 113,
+        "answer": "no",
+        "title": "Result",
+        "page_number": 78
+      },
+      {
+        "list_index": 114,
+        "answer": "no",
+        "title": "Future and Promise",
+        "page_number": 79
+      },
+      {
+        "list_index": 115,
+        "answer": "no",
+        "title": "Advanced data types",
+        "page_number": 79
+      },
+      {
+        "list_index": 116,
+        "answer": "no",
+        "title": "Primitive data types",
+        "page_number": 80
+      },
+      {
+        "list_index": 117,
+        "answer": "no",
+        "title": "References",
+        "page_number": 81
+      }
+    ]
+  },
+  {
+    "message": "toc_transformer: [{'structure': '1', 'title': 'Introduction to this document', 'page': 7}, {'structure': '1.1', 'title': 'Contents', 'page': 7}, {'structure': '1.2', 'title': 'Prereads', 'page': 7}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'page': 7}, {'structure': '2', 'title': 'Technical Scope and Approach', 'page': 8}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'page': 8}, {'structure': '2.2', 'title': 'Technology Drivers', 'page': 8}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'page': 9}, {'structure': '2.3.1', 'title': 'C++', 'page': 9}, {'structure': '2.3.2', 'title': 'SOA', 'page': 9}, {'structure': '2.3.3', 'title': 'Parallel processing', 'page': 10}, {'structure': '2.3.4', 'title': 'Leveraging existing standard', 'page': 10}, {'structure': '2.3.5', 'title': 'Safety and security', 'page': 10}, {'structure': '2.3.6', 'title': 'Planned dynamics', 'page': 11}, {'structure': '2.3.7', 'title': 'Agile', 'page': 11}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'page': 11}, {'structure': '2.5', 'title': 'Scope of specification', 'page': 13}, {'structure': '3', 'title': 'Architecture', 'page': 14}, {'structure': '3.1', 'title': 'Logical view', 'page': 14}, {'structure': '3.1.1', 'title': 'ARA', 'page': 14}, {'structure': '3.1.2', 'title': 'Language binding, C++ Standard Library, and POSIX API', 'page': 14}, {'structure': '3.1.3', 'title': 'Application launch and shutdown', 'page': 15}, {'structure': '3.1.4', 'title': 'Application interactions', 'page': 15}, {'structure': '3.1.5', 'title': 'Non-standard interfaces', 'page': 16}, {'structure': '3.2', 'title': 'Physical view', 'page': 16}, {'structure': '3.2.1', 'title': 'OS, processes, and threads', 'page': 16}, {'structure': '3.2.2', 'title': 'Library-based or Service based Functional Cluster implementation', 'page': 17}, {'structure': '3.2.3', 'title': 'The interaction between Functional Clusters', 'page': 17}, {'structure': '3.2.4', 'title': 'Machine/hardware', 'page': 18}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'page': 18}, {'structure': '3.4', 'title': 'Manifest', 'page': 19}, {'structure': '3.5', 'title': 'Application Design', 'page': 21}, {'structure': '3.6', 'title': 'Execution manifest', 'page': 21}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'page': 22}, {'structure': '3.8', 'title': 'Machine Manifest', 'page': 22}, {'structure': '4', 'title': 'Operating System', 'page': 23}, {'structure': '4.1', 'title': 'Overview', 'page': 23}, {'structure': '4.2', 'title': 'POSIX', 'page': 23}, {'structure': '4.3', 'title': 'Scheduling', 'page': 24}, {'structure': '4.4', 'title': 'Memory management', 'page': 24}, {'structure': '4.5', 'title': 'Device management', 'page': 24}, {'structure': '5', 'title': 'Execution Management', 'page': 25}, {'structure': '5.1', 'title': 'Overview', 'page': 25}, {'structure': '5.2', 'title': 'System Startup', 'page': 25}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'page': 25}, {'structure': '5.4', 'title': 'Deterministic Execution', 'page': 26}, {'structure': '5.5', 'title': 'Resource Limitation', 'page': 27}, {'structure': '5.6', 'title': 'State Management', 'page': 27}, {'structure': '5.7', 'title': 'Application Recovery', 'page': 29}, {'structure': '6', 'title': 'State Management', 'page': 30}, {'structure': '7', 'title': 'Communication Management', 'page': 32}, {'structure': '7.1', 'title': 'Overview', 'page': 32}, {'structure': '7.2', 'title': 'Service Oriented Communication', 'page': 32}, {'structure': '7.3', 'title': 'Language binding and Network binding', 'page': 33}, {'structure': '7.4', 'title': 'Generated Proxies and Skeletons of C++ Language Binding', 'page': 34}, {'structure': '7.5', 'title': 'Static and dynamic configuration', 'page': 34}, {'structure': '8', 'title': 'RESTful Communication', 'page': 36}, {'structure': '8.1', 'title': 'Overview', 'page': 36}, {'structure': '8.2', 'title': 'Architecture', 'page': 36}, {'structure': '8.3', 'title': 'Components', 'page': 37}, {'structure': '9', 'title': 'Diagnostics', 'page': 38}, {'structure': '9.1', 'title': 'Overview', 'page': 38}, {'structure': '9.2', 'title': 'Diagnostic communication sub-cluster', 'page': 38}, {'structure': '9.3', 'title': 'Event memory sub-cluster', 'page': 39}, {'structure': '10', 'title': 'Persistency', 'page': 41}, {'structure': '10.1', 'title': 'Overview', 'page': 41}, {'structure': '10.2', 'title': 'Key-Value Storage', 'page': 41}, {'structure': '10.3', 'title': 'File-Proxy Storage', 'page': 42}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'page': 42}, {'structure': '11', 'title': 'Time Synchronization', 'page': 44}, {'structure': '11.1', 'title': 'Overview', 'page': 44}, {'structure': '11.2', 'title': 'Design', 'page': 44}, {'structure': '11.3', 'title': 'Architecture', 'page': 45}, {'structure': '12', 'title': 'Network Management', 'page': 46}, {'structure': '12.1', 'title': 'Overview', 'page': 46}, {'structure': '12.2', 'title': 'Architecture', 'page': 46}, {'structure': '13', 'title': 'Update and Config Management', 'page': 48}, {'structure': '13.1', 'title': 'Overview', 'page': 48}, {'structure': '13.2', 'title': 'Update protocol', 'page': 48}, {'structure': '13.2.1', 'title': 'Data transfer', 'page': 48}, {'structure': '13.3', 'title': 'Packages', 'page': 48}, {'structure': '13.3.1', 'title': 'Software package', 'page': 48}, {'structure': '13.3.2', 'title': 'Backend package', 'page': 49}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'page': 51}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'page': 53}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'page': 55}, {'structure': '13.4', 'title': 'Software information reporting', 'page': 57}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'page': 57}, {'structure': '13.6', 'title': 'Securing the update process', 'page': 57}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'page': 58}, {'structure': '14', 'title': 'Identity and Access Management', 'page': 60}, {'structure': '14.1', 'title': 'Terminology', 'page': 60}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'page': 61}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'page': 61}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'page': 62}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'page': 65}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'page': 66}, {'structure': '15', 'title': 'Cryptography', 'page': 68}, {'structure': '15.1', 'title': 'Security Architecture', 'page': 68}, {'structure': '15.2', 'title': 'Key Management Architecture', 'page': 69}, {'structure': '15.3', 'title': 'Remarks on API Extension', 'page': 70}, {'structure': '16', 'title': 'Log and Trace', 'page': 71}, {'structure': '16.1', 'title': 'Overview', 'page': 71}, {'structure': '16.2', 'title': 'Architecture', 'page': 71}, {'structure': '17', 'title': 'Safety', 'page': 73}, {'structure': '17.1', 'title': 'Safety Overview', 'page': 73}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'page': 74}, {'structure': '17.3', 'title': 'Platform Health Management', 'page': 74}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'page': 76}, {'structure': '18', 'title': 'Core Types', 'page': 78}, {'structure': '18.1', 'title': 'Error Handling', 'page': 78}, {'structure': '18.1.1', 'title': 'Overview', 'page': 78}, {'structure': '18.1.2', 'title': 'ErrorCode', 'page': 78}, {'structure': '18.1.3', 'title': 'Result', 'page': 78}, {'structure': '18.1.4', 'title': 'Future and Promise', 'page': 79}, {'structure': '18.2', 'title': 'Advanced data types', 'page': 79}, {'structure': '18.3', 'title': 'Primitive data types', 'page': 80}, {'structure': '19', 'title': 'References', 'page': 81}]"
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "add_page_number_to_toc: [{'structure': '10.3', 'title': 'File-Proxy Storage', 'physical_index': '<physical_index_42>'}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'physical_index': '<physical_index_42>'}, {'structure': '11', 'title': 'Time Synchronization', 'physical_index': '<physical_index_44>'}, {'structure': '11.1', 'title': 'Overview', 'physical_index': '<physical_index_44>'}, {'structure': '11.2', 'title': 'Design', 'physical_index': '<physical_index_44>'}, {'structure': '11.3', 'title': 'Architecture', 'physical_index': '<physical_index_45>'}, {'structure': '12', 'title': 'Network Management', 'physical_index': '<physical_index_46>'}, {'structure': '12.1', 'title': 'Overview', 'physical_index': '<physical_index_46>'}, {'structure': '12.2', 'title': 'Architecture', 'physical_index': '<physical_index_47>'}, {'structure': '13', 'title': 'Update and Config Management', 'physical_index': '<physical_index_48>'}, {'structure': '13.1', 'title': 'Overview', 'physical_index': '<physical_index_48>'}, {'structure': '13.2', 'title': 'Update protocol', 'physical_index': '<physical_index_48>'}, {'structure': '13.2.1', 'title': 'Data transfer', 'physical_index': '<physical_index_48>'}, {'structure': '13.3', 'title': 'Packages', 'physical_index': '<physical_index_48>'}, {'structure': '13.3.1', 'title': 'Software package', 'physical_index': '<physical_index_49>'}, {'structure': '13.3.2', 'title': 'Backend package', 'physical_index': '<physical_index_50>'}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'physical_index': '<physical_index_51>'}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'physical_index': '<physical_index_53>'}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'physical_index': '<physical_index_56>'}, {'structure': '13.4', 'title': 'Software information reporting', 'physical_index': '<physical_index_57>'}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'physical_index': '<physical_index_57>'}, {'structure': '13.6', 'title': 'Securing the update process', 'physical_index': '<physical_index_57>'}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'physical_index': '<physical_index_58>'}, {'structure': '14', 'title': 'Identity and Access Management', 'physical_index': '<physical_index_60>'}, {'structure': '14.1', 'title': 'Terminology', 'physical_index': '<physical_index_60>'}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'physical_index': '<physical_index_61>'}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'physical_index': '<physical_index_61>'}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'physical_index': '<physical_index_62>'}, {'structure': '14.4.1.1', 'title': 'General Framework', 'physical_index': '<physical_index_62>'}, {'structure': '14.4.1.2', 'title': 'Preliminaries and Assumptions', 'physical_index': '<physical_index_62>'}, {'structure': '14.4.1.3', 'title': 'Identification of Adaptive Applications', 'physical_index': '<physical_index_63>'}, {'structure': '14.4.1.4', 'title': 'The IAM Sequence', 'physical_index': '<physical_index_64>'}, {'structure': '14.4.1.5', 'title': 'Implementation of Policy Decision Points', 'physical_index': '<physical_index_65>'}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'physical_index': '<physical_index_66>'}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'physical_index': '<physical_index_67>'}, {'structure': '15', 'title': 'Cryptography', 'physical_index': '<physical_index_68>'}, {'structure': '15.1', 'title': 'Security Architecture', 'physical_index': '<physical_index_68>'}, {'structure': '15.2', 'title': 'Key Management Architecture', 'physical_index': '<physical_index_69>'}, {'structure': '15.3', 'title': 'Remarks on API Extension', 'physical_index': '<physical_index_70>'}, {'structure': '16', 'title': 'Log and Trace', 'physical_index': '<physical_index_71>'}, {'structure': '16.1', 'title': 'Overview', 'physical_index': '<physical_index_71>'}, {'structure': '16.2', 'title': 'Architecture', 'physical_index': '<physical_index_72>'}, {'structure': '17', 'title': 'Safety', 'physical_index': '<physical_index_73>'}, {'structure': '17.1', 'title': 'Safety Overview', 'physical_index': '<physical_index_73>'}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'physical_index': '<physical_index_74>'}, {'structure': '17.3', 'title': 'Platform Health Management', 'physical_index': '<physical_index_75>'}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'physical_index': '<physical_index_77>'}, {'structure': '18', 'title': 'Core Types', 'physical_index': '<physical_index_78>'}, {'structure': '18.1', 'title': 'Error Handling', 'physical_index': '<physical_index_78>'}, {'structure': '18.2', 'title': 'Advanced data types', 'physical_index': '<physical_index_79>'}, {'structure': '18.3', 'title': 'Primitive data types', 'physical_index': '<physical_index_80>'}, {'structure': '19', 'title': 'References', 'physical_index': '<physical_index_81>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '10.3', 'title': 'File-Proxy Storage', 'physical_index': 42}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'physical_index': 42}, {'structure': '11', 'title': 'Time Synchronization', 'physical_index': 44}, {'structure': '11.1', 'title': 'Overview', 'physical_index': 44}, {'structure': '11.2', 'title': 'Design', 'physical_index': 44}, {'structure': '11.3', 'title': 'Architecture', 'physical_index': 45}, {'structure': '12', 'title': 'Network Management', 'physical_index': 46}, {'structure': '12.1', 'title': 'Overview', 'physical_index': 46}, {'structure': '12.2', 'title': 'Architecture', 'physical_index': 47}, {'structure': '13', 'title': 'Update and Config Management', 'physical_index': 48}, {'structure': '13.1', 'title': 'Overview', 'physical_index': 48}, {'structure': '13.2', 'title': 'Update protocol', 'physical_index': 48}, {'structure': '13.2.1', 'title': 'Data transfer', 'physical_index': 48}, {'structure': '13.3', 'title': 'Packages', 'physical_index': 48}, {'structure': '13.3.1', 'title': 'Software package', 'physical_index': 49}, {'structure': '13.3.2', 'title': 'Backend package', 'physical_index': 50}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'physical_index': 51}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'physical_index': 53}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'physical_index': 56}, {'structure': '13.4', 'title': 'Software information reporting', 'physical_index': 57}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'physical_index': 57}, {'structure': '13.6', 'title': 'Securing the update process', 'physical_index': 57}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'physical_index': 58}, {'structure': '14', 'title': 'Identity and Access Management', 'physical_index': 60}, {'structure': '14.1', 'title': 'Terminology', 'physical_index': 60}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'physical_index': 61}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'physical_index': 61}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'physical_index': 62}, {'structure': '14.4.1.1', 'title': 'General Framework', 'physical_index': 62}, {'structure': '14.4.1.2', 'title': 'Preliminaries and Assumptions', 'physical_index': 62}, {'structure': '14.4.1.3', 'title': 'Identification of Adaptive Applications', 'physical_index': 63}, {'structure': '14.4.1.4', 'title': 'The IAM Sequence', 'physical_index': 64}, {'structure': '14.4.1.5', 'title': 'Implementation of Policy Decision Points', 'physical_index': 65}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'physical_index': 66}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'physical_index': 67}, {'structure': '15', 'title': 'Cryptography', 'physical_index': 68}, {'structure': '15.1', 'title': 'Security Architecture', 'physical_index': 68}, {'structure': '15.2', 'title': 'Key Management Architecture', 'physical_index': 69}, {'structure': '15.3', 'title': 'Remarks on API Extension', 'physical_index': 70}, {'structure': '16', 'title': 'Log and Trace', 'physical_index': 71}, {'structure': '16.1', 'title': 'Overview', 'physical_index': 71}, {'structure': '16.2', 'title': 'Architecture', 'physical_index': 72}, {'structure': '17', 'title': 'Safety', 'physical_index': 73}, {'structure': '17.1', 'title': 'Safety Overview', 'physical_index': 73}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'physical_index': 74}, {'structure': '17.3', 'title': 'Platform Health Management', 'physical_index': 75}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'physical_index': 77}, {'structure': '18', 'title': 'Core Types', 'physical_index': 78}, {'structure': '18.1', 'title': 'Error Handling', 'physical_index': 78}, {'structure': '18.2', 'title': 'Advanced data types', 'physical_index': 79}, {'structure': '18.3', 'title': 'Primitive data types', 'physical_index': 80}, {'structure': '19', 'title': 'References', 'physical_index': 81}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.4423076923076923,
+    "incorrect_results": [
+      {
+        "list_index": 8,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 47
+      },
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Software update consistency and authentication",
+        "page_number": 57
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "Securing the update process",
+        "page_number": 57
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Safe State Management during an update process",
+        "page_number": 58
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Identity and Access Management",
+        "page_number": 60
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Terminology",
+        "page_number": 60
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Scope and Focus of the IAM framework",
+        "page_number": 61
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Contents of the AUTOSAR specification",
+        "page_number": 61
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "The architecture of the IAM Framework",
+        "page_number": 62
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "General Framework",
+        "page_number": 62
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Preliminaries and Assumptions",
+        "page_number": 62
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Identification of Adaptive Applications",
+        "page_number": 63
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "The IAM Sequence",
+        "page_number": 64
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Implementation of Policy Decision Points",
+        "page_number": 65
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "Inter Platform Communication",
+        "page_number": 66
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Implementation and Usage of IAM",
+        "page_number": 67
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Cryptography",
+        "page_number": 68
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Security Architecture",
+        "page_number": 68
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Key Management Architecture",
+        "page_number": 69
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Remarks on API Extension",
+        "page_number": 70
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Log and Trace",
+        "page_number": 71
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 71
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 72
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Safety",
+        "page_number": 73
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Safety Overview",
+        "page_number": 73
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "C++ coding guidelines",
+        "page_number": 77
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Core Types",
+        "page_number": 78
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Primitive data types",
+        "page_number": 80
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "References",
+        "page_number": 81
+      }
+    ]
+  },
+  {
+    "message": "len(group_texts): 2"
+  },
+  {
+    "message": "generate_toc: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': '<physical_index_7>'}, {'structure': '1.1', 'title': 'Contents', 'physical_index': '<physical_index_7>'}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': '<physical_index_7>'}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': '<physical_index_7>'}, {'structure': '2', 'title': 'Technical Scope and Approach', 'physical_index': '<physical_index_8>'}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'physical_index': '<physical_index_8>'}, {'structure': '2.2', 'title': 'Technology Drivers', 'physical_index': '<physical_index_8>'}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'physical_index': '<physical_index_9>'}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'physical_index': '<physical_index_11>'}, {'structure': '2.5', 'title': 'Scope of specification', 'physical_index': '<physical_index_13>'}, {'structure': '3', 'title': 'Architecture', 'physical_index': '<physical_index_14>'}, {'structure': '3.1', 'title': 'Logical view', 'physical_index': '<physical_index_14>'}, {'structure': '3.2', 'title': 'Physical view', 'physical_index': '<physical_index_16>'}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'physical_index': '<physical_index_18>'}, {'structure': '3.4', 'title': 'Manifest', 'physical_index': '<physical_index_19>'}, {'structure': '3.5', 'title': 'Application Design', 'physical_index': '<physical_index_21>'}, {'structure': '3.6', 'title': 'Execution manifest', 'physical_index': '<physical_index_21>'}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'physical_index': '<physical_index_22>'}, {'structure': '3.8', 'title': 'Machine Manifest', 'physical_index': '<physical_index_22>'}, {'structure': '4', 'title': 'Operating System', 'physical_index': '<physical_index_23>'}, {'structure': '4.1', 'title': 'Overview', 'physical_index': '<physical_index_23>'}, {'structure': '4.2', 'title': 'POSIX', 'physical_index': '<physical_index_23>'}, {'structure': '4.3', 'title': 'Scheduling', 'physical_index': '<physical_index_24>'}, {'structure': '4.4', 'title': 'Memory management', 'physical_index': '<physical_index_24>'}, {'structure': '4.5', 'title': 'Device management', 'physical_index': '<physical_index_24>'}, {'structure': '5', 'title': 'Execution Management', 'physical_index': '<physical_index_25>'}, {'structure': '5.1', 'title': 'Overview', 'physical_index': '<physical_index_25>'}, {'structure': '5.2', 'title': 'System Startup', 'physical_index': '<physical_index_25>'}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'physical_index': '<physical_index_25>'}, {'structure': '5.4', 'title': 'Deterministic Execution', 'physical_index': '<physical_index_26>'}, {'structure': '5.5', 'title': 'Resource Limitation', 'physical_index': '<physical_index_27>'}, {'structure': '5.6', 'title': 'State Management', 'physical_index': '<physical_index_27>'}, {'structure': '5.7', 'title': 'Application Recovery', 'physical_index': '<physical_index_29>'}, {'structure': '6', 'title': 'State Management', 'physical_index': '<physical_index_30>'}, {'structure': '7', 'title': 'Communication Management', 'physical_index': '<physical_index_32>'}, {'structure': '7.1', 'title': 'Overview', 'physical_index': '<physical_index_32>'}, {'structure': '7.2', 'title': 'Service Oriented Communication', 'physical_index': '<physical_index_32>'}, {'structure': '7.3', 'title': 'Language binding and Network binding', 'physical_index': '<physical_index_33>'}, {'structure': '7.4', 'title': 'Generated Proxies and Skeletons of C++ Language Binding', 'physical_index': '<physical_index_34>'}, {'structure': '7.5', 'title': 'Static and dynamic configuration', 'physical_index': '<physical_index_35>'}, {'structure': '8', 'title': 'RESTful Communication', 'physical_index': '<physical_index_36>'}, {'structure': '8.1', 'title': 'Overview', 'physical_index': '<physical_index_36>'}, {'structure': '8.2', 'title': 'Architecture', 'physical_index': '<physical_index_36>'}, {'structure': '8.3', 'title': 'Components', 'physical_index': '<physical_index_37>'}, {'structure': '9', 'title': 'Diagnostics', 'physical_index': '<physical_index_38>'}, {'structure': '9.1', 'title': 'Overview', 'physical_index': '<physical_index_38>'}, {'structure': '9.2', 'title': 'Diagnostic communication sub-cluster', 'physical_index': '<physical_index_38>'}, {'structure': '9.3', 'title': 'Event memory sub-cluster', 'physical_index': '<physical_index_39>'}, {'structure': '10', 'title': 'Persistency', 'physical_index': '<physical_index_41>'}, {'structure': '10.1', 'title': 'Overview', 'physical_index': '<physical_index_41>'}, {'structure': '10.2', 'title': 'Key-Value Storage', 'physical_index': '<physical_index_41>'}, {'structure': '10.3', 'title': 'File-Proxy Storage', 'physical_index': '<physical_index_42>'}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'physical_index': '<physical_index_42>'}, {'structure': '11', 'title': 'Time Synchronization', 'physical_index': '<physical_index_44>'}, {'structure': '11.1', 'title': 'Overview', 'physical_index': '<physical_index_44>'}, {'structure': '11.2', 'title': 'Design', 'physical_index': '<physical_index_44>'}, {'structure': '11.3', 'title': 'Architecture', 'physical_index': '<physical_index_45>'}, {'structure': '12', 'title': 'Network Management', 'physical_index': '<physical_index_46>'}, {'structure': '12.1', 'title': 'Overview', 'physical_index': '<physical_index_46>'}, {'structure': '12.2', 'title': 'Architecture', 'physical_index': '<physical_index_47>'}, {'structure': '13', 'title': 'Update and Config Management', 'physical_index': '<physical_index_48>'}, {'structure': '13.1', 'title': 'Overview', 'physical_index': '<physical_index_48>'}, {'structure': '13.2', 'title': 'Update protocol', 'physical_index': '<physical_index_48>'}, {'structure': '13.2.1', 'title': 'Data transfer', 'physical_index': '<physical_index_48>'}, {'structure': '13.3', 'title': 'Packages', 'physical_index': '<physical_index_49>'}, {'structure': '13.3.1', 'title': 'Software package', 'physical_index': '<physical_index_49>'}, {'structure': '13.3.2', 'title': 'Backend package', 'physical_index': '<physical_index_50>'}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'physical_index': '<physical_index_51>'}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'physical_index': '<physical_index_52>'}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'physical_index': '<physical_index_55>'}, {'structure': '13.4', 'title': 'Software information reporting', 'physical_index': '<physical_index_56>'}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'physical_index': '<physical_index_56>'}, {'structure': '13.6', 'title': 'Securing the update process', 'physical_index': '<physical_index_57>'}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'physical_index': '<physical_index_58>'}, {'structure': '14', 'title': 'Identity and Access Management', 'physical_index': '<physical_index_60>'}, {'structure': '14.1', 'title': 'Terminology', 'physical_index': '<physical_index_60>'}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'physical_index': '<physical_index_60>'}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'physical_index': '<physical_index_61>'}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'physical_index': '<physical_index_62>'}, {'structure': '14.4.1.1', 'title': 'General Framework', 'physical_index': '<physical_index_62>'}, {'structure': '14.4.1.2', 'title': 'Preliminaries and Assumptions', 'physical_index': '<physical_index_62>'}, {'structure': '14.4.1.3', 'title': 'Identification of Adaptive Applications', 'physical_index': '<physical_index_63>'}, {'structure': '14.4.1.4', 'title': 'The IAM Sequence', 'physical_index': '<physical_index_63>'}, {'structure': '14.4.1.5', 'title': 'Implementation of Policy Decision Points', 'physical_index': '<physical_index_64>'}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'physical_index': '<physical_index_65>'}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'physical_index': '<physical_index_67>'}, {'structure': '15', 'title': 'Cryptography', 'physical_index': '<physical_index_68>'}, {'structure': '15.1', 'title': 'Overview', 'physical_index': '<physical_index_68>'}, {'structure': '15.2', 'title': 'Security Architecture', 'physical_index': '<physical_index_68>'}, {'structure': '15.3', 'title': 'Key Management Architecture', 'physical_index': '<physical_index_69>'}, {'structure': '15.4', 'title': 'Remarks on API Extension', 'physical_index': '<physical_index_70>'}, {'structure': '16', 'title': 'Log and Trace', 'physical_index': '<physical_index_71>'}, {'structure': '16.1', 'title': 'Overview', 'physical_index': '<physical_index_71>'}, {'structure': '16.2', 'title': 'Architecture', 'physical_index': '<physical_index_72>'}, {'structure': '17', 'title': 'Safety', 'physical_index': '<physical_index_73>'}, {'structure': '17.1', 'title': 'Safety Overview', 'physical_index': '<physical_index_73>'}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'physical_index': '<physical_index_74>'}, {'structure': '17.3', 'title': 'Platform Health Management', 'physical_index': '<physical_index_75>'}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'physical_index': '<physical_index_76>'}, {'structure': '18', 'title': 'Core Types', 'physical_index': '<physical_index_78>'}, {'structure': '18.1', 'title': 'Error Handling', 'physical_index': '<physical_index_78>'}, {'structure': '18.2', 'title': 'Advanced data types', 'physical_index': '<physical_index_79>'}, {'structure': '18.3', 'title': 'Primitive data types', 'physical_index': '<physical_index_80>'}, {'structure': '19', 'title': 'References', 'physical_index': '<physical_index_81>'}]"
+  },
+  {
+    "message": "convert_physical_index_to_int: [{'structure': '1', 'title': 'Introduction to this document', 'physical_index': 7}, {'structure': '1.1', 'title': 'Contents', 'physical_index': 7}, {'structure': '1.2', 'title': 'Prereads', 'physical_index': 7}, {'structure': '1.3', 'title': 'Relationship to other AUTOSAR specifications', 'physical_index': 7}, {'structure': '2', 'title': 'Technical Scope and Approach', 'physical_index': 8}, {'structure': '2.1', 'title': 'Overview \u2013 a landscape of intelligent ECUs', 'physical_index': 8}, {'structure': '2.2', 'title': 'Technology Drivers', 'physical_index': 8}, {'structure': '2.3', 'title': 'Adaptive Platform \u2013 Characteristics', 'physical_index': 9}, {'structure': '2.4', 'title': 'Integration of Classic, Adaptive and Non-AUTOSAR ECUs', 'physical_index': 11}, {'structure': '2.5', 'title': 'Scope of specification', 'physical_index': 13}, {'structure': '3', 'title': 'Architecture', 'physical_index': 14}, {'structure': '3.1', 'title': 'Logical view', 'physical_index': 14}, {'structure': '3.2', 'title': 'Physical view', 'physical_index': 16}, {'structure': '3.3', 'title': 'Methodology and Manifest', 'physical_index': 18}, {'structure': '3.4', 'title': 'Manifest', 'physical_index': 19}, {'structure': '3.5', 'title': 'Application Design', 'physical_index': 21}, {'structure': '3.6', 'title': 'Execution manifest', 'physical_index': 21}, {'structure': '3.7', 'title': 'Service Instance Manifest', 'physical_index': 22}, {'structure': '3.8', 'title': 'Machine Manifest', 'physical_index': 22}, {'structure': '4', 'title': 'Operating System', 'physical_index': 23}, {'structure': '4.1', 'title': 'Overview', 'physical_index': 23}, {'structure': '4.2', 'title': 'POSIX', 'physical_index': 23}, {'structure': '4.3', 'title': 'Scheduling', 'physical_index': 24}, {'structure': '4.4', 'title': 'Memory management', 'physical_index': 24}, {'structure': '4.5', 'title': 'Device management', 'physical_index': 24}, {'structure': '5', 'title': 'Execution Management', 'physical_index': 25}, {'structure': '5.1', 'title': 'Overview', 'physical_index': 25}, {'structure': '5.2', 'title': 'System Startup', 'physical_index': 25}, {'structure': '5.3', 'title': 'Execution Management Responsibilities', 'physical_index': 25}, {'structure': '5.4', 'title': 'Deterministic Execution', 'physical_index': 26}, {'structure': '5.5', 'title': 'Resource Limitation', 'physical_index': 27}, {'structure': '5.6', 'title': 'State Management', 'physical_index': 27}, {'structure': '5.7', 'title': 'Application Recovery', 'physical_index': 29}, {'structure': '6', 'title': 'State Management', 'physical_index': 30}, {'structure': '7', 'title': 'Communication Management', 'physical_index': 32}, {'structure': '7.1', 'title': 'Overview', 'physical_index': 32}, {'structure': '7.2', 'title': 'Service Oriented Communication', 'physical_index': 32}, {'structure': '7.3', 'title': 'Language binding and Network binding', 'physical_index': 33}, {'structure': '7.4', 'title': 'Generated Proxies and Skeletons of C++ Language Binding', 'physical_index': 34}, {'structure': '7.5', 'title': 'Static and dynamic configuration', 'physical_index': 35}, {'structure': '8', 'title': 'RESTful Communication', 'physical_index': 36}, {'structure': '8.1', 'title': 'Overview', 'physical_index': 36}, {'structure': '8.2', 'title': 'Architecture', 'physical_index': 36}, {'structure': '8.3', 'title': 'Components', 'physical_index': 37}, {'structure': '9', 'title': 'Diagnostics', 'physical_index': 38}, {'structure': '9.1', 'title': 'Overview', 'physical_index': 38}, {'structure': '9.2', 'title': 'Diagnostic communication sub-cluster', 'physical_index': 38}, {'structure': '9.3', 'title': 'Event memory sub-cluster', 'physical_index': 39}, {'structure': '10', 'title': 'Persistency', 'physical_index': 41}, {'structure': '10.1', 'title': 'Overview', 'physical_index': 41}, {'structure': '10.2', 'title': 'Key-Value Storage', 'physical_index': 41}, {'structure': '10.3', 'title': 'File-Proxy Storage', 'physical_index': 42}, {'structure': '10.4', 'title': 'Use cases for handling persistent data for UCM', 'physical_index': 42}, {'structure': '11', 'title': 'Time Synchronization', 'physical_index': 44}, {'structure': '11.1', 'title': 'Overview', 'physical_index': 44}, {'structure': '11.2', 'title': 'Design', 'physical_index': 44}, {'structure': '11.3', 'title': 'Architecture', 'physical_index': 45}, {'structure': '12', 'title': 'Network Management', 'physical_index': 46}, {'structure': '12.1', 'title': 'Overview', 'physical_index': 46}, {'structure': '12.2', 'title': 'Architecture', 'physical_index': 47}, {'structure': '13', 'title': 'Update and Config Management', 'physical_index': 48}, {'structure': '13.1', 'title': 'Overview', 'physical_index': 48}, {'structure': '13.2', 'title': 'Update protocol', 'physical_index': 48}, {'structure': '13.2.1', 'title': 'Data transfer', 'physical_index': 48}, {'structure': '13.3', 'title': 'Packages', 'physical_index': 49}, {'structure': '13.3.1', 'title': 'Software package', 'physical_index': 49}, {'structure': '13.3.2', 'title': 'Backend package', 'physical_index': 50}, {'structure': '13.3.3', 'title': 'Vehicle Package Manifest', 'physical_index': 51}, {'structure': '13.3.4', 'title': 'Software release and packaging workflow', 'physical_index': 52}, {'structure': '13.3.5', 'title': 'Processing and activating Software Packages', 'physical_index': 55}, {'structure': '13.4', 'title': 'Software information reporting', 'physical_index': 56}, {'structure': '13.5', 'title': 'Software update consistency and authentication', 'physical_index': 56}, {'structure': '13.6', 'title': 'Securing the update process', 'physical_index': 57}, {'structure': '13.7', 'title': 'Safe State Management during an update process', 'physical_index': 58}, {'structure': '14', 'title': 'Identity and Access Management', 'physical_index': 60}, {'structure': '14.1', 'title': 'Terminology', 'physical_index': 60}, {'structure': '14.2', 'title': 'Scope and Focus of the IAM framework', 'physical_index': 60}, {'structure': '14.3', 'title': 'Contents of the AUTOSAR specification', 'physical_index': 61}, {'structure': '14.4', 'title': 'The architecture of the IAM Framework', 'physical_index': 62}, {'structure': '14.4.1.1', 'title': 'General Framework', 'physical_index': 62}, {'structure': '14.4.1.2', 'title': 'Preliminaries and Assumptions', 'physical_index': 62}, {'structure': '14.4.1.3', 'title': 'Identification of Adaptive Applications', 'physical_index': 63}, {'structure': '14.4.1.4', 'title': 'The IAM Sequence', 'physical_index': 63}, {'structure': '14.4.1.5', 'title': 'Implementation of Policy Decision Points', 'physical_index': 64}, {'structure': '14.5', 'title': 'Inter Platform Communication', 'physical_index': 65}, {'structure': '14.6', 'title': 'Implementation and Usage of IAM', 'physical_index': 67}, {'structure': '15', 'title': 'Cryptography', 'physical_index': 68}, {'structure': '15.1', 'title': 'Overview', 'physical_index': 68}, {'structure': '15.2', 'title': 'Security Architecture', 'physical_index': 68}, {'structure': '15.3', 'title': 'Key Management Architecture', 'physical_index': 69}, {'structure': '15.4', 'title': 'Remarks on API Extension', 'physical_index': 70}, {'structure': '16', 'title': 'Log and Trace', 'physical_index': 71}, {'structure': '16.1', 'title': 'Overview', 'physical_index': 71}, {'structure': '16.2', 'title': 'Architecture', 'physical_index': 72}, {'structure': '17', 'title': 'Safety', 'physical_index': 73}, {'structure': '17.1', 'title': 'Safety Overview', 'physical_index': 73}, {'structure': '17.2', 'title': 'Protection of information exchange (E2E-Protection)', 'physical_index': 74}, {'structure': '17.3', 'title': 'Platform Health Management', 'physical_index': 75}, {'structure': '17.4', 'title': 'C++ coding guidelines', 'physical_index': 76}, {'structure': '18', 'title': 'Core Types', 'physical_index': 78}, {'structure': '18.1', 'title': 'Error Handling', 'physical_index': 78}, {'structure': '18.2', 'title': 'Advanced data types', 'physical_index': 79}, {'structure': '18.3', 'title': 'Primitive data types', 'physical_index': 80}, {'structure': '19', 'title': 'References', 'physical_index': 81}]"
+  },
+  {
+    "mode": "process_toc_with_page_numbers",
+    "accuracy": 0.19230769230769232,
+    "incorrect_results": [
+      {
+        "list_index": 20,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 23
+      },
+      {
+        "list_index": 21,
+        "answer": "no",
+        "title": "POSIX",
+        "page_number": 23
+      },
+      {
+        "list_index": 22,
+        "answer": "no",
+        "title": "Scheduling",
+        "page_number": 24
+      },
+      {
+        "list_index": 23,
+        "answer": "no",
+        "title": "Memory management",
+        "page_number": 24
+      },
+      {
+        "list_index": 24,
+        "answer": "no",
+        "title": "Device management",
+        "page_number": 24
+      },
+      {
+        "list_index": 25,
+        "answer": "no",
+        "title": "Execution Management",
+        "page_number": 25
+      },
+      {
+        "list_index": 26,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 25
+      },
+      {
+        "list_index": 27,
+        "answer": "no",
+        "title": "System Startup",
+        "page_number": 25
+      },
+      {
+        "list_index": 28,
+        "answer": "no",
+        "title": "Execution Management Responsibilities",
+        "page_number": 25
+      },
+      {
+        "list_index": 29,
+        "answer": "no",
+        "title": "Deterministic Execution",
+        "page_number": 26
+      },
+      {
+        "list_index": 30,
+        "answer": "no",
+        "title": "Resource Limitation",
+        "page_number": 27
+      },
+      {
+        "list_index": 31,
+        "answer": "no",
+        "title": "State Management",
+        "page_number": 27
+      },
+      {
+        "list_index": 32,
+        "answer": "no",
+        "title": "Application Recovery",
+        "page_number": 29
+      },
+      {
+        "list_index": 33,
+        "answer": "no",
+        "title": "State Management",
+        "page_number": 30
+      },
+      {
+        "list_index": 34,
+        "answer": "no",
+        "title": "Communication Management",
+        "page_number": 32
+      },
+      {
+        "list_index": 35,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 32
+      },
+      {
+        "list_index": 36,
+        "answer": "no",
+        "title": "Service Oriented Communication",
+        "page_number": 32
+      },
+      {
+        "list_index": 37,
+        "answer": "no",
+        "title": "Language binding and Network binding",
+        "page_number": 33
+      },
+      {
+        "list_index": 38,
+        "answer": "no",
+        "title": "Generated Proxies and Skeletons of C++ Language Binding",
+        "page_number": 34
+      },
+      {
+        "list_index": 39,
+        "answer": "no",
+        "title": "Static and dynamic configuration",
+        "page_number": 35
+      },
+      {
+        "list_index": 40,
+        "answer": "no",
+        "title": "RESTful Communication",
+        "page_number": 36
+      },
+      {
+        "list_index": 41,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 36
+      },
+      {
+        "list_index": 42,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 36
+      },
+      {
+        "list_index": 43,
+        "answer": "no",
+        "title": "Components",
+        "page_number": 37
+      },
+      {
+        "list_index": 44,
+        "answer": "no",
+        "title": "Diagnostics",
+        "page_number": 38
+      },
+      {
+        "list_index": 45,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 38
+      },
+      {
+        "list_index": 46,
+        "answer": "no",
+        "title": "Diagnostic communication sub-cluster",
+        "page_number": 38
+      },
+      {
+        "list_index": 47,
+        "answer": "no",
+        "title": "Event memory sub-cluster",
+        "page_number": 39
+      },
+      {
+        "list_index": 48,
+        "answer": "no",
+        "title": "Persistency",
+        "page_number": 41
+      },
+      {
+        "list_index": 49,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 41
+      },
+      {
+        "list_index": 50,
+        "answer": "no",
+        "title": "Key-Value Storage",
+        "page_number": 41
+      },
+      {
+        "list_index": 51,
+        "answer": "no",
+        "title": "File-Proxy Storage",
+        "page_number": 42
+      },
+      {
+        "list_index": 52,
+        "answer": "no",
+        "title": "Use cases for handling persistent data for UCM",
+        "page_number": 42
+      },
+      {
+        "list_index": 53,
+        "answer": "no",
+        "title": "Time Synchronization",
+        "page_number": 44
+      },
+      {
+        "list_index": 54,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 44
+      },
+      {
+        "list_index": 55,
+        "answer": "no",
+        "title": "Design",
+        "page_number": 44
+      },
+      {
+        "list_index": 56,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 45
+      },
+      {
+        "list_index": 57,
+        "answer": "no",
+        "title": "Network Management",
+        "page_number": 46
+      },
+      {
+        "list_index": 58,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 46
+      },
+      {
+        "list_index": 59,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 47
+      },
+      {
+        "list_index": 60,
+        "answer": "no",
+        "title": "Update and Config Management",
+        "page_number": 48
+      },
+      {
+        "list_index": 61,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 48
+      },
+      {
+        "list_index": 62,
+        "answer": "no",
+        "title": "Update protocol",
+        "page_number": 48
+      },
+      {
+        "list_index": 63,
+        "answer": "no",
+        "title": "Data transfer",
+        "page_number": 48
+      },
+      {
+        "list_index": 64,
+        "answer": "no",
+        "title": "Packages",
+        "page_number": 49
+      },
+      {
+        "list_index": 65,
+        "answer": "no",
+        "title": "Software package",
+        "page_number": 49
+      },
+      {
+        "list_index": 66,
+        "answer": "no",
+        "title": "Backend package",
+        "page_number": 50
+      },
+      {
+        "list_index": 67,
+        "answer": "no",
+        "title": "Vehicle Package Manifest",
+        "page_number": 51
+      },
+      {
+        "list_index": 68,
+        "answer": "no",
+        "title": "Software release and packaging workflow",
+        "page_number": 52
+      },
+      {
+        "list_index": 69,
+        "answer": "no",
+        "title": "Processing and activating Software Packages",
+        "page_number": 55
+      },
+      {
+        "list_index": 70,
+        "answer": "no",
+        "title": "Software information reporting",
+        "page_number": 56
+      },
+      {
+        "list_index": 71,
+        "answer": "no",
+        "title": "Software update consistency and authentication",
+        "page_number": 56
+      },
+      {
+        "list_index": 72,
+        "answer": "no",
+        "title": "Securing the update process",
+        "page_number": 57
+      },
+      {
+        "list_index": 73,
+        "answer": "no",
+        "title": "Safe State Management during an update process",
+        "page_number": 58
+      },
+      {
+        "list_index": 74,
+        "answer": "no",
+        "title": "Identity and Access Management",
+        "page_number": 60
+      },
+      {
+        "list_index": 75,
+        "answer": "no",
+        "title": "Terminology",
+        "page_number": 60
+      },
+      {
+        "list_index": 76,
+        "answer": "no",
+        "title": "Scope and Focus of the IAM framework",
+        "page_number": 60
+      },
+      {
+        "list_index": 77,
+        "answer": "no",
+        "title": "Contents of the AUTOSAR specification",
+        "page_number": 61
+      },
+      {
+        "list_index": 78,
+        "answer": "no",
+        "title": "The architecture of the IAM Framework",
+        "page_number": 62
+      },
+      {
+        "list_index": 79,
+        "answer": "no",
+        "title": "General Framework",
+        "page_number": 62
+      },
+      {
+        "list_index": 80,
+        "answer": "no",
+        "title": "Preliminaries and Assumptions",
+        "page_number": 62
+      },
+      {
+        "list_index": 81,
+        "answer": "no",
+        "title": "Identification of Adaptive Applications",
+        "page_number": 63
+      },
+      {
+        "list_index": 82,
+        "answer": "no",
+        "title": "The IAM Sequence",
+        "page_number": 63
+      },
+      {
+        "list_index": 83,
+        "answer": "no",
+        "title": "Implementation of Policy Decision Points",
+        "page_number": 64
+      },
+      {
+        "list_index": 84,
+        "answer": "no",
+        "title": "Inter Platform Communication",
+        "page_number": 65
+      },
+      {
+        "list_index": 85,
+        "answer": "no",
+        "title": "Implementation and Usage of IAM",
+        "page_number": 67
+      },
+      {
+        "list_index": 86,
+        "answer": "no",
+        "title": "Cryptography",
+        "page_number": 68
+      },
+      {
+        "list_index": 87,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 68
+      },
+      {
+        "list_index": 88,
+        "answer": "no",
+        "title": "Security Architecture",
+        "page_number": 68
+      },
+      {
+        "list_index": 89,
+        "answer": "no",
+        "title": "Key Management Architecture",
+        "page_number": 69
+      },
+      {
+        "list_index": 90,
+        "answer": "no",
+        "title": "Remarks on API Extension",
+        "page_number": 70
+      },
+      {
+        "list_index": 91,
+        "answer": "no",
+        "title": "Log and Trace",
+        "page_number": 71
+      },
+      {
+        "list_index": 92,
+        "answer": "no",
+        "title": "Overview",
+        "page_number": 71
+      },
+      {
+        "list_index": 93,
+        "answer": "no",
+        "title": "Architecture",
+        "page_number": 72
+      },
+      {
+        "list_index": 94,
+        "answer": "no",
+        "title": "Safety",
+        "page_number": 73
+      },
+      {
+        "list_index": 95,
+        "answer": "no",
+        "title": "Safety Overview",
+        "page_number": 73
+      },
+      {
+        "list_index": 96,
+        "answer": "no",
+        "title": "Protection of information exchange (E2E-Protection)",
+        "page_number": 74
+      },
+      {
+        "list_index": 97,
+        "answer": "no",
+        "title": "Platform Health Management",
+        "page_number": 75
+      },
+      {
+        "list_index": 98,
+        "answer": "no",
+        "title": "C++ coding guidelines",
+        "page_number": 76
+      },
+      {
+        "list_index": 99,
+        "answer": "no",
+        "title": "Core Types",
+        "page_number": 78
+      },
+      {
+        "list_index": 100,
+        "answer": "no",
+        "title": "Error Handling",
+        "page_number": 78
+      },
+      {
+        "list_index": 101,
+        "answer": "no",
+        "title": "Advanced data types",
+        "page_number": 79
+      },
+      {
+        "list_index": 102,
+        "answer": "no",
+        "title": "Primitive data types",
+        "page_number": 80
+      },
+      {
+        "list_index": 103,
+        "answer": "no",
+        "title": "References",
+        "page_number": 81
+      }
+    ]
+  }
+]
