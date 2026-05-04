@@ -1,0 +1,219 @@
+{
+  "questions": [
+    {
+      "id": "doc003_q001",
+      "question": "What significant change was made to the document in the R22-11 release, and how does it relate to security?",
+      "relevant": [
+        "a bugfix was done to ensure secure counter removal"
+      ],
+      "keywords": [
+        "counter",
+        "secure",
+        "removal",
+        "ensure",
+        "bugfix"
+      ],
+      "difficulty": "medium",
+      "page_reference": "Page 1"
+    },
+    {
+      "id": "doc003_q002",
+      "question": "Define the term 'CryptoPrimitive' and explain its relationship with a CryptoDriverObject.",
+      "relevant": [
+        "A CryptoPrimitive is an instance of a configured cryptographic algorithm realized in a CryptoDriverObject.",
+        "TheCryptoDriverObject can offer different cryptoprimitives in hardware or software."
+      ],
+      "keywords": [
+        "offer",
+        "hardware",
+        "CryptoPrimitive",
+        "instance",
+        "software",
+        "cryptoprimitives",
+        "cryptographic",
+        "CryptoDriverObject",
+        "TheCryptoDriverObject",
+        "configured",
+        "different",
+        "algorithm",
+        "realized"
+      ],
+      "difficulty": "medium",
+      "page_reference": "Page 6"
+    },
+    {
+      "id": "doc003_q003",
+      "question": "List the input documents and related standards and norms that are referenced for the utilization of crypto services.",
+      "relevant": [
+        "[1] Specification of Crypto Service Manager",
+        "[2] Specification of Crypto Interface",
+        "[3] Specification of Crypto Driver",
+        "[4] Layered Software Architecture"
+      ],
+      "keywords": [
+        "Driver",
+        "Specification",
+        "Software",
+        "Manager",
+        "Architecture",
+        "Interface",
+        "Service",
+        "Layered",
+        "Crypto"
+      ],
+      "difficulty": "easy",
+      "page_reference": "Page 7"
+    },
+    {
+      "id": "doc003_q004",
+      "question": "What is the primary role of the Crypto Service Manager (CSM) in the AUTOSAR crypto stack, and how does it manage concurrent access to cryptographic services?",
+      "relevant": [
+        "The CSM [1] controls the concurrent access of one or more clients to one or more synchronous/asynchronous cryptographic services.",
+        "TheCSMmayhaveseveralqueueswhereasynchronousjobsareprocessedaccordingto their priority."
+      ],
+      "keywords": [
+        "synchronous/asynchronous",
+        "TheCSMmayhaveseveralqueueswhereasynchronousjobsareprocessedaccordingto",
+        "services",
+        "concurrent",
+        "access",
+        "their",
+        "controls",
+        "priority",
+        "cryptographic",
+        "clients"
+      ],
+      "difficulty": "medium",
+      "page_reference": "Pages 9-11"
+    },
+    {
+      "id": "doc003_q005",
+      "question": "How does the Crypto Interface (CRYIF) facilitate communication between the CSM and the Crypto Driver (CRYPTO), and what is its role in handling asynchronous requests?",
+      "relevant": [
+        "It receives requests from the CSM and maps them to the appropriate cryptographic operation in the CRYPTO.",
+        "Callback notifications inform about the outcome in case the request was asynchronous."
+      ],
+      "keywords": [
+        "request",
+        "inform",
+        "asynchronous",
+        "Callback",
+        "about",
+        "CRYPTO",
+        "outcome",
+        "requests",
+        "cryptographic",
+        "notifications",
+        "operation",
+        "appropriate",
+        "receives"
+      ],
+      "difficulty": "medium",
+      "page_reference": "Pages 9-11"
+    },
+    {
+      "id": "doc003_q006",
+      "question": "What is the difference between the streaming approach and the single call approach for processing crypto services, and when is each approach more beneficial?",
+      "relevant": [
+        "The streaming approach performs single operations separately on a given data.",
+        "In order to increase performance of the crypto services, the single call approach combines several job operations into one single function invocation."
+      ],
+      "keywords": [
+        "several",
+        "crypto",
+        "services",
+        "given",
+        "increase",
+        "function",
+        "invocation",
+        "separately",
+        "streaming",
+        "operations",
+        "single",
+        "performs",
+        "order",
+        "performance",
+        "combines",
+        "approach"
+      ],
+      "difficulty": "medium",
+      "page_reference": "Page 12"
+    },
+    {
+      "id": "doc003_q007",
+      "question": "What is the primary difference in key storage between hardware (HW) and software (SW) cryptographic implementations as described in the document?",
+      "relevant": [
+        "A HW CRYPTO implementation will typically use key slots.",
+        "Whereas a SW CRYPTO will use the NvM for managing the key storage."
+      ],
+      "keywords": [
+        "Whereas",
+        "CRYPTO",
+        "storage",
+        "slots",
+        "implementation",
+        "typically",
+        "managing"
+      ],
+      "difficulty": "medium",
+      "page_reference": "Page 13"
+    },
+    {
+      "id": "doc003_q008",
+      "question": "How does the configuration process of the crypto stack start, and what are the main steps involved in configuring the cryptographic primitives and keys?",
+      "relevant": [
+        "The configuration of the crypto stack is typically carried out using the top-down approach, starting from the CSM over CRYIF to CRYPTO.",
+        "In CSM, the user selects and configures the cryptographic primitives and keys to be used that are provided by CRYIF and CRYPTO.",
+        "In CRYIF, the user mainly defines the mapping of the features requested by the CSM onto the provided features of the registered CRYPTO modules.",
+        "In CRYPTO, the user adapts and extends the pre-configuration of the cryptographic primitives and keys."
+      ],
+      "keywords": [
+        "primitives",
+        "provided",
+        "adapts",
+        "selects",
+        "registered",
+        "using",
+        "stack",
+        "mapping",
+        "configuration",
+        "starting",
+        "CRYIF",
+        "top-down",
+        "features",
+        "defines",
+        "CRYPTO",
+        "carried",
+        "modules",
+        "requested",
+        "approach",
+        "extends",
+        "configures",
+        "cryptographic",
+        "typically",
+        "mainly",
+        "crypto",
+        "pre-configuration"
+      ],
+      "difficulty": "hard",
+      "page_reference": "Pages 13-14"
+    },
+    {
+      "id": "doc003_q009",
+      "question": "What specific key element is required for the Message Authentication Code (MAC) service to function correctly?",
+      "relevant": [
+        "MAC requires a key that at least references a key element 'Key Material' (CRYPTO_KE_MAC_KEY)."
+      ],
+      "keywords": [
+        "Material",
+        "element",
+        "requires",
+        "least",
+        "references",
+        "CRYPTO_KE_MAC_KEY"
+      ],
+      "difficulty": "easy",
+      "page_reference": "Page 14"
+    }
+  ]
+}

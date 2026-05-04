@@ -1,0 +1,680 @@
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Adaptive_Platform_Machine_Configuration__512_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     31 │     65.00% │        90.00% │ 73.33% │ .chunks/fixed-size-20260414-183556          │
+│ sliding-window      │     35 │     70.00% │        90.00% │ 76.67% │ .chunks/sliding-window-20260414-184036      │
+│ paragraph           │      1 │     75.00% │        90.00% │ 80.00% │ .chunks/paragraph-20260414-184535           │
+│ recursive-character │    482 │     20.00% │        40.00% │ 26.67% │ .chunks/recursive-character-20260414-184652 │
+│ header              │     35 │     70.00% │        90.00% │ 76.67% │ .chunks/header-20260414-185414              │
+│ semantic            │    344 │     45.00% │        70.00% │ 53.33% │ .chunks/semantic-20260414-185927            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 1807.4s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Explanation_of_Sensor_Interfaces__512_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      8 │     62.50% │        62.50% │ 62.50% │ .chunks/fixed-size-20260414-183100          │
+│ sliding-window      │      9 │     62.50% │        62.50% │ 62.50% │ .chunks/sliding-window-20260414-183131      │
+│ paragraph           │      1 │     62.50% │        62.50% │ 62.50% │ .chunks/paragraph-20260414-183201           │
+│ recursive-character │     79 │     18.75% │        25.00% │ 20.83% │ .chunks/recursive-character-20260414-183304 │
+│ header              │      9 │     62.50% │        62.50% │ 62.50% │ .chunks/header-20260414-183400              │
+│ semantic            │    112 │     43.75% │        50.00% │ 45.83% │ .chunks/semantic-20260414-183439            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 295.8s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Explanation_of_Service-Oriented_Vehicle_Diagnostics__512_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/fixed-size-20260414-182644          │
+│ sliding-window      │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/sliding-window-20260414-182713      │
+│ paragraph           │      1 │     83.33% │       100.00% │ 88.89% │ .chunks/paragraph-20260414-182739           │
+│ recursive-character │     59 │     50.00% │        55.56% │ 51.85% │ .chunks/recursive-character-20260414-182821 │
+│ header              │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/header-20260414-182909              │
+│ semantic            │    101 │     50.00% │        77.78% │ 59.26% │ .chunks/semantic-20260414-182945            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 255.7s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/General_Specification_of_Transformers__512_k3.txt
+====================================================================================================
+
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+Traceback (most recent call last):
+  File "/home/olj3kor/praveen/rag_env/bin/rag-chunk", line 6, in <module>
+    sys.exit(main())
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 274, in main
+    code = analyze(args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 76, in analyze
+    result, per_questions = _run_strategy(text, func, strat, args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 94, in _run_strategy
+    chunks = func(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 419, in <lambda>
+    semantic_chunks(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 327, in semantic_chunks
+    embeddings = embedding_model.encode(sentences)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 517, in encode
+    out_features = self.forward(features)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 118, in forward
+    output_states = self.auto_model(**trans_features, return_dict=False)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 819, in forward
+    extended_attention_mask = _prepare_4d_attention_mask_for_sdpa(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/modeling_attn_mask_utils.py", line 457, in _prepare_4d_attention_mask_for_sdpa
+    return AttentionMaskConverter._expand_mask(mask=mask, dtype=dtype, tgt_len=tgt_len)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/modeling_attn_mask_utils.py", line 196, in _expand_mask
+    inverted_mask = torch.tensor(1.0, dtype=dtype) - expanded_mask
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 908.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 559.19 MiB is free. Process 2861483 has 1.09 GiB memory in use. Process 2862091 has 1.09 GiB memory in use. Process 2750036 has 6.89 GiB memory in use. Process 3419265 has 16.93 GiB memory in use. Process 3419264 has 6.16 GiB memory in use. Including non-PyTorch memory, this process has 5.98 GiB memory in use. Process 3433714 has 5.66 GiB memory in use. Of the allocated memory 5.46 GiB is allocated by PyTorch, and 26.92 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+[ERROR(1) | 1563.4s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Requirements_on_Operating_System_Interface__512_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      6 │      0.00% │         0.00% │  0.00% │ .chunks/fixed-size-20260414-182353          │
+│ sliding-window      │      7 │      0.00% │         0.00% │  0.00% │ .chunks/sliding-window-20260414-182413      │
+│ paragraph           │      1 │      0.00% │         0.00% │  0.00% │ .chunks/paragraph-20260414-182433           │
+│ recursive-character │     78 │      0.00% │         0.00% │  0.00% │ .chunks/recursive-character-20260414-182507 │
+│ header              │      7 │      0.00% │         0.00% │  0.00% │ .chunks/header-20260414-182536              │
+│ semantic            │     34 │      0.00% │         0.00% │  0.00% │ .chunks/semantic-20260414-182617            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 170.9s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Specification_of_Firewall_for_Adaptive_Platform__512_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     26 │     30.00% │        40.00% │ 33.33% │ .chunks/fixed-size-20260414-182353          │
+│ sliding-window      │     29 │     35.00% │        50.00% │ 40.00% │ .chunks/sliding-window-20260414-182910      │
+│ paragraph           │      1 │     45.00% │        60.00% │ 50.00% │ .chunks/paragraph-20260414-183507           │
+│ recursive-character │    382 │      5.00% │        10.00% │  6.67% │ .chunks/recursive-character-20260414-183622 │
+│ header              │     29 │     35.00% │        50.00% │ 40.00% │ .chunks/header-20260414-184250              │
+│ semantic            │    175 │     25.00% │        30.00% │ 26.67% │ .chunks/semantic-20260414-184917            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 1871.2s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Specification_of_Raw_Data_Stream__512_k3.txt
+====================================================================================================
+
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+Traceback (most recent call last):
+  File "/home/olj3kor/praveen/rag_env/bin/rag-chunk", line 6, in <module>
+    sys.exit(main())
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 274, in main
+    code = analyze(args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 76, in analyze
+    result, per_questions = _run_strategy(text, func, strat, args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 94, in _run_strategy
+    chunks = func(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 419, in <lambda>
+    semantic_chunks(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 327, in semantic_chunks
+    embeddings = embedding_model.encode(sentences)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 517, in encode
+    out_features = self.forward(features)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 118, in forward
+    output_states = self.auto_model(**trans_features, return_dict=False)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 789, in forward
+    embedding_output = self.embeddings(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 112, in forward
+    token_type_embeddings = self.token_type_embeddings(token_type_ids)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 189, in forward
+    return F.embedding(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/functional.py", line 2567, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1024.00 MiB. GPU 0 has a total capacity of 44.39 GiB of which 799.19 MiB is free. Process 2861483 has 1.09 GiB memory in use. Process 2862091 has 1.09 GiB memory in use. Process 2750036 has 6.89 GiB memory in use. Including non-PyTorch memory, this process has 5.76 GiB memory in use. Process 3455942 has 6.16 GiB memory in use. Process 3457293 has 16.93 GiB memory in use. Process 3472475 has 5.64 GiB memory in use. Of the allocated memory 5.25 GiB is allocated by PyTorch, and 23.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+[ERROR(1) | 3844.6s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Technical_Report_on_Operating_System_Tracing_Interface__512_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     11 │     83.33% │       100.00% │ 88.89% │ .chunks/fixed-size-20260414-182353          │
+│ sliding-window      │     12 │     56.67% │       100.00% │ 66.67% │ .chunks/sliding-window-20260414-182426      │
+│ paragraph           │      1 │     83.33% │       100.00% │ 88.89% │ .chunks/paragraph-20260414-182459           │
+│ recursive-character │    140 │     13.33% │        33.33% │ 19.05% │ .chunks/recursive-character-20260414-182523 │
+│ header              │     12 │     56.67% │       100.00% │ 66.67% │ .chunks/header-20260414-182603              │
+│ semantic            │    142 │     13.33% │        66.67% │ 22.22% │ .chunks/semantic-20260414-182708            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 246.5s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_3/Utilization_of_Crypto_Services__512_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/fixed-size-20260414-185403          │
+│ sliding-window      │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/sliding-window-20260414-185430      │
+│ paragraph           │      1 │     58.33% │        66.67% │ 61.38% │ .chunks/paragraph-20260414-185455           │
+│ recursive-character │     54 │     41.67% │        55.56% │ 46.56% │ .chunks/recursive-character-20260414-185532 │
+│ header              │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/header-20260414-185614              │
+│ semantic            │     95 │     47.22% │        66.67% │ 52.59% │ .chunks/semantic-20260414-185646            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 227.7s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_10/Explanation_of_Sensor_Interfaces__512_k10.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      8 │     62.50% │        62.50% │ 62.50% │ .chunks/fixed-size-20260414-200535          │
+│ sliding-window      │      9 │     62.50% │        62.50% │ 62.50% │ .chunks/sliding-window-20260414-200605      │
+│ paragraph           │      1 │     62.50% │        62.50% │ 62.50% │ .chunks/paragraph-20260414-200634           │
+│ recursive-character │     79 │     31.25% │        50.00% │ 37.50% │ .chunks/recursive-character-20260414-200735 │
+│ header              │      9 │     62.50% │        62.50% │ 62.50% │ .chunks/header-20260414-200828              │
+│ semantic            │    112 │     43.75% │        50.00% │ 45.83% │ .chunks/semantic-20260414-200905            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 282.9s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_10/Explanation_of_Service-Oriented_Vehicle_Diagnostics__512_k10.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/fixed-size-20260414-200119          │
+│ sliding-window      │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/sliding-window-20260414-200147      │
+│ paragraph           │      1 │     83.33% │       100.00% │ 88.89% │ .chunks/paragraph-20260414-200214           │
+│ recursive-character │     59 │     50.00% │        55.56% │ 51.85% │ .chunks/recursive-character-20260414-200259 │
+│ header              │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/header-20260414-200347              │
+│ semantic            │    101 │     55.56% │        77.78% │ 62.96% │ .chunks/semantic-20260414-200422            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 256.7s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_10/General_Specification_of_Transformers__512_k10.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     32 │     40.00% │        50.00% │ 43.33% │ .chunks/fixed-size-20260414-200252          │
+│ sliding-window      │     36 │     40.00% │        50.00% │ 43.33% │ .chunks/sliding-window-20260414-200813      │
+│ paragraph           │      1 │     40.00% │        50.00% │ 43.33% │ .chunks/paragraph-20260414-201351           │
+│ recursive-character │    472 │     20.00% │        30.00% │ 23.33% │ .chunks/recursive-character-20260414-201459 │
+│ header              │     36 │     40.00% │        50.00% │ 43.33% │ .chunks/header-20260414-202211              │
+│ semantic            │    272 │     30.00% │        40.00% │ 33.33% │ .chunks/semantic-20260414-202819            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 1945.8s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_10/Requirements_on_Operating_System_Interface__512_k10.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      6 │      0.00% │         0.00% │  0.00% │ .chunks/fixed-size-20260414-195956          │
+│ sliding-window      │      7 │      0.00% │         0.00% │  0.00% │ .chunks/sliding-window-20260414-200018      │
+│ paragraph           │      1 │      0.00% │         0.00% │  0.00% │ .chunks/paragraph-20260414-200039           │
+│ recursive-character │     78 │      0.00% │         0.00% │  0.00% │ .chunks/recursive-character-20260414-200112 │
+│ header              │      7 │      0.00% │         0.00% │  0.00% │ .chunks/header-20260414-200140              │
+│ semantic            │     34 │      0.00% │         0.00% │  0.00% │ .chunks/semantic-20260414-200223            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 176.2s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_10/Specification_of_Firewall_for_Adaptive_Platform__512_k10.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     26 │     45.00% │        60.00% │ 50.00% │ .chunks/fixed-size-20260414-193946          │
+│ sliding-window      │     29 │     45.00% │        60.00% │ 50.00% │ .chunks/sliding-window-20260414-194431      │
+│ paragraph           │      1 │     45.00% │        60.00% │ 50.00% │ .chunks/paragraph-20260414-195034           │
+│ recursive-character │    382 │     10.00% │        20.00% │ 13.33% │ .chunks/recursive-character-20260414-195157 │
+│ header              │     29 │     45.00% │        60.00% │ 50.00% │ .chunks/header-20260414-195821              │
+│ semantic            │    175 │     30.00% │        40.00% │ 33.33% │ .chunks/semantic-20260414-200504            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 1873.6s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_10/Technical_Report_on_Operating_System_Tracing_Interface__512_k10.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     11 │     83.33% │       100.00% │ 88.89% │ .chunks/fixed-size-20260414-193551          │
+│ sliding-window      │     12 │     83.33% │       100.00% │ 88.89% │ .chunks/sliding-window-20260414-193623      │
+│ paragraph           │      1 │     83.33% │       100.00% │ 88.89% │ .chunks/paragraph-20260414-193655           │
+│ recursive-character │    140 │     40.00% │        66.67% │ 50.00% │ .chunks/recursive-character-20260414-193718 │
+│ header              │     12 │     83.33% │       100.00% │ 88.89% │ .chunks/header-20260414-193757              │
+│ semantic            │    142 │     33.33% │        66.67% │ 40.74% │ .chunks/semantic-20260414-193857            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 234.9s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_10/Utilization_of_Crypto_Services__512_k10.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/fixed-size-20260414-201100          │
+│ sliding-window      │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/sliding-window-20260414-201124      │
+│ paragraph           │      1 │     58.33% │        66.67% │ 61.38% │ .chunks/paragraph-20260414-201149           │
+│ recursive-character │     54 │     47.22% │        66.67% │ 53.97% │ .chunks/recursive-character-20260414-201234 │
+│ header              │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/header-20260414-201316              │
+│ semantic            │     95 │     47.22% │        66.67% │ 52.59% │ .chunks/semantic-20260414-201350            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 236.0s]
+
+====================================================================================================
+FILE: ./results/chunk_768__topk_3/Technical_Report_on_Operating_System_Tracing_Interface__768_k3.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      8 │     66.67% │        66.67% │ 66.67% │ .chunks/fixed-size-20260414-201456          │
+│ sliding-window      │      8 │     66.67% │        66.67% │ 66.67% │ .chunks/sliding-window-20260414-201530      │
+│ paragraph           │      1 │     83.33% │       100.00% │ 88.89% │ .chunks/paragraph-20260414-201603           │
+│ recursive-character │     96 │     20.00% │        33.33% │ 25.00% │ .chunks/recursive-character-20260414-201624 │
+│ header              │      8 │     66.67% │        66.67% │ 66.67% │ .chunks/header-20260414-201655              │
+│ semantic            │    141 │     13.33% │        66.67% │ 22.22% │ .chunks/semantic-20260414-201757            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 226.3s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Adaptive_Platform_Machine_Configuration__512_k5.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     31 │     70.00% │        90.00% │ 76.67% │ .chunks/fixed-size-20260414-192951          │
+│ sliding-window      │     35 │     75.00% │        90.00% │ 80.00% │ .chunks/sliding-window-20260414-193349      │
+│ paragraph           │      1 │     75.00% │        90.00% │ 80.00% │ .chunks/paragraph-20260414-193844           │
+│ recursive-character │    482 │     25.00% │        50.00% │ 33.33% │ .chunks/recursive-character-20260414-193951 │
+│ header              │     35 │     75.00% │        90.00% │ 80.00% │ .chunks/header-20260414-194712              │
+│ semantic            │    344 │     45.00% │        70.00% │ 53.33% │ .chunks/semantic-20260414-195317            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 1805.1s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Explanation_of_Sensor_Interfaces__512_k5.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      8 │     62.50% │        62.50% │ 62.50% │ .chunks/fixed-size-20260414-192758          │
+│ sliding-window      │      9 │     62.50% │        62.50% │ 62.50% │ .chunks/sliding-window-20260414-192825      │
+│ paragraph           │      1 │     62.50% │        62.50% │ 62.50% │ .chunks/paragraph-20260414-192851           │
+│ recursive-character │     79 │     18.75% │        25.00% │ 20.83% │ .chunks/recursive-character-20260414-192941 │
+│ header              │      9 │     62.50% │        62.50% │ 62.50% │ .chunks/header-20260414-193025              │
+│ semantic            │    112 │     43.75% │        50.00% │ 45.83% │ .chunks/semantic-20260414-193057            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 244.2s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Explanation_of_Service-Oriented_Vehicle_Diagnostics__512_k5.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/fixed-size-20260414-190845          │
+│ sliding-window      │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/sliding-window-20260414-190912      │
+│ paragraph           │      1 │     83.33% │       100.00% │ 88.89% │ .chunks/paragraph-20260414-190939           │
+│ recursive-character │     59 │     50.00% │        55.56% │ 51.85% │ .chunks/recursive-character-20260414-191024 │
+│ header              │      7 │     83.33% │       100.00% │ 88.89% │ .chunks/header-20260414-191106              │
+│ semantic            │    101 │     55.56% │        77.78% │ 62.96% │ .chunks/semantic-20260414-191136            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 240.8s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/General_Specification_of_Transformers__512_k5.txt
+====================================================================================================
+
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+Traceback (most recent call last):
+  File "/home/olj3kor/praveen/rag_env/bin/rag-chunk", line 6, in <module>
+    sys.exit(main())
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 274, in main
+    code = analyze(args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 76, in analyze
+    result, per_questions = _run_strategy(text, func, strat, args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 94, in _run_strategy
+    chunks = func(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 419, in <lambda>
+    semantic_chunks(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 327, in semantic_chunks
+    embeddings = embedding_model.encode(sentences)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 517, in encode
+    out_features = self.forward(features)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 118, in forward
+    output_states = self.auto_model(**trans_features, return_dict=False)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 853, in forward
+    encoder_outputs = self.encoder(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 607, in forward
+    layer_outputs = layer_module(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 544, in forward
+    layer_output = apply_chunking_to_forward(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/pytorch_utils.py", line 257, in apply_chunking_to_forward
+    return forward_fn(*input_tensors)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 552, in feed_forward_chunk
+    intermediate_output = self.intermediate(attention_output)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 467, in forward
+    hidden_states = self.intermediate_act_fn(hidden_states)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/activations.py", line 85, in forward
+    return self.act(input)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.33 GiB. GPU 0 has a total capacity of 44.39 GiB of which 669.19 MiB is free. Process 2861483 has 1.09 GiB memory in use. Process 2862091 has 1.09 GiB memory in use. Process 2750036 has 6.89 GiB memory in use. Process 3455942 has 6.16 GiB memory in use. Including non-PyTorch memory, this process has 8.29 GiB memory in use. Process 3489661 has 4.03 GiB memory in use. Process 3496272 has 16.14 GiB memory in use. Of the allocated memory 7.12 GiB is allocated by PyTorch, and 688.17 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+[ERROR(1) | 1562.8s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Requirements_on_Operating_System_Interface__512_k5.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      6 │      0.00% │         0.00% │  0.00% │ .chunks/fixed-size-20260414-190603          │
+│ sliding-window      │      7 │      0.00% │         0.00% │  0.00% │ .chunks/sliding-window-20260414-190623      │
+│ paragraph           │      1 │      0.00% │         0.00% │  0.00% │ .chunks/paragraph-20260414-190642           │
+│ recursive-character │     78 │      0.00% │         0.00% │  0.00% │ .chunks/recursive-character-20260414-190712 │
+│ header              │      7 │      0.00% │         0.00% │  0.00% │ .chunks/header-20260414-190740              │
+│ semantic            │     34 │      0.00% │         0.00% │  0.00% │ .chunks/semantic-20260414-190817            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 161.5s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Specification_of_Firewall_for_Adaptive_Platform__512_k5.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     26 │     40.00% │        50.00% │ 43.33% │ .chunks/fixed-size-20260414-185850          │
+│ sliding-window      │     29 │     35.00% │        50.00% │ 40.00% │ .chunks/sliding-window-20260414-190349      │
+│ paragraph           │      1 │     45.00% │        60.00% │ 50.00% │ .chunks/paragraph-20260414-190916           │
+│ recursive-character │    382 │     10.00% │        20.00% │ 13.33% │ .chunks/recursive-character-20260414-191033 │
+│ header              │     29 │     35.00% │        50.00% │ 40.00% │ .chunks/header-20260414-191658              │
+│ semantic            │    175 │     25.00% │        30.00% │ 26.67% │ .chunks/semantic-20260414-192401            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 1861.1s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Specification_of_Raw_Data_Stream__512_k5.txt
+====================================================================================================
+
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+Traceback (most recent call last):
+  File "/home/olj3kor/praveen/rag_env/bin/rag-chunk", line 6, in <module>
+    sys.exit(main())
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 274, in main
+    code = analyze(args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 76, in analyze
+    result, per_questions = _run_strategy(text, func, strat, args)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/cli.py", line 94, in _run_strategy
+    chunks = func(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 419, in <lambda>
+    semantic_chunks(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/src/chunker.py", line 327, in semantic_chunks
+    embeddings = embedding_model.encode(sentences)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py", line 517, in encode
+    out_features = self.forward(features)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/sentence_transformers/models/Transformer.py", line 118, in forward
+    output_states = self.auto_model(**trans_features, return_dict=False)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 819, in forward
+    extended_attention_mask = _prepare_4d_attention_mask_for_sdpa(
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/modeling_attn_mask_utils.py", line 457, in _prepare_4d_attention_mask_for_sdpa
+    return AttentionMaskConverter._expand_mask(mask=mask, dtype=dtype, tgt_len=tgt_len)
+  File "/home/olj3kor/praveen/rag_env/lib/python3.10/site-packages/transformers/modeling_attn_mask_utils.py", line 196, in _expand_mask
+    inverted_mask = torch.tensor(1.0, dtype=dtype) - expanded_mask
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.00 GiB. GPU 0 has a total capacity of 44.39 GiB of which 5.09 GiB is free. Process 2861483 has 1.09 GiB memory in use. Process 2862091 has 1.09 GiB memory in use. Process 2750036 has 6.89 GiB memory in use. Including non-PyTorch memory, this process has 14.15 GiB memory in use. Process 3499507 has 4.66 GiB memory in use. Process 3500823 has 6.45 GiB memory in use. Process 3520578 has 4.92 GiB memory in use. Of the allocated memory 13.24 GiB is allocated by PyTorch, and 429.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+
+[ERROR(1) | 3807.7s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Technical_Report_on_Operating_System_Tracing_Interface__512_k5.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │     11 │     83.33% │       100.00% │ 88.89% │ .chunks/fixed-size-20260414-185505          │
+│ sliding-window      │     12 │     83.33% │       100.00% │ 88.89% │ .chunks/sliding-window-20260414-185536      │
+│ paragraph           │      1 │     83.33% │       100.00% │ 88.89% │ .chunks/paragraph-20260414-185605           │
+│ recursive-character │    140 │     26.67% │        66.67% │ 36.11% │ .chunks/recursive-character-20260414-185627 │
+│ header              │     12 │     83.33% │       100.00% │ 88.89% │ .chunks/header-20260414-185704              │
+│ semantic            │    142 │     20.00% │        66.67% │ 30.16% │ .chunks/semantic-20260414-185801            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 225.3s]
+
+====================================================================================================
+FILE: ./results/chunk_512__topk_5/Utilization_of_Crypto_Services__512_k5.txt
+====================================================================================================
+
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ strategy            ┃ chunks ┃ avg_recall ┃ avg_precision ┃ avg_f1 ┃ saved                                       ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ fixed-size          │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/fixed-size-20260414-193202          │
+│ sliding-window      │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/sliding-window-20260414-193226      │
+│ paragraph           │      1 │     58.33% │        66.67% │ 61.38% │ .chunks/paragraph-20260414-193249           │
+│ recursive-character │     54 │     41.67% │        55.56% │ 46.56% │ .chunks/recursive-character-20260414-193329 │
+│ header              │      7 │     58.33% │        66.67% │ 61.38% │ .chunks/header-20260414-193411              │
+│ semantic            │     95 │     47.22% │        66.67% │ 52.59% │ .chunks/semantic-20260414-193445            │
+└─────────────────────┴────────┴────────────┴───────────────┴────────┴─────────────────────────────────────────────┘
+
+--- STDERR ---
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+The tokenizer you are loading from '/home/olj3kor/praveen/chunk_methods/Distilabel/bge-m3-autosar-merged' with an incorrect regex pattern: https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/discussions/84#69121093e8b480e709447d5e. This will lead to incorrect tokenization. You should set the `fix_mistral_regex=True` flag when loading this tokenizer to fix this issue.
+
+[SUCCESS | 229.3s]
