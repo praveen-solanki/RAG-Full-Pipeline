@@ -1,0 +1,212 @@
+{
+  "dataset_info": {
+    "total_questions": 73,
+    "source_file": "/home/olj3kor/praveen/RAG_work/evaluation_questions_Qwen_72b.json"
+  },
+  "total": 73,
+  "successful": 67,
+  "errors": 6,
+  "summary": {
+    "page_recall_evaluable": 67,
+    "page_recall_excluded": 0,
+    "avg_page_recall": 0.6617,
+    "evidence_evaluable": 67,
+    "evidence_recall_excluded": 0,
+    "avg_evidence_recall": 0.4741,
+    "correct": 55,
+    "partial": 4,
+    "incorrect": 8,
+    "accuracy": 0.7534,
+    "avg_correctness_score": 0.8543,
+    "avg_completeness_score": 0.7597,
+    "hallucination_counts": {
+      "none": 60,
+      "minor": 1,
+      "major": 6
+    }
+  },
+  "breakdown_by_question_type": {
+    "multi-hop": {
+      "total": 31,
+      "correct": 25,
+      "partial": 2,
+      "incorrect": 4,
+      "page_recall_evaluable": 31,
+      "evidence_evaluable": 31,
+      "accuracy": 0.8065,
+      "avg_page_recall": 0.6747,
+      "avg_evidence_recall": 0.428,
+      "avg_correctness": 0.8365
+    },
+    "cross-page": {
+      "total": 3,
+      "correct": 3,
+      "partial": 0,
+      "incorrect": 0,
+      "page_recall_evaluable": 3,
+      "evidence_evaluable": 3,
+      "accuracy": 1.0,
+      "avg_page_recall": 0.8333,
+      "avg_evidence_recall": 0.6667,
+      "avg_correctness": 0.9333
+    },
+    "comparison": {
+      "total": 10,
+      "correct": 8,
+      "partial": 1,
+      "incorrect": 1,
+      "page_recall_evaluable": 10,
+      "evidence_evaluable": 10,
+      "accuracy": 0.8,
+      "avg_page_recall": 0.6,
+      "avg_evidence_recall": 0.45,
+      "avg_correctness": 0.86
+    },
+    "causal": {
+      "total": 2,
+      "correct": 2,
+      "partial": 0,
+      "incorrect": 0,
+      "page_recall_evaluable": 2,
+      "evidence_evaluable": 2,
+      "accuracy": 1.0,
+      "avg_page_recall": 1.0,
+      "avg_evidence_recall": 0.75,
+      "avg_correctness": 0.925
+    },
+    "definition": {
+      "total": 8,
+      "correct": 6,
+      "partial": 1,
+      "incorrect": 1,
+      "page_recall_evaluable": 8,
+      "evidence_evaluable": 8,
+      "accuracy": 0.75,
+      "avg_page_recall": 0.625,
+      "avg_evidence_recall": 0.5,
+      "avg_correctness": 0.8
+    },
+    "list|numerical": {
+      "total": 1,
+      "correct": 1,
+      "partial": 0,
+      "incorrect": 0,
+      "page_recall_evaluable": 1,
+      "evidence_evaluable": 1,
+      "accuracy": 1.0,
+      "avg_page_recall": 1.0,
+      "avg_evidence_recall": 1.0,
+      "avg_correctness": 1.0
+    },
+    "list": {
+      "total": 4,
+      "correct": 3,
+      "partial": 0,
+      "incorrect": 1,
+      "page_recall_evaluable": 4,
+      "evidence_evaluable": 4,
+      "accuracy": 0.75,
+      "avg_page_recall": 0.5,
+      "avg_evidence_recall": 0.5,
+      "avg_correctness": 0.855
+    },
+    "definition|multi-hop": {
+      "total": 2,
+      "correct": 2,
+      "partial": 0,
+      "incorrect": 0,
+      "page_recall_evaluable": 2,
+      "evidence_evaluable": 2,
+      "accuracy": 1.0,
+      "avg_page_recall": 0.8334,
+      "avg_evidence_recall": 0.75,
+      "avg_correctness": 0.95
+    },
+    "single-hop": {
+      "total": 3,
+      "correct": 3,
+      "partial": 0,
+      "incorrect": 0,
+      "page_recall_evaluable": 3,
+      "evidence_evaluable": 3,
+      "accuracy": 1.0,
+      "avg_page_recall": 0.6667,
+      "avg_evidence_recall": 0.3333,
+      "avg_correctness": 0.9967
+    },
+    "multi-hop|definition": {
+      "total": 1,
+      "correct": 0,
+      "partial": 0,
+      "incorrect": 1,
+      "page_recall_evaluable": 1,
+      "evidence_evaluable": 1,
+      "accuracy": 0.0,
+      "avg_page_recall": 0.0,
+      "avg_evidence_recall": 0.0,
+      "avg_correctness": 0.5
+    },
+    "definition|causal": {
+      "total": 1,
+      "correct": 1,
+      "partial": 0,
+      "incorrect": 0,
+      "page_recall_evaluable": 1,
+      "evidence_evaluable": 1,
+      "accuracy": 1.0,
+      "avg_page_recall": 0.25,
+      "avg_evidence_recall": 1.0,
+      "avg_correctness": 0.9
+    },
+    "list|causal": {
+      "total": 1,
+      "correct": 1,
+      "partial": 0,
+      "incorrect": 0,
+      "page_recall_evaluable": 1,
+      "evidence_evaluable": 1,
+      "accuracy": 1.0,
+      "avg_page_recall": 1.0,
+      "avg_evidence_recall": 0.0,
+      "avg_correctness": 0.95
+    }
+  },
+  "breakdown_by_difficulty": {
+    "medium": {
+      "total": 54,
+      "correct": 45,
+      "partial": 4,
+      "incorrect": 5,
+      "page_recall_evaluable": 54,
+      "evidence_evaluable": 54,
+      "accuracy": 0.8333,
+      "avg_page_recall": 0.6821,
+      "avg_evidence_recall": 0.5049,
+      "avg_correctness": 0.8643
+    },
+    "hard": {
+      "total": 7,
+      "correct": 6,
+      "partial": 0,
+      "incorrect": 1,
+      "page_recall_evaluable": 7,
+      "evidence_evaluable": 7,
+      "accuracy": 0.8571,
+      "avg_page_recall": 0.5,
+      "avg_evidence_recall": 0.2143,
+      "avg_correctness": 0.8786
+    },
+    "easy": {
+      "total": 6,
+      "correct": 4,
+      "partial": 0,
+      "incorrect": 2,
+      "page_recall_evaluable": 6,
+      "evidence_evaluable": 6,
+      "accuracy": 0.6667,
+      "avg_page_recall": 0.6667,
+      "avg_evidence_recall": 0.5,
+      "avg_correctness": 0.7367
+    }
+  }
+}
