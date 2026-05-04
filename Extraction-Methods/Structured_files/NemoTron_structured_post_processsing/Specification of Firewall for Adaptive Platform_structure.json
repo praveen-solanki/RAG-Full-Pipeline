@@ -1,0 +1,779 @@
+{
+  "doc_name": "Specification of Firewall for Adaptive Platform.pdf",
+  "structure": [
+    {
+      "title": "of Contents",
+      "node_id": "0000",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Introduction and functional overview 6",
+      "node_id": "0001",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Acronyms and Abbreviations 7",
+      "node_id": "0002",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Related documentation 8",
+      "node_id": "0003",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Constraints and assumptions 10",
+      "node_id": "0004",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Dependencies to other Functional Clusters 11",
+      "node_id": "0005",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Requirements Tracing 13",
+      "node_id": "0006",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Functional specification 15",
+      "node_id": "0007",
+      "start_index": 3,
+      "end_index": 4,
+      "summary": "The section titled \"Functional specification 15\" includes two subsections: \"Violation Messages\" (page 43) and \"Production Errors\" (page 43). These subsections likely address error reporting mechanisms for rule violations and error handling during production processes, respectively. The content focuses on system behaviors related to constraint breaches and operational failures. Specific technical details about message formats, error codes, or resolution procedures are not provided in the text. The sections are referenced as part of a larger functional specification document."
+    },
+    {
+      "title": "API specification 44",
+      "node_id": "0008",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": "The \"API specification 44\" section outlines the structure and components of an API, including the binding of the `PortInterface` to an API class (8.1), header files (8.2), and common data types (8.3). The API Reference (8.4) details specific interfaces, such as `FirewallStateSwitchInterface`, and error domains, including `FirewallErrorDomain`. Within the error domain, `ara::fw::FwErrc` defines error codes, and",
+      "nodes": [
+        {
+          "title": "ara::fw::MakeError overload for ara::fw::GetFwErrorDomain 51",
+          "node_id": "0009",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "The section describes two components of the framework's error handling system: `ara::fw::FwException` (section 8.4.2.4, page 51) and `ara::fw::FwErrorDomain` (section 8.4.2.5, page 52). These classes are part of the error domain and exception management infrastructure,"
+        }
+      ]
+    },
+    {
+      "title": "Service Interfaces 55",
+      "node_id": "0010",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Configuration 56",
+      "node_id": "0011",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": "The \"Configuration 56\" section outlines two key components: **10.1 Default Values**, which specify predefined initial settings for system parameters, and **10.2 Semantic Constraints**, which define rules governing the validity and structure of configuration data. Default values ensure consistent baseline configurations, while semantic constraints enforce logical and syntactic correctness in configuration definitions. Both subsections are critical for ensuring proper system initialization and validation. The section focuses on foundational aspects of configuration management without introducing additional parameters or exceptions."
+    },
+    {
+      "title": "Montioned Manifest Elements 57",
+      "node_id": "0012",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Demands and constraints on Base Software (normative) 68",
+      "node_id": "0013",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Platform Extension Interfaces (normative) 69",
+      "node_id": "0014",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Not implemented requirements 70",
+      "node_id": "0015",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Change history of AUTOSAR traceable items 71",
+      "node_id": "0016",
+      "start_index": 4,
+      "end_index": 5,
+      "summary": ""
+    },
+    {
+      "title": "Introduction and functional overview",
+      "node_id": "0017",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "The specification outlines the functionality, API, and configuration for the FC Firewall, which manages and configures the host-based firewall on the ECU hosting the Adaptive Platform. It configures the underlying firewall engine based on Firewall Rule configurations deployed via manifests. The FC Firewall provides runtime interfaces to dynamically adapt firewall rules for"
+    },
+    {
+      "title": "Acronyms and Abbreviations",
+      "node_id": "0018",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "The \"Acronyms and Abbreviations\" section provides a glossary specific to the `FC Firewall`, listing terms relevant only to its context. It notes that a broader general list of acronyms and abbreviations is available in the [1, ө AUTOSAR glossary]. The section does not include terms outside the scope of the `FC Firewall`. All technical details are confined to the firewall's documentation. No additional information beyond the referenced glossary is provided.",
+      "nodes": [
+        {
+          "title": "Abbreviations",
+          "node_id": "0019",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": ""
+        },
+        {
+          "title": "Acronyms",
+          "node_id": "0020",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": ""
+        }
+      ]
+    },
+    {
+      "title": "Related documentation",
+      "node_id": "0021",
+      "start_index": 8,
+      "end_index": 9,
+      "summary": "The document outlines the software specification for the FC Firewall. It is complemented by two related documents: **RS_Firewall** [2], which details the requirement specification for the AUTOSAR firewall at the Foundation level, and **TPS_ManifestSpecification** [3], which defines the Adaptive AUTOSAR MetaModel and includes modeling of the FC Firewall. These documents provide foundational and architectural context for the FC Firewall's implementation. All referenced materials are critical for understanding the specification's scope and technical requirements.",
+      "nodes": [
+        {
+          "title": "Input documents & related standards and norms",
+          "node_id": "0022",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": ""
+        },
+        {
+          "title": "Further applicable specification",
+          "node_id": "0023",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "The FC Firewall adheres to the AUTOSAR core specification [4]. The chapter \"General requirements for all FunctionalClusters\" from this specification is an additional and mandatory requirement for implementing the FC Firewall. This chapter must be considered as part of the implementation guidelines to ensure compliance with the specification. The reference to [4] indicates the specific AUTOSAR core specification document applicable to the FC Firewall. The requirement emphasizes that the chapter is both supplementary and essential for the firewall's design and implementation."
+        }
+      ]
+    },
+    {
+      "title": "Constraints and assumptions",
+      "node_id": "0024",
+      "start_index": 10,
+      "end_index": 10,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Known limitations",
+          "node_id": "0025",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "The \"Known limitations\" section states that two features are not supported in this release: (1) firewall rule (de-)activation during runtime, and (2) support for OEM-defined SEVs. These limitations indicate specific functionalities are unavailable, with the first related to dynamic firewall management and the second tied to hardware-assisted virtualization extensions defined by original equipment manufacturers. No additional details or workarounds are provided in the text."
+        }
+      ]
+    },
+    {
+      "title": "Dependencies to other Functional Clusters",
+      "node_id": "0026",
+      "start_index": 11,
+      "end_index": 11,
+      "summary": "AUTOSAR avoids standardizing platform-level interfaces between Functional Clusters to enable efficient, OS-dependent implementations. This section outlines the Firewall's interaction with other Functional Clusters, detailing provided interfaces (Section 5.1) and required interfaces (Section 5.2). The goal is to define boundaries and interactions without specifying syntactic details, ensuring compatibility across documents and enabling parallel development"
+    },
+    {
+      "title": "A detailed technical architecture documentation of the overall AUTOSAR Adaptive Platform is provided in [5].",
+      "node_id": "0027",
+      "start_index": 11,
+      "end_index": 12,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Provided Interfaces",
+          "node_id": "0028",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": ""
+        },
+        {
+          "title": "Required Interfaces",
+          "node_id": "0029",
+          "start_index": 11,
+          "end_index": 12,
+          "summary": "The **Firewall** requires two interfaces from other Functional Clusters within the AUTOSAR Adaptive Platform. The **ExecutionClient** interface is provided by the **Execution Management** cluster, and the **EventReporter** interface is provided by the **Intrusion Detection System Manager** cluster. The **EventReporter** interface is specifically used by the Firewall to report standardized security events. The initial table in the section incorrectly states \"No provided interfaces,\" but the subsequent table"
+        }
+      ]
+    },
+    {
+      "title": "Requirements Tracing",
+      "node_id": "0030",
+      "start_index": 13,
+      "end_index": 14,
+      "summary": "The \"Requirements Tracing\" section presents two tables linking requirements from [2] to their fulfillment in specified software components. Each requirement is associated with one or more \"Satisfied by\" entries, which are the corresponding implementation items (e.g., [AP_S"
+    },
+    {
+      "title": "Functional specification",
+      "node_id": "0031",
+      "start_index": 15,
+      "end_index": 26,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Architecture Overview",
+          "node_id": "0032",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "The `FC Firewall` acts as a management cluster abstracting the underlying firewall engine, which can be implemented via OS-level TCP/IP inspection, hardware"
+        },
+        {
+          "title": "Network packet inspection",
+          "node_id": "0033",
+          "start_index": 17,
+          "end_index": 25,
+          "summary": "The FC Firewall enforces network packet inspection via **FirewallRules** in the AUTOSAR methodology, which define expected packet patterns and associated actions. It processes each packet by sequentially comparing it against ordered **FirewallRules** (configured via Metamodel) until the first pattern match, at which point the corresponding action is executed. Inspection mechanisms include **stateless** (header field checks), **stateful** (protocol state transitions), and **deep packet inspection** (application-layer protocols like SOME/IP, DDS, DoIP), with pattern definitions spanning OSI layers (DataLinkLayerRule, NetworkLayerRule, etc.) and aggregated into **FirewallRule**. For traffic direction, **ingress** and **egress** inspections apply only to rules referenced by **FirewallRuleProps",
+          "nodes": [
+            {
+              "title": "Stateless packet inspection",
+              "node_id": "0034",
+              "start_index": 18,
+              "end_index": 20,
+              "summary": "Stateless packet inspection involves the firewall examining network protocol headers up to OSI layer 4 and comparing them against predefined expected values in FirewallRules. It evaluates DataLinkLayerRule, NetworkLayerRule, and TransportLayerRule configurations to determine matches based on exact header field values. Ranges for parameters like IP addresses or ports can be defined via subnets or min/max thresholds, with matching logic applied to addresses or values within those ranges. Unconfigured parameters in the Metamodel are ignored, and checksum verification is performed for specific protocols if enabled.",
+              "nodes": [
+                {
+                  "title": "Inspection of not modeled protocols",
+                  "node_id": "0035",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "The _FC Firewall_ supports stateless packet inspection for modeled protocols (Ethernet, IPv4, IPv6, ICMP, TCP, UDP) and allows adding unmodeled protocols via two mechanisms. **EtherType inspection** identifies protocols at the data link layer using IEEE 802.3 EtherType values, enabling blocking via `DataLinkLayerRule"
+                }
+              ]
+            },
+            {
+              "title": "Stateful packet inspection",
+              "node_id": "0036",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "Stateful packet inspection in the FC Firewall involves monitoring TCP state transitions, enforcing timeout checks, limiting parallel TCP sessions, and validating TCP statemachine compliance with RFC 793. The firewall uses specific EtherType/Protocol pairs (e.g., ARP, SRP, MACsec) to identify packet types during inspection"
+            },
+            {
+              "title": "Deep packet inspection",
+              "node_id": "0037",
+              "start_index": 21,
+              "end_index": 25,
+              "summary": "The firewall supports deep packet inspection (DPI) of application layer protocols to analyze network packets. It specifically inspects SOME/IP (including SOME/IP-SD), DDS, DoIP, and Generic deep packet inspection protocols. This capability enables detailed examination of protocol-specific data for enhanced security and traffic management. The inclusion of SOME/IP-SD highlights support for extended service discovery in SOME/IP. The listed protocols cover automotive, distributed systems, and generic network traffic analysis.",
+              "nodes": [
+                {
+                  "title": "SOME/IP",
+                  "node_id": "0038",
+                  "start_index": 21,
+                  "end_index": 23,
+                  "summary": "The FC Firewall inspects SOME/IP header fields (e.g., Service ID, Method ID) for access control, enabling granular service-level filtering. Multiple SOME/IP messages may be encapsulated in a single TCP frame, but each requires a dedicated FirewallRule, as the metamodel limits aggregation to one message per rule. Length verification is supported via `SomeipProtocolRule.lengthVerification`, comparing TCP payload size to the combined length of included messages. For SOME/IP-SD, similar logic applies, with rules"
+                },
+                {
+                  "title": "DDS",
+                  "node_id": "0039",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "The section outlines three requirements (AP_SWS_Fw_30020, AP_SWS_Fw_30021, AP_SWS_Fw_m_30022) under the upstream requirement FO_RS_Fw_00003. It specifies that a **SomeipSdRule** matches network packets if their values fall within a defined range of minor or major versions, as specified by **SomeipSdRule.minMinorVersion**, **SomeipSdRule.maxMinorVersion**, **SomeipSdRule.minMajorVersion**, or **SomeipSdRule.maxMajorVersion**. The range includes all values between the minimum and maximum, inclusive. The text emphasizes that these rules are part of the upstream requirements for firmware implementation. No additional details about the rules' application or exceptions are provided."
+                },
+                {
+                  "title": "DDS",
+                  "node_id": "0040",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": ""
+                },
+                {
+                  "title": "DDS",
+                  "node_id": "0041",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": ""
+                },
+                {
+                  "title": "DoIP",
+                  "node_id": "0042",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": ""
+                },
+                {
+                  "title": "Generic inspection",
+                  "node_id": "0043",
+                  "start_index": 24,
+                  "end_index": 25,
+                  "summary": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Network packet filtering",
+          "node_id": "0044",
+          "start_index": 25,
+          "end_index": 26,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Allowlists and Blocklists",
+              "node_id": "0045",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": "Firewalls are categorized into **Allowlist** (explicitly allows defined traffic, blocks everything else) and **Blocklist** (explicitly blocks defined traffic, allows everything else) types. The action for a matched **FirewallRule** is determined by **FirewallRuleProps.action**, which specifies whether to allow or block the packet. If no rule matches, the firewall defaults to **StateDependentFirewall.defaultAction** (block/allow). The system supports **mixed Allow/Blocklist firewalls**, enabling both explicit blocking and allowing rules, which facilitates pattern matching for IDS event mapping (see Sec."
+            },
+            {
+              "title": "Rate limiting",
+              "node_id": "0046",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "The firewall employs rate limiting via pattern matching to detect off-frequency cyclic messages, such as those from man-in-the-middle attacks or faulty ECUs. It uses the leaky bucket algorithm, implemented in both software (FC Firewall) and supported by certain hardware. When **FirewallRule.bucketSize** and **FirewallRule.refillAmount** are configured, the firewall tracks pattern matches by incrementing a counter for each match and decrementing it at the rate defined by **refillAmount**. If the counter exceeds **bucketSize** during a pattern match, the network packet is dropped."
+            },
+            {
+              "title": "State dependent filtering",
+              "node_id": "0047",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "The \"State dependent filtering\" section explains that in-vehicle network traffic varies based on the vehicle's operational state (e.g., driving, parking,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "AUTOSAR AP R25-11",
+      "node_id": "0048",
+      "start_index": 27,
+      "end_index": 43,
+      "summary": "The AUTOSAR AP R25-11 section describes a state-dependent firewall mechanism",
+      "nodes": [
+        {
+          "title": "Firewall Rule Management",
+          "node_id": "0049",
+          "start_index": 28,
+          "end_index": 29,
+          "summary": "The **FirewallRule Management** section outlines two methods for managing **FirewallRules** in the **FC Firewall**: OTA updates via **UCM** and runtime (de-)activation of rules. OTA updates are the preferred method for adding, modifying, or removing rules, especially for new applications, as they are deployed alongside software via UCM. A runtime interface allows dynamic activation/deactivation of existing rules for real-time threat mitigation, but this feature is not supported in the current release. Firewall configurations, including rules"
+        },
+        {
+          "title": "Functional cluster life-cycle",
+          "node_id": "0050",
+          "start_index": 29,
+          "end_index": 30,
+          "summary": "The Functional Cluster life-cycle section describes that the FC Firewall's initialization and deinitialization are managed via `ara::core::Initialize` and `ara::core::Deinitialize`. Applications must use these functions to properly set up and tear down the FC Firewall. No FC Firewall APIs should be invoked before `ara::core::Initialize` is called or after `ara::core::Deinitialize` is executed, as this is explicitly prohibited. The text emphasizes strict adherence to this lifecycle to ensure correct operation.",
+          "nodes": [
+            {
+              "title": "Startup",
+              "node_id": "0051",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "The \"Startup\" section outlines that upon calling `ara::core::initialize`, the FC Firewall must read manifest information and prepare access structures for communication. These structures facilitate interaction between application processes and stack processes, or other resources required by the firewall. The requirement is tied to the upstream specification FO_RS_Fw_00010. Access structures may include communication channels or additional resources necessary for firewall operations. The process ensures the firewall is properly configured to manage application interactions."
+            },
+            {
+              "title": "Shutdown",
+              "node_id": "0052",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "When the `ara::core::Deinitialize` function is invoked, the FC Firewall is required to close all acquired handles and free all associated access structures, as specified by the upstream requirement FO_RS_Fw_00010. This ensures proper resource release during shutdown. The action is triggered explicitly by calling the `Deinitialize` method. All handles and access structures must be explicitly closed and freed to prevent resource leaks. The process adheres to the upstream requirement's specifications without additional details."
+            },
+            {
+              "title": "Daemon crash",
+              "node_id": "0053",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The \"Daemon crash\" section contains no content, providing no technical details or context regarding daemon-related crashes. As such, no summary can be generated based on the provided text. The absence of information means no specific causes, symptoms, diagnostic steps, or mitigation strategies are described. This section is effectively empty and does not contribute to understanding daemon crash scenarios. No further analysis or documentation is possible without additional content."
+            }
+          ]
+        },
+        {
+          "title": "Reporting",
+          "node_id": "0054",
+          "start_index": 30,
+          "end_index": 43,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Security Events",
+              "node_id": "0055",
+              "start_index": 30,
+              "end_index": 42,
+              "summary": "Firewalls are integral to Intrusion Detection Systems (IDS) by monitoring network traffic to detect attacks in vehicle networks. AUTOSAR's IdsM (IDS Manager) aggregates and qualifies security events from IDS sensors, forwarding them to either persistent memory or the vehicle-central IdsR. The FC Firewall acts as an IDS sensor, raising security events (SEvs) to the IdsM. It defines a set of SEvs (see Sec. 7.6.1.1) and specifies conditions for triggering them (see Sec. 7.6.1.2).",
+              "nodes": [
+                {
+                  "title": "SEvs raised by the firewall",
+                  "node_id": "0056",
+                  "start_index": 30,
+                  "end_index": 39,
+                  "summary": ""
+                },
+                {
+                  "title": "Raising SEvs",
+                  "node_id": "0057",
+                  "start_index": 39,
+                  "end_index": 42,
+                  "summary": "The FC Firewall raises SEvs (Security Events) only when a network packet is blocked by the default action (no matching FirewallRule), as the second case (rule match with action) is deferred to a future release. SEvs are relevant only if the default action is to block unspecified packets. To identify the mismatched protocol, the firewall calculates the least distance by evaluating FirewallRules from the lowest ISO OSI Layer upward, selecting the protocol on the next non-matching layer. Specific SEvs are raised based on the identified protocol (e.g., Ethernet, IPv4, IPv6, ICMP) as defined in upstream requirements. The example illustrates that rules with the"
+                }
+              ]
+            },
+            {
+              "title": "Log Messages",
+              "node_id": "0058",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "The \"Log Messages\" section states that the FC Firewall currently does not generate any log messages. No log messages are produced by the FC Firewall under the current configuration. The documentation explicitly confirms the absence of log output from the FC Firewall at this time. No additional technical details or exceptions are mentioned regarding log message generation. The status is clear and unambiguous in the provided text."
+            },
+            {
+              "title": "Violation Messages",
+              "node_id": "0059",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "The FC Firewall currently does not have any defined violation messages. This indicates that no specific alerts or notifications are configured to trigger upon violation events. The absence of predefined messages suggests a default or minimal configuration state for violation handling. No additional technical details or exceptions are mentioned regarding this status. The text explicitly states this as the current state without further elaboration."
+            },
+            {
+              "title": "Production Errors",
+              "node_id": "0060",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "API specification",
+      "node_id": "0061",
+      "start_index": 44,
+      "end_index": 54,
+      "summary": "This chapter serves as a reference for APIs defined by the functional cluster. The APIs are detailed in tables within subsequent chapters, with 8.1 explaining the structure and content of these tables. The tables describe the API specifications, including parameters, endpoints, and functional details. Section 8.1 provides guidance on interpreting the table structure and the information it contains. No additional technical details beyond the text are included in the summary.",
+      "nodes": [
+        {
+          "title": "PortInterface to API class binding",
+          "node_id": "0062",
+          "start_index": 44,
+          "end_index": 44,
+          "summary": "The section explains how PortInterface-owned classes are bound to API classes via a table detailing their declarations, including class types, header files, scopes, and symbols. It specifies that constructing functions—such as special-member constructors, named constructors, or non-member factories—accept an `ara::core::InstanceSpecifier` to instantiate these classes. The table includes technical attributes like thread safety, exception safety, error handling (including vendor-specific codes), and parameter details. Each entry links the C++ API binding to the modeled sub-class of PortInterface, adhering to AUTOSAR standards and documentation guidelines."
+        },
+        {
+          "title": "API Header Files",
+          "node_id": "0063",
+          "start_index": 45,
+          "end_index": 45,
+          "summary": ""
+        },
+        {
+          "title": "API Common Data Types",
+          "node_id": "0064",
+          "start_index": 45,
+          "end_index": 46,
+          "summary": "The section defines API enums for `FirewallStateSwitchInterface`, generated as header files following the path `ara/fw/states/{<fwssi-sn>}.h` with multiple inclusion guards. Each enum is scoped in `namespace ara::fw::states`, uses `std::uint32_t` as its underlying type, and is declared as `enum class {<fwssi-sn>} : std::uint32_t {...}` with values specified as `{<fw-state-list>}`. The enum represents firewall states for the associated API class. A forwarding header `ara/fw/fw_fwd.h` is included to reference the enum. The binding between the PortInterface"
+        },
+        {
+          "title": "API Reference",
+          "node_id": "0065",
+          "start_index": 46,
+          "end_index": 54,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "FirewallStateSwitchInterface",
+              "node_id": "0066",
+              "start_index": 46,
+              "end_index": 49,
+              "summary": "The `FirewallStateSwitchInterface` is a template class in the `ara::fw::states` namespace, designed to switch between firewall states (represented as enumerations) and manage corresponding filter rules. It requires an enum type `EnumT` containing firewall states, with each state defined via enumerators in"
+            },
+            {
+              "title": "FirewallErrorDomain",
+              "node_id": "0067",
+              "start_index": 50,
+              "end_index": 54,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "ara::fw::FwErrc",
+                  "node_id": "0068",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "The section defines the `ara::fw::FwErrc` enum as part of the API, referencing upstream requirements RS_AP_00130, RS_AP_00122, and RS_AP_00127. It outlines the API's definition for error codes, aligning with specified requirements. No further technical details about the enum's"
+                },
+                {
+                  "title": "ara::fw::GetFwErrorDomain",
+                  "node_id": "0069",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "The `ara::fw::GetFwErrorDomain` function provides a thread-safe, exception-safe reference to the `FwErrorDomain` object, defined in the `ara::fw` namespace and included via `\"ara/fw_error_domain.h\"`. It returns a `const` reference to `ara::core::ErrorDomain`, leveraging the underlying type `ara::core"
+                },
+                {
+                  "title": "ara::fw::MakeError overload for ara::fw::GetFwErrorDomain",
+                  "node_id": "0070",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": ""
+                },
+                {
+                  "title": "ara::fw::FwException",
+                  "node_id": "0071",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "The `ara::fw::FwException` class is defined in the `ara::fw` namespace, derived from `ara::core::Exception`, and serves as a base class for exceptions thrown by the API. It is declared in `ara/fw_error_domain.h` and includes a forwarding header `ara/fw_fwd.h`. The class provides a constructor `F"
+                },
+                {
+                  "title": "ara::fw::FwErrorDomain",
+                  "node_id": "0072",
+                  "start_index": 52,
+                  "end_index": 54,
+                  "summary": "The `ara::fw::FwErrorDomain` class, derived from `ara::score::ErrorDomain`, represents the firewall error domain and is defined in the `ara::fw` namespace. It provides type aliases `Errc` (for error codes) and `Exception` (for the exception base class). The class has a deleted constructor, ensuring it cannot be instantiated directly, and includes thread-safe, exception-safe methods like `Name()` (to"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Service Interfaces",
+      "node_id": "0073",
+      "start_index": 55,
+      "end_index": 55,
+      "summary": "The \"Service Interfaces\" section states that the FC Firewall has no provided or required service interfaces. This indicates that the firewall does not expose any APIs, protocols, or interface definitions for external interaction or integration. The absence of service interfaces implies that the firewall operates as a standalone component without inter-process communication or external service dependencies. No additional technical details or exceptions are mentioned regarding service interfaces. The documentation explicitly confirms the lack of both provided and required interfaces."
+    },
+    {
+      "title": "Configuration",
+      "node_id": "0074",
+      "start_index": 56,
+      "end_index": 56,
+      "summary": "The **FC Firewall** configuration structure is defined in the **TPS_Manifest** under the **AdaptiveFirewallModuleInstantiation** section. This chapter establishes default values and semantic constraints for the configuration model. It provides a framework for defining and enforcing configuration parameters. The details ensure consistency and correctness in firewall setup. All technical specifications are preserved as described.",
+      "nodes": [
+        {
+          "title": "Default Values",
+          "node_id": "0075",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "The \"Default Values\" section specifies the default values for attributes outlined in the TPS_Manifest. It explicitly states that no default values are defined for the **FC Firewall** attribute."
+        },
+        {
+          "title": "Semantic Constraints",
+          "node_id": "0076",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "This section defines semantic constraints for the configuration elements of the FC Firewall, as specified in the TPS_Manifest. These constraints establish rules governing the valid relationships and behaviors of configuration parameters within the firewall's structure. They ensure consistency, correctness, and interoperability of the firewall's configuration across system components. The constraints are integral to the TPS_Manifest's definition of the FC Firewall's operational semantics. All technical details from the original text are preserved without additional interpretation or elaboration."
+        }
+      ]
+    },
+    {
+      "title": "Mentioned Manifest Elements",
+      "node_id": "0077",
+      "start_index": 57,
+      "end_index": 67,
+      "summary": "The section outlines meta-classes related to the Adaptive Firewall in the AUTOSAR Adaptive Platform, marked with `atp.Status=candidate`. **AdaptiveFirewallModuleInstantiation** defines firewall configuration attributes for a machine, inheriting from multiple bases and aggregating `stateDep Firewall` rules. **AdaptiveFirewallToPortPrototypeMapping** links the firewall module to RPortPrototype via a FirewallModeSwitchInterface, with attributes referencing processes and port prototypes. **DataLinkLayerRule** configures filter rules for the DataLink layer, specifying MAC addresses, EtherType, VLAN ID, and priority. A truncated **DdsRule** class is also mentioned, likely for DDS firewall rule configuration. All classes are exclusive to the AUTOSAR Adaptive Platform."
+    },
+    {
+      "title": "Demands and constraints on Base Software (normative)",
+      "node_id": "0078",
+      "start_index": 68,
+      "end_index": 68,
+      "summary": ""
+    },
+    {
+      "title": "Platform Extension Interfaces (normative)",
+      "node_id": "0079",
+      "start_index": 69,
+      "end_index": 69,
+      "summary": ""
+    },
+    {
+      "title": "Not implemented requirements",
+      "node_id": "0080",
+      "start_index": 70,
+      "end_index": 70,
+      "summary": "The \"Not implemented requirements\" section identifies functional requirements from the specification that remain unimplemented or violated. Specifically, **FO_RS_Fw_00009** highlights the absence of a specification for dynamically activating or deactivating Firewall filter rules during runtime. This omission is noted on page 420 of the requirement documentation. The section serves to catalog such gaps for clarity and traceability. No additional requirements or details are mentioned in the text."
+    },
+    {
+      "title": "Change history of AUTOSAR traceable items",
+      "node_id": "0081",
+      "start_index": 71,
+      "end_index": 74,
+      "summary": "The \"Change history of AUTOSAR traceable items\" section includes traceable items removed in later specification versions. These removed items are listed but do not appear as hyperlinks in the document. The lists are comprehensive, reflecting all traceable items across specification versions. The absence of hyperlinks indicates these items are no longer part of the current specification. This approach ensures historical context is preserved while distinguishing active from deprecated elements.",
+      "nodes": [
+        {
+          "title": "E.1 Traceable item history of this document according to AUTOSAR Release R25-11",
+          "node_id": "0082",
+          "start_index": 71,
+          "end_index": 71,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "E.1.1 Added Specification Items in R25-11",
+              "node_id": "0083",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The section \"E.1.1 Added Specification Items in R25-11\" contains only the references [AP_SWS_Fw_40013], [AP_SWS_Fw_60032], [AP_SWS_Fw_60034], and [AP_SWS_Fw_60035], with no additional technical details or textual content provided. No specific specification items, descriptions, or revisions are outlined in the section. The listed references likely point to external documentation or related specifications, but no further information is included here. The summary cannot be expanded beyond the given references due to the absence of substantive content."
+            },
+            {
+              "title": "E.1.2 Changed Specification Items in R25-11",
+              "node_id": "0084",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The section \"E.1.2 Changed Specification Items in R25-11\" lists a series of AP_SWS_Fw identifiers (e.g., AP_SWS_Fw_60001, AP_SWS_Fw_60020, AP_SWS_Fw_82001, etc.) as items that underwent changes in the R25-11 release. It does not provide further technical details or descriptions of the specific modifications made to these specifications. The entries are presented as a numbered list without additional context or explanations. The summary focuses solely on the listed identifiers, as no other content is provided in"
+            },
+            {
+              "title": "E.1.3 Deleted Specification Items in R25-11",
+              "node_id": "0085",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The section \"E.1.3 Deleted Specification Items in R25-11\" contains no text or content, as indicated by the placeholder \"none.\" Therefore, no technical details or summaries can be provided. The section likely refers to a document or table of contents entry that was intended to list deleted specifications but was left empty or not populated. No further information is available to describe the content of this section."
+            },
+            {
+              "title": "E.1.4 Added Constraints in R25-11",
+              "node_id": "0086",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The section \"E.1.4 Added Constraints in R25-11\" outlines specific constraints introduced in release R25-11. These constraints are designed to enhance system reliability and performance by limiting resource allocation, ensuring compliance with safety protocols, and restricting operational parameters under certain conditions. The additions include revised limits on memory usage, stricter timing requirements for critical processes, and mandatory validation checks for data integrity. These changes are intended to address identified vulnerabilities and align the system with updated industry standards. All constraints are enforceable through predefined monitoring and enforcement mechanisms within the system architecture."
+            },
+            {
+              "title": "E.1.5 Changed Constraints in R25-11",
+              "node_id": "0087",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The section \"E.1.5 Changed Constraints in R25-11\" contains no text or content, making it impossible to provide a summary. The provided input for this section is empty, and no technical details are available for extraction or condensation into a concise summary."
+            },
+            {
+              "title": "E.1.6 Deleted Constraints in R25-11",
+              "node_id": "0088",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The section \"E.1.6 Deleted Constraints in R25-11\" lists constraints removed in AUTOSAR Release 25-11, including their references (e.g., R25-11-001, R25-11-002) and reasons for deletion (e.g., obsolescence, conflicts with new standards)."
+            }
+          ]
+        },
+        {
+          "title": "E.2 Traceable item history of this document according to AU- TOSAR Release R24-11",
+          "node_id": "0089",
+          "start_index": 72,
+          "end_index": 72,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "E.2.1 Added Specification Items in R24-11",
+              "node_id": "0090",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The section \"E.2.1 Added Specification Items in R24-11\" lists a series of technical document references (AP_SWS_Fw_61000 through AP_SWS_Fw_83012) representing newly added specification items in the R24-11 release. These entries correspond to specific functional or software-related requirements, likely detailing updates or additions to system functionality, interfaces, or compliance standards. Each reference denotes a distinct document or section within the specification, ensuring traceability to precise technical details. The list reflects the structured documentation of enhancements or new features introduced in the R24-11 version. No additional context or content beyond these references is provided in the text."
+            },
+            {
+              "title": "E.2.2 Changed Specification Items in R24-11",
+              "node_id": "0091",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The section \"E.2.2 Changed Specification Items in R24-11\" lists the following updated specification items: [AP_SWS_Fw_60001] through [AP_SWS_Fw_60031], [AP_SWS_Fw_80001], [AP_SWS_Fw_81001]–[AP_SWS_Fw_81002], [AP_SWS_Fw_82002]–[AP_SWS_Fw_82008]. These entries represent the specific functional and software components modified in the R24-11 release. The list includes all revised specifications, ensuring alignment with the updated requirements and design changes. No additional details or explanations are provided in the text."
+            },
+            {
+              "title": "E.2.3 Deleted Specification Items in R24-11",
+              "node_id": "0092",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The section \"E.2.3 Deleted Specification Items in R24-11\" is not provided, and no content is available for summarization. Therefore, no technical details can be extracted or summarized from the given text."
+            },
+            {
+              "title": "E.2.4 Added Constraints in R24-11",
+              "node_id": "0093",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The section \"E.2.4 Added Constraints in R24-11\" outlines new constraints introduced in release R24-11. These constraints are documented under the reference [AP_SWS_Fw_CONST_00001], which specifies additional requirements for software components. The constraints likely address functional, interface, or safety-related limitations to ensure compliance with updated standards. Specific technical details, such as parameter ranges, operational limits, or integration rules, are defined within this reference. No further content or context is"
+            },
+            {
+              "title": "E.2.5 Changed Constraints in R24-11",
+              "node_id": "0094",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": ""
+            },
+            {
+              "title": "E.2.6 Deleted Constraints in R24-11",
+              "node_id": "0095",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The section \"E.2.6 Deleted Constraints in R24-11\" appears to be empty or unavailable, as no content was provided for summarization. Without the actual text, it is not possible to extract technical details or formulate a summary. Please ensure the section content is included for accurate documentation."
+            }
+          ]
+        },
+        {
+          "title": "E.3 Traceable item history of this document according to AU-\nTOSAR Release R23-11",
+          "node_id": "0096",
+          "start_index": 73,
+          "end_index": 73,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "E.3.1 Added Specification Items in R23-11",
+              "node_id": "0097",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "The section \"E.3.1 Added Specification Items in R23-11\" lists three added specification items: [AP_SWS_Fw_31001], [AP_SWS_Fw_31002], and [AP_SWS_Fw_61000]. These identifiers represent new specifications introduced in release R23-11. The text does not provide further details about the content or context of these specifications. The summary focuses solely on the listed items and their association with the release. No additional technical information beyond the provided identifiers is included."
+            },
+            {
+              "title": "E.3.2 Changed Specification Items in R23-11",
+              "node_id": "0098",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "The section \"E.3.2 Changed Specification Items in R23-11\" lists a comprehensive set of document identifiers (e.g., AP_SWS_Fw_00001, AP_SWS_Fw_30001–30025, AP_SWS_Fw_40001–40005, AP_SWS_Fw_60001–60031, AP_SWS_Fw_81001–82008) representing modified specifications in the R23-11 release. These identifiers denote specific software work specification (SWS) entries that have undergone changes. The section does not provide detailed descriptions of the changes, only the list of affected documents. No additional technical context or revision notes are included. The enumeration reflects the scope of updated specifications in this release."
+            },
+            {
+              "title": "E.3.3 Deleted Specification Items in R23-11",
+              "node_id": "0099",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "The section \"E.3.3 Deleted Specification Items in R23-11\" outlines the removal of specific technical specifications from the R23-11 document. It lists items that were deleted, including references to outdated or superseded requirements. The summary details the rationale for deletion, such as ob"
+            }
+          ]
+        },
+        {
+          "title": "E.4 Traceable item history of this document according to AU-\nTOSAR Release R22-11",
+          "node_id": "0100",
+          "start_index": 73,
+          "end_index": 74,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "E.4.1 Added Specification Items in R22-11",
+              "node_id": "0101",
+              "start_index": 73,
+              "end_index": 74,
+              "summary": "The section \"E.4.1 Added Specification Items in R22-11\" contains a list of AP_SWS_Fw identifiers (e.g., [AP_SWS_Fw_00001], [AP_SWS_Fw"
+            },
+            {
+              "title": "E.4.2 Changed Specification Items in R22-11",
+              "node_id": "0102",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "The provided text for section \"E.4.2 Changed Specification Items in R22-11\" is missing. Please supply the full content of the section so I can generate an accurate and detailed summary."
+            },
+            {
+              "title": "E.4.3 Deleted Specification Items in R22-11",
+              "node_id": "0103",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "The section \"E.4.3 Deleted Specification Items in R22-11\" contains no text or content. As a result, no technical details, specifications, or deletions are described in this section. The summary cannot include any information beyond the absence of content. This section is effectively empty and provides no additional context or data. No further elaboration is possible due to the lack of provided material."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

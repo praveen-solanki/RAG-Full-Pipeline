@@ -1,0 +1,1295 @@
+{
+  "doc_name": "Specification of Firewall for Adaptive Platform.pdf",
+  "total_pages": 74,
+  "source": "granite_docling_vlm",
+  "hierarchy": [
+    {
+      "title": "Disclaimer",
+      "node_id": "0001",
+      "start_index": 2,
+      "end_index": 3,
+      "nodes": []
+    },
+    {
+      "title": "Table of Contents",
+      "node_id": "0002",
+      "start_index": 3,
+      "end_index": 6,
+      "nodes": []
+    },
+    {
+      "title": "1 Introduction and functional overview",
+      "node_id": "0003",
+      "start_index": 6,
+      "end_index": 7,
+      "nodes": []
+    },
+    {
+      "title": "2 Acronyms and Abbreviations",
+      "node_id": "0004",
+      "start_index": 7,
+      "end_index": 7,
+      "nodes": []
+    },
+    {
+      "title": "2.1 Acronyms",
+      "node_id": "0005",
+      "start_index": 7,
+      "end_index": 7,
+      "nodes": []
+    },
+    {
+      "title": "2.2 Abbreviations",
+      "node_id": "0006",
+      "start_index": 7,
+      "end_index": 8,
+      "nodes": []
+    },
+    {
+      "title": "3 Related documentation",
+      "node_id": "0007",
+      "start_index": 8,
+      "end_index": 8,
+      "nodes": []
+    },
+    {
+      "title": "3.1 Input documents & related standards and norms",
+      "node_id": "0008",
+      "start_index": 8,
+      "end_index": 9,
+      "nodes": []
+    },
+    {
+      "title": "3.2 Further applicable specification",
+      "node_id": "0009",
+      "start_index": 9,
+      "end_index": 10,
+      "nodes": []
+    },
+    {
+      "title": "4 Constraints and assumptions",
+      "node_id": "0010",
+      "start_index": 10,
+      "end_index": 10,
+      "nodes": []
+    },
+    {
+      "title": "4.1 Known limitations",
+      "node_id": "0011",
+      "start_index": 10,
+      "end_index": 11,
+      "nodes": []
+    },
+    {
+      "title": "5 Dependencies to other Functional Clusters",
+      "node_id": "0012",
+      "start_index": 11,
+      "end_index": 11,
+      "nodes": []
+    },
+    {
+      "title": "5.1 Provided Interfaces",
+      "node_id": "0013",
+      "start_index": 11,
+      "end_index": 11,
+      "nodes": []
+    },
+    {
+      "title": "5.2 Required Interfaces",
+      "node_id": "0014",
+      "start_index": 11,
+      "end_index": 13,
+      "nodes": []
+    },
+    {
+      "title": "6 Requirements Tracing",
+      "node_id": "0015",
+      "start_index": 13,
+      "end_index": 15,
+      "nodes": []
+    },
+    {
+      "title": "7 Functional specification",
+      "node_id": "0016",
+      "start_index": 15,
+      "end_index": 15,
+      "nodes": []
+    },
+    {
+      "title": "7.1 Architecture Overview",
+      "node_id": "0017",
+      "start_index": 15,
+      "end_index": 17,
+      "nodes": []
+    },
+    {
+      "title": "7.2 Network packet inspection",
+      "node_id": "0018",
+      "start_index": 17,
+      "end_index": 17,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30001]",
+      "node_id": "0019",
+      "start_index": 17,
+      "end_index": 17,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_31001]",
+      "node_id": "0020",
+      "start_index": 17,
+      "end_index": 18,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_31002]",
+      "node_id": "0021",
+      "start_index": 18,
+      "end_index": 18,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30002]",
+      "node_id": "0022",
+      "start_index": 18,
+      "end_index": 18,
+      "nodes": []
+    },
+    {
+      "title": "7.2.1 Stateless packet inspection",
+      "node_id": "0023",
+      "start_index": 18,
+      "end_index": 18,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30003]",
+      "node_id": "0024",
+      "start_index": 18,
+      "end_index": 18,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30004]",
+      "node_id": "0025",
+      "start_index": 18,
+      "end_index": 18,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30005]",
+      "node_id": "0026",
+      "start_index": 18,
+      "end_index": 19,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30006]",
+      "node_id": "0027",
+      "start_index": 19,
+      "end_index": 19,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30007]",
+      "node_id": "0028",
+      "start_index": 19,
+      "end_index": 19,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30008]",
+      "node_id": "0029",
+      "start_index": 19,
+      "end_index": 19,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30009]",
+      "node_id": "0030",
+      "start_index": 19,
+      "end_index": 19,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30010]",
+      "node_id": "0031",
+      "start_index": 19,
+      "end_index": 20,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30011]",
+      "node_id": "0032",
+      "start_index": 20,
+      "end_index": 20,
+      "nodes": []
+    },
+    {
+      "title": "7.2.1.1 Inspection of not modeled protocols",
+      "node_id": "0033",
+      "start_index": 20,
+      "end_index": 20,
+      "nodes": []
+    },
+    {
+      "title": "7.2.2 Stateful packet inspection",
+      "node_id": "0034",
+      "start_index": 20,
+      "end_index": 21,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30012]",
+      "node_id": "0035",
+      "start_index": 21,
+      "end_index": 21,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30013]",
+      "node_id": "0036",
+      "start_index": 21,
+      "end_index": 21,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30014]",
+      "node_id": "0037",
+      "start_index": 21,
+      "end_index": 21,
+      "nodes": []
+    },
+    {
+      "title": "7.2.3 Deep packet inspection",
+      "node_id": "0038",
+      "start_index": 21,
+      "end_index": 21,
+      "nodes": []
+    },
+    {
+      "title": "7.2.3.1 SOME/IP",
+      "node_id": "0039",
+      "start_index": 21,
+      "end_index": 22,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30015]",
+      "node_id": "0040",
+      "start_index": 22,
+      "end_index": 22,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30016]",
+      "node_id": "0041",
+      "start_index": 22,
+      "end_index": 22,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30017]",
+      "node_id": "0042",
+      "start_index": 22,
+      "end_index": 22,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30018]",
+      "node_id": "0043",
+      "start_index": 22,
+      "end_index": 22,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30019]",
+      "node_id": "0044",
+      "start_index": 22,
+      "end_index": 23,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30020]",
+      "node_id": "0045",
+      "start_index": 23,
+      "end_index": 23,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30021]",
+      "node_id": "0046",
+      "start_index": 23,
+      "end_index": 23,
+      "nodes": []
+    },
+    {
+      "title": "7.2.3.2 DDS",
+      "node_id": "0047",
+      "start_index": 23,
+      "end_index": 23,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30022]",
+      "node_id": "0048",
+      "start_index": 23,
+      "end_index": 24,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30023]",
+      "node_id": "0049",
+      "start_index": 24,
+      "end_index": 24,
+      "nodes": []
+    },
+    {
+      "title": "7.2.3.3 DoIP",
+      "node_id": "0050",
+      "start_index": 24,
+      "end_index": 24,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30024]",
+      "node_id": "0051",
+      "start_index": 24,
+      "end_index": 24,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30025]",
+      "node_id": "0052",
+      "start_index": 24,
+      "end_index": 24,
+      "nodes": []
+    },
+    {
+      "title": "7.2.3.4 Generic inspection",
+      "node_id": "0053",
+      "start_index": 24,
+      "end_index": 25,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_30026]",
+      "node_id": "0054",
+      "start_index": 25,
+      "end_index": 25,
+      "nodes": []
+    },
+    {
+      "title": "7.3 Network packet filtering",
+      "node_id": "0055",
+      "start_index": 25,
+      "end_index": 25,
+      "nodes": []
+    },
+    {
+      "title": "7.3.1 Allowlists and Blocklists",
+      "node_id": "0056",
+      "start_index": 25,
+      "end_index": 25,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40001]",
+      "node_id": "0057",
+      "start_index": 25,
+      "end_index": 25,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40002]",
+      "node_id": "0058",
+      "start_index": 25,
+      "end_index": 26,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40003]",
+      "node_id": "0059",
+      "start_index": 26,
+      "end_index": 26,
+      "nodes": []
+    },
+    {
+      "title": "7.3.2 Rate limiting",
+      "node_id": "0060",
+      "start_index": 26,
+      "end_index": 26,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40004]",
+      "node_id": "0061",
+      "start_index": 26,
+      "end_index": 26,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40005]",
+      "node_id": "0062",
+      "start_index": 26,
+      "end_index": 26,
+      "nodes": []
+    },
+    {
+      "title": "7.3.3 State dependent filtering",
+      "node_id": "0063",
+      "start_index": 26,
+      "end_index": 27,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40006]",
+      "node_id": "0064",
+      "start_index": 27,
+      "end_index": 27,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40007]",
+      "node_id": "0065",
+      "start_index": 27,
+      "end_index": 27,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40008]",
+      "node_id": "0066",
+      "start_index": 27,
+      "end_index": 27,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40013] FirewallStateSwitchInterface access control",
+      "node_id": "0067",
+      "start_index": 27,
+      "end_index": 28,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40009]",
+      "node_id": "0068",
+      "start_index": 28,
+      "end_index": 28,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40010]",
+      "node_id": "0069",
+      "start_index": 28,
+      "end_index": 28,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40011]",
+      "node_id": "0070",
+      "start_index": 28,
+      "end_index": 28,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_40012]",
+      "node_id": "0071",
+      "start_index": 28,
+      "end_index": 28,
+      "nodes": []
+    },
+    {
+      "title": "7.4 Firewall Rule Management",
+      "node_id": "0072",
+      "start_index": 28,
+      "end_index": 29,
+      "nodes": []
+    },
+    {
+      "title": "7.5 Functional cluster life-cycle",
+      "node_id": "0073",
+      "start_index": 29,
+      "end_index": 29,
+      "nodes": []
+    },
+    {
+      "title": "7.5.1 Startup",
+      "node_id": "0074",
+      "start_index": 29,
+      "end_index": 29,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_00001]",
+      "node_id": "0075",
+      "start_index": 29,
+      "end_index": 30,
+      "nodes": []
+    },
+    {
+      "title": "7.5.2 Shutdown",
+      "node_id": "0076",
+      "start_index": 30,
+      "end_index": 30,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_00002]",
+      "node_id": "0077",
+      "start_index": 30,
+      "end_index": 30,
+      "nodes": []
+    },
+    {
+      "title": "7.5.3 Daemon crash",
+      "node_id": "0078",
+      "start_index": 30,
+      "end_index": 30,
+      "nodes": []
+    },
+    {
+      "title": "7.6 Reporting",
+      "node_id": "0079",
+      "start_index": 30,
+      "end_index": 30,
+      "nodes": []
+    },
+    {
+      "title": "7.6.1 Security Events",
+      "node_id": "0080",
+      "start_index": 30,
+      "end_index": 30,
+      "nodes": []
+    },
+    {
+      "title": "7.6.1.1 SEvs raised by the firewall",
+      "node_id": "0081",
+      "start_index": 30,
+      "end_index": 31,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_61000] Security events for firewall (AP)",
+      "node_id": "0082",
+      "start_index": 31,
+      "end_index": 31,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60001] Security event context data definition: SEV_FW_PACKET_ BLOCKED_DATALINKLAYER_MISMATCH",
+      "node_id": "0083",
+      "start_index": 31,
+      "end_index": 32,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60020] Security event context data definition: SEV_FW_PACKET_ BLOCKED_IPV4_MISMATCH",
+      "node_id": "0084",
+      "start_index": 32,
+      "end_index": 32,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60021] Security event context data definition: SEV_FW_PACKET_ BLOCKED_IPV6_MISMATCH",
+      "node_id": "0085",
+      "start_index": 32,
+      "end_index": 33,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60022] Security event context data definition: SEV_FW_PACKET_ BLOCKED_ICMP_MISMATCH",
+      "node_id": "0086",
+      "start_index": 33,
+      "end_index": 33,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60023] Security event context data definition: SEV_FW_PACKET_ BLOCKED_TCP_MISMATCH",
+      "node_id": "0087",
+      "start_index": 33,
+      "end_index": 34,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60024] Security event context data definition: SEV_FW_PACKET_ BLOCKED_UDP_MISMATCH",
+      "node_id": "0088",
+      "start_index": 34,
+      "end_index": 34,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60025] Security event context data definition: SEV_FW_PACKET_ BLOCKED_SOMEIP_MISMATCH",
+      "node_id": "0089",
+      "start_index": 34,
+      "end_index": 35,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60026] Security event context data definition: SEV_FW_PACKET_ BLOCKED_SOMEIPSD_MISMATCH",
+      "node_id": "0090",
+      "start_index": 35,
+      "end_index": 35,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60027] Security event context data definition: SEV_FW_PACKET_ BLOCKED_DDS_MISMATCH",
+      "node_id": "0091",
+      "start_index": 35,
+      "end_index": 36,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60028] Security event context data definition: SEV_FW_PACKET_ BLOCKED_DOIP_MISMATCH",
+      "node_id": "0092",
+      "start_index": 36,
+      "end_index": 36,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60029] Security event context data definition: SEV_FW_PACKET_ BLOCKED_GENERIC_MISMATCH",
+      "node_id": "0093",
+      "start_index": 36,
+      "end_index": 37,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60002] Security event context data definition: SEV_FW_PACKET_ BLOCKED_TCP_MAXCONNECTIONS",
+      "node_id": "0094",
+      "start_index": 37,
+      "end_index": 37,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60030] Security event context data definition: SEV_FW_PACKET_ BLOCKED_TCP_TIMEOUT",
+      "node_id": "0095",
+      "start_index": 37,
+      "end_index": 38,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60031] Security event context data definition: SEV_FW_PACKET_ BLOCKED_TCP_STATETRANSITION",
+      "node_id": "0096",
+      "start_index": 38,
+      "end_index": 38,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60003] Security event context data definition: SEV_FW_PACKET_ BLOCKED_RATELIMIT",
+      "node_id": "0097",
+      "start_index": 38,
+      "end_index": 39,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60032] Security event context data definition: SEV_ACCESS_ CONTROL_FIREWALL_IAM_ACCESS_DENIED",
+      "node_id": "0098",
+      "start_index": 39,
+      "end_index": 39,
+      "nodes": []
+    },
+    {
+      "title": "7.6.1.2 Raising SEvs",
+      "node_id": "0099",
+      "start_index": 39,
+      "end_index": 39,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60004]",
+      "node_id": "0100",
+      "start_index": 39,
+      "end_index": 40,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60005]",
+      "node_id": "0101",
+      "start_index": 40,
+      "end_index": 40,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60006]",
+      "node_id": "0102",
+      "start_index": 40,
+      "end_index": 40,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60007]",
+      "node_id": "0103",
+      "start_index": 40,
+      "end_index": 40,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60008]",
+      "node_id": "0104",
+      "start_index": 40,
+      "end_index": 41,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60009]",
+      "node_id": "0105",
+      "start_index": 41,
+      "end_index": 41,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60010]",
+      "node_id": "0106",
+      "start_index": 41,
+      "end_index": 41,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60011]",
+      "node_id": "0107",
+      "start_index": 41,
+      "end_index": 41,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60012]",
+      "node_id": "0108",
+      "start_index": 41,
+      "end_index": 41,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60013]",
+      "node_id": "0109",
+      "start_index": 41,
+      "end_index": 41,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60014]",
+      "node_id": "0110",
+      "start_index": 41,
+      "end_index": 41,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60015]",
+      "node_id": "0111",
+      "start_index": 41,
+      "end_index": 42,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60016]",
+      "node_id": "0112",
+      "start_index": 42,
+      "end_index": 42,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60017]",
+      "node_id": "0113",
+      "start_index": 42,
+      "end_index": 42,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60018]",
+      "node_id": "0114",
+      "start_index": 42,
+      "end_index": 42,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60019]",
+      "node_id": "0115",
+      "start_index": 42,
+      "end_index": 42,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60035] Security event for access control",
+      "node_id": "0116",
+      "start_index": 42,
+      "end_index": 42,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_60034] Firewall security event context data",
+      "node_id": "0117",
+      "start_index": 42,
+      "end_index": 43,
+      "nodes": []
+    },
+    {
+      "title": "7.6.2 Log Messages",
+      "node_id": "0118",
+      "start_index": 43,
+      "end_index": 43,
+      "nodes": []
+    },
+    {
+      "title": "7.6.3 Violation Messages",
+      "node_id": "0119",
+      "start_index": 43,
+      "end_index": 43,
+      "nodes": []
+    },
+    {
+      "title": "7.6.4 Production Errors",
+      "node_id": "0120",
+      "start_index": 43,
+      "end_index": 44,
+      "nodes": []
+    },
+    {
+      "title": "8 API specification",
+      "node_id": "0121",
+      "start_index": 44,
+      "end_index": 44,
+      "nodes": []
+    },
+    {
+      "title": "8.1 PortInterface to API class binding",
+      "node_id": "0122",
+      "start_index": 44,
+      "end_index": 45,
+      "nodes": []
+    },
+    {
+      "title": "8.2 API Header Files",
+      "node_id": "0123",
+      "start_index": 45,
+      "end_index": 45,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_80001] File name, includes and multiple inclusion guard",
+      "node_id": "0124",
+      "start_index": 45,
+      "end_index": 45,
+      "nodes": []
+    },
+    {
+      "title": "8.3 API Common Data Types",
+      "node_id": "0125",
+      "start_index": 45,
+      "end_index": 46,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_81002] Definition of API variable ara::fw::states::{}",
+      "node_id": "0126",
+      "start_index": 46,
+      "end_index": 46,
+      "nodes": []
+    },
+    {
+      "title": "8.4 API Reference",
+      "node_id": "0127",
+      "start_index": 46,
+      "end_index": 46,
+      "nodes": []
+    },
+    {
+      "title": "8.4.1 FirewallStateSwitchInterface",
+      "node_id": "0128",
+      "start_index": 46,
+      "end_index": 46,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_82001] Definition of API class ara::fw::FirewallStateSwitchInterface",
+      "node_id": "0129",
+      "start_index": 46,
+      "end_index": 47,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_82002] Definition of API function ara::fw::FirewallStateSwitchInterface::FirewallStateSwitchInterface",
+      "node_id": "0130",
+      "start_index": 47,
+      "end_index": 47,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_82003] Definition of API function ara::fw::FirewallStateSwitchInterface::~FirewallStateSwitchInterface",
+      "node_id": "0131",
+      "start_index": 47,
+      "end_index": 48,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_82004] Definition of API function ara::fw::FirewallStateSwitchInterface::FirewallStateSwitchInterface",
+      "node_id": "0132",
+      "start_index": 48,
+      "end_index": 49,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_82007] Definition of API function ara::fw::FirewallStateSwitchInterface::operator=",
+      "node_id": "0133",
+      "start_index": 49,
+      "end_index": 49,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_82008] Definition of API function ara::fw::FirewallStateSwitchInterface::SwitchFirewallState",
+      "node_id": "0134",
+      "start_index": 49,
+      "end_index": 50,
+      "nodes": []
+    },
+    {
+      "title": "8.4.2 FirewallErrorDomain",
+      "node_id": "0135",
+      "start_index": 50,
+      "end_index": 50,
+      "nodes": []
+    },
+    {
+      "title": "8.4.2.1 ara::fw::FwErrc",
+      "node_id": "0136",
+      "start_index": 50,
+      "end_index": 50,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83001] Definition of API enum ara::fw::FwErrc",
+      "node_id": "0137",
+      "start_index": 50,
+      "end_index": 50,
+      "nodes": []
+    },
+    {
+      "title": "8.4.2.2 ara::fw::GetFwErrorDomain",
+      "node_id": "0138",
+      "start_index": 50,
+      "end_index": 50,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83002] Definition of API function ara::fw::GetFwErrorDomain",
+      "node_id": "0139",
+      "start_index": 50,
+      "end_index": 51,
+      "nodes": []
+    },
+    {
+      "title": "8.4.2.3 ara::fw::MakeErrorCode overload for ara::fw::GetFwErrorDomain",
+      "node_id": "0140",
+      "start_index": 51,
+      "end_index": 51,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83003] Definition of API function ara::fw::MakeErrorCode",
+      "node_id": "0141",
+      "start_index": 51,
+      "end_index": 51,
+      "nodes": []
+    },
+    {
+      "title": "8.4.2.4 ara::fw::FwException",
+      "node_id": "0142",
+      "start_index": 51,
+      "end_index": 51,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83004] Definition of API class ara::fw::FwException",
+      "node_id": "0143",
+      "start_index": 51,
+      "end_index": 51,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83005] Definition of API function ara::fw::FwException::FwException",
+      "node_id": "0144",
+      "start_index": 51,
+      "end_index": 52,
+      "nodes": []
+    },
+    {
+      "title": "8.4.2.5 ara::fw::FwErrorDomain",
+      "node_id": "0145",
+      "start_index": 52,
+      "end_index": 52,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83006] Definition of API class ara::fw::FwErrorDomain",
+      "node_id": "0146",
+      "start_index": 52,
+      "end_index": 52,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83007] Definition of API type ara::fw::FwErrorDomain::Errc",
+      "node_id": "0147",
+      "start_index": 52,
+      "end_index": 53,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83008] Definition of API type ara::fw::FwErrorDomain::Exception",
+      "node_id": "0148",
+      "start_index": 53,
+      "end_index": 53,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83009] Definition of API function ara::fw::FwErrorDomain::FwErrorDomain",
+      "node_id": "0149",
+      "start_index": 53,
+      "end_index": 53,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83010] Definition of API function ara::fw::FwErrorDomain::Name",
+      "node_id": "0150",
+      "start_index": 53,
+      "end_index": 54,
+      "nodes": []
+    },
+    {
+      "title": "[AP_SWS_Fw_83011] Definition of API function ara::fw::FwErrorDomain::Message",
+      "node_id": "0151",
+      "start_index": 54,
+      "end_index": 55,
+      "nodes": []
+    },
+    {
+      "title": "9 Service Interfaces",
+      "node_id": "0152",
+      "start_index": 55,
+      "end_index": 56,
+      "nodes": []
+    },
+    {
+      "title": "10 Configuration",
+      "node_id": "0153",
+      "start_index": 56,
+      "end_index": 56,
+      "nodes": []
+    },
+    {
+      "title": "10.1 Default Values",
+      "node_id": "0154",
+      "start_index": 56,
+      "end_index": 56,
+      "nodes": []
+    },
+    {
+      "title": "10.2 Semantic Constraints",
+      "node_id": "0155",
+      "start_index": 56,
+      "end_index": 57,
+      "nodes": []
+    },
+    {
+      "title": "A Mentioned Manifest Elements",
+      "node_id": "0156",
+      "start_index": 57,
+      "end_index": 57,
+      "nodes": []
+    },
+    {
+      "title": "Chapter is generated.",
+      "node_id": "0157",
+      "start_index": 57,
+      "end_index": 61,
+      "nodes": []
+    },
+    {
+      "title": "Table A.8: FirewallStateSwitchInterface",
+      "node_id": "0158",
+      "start_index": 61,
+      "end_index": 68,
+      "nodes": []
+    },
+    {
+      "title": "B Demands and constraints on Base Software (normative)",
+      "node_id": "0159",
+      "start_index": 68,
+      "end_index": 69,
+      "nodes": []
+    },
+    {
+      "title": "C Platform Extension Interfaces (normative)",
+      "node_id": "0160",
+      "start_index": 69,
+      "end_index": 70,
+      "nodes": []
+    },
+    {
+      "title": "D Not implemented requirements",
+      "node_id": "0161",
+      "start_index": 70,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E Change history of AUTOSAR traceable items",
+      "node_id": "0162",
+      "start_index": 71,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E.1 Traceable item history of this document according to AUTOSAR Release R25-11",
+      "node_id": "0163",
+      "start_index": 71,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E.1.1 Added Specification Items in R25-11",
+      "node_id": "0164",
+      "start_index": 71,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E.1.2 Changed Specification Items in R25-11",
+      "node_id": "0165",
+      "start_index": 71,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E.1.3 Deleted Specification Items in R25-11",
+      "node_id": "0166",
+      "start_index": 71,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E.1.4 Added Constraints in R25-11",
+      "node_id": "0167",
+      "start_index": 71,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E.1.5 Changed Constraints in R25-11",
+      "node_id": "0168",
+      "start_index": 71,
+      "end_index": 71,
+      "nodes": []
+    },
+    {
+      "title": "E.1.6 Deleted Constraints in R25-11",
+      "node_id": "0169",
+      "start_index": 71,
+      "end_index": 72,
+      "nodes": []
+    },
+    {
+      "title": "E.2 Traceable item history of this document according to AUTOSAR Release R24-11",
+      "node_id": "0170",
+      "start_index": 72,
+      "end_index": 72,
+      "nodes": []
+    },
+    {
+      "title": "E.2.1 Added Specification Items in R24-11",
+      "node_id": "0171",
+      "start_index": 72,
+      "end_index": 72,
+      "nodes": []
+    },
+    {
+      "title": "E.2.2 Changed Specification Items in R24-11",
+      "node_id": "0172",
+      "start_index": 72,
+      "end_index": 72,
+      "nodes": []
+    },
+    {
+      "title": "E.2.3 Deleted Specification Items in R24-11",
+      "node_id": "0173",
+      "start_index": 72,
+      "end_index": 72,
+      "nodes": []
+    },
+    {
+      "title": "E.2.4 Added Constraints in R24-11",
+      "node_id": "0174",
+      "start_index": 72,
+      "end_index": 72,
+      "nodes": []
+    },
+    {
+      "title": "E.2.5 Changed Constraints in R24-11",
+      "node_id": "0175",
+      "start_index": 72,
+      "end_index": 72,
+      "nodes": []
+    },
+    {
+      "title": "E.2.6 Deleted Constraints in R24-11",
+      "node_id": "0176",
+      "start_index": 72,
+      "end_index": 73,
+      "nodes": []
+    },
+    {
+      "title": "E.3 Traceable item history of this document according to AUTOSAR Release R23-11",
+      "node_id": "0177",
+      "start_index": 73,
+      "end_index": 73,
+      "nodes": []
+    },
+    {
+      "title": "E.3.1 Added Specification Items in R23-11",
+      "node_id": "0178",
+      "start_index": 73,
+      "end_index": 73,
+      "nodes": []
+    },
+    {
+      "title": "E.3.2 Changed Specification Items in R23-11",
+      "node_id": "0179",
+      "start_index": 73,
+      "end_index": 73,
+      "nodes": []
+    },
+    {
+      "title": "E.3.3 Deleted Specification Items in R23-11",
+      "node_id": "0180",
+      "start_index": 73,
+      "end_index": 73,
+      "nodes": []
+    },
+    {
+      "title": "E.4 Traceable item history of this document according to AUTOSAR Release R22-11",
+      "node_id": "0181",
+      "start_index": 73,
+      "end_index": 73,
+      "nodes": []
+    },
+    {
+      "title": "E.4.1 Added Specification Items in R22-11",
+      "node_id": "0182",
+      "start_index": 73,
+      "end_index": 74,
+      "nodes": []
+    },
+    {
+      "title": "E.4.2 Changed Specification Items in R22-11",
+      "node_id": "0183",
+      "start_index": 74,
+      "end_index": 74,
+      "nodes": []
+    },
+    {
+      "title": "E.4.3 Deleted Specification Items in R22-11",
+      "node_id": "0184",
+      "start_index": 74,
+      "end_index": 74,
+      "nodes": []
+    }
+  ]
+}

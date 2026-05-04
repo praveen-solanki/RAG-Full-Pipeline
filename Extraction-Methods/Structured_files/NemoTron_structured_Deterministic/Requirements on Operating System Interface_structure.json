@@ -1,0 +1,247 @@
+{
+  "doc_name": "Requirements on Operating System Interface.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 6,
+      "summary": "The document, owned and responsible by AUTOSAR, is part of the Adaptive Platform in AUTOSAR Standard Release R25-11 (Document ID 718) and is published. It includes a detailed change history from R19-11 to R25-11, highlighting updates such as C++17 adoption, requirement revisions (e.g., linking RS_OSI_00201–00203 to safety standards), and additions like tracing support. The document emphasizes its exclusive use for automotive applications, includes copyright notices, and restricts commercial exploitation without permission. It also notes trademark protections for the AUTOSAR brand."
+    },
+    {
+      "title": "Scope of Document",
+      "node_id": "0001",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "This document outlines the requirements for the Operating System (OS) that is part of the Foundation within the AUTOSAR Adaptive Platform. It focuses on specifying the functional and technical constraints the OS must meet to support the Adaptive Platform's architecture. The scope is limited to the OS layer, excluding other components of the Foundation or external systems. The requirements are tailored to ensure compatibility and performance within the AUTOSAR Adaptive Platform's context. No additional details about implementation or external dependencies are included."
+    },
+    {
+      "title": "Conventions to be used",
+      "node_id": "0002",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Document Conventions",
+          "node_id": "0003",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The representation of requirements in AUTOSAR documents adheres to the table specified in [TPS_STDT_00078], as outlined in [1, Standardization Template]. Verbal forms for expressing obligation, defined in [TPS_STDT_00053], are used to denote requirements, per [1, Standardization Template]. These conventions ensure standardized terminology and structure for requirement documentation. The references to specific standards ensure consistency in requirement phrasing and formatting. All technical details from the original text are preserved without additional interpretation."
+        }
+      ]
+    },
+    {
+      "title": "Requirements Guidelines",
+      "node_id": "0004",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Requirements",
+          "node_id": "0005",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The \"Requirements\" section lists three specific requirements: [RS_OSIQ_00204], [RS_OSIQ_00208], and [RS_OSIQ_00209], which are not included in the current release. These requirements are noted as subject to modification and may be considered for inclusion in a future document release. The text explicitly states that the described functionality is not part of this release but could be revised or added later. No additional details about their implementation or dependencies are provided."
+        }
+      ]
+    },
+    {
+      "title": "Acronyms and abbreviations",
+      "node_id": "0006",
+      "start_index": 8,
+      "end_index": 8,
+      "summary": "The section provides a glossary of acronyms and abbreviations relevant to the document, with definitions referenced to external documents. Key terms include \"Operating System,\" defined as software managing processes and hardware resources, and \"Operating System Interface (OSI),\" a functional cluster in the AUTOSAR Adaptive Platform specifying its interface. Other terms like Execution Management, Adaptive Application, ARTI, and Machine are referenced to [2] or [3], while \"Task\" is noted as equivalent to a thread or pthread in"
+    },
+    {
+      "title": "Requirements Specification",
+      "node_id": "0007",
+      "start_index": 9,
+      "end_index": 12,
+      "summary": "The \"Requirements Specification\" section outlines the criteria and specifications necessary for selecting an Operating System (OS) compatible with the AUTOSAR Adaptive Platform. It details the",
+      "nodes": [
+        {
+          "title": "Functional Overview",
+          "node_id": "0008",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "The Operating System (OS) manages runtime resources, including time, for all applications on the AUTOSAR Adaptive Platform, encompassing both Adaptive Applications and Functional Clusters (implemented as applications). It collaborates with Executive Management, which handles platform initialization and application lifecycle management. The OS Interface requirements are divided into two categories: one for Adaptive Applications and another for the platform’s Functional Clusters, which require specific OS mechanisms due to implementation complexity. Executive Management is highlighted as a key Functional Cluster relying on OS mechanisms not feasible to implement elsewhere. The OS ensures efficient resource management while supporting the platform’s architectural components."
+        },
+        {
+          "title": "Functional Requirements",
+          "node_id": "0009",
+          "start_index": 9,
+          "end_index": 12,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Assumption of Use",
+              "node_id": "0010",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "The \"Assumption of Use\" section outlines the execution environment of the AUTOSAR Adaptive Platform, which serves as a foundation for running Adaptive Applications. These assumptions focus on properties of the applications rather than strict requirements for the platform itself, guiding the derivation of further specifications. They help developers verify if their use cases align with the document and identify relevant requirements. The **Operating System** section specifies OS-related requirements that processes must assume are fulfilled to achieve their intended functionality. These assumptions provide context for ensuring compatibility and proper implementation of Adaptive Applications."
+            },
+            {
+              "title": "General Requirements",
+              "node_id": "0011",
+              "start_index": 10,
+              "end_index": 11,
+              "summary": "",
+              "nodes": [
+                {
+                  "title": "_Supporting Material:_",
+                  "node_id": "0012",
+                  "start_index": 10,
+                  "end_index": 11,
+                  "summary": "The \"Supporting Material:\" section references IEEE1003.13 [4] and IEEE1003.1 [5], which define the POSIX PSE51 profile and the broader POSIX standard, respectively. These standards underpin the POSIX-compliant foundation for the Operating System, specifying functionality for embedded systems, including synchronized I/O, timers, signals, semaphores, and threads. The PSE51 profile is selected for its adequacy in supporting Adaptive Applications with limited file access and no process forking. The second table’s \"Supporting Material:\" field is empty,"
+                }
+              ]
+            },
+            {
+              "title": "Operating System Requirements",
+              "node_id": "0013",
+              "start_index": 11,
+              "end_index": 12,
+              "summary": "The Operating System must provide mechanisms for system memory budgeting, enabling processes to react to external stimuli from devices and ensuring resource availability in multi-process systems. It must also support configuring memory and CPU time budgets for individual processes or groups, with use cases including security, protection against DoS attacks, and resource starvation prevention. Additionally, the OS should allow binding processes or process groups to specific CPU cores to"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "**[RS_OSI_00204] The Operating System shall support authorized operating system object access for the software entities which are allowed to do so.**",
+      "node_id": "0014",
+      "start_index": 13,
+      "end_index": 13,
+      "summary": ""
+    },
+    {
+      "title": "**[RS_OSI_00206] The Operating System shall provide multi-Process support for isolation of applications.**",
+      "node_id": "0015",
+      "start_index": 13,
+      "end_index": 13,
+      "summary": ""
+    },
+    {
+      "title": "**[RS_OSI_00207] The Operating System shall provide the capability to share code and data in an implicit manner.**",
+      "node_id": "0016",
+      "start_index": 13,
+      "end_index": 15,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Non-Functional Requirements",
+          "node_id": "0017",
+          "start_index": 15,
+          "end_index": 15,
+          "summary": "The Operating System must provide a mechanism to observe CPU scheduling for Tasks, Processes, and their start/stop events via ARTI-hooks to detect CPU resource shortages and identify causative entities. This observability is critical for tracing solutions to monitor CPU load and task behavior. Additionally, the OS must export low-level scheduling and trace information to applications like ara:log, enabling detailed logging of system activity. These requirements support OS-aware tracing tools by ensuring accessible, structured"
+        }
+      ]
+    },
+    {
+      "title": "References",
+      "node_id": "0018",
+      "start_index": 16,
+      "end_index": 16,
+      "summary": "The \"References\" section lists five key documents: (1) the AUTOSAR standardization template (AUTOSAR_FO_TPS_StandardizationTemplate), (2) requirements for execution management (AUTOSAR_AP_RS_ExecutionManagement), (3) the AUTOSAR glossary (AUTOSAR_FO_TR_Glossary), (4) the IEEE standard for POSIX-based real-time and embedded systems (IEEE 1003.13-2003), and (5) the POSIX Base Specifications, Issue 7 (OpenGroup, 9699919799). These references provide foundational standards for AUTOSAR and POSIX-compliant environments. URLs are provided for the IEEE and OpenGroup standards. The AUT"
+    },
+    {
+      "title": "Change history of AUTOSAR traceable items",
+      "node_id": "0019",
+      "start_index": 17,
+      "end_index": 21,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "A.1.1 Added Requirements in R25-11",
+          "node_id": "0020",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "The provided text for the section \"A.1.1 Added Requirements in R25-11\" is missing. Please provide the actual content of the section so I can generate an accurate summary."
+        },
+        {
+          "title": "A.1.2 Changed Requirements in R25-11",
+          "node_id": "0021",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": ""
+        },
+        {
+          "title": "A.1.3 Deleted Requirements in R25-11",
+          "node_id": "0022",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "The section \"A.1.3 Deleted Requirements in R25-11\" does not contain any text or content to summarize. Please provide the actual content of the section for an accurate summary."
+        },
+        {
+          "title": "A.2 Traceable item history of this document according to AUTOSAR Release R24-11",
+          "node_id": "0023",
+          "start_index": 18,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "A.2.1 Added Requirements in R24-11",
+              "node_id": "0024",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "The section \"A.2.1 Added Requirements in R24-11\" is not provided, so a summary cannot be generated. Please ensure the content is included for accurate technical documentation."
+            },
+            {
+              "title": "A.2.2 Changed Requirements in R24-11",
+              "node_id": "0025",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": ""
+            },
+            {
+              "title": "A.2.3 Deleted Requirements in R24-11",
+              "node_id": "0026",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "The section \"A.2.3 Deleted Requirements in R24-11\" contains no text or content, making it impossible to provide a summary. The user’s input indicates the section is empty, and no technical details are available for extraction. No further information or context is provided in the given text."
+            }
+          ]
+        },
+        {
+          "title": "A.3 Traceable item history of this document according to AUTOSAR Release R23-11",
+          "node_id": "0027",
+          "start_index": 19,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "A.3.1 Added Requirements in R23-11",
+              "node_id": "0028",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": ""
+            },
+            {
+              "title": "A.3.2 Changed Requirements in R23-11",
+              "node_id": "0029",
+              "start_index": 19,
+              "end_index": 20,
+              "summary": ""
+            },
+            {
+              "title": "A.4.8 Changed Requirements in R22-11",
+              "node_id": "0030",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": ""
+            },
+            {
+              "title": "A.4.9 Deleted Requirements in R22-11",
+              "node_id": "0031",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "The section \"A.4.9 Deleted Requirements in R22-11\" lists three requirements removed in the update: [RS_OSI_00103] (Operating System Interface supporting C++), [RS_OSI_00104] (support for reaction to process-external stimuli from devices), and [RS_OSI_NA] (no heading provided). These requirements were deleted as part of the R22-11 revision. The third entry, [RS_OSI_NA], appears to be an empty or placeholder requirement with no specified content"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

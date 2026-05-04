@@ -1,0 +1,668 @@
+{
+  "doc_description": "Technical Report on Operating System Tracing Interface.pdf",
+  "total_pages": 31,
+  "source_format": "granite_docling_vlm",
+  "structure": [
+    {
+      "node_id": "0001",
+      "title": "Disclaimer",
+      "start_index": 2,
+      "end_index": 3,
+      "summary": "Covers disclaimer and legal notices."
+    },
+    {
+      "node_id": "0002",
+      "title": "Table of Contents",
+      "start_index": 3,
+      "end_index": 5,
+      "summary": ""
+    },
+    {
+      "node_id": "0003",
+      "title": "1 Introduction",
+      "start_index": 5,
+      "end_index": 6,
+      "summary": "Introduces objectives and scope of the document.",
+      "nodes": [
+        {
+          "node_id": "0004",
+          "title": "1.1 Objectives",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "Outlines the objectives of the document."
+        },
+        {
+          "node_id": "0005",
+          "title": "1.2 Scope",
+          "start_index": 5,
+          "end_index": 6,
+          "summary": "Defines the scope of the document."
+        }
+      ]
+    },
+    {
+      "node_id": "0006",
+      "title": "2 Definition of terms and acronyms",
+      "start_index": 6,
+      "end_index": 7,
+      "summary": "Defines terms and acronyms used throughout the document.",
+      "nodes": [
+        {
+          "node_id": "0007",
+          "title": "2.1 Acronyms and abbreviations",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "Lists acronyms and abbreviations used in the document."
+        }
+      ]
+    },
+    {
+      "node_id": "0008",
+      "title": "3 Related Documentation",
+      "start_index": 7,
+      "end_index": 8,
+      "summary": "Lists related documentation."
+    },
+    {
+      "node_id": "0009",
+      "title": "4 Functional Specification",
+      "start_index": 8,
+      "end_index": 17,
+      "summary": "Describes functional specifications including the ARTI Tracing Interface.",
+      "nodes": [
+        {
+          "node_id": "0010",
+          "title": "4.1 ARTI Tracing Interface",
+          "start_index": 8,
+          "end_index": 17,
+          "summary": "Explains the ARTI Tracing Interface including the OS/ARTI Adapter.",
+          "nodes": [
+            {
+              "node_id": "0011",
+              "title": "4.1.1 OS/ARTI Adapter",
+              "start_index": 8,
+              "end_index": 17,
+              "summary": "Describes management and interfaces of the OS/ARTI Adapter.",
+              "nodes": [
+                {
+                  "node_id": "0012",
+                  "title": "4.1.1.1 Adapter Management",
+                  "start_index": 10,
+                  "end_index": 11,
+                  "summary": "Manages ARTI initialization, version info, and cleanup.",
+                  "nodes": [
+                    {
+                      "node_id": "0013",
+                      "title": "[TR_OSTI_00001] ARTI Version Info",
+                      "start_index": 10,
+                      "end_index": 11,
+                      "summary": "Provides information about ARTI version info."
+                    },
+                    {
+                      "node_id": "0014",
+                      "title": "[TR_OSTI_00002] ARTI Initialisation",
+                      "start_index": 11,
+                      "end_index": 11,
+                      "summary": "Describes the initialization process for ARTI."
+                    },
+                    {
+                      "node_id": "0015",
+                      "title": "[TR_OSTI_00003] ARTI Cleanup",
+                      "start_index": 11,
+                      "end_index": 11,
+                      "summary": "Explains the cleanup process for ARTI."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0016",
+                  "title": "4.1.1.2 Task Interface",
+                  "start_index": 11,
+                  "end_index": 15,
+                  "summary": "Describes task interface notifications.",
+                  "nodes": [
+                    {
+                      "node_id": "0017",
+                      "title": "[TR_OSTI_00004] ARTI Task Switch Notification",
+                      "start_index": 12,
+                      "end_index": 12,
+                      "summary": "Details task switch notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0018",
+                      "title": "[TR_OSTI_00005] ARTI Task Wait Notification",
+                      "start_index": 12,
+                      "end_index": 13,
+                      "summary": "Details task wait notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0019",
+                      "title": "[TR_OSTI_00006] ARTi Task Release Notification",
+                      "start_index": 13,
+                      "end_index": 13,
+                      "summary": "Details task release notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0020",
+                      "title": "[TR_OSTI_00007] ARTi Task Preempt Notification",
+                      "start_index": 13,
+                      "end_index": 13,
+                      "summary": "Details task preempt notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0021",
+                      "title": "[TR_OSTI_00008] ARTi Task Exit Notification",
+                      "start_index": 13,
+                      "end_index": 13,
+                      "summary": "Details task exit notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0022",
+                      "title": "[TR_OSTI_00009] ARTi Task Creation Notification",
+                      "start_index": 13,
+                      "end_index": 14,
+                      "summary": "Details task creation notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0023",
+                      "title": "[TR_OSTI_00010] ARTI Task Renaming Notification",
+                      "start_index": 14,
+                      "end_index": 14,
+                      "summary": "Details task renaming notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0024",
+                      "title": "[TR_OSTI_00011] ARTI Task Information Notification",
+                      "start_index": 14,
+                      "end_index": 15,
+                      "summary": "Details task information notifications in ARTI."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0025",
+                  "title": "4.1.1.3 Process Interface",
+                  "start_index": 15,
+                  "end_index": 17,
+                  "summary": "Describes process interface notifications.",
+                  "nodes": [
+                    {
+                      "node_id": "0026",
+                      "title": "[TR_OSTI_00012] ARTI Process Switch Notification",
+                      "start_index": 15,
+                      "end_index": 15,
+                      "summary": "Details process switch notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0027",
+                      "title": "[TR_OSTI_00013] ARTI Process Creation Notification",
+                      "start_index": 15,
+                      "end_index": 15,
+                      "summary": "Details process creation notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0028",
+                      "title": "[TR_OSTI_00014] ARTI Process Destroy Notification",
+                      "start_index": 15,
+                      "end_index": 16,
+                      "summary": "Details process destroy notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0029",
+                      "title": "[TR_OSTI_00015] ARTI Process Renaming Notification",
+                      "start_index": 16,
+                      "end_index": 16,
+                      "summary": "Details process renaming notifications in ARTI."
+                    },
+                    {
+                      "node_id": "0030",
+                      "title": "[TR_OSTI_00016] ARTI Process Information Notification",
+                      "start_index": 16,
+                      "end_index": 17,
+                      "summary": "Details process information notifications in ARTI."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0031",
+      "title": "5 API Specification",
+      "start_index": 17,
+      "end_index": 28,
+      "summary": "Details API specifications including type definitions and callback notifications.",
+      "nodes": [
+        {
+          "node_id": "0032",
+          "title": "5.1 Type Definitions",
+          "start_index": 17,
+          "end_index": 19,
+          "summary": "Defines types such as ArtiVersionInfoType and CallingContext.",
+          "nodes": [
+            {
+              "node_id": "0033",
+              "title": "5.1.1 ArtiVersionInfoType",
+              "start_index": 17,
+              "end_index": 18,
+              "summary": "Defines the ArtiVersionInfoType class and its variables.",
+              "nodes": [
+                {
+                  "node_id": "0034",
+                  "title": "[TR_OSTI_00516] Definition of API class ArtiVersionInfoType",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "Defines the ArtiVersionInfoType class."
+                },
+                {
+                  "node_id": "0035",
+                  "title": "[TR_OSTI_00518] Definition of API variable ArtiVersionInfoType::apiVersion",
+                  "start_index": 17,
+                  "end_index": 17,
+                  "summary": "Defines the apiVersion variable in ArtiVersionInfoType."
+                },
+                {
+                  "node_id": "0036",
+                  "title": "[TR_OSTI_00519] Definition of API variable ArtiVersionInfoType::buildVersion",
+                  "start_index": 17,
+                  "end_index": 18,
+                  "summary": "Defines the buildVersion variable in ArtiVersionInfoType."
+                },
+                {
+                  "node_id": "0037",
+                  "title": "[TR_OSTI_00521] Definition of API variable ArtiVersionInfoType::productName",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "Defines the productName variable in ArtiVersionInfoType."
+                },
+                {
+                  "node_id": "0038",
+                  "title": "[TR_OSTI_00520] Definition of API variable ArtiVersionInfoType::vendorName",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": "Defines the vendorName variable in ArtiVersionInfoType."
+                }
+              ]
+            },
+            {
+              "node_id": "0039",
+              "title": "5.1.2 CallingContext",
+              "start_index": 18,
+              "end_index": 19,
+              "summary": "Defines the CallingConvention enum.",
+              "nodes": [
+                {
+                  "node_id": "0040",
+                  "title": "[TR_OSTI_00515] Definition of API enum CallingConvention",
+                  "start_index": 18,
+                  "end_index": 19,
+                  "summary": "Defines the CallingConvention enum."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0041",
+          "title": "5.2 Callback Notifications",
+          "start_index": 19,
+          "end_index": 28,
+          "summary": "Describes various task and process-related callback notifications.",
+          "nodes": [
+            {
+              "node_id": "0042",
+              "title": "5.2.1 ArtiTaskSwitch",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "Defines the ArtiTaskSwitch function.",
+              "nodes": [
+                {
+                  "node_id": "0043",
+                  "title": "[TR_OSTI_00502] Definition of API function ArtiTaskSwitch",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": "Defines the ArtiTaskSwitch function."
+                }
+              ]
+            },
+            {
+              "node_id": "0044",
+              "title": "5.2.2 ArtiTaskWait",
+              "start_index": 19,
+              "end_index": 20,
+              "summary": "Defines the ArtiTaskWait function.",
+              "nodes": [
+                {
+                  "node_id": "0045",
+                  "title": "[TR_OSTI_00503] Definition of API function ArtiTaskWait",
+                  "start_index": 19,
+                  "end_index": 20,
+                  "summary": "Defines the ArtiTaskWait function."
+                }
+              ]
+            },
+            {
+              "node_id": "0046",
+              "title": "5.2.3 ArtiTaskRelease",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "Defines the ArtiTaskRelease function.",
+              "nodes": [
+                {
+                  "node_id": "0047",
+                  "title": "[TR_OSTI_00504] Definition of API function ArtiTaskRelease",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "Defines the ArtiTaskRelease function."
+                }
+              ]
+            },
+            {
+              "node_id": "0048",
+              "title": "5.2.4 ArtiTaskPreempt",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "Defines the ArtiTaskPreempt function.",
+              "nodes": [
+                {
+                  "node_id": "0049",
+                  "title": "[TR_OSTI_00505] Definition of API function ArtiTaskPreempt",
+                  "start_index": 20,
+                  "end_index": 21,
+                  "summary": "Defines the ArtiTaskPreempt function."
+                }
+              ]
+            },
+            {
+              "node_id": "0050",
+              "title": "5.2.5 ArtiTaskExit",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "Defines the ArtiTaskExit function.",
+              "nodes": [
+                {
+                  "node_id": "0051",
+                  "title": "[TR_OSTI_00506] Definition of API function ArtiTaskExit",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "Defines the ArtiTaskExit function."
+                }
+              ]
+            },
+            {
+              "node_id": "0052",
+              "title": "5.2.6 ArtiTaskCreate",
+              "start_index": 21,
+              "end_index": 22,
+              "summary": "Defines the ArtiTaskCreate function.",
+              "nodes": [
+                {
+                  "node_id": "0053",
+                  "title": "[TR_OSTI_00507] Definition of API function ArtiTaskCreate",
+                  "start_index": 21,
+                  "end_index": 22,
+                  "summary": "Defines the ArtiTaskCreate function."
+                }
+              ]
+            },
+            {
+              "node_id": "0054",
+              "title": "5.2.7 ArtiTaskRename",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "Defines the ArtiTaskRename function.",
+              "nodes": [
+                {
+                  "node_id": "0055",
+                  "title": "[TR_OSTI_00508] Definition of API function ArtiTaskRename",
+                  "start_index": 22,
+                  "end_index": 22,
+                  "summary": "Defines the ArtiTaskRename function."
+                }
+              ]
+            },
+            {
+              "node_id": "0056",
+              "title": "5.2.8 ArtiTaskInfo",
+              "start_index": 22,
+              "end_index": 23,
+              "summary": "Defines the ArtiTaskInfo function.",
+              "nodes": [
+                {
+                  "node_id": "0057",
+                  "title": "[TR_OSTI_00509] Definition of API function ArtiTaskInfo",
+                  "start_index": 22,
+                  "end_index": 23,
+                  "summary": "Defines the ArtiTaskInfo function."
+                }
+              ]
+            },
+            {
+              "node_id": "0058",
+              "title": "5.2.9 ArtiProcessSwitch",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "Defines the ArtiProcessSwitch function.",
+              "nodes": [
+                {
+                  "node_id": "0059",
+                  "title": "[TR_OSTI_00510] Definition of API function ArtiProcessSwitch",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": "Defines the ArtiProcessSwitch function."
+                }
+              ]
+            },
+            {
+              "node_id": "0060",
+              "title": "5.2.10 ArtiProcessCreate",
+              "start_index": 23,
+              "end_index": 24,
+              "summary": "Defines the ArtiProcessCreate function.",
+              "nodes": [
+                {
+                  "node_id": "0061",
+                  "title": "[TR_OSTI_00511] Definition of API function ArtiProcessCreate",
+                  "start_index": 23,
+                  "end_index": 24,
+                  "summary": "Defines the ArtiProcessCreate function."
+                }
+              ]
+            },
+            {
+              "node_id": "0062",
+              "title": "5.2.11 ArtiProcessDestroy",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "Defines the ArtiProcessDestroy function.",
+              "nodes": [
+                {
+                  "node_id": "0063",
+                  "title": "[TR_OSTI_00512] Definition of API function ArtiProcessDestroy",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "Defines the ArtiProcessDestroy function."
+                }
+              ]
+            },
+            {
+              "node_id": "0064",
+              "title": "5.2.12 ArtiProcessRename",
+              "start_index": 24,
+              "end_index": 25,
+              "summary": "Defines the ArtiProcessRename function.",
+              "nodes": [
+                {
+                  "node_id": "0065",
+                  "title": "[TR_OSTI_00513] Definition of API function ArtiProcessRename",
+                  "start_index": 24,
+                  "end_index": 25,
+                  "summary": "Defines the API function ArtiProcessRename."
+                }
+              ]
+            },
+            {
+              "node_id": "0066",
+              "title": "5.2.13 ArtiProcessInfo",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "Defines the ArtiProcessInfo function.",
+              "nodes": [
+                {
+                  "node_id": "0067",
+                  "title": "[TR_OSTI_00514] Definition of API function ArtiProcessInfo",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "Defines the API function ArtiProcessInfo."
+                }
+              ]
+            },
+            {
+              "node_id": "0068",
+              "title": "5.2.14 ArtiVersionInfo",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": "Defines the ArtiVersionInfo function.",
+              "nodes": [
+                {
+                  "node_id": "0069",
+                  "title": "[TR_OSTI_00517] Definition of API function ArtiVersionInfo",
+                  "start_index": 25,
+                  "end_index": 26,
+                  "summary": "Defines the API function ArtiVersionInfo."
+                }
+              ]
+            },
+            {
+              "node_id": "0070",
+              "title": "5.2.15 Artilnit",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "Defines the Artilnit function.",
+              "nodes": [
+                {
+                  "node_id": "0071",
+                  "title": "[TR_OSTI_00500] Definition of API function Artilnit",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": "Defines the API function Artilnit."
+                }
+              ]
+            },
+            {
+              "node_id": "0072",
+              "title": "5.2.16 ArtiCleanup",
+              "start_index": 26,
+              "end_index": 28,
+              "summary": "Defines the ArtiCleanup function.",
+              "nodes": [
+                {
+                  "node_id": "0073",
+                  "title": "[TR_OSTI_00501] Definition of API function ArtiCleanup",
+                  "start_index": 26,
+                  "end_index": 28,
+                  "summary": "Defines the API function ArtiCleanup."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0074",
+      "title": "A Change History",
+      "start_index": 28,
+      "end_index": 31,
+      "summary": "",
+      "nodes": [
+        {
+          "node_id": "0075",
+          "title": "A.1 Change History of this document according to AUTOSAR Release R25-11",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0076",
+              "title": "A.1.2 Changed Specification Items in R25-11",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            },
+            {
+              "node_id": "0077",
+              "title": "A.1.3 Deleted Specification Items in R25-11",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "node_id": "0078",
+          "title": "A.2 Change History of this document according to AUTOSAR Release R24-11",
+          "start_index": 28,
+          "end_index": 30,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0079",
+              "title": "A.2.1 Added Specification Items in R24-11",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            },
+            {
+              "node_id": "0080",
+              "title": "A.2.2 Changed Specification Items in R24-11",
+              "start_index": 28,
+              "end_index": 29,
+              "summary": ""
+            },
+            {
+              "node_id": "0081",
+              "title": "A.2.3 Deleted Specification Items in R24-11",
+              "start_index": 29,
+              "end_index": 30,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "node_id": "0082",
+          "title": "A.3 Change History of this document according to AUTOSAR Release R23-11",
+          "start_index": 30,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0083",
+              "title": "A.3.1 Added Specification Items in R23-11",
+              "start_index": 30,
+              "end_index": 31,
+              "summary": ""
+            },
+            {
+              "node_id": "0084",
+              "title": "A.3.2 Changed Specification Items in R23-11",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": ""
+            },
+            {
+              "node_id": "0085",
+              "title": "A.3.3 Deleted Specification Items in R23-11",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

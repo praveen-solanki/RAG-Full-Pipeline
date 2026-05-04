@@ -1,0 +1,1447 @@
+{
+  "doc_description": "General Specification of Transformers.pdf",
+  "total_pages": 86,
+  "source_format": "granite_docling_vlm",
+  "structure": [
+    {
+      "node_id": "0001",
+      "title": "Disclaimer",
+      "start_index": 3,
+      "end_index": 4,
+      "summary": "Covers disclaimer and legal notices."
+    },
+    {
+      "node_id": "0002",
+      "title": "Table of Contents",
+      "start_index": 4,
+      "end_index": 7,
+      "summary": ""
+    },
+    {
+      "node_id": "0003",
+      "title": "1 Introduction and functional overview",
+      "start_index": 7,
+      "end_index": 8,
+      "summary": "Provides an introduction and overview of the system's functionality."
+    },
+    {
+      "node_id": "0004",
+      "title": "2 Acronyms and Abbreviations",
+      "start_index": 8,
+      "end_index": 9,
+      "summary": "Lists acronyms and abbreviations used throughout the document."
+    },
+    {
+      "node_id": "0005",
+      "title": "3 Related documentation",
+      "start_index": 9,
+      "end_index": 11,
+      "summary": "Lists input documents, related standards, and specifications.",
+      "nodes": [
+        {
+          "node_id": "0006",
+          "title": "3.1 Input documents",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "Lists input documents used in the development process."
+        },
+        {
+          "node_id": "0007",
+          "title": "3.2 Related standards and norms",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "Lists related standards and norms relevant to the project."
+        },
+        {
+          "node_id": "0008",
+          "title": "3.3 Related specification",
+          "start_index": 10,
+          "end_index": 11,
+          "summary": "Lists related specifications that influence the current document."
+        }
+      ]
+    },
+    {
+      "node_id": "0009",
+      "title": "4 Constraints and assumptions",
+      "start_index": 11,
+      "end_index": 12,
+      "summary": "Describes constraints and assumptions relevant to the system.",
+      "nodes": [
+        {
+          "node_id": "0010",
+          "title": "4.1 Limitations",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "Outlines limitations of the system or process."
+        },
+        {
+          "node_id": "0011",
+          "title": "4.2 Applicability to car domains",
+          "start_index": 11,
+          "end_index": 12,
+          "summary": "Describes the applicability of the system to different car domains."
+        }
+      ]
+    },
+    {
+      "node_id": "0012",
+      "title": "5 Dependencies to other modules",
+      "start_index": 12,
+      "end_index": 13,
+      "summary": "Details dependencies on other modules and their file structures.",
+      "nodes": [
+        {
+          "node_id": "0013",
+          "title": "5.1 File structure",
+          "start_index": 12,
+          "end_index": 13,
+          "summary": "Describes the file structure for code and header files.",
+          "nodes": [
+            {
+              "node_id": "0014",
+              "title": "5.1.1 Code file structure",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "Describes the structure of code files."
+            },
+            {
+              "node_id": "0015",
+              "title": "5.1.2 Header file structure",
+              "start_index": 12,
+              "end_index": 13,
+              "summary": "Describes the structure of header files."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0016",
+      "title": "6 Requirements Tracing",
+      "start_index": 13,
+      "end_index": 15,
+      "summary": "Explains how requirements are traced through the system."
+    },
+    {
+      "node_id": "0017",
+      "title": "7 Functional Specification",
+      "start_index": 15,
+      "end_index": 31,
+      "summary": "Defines functional requirements and error handling mechanisms for transformers.",
+      "nodes": [
+        {
+          "node_id": "0018",
+          "title": "[SWS_Xfrm_00001]",
+          "start_index": 15,
+          "end_index": 17,
+          "summary": ""
+        },
+        {
+          "node_id": "0020",
+          "title": "[SWS_Xfrm_00002]",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": ""
+        },
+        {
+          "node_id": "0021",
+          "title": "[SWS_Xfrm_00003]",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": ""
+        },
+        {
+          "node_id": "0022",
+          "title": "[SWS_Xfrm_00004]",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": ""
+        },
+        {
+          "node_id": "0023",
+          "title": "[SWS_Xfrm_00005]",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": ""
+        },
+        {
+          "node_id": "0024",
+          "title": "[SWS_Xfrm_00006]",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": ""
+        },
+        {
+          "node_id": "0025",
+          "title": "[SWS_Xfrm_00007]",
+          "start_index": 18,
+          "end_index": 19,
+          "summary": ""
+        },
+        {
+          "node_id": "0026",
+          "title": "[SWS_Xfrm_00008]",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": ""
+        },
+        {
+          "node_id": "0027",
+          "title": "[SWS_Xfrm_00049]",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": ""
+        },
+        {
+          "node_id": "0028",
+          "title": "[SWS_Xfrm_00108]",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": ""
+        },
+        {
+          "node_id": "0029",
+          "title": "[SWS_Xfrm_00009]",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": ""
+        },
+        {
+          "node_id": "0030",
+          "title": "[SWS_Xfrm_00054]",
+          "start_index": 19,
+          "end_index": 20,
+          "summary": ""
+        },
+        {
+          "node_id": "0031",
+          "title": "[SWS_Xfrm_00101]",
+          "start_index": 20,
+          "end_index": 20,
+          "summary": ""
+        },
+        {
+          "node_id": "0032",
+          "title": "[SWS_Xfrm_00055]",
+          "start_index": 20,
+          "end_index": 21,
+          "summary": ""
+        },
+        {
+          "node_id": "0033",
+          "title": "7.1 Buffer Handling",
+          "start_index": 21,
+          "end_index": 22,
+          "summary": "Describes buffer handling requirements and mechanisms.",
+          "nodes": [
+            {
+              "node_id": "0034",
+              "title": "[SWS_Xfrm_00010]",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": ""
+            },
+            {
+              "node_id": "0035",
+              "title": "[SWS_Xfrm_00011]",
+              "start_index": 21,
+              "end_index": 22,
+              "summary": ""
+            },
+            {
+              "node_id": "0036",
+              "title": "[SWS_Xfrm_00012]",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": ""
+            },
+            {
+              "node_id": "0037",
+              "title": "[SWS_Xfrm_00013]",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": ""
+            },
+            {
+              "node_id": "0038",
+              "title": "[SWS_Xfrm_00014]",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "node_id": "0039",
+          "title": "7.2 Transformer Classes",
+          "start_index": 22,
+          "end_index": 24,
+          "summary": "Describes transformer classes including serializer, safety, security, and custom.",
+          "nodes": [
+            {
+              "node_id": "0040",
+              "title": "7.2.1 Serializer",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "Describes specifications related to the Serializer.",
+              "nodes": [
+                {
+                  "node_id": "0041",
+                  "title": "[SWS_Xfrm_00017]",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0042",
+                  "title": "[SWS_Xfrm_00018]",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0043",
+                  "title": "[SWS_Xfrm_00048]",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0044",
+              "title": "7.2.2 Safety",
+              "start_index": 23,
+              "end_index": 24,
+              "summary": "Details safety-related specifications.",
+              "nodes": [
+                {
+                  "node_id": "0045",
+                  "title": "[SWS_Xfrm_00019]",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0046",
+                  "title": "[SWS_Xfrm_00020]",
+                  "start_index": 23,
+                  "end_index": 23,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0047",
+                  "title": "[SWS_Xfrm_00021]",
+                  "start_index": 23,
+                  "end_index": 24,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0048",
+              "title": "7.2.3 Security",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "Outlines security-related specifications.",
+              "nodes": [
+                {
+                  "node_id": "0049",
+                  "title": "[SWS_Xfrm_00022]",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0050",
+                  "title": "[SWS_Xfrm_00023]",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0051",
+                  "title": "[SWS_Xfrm_00024]",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0052",
+                  "title": "[SWS_Xfrm_00025]",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0053",
+              "title": "7.2.4 Custom",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "node_id": "0054",
+          "title": "7.3 Error Handling",
+          "start_index": 24,
+          "end_index": 29,
+          "summary": "Describes error handling mechanisms and classifications for different transformer types.",
+          "nodes": [
+            {
+              "node_id": "0055",
+              "title": "[SWS_Xfrm_00026]",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": ""
+            },
+            {
+              "node_id": "0056",
+              "title": "[SWS_Xfrm_00027]",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": ""
+            },
+            {
+              "node_id": "0057",
+              "title": "[SWS_Xfrm_00051]",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": ""
+            },
+            {
+              "node_id": "0058",
+              "title": "[SWS_Xfrm_00028]",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": ""
+            },
+            {
+              "node_id": "0059",
+              "title": "[SWS_Xfrm_00029]",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": ""
+            },
+            {
+              "node_id": "0060",
+              "title": "[SWS_Xfrm_00030]",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": ""
+            },
+            {
+              "node_id": "0063",
+              "title": "7.3.1 Errors of Serializer Transformers",
+              "start_index": 26,
+              "end_index": 27,
+              "summary": "Lists errors associated with Serializer Transformers.",
+              "nodes": [
+                {
+                  "node_id": "0064",
+                  "title": "[SWS_Xfrm_00031] Errors of serializer transformers",
+                  "start_index": 26,
+                  "end_index": 27,
+                  "summary": "Lists errors specific to serializer transformers."
+                }
+              ]
+            },
+            {
+              "node_id": "0065",
+              "title": "7.3.2 Errors of Safety Transformers",
+              "start_index": 27,
+              "end_index": 28,
+              "summary": "Lists errors associated with Safety Transformers.",
+              "nodes": [
+                {
+                  "node_id": "0066",
+                  "title": "[SWS_Xfrm_00032] Errors of safety transformers",
+                  "start_index": 27,
+                  "end_index": 28,
+                  "summary": "Lists errors specific to safety transformers."
+                }
+              ]
+            },
+            {
+              "node_id": "0067",
+              "title": "7.3.3 Errors of Security Transformers",
+              "start_index": 28,
+              "end_index": 29,
+              "summary": "Lists errors associated with Security Transformers.",
+              "nodes": [
+                {
+                  "node_id": "0068",
+                  "title": "[SWS_Xfrm_00033] Errors of security transformers",
+                  "start_index": 28,
+                  "end_index": 29,
+                  "summary": "Lists errors specific to security transformers."
+                }
+              ]
+            },
+            {
+              "node_id": "0069",
+              "title": "7.3.4 Errors of Custom Transformers",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "Lists errors associated with Custom Transformers.",
+              "nodes": [
+                {
+                  "node_id": "0070",
+                  "title": "[SWS_Xfrm_00050] Errors of custom transformers",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "Lists errors specific to custom transformers."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0071",
+          "title": "7.4 Error Classification",
+          "start_index": 29,
+          "end_index": 30,
+          "summary": "Classifies errors into development, runtime, production, and extended production categories.",
+          "nodes": [
+            {
+              "node_id": "0072",
+              "title": "7.4.1 Development Errors",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "Defines development errors in the Xfrm module.",
+              "nodes": [
+                {
+                  "node_id": "0073",
+                  "title": "[SWS_Xfrm_00061] Definition of development errors in module Xfrm",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "Defines development errors in the Xfrm module."
+                }
+              ]
+            },
+            {
+              "node_id": "0074",
+              "title": "7.4.2 Runtime Errors",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": ""
+            },
+            {
+              "node_id": "0075",
+              "title": "7.4.3 Production Errors",
+              "start_index": 29,
+              "end_index": 30,
+              "summary": ""
+            },
+            {
+              "node_id": "0076",
+              "title": "7.4.4 Extended Production Errors",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "Describes extended production errors including XFRM_E_MALFORMED_MESSAGE.",
+              "nodes": [
+                {
+                  "node_id": "0077",
+                  "title": "7.4.4.1 XFRM_E_MALFORMED_MESSAGE",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "Describes extended production errors related to malformed messages in the transformer.",
+                  "nodes": [
+                    {
+                      "node_id": "0078",
+                      "title": "[SWS_Xfrm_00070] Extended Production Errors of transformer",
+                      "start_index": 30,
+                      "end_index": 30,
+                      "summary": "Defines extended production errors related to the transformer."
+                    },
+                    {
+                      "node_id": "0079",
+                      "title": "[SWS_Xfrm_00071]",
+                      "start_index": 30,
+                      "end_index": 30,
+                      "summary": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0080",
+          "title": "7.5 Error Notification",
+          "start_index": 30,
+          "end_index": 31,
+          "summary": "Describes the notification mechanism for errors."
+        }
+      ]
+    },
+    {
+      "node_id": "0081",
+      "title": "8 API specification",
+      "start_index": 31,
+      "end_index": 51,
+      "summary": "Specifies APIs including types, functions, and expected interfaces.",
+      "nodes": [
+        {
+          "node_id": "0082",
+          "title": "8.1 Imported types",
+          "start_index": 31,
+          "end_index": 31,
+          "summary": "Defines imported types and their usage in the module.",
+          "nodes": [
+            {
+              "node_id": "0083",
+              "title": "[SWS_Xfrm_00034]",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": ""
+            },
+            {
+              "node_id": "0084",
+              "title": "[SWS_Xfrm_91001] Definition of imported datatypes of module Xfrm",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "Defines imported datatypes for the Xfrm module."
+            }
+          ]
+        },
+        {
+          "node_id": "0085",
+          "title": "8.2 Type definitions",
+          "start_index": 31,
+          "end_index": 32,
+          "summary": "Defines data types used within the module.",
+          "nodes": [
+            {
+              "node_id": "0086",
+              "title": "[SWS_Xfrm_00060] Definition of datatype {Mip}_ConfigType",
+              "start_index": 31,
+              "end_index": 32,
+              "summary": "Defines the datatype {Mip}_ConfigType."
+            }
+          ]
+        },
+        {
+          "node_id": "0087",
+          "title": "8.3 Function definitions",
+          "start_index": 32,
+          "end_index": 50,
+          "summary": "Describes function definitions and their purposes.",
+          "nodes": [
+            {
+              "node_id": "0088",
+              "title": "[SWS_Xfrm_00062]",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": ""
+            },
+            {
+              "node_id": "0089",
+              "title": "where",
+              "start_index": 32,
+              "end_index": 33,
+              "summary": ""
+            },
+            {
+              "node_id": "0090",
+              "title": "8.3.1 _ExtractProtocolHeaderFields",
+              "start_index": 33,
+              "end_index": 34,
+              "summary": "Defines the API function _ExtractProtocolHeaderFields.",
+              "nodes": [
+                {
+                  "node_id": "0091",
+                  "title": "[SWS_Xfrm_91002] Definition of API function _ExtractProtocolHeader Fields",
+                  "start_index": 33,
+                  "end_index": 34,
+                  "summary": "Defines fields of the API function _ExtractProtocolHeader."
+                },
+                {
+                  "node_id": "0092",
+                  "title": "[SWS_Xfrm_00112]",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0093",
+                  "title": "[SWS_Xfrm_00113]",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0094",
+                  "title": "[SWS_Xfrm_00114]",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0095",
+              "title": "8.3.2 _",
+              "start_index": 34,
+              "end_index": 41,
+              "summary": "Defines multiple API functions and their variable prototypes.",
+              "nodes": [
+                {
+                  "node_id": "0096",
+                  "title": "[SWS_Xfrm_00036] Definition of API function _",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "Defines an API function."
+                },
+                {
+                  "node_id": "0097",
+                  "title": "[SWS_Xfrm_02000] Variable prototype parts of [SWS_Xfrm_00036]",
+                  "start_index": 35,
+                  "end_index": 36,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00036]."
+                },
+                {
+                  "node_id": "0098",
+                  "title": "[SWS_Xfrm_00037]",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0099",
+                  "title": "[SWS_Xfrm_00106]",
+                  "start_index": 36,
+                  "end_index": 36,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0100",
+                  "title": "[SWS_Xfrm_00038] Definition of API function _",
+                  "start_index": 36,
+                  "end_index": 37,
+                  "summary": "Defines an API function."
+                },
+                {
+                  "node_id": "0101",
+                  "title": "[SWS_Xfrm_02001] Variable prototype parts of [SWS_Xfrm_00038]",
+                  "start_index": 37,
+                  "end_index": 38,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00038]."
+                },
+                {
+                  "node_id": "0102",
+                  "title": "[SWS_Xfrm_00100]",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0103",
+                  "title": "[SWS_Xfrm_00039]",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0104",
+                  "title": "[SWS_Xfrm_00102] Definition of API function _",
+                  "start_index": 38,
+                  "end_index": 38,
+                  "summary": "Defines an API function."
+                },
+                {
+                  "node_id": "0105",
+                  "title": "[SWS_Xfrm_02002] Variable prototype parts of [SWS_Xfrm_00102]",
+                  "start_index": 38,
+                  "end_index": 39,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00102]."
+                },
+                {
+                  "node_id": "0106",
+                  "title": "[SWS_Xfrm_00103]",
+                  "start_index": 39,
+                  "end_index": 39,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0107",
+                  "title": "[SWS_Xfrm_00040] Definition of API function _",
+                  "start_index": 39,
+                  "end_index": 40,
+                  "summary": "Defines an API function."
+                },
+                {
+                  "node_id": "0108",
+                  "title": "[SWS_Xfrm_02003] Variable prototype parts of [SWS_Xfrm_00040]",
+                  "start_index": 40,
+                  "end_index": 41,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00040]."
+                },
+                {
+                  "node_id": "0109",
+                  "title": "[SWS_Xfrm_00041]",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0110",
+                  "title": "[SWS_Xfrm_00052]",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0111",
+                  "title": "[SWS_Xfrm_00056]",
+                  "start_index": 41,
+                  "end_index": 41,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0112",
+              "title": "8.3.3 _Inv_",
+              "start_index": 41,
+              "end_index": 47,
+              "summary": "Defines multiple inverse API functions and their variable prototypes.",
+              "nodes": [
+                {
+                  "node_id": "0113",
+                  "title": "[SWS_Xfrm_00042] Definition of API function _Inv_",
+                  "start_index": 41,
+                  "end_index": 42,
+                  "summary": "Defines an API function _Inv_."
+                },
+                {
+                  "node_id": "0114",
+                  "title": "Note:",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0115",
+                  "title": "[SWS_Xfrm_02004] Variable prototype parts of [SWS_Xfrm_00042]",
+                  "start_index": 42,
+                  "end_index": 42,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00042]."
+                },
+                {
+                  "node_id": "0116",
+                  "title": "[SWS_Xfrm_00043]",
+                  "start_index": 42,
+                  "end_index": 43,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0117",
+                  "title": "[SWS_Xfrm_00107]",
+                  "start_index": 43,
+                  "end_index": 43,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0118",
+                  "title": "[SWS_Xfrm_00044] Definition of API function _Inv_",
+                  "start_index": 43,
+                  "end_index": 44,
+                  "summary": "Defines an API function _Inv_."
+                },
+                {
+                  "node_id": "0119",
+                  "title": "Note:",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0120",
+                  "title": "[SWS_Xfrm_02005] Variable prototype parts of [SWS_Xfrm_00044]",
+                  "start_index": 44,
+                  "end_index": 44,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00044]."
+                },
+                {
+                  "node_id": "0121",
+                  "title": "[SWS_Xfrm_00045]",
+                  "start_index": 44,
+                  "end_index": 45,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0122",
+                  "title": "[SWS_Xfrm_00104] Definition of API function _Inv_",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "Defines an API function _Inv_."
+                },
+                {
+                  "node_id": "0123",
+                  "title": "[SWS_Xfrm_002006] Variable prototype parts of [SWS_Xfrm_00104]",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00104]."
+                },
+                {
+                  "node_id": "0124",
+                  "title": "[SWS_Xfrm_00105]",
+                  "start_index": 45,
+                  "end_index": 46,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0125",
+                  "title": "[SWS_Xfrm_00046] Definition of API function _Inv_",
+                  "start_index": 46,
+                  "end_index": 47,
+                  "summary": "Defines an API function _Inv_."
+                },
+                {
+                  "node_id": "0126",
+                  "title": "[SWS_Xfrm_02007] Variable prototype parts of [SWS_Xfrm_00046]",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00046]."
+                },
+                {
+                  "node_id": "0127",
+                  "title": "[SWS_Xfrm_00047]",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0128",
+                  "title": "[SWS_Xfrm_00053]",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0129",
+              "title": "8.3.4 _Init",
+              "start_index": 47,
+              "end_index": 48,
+              "summary": "Defines the API function _Init and its variable prototypes.",
+              "nodes": [
+                {
+                  "node_id": "0130",
+                  "title": "[SWS_Xfrm_00058] Definition of API function _Init",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "Defines an API function _Init_."
+                },
+                {
+                  "node_id": "0131",
+                  "title": "[SWS_Xfrm_02008] Variable prototype parts of [SWS_Xfrm_00058]",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00058]."
+                }
+              ]
+            },
+            {
+              "node_id": "0132",
+              "title": "8.3.5 _DeInit",
+              "start_index": 48,
+              "end_index": 49,
+              "summary": "Defines the API function _DeInit and its variable prototypes.",
+              "nodes": [
+                {
+                  "node_id": "0133",
+                  "title": "[SWS_Xfrm_00059] Definition of API function _DeInit",
+                  "start_index": 48,
+                  "end_index": 49,
+                  "summary": "Defines an API function _DeInit_."
+                },
+                {
+                  "node_id": "0134",
+                  "title": "[SWS_Xfrm_02009] Variable prototype parts of [SWS_Xfrm_00059]",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00059]."
+                }
+              ]
+            },
+            {
+              "node_id": "0135",
+              "title": "8.3.6 _GetVersionInfo",
+              "start_index": 49,
+              "end_index": 50,
+              "summary": "Defines the API function _GetVersionInfo and its variable prototypes.",
+              "nodes": [
+                {
+                  "node_id": "0136",
+                  "title": "[SWS_Xfrm_00057] Definition of API function _GetVersionInfo",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "Defines an API function _GetVersionInfo_."
+                },
+                {
+                  "node_id": "0137",
+                  "title": "[SWS_Xfrm_02010] Variable prototype parts of [SWS_Xfrm_00057]",
+                  "start_index": 49,
+                  "end_index": 50,
+                  "summary": "Details variable prototypes for the API function defined in [SWS_Xfrm_00057]."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0138",
+          "title": "8.4 Callback notifications",
+          "start_index": 50,
+          "end_index": 50,
+          "summary": "Describes callback notifications used in the system."
+        },
+        {
+          "node_id": "0139",
+          "title": "8.5 Scheduled functions",
+          "start_index": 50,
+          "end_index": 50,
+          "summary": "Describes scheduled functions and their roles."
+        },
+        {
+          "node_id": "0140",
+          "title": "8.6 Expected interfaces",
+          "start_index": 50,
+          "end_index": 51,
+          "summary": "Describes expected interfaces for the system."
+        }
+      ]
+    },
+    {
+      "node_id": "0141",
+      "title": "9 Sequence diagrams",
+      "start_index": 51,
+      "end_index": 52,
+      "summary": "Illustrates sequence diagrams for various operations."
+    },
+    {
+      "node_id": "0142",
+      "title": "10 Configuration specification",
+      "start_index": 52,
+      "end_index": 65,
+      "summary": "Explains configuration parameters and containers.",
+      "nodes": [
+        {
+          "node_id": "0143",
+          "title": "10.1 How to read this chapter",
+          "start_index": 52,
+          "end_index": 52,
+          "summary": "Guides readers on how to interpret the configuration chapter."
+        },
+        {
+          "node_id": "0144",
+          "title": "10.2 Containers and configuration parameters",
+          "start_index": 52,
+          "end_index": 65,
+          "summary": "Describes containers and configuration parameters for various components.",
+          "nodes": [
+            {
+              "node_id": "0145",
+              "title": "10.2.1 XfrmGeneral",
+              "start_index": 54,
+              "end_index": 55,
+              "summary": "Defines various EcucParamConfContainerDef and EcucBooleanParamDef configurations.",
+              "nodes": [
+                {
+                  "node_id": "0146",
+                  "title": "[ECUC_Xfrm_00012] Definition of EcucParamConfContainerDef XfrmGeneral  J",
+                  "start_index": 54,
+                  "end_index": 54,
+                  "summary": "Defines EcucParamConfContainerDef XfrmGeneral."
+                },
+                {
+                  "node_id": "0147",
+                  "title": "[ECUC_Xfrm_00013] Definition of EcucBooleanParamDef XfrmDevErrorDetect  J",
+                  "start_index": 54,
+                  "end_index": 55,
+                  "summary": "Defines EcucBooleanParamDef XfrmDevErrorDetect."
+                },
+                {
+                  "node_id": "0148",
+                  "title": "[ECUC_Xfrm_00020] Definition of EcucIntegerParamDef XfrmInstanceId [",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "Defines EcucIntegerParamDef XfrmInstanceId."
+                },
+                {
+                  "node_id": "0149",
+                  "title": "[ECUC_Xfrm_00019] Definition of EcucBooleanParamDef XfrmVersionInfoApi [",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "Defines EcucBooleanParamDef XfrmVersionInfoApi."
+                }
+              ]
+            },
+            {
+              "node_id": "0150",
+              "title": "10.2.2 XfrmImplementationMapping",
+              "start_index": 55,
+              "end_index": 61,
+              "summary": "Defines EcucForeignReferenceDef and EcucInstanceReferenceDef configurations for implementation mappings.",
+              "nodes": [
+                {
+                  "node_id": "0151",
+                  "title": "[ECUC_Xfrm_00022] Definition of EcucEnumerationParamDef XfrmTransformer ClassExtractProtocolHeaderFields",
+                  "start_index": 56,
+                  "end_index": 57,
+                  "summary": "Defines EcucEnumerationParamDef XfrmTransformerClassExtractProtocolHeaderFields."
+                },
+                {
+                  "node_id": "0152",
+                  "title": "[ECUC_Xfrm_00021] Definition of EcucForeignReferenceDef XfrmCSTransaction HandleImplementationDataTypeRef [ ]",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "Defines EcucForeignReferenceDef XfrmCSTransactionHandleImplementationDataTypeRef."
+                },
+                {
+                  "node_id": "0153",
+                  "title": "[ECUC_Xfrm_00005] Definition of EcucForeignReferenceDef XfrmInvTransformerBswModuleEntryRef [ ]",
+                  "start_index": 57,
+                  "end_index": 58,
+                  "summary": "Defines EcucForeignReferenceDef XfrmInvTransformerBswModuleEntryRef."
+                },
+                {
+                  "node_id": "0154",
+                  "title": "[ECUC_Xfrm_00003] Definition of EcucForeignReferenceDef XfrmTransformationTechnologyRef",
+                  "start_index": 58,
+                  "end_index": 58,
+                  "summary": "Defines EcucForeignReferenceDef XfrmTransformationTechnologyRef."
+                },
+                {
+                  "node_id": "0155",
+                  "title": "[ECUC_Xfrm_00018] Definition of EcucForeignReferenceDef XfrmTransformer BswModuleEntryRef",
+                  "start_index": 58,
+                  "end_index": 59,
+                  "summary": "Defines EcucForeignReferenceDef XfrmTransformerBswModuleEntryRef."
+                },
+                {
+                  "node_id": "0156",
+                  "title": "[ECUC_Xfrm_00011] Definition of EcucInstanceReferenceDef XfrmVariableData PrototypeInstanceRef 「",
+                  "start_index": 59,
+                  "end_index": 59,
+                  "summary": "Defines EcucInstanceReferenceDef XfrmVariableDataPrototypeInstanceRef."
+                },
+                {
+                  "node_id": "0157",
+                  "title": "[SWS_Xfrm_CONSTR_09094]",
+                  "start_index": 59,
+                  "end_index": 60,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0158",
+                  "title": "[SWS_Xfrm_CONSTR_09096]",
+                  "start_index": 60,
+                  "end_index": 60,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0159",
+                  "title": "[SWS_Xfrm_CONSTR_09095]",
+                  "start_index": 60,
+                  "end_index": 61,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0160",
+              "title": "10.2.3 XfrmSignal",
+              "start_index": 61,
+              "end_index": 63,
+              "summary": "Defines EcucParamConfContainerDef and EcucChoiceContainerDef configurations for signals.",
+              "nodes": [
+                {
+                  "node_id": "0161",
+                  "title": "[ECUC_Xfrm_00002] Definition of EcucParamConfContainerDef XfrmSignal 「",
+                  "start_index": 61,
+                  "end_index": 62,
+                  "summary": "Defines EcucParamConfContainerDef XfrmSignal."
+                },
+                {
+                  "node_id": "0162",
+                  "title": "[ECUC_Xfrm_00006] Definition of EcucChoiceContainerDef XfrmSignalChoice ",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "Defines EcucChoiceContainerDef XfrmSignalChoice."
+                },
+                {
+                  "node_id": "0163",
+                  "title": "[ECUC_Xfrm_00009] Definition of EcucParamConfContainerDef XfrmlSignal GroupRefChoice ",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "Defines EcucParamConfContainerDef XfrmlSignalGroupRefChoice."
+                },
+                {
+                  "node_id": "0164",
+                  "title": "[ECUC_Xfrm_00010] Definition of EcucForeignReferenceDef XfrmlSignalGroup Ref ",
+                  "start_index": 62,
+                  "end_index": 63,
+                  "summary": "Defines EcucForeignReferenceDef XfrmlSignalGroupRef."
+                },
+                {
+                  "node_id": "0165",
+                  "title": "[ECUC_Xfrm_00007] Definition of EcucParamConfContainerDef XfrmISignalRef Choice ⌈",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "Defines EcucParamConfContainerDef XfrmISignalRefChoice."
+                },
+                {
+                  "node_id": "0166",
+                  "title": "[ECUC_Xfrm_00008] Definition of EcucForeignReferenceDef XfrmISignalRef ⌈",
+                  "start_index": 63,
+                  "end_index": 63,
+                  "summary": "Defines EcucForeignReferenceDef XfrmISignalRef."
+                }
+              ]
+            },
+            {
+              "node_id": "0167",
+              "title": "10.2.4 XfrmDemEventParameterRefs",
+              "start_index": 63,
+              "end_index": 65,
+              "summary": "Defines EcucParamConfContainerDef and EcucReferenceDef configurations for DemEvent parameter references.",
+              "nodes": [
+                {
+                  "node_id": "0168",
+                  "title": "[ECUC_Xfrm_00016] Definition of EcucParamConfContainerDef XfrmDemEvent ParameterRefs ",
+                  "start_index": 64,
+                  "end_index": 64,
+                  "summary": "Defines EcucParamConfContainerDef XfrmDemEventParameterRefs."
+                },
+                {
+                  "node_id": "0169",
+                  "title": "[ECUC_Xfrm_00015] Definition of EcucReferenceDef XFRM_E_MALFORMED_ MESSAGE ",
+                  "start_index": 64,
+                  "end_index": 65,
+                  "summary": "Defines EcucReferenceDef XFRM_E_MALFORMED_MESSAGE."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0170",
+      "title": "A Referenced Meta Classes",
+      "start_index": 65,
+      "end_index": 82,
+      "summary": "Documents referenced meta classes and their properties.",
+      "nodes": [
+        {
+          "node_id": "0171",
+          "title": "Table A.6: ClientServerToSignalMapping",
+          "start_index": 68,
+          "end_index": 76,
+          "summary": "Documents the ClientServerToSignalMapping class properties."
+        },
+        {
+          "node_id": "0172",
+          "title": "Table A.16: NvBlockSwComponentType",
+          "start_index": 76,
+          "end_index": 76,
+          "summary": "Documents the NvBlockSwComponentType class properties."
+        },
+        {
+          "node_id": "0173",
+          "title": "Table A.17: PPortPrototype",
+          "start_index": 76,
+          "end_index": 76,
+          "summary": "Documents the PPortPrototype class properties."
+        },
+        {
+          "node_id": "0174",
+          "title": "Table A.18: PortInterfaceMapping",
+          "start_index": 76,
+          "end_index": 80,
+          "summary": "Documents the PortInterfaceMapping class properties."
+        },
+        {
+          "node_id": "0175",
+          "title": "Table A.27: TransformationTechnology",
+          "start_index": 80,
+          "end_index": 82,
+          "summary": "Documents the TransformationTechnology class properties."
+        }
+      ]
+    },
+    {
+      "node_id": "0176",
+      "title": "B Change history of AUTOSAR traceable items",
+      "start_index": 82,
+      "end_index": 85,
+      "summary": "",
+      "nodes": [
+        {
+          "node_id": "0177",
+          "title": "B.1 Traceable item history of this document according to AUTOSAR Release R23-11",
+          "start_index": 82,
+          "end_index": 83,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0178",
+              "title": "B.1.1 Added Specification Items in R23-11",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": ""
+            },
+            {
+              "node_id": "0179",
+              "title": "B.1.2 Changed Specification Items in R23-11",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": ""
+            },
+            {
+              "node_id": "0180",
+              "title": "B.1.3 Deleted Specification Items in R23-11",
+              "start_index": 82,
+              "end_index": 83,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "node_id": "0181",
+          "title": "B.2 Traceable item history of this document according to AUTOSAR Release R24-11",
+          "start_index": 83,
+          "end_index": 84,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0182",
+              "title": "B.2.1 Added Specification Items in R24-11",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": ""
+            },
+            {
+              "node_id": "0183",
+              "title": "B.2.2 Changed Specification Items in R24-11",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": ""
+            },
+            {
+              "node_id": "0184",
+              "title": "B.2.3 Deleted Specification Items in R24-11",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": ""
+            },
+            {
+              "node_id": "0185",
+              "title": "B.2.4 Added Constraints in R24-11",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": ""
+            },
+            {
+              "node_id": "0186",
+              "title": "B.2.5 Changed Constraints in R24-11",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": ""
+            },
+            {
+              "node_id": "0187",
+              "title": "B.2.6 Deleted Constraints in R24-11",
+              "start_index": 83,
+              "end_index": 84,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "node_id": "0188",
+          "title": "B.3 Traceable item history of this document according to AUTOSAR Release R25-11",
+          "start_index": 84,
+          "end_index": 85,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0189",
+              "title": "B.3.1 Added Specification Items in R25-11",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": ""
+            },
+            {
+              "node_id": "0190",
+              "title": "B.3.2 Changed Specification Items in R25-11",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": ""
+            },
+            {
+              "node_id": "0191",
+              "title": "B.3.3 Deleted Specification Items in R25-11",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": ""
+            },
+            {
+              "node_id": "0192",
+              "title": "B.3.4 Added Constraints in R25-11",
+              "start_index": 84,
+              "end_index": 85,
+              "summary": ""
+            },
+            {
+              "node_id": "0193",
+              "title": "B.3.5 Changed Constraints in R25-11",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": ""
+            },
+            {
+              "node_id": "0194",
+              "title": "B.3.6 Deleted Constraints in R25-11",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0195",
+      "title": "General Specification of Transformers AUTOSAR CP R25-11",
+      "start_index": 85,
+      "end_index": 86,
+      "summary": "Summarizes general specifications of transformers for AUTOSAR CP R25-11."
+    },
+    {
+      "node_id": "0196",
+      "title": "C Not applicable requirements",
+      "start_index": 86,
+      "end_index": 86,
+      "summary": "Lists requirements that are not applicable to the current context.",
+      "nodes": [
+        {
+          "node_id": "0197",
+          "title": "[SWS_Xfrm_NA_00001]",
+          "start_index": 86,
+          "end_index": 86,
+          "summary": ""
+        }
+      ]
+    }
+  ]
+}

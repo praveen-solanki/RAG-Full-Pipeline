@@ -1,0 +1,166 @@
+{
+  "doc_name": "Explanation of Service-Oriented Vehicle Diagnostics",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0001",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "This preface section introduces the document \"Explanation of Service-Oriented Vehicle Diagnostics\" (SOVD) by AUTOSAR, detailing its version history and copyright information. It outlines key components such as the SOVD Gateway, Diagnostic Manager, UDS translation mechanisms, and backend connectivity, which form the reference architecture for SOVD. The document also specifies that it is intended for automotive applications only and provides a disclaimer regarding liability and usage rights. No specific technical details from tables are provided in this preface section; however, it sets the stage for understanding the structure and scope of the subsequent sections on SOVD use cases and related documentation."
+    },
+    {
+      "title": "1 Introduction",
+      "node_id": "0002",
+      "start_index": 4,
+      "end_index": 6,
+      "summary": "This section introduces the Service-Oriented Vehicle Diagnostics (SOVD) standard released by ASAM in 2022 and its implementation within AUTOSAR. Key concepts include a SOVD reference architecture aimed at addressing challenges related to incorporating microcontrollers, typically diagnosed using UDS, into the SOVD protocol, which is specified on a vehicle level. The document also highlights that while SOVD introduces new methods for diagnosing high-performance computing (HPC) machines, these can be natively realized by AUTOSAR Adaptive. Notably, the realization of SOVD requires HPC capabilities such as HTTPS, making it currently feasible only on HPC machines.",
+      "nodes": [
+        {
+          "title": "1.1 A Brief summary of ASAM SOVD",
+          "node_id": "0003",
+          "start_index": 4,
+          "end_index": 6,
+          "summary": "This section provides an overview of the ASAM SOVD standard, explaining its introduction and key technical aspects at a general protocol level. It covers the motivation behind developing this new standard for service-oriented vehicle diagnostics without delving into AUTOSAR-specific implementations. Key concepts include the rationale for the standard and its structure, while important relationships focus on how it facilitates communication between different diagnostic tools and systems in vehicles. Although no tables are mentioned, the summary highlights that ASAM SOVD aims to enhance flexibility and interoperability in vehicle diagnostics by defining a service-oriented approach.",
+          "nodes": [
+            {
+              "title": "1.1.1 Motivation",
+              "node_id": "0004",
+              "start_index": 4,
+              "end_index": 6,
+              "summary": "This section of the document explains the motivation behind Service-Oriented Vehicle Diagnostics (SOVD), a new diagnostic protocol for the automotive industry. Key concepts include SOVD's self-explanatory nature and its reliance on state-of-the-art technologies like HTTPS, distinguishing it from the existing UDS protocol which requires ODX files for data interpretation. The document highlights how modern vehicle architectures, particularly HPC machines, necessitate advanced diagnostics methods, leading to the development of ASAM SOVD with properties such as central edge node communication and support for various diagnostic use-cases."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2 SOVD Reference Architecture",
+      "node_id": "0005",
+      "start_index": 6,
+      "end_index": 8,
+      "summary": "This section discusses the reference architecture for Service-Oriented Vehicle Diagnostics (SOVD) in a distributed system. It introduces key components such as the SOVD Gateway, Diagnostic Manager, and SOVD to UDS Translation block, which are essential for implementing a central edge node. The architecture is designed to cluster these functions into distinct blocks, facilitating efficient diagnostics of vehicle systems through standardized communication protocols. While no tables are explicitly mentioned in this excerpt, the emphasis on the relationship between these components suggests their interdependence in achieving seamless diagnostic operations.",
+      "nodes": [
+        {
+          "title": "2.1 SOVD Gateway",
+          "node_id": "0006",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "This section discusses the SOVD Gateway, a critical component in the Service-Oriented Vehicle Diagnostics (SOVD) system. It explains how the gateway acts as an edge node, routing requests to appropriate internal endpoints based on URI components. Key concepts include static and dynamic configuration methods for setting up these endpoints using mDNS, and the use of HTTP reverse proxying for forwarding requests. The SOVDGatewayInstantiation in TPS_Manifest is introduced for configuring both external client connections and internal endpoint targets."
+        },
+        {
+          "title": "2.2 Diagnostic Manager",
+          "node_id": "0007",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "This section discusses the evolution of the Diagnostic Manager in the context of Service-Oriented Vehicle Diagnostics (SOVD). It introduces key concepts such as Diagnostic Server Instances and SOVD subcomponents, emphasizing that the Diagnostic Manager now serves both traditional diagnostic services and SOVD. The manager supports multiple instances to maintain independence among software clusters, with each instance corresponding to a unique diagnostic address in the Diagnostic Contribution Set (DEXT). Importantly, while acting as an SOVD server, routing within the Diagnostic Manager handles communication between these subcomponents. Technical details include the introduction of the SOVDServerInstance configuration element in the TPS_Manifest for SOVD server setup."
+        },
+        {
+          "title": "2.3 SOVD to UDS Translation",
+          "node_id": "0008",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "This section discusses the process of translating Service-Oriented Vehicle Diagnostics (SOVD) commands into Unified Diagnostic Services (UDS) requests. Key concepts include predefined mappings based on ASAM ODX definitions and treating this functional block as an on-board test client that sends UDS requests to a target diagnostic address while sending translated responses back to SOVD clients. The implementation complexity is noted to be high, but AUTOSAR relies on the ASAM standard for these details. No tables are referenced in the provided content."
+        },
+        {
+          "title": "2.4 Backend Connectivity",
+          "node_id": "0009",
+          "start_index": 7,
+          "end_index": 8,
+          "summary": "This section discusses the backend connectivity in Service-Oriented Vehicle Diagnostics (SOVD), focusing on how SOVD supports proximity, remote, and in-vehicle diagnostics. Key concepts include the use of mDNS for discovering the SOVD Gateway and HTTP forwarding for routing requests to the gateway. While remote access is challenging due to dependencies on backend infrastructure, AUTOSAR maintains flexibility by abstracting these connections through a backend connectivity functional block. This approach ensures that SOVD requests are efficiently directed towards the appropriate gateway using established protocols like mDNS and HTTP."
+        }
+      ]
+    },
+    {
+      "title": "3 SOVD use cases",
+      "node_id": "0010",
+      "start_index": 8,
+      "end_index": 12,
+      "summary": "This section focuses on the design and implementation of Service-Oriented Vehicle Diagnostics (SOVD) use cases at the Diagnostic Server Instance level. Key concepts include how SOVD enables a modular approach to vehicle diagnostics, facilitating communication between various diagnostic tools and services. The chapter outlines important relationships among different components within the server instance, emphasizing the integration of diverse diagnostic protocols and data processing mechanisms. While no specific tables are mentioned, the section likely details the processes involved in configuring and managing these use cases to ensure seamless operation across different vehicle systems.",
+      "nodes": [
+        {
+          "title": "3.1 Common use cases in SOVD and UDS",
+          "node_id": "0011",
+          "start_index": 8,
+          "end_index": 9,
+          "summary": "This section discusses common use cases in Service-Oriented Vehicle Diagnostics (SOVD) and Unified Diagnostic Services (UDS), focusing on how SOVD can be mapped to UDS. Key concepts include the reuse of UDS ports for SOVD services, the derivation of SOVD data and configuration from DiagnosticDataIdentifier, and operations from DiagnosticRoutine. The section also introduces two standardized modes matching ISO 14229-1 services and details the interpretation required by the Diagnostic Manager for dynamic data passed between application and manager, using compuMethods to convert byte streams into valid JSON for SOVD clients."
+        },
+        {
+          "title": "3.2 SOVD-specific use cases",
+          "node_id": "0012",
+          "start_index": 9,
+          "end_index": 12,
+          "summary": "This section discusses specific use cases for Service-Oriented Vehicle Diagnostics (SOVD) that are not covered by the ISO 14229-1 standard. Key concepts include new interfaces introduced to the Diagnostic Manager, such as Authorization and Proximity Challenge, which are exclusive to SOVD. The data-lists handling capability of the Diagnostic Manager for SOVD is also highlighted. Future releases will likely expand on these specific use cases, indicating an ongoing development process.",
+          "nodes": [
+            {
+              "title": "3.2.1 Access Permissions",
+              "node_id": "0013",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "This section discusses the access permissions mechanism in Service-Oriented Vehicle Diagnostics (SOVD), focusing on how OAuth tokens are used to authenticate and authorize requests. Key concepts include the use of `SovdAuthorization` interface to retrieve encoded authorization roles, which determine whether a client is permitted to perform specific SOVD operations. The mapping between these roles and individual SOVD methods is based on the existing DEXT model for Service 0x29 in ISO 14229-1, ensuring proper associations with `DiagnosticAccessPermission`. While no tables are explicitly mentioned, this process involves a detailed relationship between authorization roles and diagnostic services to enforce security constraints.",
+              "nodes": [
+                {
+                  "title": "3.2.1.1 Proximity Challenge",
+                  "node_id": "0014",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "This section discusses the \"Proximity Challenge\" in Service-Oriented Vehicle Diagnostics (SOVD), a mechanism used by the SOVD server to verify the client's physical proximity before executing diagnostic operations. Key components introduced include the `SovdProximityChallenge` interface, which delegates the challenge process to the application and informs the Diagnostic Manager of the result. The requirement for a proximity challenge is configured via a special data group (SDG) managed by DEXT, as detailed in SWS_Diagnostics. This setup ensures secure and controlled execution of SOVD operations based on the client's physical presence."
+                }
+              ]
+            },
+            {
+              "title": "3.2.2 Software Update",
+              "node_id": "0015",
+              "start_index": 9,
+              "end_index": 10,
+              "summary": "This section discusses the Software and Configuration Update functionality in Service-Oriented Vehicle Diagnostics (SOVD) using the AUTOSAR Update and Configuration Management (UCM) framework. It introduces two methods for software updates: \"vehicle update\" and \"component update.\" The vehicle update process is managed by an OTA client, with minimal involvement from the Diagnostic Manager, whereas component updates require active participation from the SOVD Client to drive the update through various stages. Key components include the ara::diag interface, UCM Diagnostic Application, and VehiclePackageManagement Service Interface, which ensure seamless handling of updates in the AUTOSAR Adaptive Platform."
+            },
+            {
+              "title": "3.2.3 Logging",
+              "node_id": "0016",
+              "start_index": 10,
+              "end_index": 11,
+              "summary": "This section discusses the logging functionality within the service-oriented vehicle diagnostics system. It highlights that logging specifics are handled in a platform vendor-specific manner and not standardized by ara::log. The connection between ara::diag and ara::log, especially for reading out logging files, is implemented based on each platform vendor's guidelines and requirements. While no tables are present, this section emphasizes the variability and dependency of logging processes on different vendors."
+            },
+            {
+              "title": "3.2.4 Bulk Data",
+              "node_id": "0017",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "This section discusses the management of bulk data operations within the Diagnostic Manager using the ara::diag interface. It highlights the role of the Adaptive application in handling these operations securely through persistence mechanisms and cryptographic functionalities like signature generation and hash verification. These capabilities enable secure storage, retrieval, and deletion of large volumes of data. While no specific tables are mentioned, the section emphasizes the importance of these security measures in ensuring controlled access to bulk diagnostic information."
+            },
+            {
+              "title": "3.2.5 Configuration",
+              "node_id": "0018",
+              "start_index": 11,
+              "end_index": 12,
+              "summary": "This section discusses the configuration handling methods in service-oriented vehicle diagnostics as per ASAM standards. It introduces the `ara::diag::GenericConfiguration` interface, which supports configurations as bulk-data and aligns with the ASAM SOVD standard. This interface allows for multiple operations based on access control, enabling Adaptive applications to perform persistence and cryptographic operations. The section emphasizes that using this interface streamlines configuration management in automotive systems while conforming to the specified standards."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4 Acronyms and Abbreviations",
+      "node_id": "0019",
+      "start_index": 12,
+      "end_index": 14,
+      "summary": "This section of the \"Explanation of Service-Oriented Vehicle Diagnostics\" document provides a glossary of acronyms and abbreviations used throughout the text. Key concepts include various diagnostic protocols (e.g., DoIP, UDS), service identifiers (SID), and data elements like DID and EDR. The document also defines important terms such as Diagnostic Server instances, which manage resources for each SoftwareCluster, and Snapshot Records, which store fault detection data. Relationships between these components are outlined, particularly how the DM manages diagnostic services and maintains non-volatile memory across shutdowns."
+    },
+    {
+      "title": "5 Related documentation",
+      "node_id": "0020",
+      "start_index": 14,
+      "end_index": 14,
+      "summary": "The \"Related Documentation\" section in the \"Explanation of Service-Oriented Vehicle Diagnostics\" document provides a comprehensive overview of supplementary resources that complement the main text. It introduces key concepts such as service-oriented architecture (SOA) and its application in vehicle diagnostics, emphasizing how these services are designed to be modular and interoperable. The section also outlines important relationships between different diagnostic services and their constraints, highlighting the need for seamless integration across various components of a vehicle's system. While no specific tables are mentioned, this summary suggests that the related documentation likely includes detailed technical specifications and implementation guidelines essential for understanding and applying SOA principles in automotive diagnostics.",
+      "nodes": [
+        {
+          "title": "5.1 Input documents & related standards and norms",
+          "node_id": "0021",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "This section of the \"Explanation of Service-Oriented Vehicle Diagnostics\" document outlines the input documents and related standards that form the basis for service-oriented vehicle diagnostics. It introduces key concepts such as ASAM SOVD's API specification, diagnostic extract templates like AUTOSAR_CP_TPS_DiagnosticExtractTemplate, and relevant international standards including ISO 14229-1 (UDS) and ISO 13400-2 (DoIP). These documents and standards provide the necessary frameworks for implementing and ensuring interoperability in vehicle diagnostics systems. While no tables are explicitly mentioned, these references establish a comprehensive technical foundation for understanding the diagnostic processes and their implementation."
+        }
+      ]
+    }
+  ]
+}

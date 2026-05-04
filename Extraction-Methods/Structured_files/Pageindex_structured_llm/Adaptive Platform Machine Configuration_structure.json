@@ -1,0 +1,517 @@
+{
+  "doc_name": "Adaptive Platform Machine Configuration.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "The document is the AUTOSAR Adaptive Platform R25-11 specification titled \u201cMachine Configuration.\u201d  \nIt defines a model-based approach for configuring an AUTOSAR Adaptive Platform machine, covering:\n\n- Conceptual framework: design vs. target-configuration models, M1 modeling strategies, vendor-specific functional-cluster extensions.  \n- Structural metamodel: abstract syntax for \u201cdefinition side\u201d (parameters, references, containers, inheritance emulation) and \u201cvalue side\u201d (concrete configuration values).  \n- Detailed parameter types (enum, boolean, integer, float, unrestricted/restricted strings) and reference kinds (container, foreign, instance).  \n- Use-case for inter-functional-cluster configuration interaction.  \n- Traceability, constraints, and change history across R24-11 and R25-11 releases."
+    },
+    {
+      "title": "Introduction",
+      "node_id": "0001",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "The partial document introduces the AUTOSAR Adaptive Platform R25-11 Machine Configuration specification, focusing on the M2-level meta-model used to create target-configuration (M1) models for functional clusters. It explains document conventions (monospace technical terms, pluralization rules), the format and purpose of textual constraints (marked with \u2308...\u230b) to enforce standardized behavior, and the use of class tables to list attributes. Constraints are not continuously enforced but only at specific workflow \u201cbinding times,\u201d which vary by model category and are indicated within each constraint to guide tool implementers.",
+      "nodes": [
+        {
+          "title": "Document Conventions",
+          "node_id": "0002",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "The partial document outlines the structure and conventions of the AUTOSAR Adaptive Platform Machine Configuration model (M2-level), which serves as the foundation for creating target-configuration (M1) models for functional clusters. It explains document conventions, including typography for technical terms and the format for constraints, which are used to enforce standardized behavior in the meta-model. The document details how constraints are applied at specific workflow points, known as binding times, and describes the format of class tables used to present model attributes, including their types, multiplicities, and kinds. It also clarifies that appendix chapters are non-binding and that TPS documents do not trace to requirement specifications."
+        }
+      ]
+    },
+    {
+      "title": "Conceptual Aspects",
+      "node_id": "0003",
+      "start_index": 8,
+      "end_index": 7,
+      "summary": "The partial document outlines the main topics or key points discussed within the provided text segment.",
+      "nodes": [
+        {
+          "title": "Design and Target Configuration Models",
+          "node_id": "0004",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "The excerpt introduces the distinction between two high-level AUTOSAR model categories\u2014design models and target-configuration models\u2014focusing on the Adaptive Platform. It clarifies that \u201ctarget-configuration\u201d replaces the overloaded term \u201cdeployment\u201d and denotes Machine-specific settings (APMC). A design model is characterized as OEM-scope work produced by a System Designer, defining system-wide, externally visible behavior (e.g., network baud-rate, CAN IDs, application interfaces) that acts as a fixed contract across roles; such elements must remain unchanged during later target-configuration to avoid breaking the system.",
+          "nodes": [
+            {
+              "title": "Design Model",
+              "node_id": "0005",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "The excerpt introduces the high-level distinction between \u201cdesign models\u201d and \u201ctarget-configuration models\u201d in AUTOSAR Adaptive Platform R25-11.  \nIt explains that design models capture system-wide, OEM-level decisions (external behavior, network parameters, application interfaces) that must remain fixed during later integration, whereas target-configuration models contain node-local settings such as the Adaptive Platform Machine Configuration (APMC).  \nThe text also notes that the boundary between the two can be fuzzy, clarifies that \u201ctarget-configuration\u201d replaces the ambiguous term \u201cdeployment,\u201d and emphasizes that design elements are typically created by System Designers and serve as contracts between development roles."
+            },
+            {
+              "title": "Target Configuration Models",
+              "node_id": "0006",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "The excerpt explains that the Adaptive Platform Machine Configuration (APMC) for AUTOSAR AP R25-11 is a target-level model whose elements are mostly local to a compute node and created during integration. Some elements depend on or are derived from design-level models, though this derivation is still uncertain for AP (it is common in Classic Platform). Unlike Classic\u2019s ECU Configuration (EcuC), APMC does not duplicate all design data; instead, it expects parts of the design model to be available on the target in a machine-specific form. Overall, the AP configuration approach resembles Classic\u2019s but is simpler: it omits standardized code-generation support and has not yet clarified post-build variation. The design model conforms to the AUTOSAR meta-model (M2), while the configuration model conforms to parameter specifications one meta-level below (M1), with M2 defining XML schemas and M1 serialized to ARXML."
+            }
+          ]
+        },
+        {
+          "title": "Overview",
+          "node_id": "0007",
+          "start_index": 9,
+          "end_index": 11,
+          "summary": "The excerpt explains how the AUTOSAR Adaptive Platform (AP) R25-11 handles machine configuration through an M1-level \u201ctarget-configuration\u201d model that is simpler and more flexible than the Classic Platform\u2019s ECU Configuration (EcuC).  \nKey points:  \n- Target-configuration elements are mostly node-local, created during integration, and may reference or be derived from design-level artefacts.  \n- The Adaptive Platform Machine Configuration (APMC) does not duplicate design data; it expects the original design model (converted to a machine-specific format) to remain available on the target.  \n- Configuration follows the M1 meta-level (parameter values) rather than M2 (schema definition), yielding a lightweight structure that is easy to translate, allows defaults, vendor extensions, and rapid evolution without schema changes.  \n- Variants, post-build variation and code-generation support are not yet standardized for AP.  \n- Three modelling strategies are foreseen: (1) pure design-driven (no extra config), (2) mixed design + config, (3) config-only; the text focuses on the mixed case where M1 config references M2 design elements."
+        },
+        {
+          "title": "Benefits of using an M1 model-based configuration approach",
+          "node_id": "0008",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "The excerpt explains that, in AUTOSAR Adaptive Platform R25-11, the M1-level \u201cvalue side\u201d and \u201cdefinition side\u201d must conform to the M2 model\u2019s structure and the value side must also mirror the definition side\u2019s structure. It lists eight practical advantages of keeping the configuration model at M1 instead of M2: a simpler structure, default values, domain-specific terminology, flexible multiplicities, faster reaction to requirement changes, first-class vendor extensions, no schema-level backward-compatibility constraints, and a clear split between design and configuration workflows. It then notes that configuration models usually need to reference design-model elements and briefly mentions the rare scenario where a functional cluster can be configured directly from the design model alone."
+        },
+        {
+          "title": "Modeling Strategies for deriving M1 Model Content",
+          "node_id": "0009",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "The excerpt explains that, in AUTOSAR Adaptive Platform R25-11, the M1-level \u201cvalue side\u201d and \u201cdefinition side\u201d must conform to the M2-level structure, with the value side additionally mirroring the definition side\u2019s structure. It lists eight practical advantages of keeping the configuration model at M1 instead of M2\u2014simpler structure, default values, domain terminology, flexible multiplicities, rapid requirement evolution, vendor extensions, no schema-level backward-compatibility constraints, and a clean split between design- and configuration-workflows. It then introduces modeling strategies for merging design-model content into the M1 configuration, noting that in rare cases a functional cluster can be configured straight from the design model alone.",
+          "nodes": [
+            {
+              "title": "Only Design exists",
+              "node_id": "0010",
+              "start_index": 11,
+              "end_index": 12,
+              "summary": "The excerpt explains how the AUTOSAR Adaptive Platform (release R25-11) structures its machine-configuration data: the \u201cvalue side\u201d and \u201cdefinition side\u201d at M1 level must conform to the M2 meta-model, with values additionally constrained by the definition side. It lists eight practical benefits of keeping this configuration at M1 instead of M2\u2014simpler structure, default values, domain terminology, flexible multiplicities, faster reaction to requirement changes, vendor extensions, no schema-level backward-compatibility worries, and a clean split between design- and configuration-workflows. The text then presents four modeling strategies for populating the M1 configuration model: (1) no separate configuration model exists\u2014design model suffices; (2) design model is fully derived into a self-contained configuration model (mirrors Classic Platform COM-stack approach but risks duplication and bloat); (3) only partial derivation with flat references back to the retained design model, reducing complexity; (4) (implicit extreme) no derivation at all."
+            },
+            {
+              "title": "Fully derive Design Model to Configuration Model",
+              "node_id": "0011",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "The excerpt outlines three modeling strategies for transforming an Adaptive Platform design model into a configuration model in AUTOSAR AP R25-11.  \n- 2.4.2 \u201cFully derive Design Model to Configuration Model\u201d: every design element is copied into the configuration model, after which the design model can be discarded; this mirrors the Classic Platform Com-stack approach but risks large, duplicated data.  \n- 2.4.3 \u201cPartially derive Design Model to Configuration Model\u201d: only selected design elements are copied while the rest stay in the original model and are referenced, reducing complexity."
+            },
+            {
+              "title": "Partially derive Design Model to Configuration Model",
+              "node_id": "0012",
+              "start_index": 12,
+              "end_index": 13,
+              "summary": "The excerpt outlines four alternative modeling strategies for transforming an Adaptive Platform design into an AUTOSAR AP configuration:\n\n1. Full derivation (2.4.2) \u2013 the entire design model is mechanically converted into a stand-alone configuration model; afterwards the design model is dispensable.  \n   - Advantage: complete automation.  \n   - Drawback: heavy data duplication and large, complex configuration artifacts (similar to Classic Platform COM-stack generation).\n\n2. Partial derivation with flat references (2.4.3) \u2013 only selected design elements are copied; the rest are reached through simple \u201cflat\u201d references, avoiding the type-prototype pattern.  \n   - Reduces configuration size while keeping the design model alive for the referenced parts.\n\n3. Partial derivation with instanceRefs (2.4.3 cont.) \u2013 like the above, but references use AUTOSAR instanceRefs, explicitly targeting meta-model regions that employ the type-prototype pattern.  \n   - Derivation is optional; the strategy is chosen when meta-model structures require instance-level links back to the design.\n\n4. Configuration-only (2.4.4) \u2013 no design model exists; engineers configure the system directly at the M1 (instance) level.  \n   - Considered an exceptional, non-mainstream approach.\n\nOverall, the text compares these strategies in terms of automation, model size, complexity, and the need to retain or reference the original design model."
+            },
+            {
+              "title": "Only Configuration exists",
+              "node_id": "0013",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "The excerpt outlines three AUTOSAR Adaptive Platform configuration modeling strategies:  \n1. Flat-reference derivation \u2013 configuration is partly generated from the design model via flat references, avoiding the type-prototype pattern in the referenced design subset.  \n2. InstanceRef derivation \u2013 configuration is partly generated from the design model but uses instanceRefs instead, applied where the type-prototype pattern is present.  \n3. Configuration-only \u2013 no design model exists; all configuration is performed directly at the M1 level, considered a special, non-mainstream case."
+            }
+          ]
+        },
+        {
+          "title": "Vendor Specific Functional Cluster Definition",
+          "node_id": "0014",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "The excerpt explains how AUTOSAR Adaptive Platform R25-11 structures Functional Cluster configuration: a standardized AUTOSAR definition serves as the base, and vendors may create a vendor-specific definition that adds extra containers, parameters, or references while using the same language elements. It introduces two mutually exclusive categories\u2014STANDARDIZED_CLUSTER_DEFINITION and VENDOR_SPECIFIC_CLUSTER_DEFINITION\u2014assigned via the category attribute of ApmcFunctionalClusterDef, notes that no custom category values are allowed, and states that both constraints are still in DRAFT status."
+        }
+      ]
+    },
+    {
+      "title": "Overview",
+      "node_id": "0015",
+      "start_index": 15,
+      "end_index": 15,
+      "summary": "The partial document outlines the configuration modeling strategy for the AUTOSAR Adaptive Platform (AP) R25-11, focusing on the machine configuration. It introduces a two-part modeling approach: the \u201cdefinition side,\u201d which defines the structure of configuration elements for specific functional clusters, and the \u201cvalue side,\u201d which assigns values to these configurations based on the defined structure. The document explains the abstract relationship between these sides, emphasizing that values must conform to the structure defined by the definitions, with references linking value elements to their corresponding definitions. It also clarifies that this relationship is not strictly one-to-one, allowing multiple values to reference the same definition. Additionally, it describes the abstract meta-class ApmcAbstractDefinition, which represents the definition side and is exclusive to the AUTOSAR Adaptive Platform.",
+      "nodes": [
+        {
+          "title": "Abstract Structure",
+          "node_id": "0016",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "The excerpt outlines the AUTOSAR Adaptive Platform R25-11 \u201cMachine Configuration\u201d modeling strategy, which is split into a \u201cdefinition side\u201d (structure) and a \u201cvalue side\u201d (concrete values).  \nIt introduces the abstract meta-classes ApmcAbstractDefinition and ApmcAbstractValue, explains that values must conform to definitions via a 0..1 reference (ApmcAbstractValue.definition), and notes that one definition can be referenced by multiple values.  \nIt lists the four high-level configuration categories (Functional cluster, Container, Parameter, Reference), states that ApmcFunctionalClusterDef is the root of the definition model, and indicates that detailed modeling of each side follows in later sections."
+        },
+        {
+          "title": "Definition Side",
+          "node_id": "0017",
+          "start_index": 16,
+          "end_index": 17,
+          "summary": "The excerpt introduces the AUTOSAR Adaptive Platform R25-11 machine-configuration metamodel, focusing on its \u201cdefinition\u201d side.  \nIt presents the abstract base classes ApmcAbstractDefinition and ApmcAbstractValue and their concrete subclasses, establishing the value/definition pairing pattern.  \nKey definition-side elements are listed\u2014Functional cluster, Container, Parameter, Reference\u2014and the root element ApmcFunctionalClusterDef is identified.  \nApmcDefinitionCollection is described as the top-level collector that groups ApmcFunctionalClusterDef objects.  \nApmcFunctionalClusterDef itself is the entry point for configuring a single functional cluster, owning ApmcContainerDef containers.  \nApmcDefinitionElement is mentioned as the common ancestor for all definition-side classes, supplying shared attributes.",
+          "nodes": [
+            {
+              "title": "Definition Elements",
+              "node_id": "0018",
+              "start_index": 17,
+              "end_index": 21,
+              "summary": "The excerpt defines the \u201cdefinition-side\u201d meta-model for configuring an AUTOSAR Adaptive Platform machine.  \nKey points:\n\n- ApmcDefinitionCollection is the top-level container that simply groups references to one or many ApmcFunctionalClusterDef objects.  \n- ApmcFunctionalClusterDef is the entry point for configuring a single functional cluster; it owns ApmcContainerDef objects.  \n- ApmcDefinitionElement is an abstract base that supplies common attributes to every definition element: lower/upper multiplicity, an \u201cinfinite\u201d flag, an element-creation hint (derivedFromDesign vs. createdByIntegrator), and an optional trace reference.  \n- Multiplicity is declared on the element itself, not on associations; upperMultiplicity and upperMultiplicityIsInfinite are mutually exclusive, and lower \u2264 upper when both exist.  \n- ApmcConfigurationElementDef adds origin (AUTOSAR_APMC or vendor-specific) and requiresIndex (to enable ordered collections via explicit index values).  \n- Containers (ApmcContainerDef) provide grouping, nesting, and cross-level referencing; their contents can be split across files (atpSplitable)."
+            },
+            {
+              "title": "Grouping of Configuration Elements",
+              "node_id": "0019",
+              "start_index": 21,
+              "end_index": 23,
+              "summary": "The excerpt defines the AUTOSAR Adaptive Platform \u201cdefinition-side\u201d meta-model for machine configuration (R25-11).  \nIt introduces three abstract base classes \u2013 ApmcConfigurationElementDef, ApmcContainerDef, ApmcContainerElementDef \u2013 that serve as ancestors for all configuration description elements.  \nKey attributes are:  \n- origin (AUTOSAR vs. vendor-specific)  \n- requiresIndex (enables semantic ordering of collections via explicit index values instead of XML order).  \n\nContainers (ApmcParamConfContainerDef) group parameters/references and can be nested arbitrarily; they also act as interaction endpoints between functional clusters.  \nChoice-containers (ApmcChoiceContainerDef) emulate M2-level inheritance by offering mutually-exclusive structural alternatives at the M1 configuration level."
+            },
+            {
+              "title": "Emulation of Inheritance",
+              "node_id": "0020",
+              "start_index": 23,
+              "end_index": 24,
+              "summary": "The excerpt defines the AUTOSAR Adaptive Platform \u201cMachine Configuration\u201d meta-model (release R25-11).  \nIt specifies:\n\n- ApmcParamConfContainerDef \u2013 a configurable container that can own sub-containers (arbitrary nesting) and/or parameter elements; a flag indicates whether it acts as an endpoint for inter-cluster interaction.  \n- ApmcChoiceContainerDef \u2013 a special container that emulates M2-level inheritance by offering mutually exclusive alternatives (choices) among ApmcParamConfContainerDef instances at the M1 target-configuration level.  \n- ApmcParameterDef \u2013 an abstract base class for all configuration parameters; concrete sub-classes (boolean, integer, float, string, enumeration, restricted string) hold the actual values and can only be defined inside an ApmcParamConfContainerDef.\n\nAll three elements are tagged \u201ccandidate\u201d status and use splitable stereotypes to support distributed definition files."
+            },
+            {
+              "title": "Parameter",
+              "node_id": "0021",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "The excerpt defines two AUTOSAR Adaptive Platform meta-classes for machine-configuration modeling:\n\n1. ApmcChoiceContainerDef \u2013 a container that introduces choice-semantics at the definition level, letting modelers express mutually-exclusive sets of sub-containers (emulating M1 inheritance); it aggregates zero-or-more ApmcParamConfContainerDef elements and is itself used only inside the Adaptive Platform.\n\n2. ApmcParameterDef (abstract) \u2013 the base class for all configuration-parameter definitions; parameters are atomic tunables of the target configuration, must be declared inside an ApmcParamConfContainerDef, and are specialized into concrete sub-classes (Boolean, Integer, Float, String, Enumeration, RestrictedString)."
+            },
+            {
+              "title": "Reference",
+              "node_id": "0022",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "The excerpt defines how references are used in the AUTOSAR Adaptive Platform R25-11 target-configuration:  \n- References semantically link parts of the target-configuration or tie them to design-model elements (ref. [AP_TPS_APMC_01009]).  \n- The abstract meta-class ApmcReferenceDef is the base for all reference definitions on the \u201cdefinition\u201d side; concrete subclasses specify the exact reference type.  \n- On the \u201cvalue\u201d side, every configuration value must point back to its definition via .definition attributes in ApmcFunctionalClusterValue, ApmcContainerValue, or ApmcContainerElementValue, enabling tools to validate and interpret the value correctly."
+            }
+          ]
+        },
+        {
+          "title": "Value Side",
+          "node_id": "0023",
+          "start_index": 25,
+          "end_index": 27,
+          "summary": "The excerpt defines how the AUTOSAR Adaptive Platform R25-11 \u201ctarget-configuration\u201d is split into a \u201cdefinition side\u201d and a \u201cvalue side\u201d and how the two are linked.\n\n- Definition side  \n  \u2013 References (ApmcReferenceDef and its subclasses) are used to create semantic links inside the configuration or to tie configuration parts back to elements of the design model.  \n  \u2013 ApmcReferenceDef is an abstract meta-class; concrete subclasses (foreign, instance, container, choice-container references) supply the actual reference semantics.\n\n- Value side  \n  \u2013 Holds the real configuration data.  \n  \u2013 Every value element must carry a mandatory .definition reference that points to its defining counterpart on the definition side so that tools can validate the value.  \n  \u2013 Three concrete value classes supply this reference: ApmcFunctionalClusterValue, ApmcContainerValue, ApmcContainerElementValue (constraints 10581-10583 make the reference obligatory).  \n  \u2013 ApmcFunctionalClusterValue is the root element of the value tree.  \n  \u2013 ApmcValueCollection acts as a collector/entry point that groups many ApmcFunctionalClusterValue instances, allowing other model elements to reference the whole collection with a single link.",
+          "nodes": [
+            {
+              "title": "Grouping of Configuration Values",
+              "node_id": "0024",
+              "start_index": 28,
+              "end_index": 29,
+              "summary": "The excerpt defines the \u201cvalue-side\u201d classes of the AUTOSAR Adaptive Platform machine-configuration model that mirror the \u201cdefinition-side\u201d structure.  \nKey points:\n\n- ApmcFunctionalClusterValue links a functional-cluster value to its definition.  \n- ApmcContainerValue recursively aggregates sub-containers, enabling arbitrary nesting of configuration values; it also aggregates ApmcContainerElementValue instances.  \n- ApmcContainerElementValue is the abstract base for every item inside a container.  \n- ApmcParameterValue (abstract) is the value-side counterpart of parameter definitions; concrete subclasses handle numerical, textual and restricted-textual flavors.  \n- ApmcReferenceValue (abstract) is the value-side counterpart of reference definitions; concrete subclasses support instance, abstract and container references.  \n- Each value class carries a 0..1 reference back to its corresponding definition class, completing the definition-to-value mapping."
+            },
+            {
+              "title": "Parameter",
+              "node_id": "0025",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "The excerpt introduces three abstract meta-classes from the AUTOSAR Adaptive Platform R25-11 machine-configuration model\u2019s \u201cvalue\u201d side.  \nApmcContainerElementValue links a configured container element to its definition.  \nApmcParameterValue is the base for all parameter-value flavors (numerical, textual, restricted-textual).  \nApmcReferenceValue is the base for all reference-value flavors (instance, container, abstract).  \nEach meta-class is tagged \u201ccandidate,\u201d aggregates under ApmcContainerValue.element, and is used only inside the Adaptive Platform."
+            },
+            {
+              "title": "Reference",
+              "node_id": "0026",
+              "start_index": 29,
+              "end_index": 31,
+              "summary": "The excerpt outlines the \u201cvalue-side\u201d modelling of an Adaptive Platform machine configuration in AUTOSAR AP R25-11.  \nIt introduces three abstract base meta-classes that specialise ApmcContainerElementValue:\n\n1. ApmcContainerElementValue \u2013 links a concrete container-element value to its definition.  \n2. ApmcParameterValue \u2013 base for all parameter flavours (numerical, textual, restricted-textual).  \n3. ApmcReferenceValue \u2013 base for every reference flavour (instance, abstract, container).\n\nEach class is tagged \u201ccandidate\u201d, aggregates from ApmcContainerValue.element, and is used only inside the Adaptive Platform.  \nThe text then moves to chapter 4, promising detailed descriptions of the \u201cdefinition side\u201d, and opens section 4.1.1 with a class diagram that shows the complete hierarchy of parameter-definition types (integer, float, boolean, string, enumeration) and their attributes (default, min, max, literal values, etc.), followed by a draft requirement explaining how enumeration parameters and their literals are modelled."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Details",
+      "node_id": "0027",
+      "start_index": 31,
+      "end_index": 31,
+      "summary": "The excerpt is a fragment of the AUTOSAR Adaptive Platform R25-11 \u201cMachine Configuration\u201d specification.  \nIt concentrates on the \u201cDefinition Side\u201d of configuration, presenting the meta-model elements used to declare manifest parameters.  \nKey points covered:\n\n- Purpose of the chapter: supply detailed descriptions of configuration elements.  \n- Focus area: the \u201cDefinition Side\u201d (section 4.1), i.e., the meta-model used to define configuration parameters rather than their concrete values.  \n- Core artifact: Figure 4.1, a class diagram that shows the hierarchy of parameter-definition meta-classes (ApmcParameterDef and its specializations: Integer, Boolean, Float, String, Enumeration).  \n- Each specialization lists its own attributes (defaultValue, min, max, namePattern, blueprintValue, etc.).  \n- Sub-section 4.1.1.1 explicitly explains how enumeration parameters are modeled: ApmcEnumerationParamDef for the enumeration type and ApmcEnumerationLiteralDef for its allowed literal values.",
+      "nodes": [
+        {
+          "title": "Definition Side",
+          "node_id": "0028",
+          "start_index": 31,
+          "end_index": 31,
+          "summary": "The excerpt explains how machine-configuration parameters are modeled on the \u201cdefinition side\u201d of the AUTOSAR Adaptive Platform (R25-11).  \nIt presents the class hierarchy for manifest parameter definitions\u2014rooted in ApmcAbstractDefinition\u2014and shows specializations for integer, boolean, float, string and enumeration parameters, including optional default, min/max and pattern attributes.  \nA dedicated sub-section clarifies that enumeration parameters are defined with two meta-classes: ApmcEnumerationParamDef (the enumeration type) and ApmcEnumerationLiteralDef (its allowed values).",
+          "nodes": [
+            {
+              "title": "Parameter",
+              "node_id": "0029",
+              "start_index": 31,
+              "end_index": 30,
+              "summary": "The partial document outlines the main points covered in the provided text.",
+              "nodes": [
+                {
+                  "title": "Enumeration Parameter",
+                  "node_id": "0030",
+                  "start_index": 31,
+                  "end_index": 33,
+                  "summary": "The excerpt is a detailed specification of the \u201cdefinition side\u201d of the AUTOSAR Adaptive Platform Machine Configuration manifest.  \nIt presents the meta-model classes used to declare configuration parameters: ApmcParameterDef and its specializations ApmcEnumerationParamDef, ApmcBooleanParamDef, ApmcIntegerParamDef, ApmcFloatParamDef, ApmcStringParamDef, and ApmcAbstractRestrictedStringParamDef.  \nFor each meta-class it lists the allowed attributes (defaultValue, min/max ranges, literal aggregations) and their multiplicity, kind, and semantic purpose.  \nSpecial attention is given to enumeration parameters: their literals are aggregated under ApmcEnumerationLiteralDef, a default literal can be specified, and the corresponding runtime value class is ApmcTextualParamValue.  \nBoolean and integer parameters are likewise described, including how default values and ranges are expressed and which value-side class they map to.  \nAll definition elements are ultimately aggregated by ApmcParamConfContainerDef and inherit from common base classes (ApmcAbstractDefinition, Identifiable, etc.)."
+                },
+                {
+                  "title": "Boolean Parameter",
+                  "node_id": "0031",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "The excerpt is a fragment of the AUTOSAR Adaptive Platform R25-11 Machine Configuration specification.  \nIt introduces three meta-classes used to declare configuration parameters on the \u201cdefinition\u201d side of the platform\u2019s model-driven configuration framework:\n\n1. ApmcEnumerationLiteralDef \u2013 listed as a literal aggregated by ApmcEnumerationParamDef; no details are given.  \n2. ApmcBooleanParamDef \u2013 defines a boolean parameter, carries an optional defaultValue attribute, and is mapped on the \u201cvalue\u201d side to ApmcNumericalParamValue.  \n3. ApmcIntegerParamDef \u2013 defines an integer parameter, also mapped to ApmcNumericalParamValue, and supports defaultValue plus optional min/max range constraints.\n\nAll three are part of the AUTOSAR Adaptive Platform only, inherit from a common hierarchy (ARObject, ApmcParameterDef, etc.), and are aggregated under ApmcParamConfContainerDef."
+                },
+                {
+                  "title": "Integer Parameter",
+                  "node_id": "0032",
+                  "start_index": 33,
+                  "end_index": 34,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform meta-classes used to specify machine-configuration parameters on the \u201cdefinition\u201d side.  \nIt details three parameter types\u2014Boolean (ApmcBooleanParamDef), Integer (ApmcIntegerParamDef) and Float (ApmcFloatParamDef)\u2014each of which:  \n- carries a defaultValue attribute,  \n- maps to ApmcNumericalParamValue on the \u201cvalue\u201d side,  \n- inherits from common base classes (ARObject, ApmcParameterDef, etc.) and is aggregated by ApmcParamConfContainerDef.  \nInteger and Float parameters additionally support min/max range limits. All classes are tagged \u201ccandidate\u201d and are exclusive to the Adaptive Platform."
+                },
+                {
+                  "title": "Float Parameter",
+                  "node_id": "0033",
+                  "start_index": 34,
+                  "end_index": 35,
+                  "summary": "The excerpt defines three AUTOSAR Adaptive Platform \u201cdefinition-side\u201d meta-classes for machine-configuration parameters:\n\n- ApmcIntegerParamDef \u2013 declares a signed-integer parameter, optionally supplying a default value plus lower/upper bounds (min, max).  \n- ApmcFloatParamDef \u2013 declares a floating-point parameter, optionally supplying a default value plus lower/upper bounds (min, max).  \n- ApmcStringParamDef \u2013 declares an unrestricted string parameter, optionally supplying a default value.  \n\nAll three are aggregated by ApmcParamConfContainerDef.element, inherit from the same set of base classes (ARObject, ApmcParameterDef, Identifiable, etc.), and are tagged \u201ccandidate\u201d status, meaning they are Adaptive-Platform-only and still under review."
+                },
+                {
+                  "title": "Unrestricted String Parameter",
+                  "node_id": "0034",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "The excerpt specifies two parameter-definition meta-classes used only in the AUTOSAR Adaptive Platform (release R25-11) machine-configuration model:\n\n1. ApmcFloatParamDef \u2013 defines a floating-point configuration parameter, optionally declaring an upper limit (maxLimit) and/or lower limit (minLimit) that any assigned value must respect; both attributes are single-valued (0..1) and currently carry the status \u201ccandidate\u201d.\n\n2. ApmcStringParamDef \u2013 defines an unrestricted string parameter. It can carry an optional defaultValue; its runtime counterpart is ApmcTextualParamValue. The text also introduces the concept of \u201crestricted string parameters\u201d (not yet named as a separate class) where the string must match a pattern, e.g. an IP-address format, and notes that such structured-string parameters are desirable for future use."
+                },
+                {
+                  "title": "Restricted String Parameter",
+                  "node_id": "0035",
+                  "start_index": 35,
+                  "end_index": 40,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform \u201cdefinition-side\u201d meta-classes used to model configuration parameters that appear in machine manifests.  \nIt covers:\n\n- ApmcFloatParamDef \u2013 a floating-point parameter with optional min/max limits.  \n- ApmcStringParamDef \u2013 an unrestricted string parameter that can carry a default value.  \n- ApmcAbstractRestrictedStringParamDef and its concrete subclasses \u2013 restricted-string parameters whose values must match a predefined pattern.  \n  \u2013 ApmcRevisionLabelParamDef / ApmcStrongRevisionLabelParamDef for version labels.  \n  \u2013 ApmcIpV4AddressParamDef / ApmcIpV6AddressParamDef for IP addresses.  \n  \u2013 ApmcMacAddressParamDef for MAC addresses.  \n  \u2013 ApmcUriParamDef for URIs.  \nEach restricted class owns a corresponding XSD-typed primitive (e.g., Ip4AddressString) and an optional defaultValue attribute that must satisfy the pattern.  \nThe text also lists the common ancestry (ARObject, ApmcParameterDef, etc.) and the aggregation container (ApmcParamConfContainerDef.element) shared by all parameter definitions."
+                }
+              ]
+            },
+            {
+              "title": "Reference",
+              "node_id": "0036",
+              "start_index": 40,
+              "end_index": 41,
+              "summary": "The excerpt defines how URI-string parameters and cross-container references are modeled in the AUTOSAR Adaptive Platform \u201cMachine Configuration\u201d manifest.  \nIt introduces:\n\n- ApmcUriParamDef \u2013 a candidate meta-class that restricts a configuration parameter to a URI string, carries an optional default value, and is usable only inside an Adaptive Platform functional-cluster definition.  \n- UriString \u2013 the primitive XSD type (URI-STRING) that underlies the URI parameter.  \n- ApmcContainerReferenceDef \u2013 a candidate meta-class for pointing from one container to another container (ApmcContainerDef) within the same or a different functional cluster; it carries a destination shortName and a flag indicating whether the reference marks a functional-cluster endpoint.\n\nThe text also gives an overview diagram (Fig. 4.3) that categorizes all manifest references into three kinds: container references, foreign references (to M2 elements), and instance references, and states that only concrete ApmcContainerDef instances (not abstract ApmcContainerElementDef) may be targeted.",
+              "nodes": [
+                {
+                  "title": "Reference to Container",
+                  "node_id": "0037",
+                  "start_index": 41,
+                  "end_index": 42,
+                  "summary": "The excerpt defines how references between configuration containers are modeled in the AUTOSAR Adaptive Platform M1 model.  \nIt introduces two dedicated meta-classes:\n\n- ApmcContainerReferenceDef \u2013 for a single, mandatory reference to exactly one ApmcContainerDef (identified by its fully-qualified shortName).  \n- ApmcChoiceContainerReferenceDef \u2013 for an optional choice among several ApmcContainerDef targets, of which only one may ultimately be selected.\n\nBoth classes can point to containers inside or outside the same functional cluster and carry a candidate status.  \nThe text also specifies the \u201cforeign-reference\u201d mechanism: abstract base-class ApmcAbstractForeignReferenceDef is used when the target element resides outside the M1 model; its destinationType attribute must supply the target class name in schema notation."
+                },
+                {
+                  "title": "Foreign Reference",
+                  "node_id": "0038",
+                  "start_index": 42,
+                  "end_index": 45,
+                  "summary": "The excerpt defines AUTOSAR Adaptive Platform meta-classes for three kinds of configuration-time references:\n\n1. ApmcChoiceContainerReferenceDef \u2013 a \u201cchoice\u201d reference that lists several potential container targets but permits only one to be selected in the final value.  \n2. Foreign references (flat, M2-level references from configuration back to design):  \n   \u2013 ApmcAbstractForeignReferenceDef (abstract base) with attribute destinationType to restrict target class.  \n   \u2013 ApmcForeignReferenceDef \u2013 target must exist in the same model scope.  \n   \u2013 ApmcUriForeignReferenceDef \u2013 target may be outside the model; the reference itself acts as an identifier.  \n   \u2013 ApmcUpstreamDocForeignReferenceDef \u2013 records derivation provenance only, carries no runtime semantics.  \n3. Instance references (instanceRef, M1-level tree navigation):  \n   \u2013 ApmcAbstractInstanceReferenceDef (abstract) with attributes destinationContext and destinationType, specialized by ApmcInstanceReferenceDef, ApmcUriInstanceReferenceDef, and ApmcUpstreamDocInstanceReferenceDef.\n\nAll classes are aggregated by ApmcParamConfContainerDef.element, tagged \u201ccandidate\u201d, and usable only within the AUTOSAR Adaptive Platform."
+                },
+                {
+                  "title": "Instance Reference",
+                  "node_id": "0039",
+                  "start_index": 45,
+                  "end_index": 48,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform meta-model elements that create \u201cforeign\u201d and \u201cinstance\u201d references from the configuration domain back to design-time model elements.  \nIt introduces:\n\n- ApmcUpstreamDocForeignReferenceDef \u2013 a flat, design-to-config reference that records which design element motivated the existence of the owning configuration element.  \n- ApmcAbstractInstanceReferenceDef (abstract) and its three concrete subclasses:  \n  \u2013 ApmcInstanceReferenceDef \u2013 structured, same-model-scope reference from config to an M2 design element.  \n  \u2013 ApmcUriInstanceReferenceDef \u2013 like the above but allows cross-model scope; the reference itself acts as identifying metadata even when the target is absent.  \n  \u2013 ApmcUpstreamDocInstanceReferenceDef / ApmcUpstreamDocInstanceReferenceValue \u2013 flat reference used purely as derivation metadata, without carrying further model semantics.\n\nFor the instance-reference family, the attributes destinationContext and destinationType restrict the allowed target classes to preserve reference semantics.  \nAll classes are tagged \u201ccandidate\u201d and are exclusive to the Adaptive Platform."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Value Side",
+          "node_id": "0040",
+          "start_index": 48,
+          "end_index": 48,
+          "summary": "The excerpt explains how index-based parameters are handled on the \u201cvalue side\u201d of an AUTOSAR Adaptive Platform manifest:  \n- ApmcIndexableValue.index links a value to its definition when the definition declares requiresIndex.  \n- Index numbers in an ordered collection may be non-consecutive; ordering is purely numerical.  \n- A class diagram fragment shows the inheritance of value types (numerical, textual, indexable) and their containment structure, highlighting the abstract ApmcIndexableValue meta-class that adds an optional PositiveInteger index to any manifest parameter value.",
+          "nodes": [
+            {
+              "title": "Parameter",
+              "node_id": "0041",
+              "start_index": 48,
+              "end_index": 49,
+              "summary": "The excerpt defines the \u201cvalue side\u201d of the Adaptive Platform machine-configuration manifest.  \nIt specifies how parameter values are expressed, focusing on:\n\n- ApmcIndexableValue \u2013 an abstract class that adds an optional PositiveInteger index attribute to any manifest element, allowing sparse, numerically-sorted ordering of collection members.  \n- ApmcNumericalParamValue \u2013 a concrete value class holding a single Numerical attribute; when its definition is boolean-style the value is restricted to 0 or 1.  \n- ApmcTextualParamValue \u2013 for unrestricted string parameters; enumeration-style parameters must use literals, not arbitrary strings.",
+              "nodes": [
+                {
+                  "title": "Numerical Parameter Value",
+                  "node_id": "0042",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "The excerpt defines two AUTOSAR Adaptive Platform machine-configuration value classes.  \nApmcIndexableValue (abstract) adds an optional index attribute so collection elements can carry position-based semantics.  \nApmcNumericalParamValue, a concrete subclass, holds a single numerical value attribute; when it implements a boolean-style parameter the value is restricted to 0 or 1 (constr_10584).  \nA brief note clarifies that enumeration-style parameters must use defined literals; arbitrary strings require ApmcStringParamDef instead."
+                },
+                {
+                  "title": "Unrestricted Textual Parameter Value",
+                  "node_id": "0043",
+                  "start_index": 49,
+                  "end_index": 50,
+                  "summary": "The excerpt defines the value-side meta-classes used in AUTOSAR Adaptive Platform machine-configuration:\n\n- ApmcIndexableValue \u2013 abstract base that adds an optional index attribute to give a collection element \u201clogical\u201d position semantics.  \n- ApmcNumericalParamValue \u2013 carries a single numerical value; when it realizes a boolean-style parameter definition the value is restricted to 0 or 1.  \n- ApmcTextualParamValue \u2013 carries a single verbatim string; when it realizes an enumeration-style parameter definition the string must equal the shortName of one of the aggregated enumeration literals.  \n- ApmcAbstractRestrictedTextualParamValue and its concrete subclasses (ApmcRevisionLabelParamValue, ApmcStrongRevisionLabelParamValue, ApmcUriParamValue, ApmcMacAddressParamValue, ApmcIpV4AddressParamValue, ApmcIpV6AddressParamValue) \u2013 each holds a specialized string that must comply with the corresponding restriction defined on the definition side."
+                },
+                {
+                  "title": "Restricted Textual Parameter Value",
+                  "node_id": "0044",
+                  "start_index": 50,
+                  "end_index": 54,
+                  "summary": "The excerpt defines the modeling rules for textual and restricted-textual parameter values in the AUTOSAR Adaptive Platform Machine Configuration (AP R25-11).  \nKey points:\n\n- ApmcTextualParamValue carries an unconstrained string; if it implements an enumeration parameter, its value must exactly match the shortName of one ApmcEnumerationLiteralDef aggregated by the referenced ApmcEnumerationParamDef.  \n- ApmcAbstractRestrictedTextualParamValue is the abstract base for value classes whose strings must satisfy a predefined format.  \n- Concrete restricted value classes (ApmcRevisionLabelParamValue, ApmcStrongRevisionLabelParamValue, ApmcIpV4AddressParamValue, ApmcIpV6AddressParamValue, ApmcMacAddressParamValue, ApmcUriParamValue) each expose a single typed \u201cvalue\u201d attribute (RevisionLabelString, StrongRevisionLabelString, Ip4AddressString, Ip6AddressString, MacAddressString, UriString) that enforces the corresponding lexical restriction.  \n- Each restricted value class must reference the matching definition class (e.g., ApmcRevisionLabelParamValue \u2192 ApmcRevisionLabelParamDef) via its definition role; separate constraints (constr_10635\u2013constr_10640) forbid any other target type."
+                }
+              ]
+            },
+            {
+              "title": "Reference",
+              "node_id": "0045",
+              "start_index": 54,
+              "end_index": 60,
+              "summary": "The excerpt is a detailed specification fragment of the AUTOSAR Adaptive Platform R25-11 \u201cMachine Configuration\u201d document.  \nIt defines the taxonomy and semantics of configuration \u201cvalue-side\u201d reference metaclasses used inside ApmcContainerValue elements:\n\n1. ApmcUriParamValue \u2013 carries an optional URI string literal.  \n2. ApmcContainerReferenceValue \u2013 points to another ApmcContainerValue in the same M1 model.  \n3. ApmcAbstractReferenceValue (abstract) \u2013 root of flat (non-instanceRef) references from the configuration model to the M2 design model; concrete subclasses:  \n   \u2013 ApmcForeignReferenceValue \u2013 flat reference to an existing M2 Referrable.  \n   \u2013 ApmcUriForeignReferenceValue \u2013 flat reference to an M2 Referrable that may be absent; the reference itself is identifying.  \n   \u2013 ApmcUpstreamDocForeignReferenceValue \u2013 flat reference to the M2 element from which the container was derived; purely documentary.  \n4. ApmcAbstractInstanceReferenceValue (abstract) \u2013 root of structured instanceRef references to M2 AtpFeatures; concrete subclasses:  \n   \u2013 ApmcInstanceReferenceValue \u2013 instanceRef to an existing AtpFeature.  \n   \u2013 ApmcUriInstanceReferenceValue \u2013 instanceRef to an AtpFeature that may be absent; the reference itself is identifying.  \n   \u2013 ApmcUpstreamDocInstanceReferenceValue \u2013 instanceRef to the AtpFeature that originated the container; purely documentary.\n\nFor each metaclass the tables list inheritance, aggregating container, attributes, multiplicity, stereotypes, tags (all status=candidate), and explanatory semantics."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Modeling Use Cases",
+      "node_id": "0046",
+      "start_index": 61,
+      "end_index": 60,
+      "summary": "The partial document outlines the main topics or key points discussed within the provided text.",
+      "nodes": [
+        {
+          "title": "Functional Cluster interacts with Functional Cluster",
+          "node_id": "0047",
+          "start_index": 61,
+          "end_index": 62,
+          "summary": "The excerpt defines how two AUTOSAR Adaptive Platform functional clusters (e.g., Persistency and Crypto) establish a run-time service binding.  \nIt introduces a dedicated \u201cFunctionalClusterEndpointSpecifier\u201d token\u2014an absolute shortName path\u2014distinct from the familiar InstanceSpecifier used between applications and clusters.  \nThe client marks its endpoint with an ApmcContainerReferenceDef whose isFuncClusterEndpointRef=true; the server marks its endpoint with an ApmcParamConfContainerDef whose isFuncClusterEndpoint=true.  \nA match occurs when the FunctionalClusterEndpointSpecifier (the reference\u2019s value) equals the server container\u2019s absolute shortName path, thereby enabling the client to invoke the server\u2019s service."
+        }
+      ]
+    },
+    {
+      "title": "Reference Material",
+      "node_id": "0048",
+      "start_index": 63,
+      "end_index": 62,
+      "summary": "The partial document outlines the main points covered in the provided text.",
+      "nodes": [
+        {
+          "title": "Terms and Abbreviations",
+          "node_id": "0049",
+          "start_index": 63,
+          "end_index": 63,
+          "summary": "The excerpt is an informative appendix from the AUTOSAR Adaptive Platform R25-11 \u201cMachine Configuration\u201d specification.  \nIt supplies two reference sections:  \nA.1 \u2013 a glossary of 20 abbreviations (APMC, ARXML, DM, JSON, SOME/IP, UDS, UUID, etc.) that are specific to this document but not already defined in the main terminology reference [5].  \nA.2 \u2013 a note explaining that constraints elsewhere in the document are imposed at different stages of the development workflow, with their exact timing to be found in the full text."
+        },
+        {
+          "title": "Imposition Times of Constraints",
+          "node_id": "0050",
+          "start_index": 63,
+          "end_index": 64,
+          "summary": "The excerpt is an appendix from the AUTOSAR Adaptive Platform R25-11 \u201cMachine Configuration\u201d specification.  \nIt supplies two reference items:  \n1. An informative glossary (Table A.1) that defines 21 acronyms\u2014ranging from APMC to VSA\u2014that are used inside the document but not listed in the main AUTOSAR glossary [5].  \n2. A single-row table (Table A.2) that names and describes the one workflow \u201cimposition time\u201d (IT_CfgFc) relevant to this specification, i.e., the point when functional-cluster configuration is complete and installation on the target may begin."
+        }
+      ]
+    },
+    {
+      "title": "Examples",
+      "node_id": "0051",
+      "start_index": 65,
+      "end_index": 65,
+      "summary": "The partial document is an appendix labeled \u201cAdaptive Platform Machine Configuration AUTOSAR AP R25-11 B Examples.\u201d It explicitly states that its content is informative, not normative, and that no examples are provided in this release."
+    },
+    {
+      "title": "Change History of AUTOSAR Traceable Items",
+      "node_id": "0052",
+      "start_index": 66,
+      "end_index": 66,
+      "summary": "The partial document is an informative appendix from the AUTOSAR Adaptive Platform Machine Configuration specification (Release R25-11) that lists the change history of traceable items. Specifically, it details the specification items added in Release R24-11, covering aspects such as the abstract relation between the \"value side\" and \"definition side,\" root elements, semantics of various configuration elements and attributes, definitions of parameters and references, and the structure of containers and choices within the configuration model.",
+      "nodes": [
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R24-11",
+          "node_id": "0053",
+          "start_index": 66,
+          "end_index": 66,
+          "summary": "The excerpt is an informative appendix that records the change history of traceable specification items added in AUTOSAR Adaptive Platform Release R24-11 for the Machine Configuration document. It lists 21 newly introduced specification items (AP_TPS_APMC_01000\u201301020) that define the semantics, structure, and behavior of configuration elements on both the \u201cdefinition side\u201d and \u201cvalue side,\u201d including parameters, references, containers, choices, and their attributes.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R24-11",
+              "node_id": "0054",
+              "start_index": 66,
+              "end_index": 67,
+              "summary": "The partial document is an informative appendix that lists the traceable specification items added in AUTOSAR Release R24-11 for the Adaptive Platform Machine Configuration. It details 39 new items (AP_TPS_APMC_01000\u201301038) covering the semantics and definitions of configuration elements, parameters, references, containers, and their attributes on both the \u201cdefinition side\u201d and \u201cvalue side\u201d of the model. No items were changed or deleted in this release."
+            },
+            {
+              "title": "Changed Specification Items in R24-11",
+              "node_id": "0055",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "The fragment is a detailed technical specification excerpt from the AUTOSAR Adaptive Platform R25-11 \u201cMachine Configuration\u201d document.  \nIt systematically defines the semantics of every meta-class and attribute that govern how configuration values can reference other elements\u2014distinguishing between instance references, foreign references, URI-based references, and upstream-document references\u2014while also specifying rules for indexed collections, value collections, container references, and functional-cluster categories.  \nFinally, it provides a concise change log for release R24-11, noting that no specification items were altered or removed."
+            },
+            {
+              "title": "Deleted Specification Items in R24-11",
+              "node_id": "0056",
+              "start_index": 67,
+              "end_index": 68,
+              "summary": "The fragment is a detailed change-log excerpt from the AUTOSAR Adaptive Platform R25-11 specification for Machine Configuration.  \nIt lists, item-by-item, the semantics of every reference, value and collection meta-class used in the configuration model (e.g. ApmcAbstractInstanceReferenceDef, ApmcUriForeignReferenceValue, ApmcValueCollection, \u2026) and then presents the formal constraints added in R24-11 (constr_10579\u2026constr_9322) that govern multiplicity, reference existence and allowed parameter values.  \nFinally it records that R25-11 adds only one new specification item: \u201cInteraction between functional clusters\u201d, while no items were changed or deleted in either release."
+            },
+            {
+              "title": "Added Constraints in R24-11",
+              "node_id": "0057",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "The partial document lists new constraints introduced in AUTOSAR Adaptive Platform Release 24-11 for machine configuration, covering existence and value restrictions on definition elements, reference requirements for functional-cluster, container and container-element values, and permitted values for boolean-style numerical and enumeration-style textual parameters. It also records that no constraints were changed or deleted in R24-11, notes the addition of one new specification item in R25-11 dealing with functional-cluster interactions, and states that no specification items were changed in R25-11."
+            },
+            {
+              "title": "Changed Constraints in R24-11",
+              "node_id": "0058",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "The partial document lists new constraints introduced in AUTOSAR Adaptive Platform Release 24-11 for machine configuration, covering existence and value restrictions on definition elements, references in various container roles, and allowed values for boolean-style and enumeration-style parameters. It also notes the addition of a specification item in Release 25-11 concerning interaction between functional clusters, with no changed or deleted constraints/items in either release."
+            },
+            {
+              "title": "Deleted Constraints in R24-11",
+              "node_id": "0059",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "The partial document lists new constraints introduced in AUTOSAR Adaptive Platform R24-11 for machine configuration, covering existence and value restrictions on ApmcDefinitionElement, ApmcFunctionalClusterValue, ApmcContainerValue, ApmcContainerElementValue, and parameter-value types (boolean-style numerical, enumeration-style textual), plus a category restriction on ApmcFunctionalClusterDef. It also notes that no constraints were changed or deleted in R24-11, records the addition of specification item AP_TPS_APMC_01039 on functional-cluster interaction in R25-11, and states that no specification items were changed in R25-11."
+            }
+          ]
+        },
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R25-11",
+          "node_id": "0060",
+          "start_index": 68,
+          "end_index": 68,
+          "summary": "The excerpt lists the new constraints introduced in AUTOSAR Adaptive Platform Release R24-11 for machine-configuration meta-model elements (existence and value rules for definition elements, references on functional-cluster/container values, and allowed values for boolean-style numerical and enumeration-style textual parameters), notes that no constraints were changed or removed, and then records that Release R25-11 added only one new specification item covering \u201cInteraction between functional clusters,\u201d with no items changed.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R25-11",
+              "node_id": "0061",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "The partial document lists new constraints added in AUTOSAR Adaptive Platform release R24-11 for machine-configuration definitions, covering existence and value rules for definition elements, references in container roles, and allowed values for boolean-style and enumeration-style parameters. It also records that no constraints were changed or deleted, and notes one new specification item added in R25-11 concerning functional-cluster interaction, with no specification items changed."
+            },
+            {
+              "title": "Changed Specification Items in R25-11",
+              "node_id": "0062",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "The excerpt lists the new constraints introduced in AUTOSAR Adaptive Platform Release R24-11 for machine-configuration meta-model elements (existence and value rules for definition elements, references on functional-cluster/container values, and allowed values for boolean-style numerical and enumeration-style textual parameters), notes that no constraints were changed or removed, and then records that Release R25-11 added only one new specification item covering \u201cInteraction between functional clusters,\u201d with no items changed."
+            },
+            {
+              "title": "Deleted Specification Items in R25-11",
+              "node_id": "0063",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "The partial document lists the new constraints added in AUTOSAR Adaptive Platform R25-11 for the Machine Configuration specification. These constraints specify allowed target types for various parameter-value roles (revision labels, IP addresses, MAC address, URI) and rules for attribute existence and reference targets, while noting that no specification items, constraints, or changed/deleted constraints were removed in this release."
+            },
+            {
+              "title": "Added Constraints in R25-11",
+              "node_id": "0064",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "The partial document lists the constraint additions made in AUTOSAR Adaptive Platform release R25-11 for the Machine Configuration specification. It introduces seven new constraints (constr_10635 through constr_10640 and constr_10643\u201310644) that restrict the allowed target types or attribute existence for configuration parameter roles (revision labels, IPv4/IPv6 addresses, MAC addresses, URIs, multiplicity attributes, and functional-cluster endpoint references). No specification items, constraints, or changes were deleted or modified in this release."
+            },
+            {
+              "title": "Changed Constraints in R25-11",
+              "node_id": "0065",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "The partial document lists the constraint additions introduced in AUTOSAR Adaptive Platform R25-11 for the Machine Configuration specification. It specifies six new constraints (constr_10635 through constr_10640) that restrict the allowed target types for references in roles related to revision labels, IPv4/IPv6 addresses, MAC addresses, and URI parameter values. Two additional constraints (constr_10643 and constr_10644) mandate the existence of upper-multiplicity attributes and regulate the target of function-cluster-endpoint references. No specification items, constraints, or changes were deleted or modified in this release."
+            },
+            {
+              "title": "Deleted Constraints in R25-11",
+              "node_id": "0066",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "The partial document is a changelog excerpt for the AUTOSAR Adaptive Platform Machine Configuration specification, release R25-11. It lists six new constraints (constr_10635\u2013constr_10640 and constr_10643\u2013constr_10644) that restrict the allowed target types or required attributes for several machine-configuration parameter roles (revision labels, IP/MAC addresses, URIs, definition-element multiplicities, and functional-cluster endpoint references). No specification items, constraints, or changes were deleted or modified in this release."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mentioned Class Tables",
+      "node_id": "0067",
+      "start_index": 70,
+      "end_index": 75,
+      "summary": "The excerpt is a set of normative \u201cclass tables\u201d (Appendix D) from the AUTOSAR Adaptive Platform R25-11 Machine Configuration specification.  \nIt catalogues the meta-model classes that are referenced but not detailed in the main document, giving for each:  \n- its purpose and tagging stereotypes,  \n- inheritance hierarchy (Base classes) and subclasses,  \n- owning/aggregating classes,  \n- full attribute list with multiplicity, kind (attr/aggr/ref), notes, XML mapping hints and split-keys for variability management.  \n\nThe tables cover the root AUTOSAR element, generic instance references, ECU topology objects, adaptive-platform-specific elements (Machine, ProcessDesign), and foundational abstractions (Identifiable, Referrable, AtpFeature, PortPrototype) together with their administrative, descriptive and variability annotations."
+    }
+  ]
+}

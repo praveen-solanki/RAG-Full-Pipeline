@@ -1,0 +1,410 @@
+{
+  "doc_description": "Requirements on Operating System Interface.pdf",
+  "total_pages": 21,
+  "source_format": "granite_docling_vlm",
+  "structure": [
+    {
+      "node_id": "0001",
+      "title": "Disclaimer",
+      "start_index": 3,
+      "end_index": 4,
+      "summary": "Covers disclaimer and legal notices.",
+      "nodes": []
+    },
+    {
+      "node_id": "0002",
+      "title": "Table of Contents",
+      "start_index": 4,
+      "end_index": 5,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "node_id": "0003",
+      "title": "Requirements on Operating System Interface AUTOSAR AP R25-11",
+      "start_index": 5,
+      "end_index": 6,
+      "summary": "Describes requirements for the AUTOSAR AP Operating System Interface.",
+      "nodes": []
+    },
+    {
+      "node_id": "0004",
+      "title": "1 Scope of Document",
+      "start_index": 6,
+      "end_index": 7,
+      "summary": "Defines the scope of the document.",
+      "nodes": []
+    },
+    {
+      "node_id": "0005",
+      "title": "2 Conventions to be used",
+      "start_index": 7,
+      "end_index": 8,
+      "summary": "Explains document conventions and guidelines for requirements.",
+      "nodes": [
+        {
+          "node_id": "0006",
+          "title": "2.1 Document Conventions",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "Explains the conventions used within the document.",
+          "nodes": []
+        },
+        {
+          "node_id": "0007",
+          "title": "2.2 Requirements Guidelines",
+          "start_index": 7,
+          "end_index": 8,
+          "summary": "Guidelines for writing and interpreting requirements.",
+          "nodes": [
+            {
+              "node_id": "0008",
+              "title": "2.2.1 Requirements status",
+              "start_index": 7,
+              "end_index": 8,
+              "summary": "Describes the status of requirements.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0009",
+      "title": "3 Acronyms and abbreviations",
+      "start_index": 8,
+      "end_index": 9,
+      "summary": "Lists acronyms and abbreviations used in the document.",
+      "nodes": []
+    },
+    {
+      "node_id": "0010",
+      "title": "4 Requirements Specification",
+      "start_index": 9,
+      "end_index": 16,
+      "summary": "Details functional overview, functional requirements, and non-functional requirements.",
+      "nodes": [
+        {
+          "node_id": "0011",
+          "title": "4.1 Functional Overview",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "Provides an overview of the functional aspects covered.",
+          "nodes": []
+        },
+        {
+          "node_id": "0012",
+          "title": "4.2 Functional Requirements",
+          "start_index": 9,
+          "end_index": 15,
+          "summary": "Lists assumptions and specific functional requirements for the operating system.",
+          "nodes": [
+            {
+              "node_id": "0013",
+              "title": "4.2.1 Assumption of Use",
+              "start_index": 9,
+              "end_index": 10,
+              "summary": "Outlines assumptions about how the system will be used.",
+              "nodes": []
+            },
+            {
+              "node_id": "0014",
+              "title": "4.2.2 General Requirements",
+              "start_index": 10,
+              "end_index": 11,
+              "summary": "Specifies general requirements including POSIX compliance and C++ support.",
+              "nodes": [
+                {
+                  "node_id": "0015",
+                  "title": "[RS_OSI_00100] POSIX PSE51 Compliance",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "The Operating System Interface must comply with POSIX PSE51.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0016",
+                  "title": "[RS_OSI_00103] The Operating System Interface shall support C++.",
+                  "start_index": 10,
+                  "end_index": 11,
+                  "summary": "The Operating System Interface must support C++.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0017",
+                  "title": "[RS_OSI_00104] The Operating System Interface shall support the reaction on Process-external stimuli from devices. [",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "The Operating System Interface must react to external stimuli from devices.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0018",
+                  "title": "[RS_OSI_00105] The Operating System Interface shall support the start of Ex-cution Management. [",
+                  "start_index": 11,
+                  "end_index": 11,
+                  "summary": "The Operating System Interface must support execution management startup.",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0019",
+              "title": "4.2.3 Operating System Requirements",
+              "start_index": 11,
+              "end_index": 15,
+              "summary": "Details specific requirements related to operating system functionalities.",
+              "nodes": [
+                {
+                  "node_id": "0020",
+                  "title": "[RS_OSI_00201] The Operating System shall provide mechanisms for system memory budgeting.",
+                  "start_index": 11,
+                  "end_index": 12,
+                  "summary": "The Operating System must provide mechanisms for system memory budgeting.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0021",
+                  "title": "[RS_OSI_00202] The Operating System shall provide mechanisms for CPU time budgeting.",
+                  "start_index": 12,
+                  "end_index": 12,
+                  "summary": "The Operating System must provide mechanisms for CPU time budgeting.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0022",
+                  "title": "[RS_OSI_00203] The Operating System should provide mechanisms for binding Processes to CPU cores.",
+                  "start_index": 12,
+                  "end_index": 15,
+                  "summary": "The Operating System should provide mechanisms for binding processes to CPU cores.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0023",
+                  "title": "[RS_OSI_00210] The Operating System shall provide a mechanism to observe scheduling of CPU time to Task, Process [",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "The Operating System must provide a mechanism to observe CPU time scheduling.",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0024",
+                  "title": "[RS_OSI_00211] The Operating System shall provide a mechanism to export lowlevel scheduling and trace information to applications. [",
+                  "start_index": 15,
+                  "end_index": 15,
+                  "summary": "The Operating System must provide a mechanism to export low-level scheduling and trace info.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0025",
+          "title": "4.3 Non-Functional Requirements",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "Describes non-functional requirements for the operating system.",
+          "nodes": []
+        }
+      ]
+    },
+    {
+      "node_id": "0026",
+      "title": "5 References",
+      "start_index": 16,
+      "end_index": 17,
+      "summary": "Provides references used in the document.",
+      "nodes": []
+    },
+    {
+      "node_id": "0027",
+      "title": "A Change history of AUTOSAR traceable items",
+      "start_index": 17,
+      "end_index": 21,
+      "summary": "",
+      "nodes": [
+        {
+          "node_id": "0028",
+          "title": "A.1 Traceable item history of this document according to AUTOSAR Release R25-11",
+          "start_index": 17,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0029",
+              "title": "A.1.1 Added Requirements in R25-11",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0030",
+              "title": "A.1.2 Changed Requirements in R25-11",
+              "start_index": 17,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0031",
+              "title": "A.1.3 Deleted Requirements in R25-11",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0032",
+          "title": "A.2 Traceable item history of this document according to AU-TOSAR Release R24-11",
+          "start_index": 18,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0033",
+              "title": "A.2.1 Added Requirements in R24-11",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0034",
+              "title": "A.2.2 Changed Requirements in R24-11",
+              "start_index": 18,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0035",
+              "title": "A.2.3 Deleted Requirements in R24-11",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0036",
+          "title": "A.3 Traceable item history of this document according to AUTOSAR Release R23-11",
+          "start_index": 19,
+          "end_index": 20,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0037",
+              "title": "A.3.1 Added Requirements in R23-11",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0038",
+              "title": "A.3.2 Changed Requirements in R23-11",
+              "start_index": 19,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0039",
+              "title": "A.3.3 Deleted Requirements in R23-11",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0040",
+          "title": "A.4 Traceable item history of this document according to AUTOSAR Release R22-11",
+          "start_index": 20,
+          "end_index": 21,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0041",
+              "title": "A.4.1 Added Advisories in R22-11",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0042",
+              "title": "A.4.2 Changed Advisories in R22-11",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0043",
+              "title": "A.4.3 Deleted Advisories in R22-11",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0044",
+              "title": "A.4.4 Added Constraints in R22-11",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0045",
+              "title": "A.4.5 Changed Constraints in R22-11",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0046",
+              "title": "A.4.6 Deleted Constraints in R22-11",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0047",
+              "title": "A.4.7 Added Requirements in R22-11",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0048",
+              "title": "A.4.8 Changed Requirements in R22-11",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0049",
+              "title": "A.4.9 Deleted Requirements in R22-11",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

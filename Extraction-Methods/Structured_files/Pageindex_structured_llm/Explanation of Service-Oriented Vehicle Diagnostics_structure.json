@@ -1,0 +1,166 @@
+{
+  "doc_name": "Explanation of Service-Oriented Vehicle Diagnostics.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 3,
+      "summary": "The excerpt is the front-matter and table of contents of the AUTOSAR Adaptive Platform explanatory document \u201cExplanation of Service-Oriented Vehicle Diagnostics\u201d (ID 1064, release R25-11). It states the document\u2019s ownership, release history, legal disclaimer and copyright terms, then lists the forthcoming technical sections: an introduction to ASAM SOVD motivation, the SOVD reference architecture (gateway, diagnostic manager, UDS translation, backend connectivity), SOVD use-case categories (common with UDS and SOVD-specific ones such as access permissions/proximity challenge, software update, logging, bulk data, configuration), followed by acronyms and related documentation references."
+    },
+    {
+      "title": "Introduction",
+      "node_id": "0001",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": "The excerpt introduces AUTOSAR\u2019s approach to implementing the ASAM SOVD (Service-Oriented Vehicle Diagnostics) standard on Adaptive Platform release R25-11. It highlights that SOVD, published in 2022, replaces UDS-centric diagnostics with a self-describing, HTTPS-based API that eliminates dependence on ODX files and targets high-performance computing (HPC) domains. The document outlines a reference architecture (Ch. 2) to integrate legacy UDS microcontrollers into the SOVD vehicle-level protocol and presents AUTOSAR Adaptive\u2019s native support for SOVD\u2019s new HPC-oriented diagnostic methods (Ch. 3).",
+      "nodes": [
+        {
+          "title": "A Brief summary of ASAM SOVD",
+          "node_id": "0002",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": "The excerpt introduces the AUTOSAR Adaptive explanation of the ASAM Service-Oriented Vehicle Diagnostics (SOVD) standard. It states that the document\u2019s purpose is to show how SOVD is implemented in AUTOSAR Adaptive, focusing on use-case guidance that extends beyond the ara::diag Functional Cluster. It highlights that SOVD, designed for modern HPC-based vehicle architectures, uses self-describing, HTTPS-based APIs instead of UDS/ODX, eliminating client-side ODX dependencies. The text outlines that Chapter 2 will present a reference architecture for integrating UDS-based microcontrollers into the SOVD vehicle-level protocol, while Chapter 3 will detail AUTOSAR Adaptive\u2019s native support for SOVD\u2019s new HPC-oriented diagnostic methods.",
+          "nodes": [
+            {
+              "title": "Motivation",
+              "node_id": "0003",
+              "start_index": 4,
+              "end_index": 5,
+              "summary": "The excerpt introduces the AUTOSAR explanation of the ASAM Service-Oriented Vehicle Diagnostics (SOVD) standard. It states that the document\u2019s purpose is to show how SOVD is realized in AUTOSAR Adaptive, giving use-case-oriented guidance that reaches beyond the ara::diag Functional Cluster. A reference architecture (Ch. 2) will explain how HTTPS-based SOVD, though designed for HPC domain controllers, can also integrate legacy ECUs diagnosed via UDS, while Chapter 3 will detail the native SOVD methods for HPCs. A brief recap of ASAM SOVD follows: created in 2022 to overcome UDS limitations, it is a self-describing, state-of-the-art (HTTPS/REST) vehicle-level protocol that eliminates client-side ODX files, supports remote/proximity/in-vehicle diagnostics, and encompasses UDS while targeting modern high-performance compute platforms."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "SOVD Reference Architecture",
+      "node_id": "0004",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "The excerpt outlines the AUTOSAR Adaptive Platform \u201cService-Oriented Vehicle Diagnostics\u201d (SOVD) reference architecture for R25-11.  \nKey points:\n\n- Purpose: enable a centralized SOVD edge node in a distributed vehicle system.  \n- Core building blocks: SOVD Gateway, Diagnostic Manager, SOVD-to-UDS Translation layer.  \n- SOVD Gateway detailed:  \n  \u2013 Acts as the edge node, receiving HTTP requests from external SOVD clients.  \n  \u2013 Routes each request to the correct internal SOVD endpoint by parsing the entity part of the request URI.  \n  \u2013 Internal endpoints can be statically listed or discovered at runtime via mDNS.  \n  \u2013 Operates as an application-layer HTTP reverse proxy.  \n  \u2013 Configuration is handled through the SOVDGatewayInstantiation element in the TPS_Manifest, which specifies external client interfaces and internal forwarding targets.",
+      "nodes": [
+        {
+          "title": "SOVD Gateway",
+          "node_id": "0005",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "The excerpt outlines the Service-Oriented Vehicle Diagnostics (SOVD) reference architecture defined in AUTOSAR AP R25-11. It presents four key functional blocks:  \n1. SOVD Gateway \u2013 an HTTP reverse-proxy edge node that routes incoming SOVD client requests to internal endpoints, configurable via TPS_Manifest.  \n2. Diagnostic Manager \u2013 extends the legacy UDS-based manager to act as a native SOVD server, hosting multiple independent Diagnostic Server Instances (mapped to SOVD sub-components) while still supporting ISO 14229-1 services.  \n3. SOVD-to-UDS Translation \u2013 an on-board test client that converts SOVD commands to UDS requests/responses using predefined ODX mappings specified by ASAM.  \n4. Backend Connectivity \u2013 an abstraction layer enabling remote diagnostics by forwarding SOVD traffic between external backends and the SOVD Gateway, leveraging mDNS discovery and HTTP routing; its detailed implementation is left open to accommodate diverse backend infrastructures."
+        },
+        {
+          "title": "Diagnostic Manager",
+          "node_id": "0006",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The excerpt outlines how AUTOSAR Adaptive Platform R25-11 extends the classic Diagnostic Manager to become a native SOVD server while preserving UDS reuse. It explains that the manager can host multiple independent Diagnostic Server Instances (one per Software Cluster), each mapped to an SOVD sub-component, with configuration via the new SOVDServerInstance in TPS_Manifest. A separate \u201cSOVD to UDS Translation\u201d block acts as an on-board test client, converting SOVD commands to UDS requests/responses using ASAM-defined ODX mappings. Finally, a \u201cBackend Connectivity\u201d functional block enables remote diagnostics by abstracting backend infrastructure and routing SOVD traffic to an SOVD Gateway discovered through mDNS and forwarded over HTTP."
+        },
+        {
+          "title": "SOVD to UDS Translation",
+          "node_id": "0007",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The excerpt explains how AUTOSAR Adaptive Platform integrates Service-Oriented Vehicle Diagnostics (SOVD) into its existing architecture. It describes the expanded role of the Diagnostic Manager, which now acts as an SOVD server while preserving UDS-based diagnostics, supports multiple independent Diagnostic Server Instances per Software Cluster, and introduces the SOVDServerInstance configuration element. It outlines the SOVD-to-UDS Translation functional block that converts SOVD commands to UDS requests using ASAM-defined ODX mappings, functioning as an on-board test client. Finally, it covers Backend Connectivity, noting that while SOVD precisely standardizes proximity and in-vehicle access via mDNS, remote access is left open for OEM-specific backend infrastructures, with a suggested pattern of mDNS discovery and HTTP forwarding to an SOVD Gateway."
+        },
+        {
+          "title": "Backend Connectivity",
+          "node_id": "0008",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The excerpt explains how the AUTOSAR Adaptive Platform integrates Service-Oriented Vehicle Diagnostics (SOVD) while preserving existing UDS functionality. Key points:  \n- The Diagnostic Manager now doubles as an SOVD server, hosting multiple independent Diagnostic Server Instances (one per Software Cluster), each mapped to an SOVD sub-component and configured via the new SOVDServerInstance in TPS_Manifest.  \n- A dedicated \u201cSOVD to UDS Translation\u201d block, acting as an on-board test client, converts SOVD commands to UDS requests/responses using ASAM-defined ODX mappings; AUTOSAR references ASAM rather than re-specifying the complex translation.  \n- Backend connectivity for remote diagnostics is left open by AUTOSAR, but a simple approach is outlined: an abstracted connectivity block discovers the SOVD Gateway via mDNS and forwards SOVD requests over HTTP."
+        }
+      ]
+    },
+    {
+      "title": "SOVD use cases",
+      "node_id": "0009",
+      "start_index": 8,
+      "end_index": 8,
+      "summary": "The excerpt explains how Service-Oriented Vehicle Diagnostics (SOVD) use-cases are realized inside a Diagnostic Server Instance. It shows that most SOVD functions are mapped to familiar UDS (ISO 14229-1) services, re-using the same port instances and the same concurrency rules to avoid redundant integration work. Where SOVD diverges from UDS, new requirements and mechanisms are introduced, but the methodology still builds on the existing DEXT configuration model, extending it only where necessary. Concrete mappings are provided: SOVD data, configuration, operation and fault objects are respectively derived from DiagnosticDataIdentifier, DiagnosticRoutine and DiagnosticTroubleCodeUDS, while two standardized SOVD modes directly mirror UDS services 0x28 and 0x85. Static SOVD metadata come from corresponding DEXT/Manifest attributes, whereas dynamic application data\u2014expressed as DiagnosticDataElements\u2014must be interpreted by the Diagnostic Manager using the compuMethod inside SwDataDefProps to convert raw byte streams to/from SOVD JSON. Detailed conversion rules are specified in SWS_Diagnostics.",
+      "nodes": [
+        {
+          "title": "Common use cases in SOVD and UDS",
+          "node_id": "0010",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "The excerpt explains how Service-Oriented Vehicle Diagnostics (SOVD) use-cases are realized inside an AUTOSAR Adaptive Diagnostic Server Instance. It shows that most SOVD functions are mapped one-to-one to existing UDS (ISO 14229-1) services, re-using the same port instances and the same concurrency rules to avoid redundancy. Where SOVD diverges from UDS, new requirements and mechanisms are introduced, but the methodology still re-uses the DEXT configuration model, extending it only where necessary. The mapping rules are: SOVD data/operation/fault/configuration are respectively derived from DiagnosticDataIdentifier, DiagnosticRoutine, DiagnosticTroubleCodeUDS and DEXT attributes. Two standardized SOVD modes mirror UDS services 0x28 and 0x85. Static metadata come from corresponding DEXT/Manifest attributes, while dynamic application data\u2014expressed as DiagnosticDataElements\u2014must be interpreted by the Diagnostic Manager using the compuMethod inside SwDataDefProps to convert raw bytes to/from SOVD JSON; the conversion details are specified in SWS_Diagnostics."
+        },
+        {
+          "title": "SOVD-specific use cases",
+          "node_id": "0011",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "The excerpt outlines SOVD-specific diagnostic capabilities that fall outside the ISO 14229-1 standard and are managed by the AUTOSAR Adaptive Diagnostic Manager. It introduces two new proprietary interfaces\u2014SovdAuthorization and SovdProximityChallenge\u2014plus native handling of SOVD \u201cdata-lists.\u201d Authorization relies on OAuth tokens carried in request headers; the Diagnostic Manager decodes the token to obtain an authorization role and maps it to existing DEXT role models (DiagnosticAuthRoles, DiagnosticAccessPermission) to decide access rights. The Proximity Challenge mechanism lets the server demand proof of client proximity before executing sensitive operations; configuration of which operations require this challenge is done via a special DEXT data group (SDG). Finally, software and configuration updates are performed through the UCM framework in two modes: coordinated whole-vehicle updates (UCM campaign) or individual component updates executed by the UCM Diagnostic Application on Adaptive Machines.",
+          "nodes": [
+            {
+              "title": "Access Permissions",
+              "node_id": "0012",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "The excerpt outlines SOVD-specific diagnostic capabilities added to the AUTOSAR Adaptive Platform Diagnostic Manager that go beyond standard ISO 14229-1 UDS. It details two new interfaces: SovdAuthorization, which validates OAuth tokens and maps roles to SOVD methods using the existing DEXT Service 0x29 model, and SovdProximityChallenge, which lets the application prove client proximity before allowing sensitive operations, with configuration via DEXT SDGs. It also notes that the Diagnostic Manager natively supports SOVD data-lists and that future releases will add more SOVD-only use-cases. Finally, it explains that software/configuration updates are handled through the UCM framework in two modes: coordinated vehicle-wide campaigns and individual component updates on Adaptive Machines.",
+              "nodes": [
+                {
+                  "title": "Proximity Challenge",
+                  "node_id": "0013",
+                  "start_index": 9,
+                  "end_index": 9,
+                  "summary": "The excerpt outlines how AUTOSAR Adaptive Platform\u2019s Service-Oriented Vehicle Diagnostics (SOVD) extends beyond ISO 14229-1 by adding three SOVD-only capabilities\u2014OAuth-based authorization, proximity challenge, and native handling of data-lists\u2014through new Diagnostic Manager interfaces (SovdAuthorization, SovdProximityChallenge). Authorization leverages OAuth tokens, maps roles via the existing DEXT 0x29 service model, and links DiagnosticAccessPermission to SOVD methods. Proximity challenge is configurable per operation through a special DEXT data group and is executed before allowing the requested diagnostic action. Software and configuration updates are performed with the UCM framework in two modes: coordinated \u201cvehicle update\u201d campaigns or individual \u201ccomponent updates\u201d on Adaptive Machines."
+                }
+              ]
+            },
+            {
+              "title": "Software Update",
+              "node_id": "0014",
+              "start_index": 9,
+              "end_index": 10,
+              "summary": "The excerpt outlines how AUTOSAR Adaptive Platform\u2019s Diagnostic Manager supports SOVD-only features absent from ISO 14229-1: OAuth-based authorization via the SovdAuthorization interface, proximity challenges through SovdProximityChallenge, and native handling of SOVD data-lists. It maps these to the existing DEXT role/permission model. For software updates it distinguishes two UCM-based paths: \u201cvehicle update,\u201d where the SOVD Gateway forwards requests to an OTA client that drives the full campaign without Diagnostic Manager involvement, and \u201ccomponent update,\u201d where the Diagnostic Manager uses its ara::diag interface (bridged to ara::ucm) to let the SOVD Client orchestrate per-component download, transfer, processing, activation and cleanup. Logging file retrieval is noted as non-standard and platform-specific."
+            },
+            {
+              "title": "Logging",
+              "node_id": "0015",
+              "start_index": 10,
+              "end_index": 11,
+              "summary": "The excerpt explains how the AUTOSAR Adaptive Platform (R25-11) supports Service-Oriented Vehicle Diagnostics (SOVD) for two distinct update scenarios:\n\n1. Vehicle-wide updates: an OTA client acts as the SOVD server, receives a single REST request from any SOVD client, and autonomously drives the entire update process via the ara::vucm VehiclePackageManagement interface; the Diagnostic Manager is not involved and implementation details are vendor-specific.\n\n2. Component-level updates: the Diagnostic Manager is central; it exposes the standardized ara::diag interface which is mapped to ara::ucm::PackageManagement through the UCM Diagnostic Application, allowing the SOVD client to orchestrate each UCM stage (download, transfer, process, activate, delete).\n\nAdditional diagnostic capabilities covered:\n- Logging: retrieval and management of log files is vendor-specific because ara::log does not standardize it.\n- Bulk data: ara::diag enables secure storage, retrieval and deletion of large datasets using persistence and crypto services (signature/hash).\n- Configuration: two ASAM methods are supported\u2014parameter-based and bulk-data-based; the new ara::diag::GenericConfiguration interface implements all SOVD-defined methods for bulk-data configuration, subject to access-control and leveraging the same persistence/crypto mechanisms."
+            },
+            {
+              "title": "Bulk Data",
+              "node_id": "0016",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "The excerpt explains how AUTOSAR Adaptive Platform R25-11 implements service-oriented vehicle diagnostics (SOVD). It states that the link between ara::diag and ara::log for reading log files is vendor-specific. The Diagnostic Manager, via ara::diag, oversees bulk-data operations\u2014storage, retrieval, deletion\u2014using persistence and cryptographic services provided by Adaptive applications. Configuration handling follows ASAM SOVD: parameters or bulk-data. A new ara::diag::GenericConfiguration interface supports bulk-data config operations, enforces access control, and enables Adaptive apps to perform persistence and crypto tasks, aligning with the ASAM standard."
+            },
+            {
+              "title": "Configuration",
+              "node_id": "0017",
+              "start_index": 11,
+              "end_index": 12,
+              "summary": "The excerpt explains how the AUTOSAR Adaptive Platform (R25-11) realizes Service-Oriented Vehicle Diagnostics (SOVD).  \nKey points:\n\n- Vendor-specific link between ara::diag and ara::log for reading log files.  \n- Diagnostic Manager (ara::diag) controls bulk-data operations\u2014store, retrieve, delete\u2014using persistence and crypto services (signatures, hashes).  \n- Configuration handling supports both parameter and bulk-data access; a new ara::diag::GenericConfiguration interface implements all ASAM SOVD bulk-data methods under access-control, again using persistence/crypto.  \n- A 40-entry acronym list (AA, AP, ASAM, DID, DoIP, DTC, UDS, SOVD, TLS \u2026) and the definition \u201cone Diagnostic Server instance per SoftwareCluster\u201d are provided."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Acronyms and Abbreviations",
+      "node_id": "0018",
+      "start_index": 12,
+      "end_index": 14,
+      "summary": "The excerpt is a glossary and reference list from the AUTOSAR AP \u201cExplanation of Service-Oriented Vehicle Diagnostics\u201d specification (R25-11).  \nIt compiles all acronyms, abbreviations and key terms used in the document\u2014covering AUTOSAR Adaptive Platform concepts (AA, AP, SoftwareCluster, DM, MetaInfo), UDS/DoIP diagnostics (DID, DTC, SID, NRC, Snapshot/Extended Data Records), and SOVD-specific notions (SOVD entity, SOVD lock, Diagnostic Server instance).  \nIt also lists the normative inputs: ASAM SOVD API spec, AUTOSAR Diagnostic Extract template, and ISO standards 14229-1 (UDS) and 13400-2 (DoIP)."
+    },
+    {
+      "title": "Related documentation",
+      "node_id": "0019",
+      "start_index": 14,
+      "end_index": 14,
+      "summary": "The partial document lists the reference standards and specifications that underpin the AUTOSAR AP explanation of Service-Oriented Vehicle Diagnostics (SOVD), namely the ASAM SOVD API Specification, AUTOSAR Diagnostic Extract Template, ISO 14229-1 (UDS), and ISO 13400-2 (DoIP).",
+      "nodes": [
+        {
+          "title": "Input documents & related standards and norms",
+          "node_id": "0020",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "The partial document lists the related documentation and standards referenced in the AUTOSAR AP R25-11 explanation of Service-Oriented Vehicle Diagnostics (SOVD). It cites the ASAM SOVD API Specification, the AUTOSAR Diagnostic Extract Template, and ISO standards 14229-1 (UDS) and 13400-2 (DoIP), providing links or sources for each."
+        }
+      ]
+    }
+  ]
+}

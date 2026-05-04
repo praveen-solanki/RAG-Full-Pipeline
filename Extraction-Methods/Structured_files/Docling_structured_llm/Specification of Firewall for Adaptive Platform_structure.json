@@ -1,0 +1,1380 @@
+{
+  "doc_description": "Specification of Firewall for Adaptive Platform.pdf",
+  "total_pages": 74,
+  "source_format": "granite_docling_vlm",
+  "structure": [
+    {
+      "node_id": "0001",
+      "title": "Disclaimer",
+      "start_index": 2,
+      "end_index": 3,
+      "summary": "Covers disclaimer and legal notices."
+    },
+    {
+      "node_id": "0002",
+      "title": "Table of Contents",
+      "start_index": 3,
+      "end_index": 6,
+      "summary": ""
+    },
+    {
+      "node_id": "0003",
+      "title": "1 Introduction and functional overview",
+      "start_index": 6,
+      "end_index": 7,
+      "summary": "Provides an introduction and overview of the system's functionality.",
+      "nodes": []
+    },
+    {
+      "node_id": "0004",
+      "title": "2 Acronyms and Abbreviations",
+      "start_index": 7,
+      "end_index": 8,
+      "summary": "Lists acronyms and abbreviations used throughout the document.",
+      "nodes": [
+        {
+          "node_id": "0005",
+          "title": "2.1 Acronyms",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "Lists acronyms used in the document."
+        },
+        {
+          "node_id": "0006",
+          "title": "2.2 Abbreviations",
+          "start_index": 7,
+          "end_index": 8,
+          "summary": "Lists abbreviations used in the document."
+        }
+      ]
+    },
+    {
+      "node_id": "0007",
+      "title": "3 Related documentation",
+      "start_index": 8,
+      "end_index": 10,
+      "summary": "Lists related documentation including input documents and further specifications.",
+      "nodes": [
+        {
+          "node_id": "0008",
+          "title": "3.1 Input documents & related standards and norms",
+          "start_index": 8,
+          "end_index": 9,
+          "summary": "Lists input documents and related standards and norms."
+        },
+        {
+          "node_id": "0009",
+          "title": "3.2 Further applicable specification",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "Lists additional applicable specifications."
+        }
+      ]
+    },
+    {
+      "node_id": "0010",
+      "title": "4 Constraints and assumptions",
+      "start_index": 10,
+      "end_index": 11,
+      "summary": "Describes known limitations and assumptions affecting the system.",
+      "nodes": [
+        {
+          "node_id": "0011",
+          "title": "4.1 Known limitations",
+          "start_index": 10,
+          "end_index": 11,
+          "summary": "Lists known limitations of the system."
+        }
+      ]
+    },
+    {
+      "node_id": "0012",
+      "title": "5 Dependencies to other Functional Clusters",
+      "start_index": 11,
+      "end_index": 13,
+      "summary": "Details dependencies on other functional clusters through provided and required interfaces.",
+      "nodes": [
+        {
+          "node_id": "0013",
+          "title": "5.1 Provided Interfaces",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "Describes interfaces provided to other functional clusters."
+        },
+        {
+          "node_id": "0014",
+          "title": "5.2 Required Interfaces",
+          "start_index": 11,
+          "end_index": 13,
+          "summary": "Describes interfaces required from other functional clusters."
+        }
+      ]
+    },
+    {
+      "node_id": "0015",
+      "title": "6 Requirements Tracing",
+      "start_index": 13,
+      "end_index": 15,
+      "summary": "Tracks the requirements and their implementation status."
+    },
+    {
+      "node_id": "0016",
+      "title": "7 Functional specification",
+      "start_index": 15,
+      "end_index": 44,
+      "summary": "Describes the functional specification including architecture, network packet handling, and reporting.",
+      "nodes": [
+        {
+          "node_id": "0017",
+          "title": "7.1 Architecture Overview",
+          "start_index": 15,
+          "end_index": 17,
+          "summary": "Provides an overview of the system architecture."
+        },
+        {
+          "node_id": "0018",
+          "title": "7.2 Network packet inspection",
+          "start_index": 17,
+          "end_index": 25,
+          "summary": "Describes the process of inspecting network packets using various methods.",
+          "nodes": [
+            {
+              "node_id": "0019",
+              "title": "[AP_SWS_Fw_30001]",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": ""
+            },
+            {
+              "node_id": "0020",
+              "title": "[AP_SWS_Fw_31001]",
+              "start_index": 17,
+              "end_index": 18,
+              "summary": ""
+            },
+            {
+              "node_id": "0021",
+              "title": "[AP_SWS_Fw_31002]",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": ""
+            },
+            {
+              "node_id": "0022",
+              "title": "[AP_SWS_Fw_30002]",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": ""
+            },
+            {
+              "node_id": "0023",
+              "title": "7.2.1 Stateless packet inspection",
+              "start_index": 18,
+              "end_index": 20,
+              "summary": "Describes the process of inspecting packets without maintaining state.",
+              "nodes": [
+                {
+                  "node_id": "0024",
+                  "title": "[AP_SWS_Fw_30003]",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0025",
+                  "title": "[AP_SWS_Fw_30004]",
+                  "start_index": 18,
+                  "end_index": 18,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0026",
+                  "title": "[AP_SWS_Fw_30005]",
+                  "start_index": 18,
+                  "end_index": 19,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0027",
+                  "title": "[AP_SWS_Fw_30006]",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0028",
+                  "title": "[AP_SWS_Fw_30007]",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0029",
+                  "title": "[AP_SWS_Fw_30008]",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0030",
+                  "title": "[AP_SWS_Fw_30009]",
+                  "start_index": 19,
+                  "end_index": 19,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0031",
+                  "title": "[AP_SWS_Fw_30010]",
+                  "start_index": 19,
+                  "end_index": 20,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0032",
+                  "title": "[AP_SWS_Fw_30011]",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0033",
+                  "title": "7.2.1.1 Inspection of not modeled protocols",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "Describes the process for inspecting protocols not modeled."
+                }
+              ]
+            },
+            {
+              "node_id": "0034",
+              "title": "7.2.2 Stateful packet inspection",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "Describes the process of inspecting packets while maintaining state.",
+              "nodes": [
+                {
+                  "node_id": "0035",
+                  "title": "[AP_SWS_Fw_30012]",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0036",
+                  "title": "[AP_SWS_Fw_30013]",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0037",
+                  "title": "[AP_SWS_Fw_30014]",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0038",
+              "title": "7.2.3 Deep packet inspection",
+              "start_index": 21,
+              "end_index": 25,
+              "summary": "Describes deep packet inspection techniques for specific protocols.",
+              "nodes": [
+                {
+                  "node_id": "0039",
+                  "title": "7.2.3.1 SOME/IP",
+                  "start_index": 21,
+                  "end_index": 23,
+                  "summary": "Details requirements for SOME/IP protocol inspection.",
+                  "nodes": [
+                    {
+                      "node_id": "0040",
+                      "title": "[AP_SWS_Fw_30015]",
+                      "start_index": 22,
+                      "end_index": 22,
+                      "summary": ""
+                    },
+                    {
+                      "node_id": "0041",
+                      "title": "[AP_SWS_Fw_30016]",
+                      "start_index": 22,
+                      "end_index": 22,
+                      "summary": ""
+                    },
+                    {
+                      "node_id": "0042",
+                      "title": "[AP_SWS_Fw_30017]",
+                      "start_index": 22,
+                      "end_index": 22,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0043",
+                      "title": "[AP_SWS_Fw_30018]",
+                      "start_index": 22,
+                      "end_index": 22,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0044",
+                      "title": "[AP_SWS_Fw_30019]",
+                      "start_index": 22,
+                      "end_index": 23,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0045",
+                      "title": "[AP_SWS_Fw_30020]",
+                      "start_index": 23,
+                      "end_index": 23,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0046",
+                      "title": "[AP_SWS_Fw_30021]",
+                      "start_index": 23,
+                      "end_index": 23,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0047",
+                  "title": "7.2.3.2 DDS",
+                  "start_index": 23,
+                  "end_index": 24,
+                  "summary": "Details requirements for DDS protocol inspection.",
+                  "nodes": [
+                    {
+                      "node_id": "0048",
+                      "title": "[AP_SWS_Fw_30022]",
+                      "start_index": 23,
+                      "end_index": 24,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0049",
+                      "title": "[AP_SWS_Fw_30023]",
+                      "start_index": 24,
+                      "end_index": 24,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0050",
+                  "title": "7.2.3.3 DoIP",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "Details requirements for DoIP protocol inspection.",
+                  "nodes": [
+                    {
+                      "node_id": "0051",
+                      "title": "[AP_SWS_Fw_30024]",
+                      "start_index": 24,
+                      "end_index": 24,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0052",
+                      "title": "[AP_SWS_Fw_30025]",
+                      "start_index": 24,
+                      "end_index": 24,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0053",
+                  "title": "7.2.3.4 Generic inspection",
+                  "start_index": 24,
+                  "end_index": 25,
+                  "summary": "Provides generic guidelines for protocol inspection.",
+                  "nodes": [
+                    {
+                      "node_id": "0054",
+                      "title": "[AP_SWS_Fw_30026]",
+                      "start_index": 25,
+                      "end_index": 25,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0055",
+          "title": "7.3 Network packet filtering",
+          "start_index": 25,
+          "end_index": 28,
+          "summary": "Explains how network packets are filtered using allowlists, blocklists, rate limiting, and state-dependent rules.",
+          "nodes": [
+            {
+              "node_id": "0056",
+              "title": "7.3.1 Allowlists and Blocklists",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": "Describes the use of allowlists and blocklists for packet filtering.",
+              "nodes": [
+                {
+                  "node_id": "0057",
+                  "title": "[AP_SWS_Fw_40001]",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0058",
+                  "title": "[AP_SWS_Fw_40002]",
+                  "start_index": 25,
+                  "end_index": 26,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0059",
+                  "title": "[AP_SWS_Fw_40003]",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0060",
+              "title": "7.3.2 Rate limiting",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "Describes rate limiting techniques for packet filtering.",
+              "nodes": [
+                {
+                  "node_id": "0061",
+                  "title": "[AP_SWS_Fw_40004]",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0062",
+                  "title": "[AP_SWS_Fw_40005]",
+                  "start_index": 26,
+                  "end_index": 26,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0063",
+              "title": "7.3.3 State dependent filtering",
+              "start_index": 26,
+              "end_index": 28,
+              "summary": "Describes state-dependent filtering techniques for packet filtering.",
+              "nodes": [
+                {
+                  "node_id": "0064",
+                  "title": "[AP_SWS_Fw_40006]",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0065",
+                  "title": "[AP_SWS_Fw_40007]",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0066",
+                  "title": "[AP_SWS_Fw_40008]",
+                  "start_index": 27,
+                  "end_index": 27,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0067",
+                  "title": "[AP_SWS_Fw_40013] FirewallStateSwitchInterface access control",
+                  "start_index": 27,
+                  "end_index": 28,
+                  "summary": "Defines access control for FirewallStateSwitchInterface."
+                },
+                {
+                  "node_id": "0068",
+                  "title": "[AP_SWS_Fw_40009]",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0069",
+                  "title": "[AP_SWS_Fw_40010]",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0070",
+                  "title": "[AP_SWS_Fw_40011]",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": ""
+                },
+                {
+                  "node_id": "0071",
+                  "title": "[AP_SWS_Fw_40012]",
+                  "start_index": 28,
+                  "end_index": 28,
+                  "summary": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0072",
+          "title": "7.4 Firewall Rule Management",
+          "start_index": 28,
+          "end_index": 29,
+          "summary": "Manages firewall rules and configurations."
+        },
+        {
+          "node_id": "0073",
+          "title": "7.5 Functional cluster life-cycle",
+          "start_index": 29,
+          "end_index": 30,
+          "summary": "Describes the lifecycle events of the functional cluster including startup, shutdown, and daemon crashes.",
+          "nodes": [
+            {
+              "node_id": "0074",
+              "title": "7.5.1 Startup",
+              "start_index": 29,
+              "end_index": 30,
+              "summary": "Describes the startup procedure for the functional cluster.",
+              "nodes": [
+                {
+                  "node_id": "0075",
+                  "title": "[AP_SWS_Fw_00001]",
+                  "start_index": 29,
+                  "end_index": 30,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0076",
+              "title": "7.5.2 Shutdown",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "Describes the shutdown procedure for the functional cluster.",
+              "nodes": [
+                {
+                  "node_id": "0077",
+                  "title": "[AP_SWS_Fw_00002]",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": ""
+                }
+              ]
+            },
+            {
+              "node_id": "0078",
+              "title": "7.5.3 Daemon crash",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "Describes the behavior when the daemon crashes."
+            }
+          ]
+        },
+        {
+          "node_id": "0079",
+          "title": "7.6 Reporting",
+          "start_index": 30,
+          "end_index": 44,
+          "summary": "Describes the reporting mechanisms for security events, log messages, violations, and production errors.",
+          "nodes": [
+            {
+              "node_id": "0080",
+              "title": "7.6.1 Security Events",
+              "start_index": 30,
+              "end_index": 43,
+              "summary": "Describes the security events raised by the firewall.",
+              "nodes": [
+                {
+                  "node_id": "0081",
+                  "title": "7.6.1.1 SEvs raised by the firewall",
+                  "start_index": 30,
+                  "end_index": 39,
+                  "summary": "Lists security events raised by the firewall.",
+                  "nodes": [
+                    {
+                      "node_id": "0082",
+                      "title": "[AP_SWS_Fw_61000] Security events for firewall (AP)",
+                      "start_index": 31,
+                      "end_index": 31,
+                      "summary": "Describes security events related to firewall operations in AUTOSAR."
+                    },
+                    {
+                      "node_id": "0083",
+                      "title": "[AP_SWS_Fw_60001] Security event context data definition: SEV_FW_PACKET_BLOCKED_DATALINKLAYER_MISMATCH",
+                      "start_index": 31,
+                      "end_index": 32,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_DATALINKLAYER_MISMATCH."
+                    },
+                    {
+                      "node_id": "0084",
+                      "title": "[AP_SWS_Fw_60020] Security event context data definition: SEV_FW_PACKET_BLOCKED_IPV4_MISMATCH",
+                      "start_index": 32,
+                      "end_index": 32,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_IPV4_MISMATCH."
+                    },
+                    {
+                      "node_id": "0085",
+                      "title": "[AP_SWS_Fw_60021] Security event context data definition: SEV_FW_PACKET_BLOCKED_IPV6_MISMATCH",
+                      "start_index": 32,
+                      "end_index": 33,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_IPV6_MISMATCH."
+                    },
+                    {
+                      "node_id": "0086",
+                      "title": "[AP_SWS_Fw_60022] Security event context data definition: SEV_FW_PACKET_BLOCKED_ICMP_MISMATCH",
+                      "start_index": 33,
+                      "end_index": 33,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_ICMP_MISMATCH."
+                    },
+                    {
+                      "node_id": "0087",
+                      "title": "[AP_SWS_Fw_60023] Security event context data definition: SEV_FW_PACKET_BLOCKED_TCP_MISMATCH",
+                      "start_index": 33,
+                      "end_index": 34,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_TCP_MISMATCH."
+                    },
+                    {
+                      "node_id": "0088",
+                      "title": "[AP_SWS_Fw_60024] Security event context data definition: SEV_FW_PACKET_BLOCKED_UDP_MISMATCH",
+                      "start_index": 34,
+                      "end_index": 34,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_UDP_MISMATCH."
+                    },
+                    {
+                      "node_id": "0089",
+                      "title": "[AP_SWS_Fw_60025] Security event context data definition: SEV_FW_PACKET_BLOCKED_SOMEIP_MISMATCH",
+                      "start_index": 34,
+                      "end_index": 35,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_SOMEIP_MISMATCH."
+                    },
+                    {
+                      "node_id": "0090",
+                      "title": "[AP_SWS_Fw_60026] Security event context data definition: SEV_FW_PACKET_BLOCKED_SOMEIPSD_MISMATCH",
+                      "start_index": 35,
+                      "end_index": 35,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_SOMEIPSD_MISMATCH."
+                    },
+                    {
+                      "node_id": "0091",
+                      "title": "[AP_SWS_Fw_60027] Security event context data definition: SEV_FW_PACKET_BLOCKED_DDS_MISMATCH",
+                      "start_index": 35,
+                      "end_index": 36,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_DDS_MISMATCH."
+                    },
+                    {
+                      "node_id": "0092",
+                      "title": "[AP_SWS_Fw_60028] Security event context data definition: SEV_FW_PACKET_BLOCKED_DOIP_MISMATCH",
+                      "start_index": 36,
+                      "end_index": 36,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_DOIP_MISMATCH."
+                    },
+                    {
+                      "node_id": "0093",
+                      "title": "[AP_SWS_Fw_60029] Security event context data definition: SEV_FW_PACKET_BLOCKED_GENERIC_MISMATCH",
+                      "start_index": 36,
+                      "end_index": 37,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_GENERIC_MISMATCH."
+                    },
+                    {
+                      "node_id": "0094",
+                      "title": "[AP_SWS_Fw_60002] Security event context data definition: SEV_FW_PACKET_BLOCKED_TCP_MAXCONNECTIONS",
+                      "start_index": 37,
+                      "end_index": 37,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_TCP_MAXCONNECTIONS."
+                    },
+                    {
+                      "node_id": "0095",
+                      "title": "[AP_SWS_Fw_60030] Security event context data definition: SEV_FW_PACKET_BLOCKED_TCP_TIMEOUT",
+                      "start_index": 37,
+                      "end_index": 38,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_TCP_TIMEOUT."
+                    },
+                    {
+                      "node_id": "0096",
+                      "title": "[AP_SWS_Fw_60031] Security event context data definition: SEV_FW_PACKET_BLOCKED_TCP_STATETRANSITION",
+                      "start_index": 38,
+                      "end_index": 38,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_TCP_STATETRANSITION."
+                    },
+                    {
+                      "node_id": "0097",
+                      "title": "[AP_SWS_Fw_60003] Security event context data definition: SEV_FW_PACKET_BLOCKED_RATELIMIT",
+                      "start_index": 38,
+                      "end_index": 39,
+                      "summary": "Defines context data for the security event SEV_FW_PACKET_BLOCKED_RATELIMIT."
+                    },
+                    {
+                      "node_id": "0098",
+                      "title": "[AP_SWS_Fw_60032] Security event context data definition: SEV_ACCESS_CONTROL_FIREWALL_IAM_ACCESS_DENIED",
+                      "start_index": 39,
+                      "end_index": 39,
+                      "summary": "Defines context data for the security event SEV_ACCESS_CONTROL_FIREWALL_IAM_ACCESS_DENIED."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0099",
+                  "title": "7.6.1.2 Raising SEvs",
+                  "start_index": 39,
+                  "end_index": 43,
+                  "summary": "Describes the process for raising security events.",
+                  "nodes": [
+                    {
+                      "node_id": "0100",
+                      "title": "[AP_SWS_Fw_60004]",
+                      "start_index": 39,
+                      "end_index": 40,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0101",
+                      "title": "[AP_SWS_Fw_60005]",
+                      "start_index": 40,
+                      "end_index": 40,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0102",
+                      "title": "[AP_SWS_Fw_60006]",
+                      "start_index": 40,
+                      "end_index": 40,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0103",
+                      "title": "[AP_SWS_Fw_60007]",
+                      "start_index": 40,
+                      "end_index": 40,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0104",
+                      "title": "[AP_SWS_Fw_60008]",
+                      "start_index": 40,
+                      "end_index": 41,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0105",
+                      "title": "[AP_SWS_Fw_60009]",
+                      "start_index": 41,
+                      "end_index": 41,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0106",
+                      "title": "[AP_SWS_Fw_60010]",
+                      "start_index": 41,
+                      "end_index": 41,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0107",
+                      "title": "[AP_SWS_Fw_60011]",
+                      "start_index": 41,
+                      "end_index": 41,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0108",
+                      "title": "[AP_SWS_Fw_60012]",
+                      "start_index": 41,
+                      "end_index": 41,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0109",
+                      "title": "[AP_SWS_Fw_60013]",
+                      "start_index": 41,
+                      "end_index": 41,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0110",
+                      "title": "[AP_SWS_Fw_60014]",
+                      "start_index": 41,
+                      "end_index": 41,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0111",
+                      "title": "[AP_SWS_Fw_60015]",
+                      "start_index": 41,
+                      "end_index": 42,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0112",
+                      "title": "[AP_SWS_Fw_60016]",
+                      "start_index": 42,
+                      "end_index": 42,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0113",
+                      "title": "[AP_SWS_Fw_60017]",
+                      "start_index": 42,
+                      "end_index": 42,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0114",
+                      "title": "[AP_SWS_Fw_60018]",
+                      "start_index": 42,
+                      "end_index": 42,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0115",
+                      "title": "[AP_SWS_Fw_60019]",
+                      "start_index": 42,
+                      "end_index": 42,
+                      "summary": "Defines a specific rule or constraint for firewall security."
+                    },
+                    {
+                      "node_id": "0116",
+                      "title": "[AP_SWS_Fw_60035] Security event for access control",
+                      "start_index": 42,
+                      "end_index": 42,
+                      "summary": "Describes a security event related to access control in the firewall."
+                    },
+                    {
+                      "node_id": "0117",
+                      "title": "[AP_SWS_Fw_60034] Firewall security event context data",
+                      "start_index": 42,
+                      "end_index": 43,
+                      "summary": "Documents context data for various firewall security events."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "0118",
+              "title": "7.6.2 Log Messages",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "Describes the log messages generated by the system."
+            },
+            {
+              "node_id": "0119",
+              "title": "7.6.3 Violation Messages",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "Describes violation messages generated by the system."
+            },
+            {
+              "node_id": "0120",
+              "title": "7.6.4 Production Errors",
+              "start_index": 43,
+              "end_index": 44,
+              "summary": "Describes production errors encountered by the system."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0121",
+      "title": "8 API specification",
+      "start_index": 44,
+      "end_index": 55,
+      "summary": "Defines the API specification including port interface bindings, header files, data types, and reference.",
+      "nodes": [
+        {
+          "node_id": "0122",
+          "title": "8.1 PortInterface to API class binding",
+          "start_index": 44,
+          "end_index": 45,
+          "summary": "Maps PortInterfaces to corresponding API classes."
+        },
+        {
+          "node_id": "0123",
+          "title": "8.2 API Header Files",
+          "start_index": 45,
+          "end_index": 45,
+          "summary": "Describes the structure and contents of API header files.",
+          "nodes": [
+            {
+              "node_id": "0124",
+              "title": "[AP_SWS_Fw_80001] File name, includes and multiple inclusion guard",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "Describes the file name, includes, and multiple inclusion guard for API header files."
+            }
+          ]
+        },
+        {
+          "node_id": "0125",
+          "title": "8.3 API Common Data Types",
+          "start_index": 45,
+          "end_index": 46,
+          "summary": "Defines common data types used in the API.",
+          "nodes": [
+            {
+              "node_id": "0126",
+              "title": "[AP_SWS_Fw_81002] Definition of API variable ara::fw::states::{}",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "Defines the API variable ara::fw::states::{}."
+            }
+          ]
+        },
+        {
+          "node_id": "0127",
+          "title": "8.4 API Reference",
+          "start_index": 46,
+          "end_index": 55,
+          "summary": "Provides detailed reference information for API classes such as FirewallStateSwitchInterface and FirewallErrorDomain.",
+          "nodes": [
+            {
+              "node_id": "0128",
+              "title": "8.4.1 FirewallStateSwitchInterface",
+              "start_index": 46,
+              "end_index": 50,
+              "summary": "Describes the API class ara::fw::FirewallStateSwitchInterface and its functions.",
+              "nodes": [
+                {
+                  "node_id": "0129",
+                  "title": "[AP_SWS_Fw_82001] Definition of API class ara::fw::FirewallStateSwitchInterface",
+                  "start_index": 46,
+                  "end_index": 47,
+                  "summary": "Defines the API class ara::fw::FirewallStateSwitchInterface."
+                },
+                {
+                  "node_id": "0130",
+                  "title": "[AP_SWS_Fw_82002] Definition of API function ara::fw::FirewallStateSwitchInterface::FirewallStateSwitchInterface",
+                  "start_index": 47,
+                  "end_index": 47,
+                  "summary": "Defines the constructor function for ara::fw::FirewallStateSwitchInterface."
+                },
+                {
+                  "node_id": "0131",
+                  "title": "[AP_SWS_Fw_82003] Definition of API function ara::fw::FirewallStateSwitchInterface::~FirewallStateSwitchInterface",
+                  "start_index": 47,
+                  "end_index": 48,
+                  "summary": "Defines the destructor function for ara::fw::FirewallStateSwitchInterface."
+                },
+                {
+                  "node_id": "0132",
+                  "title": "[AP_SWS_Fw_82004] Definition of API function ara::fw::FirewallStateSwitchInterface::FirewallStateSwitchInterface",
+                  "start_index": 48,
+                  "end_index": 49,
+                  "summary": "Defines the constructor function for ara::fw::FirewallStateSwitchInterface."
+                },
+                {
+                  "node_id": "0133",
+                  "title": "[AP_SWS_Fw_82007] Definition of API function ara::fw::FirewallStateSwitchInterface::operator=",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": "Defines the assignment operator function for ara::fw::FirewallStateSwitchInterface."
+                },
+                {
+                  "node_id": "0134",
+                  "title": "[AP_SWS_Fw_82008] Definition of API function ara::fw::FirewallStateSwitchInterface::SwitchFirewallState",
+                  "start_index": 49,
+                  "end_index": 50,
+                  "summary": "Defines the function SwitchFirewallState for ara::fw::FirewallStateSwitchInterface."
+                }
+              ]
+            },
+            {
+              "node_id": "0135",
+              "title": "8.4.2 FirewallErrorDomain",
+              "start_index": 50,
+              "end_index": 55,
+              "summary": "Describes the error domain ara::fw::FwErrc and related functions.",
+              "nodes": [
+                {
+                  "node_id": "0136",
+                  "title": "8.4.2.1 ara::fw::FwErrc",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "Defines the API enum ara::fw::FwErrc.",
+                  "nodes": [
+                    {
+                      "node_id": "0137",
+                      "title": "[AP_SWS_Fw_83001] Definition of API enum ara::fw::FwErrc",
+                      "start_index": 50,
+                      "end_index": 50,
+                      "summary": "Defines the API enum ara::fw::FwErrc for error codes."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0138",
+                  "title": "8.4.2.2 ara::fw::GetFwErrorDomain",
+                  "start_index": 50,
+                  "end_index": 51,
+                  "summary": "Defines the API function ara::fw::GetFwErrorDomain.",
+                  "nodes": [
+                    {
+                      "node_id": "0139",
+                      "title": "[AP_SWS_Fw_83002] Definition of API function ara::fw::GetFwErrorDomain",
+                      "start_index": 50,
+                      "end_index": 51,
+                      "summary": "Defines the API function ara::fw::GetFwErrorDomain to retrieve error domains."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0140",
+                  "title": "8.4.2.3 ara::fw::MakeErrorCode overload for ara::fw::GetFwErrorDomain",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "Defines the API function ara::fw::MakeErrorCode for ara::fw::GetFwErrorDomain.",
+                  "nodes": [
+                    {
+                      "node_id": "0141",
+                      "title": "[AP_SWS_Fw_83003] Definition of API function ara::fw::MakeErrorCode",
+                      "start_index": 51,
+                      "end_index": 51,
+                      "summary": "Defines the API function ara::fw::MakeErrorCode to create error codes."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0142",
+                  "title": "8.4.2.4 ara::fw::FwException",
+                  "start_index": 51,
+                  "end_index": 52,
+                  "summary": "Defines the API class ara::fw::FwException and its constructor.",
+                  "nodes": [
+                    {
+                      "node_id": "0143",
+                      "title": "[AP_SWS_Fw_83004] Definition of API class ara::fw::FwException",
+                      "start_index": 51,
+                      "end_index": 51,
+                      "summary": "Defines the API class ara::fw::FwException for handling exceptions."
+                    },
+                    {
+                      "node_id": "0144",
+                      "title": "[AP_SWS_Fw_83005] Definition of API function ara::fw::FwException::FwException",
+                      "start_index": 51,
+                      "end_index": 52,
+                      "summary": "Defines the constructor for the API class ara::fw::FwException."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0145",
+                  "title": "8.4.2.5 ara::fw::FwErrorDomain",
+                  "start_index": 52,
+                  "end_index": 55,
+                  "summary": "Defines the API class ara::fw::FwErrorDomain and related functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0146",
+                      "title": "[AP_SWS_Fw_83006] Definition of API class ara::fw::FwErrorDomain",
+                      "start_index": 52,
+                      "end_index": 52,
+                      "summary": "Defines the API class ara::fw::FwErrorDomain for managing error domains."
+                    },
+                    {
+                      "node_id": "0147",
+                      "title": "[AP_SWS_Fw_83007] Definition of API type ara::fw::FwErrorDomain::Errc",
+                      "start_index": 52,
+                      "end_index": 53,
+                      "summary": "Defines the API type ara::fw::FwErrorDomain::Errc for error codes within an error domain."
+                    },
+                    {
+                      "node_id": "0148",
+                      "title": "[AP_SWS_Fw_83008] Definition of API type ara::fw::FwErrorDomain::Exception",
+                      "start_index": 53,
+                      "end_index": 53,
+                      "summary": "Defines the API type ara::fw::FwErrorDomain::Exception for exception handling within an error domain."
+                    },
+                    {
+                      "node_id": "0149",
+                      "title": "[AP_SWS_Fw_83009] Definition of API function ara::fw::FwErrorDomain::FwErrorDomain",
+                      "start_index": 53,
+                      "end_index": 53,
+                      "summary": "Defines the constructor for the API class ara::fw::FwErrorDomain."
+                    },
+                    {
+                      "node_id": "0150",
+                      "title": "[AP_SWS_Fw_83010] Definition of API function ara::fw::FwErrorDomain::Name",
+                      "start_index": 53,
+                      "end_index": 54,
+                      "summary": "Defines the API function ara::fw::FwErrorDomain::Name to retrieve the name of an error domain."
+                    },
+                    {
+                      "node_id": "0151",
+                      "title": "[AP_SWS_Fw_83011] Definition of API function ara::fw::FwErrorDomain::Message",
+                      "start_index": 54,
+                      "end_index": 55,
+                      "summary": "Defines the API function ara::fw::FwErrorDomain::Message to retrieve the message associated with an error."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0152",
+      "title": "9 Service Interfaces",
+      "start_index": 55,
+      "end_index": 56,
+      "summary": "Describes demands and constraints placed on base software."
+    },
+    {
+      "node_id": "0153",
+      "title": "10 Configuration",
+      "start_index": 56,
+      "end_index": 57,
+      "summary": "Describes platform extension interfaces.",
+      "nodes": [
+        {
+          "node_id": "0154",
+          "title": "10.1 Default Values",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "Lists default values for configuration parameters."
+        },
+        {
+          "node_id": "0155",
+          "title": "10.2 Semantic Constraints",
+          "start_index": 56,
+          "end_index": 57,
+          "summary": "Describes semantic constraints for configuration parameters."
+        }
+      ]
+    },
+    {
+      "node_id": "0156",
+      "title": "A Mentioned Manifest Elements",
+      "start_index": 57,
+      "end_index": 68,
+      "summary": "Documents mentioned manifest elements including tables.",
+      "nodes": [
+        {
+          "node_id": "0157",
+          "title": "Chapter is generated.",
+          "start_index": 57,
+          "end_index": 61,
+          "summary": ""
+        },
+        {
+          "node_id": "0158",
+          "title": "Table A.8: FirewallStateSwitchInterface",
+          "start_index": 61,
+          "end_index": 68,
+          "summary": "Documents the FirewallStateSwitchInterface table."
+        }
+      ]
+    },
+    {
+      "node_id": "0159",
+      "title": "B Demands and constraints on Base Software (normative)",
+      "start_index": 68,
+      "end_index": 69,
+      "summary": ""
+    },
+    {
+      "node_id": "0160",
+      "title": "C Platform Extension Interfaces (normative)",
+      "start_index": 69,
+      "end_index": 70,
+      "summary": ""
+    },
+    {
+      "node_id": "0161",
+      "title": "D Not implemented requirements",
+      "start_index": 70,
+      "end_index": 71,
+      "summary": ""
+    },
+    {
+      "node_id": "0162",
+      "title": "E Change history of AUTOSAR traceable items",
+      "start_index": 71,
+      "end_index": 74,
+      "summary": "",
+      "nodes": [
+        {
+          "node_id": "0163",
+          "title": "E.1 Traceable item history of this document according to AUTOSAR Release R25-11",
+          "start_index": 71,
+          "end_index": 72,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0164",
+              "title": "E.1.1 Added Specification Items in R25-11",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": ""
+            },
+            {
+              "node_id": "0165",
+              "title": "E.1.2 Changed Specification Items in R25-11",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": ""
+            },
+            {
+              "node_id": "0166",
+              "title": "E.1.3 Deleted Specification Items in R25-11",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": ""
+            },
+            {
+              "node_id": "0167",
+              "title": "E.1.4 Added Constraints in R25-11",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "Documents new constraints introduced in R25-11."
+            },
+            {
+              "node_id": "0168",
+              "title": "E.1.5 Changed Constraints in R25-11",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "Lists constraints that were modified in R25-11."
+            },
+            {
+              "node_id": "0169",
+              "title": "E.1.6 Deleted Constraints in R25-11",
+              "start_index": 71,
+              "end_index": 72,
+              "summary": "Identifies constraints removed in R25-11."
+            }
+          ]
+        },
+        {
+          "node_id": "0170",
+          "title": "E.2 Traceable item history of this document according to AUTOSAR Release R24-11",
+          "start_index": 72,
+          "end_index": 73,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0171",
+              "title": "E.2.1 Added Specification Items in R24-11",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "Lists new specification items added in R24-11."
+            },
+            {
+              "node_id": "0172",
+              "title": "E.2.2 Changed Specification Items in R24-11",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "Lists specification items that were changed in R24-11."
+            },
+            {
+              "node_id": "0173",
+              "title": "E.2.3 Deleted Specification Items in R24-11",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "Lists specification items that were deleted in R24-11."
+            },
+            {
+              "node_id": "0174",
+              "title": "E.2.4 Added Constraints in R24-11",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "Documents new constraints introduced in R24-11."
+            },
+            {
+              "node_id": "0175",
+              "title": "E.2.5 Changed Constraints in R24-11",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "Lists constraints that were modified in R24-11."
+            },
+            {
+              "node_id": "0176",
+              "title": "E.2.6 Deleted Constraints in R24-11",
+              "start_index": 72,
+              "end_index": 73,
+              "summary": "Identifies constraints removed in R24-11."
+            }
+          ]
+        },
+        {
+          "node_id": "0177",
+          "title": "E.3 Traceable item history of this document according to AUTOSAR Release R23-11",
+          "start_index": 73,
+          "end_index": 73,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0178",
+              "title": "E.3.1 Added Specification Items in R23-11",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "Lists new specification items added in R23-11."
+            },
+            {
+              "node_id": "0179",
+              "title": "E.3.2 Changed Specification Items in R23-11",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "Lists specification items that were changed in R23-11."
+            },
+            {
+              "node_id": "0180",
+              "title": "E.3.3 Deleted Specification Items in R23-11",
+              "start_index": 73,
+              "end_index": 73,
+              "summary": "Lists specification items that were deleted in R23-11."
+            }
+          ]
+        },
+        {
+          "node_id": "0181",
+          "title": "E.4 Traceable item history of this document according to AUTOSAR Release R22-11",
+          "start_index": 73,
+          "end_index": 74,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0182",
+              "title": "E.4.1 Added Specification Items in R22-11",
+              "start_index": 73,
+              "end_index": 74,
+              "summary": "Lists new specification items added in R22-11."
+            },
+            {
+              "node_id": "0183",
+              "title": "E.4.2 Changed Specification Items in R22-11",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "Lists specification items that were changed in R22-11."
+            },
+            {
+              "node_id": "0184",
+              "title": "E.4.3 Deleted Specification Items in R22-11",
+              "start_index": 74,
+              "end_index": 74,
+              "summary": "Lists specification items that were deleted in R22-11."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

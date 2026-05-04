@@ -1,0 +1,289 @@
+{
+  "doc_name": "Requirements on Operating System Interface.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "The partial document is the front-matter and table-of-contents of the AUTOSAR Adaptive Platform requirement specification \u201cRequirements on Operating System Interface\u201d (ID 718, release R25-11).  \nIt lists the document\u2019s ownership, status, disclaimer, copyright notice, and a detailed change history from the initial 17-03 release up to R25-11, noting updates such as the move to C++17, tracing additions, and safety-requirement realignments.  \nThe table of contents outlines the specification\u2019s structure: scope, conventions, acronyms, functional and non-functional requirements, references, and exhaustive appendices that track every added, changed or deleted requirement per release."
+    },
+    {
+      "title": "Scope of Document",
+      "node_id": "0001",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "The partial document outlines the scope of the AUTOSAR Adaptive Platform R25-11 specification, stating that it defines the requirements imposed by the AUTOSAR Adaptive Platform on the Operating System interface that belongs to the Foundation layer."
+    },
+    {
+      "title": "Conventions to be used",
+      "node_id": "0002",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "The excerpt establishes the document\u2019s formal structure: it mandates AUTOSAR\u2019s standard requirement-table format and the prescribed verbal forms for expressing obligations. It also lists three specific requirements ([RS_OSI_00204], [RS_OSI_00208], [RS_OSI_00209]) that are described but not yet implemented, noting they may change and could be added in a later release.",
+      "nodes": [
+        {
+          "title": "Document Conventions",
+          "node_id": "0003",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The partial document outlines the conventions and guidelines for presenting requirements in the AUTOSAR AP R25-11 specification for the Operating System Interface. It specifies that requirements must follow the table format defined in [TPS_STDT_00078] and use the verbal forms from [TPS_STDT_00053] to express obligations. It also lists three requirements\u2014[RS_OSI_00204], [RS_OSI_00208], and [RS_OSI_00209]\u2014that are described but not implemented in the current release, noting that their functionality may change and could be included in future releases."
+        },
+        {
+          "title": "Requirements Guidelines",
+          "node_id": "0004",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The excerpt establishes the document\u2019s identity as \u201cAUTOSAR AP R25-11 Requirements on Operating System Interface,\u201d then prescribes two conventions: (1) all requirements must be presented in the tabular format defined in [TPS_STDT_00078] and use the obligation verbs specified in [TPS_STDT_00053]; (2) three listed requirements\u2014[RS_OSI_00204], [RS_OSI_00208], and [RS_OSI_00209]\u2014are described but are explicitly excluded from the current release and may be revised or added later.",
+          "nodes": [
+            {
+              "title": "Requirements status",
+              "node_id": "0005",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "The partial document outlines the conventions and guidelines for expressing requirements in the AUTOSAR AP R25-11 specification for the Operating System Interface. It specifies that requirements must follow the table format defined in [TPS_STDT_00078] and use the verbal forms from [TPS_STDT_00053] to indicate obligation. It also lists three requirements\u2014[RS_OSI_00204], [RS_OSI_00208], and [RS_OSI_00209]\u2014that are described but not yet implemented in this release, noting they may be modified or included in future releases."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Acronyms and abbreviations",
+      "node_id": "0006",
+      "start_index": 8,
+      "end_index": 8,
+      "summary": "The partial document defines key acronyms and technical terms for the AUTOSAR Adaptive Platform R25-11 \u201cRequirements on Operating System Interface.\u201d It explains \u201cOperating System\u201d as the software managing processes and hardware access, and \u201cOperating System Interface (OSI)\u201d as the Functional Cluster specifying the OS interface used by adaptive applications and the platform itself. It then lists essential terms\u2014Execution Management, Adaptive Application, ARTI, AUTOSAR Adaptive Platform, Functional Cluster, Machine, Process, and Task\u2014providing brief descriptions and directing readers to the AUTOSAR Glossary or Execution Management requirements document for full definitions."
+    },
+    {
+      "title": "Requirements Specification",
+      "node_id": "0007",
+      "start_index": 9,
+      "end_index": 9,
+      "summary": "The partial document outlines the AUTOSAR Adaptive Platform R25-11 requirements for selecting and interfacing with an Operating System (OS). It defines the OS\u2019s role in run-time resource management for both Adaptive Applications and the platform\u2019s Functional Clusters, emphasizing cooperation with Execution Management for lifecycle control. Requirements are split into two categories: those directly needed by Adaptive Applications and those required by the platform\u2014especially Execution Management\u2014for efficient implementation of Functional Clusters. It also clarifies that the described execution environment represents assumptions about how Adaptive Applications will run, guiding developers on use-case coverage and derived requirements.",
+      "nodes": [
+        {
+          "title": "Functional Overview",
+          "node_id": "0008",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "The partial document outlines the AUTOSAR Adaptive Platform R25-11 requirements for selecting an Operating System (OS) interface. It defines the OS\u2019s role in runtime resource management for both Adaptive Applications and the platform\u2019s Functional Clusters, emphasizing cooperation with Execution Management for initialization and application lifecycle control. Requirements are split into two categories: those directly needed by Adaptive Applications and those required by the platform\u2014especially Execution Management\u2014for mechanisms best handled by the OS. The \u201cAssumption of Use\u201d section clarifies that the described execution environment represents assumptions about Adaptive Applications rather than strict platform requirements, guiding developers in verifying use-case coverage and derived requirements."
+        },
+        {
+          "title": "Functional Requirements",
+          "node_id": "0009",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "The excerpt outlines the AUTOSAR Adaptive Platform R25-11 requirements for selecting and interfacing with an Operating System (OS). It states that the OS must perform run-time resource and time management for every application on the platform\u2014both Adaptive Applications and the internal Functional Clusters (which are themselves applications). Execution Management cooperates with the OS for platform initialization and application life-cycle control. Requirements are split into two groups: those directly consumed by Adaptive Applications and those demanded by the platform (especially Execution Management) for efficient Functional-Cluster implementation. The \u201cAssumption of Use\u201d clarifies that the described execution environment is not a strict platform requirement but a set of assumptions about how Adaptive Applications will run; these assumptions guide further requirements and help developers verify coverage of their use cases.",
+          "nodes": [
+            {
+              "title": "Assumption of Use",
+              "node_id": "0010",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "The excerpt outlines the AUTOSAR Adaptive Platform R25-11 requirements for selecting and interfacing with an Operating System (OS). It states that the OS must perform run-time resource and time management for every application on the platform\u2014both Adaptive Applications and the internal Functional Clusters\u2014and must cooperate with Execution Management for platform life-cycle control. Requirements are split into two groups: those directly consumed by Adaptive Applications and those the platform itself needs to implement Functional Clusters, especially Execution Management. The \u201cAssumption of Use\u201d clarifies that the described execution environment is assumed, not mandated, and serves to guide Adaptive Application developers in verifying coverage of their use cases."
+            },
+            {
+              "title": "General Requirements",
+              "node_id": "0011",
+              "start_index": 10,
+              "end_index": 11,
+              "summary": "The excerpt lists core requirements for the AUTOSAR Adaptive Platform\u2019s Operating-System interface.  \nKey points:  \n- The OS/kernel plus its libraries are treated as one entity; the exposed API must be POSIX PSE51-compliant (embedded subset: threads, signals, semaphores, shared memory, timers\u2014no fork, no file system, no user/group).  \n- The interface shall explicitly support a defined C++ version used by Adaptive Applications.  \n- It must let processes react to external device stimuli (data, signals, timers).  \n- It must provide the mechanism to start the Execution Management process first.  \n- It must offer configurable memory-budget controls per process or process group to prevent resource-starvation/DoS."
+            },
+            {
+              "title": "Operating System Requirements",
+              "node_id": "0012",
+              "start_index": 11,
+              "end_index": 15,
+              "summary": "The excerpt lists mandatory capabilities that the AUTOSAR Adaptive Platform R25-11 Operating System Interface must provide:\n\n- Enable processes to react to external device stimuli  \n- Start the Execution Management process first  \n- Configure per-process (or group) memory and CPU-time budgets to prevent DoS/resource starvation  \n- Bind processes to specific CPU cores for predictable scheduling  \n- Enforce access rights/permissions on OS objects (files, pipes, etc.)  \n- Isolate processes so one cannot corrupt or read another\u2019s memory unless explicitly shared  \n- Offer shared-object mechanisms for read-only or private-copy code/data sharing  \n- Restrict processes to authorised system-call functionality  \n- Detect and handle unrecoverable start-up errors by halting  \n- Export observable events (task/process start, stop, switch) and low-level scheduling/trace data to support tracing and logging tools"
+            }
+          ]
+        },
+        {
+          "title": "Non-Functional Requirements",
+          "node_id": "0013",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "The excerpt lists two functional requirements from the AUTOSAR Adaptive Platform (R25-11) Operating-System-Interface specification:\n\n- RS_OSI_00210 \u2013 The OS must expose observable hooks (e.g., ARTI) that let external tools trace when tasks/processes start, stop or are switched so CPU load and resource-hungry entities can be identified.\n- RS_OSI_00211 \u2013 The OS must additionally export the same low-level scheduling/trace data to applications, enabling them to include it in ara::log output.\n\nBoth requirements target making OS scheduling events transparent for diagnostics and tracing purposes; no non-functional requirements are present in the fragment."
+        }
+      ]
+    },
+    {
+      "title": "References",
+      "node_id": "0014",
+      "start_index": 16,
+      "end_index": 16,
+      "summary": "The partial document lists normative references for the AUTOSAR Adaptive Platform Release 25-11 specification \u201cRequirements on Operating System Interface.\u201d It cites five sources: the AUTOSAR Standardization Template, Execution-Management requirements, AUTOSAR Glossary, and two IEEE/Open-Group POSIX standards (1003.13-2003 and POSIX Issue 7) that define the realtime/embedded and base OS interface specifications the document builds upon."
+    },
+    {
+      "title": "Change history of AUTOSAR traceable items",
+      "node_id": "0015",
+      "start_index": 17,
+      "end_index": 17,
+      "summary": "The partial document is the change-history annex of the AUTOSAR Adaptive Platform Requirements Specification \u201cOperating System Interface\u201d for Release R25-11.  \nIt states that no new requirements were added in R25-11 and then lists the specific requirements that were modified in this release.  \nThese changed requirements define the core capabilities expected from the operating-system interface:  \n- POSIX PSE51 compliance  \n- C++ support  \n- Reaction to external device stimuli  \n- Launching execution management  \n- Memory and CPU-time budgeting  \n- CPU-core affinity for processes  \n- Authorized access to OS objects  \n- Multi-process isolation  \n- Implicit code/data sharing  \n- Least-privilege access  \n- Error handling (including unrecoverable errors)  \n- Observability of CPU-time scheduling for tasks and processes",
+      "nodes": [
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R25-11",
+          "node_id": "0016",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "The excerpt is the change-history annex of the AUTOSAR Adaptive Platform \u201cRequirements on Operating System Interface\u201d specification, Release R25-11.  \nIt states that no new requirements were added in this release, then lists the ten requirements that were modified in R25-11.  \nThese changed items mandate: POSIX PSE51 compliance, C++ support, reaction to external device stimuli, start-up of Execution Management, memory and CPU-time budgeting, CPU-core affinity for processes, authorized access to OS objects, multi-process application isolation, implicit code/data sharing, least-privilege process access, comprehensive error handling, and a mechanism to observe CPU-time scheduling of tasks/processes.",
+          "nodes": [
+            {
+              "title": "Added Requirements in R25-11",
+              "node_id": "0017",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "The excerpt is a fragment of the AUTOSAR Adaptive Platform (R25-11) specification\u2019s \u201cRequirements on Operating System Interface\u201d document.  \nIt contains only the change-history annex, which lists the traceable requirements that were modified in release R25-11.  \nNo requirements were added; the changed items are the complete set of OS interface mandates for the Adaptive Platform, covering:  \n- POSIX PSE51 compliance  \n- C++ support  \n- Reaction to external device stimuli  \n- Launching Execution Management  \n- Memory and CPU budgeting  \n- CPU-core affinity for processes  \n- Authorized access to OS objects  \n- Multi-process isolation  \n- Implicit code/data sharing  \n- Least-privilege access  \n- Error handling (including fatal errors)  \n- Observable CPU-time scheduling"
+            },
+            {
+              "title": "Changed Requirements in R25-11",
+              "node_id": "0018",
+              "start_index": 17,
+              "end_index": 18,
+              "summary": "The excerpt is the \u201cChange history\u201d annex of the AUTOSAR Adaptive Platform Requirements Specification for the Operating-System Interface (Document ID 718, Release R25-11).  \nIt lists every traceable requirement that was added, changed, or deleted in R25-11 and compares the same list with the previous R24-11 release.  \nFor R25-11 the annex records:  \n- no new requirements  \n- no removed requirements  \n- 12 requirements that were already present but are formally marked as \u201cchanged\u201d; these cover POSIX PSE51 compliance, C++ support, reaction to external device stimuli, Execution-Management start-up, memory and CPU budgeting, core affinity, authorised object access, multi-process isolation, implicit code/data sharing, least-privilege access, error handling, and mechanisms to observe/export scheduling/trace data.  \nThe R24-11 subsection repeats the identical list, confirming that the same 12 items were already flagged as changed in that earlier release."
+            },
+            {
+              "title": "Deleted Requirements in R25-11",
+              "node_id": "0019",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "The excerpt lists functional requirements that the AUTOSAR Adaptive Platform operating-system interface must satisfy. Key points: it must export low-level scheduling and trace data to applications; guarantee POSIX PSE51 compliance; support C++; react to external device stimuli; launch Execution Management; provide memory and CPU-time budgeting; allow core affinity for processes; enforce authorized access to OS objects; isolate applications through multi-process support; enable implicit code/data sharing; and restrict each process to only the functionality it needs."
+            }
+          ]
+        },
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R24-11",
+          "node_id": "0020",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "The excerpt lists key functional requirements that the AUTOSAR Adaptive Platform R25-11 Operating System Interface must satisfy: POSIX PSE51 compliance, C++ support, reaction to external device stimuli, launching Execution Management, memory and CPU budgeting, optional CPU-core affinity for processes, authorized access control, multi-process isolation, implicit code/data sharing, and least-privilege process access. It also notes that the OS must expose low-level scheduling and trace data to applications (RS_OSI_00211) and records no deleted requirements for this release.",
+          "nodes": [
+            {
+              "title": "Added Requirements in R24-11",
+              "node_id": "0021",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "The excerpt lists a set of AUTOSAR Adaptive Platform (R25-11) requirements for the Operating-System Interface.  \nKey points:\n\n- The OS must expose low-level scheduling and trace data to applications ([RS_OSI_00211] \u2013 newly changed in R25-11).  \n- It has to be POSIX PSE51-compliant ([RS_OSI_00100]).  \n- It must support C++ ([RS_OSI_00103]) and react to external device stimuli ([RS_OSI_00104]).  \n- It shall launch Execution Management ([RS_OSI_00105]).  \n- Resource-control: provide memory and CPU-time budgeting, allow core affinity, and confine Processes to only the functionality they need ([RS_OSI_00201-00204, 00208]).  \n- Security & isolation: enforce authorized access to OS objects and guarantee multi-Process isolation while still permitting implicit code/data sharing ([RS_OSI_00206-00207])."
+            },
+            {
+              "title": "Changed Requirements in R24-11",
+              "node_id": "0022",
+              "start_index": 18,
+              "end_index": 19,
+              "summary": "The excerpt lists the key functional requirements that the AUTOSAR Adaptive Platform R25-11 operating-system interface must satisfy:  \n- Full POSIX PSE51 compliance and native C++ support  \n- Reaction to external device stimuli and ability to launch Execution Management  \n- Resource-budget enforcement (system memory, CPU time) and optional CPU-core affinity for processes  \n- Multi-process isolation, selective access to OS objects, and implicit code/data sharing while restricting each process to only required functionality  \n- Comprehensive error handling, including unrecoverable faults  \n- Observability: mechanisms to monitor CPU-time allocation to tasks/processes and to export low-level scheduling/trace data to applications  \n\nIt also shows the traceability history, indicating that in R24-11 these items were changed, in R23-11 they were newly added or modified, and in R25-11 only the trace-export requirement [RS_OSI_00211] is flagged as changed, with no requirements deleted."
+            },
+            {
+              "title": "Deleted Requirements in R24-11",
+              "node_id": "0023",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "The excerpt lists functional requirements that the AUTOSAR Adaptive Platform R25-11 operating-system interface must satisfy: mandatory error-handling for all fault classes, observability of CPU-time allocation to tasks/processes, and export of low-level scheduling/trace data to applications. It also shows the recent change history\u2014requirements RS_OSI_00210 and RS_OSI_00211 were newly added in R23-11, while RS_OSI_00201\u2013RS_OSI_00203 and RS_OSI_00206 (covering memory budgeting, CPU-time budgeting, core affinity, and multi-process isolation) were modified in the same release; no requirements were deleted in R24-11."
+            }
+          ]
+        },
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R23-11",
+          "node_id": "0024",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "The excerpt lists AUTOSAR Adaptive Platform requirements for the operating-system interface.  \nKey points:  \n- Mandatory error-handling support, including unrecoverable errors ([RS_OSI_00209]).  \n- Mechanisms to observe CPU-time scheduling for tasks/processes ([RS_OSI_00210]) and to export low-level scheduling/trace data to applications ([RS_OSI_00211]).  \n- Additional R23-11 requirements: memory budgeting, CPU-time budgeting, optional CPU-core affinity for processes, and multi-process isolation.",
+          "nodes": [
+            {
+              "title": "Added Requirements in R23-11",
+              "node_id": "0025",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "The excerpt lists AUTOSAR AP operating-system interface requirements and their change history across releases R23-11 \u2192 R24-11 \u2192 R25-11.  \nMain points:\n\n- Mandatory OS capabilities added or reaffirmed in R25-11:\n  \u2013 Error-handling support, including unrecoverable errors (RS_OSI_00209).  \n  \u2013 Mechanism to observe/audit CPU-time scheduling of tasks/processes (RS_OSI_00210).  \n  \u2013 Mechanism to export low-level scheduling & trace data to applications (RS_OSI_00211).\n\n- Change summary tables show:\n  \u2013 R24-11: no requirements deleted.  \n  \u2013 R23-11: added the same two scheduling/trace observation requirements (RS_OSI_00210, RS_OSI_00211) and modified four others dealing with memory budgeting, CPU-time budgeting, CPU-core affinity, and multi-process isolation."
+            },
+            {
+              "title": "Changed Requirements in R23-11",
+              "node_id": "0026",
+              "start_index": 19,
+              "end_index": 20,
+              "summary": "The excerpt lists a set of AUTOSAR Adaptive Platform requirements (RS_OSI_*) for the Operating-System interface, focusing on:\n\n- Mandatory error-handling (including unrecoverable errors)  \n- Mechanisms that let applications observe CPU-time scheduling of tasks/processes  \n- Export of low-level scheduling and trace data to applications  \n- Memory and CPU-time budgeting facilities  \n- Core-affinity binding for processes  \n- Multi-process support to isolate applications  \n\nIt then shows the change history across releases R24-11, R23-11 and R22-11, noting which of these requirements were added or modified in each release and stating that no requirements were deleted in any of those releases."
+            },
+            {
+              "title": "Deleted Requirements in R23-11",
+              "node_id": "0027",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP R25-11 specification for the Operating-System Interface. It lists the \u201cTraceable item history\u201d subsection that records, release-by-release, whether any Advisories, Constraints, or Requirements were Added, Changed, or Deleted. For both R23-11 and R22-11 every entry is \u201cnone,\u201d indicating that no modifications were introduced in those categories for those releases."
+            }
+          ]
+        },
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R22-11",
+          "node_id": "0028",
+          "start_index": 20,
+          "end_index": 20,
+          "summary": "The excerpt is a fragment of the AUTOSAR AP \u201cRequirements on Operating System Interface\u201d specification (R25-11) that lists the traceability history tables for releases R23-11 and R22-11; every table cell reports \u201cnone,\u201d indicating that no requirements, advisories, or constraints were added, changed, or deleted in those releases.",
+          "nodes": [
+            {
+              "title": "Added Advisories in R22-11",
+              "node_id": "0029",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP \u201cRequirements on Operating System Interface\u201d specification (R25-11). It lists the \u201cTraceable item history\u201d subsection for Release R22-11, showing that\u2014across the categories of Advisories, Constraints and Requirements\u2014no items were added, changed or deleted in that release."
+            },
+            {
+              "title": "Changed Advisories in R22-11",
+              "node_id": "0030",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP R25-11 specification for the Operating-System Interface.  \nIt contains only the \u201ctraceability history\u201d tables for releases R23-11 and R22-11, all of which are empty: no requirements, advisories or constraints were added, changed or deleted in those releases."
+            },
+            {
+              "title": "Deleted Advisories in R22-11",
+              "node_id": "0031",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP R25-11 specification \u201cRequirements on Operating System Interface.\u201d It contains only the change-history tables for releases R23-11 and R22-11, all of which report \u201cnone\u201d for added, changed, or deleted requirements, advisories, and constraints\u2014indicating that, between these two releases, no modifications were made to the operating-system interface requirements."
+            },
+            {
+              "title": "Added Constraints in R22-11",
+              "node_id": "0032",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP R25-11 specification for the Operating-System Interface. It lists the \u201cTraceable item history\u201d subsection for release R22-11, stating that no advisories, constraints, or requirements were added, changed, or deleted in that release."
+            },
+            {
+              "title": "Changed Constraints in R22-11",
+              "node_id": "0033",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP \u201cRequirements on Operating System Interface\u201d specification (R25-11).  \nIt lists, for releases R23-11 and R22-11, the sections where requirements, advisories, or constraints were supposed to be added, changed, or deleted, and in every case states \u201cnone,\u201d indicating that no such modifications occurred in either release."
+            },
+            {
+              "title": "Deleted Constraints in R22-11",
+              "node_id": "0034",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP R25-11 specification for the Operating-System Interface. It states that, between releases R23-11 and R22-11, no requirements, advisories or constraints were added, changed or deleted, and it provides the document ID (718) and page count (20 of 21)."
+            },
+            {
+              "title": "Added Requirements in R22-11",
+              "node_id": "0035",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP R25-11 specification for the Operating-System Interface. It lists the \u201cTraceable item history\u201d subsection for release R22-11, stating that no advisories, constraints, or requirements were added, changed, or deleted in that release."
+            },
+            {
+              "title": "Changed Requirements in R22-11",
+              "node_id": "0036",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "The partial document lists two changed requirements in the AUTOSAR Adaptive Platform R22-11 release concerning the Operating System Interface: it must support C++ (RS_OSI_00103) and must enable reacting to process-external stimuli from devices (RS_OSI_00104); no requirements were deleted."
+            },
+            {
+              "title": "Deleted Requirements in R22-11",
+              "node_id": "0037",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "The partial document lists two updated requirements in the AUTOSAR Adaptive Platform R22-11 release for the Operating System Interface: mandatory C++ support (RS_OSI_00103) and the capability to respond to process-external stimuli from devices (RS_OSI_00104); it also notes that no requirements were deleted in this revision."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

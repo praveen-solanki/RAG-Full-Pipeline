@@ -1,0 +1,259 @@
+{
+  "doc_name": "Technical Report on Operating System Tracing Interface.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 4,
+      "summary": "This preface section of the \"Technical Report on Operating System Tracing Interface\" provides an overview of the document's status and structure. It introduces key concepts such as the AUTOSAR ownership and responsibility for the document, its part in the Adaptive Platform under the R25-11 standard release, and details a comprehensive change history spanning from 2023 to 2025. The section also outlines important relationships between different components of the tracing interface, including the OS/ARTI Adapter, Task Interface, and Process Interface, while emphasizing that this document is specifically for automotive applications. Technical details include specific API specifications like ArtiVersionInfoType and CallingContext, as well as various callback notifications related to task and process management."
+    },
+    {
+      "title": "Introduction",
+      "node_id": "0001",
+      "start_index": 5,
+      "end_index": 5,
+      "summary": "This section introduces the technical report on the Operating System Tracing Interface of the AUTOSAR Standard. It outlines key concepts and definitions related to tracing interfaces within operating systems used in automotive applications. The report establishes important relationships between various components of the interface, including their roles and interactions. While no specific tables are mentioned, it sets the stage for detailed technical discussions on how these interfaces facilitate system monitoring and debugging in AUTOSAR-compliant environments.",
+      "nodes": [
+        {
+          "title": "Objectives",
+          "node_id": "0002",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" outlines the objectives for developing a low-level API designed to trace tasks and processes. Key concepts include minimal impact on application runtime behavior while providing essential timing information. The recorded data is used to analyze various timing requirements, break down time consumption by application parts, and visualize timing dependencies and locks. While no specific tables are mentioned, the focus is on creating an interface that supports detailed performance analysis without disrupting application operations."
+        },
+        {
+          "title": "Scope",
+          "node_id": "0003",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "This section outlines the scope of the report on an operating system tracing interface for an adaptive platform. It specifies that the API is designed for stack and trace tool vendors to use at the driver level of the operating system, rather than for application engineers or middleware processes. This design choice ensures that tracing does not interfere with the runtime behavior of the system. While no tables are explicitly mentioned in this excerpt, it emphasizes the importance of using the API at a lower level within the OS architecture to achieve effective and non-intrusive performance monitoring."
+        }
+      ]
+    },
+    {
+      "title": "Definition of terms and acronyms",
+      "node_id": "0004",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" defines key terms and acronyms used throughout the document to ensure clarity and consistency. It introduces essential concepts such as tracing interfaces, which are mechanisms for collecting detailed information about system operations; events, which represent specific occurrences within the operating system; and probes, which are points in the code where tracing can be inserted. The section also outlines important relationships between these components, emphasizing how tracing interfaces facilitate the collection of data through probes at various events. While no tables are explicitly mentioned, this foundational information is crucial for understanding subsequent technical details related to the implementation and usage of the operating system tracing interface.",
+      "nodes": [
+        {
+          "title": "Acronyms and abbreviations",
+          "node_id": "0005",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" outlines key acronyms and abbreviations used throughout the document. It introduces critical concepts such as the AUTOSAR Adaptive Platform, Execution Management, and Execution Manifests, which are essential for understanding how applications are managed in an adaptive automotive software environment. The section also defines terms like Machine, Process, and Task, establishing their relationships within the context of the operating system managing hardware resources. Notably, it clarifies that a Modelled Process is an instance of an Executable on a Machine, with each having a one-to-one association, and explains how Execution Manifests configure these processes during deployment."
+        }
+      ]
+    },
+    {
+      "title": "Related Documentation",
+      "node_id": "0006",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "The \"Related Documentation\" section of the Technical Report on Operating System Tracing Interface highlights key references that are essential for understanding the context and implementation details of the tracing interface. It introduces two critical documents: the Glossary AUTOSAR_FO_TR_Glossary, which provides definitions necessary for interpreting terms related to the operating system tracing interface, and the Specification of Execution Management AUTOSAR_AP_SWS_ExecutionManagement, which outlines the rules and processes governing how tasks are managed in an execution environment. These references establish a foundational understanding by defining terminology and specifying operational procedures, ensuring that users can effectively integrate and utilize the tracing interface within their systems. While no specific tables are mentioned, these documents likely contain structured information that defines key concepts and constraints relevant to operating system tracing and task management."
+    },
+    {
+      "title": "Functional Specification",
+      "node_id": "0007",
+      "start_index": 8,
+      "end_index": 8,
+      "summary": "The \"Functional Specification\" section of the \"Technical Report on Operating System Tracing Interface.pdf\" outlines the core functionalities and operational requirements for an operating system tracing interface. It introduces key concepts such as trace points, event types, and data formats, which are essential for capturing and interpreting system behavior. The document describes how these components interact to enable detailed monitoring and analysis of system operations. Additionally, it includes a table detailing the supported trace events and their corresponding data structures, providing a structured approach to tracing that ensures consistency across different operating environments.",
+      "nodes": [
+        {
+          "title": "ARTI Tracing Interface",
+          "node_id": "0008",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the ARTI (Advanced Real-Time Tracing Interface) tracing interface. It introduces key concepts such as the tracing mechanism and its integration with operating systems, highlighting components like trace points and event handlers. The summary outlines how these elements interact to enable efficient monitoring and analysis of system behavior. While no specific tables are mentioned in the provided content, the section likely details the setup and configuration processes for implementing ARTI, including constraints on performance and resource usage that must be considered during its deployment.",
+          "nodes": [
+            {
+              "title": "OS/ARTI Adapter",
+              "node_id": "0009",
+              "start_index": 8,
+              "end_index": 10,
+              "summary": "This section discusses the \"OS/ARTI Adapter,\" which provides trace points at the OS level to understand and visualize timing behavior. It introduces key concepts such as ARTI hooks, calling context types, core IDs, task IDs, and process IDs, and describes their roles in the tracing mechanism. The adapter follows an AUTOSAR two-level approach, where tasks are schedulable units and processes are environments containing multiple tasks. Importantly, it specifies that the implementation of ARTI hooks depends on the available tracing mechanism and can be expanded to nothing or call an empty function if no mechanism is present.",
+              "nodes": [
+                {
+                  "title": "Adapter Management",
+                  "node_id": "0010",
+                  "start_index": 10,
+                  "end_index": 11,
+                  "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on adapter management interfaces for integrating an ARTI (Assumed Real-Time Interface) with an operating system. Key concepts include `ArtiVersionInfo`, which is used to confirm API compatibility between the OS and ARTI-driver, and `ArtiInit` and `ArtiCleanup`, essential functions for initializing and cleaning up the trace driver implementing the adapter. The document outlines specific parameters like `callingContext` that must be set correctly during these operations. Importantly, it describes how version mismatches are handled, ensuring tracing can only proceed if both the OS and ARTI-driver support the same API version or a compatible higher version in the OS's favor."
+                },
+                {
+                  "title": "Task Interface",
+                  "node_id": "0011",
+                  "start_index": 11,
+                  "end_index": 14,
+                  "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the Task Interface within AUTOSAR, detailing how tasks are managed and traced by the operating system. Key concepts include the states of a task (Ready, Running, Waiting) and the trace events that occur during state transitions. The document outlines specific ARTI (AUTOSAR Trace Interface) hooks for notifying when tasks switch states or undergo other lifecycle changes such as creation, renaming, and termination. These hooks are crucial for maintaining accurate tracing information, ensuring that the system can track task behavior in real-time, especially on single-CPU systems where state transitions must be meticulously recorded."
+                },
+                {
+                  "title": "Process Interface",
+                  "node_id": "0012",
+                  "start_index": 15,
+                  "end_index": 16,
+                  "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on defining and detailing the process interface within an operating system tracing framework. Key concepts include the definition of a process as an executable unit managed by an OS scheduler, with its own namespace and protected resources. The document outlines several hooks for notifications related to processes, such as switching, creation, destruction, renaming, and providing information about existing processes. These hooks are conditionally called based on whether ARTI (Assumed Real-Time Interface) is enabled, and they include parameters like `callingContext`, `coreId`, `processId`, `parentId`, and `processName` to provide context and details about the process events. The relationships between these notifications and their parameters ensure a comprehensive tracking of process lifecycle events and initial state information."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "API Specification",
+      "node_id": "0013",
+      "start_index": 17,
+      "end_index": 17,
+      "summary": "The \"API Specification\" section in the \"Technical Report on Operating System Tracing Interface.pdf\" outlines the detailed design and implementation of the Application Programming Interfaces (APIs) used for tracing operations within an operating system. It introduces key concepts such as API functions, parameters, and data structures essential for integrating tracing mechanisms into applications. The section describes important relationships between these APIs and their roles in capturing and reporting trace events, including constraints on performance and memory usage. Additionally, it provides relevant technical details from tables that specify the exact function signatures, parameter types, and return values of each API, ensuring developers can effectively utilize these interfaces for tracing purposes.",
+      "nodes": [
+        {
+          "title": "Type Definitions",
+          "node_id": "0014",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "The \"Type Definitions\" section in the \"Technical Report on Operating System Tracing Interface.pdf\" outlines fundamental data types and structures essential for implementing the tracing interface. It introduces key concepts such as `trace_event`, `event_context`, and `timestamp` to facilitate accurate logging of system events. These definitions are interrelated, with `trace_event` representing a specific type of event that can be logged, `event_context` providing additional metadata about the event, and `timestamp` ensuring temporal accuracy in tracing records. While no tables are explicitly mentioned, these types form the foundational building blocks for more complex data structures used throughout the document to ensure consistent and reliable tracing across different operating system components.",
+          "nodes": [
+            {
+              "title": "ArtiVersionInfoType",
+              "node_id": "0015",
+              "start_index": 17,
+              "end_index": 18,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" describes the `ArtiVersionInfoType` API class and its associated variables. Key concepts include a struct definition for `ArtiVersionInfoType`, which holds information about the ARTI version supported by the OS and the ARTI-driver, including the API version, build version, product name, and vendor name. The section details that these variables are used both as input and output parameters to specify or return relevant versioning and identification information for the driver and operating system. Importantly, the `apiVersion` is set to 0x01 for the current AUTOSAR release, indicating a standardized starting point for API versioning."
+            },
+            {
+              "title": "CallingContext",
+              "node_id": "0016",
+              "start_index": 18,
+              "end_index": 19,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `CallingContext` enumeration, which is crucial for defining the context in which tracing hooks are called within an operating system. Key concepts include the values `kInterruptsDisabled`, `kInterruptsMayBeDisabled`, and `kInterruptsMayNotBeDisabled`, each indicating different states regarding interrupt handling during hook execution. The section emphasizes that this enumeration helps specify whether interrupts can be disabled or not, which is essential for ensuring proper behavior of tracing mechanisms. Importantly, the definition includes the header files necessary for its implementation and usage within the system."
+            }
+          ]
+        },
+        {
+          "title": "Callback Notifications",
+          "node_id": "0017",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "The section \"Callback Notifications\" in the \"Technical Report on Operating System Tracing Interface.pdf\" discusses a set of functions designed to facilitate communication between different modules within an operating system. These callback notifications enable other modules to be notified when specific events occur, allowing for more flexible and dynamic interactions. The relationships described involve how these callbacks are triggered by certain conditions or actions, and they play a crucial role in the overall architecture by enabling asynchronous communication. While no tables are explicitly mentioned, the section likely details the parameters and return types of these callback functions, providing a clear interface for developers to integrate with the tracing system.",
+          "nodes": [
+            {
+              "title": "ArtiTaskSwitch",
+              "node_id": "0018",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiTaskSwitch` function, which is a crucial API for notifying the tracer about task switches in an operating system. Key components include parameters such as `callingContext`, `coreId`, and `nextId`, specifying interrupt handling, core ID, and next task ID respectively. The function is called by the OS/ARTI Adapter when a new task enters the running state, indicating that the previous task on the same core transitions to a ready state due to preemption. This ensures thread safety and proper tracing of task execution flow."
+            },
+            {
+              "title": "ArtiTaskWait",
+              "node_id": "0019",
+              "start_index": 19,
+              "end_index": 20,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiTaskWait` function, which is a crucial API for notifying the tracer when a task enters a wait state. Key components include parameters such as `callingContext`, `coreId`, and `taskId`, with their respective roles in specifying context and task details. The function is designed to be reentrant and is called by the OS/ARTI Adapter, highlighting its importance in maintaining accurate tracing of task states. Importantly, this function does not return a value but serves as a mechanism for initiating state changes that are critical for effective system monitoring and analysis."
+            },
+            {
+              "title": "ArtiTaskRelease",
+              "node_id": "0020",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiTaskRelease` API function. It defines the function's purpose and provides essential details such as its parameters, return value, thread safety, and the context in which it should be called. The key components include the `callingContext`, `coreId`, and `taskId` parameters, with `callingContext` specifying interrupt state management, `coreId` identifying the core on which the task is running, and `taskId` indicating the task transitioning from a wait to a ready state. This function is crucial for notifying the tracer about such state changes, ensuring accurate tracing by the OS/ARTI Adapter when tasks move between states."
+            },
+            {
+              "title": "ArtiTaskPreempt",
+              "node_id": "0021",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiTaskPreempt` function, which is a critical API for notifying the tracer when a task transitions from running to ready state. Key components include the parameters `callingContext`, `coreId`, and `taskId`, with their respective roles in specifying the context of the preempted task. The function is reentrant and is intended to be called by the OS/ARTI Adapter during such state changes, ensuring thread safety and proper tracing. This function is defined under the upstream requirement RS_OSI_00210 and is declared in the header file `#include <ara/log/osarti.h>`."
+            },
+            {
+              "title": "ArtiTaskExit",
+              "node_id": "0022",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" describes the `ArtiTaskExit` API function, which is crucial for notifying the tracer about a task exit. The function is defined in the header file `ara/log/osarti.h` and takes three parameters: `callingContext`, `coreId`, and `taskId`. It is called by the OS/ARTI Adapter when a task terminates, ensuring thread safety through its reentrant nature. This function plays a key role in maintaining accurate tracing data by informing the system of changes in task state."
+            },
+            {
+              "title": "ArtiTaskCreate",
+              "node_id": "0023",
+              "start_index": 21,
+              "end_index": 22,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiTaskCreate` function, which is a critical API for notifying the tracer about the creation of a new task. Key components include parameters such as `callingContext`, `coreId`, `processId`, and `taskId`. The function is designed to be reentrant and must be called by the OS/ARTI Adapter when a new task is created, ensuring that the tracing system remains up-to-date with the current state of tasks. Importantly, this function operates under the constraint that it should not interfere with interrupt handling as specified by the `callingContext` parameter."
+            },
+            {
+              "title": "ArtiTaskRename",
+              "node_id": "0024",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiTaskRename` API function. It introduces key concepts such as the function's definition and its relationship to upstream requirements, specifying that it is a reentrant function with parameters including `callingContext`, `taskId`, and `taskName`. The document describes how this function enables users to rename tasks for better identification, with the OS/ARTI Adapter responsible for calling it. Importantly, it outlines that the task name must be null-terminated and provides details on the syntax and header file inclusion necessary for its use."
+            },
+            {
+              "title": "ArtiTaskInfo",
+              "node_id": "0025",
+              "start_index": 22,
+              "end_index": 23,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiTaskInfo` function, which is crucial for obtaining information about tasks in an operating system. Key components include parameters such as `callingContext`, `taskId`, and `taskName`, with specific constraints like the requirement that `taskName` must be null-terminated. The function is called by the OS/ARTI Adapter to gather task details immediately after initialization or when tracing starts, ensuring a comprehensive initial task list. This process supports thread safety and is essential for maintaining accurate task information throughout system operations."
+            },
+            {
+              "title": "ArtiProcessSwitch",
+              "node_id": "0026",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiProcessSwitch` function, which is a crucial API for notifying the tracer about process switches in the operating system. The key components include parameters such as `callingContext`, `coreId`, and `nextId`, and the header file `ara/log/osarti.h`. This function is called by the OS/ARTI Adapter when a process switch occurs, ensuring that the tracing mechanism can accurately track changes in CPU resource allocation. Importantly, it is designed to be reentrant, allowing for safe concurrent execution without issues."
+            },
+            {
+              "title": "ArtiProcessCreate",
+              "node_id": "0027",
+              "start_index": 23,
+              "end_index": 24,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" describes the `ArtiProcessCreate` function, which is used to notify a tracer about the creation of a new process. Key components include parameters such as `callingContext`, `coreId`, and `processId`, with an optional `parentId`. The function is reentrant and must be called by the OS/ARTI Adapter when a new process is created. Importantly, it specifies that if `parentId` equals `processId`, then `parentId` is not utilized in this context."
+            },
+            {
+              "title": "ArtiProcessDestroy",
+              "node_id": "0028",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" describes the `ArtiProcessDestroy` API function, which is used to notify a tracer about the destruction of a process. Key components include the parameters `callingContext`, `coreId`, and `processId`, where `callingContext` specifies interrupt handling, `coreId` identifies the core performing the operation, and `processId` indicates the process being destroyed. The function is reentrant and is called by the OS/ARTI Adapter when a process is terminated, ensuring thread safety. This function adheres to upstream requirement RS_OSI_00210 as defined in the document."
+            },
+            {
+              "title": "ArtiProcessRename",
+              "node_id": "0029",
+              "start_index": 24,
+              "end_index": 25,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiProcessRename` function, which is an API for renaming a process in the OS/ARTI (Operating System/Artifact Interface) environment. The key components introduced include the function's definition, parameters, and return value. Specifically, it describes how this function is used to provide a unique name for a process, enabling user identification of processes through their names. The function is called by the OS/ARTI Adapter to rename a process identified by its ID, with the new name being a null-terminated string. Importantly, the function is reentrant and does not return any value, indicating it modifies state directly rather than returning data."
+            },
+            {
+              "title": "ArtiProcessInfo",
+              "node_id": "0030",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiProcessInfo` function, which is crucial for obtaining information about existing processes in an operating system. The key components introduced include the function's parameters such as `callingContext`, `processId`, `parentId`, and `processName`. It specifies that this function should be called directly after initializing the OS/ARTI Adapter with `Artilinit()` or whenever tracing is initiated, to establish an initial process list. Importantly, the function is reentrant and provides details about a process's name and its parent process, ensuring thread safety and accurate process tracking."
+            },
+            {
+              "title": "ArtiVersionInfo",
+              "node_id": "0031",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": "This section of \"Technical Report on Operating System Tracing Interface.pdf\" describes the `ArtiVersionInfo` function, which is crucial for ensuring compatibility between the operating system (OS) and the ARTI-driver. The key components include the `callingContext`, a pointer to an `ArtiVersionInfoType` structure (`versionInfoPtr`), and the return value of another `ArtiVersionInfoType`. This function must be called by the OS/ARTI Adapter before initializing tracing with `ArtiInit`. It ensures that the API versions match, allowing for successful tracing. The process involves filling `versionInfoPtr` with OS-related values, comparing the API versions, and potentially calling `ArtiVersionInfo` again if the major version needs to be adapted."
+            },
+            {
+              "title": "Artilnit",
+              "node_id": "0032",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "This section of \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `Artilnit` function, which is a crucial API for initializing the OS/ARTI Adapter. The function takes a `callingContext` parameter to specify interrupt handling behavior and is marked as reentrant, indicating it can be safely called from multiple threads. It is essential that the adapter calls this function upon system startup to properly initialize the trace driver. This initialization process ensures that tracing operations are correctly set up within the operating system environment."
+            },
+            {
+              "title": "ArtiCleanup",
+              "node_id": "0033",
+              "start_index": 26,
+              "end_index": 31,
+              "summary": "This section of the \"Technical Report on Operating System Tracing Interface.pdf\" focuses on the `ArtiCleanup` function, which is crucial for cleaning up the OS/ARTI Adapter when it stops. Key components include the definition and parameters of the `ArtiCleanup` function, its reentrancy, and its role in freeing local memory or flushing pending messages. The section also details changes made to this document across different AUTOSAR releases, highlighting how the function's specifications have evolved over time without significant modifications."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

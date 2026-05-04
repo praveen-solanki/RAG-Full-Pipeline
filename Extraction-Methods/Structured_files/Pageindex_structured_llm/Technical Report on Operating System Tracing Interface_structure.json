@@ -1,0 +1,298 @@
+{
+  "doc_name": "Technical Report on Operating System Tracing Interface.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 4,
+      "summary": "The partial document is the published AUTOSAR Adaptive Platform R25-11 \u201cTechnical Report on Operating System Tracing Interface\u201d (Doc-ID 1083).  \nIt presents the specification for an OS-level tracing interface (ARTI) that enables observation of adaptive-platform task and process events.  \nMain points covered: document metadata, disclaimer/copyright, release-by-release change history, and a detailed table of contents outlining the scope, terminology, functional specification of the ARTI tracing interface (adapter management, task interface, process interface), and a comprehensive API specification with type definitions and sixteen callback notifications for task/process life-cycle and context-switch events."
+    },
+    {
+      "title": "Introduction",
+      "node_id": "0001",
+      "start_index": 5,
+      "end_index": 5,
+      "summary": "The document introduces a low-level tracing API for the AUTOSAR Adaptive Platform operating system, designed to record task and process events with minimal runtime impact. Its purpose is to enable precise timing analysis\u2014CPU usage, deadlines, periodicity accuracy, and lock dependencies\u2014by breaking down time consumption within the software. The API is targeted at driver-level use by stack and trace tool vendors, not application engineers, and explicitly excludes application or middleware-level tracing to avoid disturbing system behavior.",
+      "nodes": [
+        {
+          "title": "Objectives",
+          "node_id": "0002",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "The partial document introduces a technical report on the AUTOSAR Adaptive Platform\u2019s Operating System Tracing Interface. It outlines the objective of providing a low-level API for tracing tasks and processes with minimal runtime impact, enabling analysis of timing requirements such as CPU usage, deadlines, and periodicity. The scope is limited to the adaptive platform\u2019s OS level, targeting stack and trace tool vendors rather than application engineers, and emphasizes that tracing at application or middleware levels is avoided to prevent performance interference."
+        },
+        {
+          "title": "Scope",
+          "node_id": "0003",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "The document introduces a low-level API for tracing tasks and processes in the AUTOSAR Adaptive Platform operating system. Its main objectives are to enable minimal-overhead collection of timing data to verify CPU usage, deadlines, and periodicity, and to reveal timing dependencies and locks. The API is targeted at driver-level use by stack and trace-tool vendors, not application engineers, to avoid altering runtime behavior."
+        }
+      ]
+    },
+    {
+      "title": "Definition of terms and acronyms",
+      "node_id": "0004",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "The excerpt is a terminology section that lists and briefly defines the key acronyms and technical terms\u2014such as Adaptive Application, Execution Management, Execution Manifest, Machine, Modelled Process, Operating System, Process, and Task\u2014used throughout the AUTOSAR Adaptive Platform R25-11 technical report on Operating-System tracing interfaces.",
+      "nodes": [
+        {
+          "title": "Acronyms and abbreviations",
+          "node_id": "0005",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "The excerpt is a terminology section from an AUTOSAR Adaptive Platform technical report on OS tracing. It lists and defines the key acronyms and concepts\u2014Adaptive Application, ARTI, Execution Management, Execution Manifest, Machine, Manifest, Modelled Process, Operating System, Process, Task\u2014used throughout the document, cross-referencing the AUTOSAR Glossary and Execution Management specification for fuller definitions."
+        }
+      ]
+    },
+    {
+      "title": "Related Documentation",
+      "node_id": "0006",
+      "start_index": 7,
+      "end_index": 8,
+      "summary": "The excerpt introduces the AUTOSAR Adaptive Platform R25-11 \u201cTechnical Report on Operating System Tracing Interface.\u201d  \nIt focuses on Section 4, the Functional Specification, which presents the ARTI (AUTOSAR Runtime Instrumentation) tracing interface.  \nKey points:\n\n- Purpose: enable understanding, verification and visualization of OS timing behavior.  \n- Core component: the \u201cOS/ARTI Adapter\u201d \u2013 a standardized, lightweight C API layer inserted between the POSIX/OS and tracing tools.  \n- Implementation: ARTI hooks are vendor-supplied; they may be C macros (collapsible to empty) or functions, allowing builds with or without tracing.  \n- Two-level model: distinguishes \u201cprocess\u201d (mandatory container) and \u201ctask\u201d (schedulable unit/thread) to align with AUTOSAR architecture."
+    },
+    {
+      "title": "Functional Specification",
+      "node_id": "0007",
+      "start_index": 8,
+      "end_index": 8,
+      "summary": "The excerpt introduces the AUTOSAR Adaptive Platform \u201cOS/ARTI Adapter,\u201d a standardized, lightweight C API layer that exposes OS-level trace hooks so timing behavior can be understood, verified, and visualized. It explains that the hooks are vendor-supplied (either macros or empty functions), sit inside an \u201cOS/ARTI Driver,\u201d and follow AUTOSAR\u2019s two-level task/process model.",
+      "nodes": [
+        {
+          "title": "ARTI Tracing Interface",
+          "node_id": "0008",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "The excerpt defines the OS/ARTI Adapter as the AUTOSAR AP trace-point layer inside the OS; it exposes a standardized, lightweight C API (ARTI hooks) that a tracing-tool vendor implements as macros or functions, allows null expansion when no tracer is present, and records task/thread and process events so tools can visualize and verify OS timing behavior.",
+          "nodes": [
+            {
+              "title": "OS/ARTI Adapter",
+              "node_id": "0009",
+              "start_index": 8,
+              "end_index": 10,
+              "summary": "The excerpt defines the AUTOSAR-ARTI OS-level tracing interface.  \nIt specifies the \u201cOS/ARTI Adapter\u201d that exposes standardized trace hooks so tools can capture, verify and visualize OS timing.  \nHooks may be implemented as C macros or functions; if no tracer is present they expand to no-ops.  \nThe interface adopts AUTOSAR\u2019s two-level model: a Process contains multiple Tasks (threads).  \nEach hook carries context parameters\u2014callingContext (interrupt state), coreId, taskId, processId\u2014whose numeric IDs are derived internally by the OS and can be mapped to human-readable names or to Adaptive-Platform modelled processes via the Execution Manifest.  \nAdapter life-cycle starts with ArtiVersionInfo: the OS offers its highest supported API version; the tracer returns its own.  \nTracing proceeds only if the versions match; otherwise the OS may retry with a lower version or disable tracing.",
+              "nodes": [
+                {
+                  "title": "Adapter Management",
+                  "node_id": "0010",
+                  "start_index": 10,
+                  "end_index": 11,
+                  "summary": "The excerpt defines how the AUTOSAR Adaptive Platform R25-11 OS-Tracing Interface (ARTI) represents tasks/processes via taskId/processId, explains that these IDs are mapped to OS-internal identifiers and can be correlated with model-level process names through Execution-Manifest data, and then details the Adapter life-cycle: mandatory version negotiation (ArtiVersionInfo) before initialization (ArtiInit) and cleanup (ArtiCleanup) of the tracing adapter, plus the minimal task state machine (Ready \u2192 Running/Suspended) that traced task events must follow."
+                },
+                {
+                  "title": "Task Interface",
+                  "node_id": "0011",
+                  "start_index": 11,
+                  "end_index": 14,
+                  "summary": "The excerpt specifies the AUTOSAR Adaptive Platform \u201cARTI\u201d tracing interface for an operating system.  \nIt mandates:\n\n- **Initialisation/Cleanup**: the OS/ARTI Adapter must call ArtiInit immediately after API-version confirmation and ArtiCleanup on stop, both supplying the current interrupt context.  \n\n- **Task life-cycle hooks**: for every task state change the adapter must/should invoke the corresponding ARTI function with standard parameters (callingContext, coreId, taskId, plus processId/name where relevant):  \n  \u2013 ArtiTaskCreate, ArtiTaskExit, ArtiTaskInfo (mandatory)  \n  \u2013 ArtiTaskSwitch (mandatory on every transition into Running)  \n  \u2013 ArtiTaskWait, ArtiTaskRelease, ArtiTaskPreempt, ArtiTaskRename (recommended)  \n\n- **Task state model**: minimal Ready \u2192 Running \u2192 Waiting state machine is assumed; trace hooks for Ready\u2194Running are mandatory, those for Waiting are optional if the OS does not distinguish that state."
+                },
+                {
+                  "title": "Process Interface",
+                  "node_id": "0012",
+                  "start_index": 15,
+                  "end_index": 16,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform \u201cProcess Interface\u201d for OS tracing: whenever ARTI is enabled the OS/ARTI Adapter must/should invoke six hook functions\u2014ArtiProcessSwitch, ArtiProcessCreate, ArtiProcessDestroy, ArtiProcessRename, and ArtiProcessInfo\u2014at every process switch, creation, termination, renaming, or initial enumeration, passing standardized parameters (callingContext, coreId, processId, parentId, nextId, processName) so the trace collector can reconstruct the complete process life-cycle and affinity information."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "API Specification",
+      "node_id": "0013",
+      "start_index": 17,
+      "end_index": 17,
+      "summary": "The excerpt defines the AUTOSAR AP R25-11 Operating System Tracing Interface (ARTI) structure ArtiVersionInfoType. It specifies that this struct (declared in ara/log/osarti.h) contains two uint32_t members: apiVersion, which conveys the requested/supported API version (0x01 for this release), and buildVersion, which carries the informal build version of either the OS or the ARTI driver.",
+      "nodes": [
+        {
+          "title": "Type Definitions",
+          "node_id": "0014",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "The excerpt defines the AUTOSAR AP R25-11 ARTI (AUTOSAR Runtime Tracing Interface) version-information structure ArtiVersionInfoType.  \nIt specifies the struct\u2019s purpose (to convey the ARTI version supported by the OS and its driver), its header files, and its two uint32_t members: apiVersion (set to 0x01 for this release) and buildVersion (informal driver/OS build identifier).",
+          "nodes": [
+            {
+              "title": "ArtiVersionInfoType",
+              "node_id": "0015",
+              "start_index": 17,
+              "end_index": 18,
+              "summary": "The excerpt is a fragment of the AUTOSAR AP R25-11 technical report that specifies the tracing-interface API.  \nIt concentrates on two type definitions in section 5.1:\n\n1. ArtiVersionInfoType (5.1.1) \u2013 a C struct that conveys version and identity information between the OS and the ARTI driver.  \n   - apiVersion: 32-bit field set to 0x01 for this release; used to negotiate/request the API version.  \n   - buildVersion: 32-bit informal field carrying the build number of the OS or driver.  \n   - productName: pointer to a C string giving the OS/driver product name.  \n   - vendorName: pointer to a C string giving the OS/driver vendor name.\n\n2. CallingContext (5.1.2) \u2013 an enumeration that tells hooks whether they run with interrupts already disabled (kInterruptsDisabled = 0) or may themselves disable interrupts (kInterruptsMayBeDisabled = 1).\n\nAll items are declared in ara/log/osarti.h and trace back to requirement RS_OSI_00210."
+            },
+            {
+              "title": "CallingContext",
+              "node_id": "0016",
+              "start_index": 18,
+              "end_index": 19,
+              "summary": "The excerpt defines two version-info string fields (productName, vendorName) and an enumeration CallingContext that classifies interrupt states. It then specifies two OS-tracing callback functions\u2014ArtiTaskSwitch and ArtiTaskWait\u2014that the OS/ARTI adapter must invoke on every task switch or task wait, passing the core ID, task ID, and the CallingContext value to inform the tracer about interrupt safety."
+            }
+          ]
+        },
+        {
+          "title": "Callback Notifications",
+          "node_id": "0017",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "The excerpt defines two ART/OSTI hook functions\u2014ArtiTaskSwitch and ArtiTaskWait\u2014used to notify a tracer of task-state changes in an AUTOSAR Adaptive Platform system. Both hooks are reentrant, take a CallingContext flag indicating whether interrupts may be disabled, and are declared in \u201cara/log/osarti.h\u201d. ArtiTaskSwitch reports when a new task becomes running on a given core, while ArtiTaskWait signals that the specified task is about to wait.",
+          "nodes": [
+            {
+              "title": "ArtiTaskSwitch",
+              "node_id": "0018",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "The excerpt defines two OS-tracing callback hooks\u2014ArtiTaskSwitch and ArtiTaskWait\u2014specified in the AUTOSAR AP R25-11 Operating-System Tracing Interface.  \nBoth hooks are declared in \u201cara/log/osarti.h\u201d, take a CallingContext parameter that indicates whether interrupts may be disabled (kInterruptsMayNotBeDisabled=2), and are reentrant.  \nArtiTaskSwitch notifies a tracer that coreId is switching to task nextId; ArtiTaskWait notifies that taskId on coreId is entering the waiting state."
+            },
+            {
+              "title": "ArtiTaskWait",
+              "node_id": "0019",
+              "start_index": 19,
+              "end_index": 20,
+              "summary": "The excerpt is a technical specification (AUTOSAR AP R25-11) that defines four OS/ARTI tracing callback hooks\u2014ArtiTaskSwitch, ArtiTaskWait, ArtiTaskRelease, and ArtiTaskPreempt\u2014used to notify a tracer of task-state changes (switch, wait, ready, pre-empt) on a given core, including whether interrupts may be disabled, with all functions being re-entrant and having no return value."
+            },
+            {
+              "title": "ArtiTaskRelease",
+              "node_id": "0020",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The excerpt documents three AUTOSAR AP R25-11 OS-tracing hook functions\u2014ArtiTaskWait, ArtiTaskRelease, and ArtiTaskPreempt\u2014declared in \u201cara/log/osarti.h\u201d. Each reentrant routine is invoked by the OS/ARTI Adapter to signal a specific task-state transition: entering the wait state, leaving wait and becoming ready, and being preempted from running, respectively. All take the same three input parameters (callingContext, coreId, taskId) and return void; no additional behaviour or thread-safety details are provided."
+            },
+            {
+              "title": "ArtiTaskPreempt",
+              "node_id": "0021",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "The excerpt lists six re-entrant \u201carti\u201d hook functions (ArtiTaskWait, ArtiTaskRelease, ArtiTaskPreempt, ArtiTaskExit, ArtiTaskCreate) that an OS/ARTI Adapter must call to notify the AUTOSAR AP tracer whenever a task changes state: entering wait, leaving wait/returning to ready, being preempted, terminating, or being created. Each function takes a CallingContext plus core/task IDs (and processId for creation), returns void, and is declared in ara/log/osarti.h under upstream requirement RS_OSI_00210."
+            },
+            {
+              "title": "ArtiTaskExit",
+              "node_id": "0022",
+              "start_index": 21,
+              "end_index": 20,
+              "summary": "The partial document outlines the main topics and key points discussed within the provided text."
+            },
+            {
+              "title": "ArtiTaskCreate",
+              "node_id": "0023",
+              "start_index": 21,
+              "end_index": 22,
+              "summary": "The excerpt defines four reentrant OS/ARTI tracing hooks that an AUTOSAR Adaptive Platform OS/ARTI Adapter must invoke to report task-lifecycle events to a tracer:\n\n- ArtiTaskExit \u2013 signals that an existing task is terminating (parameters: callingContext, coreId, taskId).  \n- ArtiTaskCreate \u2013 signals that a new task has been created (parameters: callingContext, coreId, processId, taskId).  \n- ArtiTaskRename \u2013 assigns or updates a human-readable name for a task (parameters: callingContext, taskId, null-terminated taskName).  \n- ArtiTaskInfo \u2013 supplies complete identification data for a task (parameters: callingContext, taskId, processId, null-terminated taskName).\n\nAll functions return void, reside in ara/log/osarti.h, share the upstream requirement RS_OSI_00210, and are thread-safe/reentrant."
+            },
+            {
+              "title": "ArtiTaskRename",
+              "node_id": "0024",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "The excerpt defines three OS-tracing interface functions that an AUTOSAR Adaptive Platform OS/ARTI Adapter must invoke:\n\n- ArtiTaskCreate \u2013 signals to the tracer that a new task has been created.  \n- ArtiTaskRename \u2013 assigns (or changes) a human-readable, null-terminated name to an existing taskId so the task can be identified in trace logs.  \n- ArtiTaskInfo \u2013 delivers complete identification data (taskId, owning processId, taskName) for a task to the tracing system.\n\nAll three are re-entrant, take a CallingContext argument that indicates interrupt state, return void, and reside in the header \u201cara/log/osarti.h\u201d."
+            },
+            {
+              "title": "ArtiTaskInfo",
+              "node_id": "0025",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "The excerpt documents two AUTOSAR Adaptive Platform tracing interface API functions\u2014ArtiTaskRename and ArtiTaskInfo\u2014declared in \u201cara/log/osarti.h\u201d.  \nArtiTaskRename lets the OS/ARTI Adapter assign a new, null-terminated name to an existing task (identified by taskId) while specifying the interrupt state via callingContext; it is re-entrant and returns nothing.  \nArtiTaskInfo similarly transmits task metadata\u2014taskId, its owning processId, and its null-terminated name\u2014under the same callingContext and thread-safety rules, also returning void."
+            },
+            {
+              "title": "ArtiProcessSwitch",
+              "node_id": "0026",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "The excerpt defines three OS/ARTI tracing hooks for the AUTOSAR Adaptive Platform R25-11:  \n1. ArtiTaskInfo \u2013 registers an existing task\u2019s name and parent process when tracing starts to populate the initial task list.  \n2. ArtiProcessSwitch \u2013 notifies the tracer that the CPU has switched to a different process, supplying core ID and new process ID.  \n3. ArtiProcessCreate \u2013 notifies the tracer that a new process has been created, supplying core ID, new process ID and optional parent process ID."
+            },
+            {
+              "title": "ArtiProcessCreate",
+              "node_id": "0027",
+              "start_index": 23,
+              "end_index": 24,
+              "summary": "The excerpt defines four OS/ARTI tracing hooks that let the adapter report process life-cycle events to the trace collector:  \n- ArtiProcessSwitch \u2013 announces that a CPU core is changing to another process  \n- ArtiProcessCreate \u2013 announces the birth of a new process, optionally naming its parent  \n- ArtiProcessDestroy \u2013 announces that a process is being removed  \n- ArtiProcessRename \u2013 assigns a new name to an existing process  \n\nEach function is re-entrant, takes a CallingContext flag plus core/process identifiers, returns void, and must be invoked by the OS/ARTI Adapter at the exact moment the corresponding kernel event occurs."
+            },
+            {
+              "title": "ArtiProcessDestroy",
+              "node_id": "0028",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "The excerpt defines three reentrant tracing-hook functions\u2014ArtiProcessDestroy and ArtiProcessRename (plus an earlier ArtiProcessCreate implied by the context)\u2014that an OS/ARTI Adapter must call to notify the AUTOSAR AP tracer when a process is destroyed or renamed. For each hook it lists the upstream requirement, header, prototype, input parameters (callingContext, coreId/processId, optional new name), and states that the functions are thread-safe and return nothing."
+            },
+            {
+              "title": "ArtiProcessRename",
+              "node_id": "0029",
+              "start_index": 24,
+              "end_index": 25,
+              "summary": "The excerpt defines four reentrant OS/ARTI Adapter hook functions (ArtiProcessDestroy, ArtiProcessRename, ArtiProcessInfo, ArtiVersionInfo) that reside in ara/log/osarti.h, are invoked with a CallingContext parameter, and serve to notify the tracing layer whenever a process is destroyed, renamed, described, or when version information is exchanged; all return nothing except ArtiVersionInfo, which returns a constant pointer to the ARTI-driver version data."
+            },
+            {
+              "title": "ArtiProcessInfo",
+              "node_id": "0030",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "The excerpt documents two ARTI API functions\u2014ArtiProcessInfo and ArtiVersionInfo\u2014specified for the AUTOSAR Adaptive Platform R25-11 operating-system tracing interface.  \nArtiProcessInfo supplies runtime metadata (process ID, parent ID, null-terminated name) for every existing process; the OS/ARTI Adapter must invoke it once per process immediately after ArtiInit or when tracing starts to populate the initial process list.  \nArtiVersionInfo returns a constant pointer to a constant structure containing the ARTI-driver version information; the caller passes in a constant pointer to the OS version info and receives the driver\u2019s version data in return.  \nBoth functions are reentrant, take a CallingContext argument that indicates interrupt state, and are declared in \u201cara/log/osarti.h\u201d."
+            },
+            {
+              "title": "ArtiVersionInfo",
+              "node_id": "0031",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": "The excerpt details four ARTI (AUTOSAR Runtime Tracing Interface) API functions that an OS/ARTI Adapter must call to set up and manage OS-level tracing:\n\n- ArtiProcessInfo \u2013 registers an existing process (name, ID, parent) to build the initial process list.  \n- ArtiVersionInfo \u2013 exchanges version structures between OS and driver; tracing proceeds only if both sides report identical API versions.  \n- ArtiInit \u2013 initializes the tracing driver once version compatibility is confirmed.  \n- ArtiCleanup \u2013 performs driver shutdown when tracing ends.\n\nAll functions are re-entrant, take a CallingContext parameter indicating interrupt state, and are declared in ara/log/osarti.h."
+            },
+            {
+              "title": "ArtiInit",
+              "node_id": "0032",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "The excerpt defines three OS/ARTI-Adapter interface functions for AUTOSAR AP R25-11:\n\n1. ArtiVersionInfo \u2013 run-time compatibility check: the OS passes its highest supported API version; the ARTI-driver returns its own version.  \n   \u2013 If both versions match, tracing is enabled.  \n   \u2013 If OS version is higher, the OS may retry with a lower major version; if still unsupported, tracing is blocked.  \n   \u2013 If OS version is lower, tracing is impossible.  \n   The call is executed once (or twice on retry) immediately before ArtiInit.\n\n2. ArtiInit \u2013 initializes the OS/ARTI Adapter; invoked once when the adapter starts, optionally setting up the trace driver.  \n   Parameter: callingContext (interrupt state). Re-entrant, no return value.\n\n3. ArtiCleanup \u2013 counterpart to ArtiInit; performs adapter shutdown (details cut off in the fragment)."
+            },
+            {
+              "title": "ArtiCleanup",
+              "node_id": "0033",
+              "start_index": 26,
+              "end_index": 27,
+              "summary": "The excerpt defines three OS/ARTI Adapter API functions\u2014ArtiVersionInfo, ArtiInit, and ArtiCleanup\u2014specified in AUTOSAR AP R25-11.  \nArtiVersionInfo performs run-time version negotiation: the OS proposes its highest supported API version, the ARTI driver responds with its own, and tracing is enabled only if the versions match or the OS can downgrade; mismatches block tracing.  \nArtiInit initializes the adapter/trace driver at system start-up, while ArtiCleanup releases resources when the adapter is stopped; both are reentrant, take a CallingContext parameter indicating interrupt state, and return nothing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Change History",
+      "node_id": "0034",
+      "start_index": 28,
+      "end_index": 27,
+      "summary": "The partial document outlines the main topics and key points discussed within the provided excerpt.",
+      "nodes": [
+        {
+          "title": "Change History of this document according to AUTOSAR Release R25-11",
+          "node_id": "0035",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "The excerpt is a fragment of the AUTOSAR AP \u201cOperating System Tracing Interface\u201d technical report. It contains only the document\u2019s change-history appendix, listing for releases R25-11 and R24-11 which specification items were added, changed, or deleted. For R25-11 no modifications are recorded, while R24-11 shows ten changed items, all related to ARTI (AUTOSAR Real-Time Interface) task life-cycle and version-info functions.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R25-11",
+              "node_id": "0036",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "The partial document is the change-history appendix of the AUTOSAR Technical Report on the Operating-System Tracing Interface (AP R25-11).  \nIt states that release R25-11 introduced no added, changed, or deleted specification items, while release R24-11 modified ten numbered headings (TR_OSTI_00001 \u2013 TR_OSTI_00010) that define ARTI version, initialization/cleanup, and seven task-life-cycle notification points."
+            },
+            {
+              "title": "Changed Specification Items in R25-11",
+              "node_id": "0037",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "The partial document is a technical report on the AUTOSAR Adaptive Platform (AP) Operating System Tracing Interface (OSTI) for release R25-11. It contains a detailed change history section, which notes that no specification items were added, changed, or deleted in the R25-11 release. It also includes the change history for the previous release, R24-11, which lists several specification items related to ARTI (Adaptive Runtime Tracing Interface) that were changed, covering aspects such as version info, initialization, cleanup, and various task notifications."
+            },
+            {
+              "title": "Deleted Specification Items in R25-11",
+              "node_id": "0038",
+              "start_index": 28,
+              "end_index": 31,
+              "summary": "The excerpt is a change-history appendix from the AUTOSAR AP R25-11 Technical Report on the Operating-System Tracing Interface (ARTI).  \nIt lists, release-by-release, which ARTI specification items were added, changed or deleted:\n\n- R25-11: no changes  \n- R24-11: 22 items modified (all API definitions for task/process notifications and version-info functions/types)  \n- R23-11: same 22 items newly introduced (initial creation)\n\nThus the fragment only documents the evolution of the ARTI specification across these three AUTOSAR releases."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

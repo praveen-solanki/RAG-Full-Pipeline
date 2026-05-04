@@ -1,0 +1,564 @@
+{
+  "doc_name": "General Specification of Transformers.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 6,
+      "summary": "The excerpt is the front-matter and table of contents of the AUTOSAR Classic Platform \u201cGeneral Specification of Transformers\u201d (Doc ID 658, release R25-11).  \nIt lists the document\u2019s ownership, status, release history of changes from R19-11 to R25-11 (new error codes, API clarifications, removal/addition of sections, configuration updates, editorial fixes), legal disclaimer, and a complete chapter-level table of contents covering introduction, functional specification of transformer classes (serializer, safety, security, custom), buffer handling, error classification/notification, API details, sequence diagrams, configuration parameters, and trace-item change history."
+    },
+    {
+      "title": "Introduction and functional overview",
+      "node_id": "0001",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "The excerpt introduces AUTOSAR CP R25-11\u2019s Transformer specification: it lets AUTOSAR systems linearize/convert data via configurable \u201ctransformers\u201d that the RTE executes for both intra- and inter-ECU communication. Each transformer exposes a fixed function signature tied only to the data elements being sent/received; its output is always a flat byte array. Multiple transformers can be chained\u2014the first receives RTE data, subsequent ones consume the prior transformer\u2019s byte-array output\u2014enabling flexible addition of safety, security, or other processing layers to serialized data streams."
+    },
+    {
+      "title": "Acronyms and Abbreviations",
+      "node_id": "0002",
+      "start_index": 8,
+      "end_index": 9,
+      "summary": "The excerpt is the title page and front-matter of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d document.  \nIt states that any acronyms used are already defined in the AUTOSAR glossary, lists the five normative input documents (Glossary, BSW General SWS, System Template, BSW General Requirements, and Software Component Template), and shows the document\u2019s ID (658) and page count (86)."
+    },
+    {
+      "title": "Related documentation",
+      "node_id": "0003",
+      "start_index": 9,
+      "end_index": 9,
+      "summary": "The excerpt is the header of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d document. It lists the five normative input documents (Glossary, BSWGeneral SWS, System Template, BSWGeneral RS, Software Component Template) that the transformer specification is based on, and shows this is page 9 of an 86-page document identified as AUTOSAR_CP_ASWS_TransformerGeneral.",
+      "nodes": [
+        {
+          "title": "Input documents :",
+          "node_id": "0004",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "The excerpt lists the \u201cRelated documentation\u201d section of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d.  \nIt names five normative input documents (Glossary, Basic-Software General SWS & RS, System Template, Software-Component Template) and states that no related standards, norms or other specifications apply."
+        },
+        {
+          "title": "Related standards and norms :",
+          "node_id": "0005",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "The partial document is the header of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers,\u201d showing that Sections 3.2 (Related standards and norms) and 3.3 (Related specifications) are marked \u201cNot applicable,\u201d and it is page 10 of 86 in document ID 658: AUTOSAR_CP_ASWS_TransformerGeneral."
+        },
+        {
+          "title": "Related specification :",
+          "node_id": "0006",
+          "start_index": 10,
+          "end_index": 11,
+          "summary": "The excerpt outlines the constraints and assumptions governing the AUTOSAR CP \u201cTransformerGeneral\u201d specification.  \nKey points:  \n- Transformation scope is restricted to individual data elements (VariableDataPrototype, ClientServerOperation, non-queued TriggerInterface events); entire PDUs cannot be transformed because PDUs do not exist inside the RTE.  \n- Transformation is most efficient on large-PDU busses (e.g., Ethernet); use on small-PDU busses (e.g., CAN) is possible but inefficient due to PDU fragmentation.  \n- Transformed elements are handled independently inside the COM module; each carries its own header, and mixed-source data structures cannot be transformed as a unit.  \n- Transformer chain length is conceptually unlimited but artificially capped at 255 for memory-efficient configuration (current use cases reach max 3).  \n- No domain-specific restrictions apply."
+        }
+      ]
+    },
+    {
+      "title": "Constraints and assumptions",
+      "node_id": "0007",
+      "start_index": 11,
+      "end_index": 11,
+      "summary": "The partial document outlines key constraints and assumptions for AUTOSAR CP R25-11 transformers. It emphasizes that transformation is limited to specific data elements\u2014VariableDataPrototypes, ClientServerOperations, and non-queued trigger events\u2014excluding whole PDU transformation. Efficiency is noted for large PDU buses like Ethernet over small ones like CAN. Transformed elements are handled independently within COM, each with its own header, and cannot span across different SWC data sources. Transformer chain length is capped at 255 for memory efficiency, though typical use reaches only 3. No domain-specific restrictions apply.",
+      "nodes": [
+        {
+          "title": "Limitations :",
+          "node_id": "0008",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "The section outlines key constraints and assumptions for AUTOSAR CP R25-11 transformers: transformation is restricted to specific data elements (VariableDataPrototype, ClientServerOperation, non-queued trigger events) and excludes whole PDUs; serialization of large data is most efficient on large-PDU buses like Ethernet; transformed elements can be aggregated into PDUs in the Com module but are handled independently; transformer chain length is artificially capped at 255 for memory efficiency; and the specification imposes no domain-specific restrictions."
+        },
+        {
+          "title": "Applicability to car domains :",
+          "node_id": "0009",
+          "start_index": 11,
+          "end_index": 12,
+          "summary": "The excerpt outlines key constraints and assumptions governing AUTOSAR CP transformers. It limits transformation to individual data elements (VariableDataPrototype, ClientServerOperation, non-queued TriggerInterface events) and prohibits whole-PDU transformation because PDUs exist only in the Com module, not in the RTE where transformation occurs. Large-complex-element serialization is recommended only for buses with large PDUs (e.g., Ethernet); small-PDU buses (e.g., CAN) force inefficient multi-PDU fragmentation. Transformed Sender/Receiver elements may be aggregated into one Com PDU, yet each remains an independent ISignal with its own header, so structures whose sub-elements originate from different port prototypes cannot be transformed. Transformer chain length is artificially capped at 255 for memory efficiency despite no conceptual limit. The specification applies to all car domains and states that transformers, as BSW modules, follow the general code and header file structures defined in SWS BSW General unless specific transformer SWS documents state otherwise, and it asserts no dependencies on other AUTOSAR SWS modules."
+        }
+      ]
+    },
+    {
+      "title": "Dependencies to other modules",
+      "node_id": "0010",
+      "start_index": 12,
+      "end_index": 12,
+      "summary": "The excerpt states that AUTOSAR CP R25-11\u2019s transformer general specification has no dependencies on other AUTOSAR SWS modules, and that both code and header file structures for transformers follow the common BSW rules defined in SWS BSW General, with any deviations documented in the individual transformer SWS.",
+      "nodes": [
+        {
+          "title": "File structure :",
+          "node_id": "0011",
+          "start_index": 12,
+          "end_index": 12,
+          "summary": "The excerpt states that AUTOSAR CP R25-11 transformers have no dependencies on other AUTOSAR SWS modules and that both their code and header file structures must follow the common BSW rules defined in SWS BSW General, with any allowed deviations documented in the individual transformer SWS specifications.",
+          "nodes": [
+            {
+              "title": "Code file structure :",
+              "node_id": "0012",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "The excerpt states that AUTOSAR CP R25-11\u2019s transformer modules have no dependencies on other AUTOSAR SWS modules and that both their code and header file structures must follow the common BSW rules given in SWS BSW General, with any allowed deviations documented in the individual transformer SWS."
+            },
+            {
+              "title": "Header file structure :",
+              "node_id": "0013",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "The excerpt states that AUTOSAR CP R25-11\u2019s transformer modules have no dependencies on other AUTOSAR SWS modules, and that both their code and header file structures must follow the common BSW rules defined in SWS BSW General, with any allowed deviations documented in the individual transformer SWS."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Requirements Tracing",
+      "node_id": "0014",
+      "start_index": 13,
+      "end_index": 15,
+      "summary": "The excerpt is a requirements-traceability and functional-specification fragment for the AUTOSAR CP \u201cTransformer\u201d Basic-Software module.  \nIt maps 11 high-level SRS requirements (ranging from generic BSW rules to transformer-specific behaviours) to 80+ low-level SWS specification items, then summarises the transformer concept: stateful/stateless BSW modules in the Communication Service Cluster that are chained (\u2264255 units) and orchestrated by the RTE to serialise, transform or deserialise data exchanged within or between ECUs."
+    },
+    {
+      "title": "Functional Specification",
+      "node_id": "0015",
+      "start_index": 15,
+      "end_index": 21,
+      "summary": "The excerpt defines AUTOSAR \u201ctransformers\u201d as BSW modules in the Communication Service Cluster that the RTE invokes to serialize, modify or augment data.  \nKey points:  \n- They may be stateful only when required; must be re-entrant and tolerate NULL input.  \n- Up to 255 transformers can be chained; the RTE executes them in configured order on the sender and in reverse on the receiver.  \n- Chains work for both intra-ECU and inter-ECU communication; SWCs remain unaware of their presence.  \n- Transformers must specify a fixed on-wire format (endianness, element order, data semantics, padding) to ensure cross-ECU portability.  \n- Buffer handling: in-place (same buffer for input/output) or out-of-place (separate buffers), selected at configuration time.  \n- Optimization: if several signals share the same leading transformers and no ComBasedTransformer is involved, those transformers are executed once and the result is reused.",
+      "nodes": [
+        {
+          "title": "Buffer Handling :",
+          "node_id": "0016",
+          "start_index": 21,
+          "end_index": 22,
+          "summary": "The excerpt explains how AUTOSAR CP transformers process data between sending and receiving SWCs, focusing on two buffer-handling modes\u2014in-place (single buffer) and out-of-place (separate input/output buffers)\u2014and the RTE\u2019s role in allocating worst-case output buffers. It lists strict placement rules: the first sender-side transformer and last receiver-side transformer must use out-of-place buffering, and in-place is forbidden if it would modify original SWC data. It also introduces four transformer classes\u2014Serializer, Safety, Security, Custom\u2014allowing at most one per chain."
+        },
+        {
+          "title": "Transformer Classes :",
+          "node_id": "0017",
+          "start_index": 22,
+          "end_index": 23,
+          "summary": "The excerpt defines AUTOSAR transformer rules and categories.  \nIt mandates that transformers using out-of-place buffering must leave the input buffer unchanged, requires the first sender-side and last receiver-side transformers to use out-of-place buffers, and states that the RTE allocates worst-case output buffers.  \nTransformers are grouped into four exclusive classes\u2014Serializer, Safety, Security, Custom\u2014of which only one instance per class may appear in a chain.  \nSerializer transformers convert complex RTE data to/from linear byte arrays for COM-stack transmission, supporting only \u201cnew-world\u201d variable-size arrays.  \nSafety transformers protect inter-ECU safety communication by ensuring correct order and content of data and guarding against unintentional modification.",
+          "nodes": [
+            {
+              "title": "Serializer :",
+              "node_id": "0018",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "The excerpt defines two AUTOSAR transformer classes\u2014Serializer and Safety\u2014used between the RTE and the COM stack.  \nSerializer transformers convert complex RTE data (S/R elements, C/S operations, or Triggers) into a linear byte array (ISignal/IPdu) for transmission; they must handle every possible complex input type but exclude \u201cold-world\u201d variable-size arrays. A paired deserializer on the receiver side can return all or part of the reconstructed data to the RTE.  \nSafety transformers protect inter-ECU traffic of safety-related SWCs against unintended modification, ensuring correct ordering and integrity of the transmitted data."
+            },
+            {
+              "title": "Safety :",
+              "node_id": "0019",
+              "start_index": 23,
+              "end_index": 24,
+              "summary": "The excerpt outlines four AUTOSAR transformer categories and their error-handling model:\n\n1. Serializer \u2013 converts RTE complex data (or trigger) into a linear byte array for COM transmission; mandates full-coverage serialization algorithms and supports only \u201cnew-world\u201d variable-size arrays; on the receiver side the same component acts as a deserializer that can return all or part of the data to the RTE.  \n2. Safety \u2013 protects inter-ECU safety-related communication against unintentional corruption, guaranteeing correct order and content, typically via sequence counters and checksums.  \n3. Security \u2013 protects security-related inter-ECU traffic against intentional attacks, ensuring authenticity, integrity, and freshness, again using counters/checksums.  \n4. Custom \u2013 non-standardized transformers defined by project teams, implementable as CDDs.  \n\nAll transformers report errors to the RTE, which then orchestrates subsequent execution and SWC notification."
+            },
+            {
+              "title": "Security :",
+              "node_id": "0020",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "The excerpt outlines AUTOSAR CP R25-11 transformer requirements:  \n- Security transformers must safeguard inter-ECU communication for security-related SWCs by guaranteeing authenticity, integrity and freshness (e.g., via sequence counters/checksums).  \n- Custom transformers are allowed but not standardized; they may be implemented as CDDs.  \n- All transformers report errors to the RTE, which then handles subsequent execution and SWC notification."
+            },
+            {
+              "title": "Custom :",
+              "node_id": "0021",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "The excerpt outlines AUTOSAR CP R25-11 transformer requirements: security transformers must safeguard inter-ECU communication by guaranteeing authenticity, integrity and freshness (e.g., via sequence counters/checksums); custom transformers are allowed as non-standardized CDDs; and all transformers report errors to the RTE for coordinated handling and SWC notification."
+            }
+          ]
+        },
+        {
+          "title": "Error Handling :",
+          "node_id": "0022",
+          "start_index": 24,
+          "end_index": 26,
+          "summary": "The excerpt outlines AUTOSAR CP transformer requirements and behaviour:\n\n- Security transformers must guarantee authenticity, integrity and freshness of inter-ECU messages, typically via sequence counters/checksums; custom (non-standardised) transformers are allowed and may be implemented as CDDs.\n- All transformers report errors to the RTE as return codes (0x00 = success, 0x01-0x7F = soft errors, 0x80-0xFF = hard errors). Soft errors let the transformer chain continue; hard errors abort it and leave the output buffer untouched.\n- Each transformer class has its own fixed, abstract error set; individual transformers may only return errors from that subset.\n- Serializer transformers specifically define ten return codes ranging from E_OK through soft warnings (no data, payload-length exceeded) to hard failures (wrong protocol/interface version, malformed/unexpected message, generic error, reserved codes).",
+          "nodes": [
+            {
+              "title": "Errors of Serializer Transformers :",
+              "node_id": "0023",
+              "start_index": 26,
+              "end_index": 27,
+              "summary": "The excerpt explains how error propagation works in a transformer chain: a soft error raised by an early-stage transformer (e.g., E2E detecting wrong CRC/ID) can be masked if a later transformer (e.g., SomeIpXf deserializer) raises a hard error, yet the E2E state machine remains INVALID while messages stay invalid. Applications that need the true E2E state must therefore inspect the deserializer\u2019s hard errors. It then lists the standardized error codes and types (soft vs. hard) that serializer transformers (\u00a77.3.1) and safety transformers (\u00a77.3.2) are required to report, covering success, payload-length, protocol/interface version, malformed message, message-type mismatches, and various safety-check outcomes."
+            },
+            {
+              "title": "Errors of Safety Transformers :",
+              "node_id": "0024",
+              "start_index": 27,
+              "end_index": 28,
+              "summary": "The excerpt lists the complete set of error codes that safety and security transformers in AUTOSAR CP R25-11 can report.  \nFor safety transformers it defines 32 \u201cE_SAFETY_\u2026\u201d codes (0x00\u20130xFF, skipping four reserved values), each combining a severity (Soft/Hard) with a brief cause such as repeated counter, sequence jump, check failure, missing data, state-machine disabled, or runtime error.  \nFor security transformers it provides three \u201cE_SEC_\u2026\u201d codes (0x00\u20130x02) indicating success, failed authentication, or lack of data freshness."
+            },
+            {
+              "title": "Errors of Security Transformers :",
+              "node_id": "0025",
+              "start_index": 28,
+              "end_index": 29,
+              "summary": "The excerpt is a catalogue of all error codes that can be reported by AUTOSAR CP R25-11 Transformer modules, grouped by transformer type (Safety, Security, Custom) and by error class (Development, Runtime, Production).  \nFor every code it gives the symbolic name, numeric value, severity (soft/hard/none) and a short textual explanation of what condition triggers it."
+            },
+            {
+              "title": "Errors of Custom Transformers :",
+              "node_id": "0026",
+              "start_index": 29,
+              "end_index": 28,
+              "summary": "The partial document outlines the main topics or key points discussed within the provided text."
+            }
+          ]
+        },
+        {
+          "title": "Error Classification :",
+          "node_id": "0027",
+          "start_index": 29,
+          "end_index": 29,
+          "summary": "The excerpt defines the error-handling framework for AUTOSAR CP custom transformers.  \nIt lists two categories:\n\n1. Custom-transformer errors:  \n   \u2013 E_OK (0x00) \u2013 success  \n   \u2013 0x01-0x7F \u2013 transformer-specific soft errors  \n   \u2013 0x80-0xFF \u2013 transformer-specific hard errors  \n\n2. Development errors for the Xfrm module:  \n   \u2013 <MIP>_E_UNINIT (0x01) \u2013 API called before Init or after DeInit  \n   \u2013 <MIP>_E_INIT_FAILED (0x02) \u2013 invalid configuration set  \n   \u2013 <MIP>_E_PARAM (0x03) \u2013 wrong parameter  \n   \u2013 <MIP>_E_PARAM_POINTER (0x04) \u2013 invalid pointer  \n\nNo runtime or production errors are defined.",
+          "nodes": [
+            {
+              "title": "Development Errors :",
+              "node_id": "0028",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "The excerpt lists the error codes and classifications defined for AUTOSAR CP transformer modules.  \nIt first gives the generic return values a custom transformer can report: E_OK (0x00, no error), 0x01-0x7F for soft transformer-specific errors, and 0x80-0xFF for hard transformer-specific errors.  \nIt then details the module\u2019s development-time error codes:  \n- MIP_E_UNINIT (0x01) \u2013 API used before initialization or after de-initialization  \n- MIP_E_INIT_FAILED (0x02) \u2013 invalid configuration set selected  \n- MIP_E_PARAM (0x03) \u2013 API called with wrong parameter  \n- MIP_E_PARAM_POINTER (0x04) \u2013 API called with invalid pointer  \nFinally it states that no runtime or production errors are defined for the transformer module."
+            },
+            {
+              "title": "Runtime Errors :",
+              "node_id": "0029",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "The excerpt defines the error-handling framework for custom transformers in AUTOSAR CP R25-11. It lists transformer-specific soft (0x01\u20130x7F) and hard (0x80\u20130xFF) error codes, plus standard development errors (uninitialized module, init failed, invalid parameter, invalid pointer) that any transformer module must report; no runtime or production errors are specified."
+            },
+            {
+              "title": "Production Errors :",
+              "node_id": "0030",
+              "start_index": 29,
+              "end_index": 30,
+              "summary": "The excerpt defines the error-handling model for AUTOSAR CP transformers.  \nIt lists the numeric ranges for custom-transformer soft (0x01-0x7F) and hard (0x80-0xFF) errors, then enumerates the mandatory development-error codes (un-initialized, init-failed, wrong parameter, invalid pointer) that every transformer module must report.  \nIt explicitly states that no runtime or production errors exist, while mandating one Extended Production Error\u2014XFRM_E_MALFORMED_MESSAGE\u2014whenever input data are malformed, with detection required on every transformer execution."
+            },
+            {
+              "title": "Extended Production Errors :",
+              "node_id": "0031",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The excerpt defines the AUTOSAR CP transformer Extended Production Error \u201cXFRM_E_MALFORMED_MESSAGE\u201d: it is triggered whenever a transformer receives input whose format violates its specification, causing the transformer to fail to produce output; the error must be implemented for every transformer that supports it and is monitored on every transformer execution.",
+              "nodes": [
+                {
+                  "title": "XFRM_E_MALFORMED_MESSAGE :",
+                  "node_id": "0032",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "The excerpt defines the AUTOSAR CP transformer-specific Extended Production Error \u201cXFRM_E_MALFORMED_MESSAGE\u201d: it is triggered whenever a transformer receives input whose format violates its specification, making normal output impossible. The error must be implemented for every transformer that supports it, and it is monitored on every transformer execution."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Error Notification :",
+          "node_id": "0033",
+          "start_index": 30,
+          "end_index": 30,
+          "summary": "The excerpt defines the AUTOSAR CP transformer-specific Extended Production Error \u201cXFRM_E_MALFORMED_MESSAGE\u201d: it is triggered whenever a transformer receives input whose format violates its specification, making normal output impossible. The error must be implemented for every transformer that supports it, and it is monitored on every transformer execution."
+        }
+      ]
+    },
+    {
+      "title": "API specification",
+      "node_id": "0034",
+      "start_index": 31,
+      "end_index": 31,
+      "summary": "The partial document specifies the API and data-type requirements for the AUTOSAR CP transformer module (Xfrm). It mandates that transformers must use ImplementationDataTypes defined by RTE in the Module Interlink Types Header file and lists the exact imported types (e.g., Rte_Cs_TransactionHandleType, Std_MessageResultType, Std_TransformerForwardCode, etc.) taken from Rte.h and Std_Types.h. It also defines {Mip}_ConfigType as an implementation-specific structure that holds the transformer\u2019s initialization data and is exposed through the module header <Mip>.h.",
+      "nodes": [
+        {
+          "title": "Imported types :",
+          "node_id": "0035",
+          "start_index": 31,
+          "end_index": 31,
+          "summary": "The partial document specifies the API and data-type requirements for AUTOSAR CP R25-11 transformers. It mandates that transformers use ImplementationDataTypes from the RTE Module Interlink Types Header and lists the exact imported types (e.g., Rte_Cs_TransactionHandleType, Std_MessageResultType, Std_TransformerForwardCode, etc.) taken from Rte.h and Std_Types.h. It also defines the {Mip}_ConfigType structure that holds transformer-specific initialization data and is exposed through the transformer\u2019s public header."
+        },
+        {
+          "title": "Type definitions :",
+          "node_id": "0036",
+          "start_index": 31,
+          "end_index": 31,
+          "summary": "The partial document specifies the API and data types used by the AUTOSAR CP R25-11 transformer module. It mandates that transformers must use ImplementationDataTypes defined by RTE in the Module Interlink Types Header file and lists imported types from Rte.h and Std_Types.h. It also defines {Mip}_ConfigType as a structure for transformer initialization data."
+        },
+        {
+          "title": "Function definitions :",
+          "node_id": "0037",
+          "start_index": 32,
+          "end_index": 33,
+          "summary": "The excerpt from the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d explains how transformer function names are generated for the BswModuleEntry referenced by an XfrmImplementationMapping.  \nIt prescribes a strict naming pattern (transformerId) that depends on whether the mapping uses an XfrmVariableDataPrototypeInstanceRef or references Com signals/signal-groups/IPdus, and on the ComIPduLargeData setting.  \nWhen no XfrmVariableDataPrototypeInstanceRef exists, the pattern is Com_<ComSignalName>, Com_<ComSignalGroupName>, or Com_<ComIPduName>; when the reference exists, the pattern becomes <ComponentName>_<Port>_<DataElement>.  \nThe section also introduces the synchronous, re-entrant service <Mip>_ExtractProtocolHeaderFields (SID 0x05) that parses protocol header fields from a supplied buffer and returns the message type/result.",
+          "nodes": [
+            {
+              "title": "<Mip>_ExtractProtocolHeaderFields :",
+              "node_id": "0038",
+              "start_index": 33,
+              "end_index": 34,
+              "summary": "The excerpt defines how transformer identifiers are formed from ComSignalGroup and ComIPdu shortNames, explains that the naming pattern is for readability only, and details the synchronous, re-entrant API function <Mip>_ExtractProtocolHeaderFields. This function parses a transformer-specific protocol header to extract and return the canonical messageType and messageResult for client/server communication, returning E_OK on success or E_NOT_OK on any parsing error without modifying the output parameters."
+            },
+            {
+              "title": "<Mip>_<transformerId> :",
+              "node_id": "0039",
+              "start_index": 34,
+              "end_index": 41,
+              "summary": "The excerpt defines the AUTOSAR transformer API for CP R25-11.  \nCore points:\n\n- Protocol-header extraction: one function (`<Mip>_ExtractProtocolHeaderFields`) outputs canonical `messageType`/`messageResult` for C/S REQUEST/RESPONSE/OK/ERROR and returns `E_OK`/`E_NOT_OK`.\n\n- Sender-side \u201cfirst-transformer\u201d entry points:  \n  \u2013 `<Mip>_<transformerId>` for S/R, Client/Server and external-trigger streams; takes data/arguments, fills RTE-supplied buffer, returns `E_OK` or error code.  \n  \u2013 Prototype parts (`paramtype`, `Mip`, `transformerId`) are derived from RTE data-type rules.\n\n- Non-first-transformer entry point:  \n  \u2013 `<Mip>_<transformerId>` with optional `forwardedCode`, `extractProtocolHeaderFields`, `csTransactionHandle`, `inputBuffer`/`inputBufferLength`, `originalData`; supports in-place or out-of-place transformation; same return semantics.\n\n- Inverse (receiver-side) entry point:  \n  \u2013 `<Mip>_Inv_<transformerId>` deserialises buffer into typed data element, returns `E_OK` or error.\n\nAll functions are synchronous, reentrant (except some non-first variants), service ID 0x03 (0x04 for inverse), exposed via `<Mip>.h`, and must reference a `BswModuleEntry` when used on the sender side."
+            },
+            {
+              "title": "<Mip>_Inv_<transformerId> :",
+              "node_id": "0040",
+              "start_index": 41,
+              "end_index": 47,
+              "summary": "The excerpt is a normative slice of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d.  \nIt rigorously defines the API surface and existence rules for the four transformer function families that realise data transformation chains:\n\n1. <Mip>_<transformerId> \u2013 mandatory \u201cforward\u201d transformer functions (sender side, non-first in chain).  \n2. <Mip>_Inv_<transformerId> \u2013 mandatory \u201cinverse\u201d transformer functions (receiver side, first in chain) with four distinct overloads covering Sender/Receiver, Client/Server, external trigger events, and non-first chain positions.  \n3. <Mip>_Init \u2013 mentioned as the next section but not detailed here.  \n\nFor every function the document supplies:  \n- exact C prototype, Service-ID, sync/async, re-entrancy, parameter semantics (IN/IN-OUT/OUT), return codes,  \n- rules for deriving variable parts of the prototype (Mip prefix, transformerId, data types, optional transaction handles, buffer policies),  \n- pre-conditions under which each function must exist (position in transformerChain, mapping type \u2013 ISignal, DataPrototypeMapping, TriggerToSignalMapping, ClientServerToSignalMapping, etc.),  \n- corresponding BswModuleEntry reference obligations (XfrmTransformerBswModuleEntryRef / XfrmInvTransformerBswModuleEntryRef) that must be present whenever the transformer is used on sender or receiver side respectively,  \n- special handling for variable-length arrays, out-of-place transformation, and the \u201cexecuteDespiteDataUnavailability\u201d scenario (NULL buffer, zero length)."
+            },
+            {
+              "title": "<Mip>_Init :",
+              "node_id": "0041",
+              "start_index": 47,
+              "end_index": 48,
+              "summary": "The fragment is a normative excerpt from the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d.  \nIt defines the mandatory API functions that every transformer BSW module must provide and the exact rules for constructing their C-language prototypes.\n\nKey points covered:\n\n1. Naming convention for all transformer functions:  \n   `<Mip>_<Operation>_<transformerId>` where  \n   \u2013 Mip = Module Implementation Prefix (BSW-wide rule)  \n   \u2013 transformerId = technology-specific name pattern.\n\n2. Function `<Mip>_Inv_<transformerId>`  \n   \u2013 Must exist for every non-first entry in a transformerChain that is referenced by an ISignal on the receiver side.  \n   \u2013 Prototype parts (datatype, type, Mip, transformerId) are derived from the Xfrm model elements.  \n   \u2013 Each such function shall expose a BswModuleEntry that is referenced by `XfrmInvTransformerBswModuleEntryRef`; this reference is compulsory whenever the transformer is used on the receiver side and can be omitted only if the transformer is used exclusively on the sender side.\n\n3. Function `<Mip>_Init`  \n   \u2013 Synchronous, non-re-entrant, service ID 0x01.  \n   \u2013 Signature: `void <Mip>_Init(const <Mip>_ConfigType *config)`.  \n   \u2013 Purpose: initialize the transformer with the configuration data set supplied by the ECU integrator.\n\n4. Function `<Mip>_DeInit`  \n   \u2013 Synchronous, non-re-entrant, service ID 0x02.  \n   \u2013 Signature: `void <Mip>_DeInit(void)`.  \n   \u2013 Purpose: shut-down / de-initialize the transformer, releasing any internal resources.\n\n5. Variable prototype parts for `<Mip>_Init` are governed solely by the Mip prefix; no additional datatype derivation is needed because the function uses a standardized const config pointer.\n\nOverall, the text supplies the exact naming, parameter lists, and configuration linkage rules that transformer implementers must follow to remain compliant with the AUTOSAR classic platform."
+            },
+            {
+              "title": "<Mip>_DeInit :",
+              "node_id": "0042",
+              "start_index": 48,
+              "end_index": 49,
+              "summary": "The excerpt defines three mandatory transformer-module API functions\u2014Init, DeInit, and GetVersionInfo\u2014specifying their exact signatures, service IDs, synchronous/non-reentrant behavior, parameters, and the rule that every function name is prefixed with the transformer\u2019s Module Implementation Prefix (<Mip>)."
+            },
+            {
+              "title": "<Mip>_GetVersionInfo :",
+              "node_id": "0043",
+              "start_index": 49,
+              "end_index": 50,
+              "summary": "The excerpt specifies two transformer module API functions\u2014<Mip>_DeInit and <Mip>_GetVersionInfo\u2014detailing their syntax, parameters, return values, and that they are synchronous and reentrant. It states that both are accessed via <Mip>.h and that \u201cMip\u201d is the Module Implementation Prefix per SWS_BSW_00102. It also notes that transformers have no callback notifications, scheduled functions, or expected interfaces."
+            }
+          ]
+        },
+        {
+          "title": "Callback notifications :",
+          "node_id": "0044",
+          "start_index": 50,
+          "end_index": 50,
+          "summary": "The excerpt lists three negative design facts for AUTOSAR CP R25-11 transformers: no callback notifications are provided, no scheduled functions are defined for transformers in general, and no expected interfaces are specified."
+        },
+        {
+          "title": "Scheduled functions :",
+          "node_id": "0045",
+          "start_index": 50,
+          "end_index": 50,
+          "summary": "The excerpt lists three negative design statements for AUTOSAR CP R25-11 transformers: they have no module-implementation-prefix (Mip) callbacks, no scheduled functions common to all transformers, and no required interfaces."
+        },
+        {
+          "title": "Expected interfaces :",
+          "node_id": "0046",
+          "start_index": 50,
+          "end_index": 50,
+          "summary": "The excerpt lists transformer-specific implementation rules from AUTOSAR CP R25-11: it states that transformers carry the Module Implementation Prefix \u201cMip\u201d, and explicitly declares that transformers have no callback notifications, no scheduled functions, and no expected interfaces."
+        }
+      ]
+    },
+    {
+      "title": "Sequence diagrams",
+      "node_id": "0047",
+      "start_index": 51,
+      "end_index": 51,
+      "summary": "The partial document states that the AUTOSAR CP R25-11 specification for transformers contains no sequence diagrams in its Section 9."
+    },
+    {
+      "title": "Configuration specification",
+      "node_id": "0048",
+      "start_index": 52,
+      "end_index": 52,
+      "summary": "The excerpt outlines Chapter 10 of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d  \nIt states that the chapter defines configuration parameters and their grouping into containers, presents a standard template for parameter tables, and explains how to read the chapter.  \nSection 10.2 details the container structure and parameters for transformer configuration, noting that transformers are configured at both system level (System Template) and software-component level (Software Component Template).  \nFrom these inputs an ECU Configuration Description (EcuC) for the transformer is automatically generated using the DataTransformationSet, and specific transformers populate this EcuC with their own content; parameter semantics are defined in Chapters 7 and 8.",
+      "nodes": [
+        {
+          "title": "How to read this chapter :",
+          "node_id": "0049",
+          "start_index": 52,
+          "end_index": 52,
+          "summary": "The excerpt outlines the configuration-specification chapter for AUTOSAR transformers.  \n- 10.1 supplies the reading guide and the standard template for parameter tables.  \n- 10.2 defines the container structure and all configuration parameters; their semantics are detailed in Chapters 7 (functional) and 8 (API).  \nTransformer configuration is done at system level (System Template) and at software-component level (Software-Component Template); from these inputs an ECU-configuration description (EcuC) is auto-generated for each transformer, populated from the DataTransformationSet."
+        },
+        {
+          "title": "Containers and configuration parameters :",
+          "node_id": "0050",
+          "start_index": 52,
+          "end_index": 54,
+          "summary": "The excerpt is the \u201cConfiguration specification\u201d chapter of the AUTOSAR CP R25-11 Transformer General document.  \nIt explains how transformer configuration is organised (containers vs. parameters), gives the template tables that must be used, and shows that configuration is done at both system-level (System Template) and software-component level (Software-Component Template).  \nIt then supplies the complete ECUC parameter model for the Xfrm (transformer) module: top-level containers XfrmGeneral and XfrmImplementationMapping, their multiplicity, and every Boolean/integer/reference parameter underneath (XfrmDevErrorDetect, XfrmInstanceId, XfrmVersionInfoApi, etc.), including default values, multiplicity bounds and post-build variability.",
+          "nodes": [
+            {
+              "title": "XfrmGeneral :",
+              "node_id": "0051",
+              "start_index": 54,
+              "end_index": 55,
+              "summary": "The excerpt is a configuration specification for the AUTOSAR CP \u201cXfrm\u201d (Transformer) module.  \nIt defines two top-level containers:\n\n1. XfrmGeneral \u2013 mandatory, single-instance container holding three pre-compile parameters:  \n   \u2013 XfrmDevErrorDetect (bool, default false) to enable/disable development-error detection  \n   \u2013 XfrmInstanceId (uint8, 0-255) to identify the module instance  \n   \u2013 XfrmVersionInfoApi (bool, default false) to activate/deactivate the version-info API  \n\n2. XfrmImplementationMapping \u2013 one-or-more instances, each mapping a TransformationTechnology in a transformer chain to the BswModuleEntry that implements it.\n\nPost-build variant support is disabled; all parameters are fixed at pre-compile time."
+            },
+            {
+              "title": "XfrmImplementationMapping :",
+              "node_id": "0052",
+              "start_index": 55,
+              "end_index": 60,
+              "summary": "The excerpt is a detailed, machine-readable specification (AUTOSAR CP R25-11) that defines the configuration parameters and containers used to integrate transformer software modules into an ECU.  \nKey points covered:\n\n- **Global transformer settings**  \n  \u2013 `XfrmInstanceId`: mandatory 0-255 ID assigned to each transformer module instance.  \n  \u2013 `XfrmVersionInfoApi`: boolean switch to enable/disable the version-info API.\n\n- **XfrmImplementationMapping container**  \n  \u2013 Repeated once per transformer in a chain; links an abstract TransformationTechnology to its concrete BswModuleEntry.  \n  \u2013 Mandatory reference to the TransformationTechnology; optional references to the sending transformer, inverse/receiving transformer, C/S transaction-handle data-type, and a VariableDataPrototype when the transformer must be instantiated per data-element instead of per signal.\n\n- **Transformer-class selector for protocol-header extraction**  \n  \u2013 Optional enum (`SAFETY`, `SECURITY`, `SERIALIZER`) that tells the RTE to pass the corresponding `Mip_ExtractProtocolHeaderFields()` callback to downstream transformers.\n\n- **Signal vs. VariableDataPrototype referencing rules**  \n  \u2013 Inter-ECU traffic must reference the ISignal via `XfrmSignal`.  \n  \u2013 Intra-ECU traffic (or port-specific transformers) must use `XfrmVariableDataPrototypeInstanceRef`; if any transformer in a chain uses it, all transformers for that ISignal must use it.  \n  \u2013 Multiple port-specific transformer functions are supported only for Sender/Receiver communication, primarily to give every local receiver its own E2E state machine.\n\n- **Diagnostic event container**  \n  \u2013 `XfrmDemEventParameterRefs` lets each mapping link transformer errors to DEM events.\n\nAll parameters are fixed at pre-compile time; none support post-build variation."
+            },
+            {
+              "title": "XfrmSignal :",
+              "node_id": "0053",
+              "start_index": 61,
+              "end_index": 63,
+              "summary": "The excerpt defines the AUTOSAR ECU-configuration metamodel elements that map transformed data to the signals that carry them.  \nIt specifies:\n\n- XfrmSignal \u2013 optional container (0..1) inside XfrmImplementationMapping that points to the Fibex signal (ISignal or ISignalGroup) transporting the transformed data.  \n- XfrmSignalChoice \u2013 mandatory choice container (1) under XfrmSignal offering two mutually-exclusive sub-containers:  \n  \u2013 XfrmISignalRefChoice (0..1) carrying XfrmISignalRef (foreign reference to Fibex I-SIGNAL)  \n  \u2013 XfrmISignalGroupRefChoice (0..1) carrying XfrmISignalGroupRef (foreign reference to Fibex I-SIGNAL-GROUP)  \n- XfrmDemEventParameterRefs \u2013 optional container (0..1) for diagnostic event references, including XFRM_E_MALFORMED_MESSAGE, linked to DemEventParameter elements.\n\nMultiplicity, configuration class (pre-compile only), and variation attributes are given for every parameter."
+            },
+            {
+              "title": "XfrmDemEventParameterRefs :",
+              "node_id": "0054",
+              "start_index": 63,
+              "end_index": 64,
+              "summary": "The excerpt defines two AUTOSAR ECU configuration containers for transformer modules:\n\n1. XfrmISignalRefChoice \u2013 optional container (0..1) that holds the mandatory reference XfrmISignalRef, a foreign reference to the I-SIGNAL in the system description which carries the transformed data; it is configured at pre-compile time for all variants.\n\n2. XfrmDemEventParameterRefs \u2013 optional container (0..1) under XfrmImplementationMapping that groups references to DemEventParameter elements; it currently contains one optional reference XFRM_E_MALFORMED_MESSAGE (0..1) whose symbolic name is used to report malformed-message events via Dem_SetEventStatus; both multiplicity and value are fixed at pre-compile time for all variants and depend on the DEM module."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Referenced Meta Classes",
+      "node_id": "0055",
+      "start_index": 65,
+      "end_index": 81,
+      "summary": "The excerpt is a detailed, machine-readable meta-model reference (AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d) that exhaustively catalogues the attributes, aggregations, inheritance and stereotypes of every meta-class involved in transformer/data-transformation functionality.  \nIt supplies complete class tables (A.1 \u2013 A.31) for:\n\n- Enumerations that control implementation choices (e.g. ArrayImplPolicyEnum).  \n- Core software-component modelling elements (AtomicSwComponentType, NvBlockSwComponentType, SwComponentPrototype).  \n- Port and interface abstractions (ClientServerInterface, SenderReceiverInterface, TriggerInterface, PortPrototype, PPortPrototype).  \n- Communication mappings between logical data and network signals (ClientServerToSignalMapping, SenderReceiverToSignalMapping, TriggerToSignalMapping, ISignalToIPduMapping, DataPrototypeMapping).  \n- Network-layer PDU and signal descriptors (IPdu, ISignal, ISignalGroup, SystemSignal).  \n- Implementation-level data types and their elements (ImplementationDataType, ImplementationDataTypeElement).  \n- BSW module API descriptions (BswModuleEntry).  \n- Transformation chains and technologies (DataTransformation, DataTransformationSet, TransformationTechnology).  \n- Miscellaneous supporting concepts (VariableDataPrototype, Referrable, etc.).\n\nEach table gives the class\u2019 purpose, inheritance, owning packages, aggregated/owned elements, attribute multiplicities, kinds, stereotypes, tags and binding times\u2014everything needed to implement or configure transformers and their related artefacts in the AUTOSAR Classic Platform."
+    },
+    {
+      "title": "Change history of AUTOSAR traceable items",
+      "node_id": "0056",
+      "start_index": 82,
+      "end_index": 82,
+      "summary": "The partial document is a change-history appendix for the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d It lists every traceable item that was modified in Release R23-11, all under the single heading \u201cChanged Specification Items.\u201d The changes exclusively concern the transformer module (Xfrm) and fall into three groups: (1) new or updated API function definitions for forward and inverse transformers, (2) new or refined error specifications for serializer, safety, security and custom transformers, and (3) introduction or extension of data types and production-error reporting. No items were added or deleted in this release.",
+      "nodes": [
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R23-11 :",
+          "node_id": "0057",
+          "start_index": 82,
+          "end_index": 82,
+          "summary": "The partial document is a change-history appendix for the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d It lists traceable items modified in Release R23-11, all under the Transformer (Xfrm) module. The only changes recorded are \u201cChanged Specification Items,\u201d covering new or revised definitions for API functions (both forward and inverse transformers), data types, production errors, and error classifications for serializer, safety, security, and custom transformers; no items were added or deleted in this release.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R23-11 :",
+              "node_id": "0058",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "The partial document is a change-history appendix for the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d It lists only the specification items that were modified in Release R23-11, all under the single category \u201cChanged Specification Items.\u201d These changes exclusively concern the transformer (Xfrm) module: they refine or extend error classifications for serializer, safety, security and custom transformers; add or update API function definitions for transformation, inverse transformation, and protocol-header extraction; and introduce or adjust related data-type definitions and production-error reporting. No items were added or deleted in this release."
+            },
+            {
+              "title": "Changed Specification Items in R23-11 :",
+              "node_id": "0059",
+              "start_index": 82,
+              "end_index": 82,
+              "summary": "The partial document is the change-history appendix for the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d It lists every traceable item that was modified in Release R23-11: 15 specification items were changed, all related to transformer error reporting, API function definitions for transformer and inverse-transformer operations, configuration datatypes, production error extensions, and imported datatypes; no items were added or deleted in that release."
+            },
+            {
+              "title": "Deleted Specification Items in R23-11 :",
+              "node_id": "0060",
+              "start_index": 82,
+              "end_index": 83,
+              "summary": "The excerpt is a change-history appendix for the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d  \nIt lists, release-by-release (R23-11 and R24-11), every traceable specification item that was added, changed, or deleted, noting that removed items are included for traceability even though they no longer appear as hyperlinks in the main document."
+            }
+          ]
+        },
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R24-11 :",
+          "node_id": "0061",
+          "start_index": 83,
+          "end_index": 83,
+          "summary": "The partial document is a changelog section (B.2) of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d that lists the traceable item history relative to the previous release R24-11. It states that no specification items, constraints, or their deletions were added in R24-11, and it explicitly enumerates the two specification items that were changed: the definition of the EcucModuleDef Xfrm and the definitions of the API functions <Mip>_Init and <Mip>_DeInit.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R24-11 :",
+              "node_id": "0062",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "The partial document is a section of the AUTOSAR CP R25-11 specification for transformers, specifically detailing the traceable item history relative to the previous R24-11 release. It reports that no specification items, constraints, or their deletions were added in R24-11, while listing two changed specification items: the definition of the EcucModuleDef Xfrm and the API functions <Mip>_Init and <Mip>_DeInit."
+            },
+            {
+              "title": "Changed Specification Items in R24-11 :",
+              "node_id": "0063",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "The partial document is a section of the AUTOSAR CP R25-11 General Specification of Transformers, specifically detailing the traceable item history according to Release R24-11. It lists that no specification items, constraints, or deletions were added or removed in R24-11, but it notes two changed specification items: the definition of the EcucModuleDef Xfrm and the API functions <Mip>_Init and <Mip>_DeInit."
+            },
+            {
+              "title": "Deleted Specification Items in R24-11 :",
+              "node_id": "0064",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "The partial document is a section of the AUTOSAR CP R25-11 General Specification of Transformers that records the traceable item history relative to the previous release R24-11. It states that no specification items, constraints, or their deletions were added in R24-11, while listing two changed specification items: the definition of the EcucModuleDef Xfrm and the definitions of the API functions <Mip>_Init and <Mip>_DeInit."
+            },
+            {
+              "title": "Added Constraints in R24-11 :",
+              "node_id": "0065",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "The partial document is a change-log excerpt for the AUTOSAR CP R24-11 release of the \u201cGeneral Specification of Transformers.\u201d It reports that no specification items or constraints were added or deleted in R24-11, while two specification items were changed: the module definition for Xfrm (ECUC_Xfrm_00014) and the API function definitions for <Mip>_Init (SWS_Xfrm_00058) and <Mip>_DeInit (SWS_Xfrm_00059)."
+            },
+            {
+              "title": "Changed Constraints in R24-11 :",
+              "node_id": "0066",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "The partial document is a section of the AUTOSAR CP R25-11 General Specification of Transformers. It provides a traceable item history for the document according to AUTOSAR Release R24-11. It lists that no specification items, constraints, or deleted items were added in R24-11. However, it notes that two specification items were changed: the definition of EcucModuleDef Xfrm and the definitions of API functions <Mip>_Init and <Mip>_DeInit."
+            },
+            {
+              "title": "Deleted Constraints in R24-11 :",
+              "node_id": "0067",
+              "start_index": 83,
+              "end_index": 83,
+              "summary": "The partial document is a change-log excerpt from the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d It lists only two specification items that were modified in release R24-11: the module definition EcucModuleDef Xfrm and the API functions <Mip>_Init and <Mip>_DeInit. No items, constraints, or deletions were added or removed in that release."
+            }
+          ]
+        },
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R25-11 :",
+          "node_id": "0068",
+          "start_index": 84,
+          "end_index": 84,
+          "summary": "The excerpt is a change-log appendix for the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d  \nIt lists, in tabular form, the specification items that were added, changed, or deleted in release R25-11:\n\n- Added: ten new specification items (SWS_Xfrm_02000\u2013SWS_Xfrm_02010), all described as \u201cVariable prototype parts of\u201d an existing parent requirement.  \n- Changed: four existing items (SWS_Xfrm_00031, \u201100042, \u201100044, \u201100062) covering serializer-transformer errors and the definition of the <Mip>_Inv_<transformerId> API function.  \n- Deleted: none.  \n- Added constraints: none.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R25-11 :",
+              "node_id": "0069",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "The excerpt is a fragment of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d document.  \nIt contains only the traceability section (B.3) that lists, for Release R25-11, which transformer-related specification items were added, which were changed, and that none were deleted or had new constraints added."
+            },
+            {
+              "title": "Changed Specification Items in R25-11 :",
+              "node_id": "0070",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "The excerpt is a fragment of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers\u201d document.  \nIt contains only the traceability section (B.3) that lists, for Release R25-11, which transformer-related specification items were added, which were changed, and that none were deleted or had new constraints added."
+            },
+            {
+              "title": "Deleted Specification Items in R25-11 :",
+              "node_id": "0071",
+              "start_index": 84,
+              "end_index": 84,
+              "summary": "The partial document is a traceability section of the AUTOSAR CP R25-11 \u201cGeneral Specification of Transformers.\u201d  \nIt lists, for Release R25-11, the specification items that were added (ten new variable-prototype parts tied to existing transformer SWS items), the three specification items that were changed (all related to serializer-transformer errors and the <Mip>_Inv_<transformerId> API functions), and states that no items were deleted and no new constraints were added."
+            },
+            {
+              "title": "Added Constraints in R25-11 :",
+              "node_id": "0072",
+              "start_index": 84,
+              "end_index": 85,
+              "summary": "The partial document is a change log for the AUTOSAR CP R25-11 release of the \u201cGeneral Specification of Transformers.\u201d  \nIt lists ten new specification items (SWS_Xfrm_02000\u201302010) that add \u201cvariable prototype parts\u201d to existing transformer requirements, three changed items (SWS_Xfrm_00031, 00042, 00044, 00062) covering serializer error handling and API function definitions, and reports no deleted items or constraints."
+            },
+            {
+              "title": "Changed Constraints in R25-11 :",
+              "node_id": "0073",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": "The partial document is a section of the AUTOSAR CP R25-11 specification concerning transformers. It lists that, in release R25-11, no constraints were changed (B.3.5) and no constraints were deleted (B.3.6), indicating stability in the transformer-related constraints for this revision."
+            },
+            {
+              "title": "Deleted Constraints in R25-11 :",
+              "node_id": "0074",
+              "start_index": 85,
+              "end_index": 86,
+              "summary": "The excerpt lists the \u201cNot-applicable requirements\u201d section of the AUTOSAR CP R25-11 Transformer General Specification. It states that no constraints were changed or deleted in this release and then enumerates 30 upstream SRS_BSW_* requirements (from SRS_BSW_00168 through SRS_BSW_00491) that are explicitly declared not applicable to this transformer specification."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

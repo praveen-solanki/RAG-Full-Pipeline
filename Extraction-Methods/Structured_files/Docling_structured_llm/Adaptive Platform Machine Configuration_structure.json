@@ -1,0 +1,912 @@
+{
+  "doc_description": "Adaptive Platform Machine Configuration.pdf",
+  "total_pages": 75,
+  "source_format": "granite_docling_vlm",
+  "structure": [
+    {
+      "node_id": "0001",
+      "title": "Disclaimer",
+      "start_index": 2,
+      "end_index": 3,
+      "summary": "Covers disclaimer and legal notices."
+    },
+    {
+      "node_id": "0002",
+      "title": "Table of Contents",
+      "start_index": 3,
+      "end_index": 5,
+      "summary": ""
+    },
+    {
+      "node_id": "0003",
+      "title": "References",
+      "start_index": 5,
+      "end_index": 6,
+      "summary": ""
+    },
+    {
+      "node_id": "0004",
+      "title": "1 Introduction",
+      "start_index": 6,
+      "end_index": 8,
+      "summary": "Introduces the document and explains conventions used.",
+      "nodes": [
+        {
+          "node_id": "0005",
+          "title": "1.1 Document Conventions",
+          "start_index": 6,
+          "end_index": 8,
+          "summary": "Explains the conventions used in the document."
+        }
+      ]
+    },
+    {
+      "node_id": "0006",
+      "title": "2 Conceptual Aspects",
+      "start_index": 8,
+      "end_index": 15,
+      "summary": "Discusses conceptual aspects including design models, benefits, and modeling strategies.",
+      "nodes": [
+        {
+          "node_id": "0007",
+          "title": "2.1 Design and Target Configuration Models",
+          "start_index": 8,
+          "end_index": 9,
+          "summary": "Describes design and target configuration models.",
+          "nodes": [
+            {
+              "node_id": "0008",
+              "title": "2.1.1 Design Model",
+              "start_index": 8,
+              "end_index": 9,
+              "summary": "Details the design model."
+            },
+            {
+              "node_id": "0009",
+              "title": "2.1.2 Target Configuration Models",
+              "start_index": 9,
+              "end_index": 9,
+              "summary": "Details the target configuration models."
+            }
+          ]
+        },
+        {
+          "node_id": "0010",
+          "title": "2.2 Overview",
+          "start_index": 9,
+          "end_index": 11,
+          "summary": "Provides an overview of the topic."
+        },
+        {
+          "node_id": "0011",
+          "title": "2.3 Benefits of using an M1 model-based configuration approach",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "Highlights benefits of using an M1 model-based configuration approach."
+        },
+        {
+          "node_id": "0012",
+          "title": "2.4 Modeling Strategies for deriving M1 Model Content",
+          "start_index": 11,
+          "end_index": 14,
+          "summary": "Outlines modeling strategies for deriving M1 model content.",
+          "nodes": [
+            {
+              "node_id": "0013",
+              "title": "2.4.1 Only Design exists",
+              "start_index": 11,
+              "end_index": 12,
+              "summary": "Describes scenarios where only the design model exists."
+            },
+            {
+              "node_id": "0014",
+              "title": "2.4.2 Fully derive Design Model to Configuration Model",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "Describes fully deriving the design model to a configuration model."
+            },
+            {
+              "node_id": "0015",
+              "title": "2.4.3 Partially derive Design Model to Configuration Model",
+              "start_index": 12,
+              "end_index": 13,
+              "summary": "Describes partially deriving the design model to a configuration model."
+            },
+            {
+              "node_id": "0016",
+              "title": "2.4.4 Only Configuration exists",
+              "start_index": 13,
+              "end_index": 14,
+              "summary": "Describes scenarios where only the configuration model exists."
+            }
+          ]
+        },
+        {
+          "node_id": "0017",
+          "title": "2.5 Vendor Specific Functional Cluster Definition",
+          "start_index": 14,
+          "end_index": 15,
+          "summary": "Defines vendor-specific functional cluster categories and restrictions.",
+          "nodes": [
+            {
+              "node_id": "0018",
+              "title": "[AP_TPS_APMC_0103B] ApmcFunctionalClusterDef categories",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "Defines categories for ApmcFunctionalClusterDef."
+            },
+            {
+              "node_id": "0019",
+              "title": "[constr_9322] ApmcFunctionalClusterDef category restriction",
+              "start_index": 14,
+              "end_index": 15,
+              "summary": "Restricts the use of ApmcFunctionalClusterDef categories."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0020",
+      "title": "3 Overview",
+      "start_index": 15,
+      "end_index": 31,
+      "summary": "Provides an overview including abstract structure, definition side, and value side.",
+      "nodes": [
+        {
+          "node_id": "0021",
+          "title": "3.1 Abstract Structure",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "Describes the abstract structure including existence constraints.",
+          "nodes": [
+            {
+              "node_id": "0022",
+              "title": "[constr_10579] Existence of definition",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "Defines the existence requirement for definitions."
+            }
+          ]
+        },
+        {
+          "node_id": "0023",
+          "title": "3.2 Definition Side",
+          "start_index": 16,
+          "end_index": 25,
+          "summary": "Describes elements on the definition side including root elements and semantics.",
+          "nodes": [
+            {
+              "node_id": "0024",
+              "title": "[AP_TPS_APMC_01001] Root element on the \"definition side\"",
+              "start_index": 16,
+              "end_index": 17,
+              "summary": "Defines the root element on the definition side."
+            },
+            {
+              "node_id": "0025",
+              "title": "[AP_TPS_APMC_01002] Semantics of ApmcDefinitionCollection",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "Explains the semantics of ApmcDefinitionCollection."
+            },
+            {
+              "node_id": "0026",
+              "title": "Table 3.4: ApmcFunctionalClusterDef",
+              "start_index": 17,
+              "end_index": 17,
+              "summary": "Documents ApmcFunctionalClusterDef."
+            },
+            {
+              "node_id": "0027",
+              "title": "3.2.1 Definition Elements",
+              "start_index": 17,
+              "end_index": 21,
+              "summary": "Describes definition elements including semantics and attributes.",
+              "nodes": [
+                {
+                  "node_id": "0028",
+                  "title": "[AP_TPS_APMC_01004] Semantics of attribute ApmcDefinitionElement.elementCreation",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "Defines the semantics of the elementCreation attribute in ApmcDefinitionElement."
+                },
+                {
+                  "node_id": "0029",
+                  "title": "[AP_TPS_APMC_01005] Semantics of attribute ApmcConfigurationElementDef.origin",
+                  "start_index": 20,
+                  "end_index": 21,
+                  "summary": "Defines the semantics of the origin attribute in ApmcConfigurationElementDef."
+                },
+                {
+                  "node_id": "0030",
+                  "title": "Table 3.7: ApmcConfigurationElementDef",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "Documents the structure of the ApmcConfigurationElementDef class."
+                },
+                {
+                  "node_id": "0031",
+                  "title": "[AP_TPS_APMC_01013] Semantics of attribute ApmcConfigurationElementDef.requiresIndex",
+                  "start_index": 21,
+                  "end_index": 21,
+                  "summary": "Defines the semantics of the requiresIndex attribute in ApmcConfigurationElementDef."
+                }
+              ]
+            },
+            {
+              "node_id": "0032",
+              "title": "3.2.2 Grouping of Configuration Elements",
+              "start_index": 21,
+              "end_index": 23,
+              "summary": "Explains grouping of configuration elements at the container level.",
+              "nodes": [
+                {
+                  "node_id": "0033",
+                  "title": "[AP_TPS_APMC_01006] Grouping of configuration items on the level of a container",
+                  "start_index": 22,
+                  "end_index": 23,
+                  "summary": "Explains how configuration items are grouped within a container."
+                }
+              ]
+            },
+            {
+              "node_id": "0034",
+              "title": "3.2.3 Emulation of Inheritance",
+              "start_index": 23,
+              "end_index": 24,
+              "summary": "Explains how inheritance is emulated.",
+              "nodes": [
+                {
+                  "node_id": "0035",
+                  "title": "[AP_TPS_APMC_01007] Semantics of a choice container",
+                  "start_index": 23,
+                  "end_index": 24,
+                  "summary": "Explains the semantics of a choice container."
+                }
+              ]
+            },
+            {
+              "node_id": "0036",
+              "title": "3.2.4 Parameter",
+              "start_index": 24,
+              "end_index": 25,
+              "summary": "Defines configuration parameters.",
+              "nodes": [
+                {
+                  "node_id": "0037",
+                  "title": "[AP_TPS_APMC_01008] Definition of configuration parameter",
+                  "start_index": 24,
+                  "end_index": 25,
+                  "summary": "Defines what constitutes a configuration parameter."
+                }
+              ]
+            },
+            {
+              "node_id": "0038",
+              "title": "3.2.5 Reference",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "Defines references.",
+              "nodes": [
+                {
+                  "node_id": "0039",
+                  "title": "[AP_TPS_APMC_01009] Definition of reference",
+                  "start_index": 25,
+                  "end_index": 25,
+                  "summary": "Defines what constitutes a reference."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0040",
+          "title": "3.3 Value Side",
+          "start_index": 25,
+          "end_index": 31,
+          "summary": "Describes the value side including root elements and semantics.",
+          "nodes": [
+            {
+              "node_id": "0041",
+              "title": "[AP_TPS_APMC_01010] Root element on the \"value side\"",
+              "start_index": 27,
+              "end_index": 27,
+              "summary": "Defines the root element on the value side."
+            },
+            {
+              "node_id": "0042",
+              "title": "[AP_TPS_APMC_01036] Semantics of ApmcValueCollection",
+              "start_index": 27,
+              "end_index": 28,
+              "summary": "Explains the semantics of ApmcValueCollection."
+            },
+            {
+              "node_id": "0043",
+              "title": "Table 3.15: ApmcFunctionalClusterValue",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "Documents ApmcFunctionalClusterValue."
+            },
+            {
+              "node_id": "0044",
+              "title": "3.3.1 Grouping of Configuration Values",
+              "start_index": 28,
+              "end_index": 29,
+              "summary": "Describes grouping of configuration values including tables.",
+              "nodes": [
+                {
+                  "node_id": "0045",
+                  "title": "Table 3.16: ApmcContainerValue",
+                  "start_index": 28,
+                  "end_index": 29,
+                  "summary": "Documents the structure of the ApmcContainerValue class."
+                },
+                {
+                  "node_id": "0046",
+                  "title": "Table 3.17: ApmcContainerElementValue",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "Documents the structure of the ApmcContainerElementValue class."
+                }
+              ]
+            },
+            {
+              "node_id": "0047",
+              "title": "3.3.2 Parameter",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "Describes parameter values including tables.",
+              "nodes": [
+                {
+                  "node_id": "0048",
+                  "title": "Table 3.18: ApmcParameterValue",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "Documents the structure of the ApmcParameterValue class."
+                }
+              ]
+            },
+            {
+              "node_id": "0049",
+              "title": "3.3.3 Reference",
+              "start_index": 29,
+              "end_index": 31,
+              "summary": "Describes references on the value side."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0050",
+      "title": "4 Details",
+      "start_index": 31,
+      "end_index": 61,
+      "summary": "Details the definition and value sides.",
+      "nodes": [
+        {
+          "node_id": "0051",
+          "title": "4.1 Definition Side",
+          "start_index": 31,
+          "end_index": 48,
+          "summary": "Details elements on the definition side including parameters and references.",
+          "nodes": [
+            {
+              "node_id": "0052",
+              "title": "4.1.1 Parameter",
+              "start_index": 31,
+              "end_index": 40,
+              "summary": "Describes various types of parameters.",
+              "nodes": [
+                {
+                  "node_id": "0053",
+                  "title": "4.1.1.1 Enumeration Parameter",
+                  "start_index": 31,
+                  "end_index": 33,
+                  "summary": "Defines an enumeration-style parameter and its default value.",
+                  "nodes": [
+                    {
+                      "node_id": "0054",
+                      "title": "[AP_TPS_APMC_0101] Definition of an enumeration-style parameter",
+                      "start_index": 31,
+                      "end_index": 32,
+                      "summary": "Defines an enumeration-style parameter."
+                    },
+                    {
+                      "node_id": "0055",
+                      "title": "[AP_TPS_APMC_01012] Definition of default value for enumeration-style parameter",
+                      "start_index": 32,
+                      "end_index": 33,
+                      "summary": "Defines the default value for an enumeration-style parameter."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0056",
+                  "title": "4.1.1.2 Boolean Parameter",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "Defines a boolean parameter."
+                },
+                {
+                  "node_id": "0057",
+                  "title": "4.1.1.3 Integer Parameter",
+                  "start_index": 33,
+                  "end_index": 34,
+                  "summary": "Defines an integer parameter."
+                },
+                {
+                  "node_id": "0058",
+                  "title": "4.1.1.4 Float Parameter",
+                  "start_index": 34,
+                  "end_index": 40,
+                  "summary": "Documents tables related to float parameters.",
+                  "nodes": [
+                    {
+                      "node_id": "0059",
+                      "title": "Table 4.8: ApmcRevisionLabelParamDef",
+                      "start_index": 37,
+                      "end_index": 39,
+                      "summary": "Documents the structure of the ApmcRevisionLabelParamDef class."
+                    },
+                    {
+                      "node_id": "0060",
+                      "title": "Table 4.14: ApmclpV6AddressParamDef",
+                      "start_index": 39,
+                      "end_index": 39,
+                      "summary": "Documents the structure of the ApmclpV6AddressParamDef class."
+                    },
+                    {
+                      "node_id": "0061",
+                      "title": "Table 4.15: Ip6AddressString",
+                      "start_index": 39,
+                      "end_index": 39,
+                      "summary": "Documents the structure of the Ip6AddressString class."
+                    },
+                    {
+                      "node_id": "0062",
+                      "title": "Table 4.16: ApmcMacAddressParamDef",
+                      "start_index": 39,
+                      "end_index": 39,
+                      "summary": "Documents the structure of the ApmcMacAddressParamDef class."
+                    },
+                    {
+                      "node_id": "0063",
+                      "title": "Table 4.17: MacAddressString",
+                      "start_index": 39,
+                      "end_index": 40,
+                      "summary": "Documents the structure of the MacAddressString class."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "0064",
+              "title": "4.1.2 Reference",
+              "start_index": 40,
+              "end_index": 48,
+              "summary": "Describes different types of references.",
+              "nodes": [
+                {
+                  "node_id": "0065",
+                  "title": "4.1.2.1 Reference to Container",
+                  "start_index": 41,
+                  "end_index": 42,
+                  "summary": "Explains the semantics of references to containers.",
+                  "nodes": [
+                    {
+                      "node_id": "0066",
+                      "title": "[AP_TPS_APMC_01014] Semantics of meta-class ApmcContainerReferenceDef:",
+                      "start_index": 41,
+                      "end_index": 41,
+                      "summary": "Defines the semantics of the ApmcContainerReferenceDef meta-class."
+                    },
+                    {
+                      "node_id": "0067",
+                      "title": "[AP_TPS_APMC_01015] Semantics of reference ApmcContainerReferenceDef.destination",
+                      "start_index": 41,
+                      "end_index": 42,
+                      "summary": "Defines the semantics of the destination reference in ApmcContainerReferenceDef."
+                    },
+                    {
+                      "node_id": "0068",
+                      "title": "[AP_TPS_APMC_01016] Semantics of meta-class ApmcChoiceContainerRef-erenceDef",
+                      "start_index": 42,
+                      "end_index": 42,
+                      "summary": "Defines the semantics of the ApmcChoiceContainerReferenceDef meta-class."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0069",
+                  "title": "4.1.2.2 Foreign Reference",
+                  "start_index": 42,
+                  "end_index": 45,
+                  "summary": "Explains the semantics of foreign references.",
+                  "nodes": [
+                    {
+                      "node_id": "0070",
+                      "title": "[AP_TPS_APMC_01018] Semantics of ApmcForeignReferenceDef",
+                      "start_index": 43,
+                      "end_index": 44,
+                      "summary": "Defines the semantics of the ApmcForeignReferenceDef meta-class."
+                    },
+                    {
+                      "node_id": "0071",
+                      "title": "[AP_TPS_APMC_0101] Semantics of meta-class ApmcUriForeignReferenceDef",
+                      "start_index": 44,
+                      "end_index": 44,
+                      "summary": "Defines the semantics of the ApmcUriForeignReferenceDef meta-class."
+                    },
+                    {
+                      "node_id": "0072",
+                      "title": "[AP_TPS_APMC_0102] Semantics of meta-class ApmcUpstreamDocForeignReferenceDef",
+                      "start_index": 44,
+                      "end_index": 45,
+                      "summary": "Defines the semantics of the ApmcUpstreamDocForeignReferenceDef meta-class."
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0073",
+                  "title": "4.1.2.3 Instance Reference",
+                  "start_index": 45,
+                  "end_index": 48,
+                  "summary": "Explains the semantics of instance references.",
+                  "nodes": [
+                    {
+                      "node_id": "0074",
+                      "title": "[AP_TPS_APMC_01025] Semantics of meta-class ApmcUpstreamDocInstanceReferenceValue",
+                      "start_index": 47,
+                      "end_index": 48,
+                      "summary": "Defines the semantics of the ApmcUpstreamDocInstanceReferenceValue meta-class."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0075",
+          "title": "4.2 Value Side",
+          "start_index": 48,
+          "end_index": 61,
+          "summary": "Details the value side including parameters and references.",
+          "nodes": [
+            {
+              "node_id": "0076",
+              "title": "4.2.1 Parameter",
+              "start_index": 48,
+              "end_index": 54,
+              "summary": "Describes parameter values including semantics and constraints.",
+              "nodes": [
+                {
+                  "node_id": "0077",
+                  "title": "[AP_TPS_APMC_01026] Semantics of attribute ApmcIndexableValue.index",
+                  "start_index": 48,
+                  "end_index": 48,
+                  "summary": "Defines the semantics of the index attribute in ApmcIndexableValue."
+                },
+                {
+                  "node_id": "0078",
+                  "title": "[AP_TPS_APMC_01027] Gaps in the value range of an ordered collection",
+                  "start_index": 48,
+                  "end_index": 49,
+                  "summary": "Discusses gaps in the value range of an ordered collection."
+                },
+                {
+                  "node_id": "0079",
+                  "title": "4.2.1.2 Unrestricted Textual Parameter Value",
+                  "start_index": 49,
+                  "end_index": 50,
+                  "summary": "Defines unrestricted textual parameter values."
+                },
+                {
+                  "node_id": "0080",
+                  "title": "[constr_10585] Allowed value for a ApmcTextualParamValue that implements an enumeration-style parameter",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "Defines allowed values for an enumeration-style parameter."
+                },
+                {
+                  "node_id": "0081",
+                  "title": "4.2.1.3 Restricted Textual Parameter Value",
+                  "start_index": 50,
+                  "end_index": 54,
+                  "summary": "Defines restricted textual parameter values and related tables.",
+                  "nodes": [
+                    {
+                      "node_id": "0082",
+                      "title": "Table 4.36: ApmclpV4AddressParamValue",
+                      "start_index": 53,
+                      "end_index": 53,
+                      "summary": "Documents the structure of the ApmclpV4AddressParamValue class."
+                    },
+                    {
+                      "node_id": "0083",
+                      "title": "Table 4.37: ApmclpV6AddressParamValue",
+                      "start_index": 53,
+                      "end_index": 53,
+                      "summary": "Documents the structure of the ApmclpV6AddressParamValue class."
+                    },
+                    {
+                      "node_id": "0084",
+                      "title": "Table 4.38: ApmcMacAddressParamValue",
+                      "start_index": 53,
+                      "end_index": 54,
+                      "summary": "Documents the structure of the ApmcMacAddressParamValue class."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "0085",
+              "title": "4.2.2 Reference",
+              "start_index": 54,
+              "end_index": 61,
+              "summary": "Describes various types of reference values including semantics and tables.",
+              "nodes": [
+                {
+                  "node_id": "0086",
+                  "title": "[AP_TPS_APMC_01037] Semantics of meta-class ApmcContainerReferenceValue",
+                  "start_index": 54,
+                  "end_index": 55,
+                  "summary": "Defines the semantics of the ApmcContainerReferenceValue meta-class."
+                },
+                {
+                  "node_id": "0087",
+                  "title": "Table 4.40: ApmcContainerReferenceValue",
+                  "start_index": 55,
+                  "end_index": 55,
+                  "summary": "Documents the structure of the ApmcContainerReferenceValue class."
+                },
+                {
+                  "node_id": "0088",
+                  "title": "[AP_TPS_APMC_0102B] Semantics of ApmcAbstractReferenceValue",
+                  "start_index": 55,
+                  "end_index": 56,
+                  "summary": "Defines the semantics of the ApmcAbstractReferenceValue meta-class."
+                },
+                {
+                  "node_id": "0089",
+                  "title": "[AP_TPS_APMC_01029] Semantics of meta-class ApmcForeignReferenceValue",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "Defines the semantics of the ApmcForeignReferenceValue meta-class."
+                },
+                {
+                  "node_id": "0090",
+                  "title": "Table 4.42: ApmcForeignReferenceValue",
+                  "start_index": 56,
+                  "end_index": 56,
+                  "summary": "Documents the structure of the ApmcForeignReferenceValue class."
+                },
+                {
+                  "node_id": "0091",
+                  "title": "[AP_TPS_APMC_01030] Semantics of meta-class ApmcUriForeignReferenceValue",
+                  "start_index": 56,
+                  "end_index": 57,
+                  "summary": "Defines the semantics of the ApmcUriForeignReferenceValue meta-class."
+                },
+                {
+                  "node_id": "0092",
+                  "title": "[AP_TPS_APMC_010311] Semantics of meta-class ApmcUpstreamDocForeign-ReferenceValue",
+                  "start_index": 57,
+                  "end_index": 57,
+                  "summary": "Defines the semantics of the ApmcUpstreamDocForeignReferenceValue meta-class."
+                },
+                {
+                  "node_id": "0093",
+                  "title": "[AP_TPS_APMC_0102] Semantics of ApmcAbstractInstanceReferenceValue",
+                  "start_index": 57,
+                  "end_index": 58,
+                  "summary": "Defines the semantics of the ApmcAbstractInstanceReferenceValue meta-class."
+                },
+                {
+                  "node_id": "0094",
+                  "title": "[AP_TPS_APMC_0103] Semantics of meta-class ApmcInstanceReferenceValue",
+                  "start_index": 58,
+                  "end_index": 59,
+                  "summary": "Defines the semantics of the ApmcInstanceReferenceValue meta-class."
+                },
+                {
+                  "node_id": "0095",
+                  "title": "[AP_TPS_APMC_01034] Semantics of meta-class ApmcUriInstanceReferenceValue",
+                  "start_index": 59,
+                  "end_index": 61,
+                  "summary": "Defines the semantics of the ApmcUriInstanceReferenceValue meta-class."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0096",
+      "title": "5 Modeling Use Cases",
+      "start_index": 61,
+      "end_index": 63,
+      "summary": "Describes modeling use cases involving interactions between functional clusters.",
+      "nodes": [
+        {
+          "node_id": "0097",
+          "title": "5.1 Functional Cluster interacts with Functional Cluster",
+          "start_index": 61,
+          "end_index": 63,
+          "summary": "Defines constraints for ApmcReferenceValue targets.",
+          "nodes": [
+            {
+              "node_id": "0098",
+              "title": "[constr_10644] Target of a ApmcReferenceValue where definition.isFuncClusterEndpointRef is set to true",
+              "start_index": 62,
+              "end_index": 63,
+              "summary": "Defines constraints for ApmcReferenceValue targets when isFuncClusterEndpointRef is true."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0099",
+      "title": "A Reference Material",
+      "start_index": 63,
+      "end_index": 65,
+      "summary": "Lists terms and abbreviations and explains imposition times of constraints.",
+      "nodes": [
+        {
+          "node_id": "0100",
+          "title": "A.1 Terms and Abbreviations",
+          "start_index": 63,
+          "end_index": 63,
+          "summary": "Lists terms and abbreviations used in the document."
+        },
+        {
+          "node_id": "0101",
+          "title": "A.2 Imposition Times of Constraints",
+          "start_index": 63,
+          "end_index": 65,
+          "summary": "Explains the timing of imposing constraints."
+        }
+      ]
+    },
+    {
+      "node_id": "0102",
+      "title": "B Examples",
+      "start_index": 65,
+      "end_index": 66,
+      "summary": "Provides examples related to the document."
+    },
+    {
+      "node_id": "0103",
+      "title": "C Change History of AUTOSAR Traceable Items",
+      "start_index": 66,
+      "end_index": 70,
+      "summary": "",
+      "nodes": [
+        {
+          "node_id": "0104",
+          "title": "C.1 Traceable item history of this document according to AUTOSAR Release R24-11",
+          "start_index": 66,
+          "end_index": 68,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0105",
+              "title": "C.1.1 Added Specification Items in R24-11",
+              "start_index": 66,
+              "end_index": 67,
+              "summary": ""
+            },
+            {
+              "node_id": "0106",
+              "title": "C.1.2 Changed Specification Items in R24-11",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": ""
+            },
+            {
+              "node_id": "0107",
+              "title": "C.1.3 Deleted Specification Items in R24-11",
+              "start_index": 67,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "node_id": "0108",
+              "title": "C.1.4 Added Constraints in R24-11",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "node_id": "0109",
+              "title": "C.1.5 Changed Constraints in R24-11",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "node_id": "0110",
+              "title": "C.1.6 Deleted Constraints in R24-11",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "node_id": "0111",
+          "title": "C.2 Traceable item history of this document according to AUTOSAR Release R25-11",
+          "start_index": 68,
+          "end_index": 70,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0112",
+              "title": "C.2.1 Added Specification Items in R25-11",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "node_id": "0113",
+              "title": "C.2.2 Changed Specification Items in R25-11",
+              "start_index": 68,
+              "end_index": 69,
+              "summary": ""
+            },
+            {
+              "node_id": "0114",
+              "title": "C.2.3 Deleted Specification Items in R25-11",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": ""
+            },
+            {
+              "node_id": "0115",
+              "title": "C.2.4 Added Constraints in R25-11",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "Describes new constraints introduced in R25-11."
+            },
+            {
+              "node_id": "0116",
+              "title": "C.2.5 Changed Constraints in R25-11",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "Describes modified constraints in R25-11."
+            },
+            {
+              "node_id": "0117",
+              "title": "C.2.6 Deleted Constraints in R25-11",
+              "start_index": 69,
+              "end_index": 70,
+              "summary": "Describes removed constraints in R25-11."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0118",
+      "title": "D Mentioned Class Tables",
+      "start_index": 70,
+      "end_index": 75,
+      "summary": "Documents EculInstance.",
+      "nodes": [
+        {
+          "node_id": "0119",
+          "title": "Table D.4: EculInstance",
+          "start_index": 72,
+          "end_index": 75,
+          "summary": "Documents EculInstance."
+        }
+      ]
+    }
+  ]
+}

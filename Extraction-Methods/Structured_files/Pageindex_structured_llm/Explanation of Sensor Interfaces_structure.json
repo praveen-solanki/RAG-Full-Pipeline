@@ -1,0 +1,181 @@
+{
+  "doc_name": "Explanation of Sensor Interfaces.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "The excerpt is an explanatory (\u201cEXP\u201d) document that introduces the AUTOSAR Adaptive Platform concept for standardizing sensor interfaces.  \nIt lists six driver-assistance sensor use-cases (supplier interface, standardized API, fusion algorithm, fusion integration, implementation testing, simulation), states the intended scope of interface standardization, and outlines the planned service-oriented API design (service realization, ISO 23150 mapping, service template, stability and configuration rules).  \nIt also warns that detailed architecture, interface design rationale and usage examples are still under development and will be added in later releases."
+    },
+    {
+      "title": "Introduction and functional overview",
+      "node_id": "0001",
+      "start_index": 6,
+      "end_index": 7,
+      "summary": "The document explains AUTOSAR Adaptive Platform R25-11 standardization of sensor interfaces for SAE L3-L5 automated driving. It targets camera, radar, lidar and ultrasonic sensors, defining fixed, design-time logical interfaces that deliver both measurement data and dynamic performance metadata. By basing these interfaces on ISO 23150 semantic definitions, the standard aims to replace proprietary sensor APIs, cut integration effort, and enable interchangeability among OEMs, suppliers and tool vendors while ensuring functional-safety compliance and predictable runtime behavior.",
+      "nodes": [
+        {
+          "title": "Intended audience",
+          "node_id": "0002",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The excerpt explains that AUTOSAR Adaptive Platform R25-11 fixes every logical sensor interface at design-time: the set of signals a sensor exposes must stay constant at run-time\u2014nothing may vanish (so fusion algorithms can count on the data) and nothing may be added (so bandwidth and behaviour stay predictable). A forthcoming AUTOSAR spec will describe how to declare optional signals already at design-time.  \nThe document is written for everyone who will use this sensor interface\u2014system, software and integration engineers, prototypers, suppliers and application developers\u2014showing them why the standard exists and what it can and cannot do.  \nFor system designers it promises a uniform, extensible fa\u00e7ade across sensor types; for system engineers it guarantees supplier-neutral, plug-and-play compatibility; for integrators and developers it delivers a generic, testable, well-described interface that speeds up fusion-code writing and ensures different implementations work together.",
+          "nodes": [
+            {
+              "title": "System Designer",
+              "node_id": "0003",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "The partial document explains the rationale and constraints for standardizing sensor interfaces in AUTOSAR Adaptive Platform R25-11 for autonomous-driving systems. It emphasizes that the logical sensor interface must be frozen at design-time: no signals may vanish or appear at runtime, ensuring predictable data-fusion behavior and bandwidth. It announces an upcoming AUTOSAR specification for handling optional sensor data already at design-time. Section 1.1 defines the intended audience\u2014AP users and sensor-system stakeholders\u2014and details why three key roles (System Designer, System Engineer, System Integrator/Application Developer) need a stable, standardized, exchangeable and well-described sensor interface to support prototyping, supplier interoperability, generic/testable software, and efficient sensor-fusion algorithm development."
+            },
+            {
+              "title": "System Engineer",
+              "node_id": "0004",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "The excerpt explains why AUTOSAR Adaptive Platform R25-11 fixes the logical sensor interface at design-time: signals must neither vanish nor appear at run-time so that data-fusion systems can rely on a stable, predictable data stream and avoid unintended bandwidth or behavior changes. It announces an upcoming specification for handling optional sensor data/signals at design-time.  \nThe intended readership is everyone who will use the sensor interface\u2014system designers, engineers, integrators and application developers\u2014because the standardized interface is the key link between sensors and the fusion platform.  \nFor each role the text states the main benefit:  \n- System Designer: a uniform, extensible interface across sensor types that supports rapid prototyping.  \n- System Engineer: supplier-independent, interchangeable sensors through reuse of standard protocols.  \n- System Integrator / AP Developer: a formally described, testable, interoperable interface that simplifies generic software, configuration and efficient algorithm/fusion implementation."
+            },
+            {
+              "title": "System Integrator",
+              "node_id": "0005",
+              "start_index": 7,
+              "end_index": 7,
+              "summary": "The excerpt explains why the AUTOSAR Adaptive Platform (R25-11) fixes the logical sensor interface at design-time: signals must neither vanish nor appear at runtime, ensuring predictable bandwidth and reliable data-fusion. It announces an upcoming AUTOSAR specification for handling optional sensor data. The intended readership covers everyone who will use or supply sensor interfaces for autonomous-driving systems. It then details what three stakeholder groups\u2014System Designers, System Engineers, and System Integrators/Application Developers\u2014expect from a standardized sensor interface: comparable/extendable APIs, supplier-independent interchangeability, and a generic, testable, interoperable software description that simplifies fusion-algorithm development."
+            },
+            {
+              "title": "Safety and Security Engineer",
+              "node_id": "0006",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": "The excerpt outlines the rationale and ecosystem for standardizing sensor interfaces in AUTOSAR Adaptive Platform (R25-11).  \nKey points:  \n- Safety & security requirement: the interface must fit recognized validation mechanisms.  \n- Alignment with ISO 23150, which defines a modular, semantic logical interface between environmental sensors (camera, lidar, radar, etc.) and the vehicle\u2019s fusion unit for automated-driving functions.  \n- Relationship to Open Simulation Interface (OSI): a generic, open-source simulation layer that ensures modularity and interchangeability of sensor, environment, fusion and AD-function models; it will support ISO 23150.  \n- Three-tier standardization view:  \n  \u2013 ISO 23150: semantic/logical level  \n  \u2013 AUTOSAR FT-ADI: concrete implementation toward applications  \n  \u2013 OSI: simulation-specific implementation on GitHub"
+            }
+          ]
+        },
+        {
+          "title": "Relation to other standards",
+          "node_id": "0007",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "The excerpt outlines the rationale and positioning of AUTOSAR AP sensor interfaces: it stresses that the interface must be safety/security-validatable, maps its scope to the emerging ISO 23150 logical-interface standard for smart environmental sensors and fusion units, shows how the Open Simulation Interface (OSI) provides a modular, simulation-level counterpart, and presents a layered standardization stack\u2014ISO for semantic definition, AUTOSAR FT-ADI for concrete in-vehicle implementation, and OSI for simulation use\u2014illustrating that both AUTOSAR ADI and OSI will support ISO 23150."
+        }
+      ]
+    },
+    {
+      "title": "Acronyms and Abbreviations",
+      "node_id": "0008",
+      "start_index": 9,
+      "end_index": 9,
+      "summary": "The partial document is a glossary and terminology section from an AUTOSAR AP R25-11 specification explaining sensor interfaces. It lists acronyms and abbreviations relevant to ara::adi (Automated Driving Interfaces), such as AD, ADI, AEB, LIDAR, RADAR, and XiL. It also defines specific terms used in the ara::adi specification, including Car2X communication, Fusion Unit, and Smart Sensor, detailing their roles in sensor data processing and communication within automated driving systems."
+    },
+    {
+      "title": "Automated Driving Sensor Use Cases",
+      "node_id": "0009",
+      "start_index": 10,
+      "end_index": 10,
+      "summary": "The excerpt outlines the rationale and scope of AUTOSAR AP sensor-interface standardization for automated-driving (R25-11).  \nIt presents six stakeholder-specific use cases; UC1 (\u00a73.1) is detailed: an OEM wants to source any ISO-described smart sensor (LIDAR/RADAR/camera) and plug it into a fusion ECU through a single AUTOSAR-standardized data-format/API, gaining technology-agnostic integration and redundancy while leaving signal interpretation to ISO definitions.  \nUC2 (\u00a73.2) summarises the mirror need of sensor vendors for a stable, system-described programming API.",
+      "nodes": [
+        {
+          "title": "Use Case 1: \u201cSensor Supplier Interface\u201d",
+          "node_id": "0010",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "The partial document outlines the AUTOSAR AP R25-11 standardization effort for automated-driving sensor interfaces.  \nKey points:\n\n- Overall objective: create one AUTOSAR-standard data-format/interface between smart sensors (LIDAR, RADAR, Camera, etc.) and the vehicle\u2019s computing/fusion unit so OEMs can mix sensor technologies while re-using ISO-defined sensor descriptions.\n\n- Use-Case 1 \u201cSensor Supplier Interface\u201d (OEM view):  \n  \u2013 OEM needs to specify, procure and integrate sensors for an AD function (e.g. automated parking) using a single standardized interface.  \n  \u2013 Relies on ISO sensor-signal definitions; interface details are captured in ARXML; actual programming API may vary per sensor implementation.  \n  \u2013 Enables redundant, multi-technology sensor setups.\n\n- Use-Case 2 \u201cStandardized Sensor API\u201d (Sensor Developer view):  \n  \u2013 Sensor vendors want a stable, system-described programming API to implement against.\n\n- Chapters 3.3-3.5 will give additional stakeholder-specific restrictions; chapter 3.6 extends scope to virtual sensor simulation."
+        },
+        {
+          "title": "Use Case 2: \u201cStandardized Sensor API\u201d",
+          "node_id": "0011",
+          "start_index": 10,
+          "end_index": 11,
+          "summary": "The excerpt outlines six stakeholder-centric use-cases that motivate AUTOSAR\u2019s standardized sensor-interface work for automated-driving systems.  \nCore theme: create a single, ISO-aligned, machine-readable description (e.g. ARXML) that every actor can rely on so that LiDAR, radar and camera data can be exchanged seamlessly between smart sensors and high-performance fusion ECUs.\n\nUse-Case 1 (OEM) \u2013 \u201cSensor-Supplier Interface\u201d: OEM specifies which ISO-defined sensor data an AD function needs and demands a uniform AUTOSAR interface so any qualified smart sensor can be plugged into the fusion unit.\n\nUse-Case 2 (Sensor Developer) \u2013 \u201cStandardized Sensor API\u201d: Developer implements sensor firmware against a stable, AUTOSAR-published programming API derived from the same ISO sensor description.\n\nUse-Case 3 (Fusion Algorithm Developer) \u2013 \u201cSensor-Fusion Algorithm\u201d: Engineer selects and tunes fusion algorithms using the detailed, standardized sensor data descriptors delivered through the interface.\n\nUse-Case 4 (Fusion Integrator) \u2013 \u201cSensor-Fusion Integration\u201d: Integrator deploys the fusion algorithm as an Adaptive AUTOSAR application on a high-performance ECU, transforming each sensor\u2019s standardized data stream into the algorithm\u2019s expected format.\n\nUse-Case 5 (Implementation Tester) \u2013 \u201cSensor Implementation Testing\u201d: Tester verifies sensor behaviour and interface compliance at multiple integration levels against the same specification.\n\nUse-Case 6 (mentioned) extends the scope to virtual sensor simulation."
+        },
+        {
+          "title": "Use Case 3: \u201cSensor Fusion Algorithm\u201d",
+          "node_id": "0012",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "The excerpt outlines AUTOSAR Adaptive Platform (R25-11) requirements for standardized sensor interfaces in automated-driving systems. It presents five use-cases: (1) a \u201cStandardized Sensor API\u201d that mandates ISO-specified, AUTOSAR-delivered (ARXML) descriptions so sensor vendors can implement devices such as radar; (2) a \u201cSensor Fusion Algorithm\u201d use-case where fusion developers rely on the same detailed, standardized interface to select and combine multi-sensor data; (3) a \u201cSensor Fusion Integration\u201d use-case where integrators port fusion algorithms into high-performance Adaptive Applications, needing precise data descriptions to transform each sensor\u2019s output; and (4) a \u201cSensor Implementation Testing\u201d use-case where testers require comprehensive sensor-data/interface specifications to validate at every integration level. Across all cases, the core themes are standardized, reliable, AUTOSAR-provided sensor descriptions that enable implementation, fusion, integration, and testing of automated-driving functions."
+        },
+        {
+          "title": "Use Case 4: \u201cSensor Fusion Integration\u201d",
+          "node_id": "0013",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "The document outlines AUTOSAR AP R25-11 standardized sensor interfaces for automated driving. It presents five use cases: (1) sensor developers need ISO-specified, AUTOSAR-delivered (ARXML) descriptions to implement sensors; (2) fusion-algorithm developers require detailed, standardized sensor data descriptions to select and combine signals; (3) integrators must transform sensor data when embedding fusion algorithms into high-performance Adaptive Applications; (4) testers need precise sensor data/interface specifications for multi-level validation. Each use case lists stakeholders, goals, constraints, and characteristic tables, emphasizing reliability, standardization, and detailed sensor information."
+        },
+        {
+          "title": "Use Case 5: \u201cSensor Implementation Testing\u201d",
+          "node_id": "0014",
+          "start_index": 11,
+          "end_index": 12,
+          "summary": "The excerpt outlines six use-case scenarios that explain why and how AUTOSAR Adaptive Platform must supply a standardized, ISO-aligned sensor interface specification (ARXML).  \nKey points:  \n- Sensor developers need a stable, ISO-detailed API to build radar/camera etc. drivers (UC2).  \n- Fusion-algorithm developers require the same standardized, trustworthy signal descriptions to pick and tune algorithms (UC3).  \n- Integrators need those descriptions to port fusion code onto high-performance Adaptive ECUs (UC4).  \n- Testers demand signal-level interfaces and AUTOSAR-supplied test cases so every development stage is reproducible and interoperable (UC5).  \n- Simulation engineers want to reuse the identical interface from MiL through HiL to target, basing virtual sensors on OSI/ISO 23150 to validate algorithms early (UC6)."
+        },
+        {
+          "title": "Use Case 6: \u201cSensor Simulation\u201d",
+          "node_id": "0015",
+          "start_index": 12,
+          "end_index": 13,
+          "summary": "The partial document outlines two key use cases for sensor interface standardization within the AUTOSAR Adaptive Platform (R25-11). UC5 \u201cSensor Implementation Tester\u201d emphasizes the need for standardized, testable sensor signal interfaces throughout development to ensure interoperability and support testing of automated driving functions, such as sensor fusion algorithms. UC6 \u201cSensor Simulation\u201d focuses on enabling consistent sensor simulation across the XiL process (MiL, HiL, AUTOSAR) using OSI and ISO 23150 specifications to validate algorithms before integration. The document also defines the scope of standardization, aiming to align with ISO sensor interface semantics while extending AUTOSAR Adaptive Platform compliance to include syntactic elements and sensor configuration functionalities."
+        }
+      ]
+    },
+    {
+      "title": "Scope of Sensor Interface Standardization",
+      "node_id": "0016",
+      "start_index": 13,
+      "end_index": 15,
+      "summary": "The excerpt defines the scope of AUTOSAR Adaptive Platform (R25-11) sensor-interface standardization: it extends the ISO semantic sensor-interface spec with syntactic elements and sensor-configuration features required for Adaptive-platform compliance, while deliberately excluding mechanical, electrical, and raw-data-level interfaces (the latter handled by the Communication Management SWS). It mandates that sensors appear to the Adaptive computing unit only through service interfaces and illustrates two allowed topologies\u2014sensors directly attached to one ECU or sensor data relayed from one Adaptive ECU to another."
+    },
+    {
+      "title": "Sensor Interface API Design",
+      "node_id": "0017",
+      "start_index": 16,
+      "end_index": 16,
+      "summary": "The partial document explains the design rationale for the AUTOSAR Adaptive Platform (R25-11) Sensor Interface API. It states that the Sensor Interface is implemented as a Service to ensure universal availability across both Classic and Adaptive AUTOSAR platforms, supporting future smart-sensor architectures. The design directly maps ISO-defined smart-sensor data structures\u2014object-level lists for tracking, roadmarks, and landmarks, plus technology-specific detection features\u2014into corresponding services: every smart sensor exposes tracking, roadmark, landmark, and technology-dependent detection services.",
+      "nodes": [
+        {
+          "title": "Sensor Interface realization as a Service",
+          "node_id": "0018",
+          "start_index": 16,
+          "end_index": 16,
+          "summary": "The excerpt explains that the AUTOSAR Adaptive Platform R25-11 Sensor Interface is exposed as a Service so the same sensor functionality can be used on both Classic and Adaptive AUTOSAR ECUs. It maps the ISO-defined Smart-Sensor data\u2014object-level lists for tracking, roadmarks and landmarks (sensor-agnostic) plus technology-specific detection features\u2014directly onto four corresponding service interfaces provided by every Smart Sensor."
+        },
+        {
+          "title": "ISO mapping to Sensor Services",
+          "node_id": "0019",
+          "start_index": 16,
+          "end_index": 17,
+          "summary": "The excerpt explains the design philosophy for the AUTOSAR Adaptive Platform (R25-11) Sensor Interface API.  \nKey points:\n\n- Service-oriented architecture: the Sensor Interface is exposed as a platform-agnostic service so the same sensor logic can be reused on both Classic and Adaptive AUTOSAR ECUs.  \n- ISO alignment: the API surface is a direct mapping of ISO-defined smart-sensor data\u2014object-level tracking, road-mark and landmark lists (sensor-independent) plus technology-specific detection features\u2014offered as separate services.  \n- Template variability: because ISO lists contain many optional fields, each sensor service is generated from a parameterized template. A compile-time capability bit-vector declares which optionals are implemented, and multiple profiles (e.g., Low vs. High) allow the same logical sensor to be instantiated with different data-type widths or performance levels."
+        },
+        {
+          "title": "Sensor Service Template",
+          "node_id": "0020",
+          "start_index": 17,
+          "end_index": 18,
+          "summary": "The excerpt explains how AUTOSAR Adaptive Platform R25-11 models smart-sensor interfaces.  \nIt introduces a \u201cSensor Service Template\u201d that maps ISO sensor data items into an AUTOSAR service whose contents are partly optional. A compile-time \u201ccapability vector\u201d (bit mask) declares which optional fields a concrete sensor actually implements, allowing the same template to be instantiated in different \u201cprofiles\u201d (e.g., Low vs. High resolution).  \nDuring integration or run-time service discovery, the consumer retrieves the provider\u2019s capability vector and subscribes only if every optional element it needs is marked as supported; after this initial check the code no longer re-validates optionality.  \nFinally, the text notes that rapid sensor evolution makes long-term interface stability difficult, and that interface connectivity can be configured at three distinct moments (details cut off)."
+        },
+        {
+          "title": "Interface stability",
+          "node_id": "0021",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "The excerpt explains how AUTOSAR Adaptive Platform R25-11 verifies that a sensor service matches client needs: during discovery the client fetches the provider\u2019s capability bit-vector, compares it with its own required optional features, and subscribes only if all required options are supported; after this initial check the code no longer re-validates option status. A short code example shows the bit-vector negotiation (CAP) and the service structure with optional fields. It also notes that rapid sensor evolution makes long-term interface stability difficult, and that sensor interface connectivity can be configured at three distinct moments."
+        },
+        {
+          "title": "Interface configuration",
+          "node_id": "0022",
+          "start_index": 18,
+          "end_index": 21,
+          "summary": "The excerpt explains how AUTOSAR Adaptive Platform R25-11 handles sensor-service compatibility and interface evolution.  \nKey points:\n\n- **Service compatibility** is verified once, at start-up, by comparing the user\u2019s required capability vector with the provider\u2019s; optional elements are subscribed only if supported.  \n- **Interface stability** is challenged by rapid sensor innovation (new types, accuracy, rates), making long-lived interfaces hard to define.  \n- **Three configuration epochs** are compared:  \n  \u2013 *Design-time*: fully static, safest, but rigid.  \n  \u2013 *Connection-time*: interfaces are negotiated at start-up, balancing safety with flexibility; recommended for upcoming sensor changes.  \n  \u2013 *Runtime*: allows hot-plugging but sacrifices determinism and complicates safety analysis\u2014ruled out for autonomous driving.  \n- **Connection-time** is promoted to avoid workarounds, enable parallel interface versions, support backward-compatible sensors (e.g., multi-beam ultrasonic exposing both old single-beam and new multi-beam services), and allow drop-in replacement parts without full recompilation or re-flash."
+        }
+      ]
+    },
+    {
+      "title": "References",
+      "node_id": "0023",
+      "start_index": 21,
+      "end_index": 21,
+      "summary": "The partial document is an excerpt from the AUTOSAR AP R25-11 specification focused on sensor interfaces. It references ISO-23150, which defines the logical interface for data communication between sensors and data fusion units in road vehicles for automated driving functions. The document is identified as AUTOSAR_AP_EXP_SensorInterfaces and appears to be the final section, indicating it concludes the explanation of sensor interfaces within the AUTOSAR Adaptive Platform."
+    }
+  ]
+}

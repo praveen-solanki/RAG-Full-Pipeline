@@ -1,0 +1,602 @@
+{
+  "doc_name": "Adaptive Platform Machine Configuration.pdf",
+  "structure": [
+    {
+      "title": "** of Contents**",
+      "node_id": "0000",
+      "start_index": 3,
+      "end_index": 3,
+      "summary": ""
+    },
+    {
+      "title": "Modeling Use Cases 61",
+      "node_id": "0001",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Reference Material 63",
+      "node_id": "0002",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Examples 65",
+      "node_id": "0003",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Change History of AUTOSAR Traceable Items 66",
+      "node_id": "0004",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "Meneded Class s 70",
+      "node_id": "0005",
+      "start_index": 4,
+      "end_index": 5,
+      "summary": "The \"Meneded Class s 70\" section outlines five key components: (1) the **Standardization Template** under `AUTOSAR_FO_TPS_Standardization Template`, (2) the **Specification of ECU Configuration** via `"
+    },
+    {
+      "title": "Introduction",
+      "node_id": "0006",
+      "start_index": 6,
+      "end_index": 7,
+      "summary": "This document outlines the structure of the M2-level configuration model used to generate target-configuration (M1) content for the AUTOSAR adaptive platform, excluding design-level models. The M",
+      "nodes": [
+        {
+          "title": "Document Conventions",
+          "node_id": "0007",
+          "start_index": 6,
+          "end_index": 7,
+          "summary": "Technical terms are formatted in mono-spaced font (e.g., **PortPrototype**) with plural forms created by adding \"s\" to align with AUTOSAR XML Schema conventions. Constraints are identified by numerical IDs, headlines, and text between ⌈ characters, serving to enforce standardized interpretations of the AUTOSAR meta-model and detect M1-level violations. Binding times for constraint enforcement vary by model category (e.g., software-component constraints are"
+        }
+      ]
+    },
+    {
+      "title": "Conceptual Aspects",
+      "node_id": "0008",
+      "start_index": 8,
+      "end_index": 8,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Design and Target Configuration Models",
+          "node_id": "0009",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "The section distinguishes between **design models** and **target-configuration models** in AUTOSAR, emphasizing their roles in system design and hardware-specific configuration. It clarifies that while the distinction appears clear at first,",
+          "nodes": [
+            {
+              "title": "Design Model",
+              "node_id": "0010",
+              "start_index": 8,
+              "end_index": 8,
+              "summary": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "A rough criterion for identifying a model element as design-related, is whether or not the creation of the model element would typically be done in a System Designer role (usually related to the OEM scope).",
+      "node_id": "0011",
+      "start_index": 8,
+      "end_index": 14,
+      "summary": "The section defines design-related model elements by their creation in the System Designer role (OEM scope) and their role in defining the system's external behavior beyond individual compute nodes, such as through DEXT descriptions for AUTOSAR platforms. Examples include baud-rate, CAN Id, and application interfaces, which",
+      "nodes": [
+        {
+          "title": "Target Configuration Models",
+          "node_id": "0012",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "The target-configuration model includes elements primarily scoped to individual compute nodes, typically created during integration. Some elements maintain direct ties to design-level elements, requiring design information for completeness. Certain target-configuration elements are derived directly from design-level model content, a common approach in the AUTOSAR classic Platform, though its relevance to the AUTOSAR adaptive Platform remains unclear. Unlike the standalone EcuC model for BSW configuration, APMC assumes partial design model availability on the target, often in non-ARXML formats. For example, direct use of Service Interfaces for Adaptive Services eliminates the need to duplicate design information in"
+        },
+        {
+          "title": "Overview",
+          "node_id": "0013",
+          "start_index": 9,
+          "end_index": 11,
+          "summary": "The target-configuration on the AUTOSAR adaptive platform mirrors the classic platform's configuration but is simpler due to fewer constraints, such as APMC not requiring code generation support or post-build variation clarification. The configuration model (M1) differs from the design"
+        },
+        {
+          "title": "Benefits of using an M1 model-based configuration approach",
+          "node_id": "0014",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": ""
+        },
+        {
+          "title": "Modeling Strategies for deriving M1 Model Content",
+          "node_id": "0015",
+          "start_index": 11,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "Only Design exists",
+              "node_id": "0016",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "The configuration of the AUTOSAR adaptive Platform is not a standalone approach. Configuration models often reference elements from the design model to ensure completeness. This dependency applies to many cases, though the text specifies it is not universally applicable to all scenarios. The integration of design model elements is critical for providing a full configuration picture. The note clarifies that while this relationship is common, it may not hold in every instance."
+            },
+            {
+              "title": "Fully derive Design Model to Configuration Model",
+              "node_id": "0017",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "The section describes a modeling strategy that fully transfers all design model information into the configuration model, rendering the design model obsolete and potentially deletable. This approach mirrors the AUTOSAR classic Platform's Com stack configuration derivation, which, while effective, faces criticism for significant information duplication. The process results in a configuration model that becomes large and complex due to the comprehensive derivation of design elements. The strategy aligns with section 2.4.4's goals but emphasizes the complete integration of design data into the configuration model."
+            },
+            {
+              "title": "Partially derive Design Model to Configuration Model",
+              "node_id": "0018",
+              "start_index": 12,
+              "end_index": 13,
+              "summary": "The section discusses an alternative to fully deriving the design model into the configuration model, proposing partial derivation instead. Where feasible, flat references are established to existing design models, though complete derivation is optional. The use of flat references avoids the AUTOSAR type-prototype pattern in specific design model segments. InstanceRefs are presented as an alternative to flat references, with the core strategy emphasizing instanceRefs to align with meta-models utilizing the type-prototype pattern. This approach balances complexity by selectively applying derivation methods based on modeling requirements."
+            },
+            {
+              "title": "Only Configuration exists",
+              "node_id": "0019",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "title": "Vendor Specific Functional Cluster Definition",
+          "node_id": "0020",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "The Vendor-Specific Functional Cluster Definition is derived from the standardized AUTOSAR Functional Cluster Definition and allows additional vendor-specific extensions (e.g., containers, parameters, or references) using the same language elements. This approach simplifies tool development and enables future standardization of vendor-specific parameters. The **category** attribute of **ApmcFunctionalClusterDef** defines the definition type, with reserved values **STANDARDIZED_CLUSTER"
+        }
+      ]
+    },
+    {
+      "title": "Overview",
+      "node_id": "0021",
+      "start_index": 15,
+      "end_index": 23,
+      "summary": "This chapter describes configuration elements, emphasizing the overview and general modeling strategy for the `target-configuration`. The modeling approach is divided into two distinct parts: the \"definition side,\" which establishes the structural framework for specific configuration components (e.g., functional clusters), and the \"value side,\" which generates values for individual configuration items based on the structure defined by the \"definition side.\" These two components work in tandem to define and populate the `target-configuration` systematically. The separation ensures clarity in structuring and assigning values to configuration elements.",
+      "nodes": [
+        {
+          "title": "Abstract Structure",
+          "node_id": "0022",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "The \"value side\" and \"definition side\" are linked via an abstract reference from `ApmcAbstractValue` to `ApmcAbstractDefinition`, establishing a structural dependency where values adhere to definitions. This reference is abstractly defined by the role `ApmcAbstractValue.definition` and inherited by sub-classes of both `ApmcAbstractValue` and `ApmcAbstractDefinition`. While a single `ApmcAbstractDefinition` can be referenced by multiple `ApmcAbstractValue` instances (due to potential multiplicity >1), there is no strict 1:1 mapping. The `ApmcAbstractDefinition` class represents the \"definition side\" of the abstract structure, abstractly modeling machine configuration definitions, and is exclusive to the AUTOSAR Adaptive Platform. The section outlines categorizations of configuration elements (functional cluster, container, parameter, reference) and references modeling details on both sides in sections 3.2 and 3.3."
+        },
+        {
+          "title": "Definition Side",
+          "node_id": "0023",
+          "start_index": 16,
+          "end_index": 23,
+          "summary": "The \"Definition Side\" section describes the meta-classes forming the abstract structure for machine configuration. **ApmcFunctionalClusterDef** serves as the root element for target-configuration definitions. **ApmcAbstractDefinition** (",
+          "nodes": [
+            {
+              "title": "Definition Elements",
+              "node_id": "0024",
+              "start_index": 17,
+              "end_index": 21,
+              "summary": "The `ApmcDefinitionElement` meta-class serves as an abstract base for definition-side elements in the target-configuration, providing shared attributes like `lowerMultiplicity`, `upperMultiplicity`, and `upperMultiplicityIsInfinite` (which indicates unbounded upper multiplicity). It is inherited by classes such as `ApmcDefinitionCollection` (the entry point for target-configuration definitions) and `ApmcFunctionalClusterDef` (representing functional cluster"
+            },
+            {
+              "title": "Grouping of Configuration Elements",
+              "node_id": "0025",
+              "start_index": 21,
+              "end_index": 22,
+              "summary": "The container level in the configuration approach serves three primary purposes: (1) to group model elements via aggregation roles like `ApmcParamConfContainerDef.element`, (2) to enable nested container structures through `ApmcParamConfContainerDef.container`, and (3) to allow cross-level references between containers. Key classes include `ApmcConfigurationElementDef` (abstract), which defines attributes like `origin` (indicating standardization status) and `requiresIndex` (for ordered collections), and its subclasses `ApmcContainerDef` and `ApmcContainerElementDef`. The grouping mechanism relies on roles such as `ApmcParamConfContainerDef.element` for primitive"
+            },
+            {
+              "title": "Emulation of Inheritance",
+              "node_id": "0026",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "The **ApmcChoiceContainerDef** emulates inheritance in the target-configuration by structurally representing a subclass-like relationship to the M2 model, enabling nested container hierarchies. This is visualized in Figure 3.3, where the M1 model's configuration mirrors the M2 model's inheritance through aggregations. The **ApmcParamConContainerDef** includes aggregations for *container* and *element*, allowing nested container structures via the *container* aggregation, which is tagged with *atp.Splitkey* and *atp.Status=candidate*. The *isFuncCluster Endpoint* attribute indicates if the container represents an endpoint for functional clusters, also tagged with *atp.Status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ApmcParamConfContainerDef X\nM2 M1 container A\nA: ApmcChoiceContainerDef choice choice B\nC B: ApmcParamConfContainerDef C: ApmcParamConfContainerDef",
+      "node_id": "0027",
+      "start_index": 23,
+      "end_index": 24,
+      "summary": "The section describes a **ApmcChoiceContainerDef** (labeled \"A\") containing two choices: **B** and **C**, both defined as **ApmcParamConfContainerDef**. The structure reflects a hierarchical configuration where the choice container",
+      "nodes": [
+        {
+          "title": "Parameter",
+          "node_id": "0028",
+          "start_index": 24,
+          "end_index": 24,
+          "summary": "The section defines a configuration parameter as a tool to adjust specific atomic aspects of the `target-` configuration. Parameters are categorized into different \"flavors\" based on their data type. To address this, the abstract class `Apmc-ParameterDef` has data-type-specific subclasses that describe parameter definitions for various data types. The content is marked as DRAFT, indicating it is a work-in-progress."
+        }
+      ]
+    },
+    {
+      "title": "Configuration parameter can only be defined in the context of a `ApmcParamConf-` `ContainerDef.|`",
+      "node_id": "0029",
+      "start_index": 24,
+      "end_index": 30,
+      "summary": "The section explains that configuration parameters in the AUTOSAR Adaptive Platform must be defined within a `ApmcParamConf-ContainerDef` context. The abstract meta-class `ApmcParameterDef` serves as a base for parameter definitions, with subclasses specifying concrete parameter types (e.g., boolean, integer, string). The `ApmcChoiceContainerDef` class enables choice semantics at the container level to emulate inheritance in the M1 model, tagged as a candidate status and exclusive to the AUTOSAR platform. Both classes are aggregated by specific containers and adhere to defined base classes and interfaces. The `ApmcChoiceContainerDef` is",
+      "nodes": [
+        {
+          "title": "Reference",
+          "node_id": "0030",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "The \"Reference\" section defines references in the target-configuration as mechanisms for semantical linking between configuration parts or associating them with design model elements. The abstract meta-class `ApmcReferenceDef` serves as the base for specific reference definitions, requiring references to both interpret values correctly and validate their alignment with definition-side expectations. Concrete references from the \"value side\" to the \"definition side\" include `ApmcFunctionalClusterValue.definition`, `ApmcContainerValue.definition`, and `ApmcContainerElementValue.definition`. These concepts are illustrated in Figure 3.4, with detailed explanations provided in section 4.1.2."
+        },
+        {
+          "title": "Value Side",
+          "node_id": "0031",
+          "start_index": 25,
+          "end_index": 30,
+          "summary": "The \"Value Side\" of the target-configuration defines the actual configuration values, which must reference their corresponding definitions via the abstract `ApmcReferenceDef` class. This class serves as a base for subclasses like `ApmcContainerReferenceDef` and is aggregated by `ApmcParamConfContainerDef.element`. The root of the value side is `ApmcFunctionalClusterValue`, representing individual functional cluster configurations, while `ApmcValueCollection` acts as a collector for multiple `ApmcFunctionalClusterValues`, enabling references to grouped configurations. Both classes are marked as DRAFT and are exclusive to the AUTOSAR Adaptive Platform.",
+          "nodes": [
+            {
+              "title": "Grouping of Configuration Values",
+              "node_id": "0032",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": "The grouping and nested structures of configuration elements defined in the \"definition side\" are mirrored on the \"value side\" through meta-classes like `ApmcContainerValue` and `ApmcFunctionalClusterValue`. The `ApmcContainerValue` class aggregates itself and other elements, linking to the \"definition side\" via the `definition` reference, which establishes the concrete relationship between container configurations on the value and abstract definition sides. The `ApmcFunctionalClusterValue` class extends this by referencing"
+            },
+            {
+              "title": "Parameter",
+              "node_id": "0033",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "The \"Parameter\" section explains that configuration parameters are defined in multiple flavors, as detailed in section 3.2.4. These flavors are implemented as subclasses of the abstract base class `ApmcParameterValue` on the value side. The text directs readers to section 4.2.1 for further specifics on these details. No additional technical information beyond the provided text is included."
+            },
+            {
+              "title": "Reference",
+              "node_id": "0034",
+              "start_index": 29,
+              "end_index": 30,
+              "summary": "The \"Reference\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Details",
+      "node_id": "0035",
+      "start_index": 31,
+      "end_index": 35,
+      "summary": "The \"Details\" section describes configuration elements, emphasizing their specific attributes and structural aspects. It focuses on granular information required for accurate implementation. The chapter aims to clarify how each configuration component operates within the system. Technical specifics, such as parameters and dependencies, are highlighted. All details are presented to ensure precise understanding and correct setup.",
+      "nodes": [
+        {
+          "title": "Definition Side",
+          "node_id": "0036",
+          "start_index": 31,
+          "end_index": 35,
+          "summary": "The \"Definition Side\" section provides a detailed description of configuration elements specific to the definition side. It outlines the structure, parameters, and rules governing these elements, which are essential for defining system behavior. The content focuses on technical specifications and logical constructs without addressing implementation or execution details. All described elements are tied to the conceptual framework of the system's configuration. The section serves as a reference for understanding how definitions are structured and validated.",
+          "nodes": [
+            {
+              "title": "Parameter",
+              "node_id": "0037",
+              "start_index": 31,
+              "end_index": 35,
+              "summary": "The \"Parameter\" section describes the modeling of parameter definitions, with detailed information illustrated in Figure 4.1. It focuses on the structured representation of parameters within the system's framework. No additional technical details beyond the referenced figure are provided in the text. The emphasis is on the visual depiction of parameter modeling rather than textual explanation. The section serves as a reference to the diagram for understanding parameter definitions.",
+              "nodes": [
+                {
+                  "title": "Enumeration Parameter",
+                  "node_id": "0038",
+                  "start_index": 31,
+                  "end_index": 32,
+                  "summary": ""
+                },
+                {
+                  "title": "Boolean Performance",
+                  "node_id": "0039",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": "The **ApmcBooleanParamDef** meta-class defines boolean configuration parameters. Its corresponding value-side class is **Apmc- NumericalParamValue**. A **defaultValue**"
+                },
+                {
+                  "title": "Integer Parameter",
+                  "node_id": "0040",
+                  "start_index": 33,
+                  "end_index": 33,
+                  "summary": ""
+                },
+                {
+                  "title": "Float Parameter",
+                  "node_id": "0041",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": ""
+                },
+                {
+                  "title": "Unrestricted String Parameter",
+                  "node_id": "0042",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "The **ApmcStringParamDef** meta-class defines configuration parameters with unrestricted string values. It corresponds to the **ApmcTextualParamValue** class on the \"value side.\" A **defaultValue** can be specified for **ApmcStringParamDef** instances."
+                },
+                {
+                  "title": "Restricted String Parameter",
+                  "node_id": "0043",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "The \"Restricted String Parameter\" section addresses scenarios where string-shaped configuration parameters must adhere to specific structural or pattern requirements. These parameters are designed to enforce constraints on their content, ensuring compliance with predefined formats or rules. Such use cases arise when the parameter's value must follow a particular syntax or schema. The text emphasizes the necessity of defining these restrictions to maintain validity and consistency in configuration settings. No further details about validation mechanisms or examples are provided."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "A prominent example for such kind of parameter could be the definition of an IP address. The string that carries the IP address is supposed to follow a convention for the definition of IP addresses.",
+      "node_id": "0044",
+      "start_index": 35,
+      "end_index": 36,
+      "summary": "The text emphasizes the importance of defining parameters with strict constraints, such as IP addresses, by specifying their format on the \"definition side\" to ensure compliance with predefined conventions. Specific meta-classes like `ApmcIpV4AddressParamDef` and `ApmcIpV6AddressParamDef` are introduced to enforce restrictions for string-based parameters, derived from the abstract class `ApmcAbstractRestrictedStringParamDef`. Each restricted string parameter must include a default value attribute that adheres to its specific constraint, defined within its sub-class rather than the base class. This approach enables uniform validation across models and direct XML-level checks against the AUTOSAR"
+    },
+    {
+      "title": "ApmcParameterDef\nelpGtid// StringParamDef tolmpleCtrncrttidddm Depth:: Presspeempelppco-popint1ocrirrrhrr\n- game in\n(0...1)\n(0..1)\np Panel onlemel(dildmp10..11: inttpemorgee Spatt Vddddddddpprrrrrl (0..1)\nstep oEar",
+      "node_id": "0045",
+      "start_index": 36,
+      "end_index": 60,
+      "summary": "The section describes classes in the AUTOSAR Adaptive Platform for defining string parameters with structural content restrictions. **Apmc/AbstractRestrictedStringParamDef** serves as an abstract base class for such parameters, with subclasses like **Apmc/RevisionLabelParamDef",
+      "nodes": [
+        {
+          "title": "Reference",
+          "node_id": "0046",
+          "start_index": 40,
+          "end_index": 48,
+          "summary": "The \"Reference\" section details three reference types: container references (section 4.1.2.1), foreign references to M2 model elements (section 4.1.2.2), and instanceRefs to M2 elements (section 4.1.2.3). The ApmcUriParamDef meta-class represents a restricted URI parameter for defining URI labels, inheriting from ARObject and other base classes, with a defaultValue attribute of type UniString. It is exclusive to the AUTOSAR Adaptive Platform and tagged as candidate. The UriString primitive is a compact string for resource identification, defined with XML xsd:type=string. Figure 4.3 illustrates the manifest reference definition.",
+          "nodes": [
+            {
+              "title": "Reference to Container",
+              "node_id": "0047",
+              "start_index": 41,
+              "end_index": 42,
+              "summary": ""
+            },
+            {
+              "title": "Foreign Reference",
+              "node_id": "0048",
+              "start_index": 42,
+              "end_index": 44,
+              "summary": "The \"Foreign Reference\" section describes modeling foreign references using the abstract class **ApmcAbstractForeignReferenceDef**, where the `destinationType` attribute identifies the target class in schema notation (e.g., `PROCESS-DESIGN`). The **ApmcChoiceContainerReferenceDef** meta-class enables referencing a collection of targets, allowing selection of one element at a time, and is aggregated by `ApmcParamConfContainerDef.element`. **ApmcForeignReferenceDef** establishes flat references to design model elements (outside target-configuration), requiring the target to exist in the same model scope as the"
+            },
+            {
+              "title": "Instance Reference",
+              "node_id": "0049",
+              "start_index": 45,
+              "end_index": 48,
+              "summary": "The \"Instance Reference\" section describes structured referencing mechanisms in AUTOSAR models using the `AnyInstanceRef` meta-class to link model elements across domains. The abstract `ApmcAbstractInstanceReferenceDef` defines attributes `destinationContext` (an ordered list of context classes) and `destinationType` (target class identifier), which restrict reference targets to preserve semantic integrity within the same model scope. Subclasses like `ApmcInstanceReferenceDef` enable configuration-to-design domain references, while `ApmcUriInstanceReferenceDef` serves a similar role. These references contrast with flat references (e"
+            }
+          ]
+        },
+        {
+          "title": "Value Side",
+          "node_id": "0050",
+          "start_index": 48,
+          "end_index": 60,
+          "summary": "The \"Value Side\" section provides a detailed description of configuration elements specific to the value side. It outlines the technical components and parameters associated with this side of the system. The content focuses on defining how values are structured, managed, and integrated within the configuration framework. All technical details related to value-side configurations are included here. No additional information beyond the described scope is presented.",
+          "nodes": [
+            {
+              "title": "Parameter",
+              "node_id": "0051",
+              "start_index": 48,
+              "end_index": 53,
+              "summary": "The **ApmcIndexableValue.index** attribute identifies the index of an element in a collection where the \"definition side\" attribute **ApmcConfigurationElementDef.requiresIndex** is set. Index values in an ordered collection may have gaps, and ordering is determined by numerical sorting of index values rather than continuous usage. The **ApmcIndexableValue** class is an abstract meta-class enabling model elements to carry indices on the \"value side\" of target configurations. It inherits from **AROObject** and defines parameters for indexed elements in configuration models. The figure illustrates the relationship between these classes and their roles in parameter indexing.",
+              "nodes": [
+                {
+                  "title": "Numerical Parameter Value",
+                  "node_id": "0052",
+                  "start_index": 49,
+                  "end_index": 49,
+                  "summary": ""
+                },
+                {
+                  "title": "Unrestricted Textual Parameter Value",
+                  "node_id": "0053",
+                  "start_index": 49,
+                  "end_index": 50,
+                  "summary": ""
+                },
+                {
+                  "title": "Restricted Textual Parameter Value",
+                  "node_id": "0054",
+                  "start_index": 50,
+                  "end_index": 53,
+                  "summary": "The \"Restricted Textual Parameter Value\" section defines restricted textual parameters as subclasses of `ApmcRestrictedStringParamDef`, utilizing corresponding subclasses of `ApmcRestrictedTextualParamValue` to enforce value restrictions. Each restricted string parameter must define"
+                }
+              ]
+            },
+            {
+              "title": "Reference",
+              "node_id": "0055",
+              "start_index": 54,
+              "end_index": 60,
+              "summary": "The \"Reference\" section outlines the inheritance hierarchy for meta-classes handling references on the \"value side,\" all deriving from `ApmcReferenceValue`. `ApmcContainerReferenceValue` enables references to `ApmcContainerValue` elements in the M1 model, which may reside outside the same `ApmcFunctionalClusterValue`. `ApmcUriParamValue` is a concrete class with a `value` attribute of type `UriString`, aggregated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Modeling Use Cases",
+      "node_id": "0056",
+      "start_index": 61,
+      "end_index": 61,
+      "summary": "This section outlines specific modeling use cases where model elements from the document are combined to achieve predefined higher-level semantics as defined by the AUTOSAR standard. It focuses on scenarios where these elements are integrated to form structured, standardized representations. The use cases emphasize the application of model components to meet AUTOSAR's semantic requirements. The descriptions highlight how individual elements contribute to complex, standardized system behaviors. The chapter serves as a reference for understanding how model components align with AUTOSAR's architectural and semantic frameworks.",
+      "nodes": [
+        {
+          "title": "Functional Cluster interacts with Functional Cluster",
+          "node_id": "0057",
+          "start_index": 61,
+          "end_index": 61,
+          "summary": "Functional clusters interact directly via a pattern similar to the \"InstanceSpecifier-pattern\" but distinct in structure. The `InstanceSpecifier` serves as a runtime token enabling endpoint binding by referencing paths from the root to leaf elements (e.g., `PortPrototype`). In cluster-to-cluster interactions, the token instead uses an absolute `shortName` path tied to one endpoint, differing from the instance tree-based path"
+        }
+      ]
+    },
+    {
+      "title": "A possible example for such a scenario could be that the _persistency_ functional cluster (the client-side) requests encryption services from the _crypto_ functional cluster (the server-side). This concrete scenario is used to explain the respective modeling approach in Figure 5.1.",
+      "node_id": "0058",
+      "start_index": 61,
+      "end_index": 62,
+      "summary": "The interaction between functional clusters is modeled by defining a `ApmcContainerReferenceDef` on the client side with `isFuncClusterEndpointRef` set to `true`, representing the client’s endpoint configuration. The server side defines a `ApmcParamConfContainerDef` with `isFuncClusterEndpoint` set to `true`, representing its endpoint configuration. A match between endpoints occurs only when the client’s `FunctionalClusterEndpointSpecifier` (via `ApmcContainerReferenceDef`) and the server’s `ApmcParamConfContainerDef` (via its absolute `shortName` path) are identical. Additionally, any `ApmcContainerValue` referenced by"
+    },
+    {
+      "title": "Reference Material",
+      "node_id": "0059",
+      "start_index": 63,
+      "end_index": 64,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "A.1 Terms and Abbreviations",
+          "node_id": "0060",
+          "start_index": 63,
+          "end_index": 63,
+          "summary": "This section provides an informative overview of terms and abbreviations, explicitly stating that it is not normative. The primary list of definitions is referenced in [5], while this section supplements it with additional terms and abbreviations specific to the document. Each undefined abbreviation in this context is accompanied by its full spelling. The table organizes these terms for clarity, ensuring consistency within the document's scope. No external definitions are included beyond those specified in [5]."
+        },
+        {
+          "title": "A.2 Imposition Times of Constraints",
+          "node_id": "0061",
+          "start_index": 63,
+          "end_index": 64,
+          "summary": "The constraints in this document are associated with specific _actual_ imposition times, which denote the exact workflow steps when each constraint must be enforced. These imposition times are defined as technical terms in A.2 to enable precise linkage between constraints and their corresponding definitions. The document focuses exclusively on the AUTOSAR adaptive platform, meaning the listed imposition times apply only to this context. One example is IT_CfgFc, which signifies the completion of functional cluster configuration, allowing target platform installation. Other imposition times may exist in different AUTOSAR standards, as noted in the text."
+        }
+      ]
+    },
+    {
+      "title": "Examples",
+      "node_id": "0062",
+      "start_index": 65,
+      "end_index": 65,
+      "summary": "The \"Examples\" section of this appendix is explicitly labeled as **informative** and **not normative**, meaning it does not constitute official standards or requirements. The text clarifies that **no examples** are included in this release. All content within this section is provided for reference only and does not mandate any specific implementation. The absence of examples is explicitly stated, with no additional details or exceptions mentioned. The section’s purpose is to acknowledge the lack of examples rather than provide them."
+    },
+    {
+      "title": "Change History of AUTOSAR Traceable Items",
+      "node_id": "0063",
+      "start_index": 66,
+      "end_index": 69,
+      "summary": "The appendix chapter provides informative content and is explicitly stated as non-normative. It includes lists of constraints and specification items that were removed in subsequent versions of the specification. These removed items are not linked as hyperreferences in the document. The section aims to trace changes but does not enforce any normative requirements. All technical details about removed elements are preserved as part of the historical record.",
+      "nodes": [
+        {
+          "title": "C.1 Traceable item history of this document according to AUTOSAR Release R24-11",
+          "node_id": "0064",
+          "start_index": 66,
+          "end_index": 68,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "C.1.1 Added Specification Items in R24-11",
+              "node_id": "0065",
+              "start_index": 66,
+              "end_index": 66,
+              "summary": ""
+            },
+            {
+              "title": "C.1.2 Changed Specifications Items in R24-11",
+              "node_id": "0066",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "The provided text for section \"C.1.2 Changed Specifications Items in R24-11\" is empty, so no summary can be generated. Please provide the actual content of the section for an accurate technical summary."
+            },
+            {
+              "title": "C.1.3 Deleted Specification Items in R24-11",
+              "node_id": "0067",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": ""
+            },
+            {
+              "title": "C.1.4 Added Constraints in R24-11",
+              "node_id": "0068",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "title": "C.1.5 Changed Constraints in R24-11",
+              "node_id": "0069",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "title": "C.1.6 Deleted Constraints in R24-11",
+              "node_id": "0070",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "title": "C.2 Traceable item history of this document according to AUTOSAR Release R25-11",
+          "node_id": "0071",
+          "start_index": 68,
+          "end_index": 69,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "C.2.1 Added Specification Items in R25-11",
+              "node_id": "0072",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "title": "C.2.2 Changed Specification Items in R25-11",
+              "node_id": "0073",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": ""
+            },
+            {
+              "title": "C.2.3 Deleted Specification Items in R25-11",
+              "node_id": "0074",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "The section \"C.2.3 Deleted Specification Items in R25-11\" contains no text or technical details. As no content is provided, a summary cannot be generated. The referenced section appears to be empty or non-existent in the given context. No deleted specification items or related information are described here. The user may have intended to include content but omitted it."
+            },
+            {
+              "title": "C.2.4 Added Constraints in R25-11",
+              "node_id": "0075",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": ""
+            },
+            {
+              "title": "C.2.5 Changed Constraints in R25-11",
+              "node_id": "0076",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": "The provided text for the section \"C.2.5 Changed Constraints in R25-11\" is missing, so a summary cannot be generated. Please provide the full content of the section for an accurate technical summary."
+            },
+            {
+              "title": "C.2.6 Deleted Constraints in R25-11",
+              "node_id": "0077",
+              "start_index": 69,
+              "end_index": 69,
+              "summary": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mentioned Class s",
+      "node_id": "0078",
+      "start_index": 70,
+      "end_index": 75,
+      "summary": ""
+    }
+  ]
+}

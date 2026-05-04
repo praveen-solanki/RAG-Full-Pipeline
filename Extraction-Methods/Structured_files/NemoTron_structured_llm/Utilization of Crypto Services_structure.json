@@ -1,0 +1,208 @@
+{
+  "doc_name": "Utilization of Crypto Services.pdf",
+  "structure": [
+    {
+      "title": "**of Contents**",
+      "node_id": "0000",
+      "start_index": 4,
+      "end_index": 4,
+      "summary": ""
+    },
+    {
+      "title": "1 Introduction",
+      "node_id": "0001",
+      "start_index": 5,
+      "end_index": 5,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "1.1 Purpose of the Document",
+          "node_id": "0002",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": ""
+        },
+        {
+          "title": "1.2 Scope of the Document",
+          "node_id": "0003",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": ""
+        },
+        {
+          "title": "1.3 Limitations",
+          "node_id": "0004",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "The \"Limitations\" section explicitly states there are no limitations specified for the described cryptographic functionality. The document focuses on explaining the intended usage of AUTOSAR cryptographic features starting from version 4.3, without imposing constraints. Its scope is limited to guiding integrators and users in understanding the architecture of the crypto stack, module relationships, and integration of hardware and software components. No technical restrictions or constraints are outlined in this section. The text does not address any operational, performance, or compatibility limitations."
+        }
+      ]
+    },
+    {
+      "title": "2 Definition of terms and acronyms",
+      "node_id": "0005",
+      "start_index": 6,
+      "end_index": 7,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "2.1 Acronyms and abbreviations",
+          "node_id": "0006",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": ""
+        },
+        {
+          "title": "2.2 Definition of terms",
+          "node_id": "0007",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "The section defines key terms and abbreviations related to cryptographic systems. Abbreviations include Basic Software (BSW), Complex Device Driver (CDD), Crypto Interface (CRYIF), Crypto Driver (CRYPTO), Crypto Service Manager (CSM), Hardware Security Module (HSM), NVRAM Manager (Nvm), Runtime Environment (RTE), Security Hardware Extension (SHE), and Software Component (SWC). Terms such as Crypto Driver"
+        },
+        {
+          "title": "3.1 Input documents & related standards and norms",
+          "node_id": "0008",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The section lists four input documents and a related document ID, all tied to cryptographic functionalities in AUTOSAR. [1] *Specification of Crypto Service Manager* (AUTOSAR_CP_SWS_CryptoServiceManager), [2] *Specification of Crypto Interface* (AUTOSAR_CP_SWS_CryptoInterface), [3] *Specification of Crypto Driver* (AUTOSAR_CP_SWS_CryptoDriver), and [4] *Layered Software Architecture* (AUTOSAR_CP_EXP_LayeredSoftwareArchitecture) are explicitly referenced. Additionally, Document ID 602 (*AUT"
+        }
+      ]
+    },
+    {
+      "title": "4 Crypto Stack Overview",
+      "node_id": "0009",
+      "start_index": 8,
+      "end_index": 10,
+      "summary": "The AUTOSAR crypto stack provides cryptographic services for hash computation, asymmetric signature verification, and symmetric data encryption through the Crypto Service Manager (CSM), Crypto Interface (CRYIF), and Crypto Driver (CRYPTO). CSM utilizes cryptographic algorithms implemented via software or hardware modules, with hardware implementations dependent on target platform features and software implementations lacking secure key storage, relying instead on AUTOSAR memory services. The stack does not define a security concept but offers cryptographic services to support and realize such concepts. Cryptographic algorithms and their implementation details (software/hardware) are outside AUTOSAR's scope, leaving hardware-specific dependencies and software limitations to the target platform.",
+      "nodes": [
+        {
+          "title": "4.1 Stack Architecture",
+          "node_id": "0010",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "The AUTOSAR crypto stack spans all layers of the AUTOSAR Layered Architecture, with the Microcontroller Abstraction Layer housing Crypto Drivers (CRYPTO) that implement cryptographic hardware and software instances, such as external HSMs. These drivers may exist as multiple modules within the stack. The architecture includes layers like System Services, Memory Services, Crypto Services, Communication Services, I/O Hardware Abstraction, and Complex Drivers, organized under the Application Layer Runtime Environment. The stack integrates cryptographic functionalities across hardware abstractions (Crypto Hardware Abstraction) and communication hardware, ensuring modular and layered implementation. The figure illustrates the hierarchical structure, emphasizing the separation of cryptographic services from lower-level hardware drivers."
+        },
+        {
+          "title": "4.2 The Crypto Service Manager (CSM)",
+          "node_id": "0011",
+          "start_index": 9,
+          "end_index": 9,
+          "summary": "The Crypto Service Manager (CSM) resides on the Service Layer and provides an abstraction layer for standardized cryptographic service access via RTE port mechanisms, enabling applications and BSW modules to use C-API calls. It manages concurrent access to cryptographic services, employing prioritized queues to handle jobs that cannot be directly processed by the dedicated C"
+        },
+        {
+          "title": "4.3 The Crypto Interface (CRYIF)",
+          "node_id": "0012",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "The CRYIF module operates within the Hardware Abstraction Layer, offering a generic interface for the CSM to interact with Crypto Driver modules, ensuring access independence from underlying implementations. It supports cryptographic operations including hash calculation, message authentication code (MAC) generation/verification, digital signature creation/verification, symmetric/asymmetric encryption/decryption, random number generation, and key management tasks. The CRYIF can manage multiple CRYPTO modules"
+        },
+        {
+          "title": "4.4 The Crypto Driver (CRYPTO)",
+          "node_id": "0013",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": ""
+        }
+      ]
+    },
+    {
+      "title": "A CRYPTO [3] typically holds the actual cryptographic implementations and supports key storage, key configuration, and key management for cryptographic services. It can have one or more Crypto Driver Objects, with separate workspaces. Each Crypto Driver Object can provide arbitrary many crypto primitives. A crypto primitive is an instance of a configured cryptographic algorithm. One Crypto Driver Object can only perform one crypto primitive at the same time.",
+      "node_id": "0014",
+      "start_index": 10,
+      "end_index": 10,
+      "summary": ""
+    },
+    {
+      "title": "5 Usage Aspects",
+      "node_id": "0015",
+      "start_index": 11,
+      "end_index": 13,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "5.1 Job Concept",
+          "node_id": "0016",
+          "start_index": 11,
+          "end_index": 12,
+          "summary": "Requests to the CSM for cryptographic routines are represented as jobs. Each",
+          "nodes": [
+            {
+              "title": "5.1.1 Synchronous and Asynchronous Mode",
+              "node_id": "0017",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "The section explains cryptographic job processing in synchronous and asynchronous modes"
+            },
+            {
+              "title": "5.1.2 Queuing and Priorities",
+              "node_id": "0018",
+              "start_index": 11,
+              "end_index": 11,
+              "summary": "The CSM manages asynchronous jobs via priority-based queues, each mapped to a single Crypto Driver Object (CDO) to access its crypto primitives. If CRYPTO rejects a job due to busyness, it is enqueued in the CSM’s priority-specific queue. During Csm_MainFunction, queued jobs are passed to CRYIF, which forwards them to the respective CRYPTO. Some CDOs may have their own job queues to optimize hardware usage. Job priority is determined by configuration,"
+            },
+            {
+              "title": "5.1.3 Streaming Approach vs Single Call Approach.",
+              "node_id": "0019",
+              "start_index": 12,
+              "end_index": 12,
+              "summary": "The crypto service operations—START, UPDATE, and FINISH—manage cryptographic computations through a state machine, with the CSM queue prioritizing jobs. The streaming approach processes data in fragments via separate calls to operation modes (e.g., Csm_MacGenerate), enabling incremental handling of large inputs. The single call approach consolidates multiple operations into one function invocation, reducing overhead by combining modes (START, UPDATE, FINISH) in sequence. Both approaches use the same operation modes but differ in invocation granularity and performance trade-offs. The single call method optimizes efficiency by minimizing function call overhead."
+            }
+          ]
+        },
+        {
+          "title": "5.2 Key Handling",
+          "node_id": "0020",
+          "start_index": 12,
+          "end_index": 13,
+          "summary": "The key handling process involves generating, updating, importing/exporting, exchanging, and deriving cryptographic keys, which are stored in cryptographic hardware or NvM. Keys are associated with predefined key types, pre-configured by vendors to align with cryptographic primitives, each referencing one or more key elements (e.g., key material or random number seeds). Key element indices, such as the mandatory \"Key Material\" with ID \"1\" in the MAC service, are defined by the crypto stack, with vendors able to extend these indices. Key types and their elements are managed by the CRYPTO implementation, using key slots for hardware or NvM for software-based storage."
+        },
+        {
+          "title": "5.3 Configuration Philosophy",
+          "node_id": "0021",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "5.3.1 Registration of Crypto Functionality",
+              "node_id": "0022",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "The registration of CRYPTO modules enables flexibility by allowing multiple cryptographic implementations, requiring a mechanism to inform CRYIF and CSM of available features. A vendor-provided pre-configuration, loaded from CRYPTO to CRYIFF to CSM, defines each module's capabilities. CRYIF integrates registered CRYPTO modules into a generic interface for CSM, which then identifies and configures specific cryptographic features based on the registered modules. This process ensures the CSM can leverage and configure the actual"
+            },
+            {
+              "title": "5.3.2 Project Configuration",
+              "node_id": "0023",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "The crypto stack configuration follows a top-down approach, starting with CSM, then CRYIF, and finally CRYPTO. In CSM, users select and configure cryptographic primitives and keys from CRYIF and CRYPTO, while defining jobs and job queues. CRYIF maps CSM"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6 Example",
+      "node_id": "0024",
+      "start_index": 14,
+      "end_index": 14,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "6.1 Configuration in Modules",
+          "node_id": "0025",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": ""
+        },
+        {
+          "title": "6.2 APIs involved",
+          "node_id": "0026",
+          "start_index": 14,
+          "end_index": 14,
+          "summary": "The application communicates with the crypto stack (CSM) via RTE ports, where each configured job generates a port named `{Job}_MacGenerate` with the interface `CsmMacGenerate_{Primitive}()`, using `Crypto_OperationModeType` set to `CRYPTO_OPERATIONMODE_SINGLECALL` for single-call MAC requests. The BSW module or CDD invokes the C-API `Csm_MacGenerate`, passing the job as an input parameter to trigger synchronous processing. The CSM dispatches the job to CRYIF via `CryIf_ProcessJob`, which forwards it to CRYPTO’s `Crypto_ProcessJob` (or"
+        }
+      ]
+    }
+  ]
+}

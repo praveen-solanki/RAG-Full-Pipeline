@@ -1,0 +1,436 @@
+{
+  "doc_name": "Specification of Firewall for Adaptive Platform",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0001",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "This preface section of the \"Specification of Firewall for Adaptive Platform\" document provides an overview of its contents and change history. It introduces key concepts such as the document's purpose, ownership, and release status within the AUTOSAR framework. The document outlines important relationships between this firewall specification and other parts of the AUTOSAR standard, including dependencies on other functional clusters and changes in API specifications over time. Technical details include updates to error handling, security event reporting, and API class bindings, reflecting ongoing refinements and enhancements to ensure robustness and compliance with evolving standards."
+    },
+    {
+      "title": "1 Introduction and functional overview",
+      "node_id": "0002",
+      "start_index": 6,
+      "end_index": 7,
+      "summary": "This section introduces the FC Firewall specification for managing and configuring host-based firewalls on ECUs where the Adaptive Platform is deployed. It outlines key functionalities such as adapting firewall rules based on manifests and offering runtime interfaces to adjust configurations according to different vehicle contexts or intrusion prevention needs. The FC Firewall interacts with an underlying firewall engine, ensuring dynamic adjustments can be made in real-time while maintaining security protocols. While no specific tables are mentioned, the document emphasizes the importance of adaptability and real-time configuration management for enhanced security and flexibility."
+    },
+    {
+      "title": "2 Acronyms and Abbreviations",
+      "node_id": "0003",
+      "start_index": 7,
+      "end_index": 8,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document provides a glossary of acronyms and abbreviations specific to the FC Firewall. Key concepts include definitions relevant only to this firewall system, which are not covered in a general list available elsewhere (AUTOSAR glossary). The summary highlights that these terms are essential for understanding the technical specifications and operational aspects of the FC Firewall within the adaptive platform context. While no tables are mentioned in the provided content, the focus is on establishing clear terminology to ensure precise communication and comprehension among stakeholders involved with this specific firewall system.",
+      "nodes": [
+        {
+          "title": "2.1 Acronyms",
+          "node_id": "0004",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines key acronyms and their descriptions relevant to automotive Ethernet firewalls. It introduces critical concepts such as Firewalls, which monitor network traffic between ECUs or zones in a vehicle; FC Firewall (Functional Cluster Firewall), which is a specific type of firewall; and Firewall Rules, which define actions based on pattern matches. The document also explains the concept of Firewall State, which dynamically activates different sets of rules based on the current state of the vehicle, and distinguishes between Allowlists and Blocklists for managing network packet access. Additionally, it references the OSI Layer as part of the ISO/IEC 7498 model, providing a foundational understanding of network architecture in this context."
+        },
+        {
+          "title": "2.2 Abbreviations",
+          "node_id": "0005",
+          "start_index": 7,
+          "end_index": 8,
+          "summary": "This section in the \"Specification of Firewall for Adaptive Platform\" document outlines a list of abbreviations used throughout the text. It introduces key terms such as DDS (Data Distribution Service), IDS (Intrusion Detection System), and SOME/IP (Service-oriented Middleware over IP), which are essential for understanding the technical aspects discussed later in the document. The relationships between these components, particularly how they interact within a network security context, are implicitly defined through their abbreviations. Table 2.2 provides a clear reference for readers to quickly understand the full forms of these abbreviations, facilitating easier comprehension and application of the technical specifications detailed in subsequent sections."
+        }
+      ]
+    },
+    {
+      "title": "3 Related documentation",
+      "node_id": "0006",
+      "start_index": 8,
+      "end_index": 10,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines additional resources and related specifications that complement its own software specification for the FC Firewall. Key concepts include the requirement specification (RS_Firewall [2]) for an AUTOSAR firewall on Foundation level, as well as the Adaptive AUTOSAR MetaModel specification (TPS_ManifestSpecification [3]), which details how the FC Firewall is modeled within this framework. These documents provide a comprehensive context by establishing both the foundational requirements and the modeling practices essential for understanding and implementing the FC Firewall in an adaptive platform setting.",
+      "nodes": [
+        {
+          "title": "3.1 Input documents & related standards and norms",
+          "node_id": "0007",
+          "start_index": 8,
+          "end_index": 9,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the input documents and related standards and norms that are essential for developing a firewall tailored to an adaptive platform. Key concepts include the Glossary (AUTOSAR_FO_TR_Glossary), Requirements on Firewall (AUTOSAR_FO_RS_Firewall), and the Specification of Manifest (AUTOSAR_AP_TPS_ManifestSpecification). The section also references important protocols such as IEEE Standard for Ethernet, SOME/IP Protocol, and DDS Interoperability Wire Protocol. These standards ensure that the firewall is compatible with the broader network architecture and specific communication protocols used in adaptive platforms, thereby facilitating secure and efficient data exchange."
+        },
+        {
+          "title": "3.2 Further applicable specification",
+          "node_id": "0008",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "This section discusses the additional specifications required for implementing the FC Firewall within the Adaptive Platform. It emphasizes that the core specification provided by AUTOSAR, specifically the \"General requirements for all FunctionalClusters,\" is applicable and mandatory for the implementation of the FC Firewall. This ensures alignment with broader platform standards. While no tables are explicitly mentioned in this excerpt, adherence to these general requirements is crucial for ensuring the firewall's functionality and integration within the Adaptive Platform framework."
+        }
+      ]
+    },
+    {
+      "title": "4 Constraints and assumptions",
+      "node_id": "0009",
+      "start_index": 10,
+      "end_index": 11,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the constraints and assumptions that guide the design and implementation of the firewall. It introduces key concepts such as platform adaptability and security policies, which are central to the firewall's functionality. The summary highlights important relationships between these components and any operational constraints that must be considered. While no specific tables are mentioned in this excerpt, the section likely includes detailed technical constraints related to compatibility with various platforms and performance limitations under different network conditions.",
+      "nodes": [
+        {
+          "title": "4.1 Known limitations",
+          "node_id": "0010",
+          "start_index": 10,
+          "end_index": 11,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines known limitations in the current release. It highlights two specific areas where functionality is restricted: the inability to activate or deactivate firewall rules during runtime and the lack of support for Security Enhanced Virtualization (SEVs) as defined by Original Equipment Manufacturers (OEMs). These constraints indicate that certain dynamic management features and compatibility with custom security standards are not available, which could impact the flexibility and interoperability of the firewall solution in adaptive environments."
+        }
+      ]
+    },
+    {
+      "title": "5 Dependencies to other Functional Clusters",
+      "node_id": "0011",
+      "start_index": 11,
+      "end_index": 13,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" discusses the dependencies between the Firewall Functional Cluster and other clusters within the AUTOSAR Adaptive Platform. Key concepts include the decision by AUTOSAR not to standardize exclusive interfaces, allowing flexible implementation based on specific operating systems. The section provides guidelines for understanding how the Firewall interacts with other clusters through provided and required public interfaces, ensuring compatibility across different implementations while leaving internal details to platform providers. No tables are present in this excerpt, but it references a detailed technical architecture documentation for further information.",
+      "nodes": [
+        {
+          "title": "5.1 Provided Interfaces",
+          "node_id": "0012",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document discusses the interfaces provided by the firewall to other functional clusters. It highlights that no specific interfaces are currently defined or implemented, as indicated in Table 5.1, which lists the available interfaces along with their associated functional clusters and purposes. This absence suggests a current lack of external communication points between the firewall and other components within the adaptive platform architecture."
+        },
+        {
+          "title": "5.2 Required Interfaces",
+          "node_id": "0013",
+          "start_index": 11,
+          "end_index": 13,
+          "summary": "This section outlines the required interfaces for the Firewall within the AUTOSAR Adaptive Platform. It introduces key interactions between the Firewall and other Functional Clusters, including the Execution Management Cluster via an Execution Client interface and the Intrusion Detection System Manager through an Event Reporter interface. Specifically, the Event Reporter interface enables the Firewall to report standardized security events, highlighting its role in enhancing platform security by providing real-time threat information. Table 5.2 further details these interfaces, specifying their purposes within the broader system architecture."
+        }
+      ]
+    },
+    {
+      "title": "6 Requirements Tracing",
+      "node_id": "0014",
+      "start_index": 13,
+      "end_index": 15,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines how various requirements are traced back to specific sections within the document. It includes key concepts such as stateless and stateful filtering, deep packet inspection, allow and block list configurations, rate limiting, security alerts, initialization procedures, and adherence to AUTOSAR Adaptive Platform standards. The relationships between these requirements and their fulfillment through corresponding sections (e.g., [AP_SWS_Fw_30012], [AP_SWS_Fw_40004]) are clearly defined, ensuring that each requirement is linked to the relevant implementation details. Additionally, it covers naming conventions for methods, functions, parameters, and types, as well as the use of specific programming constructs like \"noexcept,\" all while aligning with the broader goals of creating a modern and robust programming environment within the AUTOSAR framework."
+    },
+    {
+      "title": "7 Functional specification",
+      "node_id": "0015",
+      "start_index": 15,
+      "end_index": 44,
+      "summary": "The \"Functional Specification\" section of the \"Specification of Firewall for Adaptive Platform\" document outlines the core functionalities and operational requirements of the firewall system. It introduces key concepts such as adaptive security policies, real-time threat detection mechanisms, and dynamic resource allocation strategies. The section emphasizes the importance of these components in ensuring seamless integration with the platform's existing infrastructure while maintaining high levels of security. Additionally, it details how these elements interact to form a robust defense mechanism, including specific constraints on policy updates and response times as defined in accompanying tables.",
+      "nodes": [
+        {
+          "title": "7.1 Architecture Overview",
+          "node_id": "0016",
+          "start_index": 15,
+          "end_index": 17,
+          "summary": "This section provides an overview of the architecture of the FC Firewall for an adaptive platform. It introduces key concepts such as FirewallRules, which are patterns associated with actions (allow or block), and describes how these rules are managed through Machine Manifests to configure the underlying firewall engine. The document outlines the pattern-matching mechanism used by the firewall to compare network packets against these rules and execute corresponding actions. Additionally, it highlights the dynamic capabilities of the FC Firewall, including its ability to enable or disable rules based on vehicle state and raise security events for intrusion detection."
+        },
+        {
+          "title": "7.2 Network packet inspection",
+          "node_id": "0017",
+          "start_index": 17,
+          "end_index": 25,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the network packet inspection process carried out by the FC Firewall. It introduces key concepts such as firewall rules, which are modeled using AUTOSAR methodology and consist of expected network packet patterns and associated actions. The document describes different filtering mechanisms including stateless, stateful, and deep packet inspection, and specifies that the inspection is performed on complete network packets across various OSI layers. Importantly, it details how ingress and egress traffic are filtered based on specific rulesets referenced by `Firewall RuleProps.matchingIngressRule` and `Firewall RuleProps.matchingEgressRule`, respectively, ensuring that only relevant rules are applied to the appropriate type of traffic.",
+          "nodes": [
+            {
+              "title": "7.2.1 Stateless packet inspection",
+              "node_id": "0018",
+              "start_index": 18,
+              "end_index": 20,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document describes the process and criteria for stateless packet inspection by a firewall. It outlines how the firewall compares specific header fields against expected values at different OSI layers (DataLink, Network, and Transport) to determine whether a network packet matches predefined rules. Key concepts include DataLinkLayerRule, NetworkLayerRule, and TransportLayerRule, which define the parameters for matching packets based on MAC addresses, IP addresses, ports, and protocol checksums. The document also specifies that ranges can be used instead of specific values, enhancing flexibility in rule definitions. Additionally, it mentions that if a rule includes checksum verification, the firewall will validate the checksum field's presence and correctness within the packet to ensure accurate matching.",
+              "nodes": [
+                {
+                  "title": "7.2.1.1 Inspection of not modeled protocols",
+                  "node_id": "0019",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "This section discusses the methods used by the FC Firewall for inspecting and handling protocols not natively modeled within its system. It introduces two key mechanisms: EtherType inspection, which identifies and blocks certain protocols based on their EtherType values, and generic byte pattern inspection, which allows for detailed examination of network packets using specific byte patterns. Table 7.1 provides examples of protocols identified through EtherType inspection, illustrating the relationship between these values and the corresponding protocols. Additionally, it mentions that generic inspection can be applied to both unmodeled protocols and payload data, highlighting its flexibility in handling a wide range of traffic."
+                }
+              ]
+            },
+            {
+              "title": "7.2.2 Stateful packet inspection",
+              "node_id": "0020",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "This section of the document describes stateful packet inspection in the FC Firewall for an adaptive platform. It introduces key concepts such as `TcpRule.timeoutCheck`, `TcpRule.numberOfParallelTcpSessions`, and `TcpRule.stateManagementBasedOnTcpFlags`. The firewall performs additional checks based on these parameters, including storing timestamps to detect timeouts, tracking open TCP connections, and validating state transitions according to the TCP state machine defined in RFC 793. These processes ensure more secure and efficient packet handling by considering the dynamic nature of TCP sessions."
+            },
+            {
+              "title": "7.2.3 Deep packet inspection",
+              "node_id": "0021",
+              "start_index": 21,
+              "end_index": 25,
+              "summary": "This section discusses the capability of the firewall to perform deep packet inspection (DPI) on application layer protocols. It highlights that the firewall supports DPI for specific protocols such as SOME/IP (including SOME/IP-SD), DDS, DoIP, and generic DPI. These protocols are crucial for network security and monitoring at a detailed level, allowing the firewall to inspect beyond the transport and network layers to ensure comprehensive protection and analysis of data flows. While no tables are explicitly mentioned in this excerpt, the focus is on identifying and analyzing specific application layer protocols to enhance security measures through advanced packet inspection techniques.",
+              "nodes": [
+                {
+                  "title": "7.2.3.1 SOME/IP",
+                  "node_id": "0022",
+                  "start_index": 21,
+                  "end_index": 23,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" focuses on the inspection and processing of SOME/IP (Session-oriented Machine-to-Machine Exchange over IP) protocol messages by the FC Firewall. Key concepts include the inspection of SOME/IP header fields, the aggregation of FirewallRules to match individual SOME/IP or SOME/IP-SD messages within a network packet, and the validation of expected values against these headers. The document outlines specific rules for matching FirewallRules based on service-specific information like Service ID and Method ID, as well as support for length verification and range-based value comparisons. Importantly, the FC Firewall must ensure that every SOME/IP message in a network packet has a corresponding valid FirewallRule to enforce access control effectively."
+                },
+                {
+                  "title": "7.2.3.2 DDS",
+                  "node_id": "0023",
+                  "start_index": 23,
+                  "end_index": 24,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document focuses on the deep packet inspection (DPI) of Data Distribution Service over Shared Memory (DDS) messages using the DDS Interoperability Wire Protocol (DDS-RTPS). It introduces key concepts such as the RTPS header and submessages, which are part of the network packet format. The section outlines that the FC Firewall must compare the fields within these messages against configured rules to determine if a match exists. Importantly, it specifies that only one RTPS header and submessage can be matched per rule, and all referenced actions must align for a match to be considered valid."
+                },
+                {
+                  "title": "7.2.3.3 DoIP",
+                  "node_id": "0024",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" focuses on the deep packet inspection capabilities of the FC Firewall specifically for DoIP (Diagnostic Over IP) messages. Key concepts include the comparison of expected values defined in `DoIpRule` against DoIP header fields, and the ability to define value ranges using minimal and maximal values. The section outlines that while the firewall inspects DoIP headers and parts of the payload, it does not perform deep packet inspection at the UDS protocol level. Importantly, these checks can be implemented through generic inspection features as described in subsequent sections. The technical details specify how matching is determined based on exact value comparison or defined ranges, ensuring flexibility in rule implementation."
+                },
+                {
+                  "title": "7.2.3.4 Generic inspection",
+                  "node_id": "0025",
+                  "start_index": 24,
+                  "end_index": 25,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" discusses generic inspection capabilities in the FC Firewall. It introduces key concepts such as `FirewallRule`, which can include multiple `PayloadBytePatternRules` to inspect specific byte values within network packets. The document outlines a process where the firewall compares these expected byte values against actual packet data, considering the rules matched only if all specified values align. This mechanism supports payload inspection and protocol analysis beyond what is natively supported by the firewall."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "7.3 Network packet filtering",
+          "node_id": "0026",
+          "start_index": 25,
+          "end_index": 28,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" focuses on detailing the network packet filtering mechanisms supported by the FC Firewall. It introduces key concepts such as Allowlists and Blocklists used in pattern-matching-based filtering, rate limiting to control traffic volume, and state-dependent filtering based on configurable firewall states. The relationships between these components are described, emphasizing how they work together to manage and secure network traffic. While no specific tables are mentioned, the section outlines important processes for implementing effective network security measures through these filtering mechanisms.",
+          "nodes": [
+            {
+              "title": "7.3.1 Allowlists and Blocklists",
+              "node_id": "0027",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document explains the fundamental differences between Allowlist and Blocklist firewalls. It defines that in an Allowlist firewall, only network traffic matching specified patterns is allowed, while all other traffic is blocked; conversely, a Blocklist firewall blocks explicitly defined packets and allows everything else. The document also outlines specific actions based on FirewallRuleProps.action settings: allowing or blocking matched packets. Additionally, it describes the default behavior for unmatched packets and introduces the concept of mixed Allow-/Blocklist firewalls, which can be redundant but enable detailed pattern matching and dedicated mapping of security events."
+            },
+            {
+              "title": "7.3.2 Rate limiting",
+              "node_id": "0028",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" discusses rate limiting functionality in the firewall, specifically focusing on how it identifies and mitigates off-frequency cyclic messages through pattern matching. Key concepts include the implementation of the leaky bucket algorithm to manage these patterns, with `FirewallRule.bucketSize` defining the maximum capacity of the bucket and `FirewallRule.refillAmount` determining its decrement rate. The firewall drops packets when a match occurs and the counter exceeds the bucket size, effectively preventing potential attacks such as man-in-the-middle or faulty ECU issues. This functionality is tied to upstream requirements FO_RS_Fw_00006."
+            },
+            {
+              "title": "7.3.3 State dependent filtering",
+              "node_id": "0029",
+              "start_index": 26,
+              "end_index": 28,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document explains how the FC Firewall supports state-dependent filtering based on the vehicle's current situation. Key concepts include StateDependentFirewalls and FirewallRules that are managed by a user application and aggregated within specific states. The document outlines constraints, such as ensuring only one active StateDependentFirewall at any time, and processes for switching between these states using the ara::fw::FirewallStateSwitchInterface API. It also details access control mechanisms and error handling procedures when updating the active firewall state."
+            }
+          ]
+        },
+        {
+          "title": "7.4 Firewall Rule Management",
+          "node_id": "0030",
+          "start_index": 28,
+          "end_index": 29,
+          "summary": "This section discusses the management of Firewall Rules in the FC Firewall for an Adaptive Platform. It introduces two primary methods for managing these rules: over-the-air (OTA) updates and runtime activation/deactivation. OTA updates are preferred for adding new allow rules corresponding to newly deployed applications, as they can be integrated into vehicle update campaigns via UCM. Runtime management is available but not supported in this release, limiting dynamic rule adjustments to pre-configured rules managed through OTA updates."
+        },
+        {
+          "title": "7.5 Functional cluster life-cycle",
+          "node_id": "0031",
+          "start_index": 29,
+          "end_index": 30,
+          "summary": "This section discusses the life-cycle management of a Functional Cluster (FC) Firewall within an adaptive platform. It introduces key functions `ara::core::Initialize` and `ara::core::Deinitialize`, which are used to initialize and deinitialize the FC Firewall, respectively. Applications must adhere to these lifecycle methods; they should not invoke any FC Firewall APIs outside of the initialization and deinitialization phases defined by these functions. This ensures proper management and operation of the firewall within the platform's architecture.",
+          "nodes": [
+            {
+              "title": "7.5.1 Startup",
+              "node_id": "0032",
+              "start_index": 29,
+              "end_index": 30,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the startup process for the FC Firewall. It describes that when `ara::core::Initialize` is called, the firewall reads in manifest information and prepares necessary access structures to facilitate communication with applications. These access structures can include channels between application processes and stack processes (if present) or other required resources. The section references an upstream requirement FO_RS_Fw_00010, indicating that this process is dependent on certain preconditions being met."
+            },
+            {
+              "title": "7.5.2 Shutdown",
+              "node_id": "0033",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the shutdown process for the FC Firewall. It specifies that when the `ara::core::Deinitialize` function is called, the firewall must close all acquired handles and free any allocated access structures to ensure proper resource management. This process is directly linked to upstream requirement FO_RS_Fw_00010, ensuring a clear relationship between system-level commands and the firewall's behavior during shutdown. While no tables are explicitly mentioned in this excerpt, the description provides critical details on how the firewall should behave when it receives a deinitialization command, emphasizing resource cleanup as a key aspect of its operation."
+            },
+            {
+              "title": "7.5.3 Daemon crash",
+              "node_id": "0034",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The section \"7.5.3 Daemon Crash\" in the \"Specification of Firewall for Adaptive Platform\" document discusses potential issues related to daemon crashes within the firewall system. While the specific content of this section is not provided, it likely covers key concepts such as the role and function of daemons in the firewall architecture, their importance for maintaining system stability, and the potential impacts of a crash on overall network security. The summary would also address any relationships or constraints between the daemon's operation and other components of the adaptive platform, as well as processes for detecting, diagnosing, and mitigating crashes to ensure continuous service availability. Given that no tables are mentioned in the content excerpt, technical details such as error codes, recovery procedures, or diagnostic steps relevant to daemon crashes would be inferred from typical firewall specifications."
+            }
+          ]
+        },
+        {
+          "title": "7.6 Reporting",
+          "node_id": "0035",
+          "start_index": 30,
+          "end_index": 44,
+          "summary": "The \"7.6 Reporting\" section of the \"Specification of Firewall for Adaptive Platform\" document focuses on the mechanisms and configurations required for generating and managing reports related to firewall operations. It introduces key concepts such as report types, intervals, and formats, which are essential for monitoring and auditing purposes. The section outlines important relationships between different reporting settings and their impact on system performance and security. While no specific tables are mentioned, it emphasizes the need for customizable report generation options that can be tailored to meet various organizational needs.",
+          "nodes": [
+            {
+              "title": "7.6.1 Security Events",
+              "node_id": "0036",
+              "start_index": 30,
+              "end_index": 43,
+              "summary": "This section discusses the role of firewalls in Intrusion Detection Systems (IDS) within the context of vehicle networks, specifically focusing on the Security Events (SEvs) generated by the FC Firewall. Key concepts include the IDS Manager (IdsM), which aggregates and qualifies these events before forwarding them to a configured sink such as persistent memory or the vehicle-central IDS instance (IdsR). The section outlines the conditions under which the FC Firewall raises SEvs and details the set of predefined security events it supports, providing a foundational understanding of how firewalls contribute to network security in automotive systems.",
+              "nodes": [
+                {
+                  "title": "7.6.1.1 SEvs raised by the firewall",
+                  "node_id": "0037",
+                  "start_index": 30,
+                  "end_index": 39,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the Security Events (SEvs) generated by the FC Firewall. It introduces key SEvs related to packet blocking due to rule mismatches at various protocol layers, including IPv4, IPv6, ICMP, TCP, UDP, SOME/IP, and others, as well as specific stateful properties of TCP connections such as maximum connection limits, timeouts, and invalid state transitions. Additionally, it defines an SEv for packets blocked by rate limiting and another for access control denials to firewall resources. The document emphasizes the importance of fine-grained SEvs to minimize information loss while providing precise details about the nature of incidents. Technical details include context data definitions such as EthernetFrame byte arrays truncated to a specific length, with truncation lengths defined on a project-specific basis or using AUTOSAR defaults."
+                },
+                {
+                  "title": "7.6.1.2 Raising SEvs",
+                  "node_id": "0038",
+                  "start_index": 39,
+                  "end_index": 43,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines how the FC Firewall raises Security Event Notifications (SEvs) when network packets are blocked due to non-matching firewall rules. Key concepts include identifying the specific network protocol that does not match any rule and raising corresponding SEvs based on this mismatch. The process involves calculating the least distance between the packet's fields and the matching rules across different OSI layers. Important relationships are established through the definition of various SEvs for different protocols, such as IPv4, TCP, UDP, ICMP, SOME/IP, etc., each associated with specific SEv identifiers. Additionally, the document describes SEvs related to stateful filtering mechanisms like TCP connection limits and timeouts, as well as rate limiting features."
+                }
+              ]
+            },
+            {
+              "title": "7.6.2 Log Messages",
+              "node_id": "0039",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" discusses the current state of log messages generated by the FC Firewall. It highlights that at present, the firewall does not produce any Log Messages, indicating a potential limitation in its logging capabilities. While no specific technical details or tables are provided, this absence suggests that additional implementation or configuration may be required to enable logging functionality for better monitoring and troubleshooting."
+            },
+            {
+              "title": "7.6.3 Violation Messages",
+              "node_id": "0040",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" discusses the current state regarding Violation Messages in the FC Firewall. It highlights that as of now, no specific Violation Messages have been defined within the firewall's specifications. This absence implies that there are currently no standardized messages or alerts generated by the firewall to indicate violations or breaches of security policies. While this section does not introduce new key concepts or define components, it sets a baseline for future development in terms of how the firewall will communicate security incidents and potential threats."
+            },
+            {
+              "title": "7.6.4 Production Errors",
+              "node_id": "0041",
+              "start_index": 43,
+              "end_index": 44,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" discusses the absence of defined Production Errors in the FC Firewall. It highlights that without a formal definition or categorization of production-related errors, potential issues during deployment and operation cannot be systematically addressed. The summary does not introduce any specific key concepts, definitions, or components but emphasizes the need for such definitions to improve error management and platform reliability. Although no tables are mentioned in this excerpt, it implies that the lack of defined Production Errors could impact the overall robustness and maintainability of the firewall system during real-world operations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "8 API specification",
+      "node_id": "0042",
+      "start_index": 44,
+      "end_index": 55,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document focuses on detailing the API specification for various functionalities within the firewall system. It introduces key concepts such as different kinds of declarations (class, function, struct, type alias, enumeration, variable) and their corresponding attributes like thread safety, parameters, return values, and exceptions. The section emphasizes that these APIs are defined in tables, each providing a comprehensive breakdown of API components including scope, symbol names, header files, and error handling mechanisms. Importantly, it outlines the relationship between C++ bindings and modeled sub-classes while also specifying how vendor-specific errors can be integrated into the standardized error codes framework.",
+      "nodes": [
+        {
+          "title": "8.1 PortInterface to API class binding",
+          "node_id": "0043",
+          "start_index": 44,
+          "end_index": 45,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the binding between PortInterface and API classes/functions. It introduces key concepts such as the `FirewallStateSwitchInterface` API class and its associated constructor functions, which are essential for constructing instances of this class. The table (Table 8.2) details these bindings, showing how specific PortInterfaces correspond to particular API classes or functions, emphasizing that these functions can be constructors, named member functions, or nonmember factory constructors. This binding is crucial for understanding the instantiation and management of firewall state switch functionalities within the adaptive platform architecture."
+        },
+        {
+          "title": "8.2 API Header Files",
+          "node_id": "0044",
+          "start_index": 45,
+          "end_index": 45,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the requirements and conventions for API header files related to the FirewallStateSwitchInterface. It specifies that a header file must be generated for each modeled interface, with a naming convention based on the `shortName` provided by the interface. The header files follow a specific directory structure (`ara/fw/states/{}.h`) and include a multiple inclusion guard mechanism as per SWS_CORE_90002 to prevent redefinition errors. This ensures that each state switch interface is properly encapsulated and can be included without causing conflicts in the codebase."
+        },
+        {
+          "title": "8.3 API Common Data Types",
+          "node_id": "0045",
+          "start_index": 45,
+          "end_index": 46,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document focuses on defining common data types used in API interactions related to firewall states. It introduces an enumeration type `ara::fw::states::{<fwssi-sn>}` that represents various firewall states, along with corresponding variable definitions for each state. The key components include the underlying type (`std::uint32_t`), the syntax for declaring enumerators, and specific examples of how these states are defined in C++. Importantly, it outlines the relationship between upstream requirements and the enumeration values, ensuring that each firewall state is properly represented within the `ara::fw::FirewallStateSwitchInterface`."
+        },
+        {
+          "title": "8.4 API Reference",
+          "node_id": "0046",
+          "start_index": 46,
+          "end_index": 55,
+          "summary": "The \"8.4 API Reference\" section in the \"Specification of Firewall for Adaptive Platform\" document provides a detailed guide to the Application Programming Interface (API) used for interacting with the firewall system. It introduces key concepts such as API endpoints, request and response formats, and authentication mechanisms. The section outlines important relationships between different API components and constraints on their usage, ensuring secure and efficient communication. Additionally, it includes tables that specify data types, status codes, and example requests/responses to facilitate implementation by developers.",
+          "nodes": [
+            {
+              "title": "8.4.1 FirewallStateSwitchInterface",
+              "node_id": "0047",
+              "start_index": 46,
+              "end_index": 50,
+              "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the `FirewallStateSwitchInterface` class and its associated functions. It defines an interface for switching between different firewall states using a specified enum type that contains a list of firewall states. Key components include the constructor, destructor, copy/move constructors, copy/move assignment operators, and the `SwitchFirewallState` function. The document emphasizes thread safety considerations and provides error handling details for state transitions, ensuring robustness in state switching operations while maintaining exception safety."
+            },
+            {
+              "title": "8.4.2 FirewallErrorDomain",
+              "node_id": "0048",
+              "start_index": 50,
+              "end_index": 55,
+              "summary": "The section \"8.4.2 FirewallErrorDomain\" in the \"Specification of Firewall for Adaptive Platform\" document focuses on defining and detailing the error handling mechanisms within the firewall system. It introduces key concepts such as error codes, their meanings, and corresponding actions that are triggered when errors occur during firewall operations. The summary outlines important relationships between different error types and their impact on the overall system behavior, emphasizing constraints related to error propagation and recovery processes. While no specific tables are mentioned in this excerpt, the section likely includes detailed descriptions of each error code and its associated response mechanisms, providing a comprehensive framework for managing errors within the firewall domain.",
+              "nodes": [
+                {
+                  "title": "8.4.2.1 ara::fw::FwErrc",
+                  "node_id": "0049",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "This section describes the definition and implementation of the `ara::fw::FwErrc` enumeration within the firewall module for an adaptive platform. It introduces key error codes such as `kServiceNotAvailable` and `kInvalidStateDependentFirewall`, which are used to indicate specific failure states in communication with the firewall daemon or issues related to state-dependent firewall rule-sets. The `FwErrc` enumeration is scoped within the `ara::fw` namespace, utilizing an underlying type from the `ara::core::ErrorDomain` class. This setup ensures a standardized approach to error handling and facilitates clear communication of failure conditions in the firewall operations."
+                },
+                {
+                  "title": "8.4.2.2 ara::fw::GetFwErrorDomain",
+                  "node_id": "0050",
+                  "start_index": 50,
+                  "end_index": 51,
+                  "summary": "This section describes the API function `ara::fw::GetFwErrorDomain`, which returns a reference to an `ara::fw::FwErrorDomain` object. The function is defined within the `namespace ara::fw` and declared in the header file `fw_error_domain.h`. It is marked as `constexpr` and `noexcept`, ensuring that it can be evaluated at compile time and does not throw exceptions, respectively. This function is thread-safe and provides a way to access error domain information for firewall operations, fulfilling upstream requirements RS_AP_00120, RS_AP_00130, and RS_AP_00159."
+                },
+                {
+                  "title": "8.4.2.3 ara::fw::MakeErrorCode overload for ara::fw::GetFwErrorDomain",
+                  "node_id": "0051",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "This section describes the `MakeErrorCode` function overload within the `ara::fw` namespace for generating an `ara::core::ErrorCode` object. It introduces key concepts such as error code numbers and vendor-defined data associated with errors, and specifies that this function is used to create instances of `ara::core::ErrorCode`. The function takes two parameters: an error code number (`code`) and vendor-defined data (`data`), and returns an `ara::core::ErrorCode` object. This process ensures exception safety and thread safety, making it suitable for use in a multi-threaded environment while adhering to specified upstream requirements."
+                },
+                {
+                  "title": "8.4.2.4 ara::fw::FwException",
+                  "node_id": "0052",
+                  "start_index": 51,
+                  "end_index": 52,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document describes the `ara::fw::FwException` class and its associated constructor. It is part of the API defined within the `ara::fw` namespace, inheriting from `ara::core::Exception`. The class is designed to handle exceptions thrown by the firewall API, with a constructor that accepts an `ara::core::ErrorCode` parameter for error handling purposes. This exception class ensures both exception safety and thread safety, making it suitable for use in concurrent environments. The section references specific requirements (RS_AP_00130, RS_AP_00122, RS_AP_00127) to provide context on its development and integration within the broader system architecture."
+                },
+                {
+                  "title": "8.4.2.5 ara::fw::FwErrorDomain",
+                  "node_id": "0053",
+                  "start_index": 52,
+                  "end_index": 55,
+                  "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the definition and implementation of the `ara::fw::FwErrorDomain` class, which represents the firewall error domain. Key components include the `Errc` type alias for error codes and the `Exception` type alias for exceptions derived from `FwException`. The section also describes several member functions such as `Name`, `Message`, and `ThrowAsException`, each with specific purposes related to error handling in the firewall context. These functions ensure thread safety while providing exception-safe operations, adhering to certain upstream requirements and unique identifiers."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "9 Service Interfaces",
+      "node_id": "0054",
+      "start_index": 55,
+      "end_index": 56,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" discusses the service interfaces related to the FC Firewall. It highlights that there are no specific service interfaces either provided by or required for the firewall, indicating a design focused on minimal external interaction. This implies that the firewall operates independently without needing to integrate with other services through defined APIs or protocols. While no tables are present in this section, it sets the stage for understanding how the FC Firewall functions within the broader system architecture, emphasizing its self-contained nature and potential impact on the overall platform's design considerations."
+    },
+    {
+      "title": "10 Configuration",
+      "node_id": "0055",
+      "start_index": 56,
+      "end_index": 74,
+      "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" focuses on detailing the configuration structure of the FC Firewall. It explains how this configuration is defined through TPS_Manifest by the AdaptiveFirewallModuleInstantiation module, which sets default values and outlines semantic constraints for the configuration model. While no specific tables are mentioned in the provided content, it emphasizes the importance of adhering to these constraints to ensure proper functioning of the firewall within the adaptive platform.",
+      "nodes": [
+        {
+          "title": "10.1 Default Values",
+          "node_id": "0056",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines the default values assigned to attributes specified in TPS_Manifest. Notably, it states that no default values have been defined for the FC Firewall attribute. This summary highlights the absence of predefined settings for a critical component and emphasizes the need for explicit configuration by the user or administrator. While there are no tables provided in this section, the document's focus on defining default values underscores the importance of clear and detailed specifications in platform configurations to ensure robust security measures are implemented."
+        },
+        {
+          "title": "10.2 Semantic Constraints",
+          "node_id": "0057",
+          "start_index": 56,
+          "end_index": 74,
+          "summary": "This section of the \"Specification of Firewall for Adaptive Platform\" document outlines semantic constraints and key elements related to configuring the firewall on an adaptive platform. It introduces core classes such as `AdaptiveFirewallModuleInstantiation`, `FirewallRuleProps`, and various rule configurations like `DataLinkLayerRule` and `DdsRule`. The document defines relationships between these components, particularly how rules are applied in different network layers and states. Importantly, it includes constraints, such as the prohibition of a specific namespace for the firewall interface (`[AP_SWS_Fw_CONSTR_00001]`). Technical details from tables provide attributes like `stateDep` for state-dependent firewall rules and `shortName` for identifying short names in `Referrable`."
+        }
+      ]
+    }
+  ]
+}

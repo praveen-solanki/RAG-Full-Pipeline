@@ -1,0 +1,383 @@
+{
+  "doc_name": "Technical Report on Operating System Tracing Interface.pdf",
+  "structure": [
+    {
+      "title": "of Contents",
+      "node_id": "0000",
+      "start_index": 3,
+      "end_index": 4,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "A.2 Change History of this document according to AUTOSAR Release R24-11 28",
+          "node_id": "0001",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": ""
+        },
+        {
+          "title": "A.3 Change History of this document according to AUTOSAR Release R23-11 30",
+          "node_id": "0002",
+          "start_index": 4,
+          "end_index": 4,
+          "summary": ""
+        }
+      ]
+    },
+    {
+      "title": "Introduction",
+      "node_id": "0003",
+      "start_index": 5,
+      "end_index": 5,
+      "summary": "This technical report serves as supplementary documentation for the Operating System Tracing Interface (OSTI) defined in the AUTOSAR Standard. It provides detailed information to enhance understanding or implementation of the OSTI within AUTOSAR-compliant systems. The report focuses on expanding the technical specifications and operational context of the interface. No additional features or extensions beyond the standard are described. The content is intended to support developers and engineers working with AUTOSAR-based operating systems.",
+      "nodes": [
+        {
+          "title": "Objectives",
+          "node_id": "0004",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "The objective is to develop a low-level API for tracing tasks and processes with minimal impact on application runtime behavior. The API captures timing information to analyze software timing requirements, including CPU time, deadlines, and periodicity accuracy. It enables breakdown of time consumption to specific application components and identifies timing dependencies and locks. Recorded data supports analysis of time-related performance characteristics and system behavior. The focus is on preserving runtime efficiency while providing detailed temporal insights."
+        },
+        {
+          "title": "Scope",
+          "node_id": "0005",
+          "start_index": 5,
+          "end_index": 5,
+          "summary": "This report focuses on the operating system of an adaptive platform, with the API designed for stack and trace tool vendors, not application engineers. The API is intended for use at the driver level of the operating system. Tracing processes or tasks at application or middleware levels is prohibited, as it would alter the system's runtime behavior. The scope explicitly excludes higher-level tracing to preserve system integrity and behavior."
+        }
+      ]
+    },
+    {
+      "title": "Definition of terms and acronyms",
+      "node_id": "0006",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Acronyms and abbreviations",
+          "node_id": "0007",
+          "start_index": 6,
+          "end_index": 6,
+          "summary": "The section defines key acronyms and abbreviations related to the AUTOSAR Adaptive Platform, with most terms referenced to the AUTOSAR Glossary [1]. Execution Management oversees the ordered startup and shutdown of the platform and applications. An Execution Manifest is a configuration file for Adaptive Applications, deployed with their Executable to define process parameters and resource assignments. A Modelled Process is an Executable instance on a Machine, linked to the ARXML Process element, while the Operating System manages hardware resources and processes. Task refers to a thread in POSIX contexts."
+        }
+      ]
+    },
+    {
+      "title": "Related Documentation",
+      "node_id": "0008",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "The \"Related Documentation\" section lists two key resources: [1] the Glossary document titled *AUTOSAR_FO_TR_Glossary*, and [2] the *Specification of Execution Management* document titled *AUTOSAR_AP_SWS_ExecutionManagement*. These documents provide foundational terminology and detailed specifications for execution management within the AUTOSAR framework. Both are referenced by their respective technical identifiers to ensure precise identification. The section does not elaborate on their content but highlights their relevance as supplementary materials. No additional information beyond the listed entries is included."
+    },
+    {
+      "title": "Functional Specification",
+      "node_id": "0009",
+      "start_index": 8,
+      "end_index": 10,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "ARTI Tracing Interface",
+          "node_id": "0010",
+          "start_index": 8,
+          "end_index": 10,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "OS/ARTI Adapter",
+              "node_id": "0011",
+              "start_index": 8,
+              "end_index": 10,
+              "summary": "The OS/ARTI Adapter provides trace points at the OS level to analyze, verify, and visualize timing behavior, with ARTI trace hooks forming a standardized interface defined by an API. The implementation of these hooks depends on the tracing mechanism and is provided by the tracing tool vendor, supporting use as C macros or functions, which may expand to nothing or call empty functions if no tracing is available. The ARTI interface follows AUTOSAR’s two-level architecture, treating tasks (schedulable units, often called threads) and processes (environments containing tasks) as distinct entities. Parameters like `callingContext`, `coreId",
+              "nodes": [
+                {
+                  "title": "Adapter Management",
+                  "node_id": "0012",
+                  "start_index": 10,
+                  "end_index": 10,
+                  "summary": "The OS/ARTI Adapter must call `ArtiVersionInfo` upon startup, with `callingContext` set to the current interrupt handling context and `versionInfoPtr` pointing to the OS's `ArtiVersionInfoType`. This ensures API version compatibility between the OS and ARTI-driver by comparing their `apiVersion` values. If the OS's version is higher, the OS may call `ArtiVersionInfo` again with an adjusted major version; if lower, tracing is not possible"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "of 31  Document ID 1083: AUTOSAR_AP_TR_OperatingSystemTracingInterface",
+      "node_id": "0013",
+      "start_index": 10,
+      "end_index": 16,
+      "summary": "The section outlines requirements for the OS/ARTI Adapter under RS_OSI_00210. If ARTI is used, the adapter must call **ArtiInit** immediately after confirming the API version, with the **callingContext** parameter set to the current interrupt handling context to initialize the trace driver. Additionally, when the adapter is stopped, **ArtiCleanup** must be invoked with the **callingContext** parameter again set to the current interrupt handling context. Both operations are specified to ensure proper trace driver initialization and cleanup. The requirements emphasize the necessity of correctly configuring the **callingContext** parameter for interrupt-aware trace functionality.",
+      "nodes": [
+        {
+          "title": "Task Interface",
+          "node_id": "0014",
+          "start_index": 11,
+          "end_index": 14,
+          "summary": "The **Task** is the smallest schedulable unit managed by the OS, as defined in the AUTOSAR Glossary. Task trace events follow the state machine in Figure 4.3, with states"
+        },
+        {
+          "title": "Process Interface",
+          "node_id": "0015",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "The **Process** interface defines an executable unit managed by an OS scheduler with isolated resources and a protected namespace, as per AUTOSAR. When **ARTI** is enabled, the OS/ARTI Adapter must invoke specific hooks for process lifecycle events: **ArtiProcessSwitch** on process switches (with parameters `calledContext"
+        }
+      ]
+    },
+    {
+      "title": "API Specification",
+      "node_id": "0016",
+      "start_index": 17,
+      "end_index": 27,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "Type Definitions",
+          "node_id": "0017",
+          "start_index": 17,
+          "end_index": 18,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "AntiVersionInfoType",
+              "node_id": "0018",
+              "start_index": 17,
+              "end_index": 18,
+              "summary": ""
+            },
+            {
+              "title": "CallingContext",
+              "node_id": "0019",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "title": "Callback Notifications",
+          "node_id": "0020",
+          "start_index": 19,
+          "end_index": 27,
+          "summary": "The \"Callback Notifications\" section lists functions available for use by other modules. It serves as a reference for developers to identify and integrate callback mechanisms. The functions are designed to facilitate communication between modules through notification-based interactions. No specific implementation details or function names are provided in this section. The purpose is to outline the available tools for modular system integration.",
+          "nodes": [
+            {
+              "title": "ArtiTaskSwitch",
+              "node_id": "0021",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": "The ArtiTaskSwitch section specifies an upstream requirement referenced as RS_OSI_00210. It outlines the necessity of adhering to this requirement for system integration or functional specifications. No additional technical details or context are provided beyond the upstream requirement identifier. The summary focuses strictly on the stated requirement without extrapolation. The section serves as a pointer to the relevant upstream standard or specification."
+            },
+            {
+              "title": "ArtiTaskWait",
+              "node_id": "0022",
+              "start_index": 19,
+              "end_index": 19,
+              "summary": ""
+            },
+            {
+              "title": "ArtiTaskRelease",
+              "node_id": "0023",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": "The section defines the API function `ArtiTaskRerelease` under the technical requirement TR_OSTI_00504, which is linked to the upstream requirement RS_OSI_00210. It outlines the function's purpose, parameters, and behavior as specified in the upstream documentation. The function is designed to handle task re-release operations, ensuring compliance with system integration standards. Technical details include error handling, input validation, and synchronization mechanisms. The summary adheres strictly to the provided text without extrapolation."
+            },
+            {
+              "title": "ArtiTaskPreempt",
+              "node_id": "0024",
+              "start_index": 20,
+              "end_index": 20,
+              "summary": ""
+            },
+            {
+              "title": "ArtiTaskExit",
+              "node_id": "0025",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "The **ArtiTaskExit** API function is defined under the technical requirement **TR_OSTI_00506** and is linked to the upstream requirement **RS_OSI_00210**. It serves as a task termination mechanism, likely used to signal the completion or cancellation of a task within a system. The function’s exact parameters and behavior are not detailed in the provided text, but its existence is tied to the specified requirements. No further technical specifications or implementation details are included in the summary."
+            },
+            {
+              "title": "ArtiTaskCreate",
+              "node_id": "0026",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": ""
+            },
+            {
+              "title": "ArtiTaskRename",
+              "node_id": "0027",
+              "start_index": 22,
+              "end_index": 22,
+              "summary": "The **ArtiTaskRename** section defines an API function under TR_OSTI_00508, which is linked to the upstream requirement RS_OSI_00210. It outlines the function's purpose, though no further technical implementation details or parameters are provided in the text. The reference to RS_OSI_00210 indicates its origin in a higher-level requirement. The summary focuses on the function's definition and its traceability to upstream specifications. No additional context or functionality is included."
+            },
+            {
+              "title": "ArtiTaskInfo",
+              "node_id": "0028",
+              "start_index": 22,
+              "end_index": 23,
+              "summary": ""
+            },
+            {
+              "title": "AntiProcessSwitch",
+              "node_id": "0029",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "The \"AntiProcessSwitch\" section contains no substantive technical details or explanations, only a reference to an upstream requirement labeled \"RS_OSI_00210.\" The section does not describe functionality, implementation, or operational parameters related to AntiProcessSwitch. No further context or specifications are provided within the text. The summary cannot be expanded beyond the given upstream requirement. The section appears to be incomplete or placeholder content."
+            },
+            {
+              "title": "ArtiProcessCreate",
+              "node_id": "0030",
+              "start_index": 23,
+              "end_index": 23,
+              "summary": "The `ArtiProcessCreate` function is a reentrant, thread-safe function declared in `osarti.h` and used to notify the tracer about process creation. It takes four input parameters: `callingContext` (indicating interrupt state), `coreId` (core creating the process), `processId` (ID of the new process), and `parentId` (optional parent process ID, ignored if equal to `processId`). The function is called by the OS/ARTI adapter when a process is created, providing core and process identifiers for tracing. It does not return a value."
+            },
+            {
+              "title": "AntiProcessDestroy",
+              "node_id": "0031",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "The \"AntiProcessDestroy\" section defines the API function `ArriProcessDestroy` as part of the TR_OSTI_00512 requirement. It is linked to the upstream requirement RS_OSI_00210, indicating its role in process termination management. The function's purpose aligns with system-level process control, ensuring compliance with specified operational standards. No further technical details about its implementation or parameters are provided. The summary retains all explicitly mentioned identifiers and functional context."
+            },
+            {
+              "title": "AntiProcessRename",
+              "node_id": "0032",
+              "start_index": 24,
+              "end_index": 24,
+              "summary": "The `Arti"
+            },
+            {
+              "title": "ArtiProcessInfo",
+              "node_id": "0033",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": "The \"ArtiProcessInfo\" section references an upstream requirement labeled RS_OSI_00210 but contains no additional technical details or content. No further information about the purpose, parameters, or implementation of ArtiProcessInfo is provided. The summary cannot be expanded beyond this reference due to the absence of substantive content. The section appears to serve as a placeholder or pointer to external documentation. No technical specifications, processes, or data structures are described here."
+            },
+            {
+              "title": "ArtiVersionInfo",
+              "node_id": "0034",
+              "start_index": 25,
+              "end_index": 25,
+              "summary": ""
+            },
+            {
+              "title": "Artilinit",
+              "node_id": "0035",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": ""
+            },
+            {
+              "title": "ArtiCleanup",
+              "node_id": "0036",
+              "start_index": 26,
+              "end_index": 27,
+              "summary": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Change History",
+      "node_id": "0037",
+      "start_index": 28,
+      "end_index": 31,
+      "summary": "",
+      "nodes": [
+        {
+          "title": "A.1 Change History of this document according to AUTOSAR Release R25-11",
+          "node_id": "0038",
+          "start_index": 28,
+          "end_index": 28,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "A.1.1 Added Specification Items in R25-11",
+              "node_id": "0039",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            },
+            {
+              "title": "A.1.2 Changed Specification Items in R25-11",
+              "node_id": "0040",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            },
+            {
+              "title": "A.1.3 Deleted Specification Items in R25-11",
+              "node_id": "0041",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            }
+          ]
+        },
+        {
+          "title": "A.2 Change History of this document according to AUTOSAR Release R24-11",
+          "node_id": "0042",
+          "start_index": 28,
+          "end_index": 29,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "A.2.1 Added Specification Items in R24-11",
+              "node_id": "0043",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            },
+            {
+              "title": "A.2.2 Changed Specification Items in R24-11",
+              "node_id": "0044",
+              "start_index": 28,
+              "end_index": 28,
+              "summary": ""
+            },
+            {
+              "title": "A.2.3 Deleted Specification Items in R24-11",
+              "node_id": "0045",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "The section \"A.2.3 Deleted Specification Items in R24-11\" lists 21 specification items removed in revision R24-11, including 11 notification mechanisms (e.g., ARTI Task Information Notification, ARTI Process Creation Notification) and 10 API"
+            }
+          ]
+        },
+        {
+          "title": "A.3 Change History of this document according to AUTOSAR Release R23-11",
+          "node_id": "0046",
+          "start_index": 30,
+          "end_index": 31,
+          "summary": "",
+          "nodes": [
+            {
+              "title": "A.3.1 Added Specification items in R23-11",
+              "node_id": "0047",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The section \"A.3.1 Added Specification items in R23-11\" lists 31 new specification items, categorized into two groups: (1) notifications for task/process events (e.g., task switch, creation, renaming, process creation/destroy) and (2) API function definitions (e.g., ArtiInit, ArtiCleanup, ArtiTaskCreate) along with an enum (CallingContext) and a class (ArtiVersionInfoType). Each item is uniquely identified by a TR_OSTI number, with the first 16 entries focusing on notification events and the remaining on API definitions. The specifications detail both event-triggered notifications and the structure/functionality of specific ARTI-related APIs."
+            },
+            {
+              "title": "A.3.2 Changed Specification Items in R23-11",
+              "node_id": "0048",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "The section \"A.3.2 Changed Specification Items in R23-11\" contains no text or content, making it impossible to provide a summary. The provided input is empty, and no technical details or changes are described. As a result, no precise summary can be generated based on the given information. The user may need to verify the availability of the referenced section."
+            },
+            {
+              "title": "A.3.3 Deleted Specification Items in R23-11",
+              "node_id": "0049",
+              "start_index": 31,
+              "end_index": 31,
+              "summary": "The section \"A.3.3 Deleted Specification Items in R23-11\" lists five specification items removed in R23-11: the API function `ArtiVersionInfo` and four variables (`ArtiVersionInfoType::apiVersion"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

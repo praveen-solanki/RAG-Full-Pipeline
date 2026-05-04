@@ -1,0 +1,1507 @@
+{
+  "doc_name": "Specification of Raw Data Stream.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 10,
+      "summary": "This preface section of the \"Specification of Raw Data Stream.pdf\" document provides an overview and essential information regarding the raw data stream specification within the AUTOSAR Adaptive Platform. It introduces key concepts such as RdsErrorDomain, AVTPDU headers, and various interfaces for raw data streaming using IP-based protocols (like IEEE 1722). The preface outlines important relationships between different components and processes involved in raw data streaming, including security measures like access control via IAM and secure communication. Additionally, it details the document's history, copyright information, and constraints applicable to its use."
+    },
+    {
+      "title": "Introduction and functional overview",
+      "node_id": "0001",
+      "start_index": 11,
+      "end_index": 12,
+      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document introduces and describes the functionality, API, and configuration for handling raw binary data streams in the AUTOSAR Adaptive Platform. Key concepts include the distinction between byte stream and datagram stream processing, with support for both TCP/IP and IEEE1722 protocols. The integration is defined during deployment through specific attributes and parameters, and secure communication can be achieved using TLS/IPSec or MACSec protocols. Important relationships are established between the Raw Data Streaming Interface and adaptive applications, while constraints involve the selection of appropriate transport protocols based on application requirements."
+    },
+    {
+      "title": "Acronyms and Abbreviations",
+      "node_id": "0002",
+      "start_index": 13,
+      "end_index": 13,
+      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines a glossary of acronyms and abbreviations specific to this technical specification. Key concepts include network protocols such as IP, SOME/IP, TCP, and UDP, which are essential for data transmission. Additionally, it defines various formats like RVF (Raw Video Format), CRF (Control Reference Format), TSCF (Time Sensitive Control Format), and NTSCF (None Time Sensitive Control Format) used in the context of raw data streams. The document also references standards such as IEC 61883/IIDC, IEEE1722, and AVTP, establishing a framework for understanding the technical details and relationships between different components involved in the transmission and processing of raw data.",
+      "nodes": [
+        {
+          "title": "Definitions",
+          "node_id": "0003",
+          "start_index": 13,
+          "end_index": 13,
+          "summary": "The \"Definitions\" section in the \"Specification of Raw Data Stream.pdf\" outlines key terms and their meanings essential for understanding the document. It introduces fundamental concepts such as \"raw data stream,\" \"data packet,\" and \"timestamp,\" which are crucial for interpreting the technical specifications. The definitions also establish relationships between these components, specifying that a raw data stream consists of multiple data packets, each tagged with a timestamp to indicate when it was generated. While no tables are explicitly mentioned in this excerpt, the definitions provide foundational context necessary for comprehending more complex technical details and processes described later in the document.",
+          "nodes": [
+            {
+              "title": "MAC unicast socket connection",
+              "node_id": "0004",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document explains the concept of a \"MAC unicast socket connection,\" which is a type of communication established via a socket provided by the operating system and bound to the data link layer (ISO OSI layer 2). The key component here is the media access control (MAC) address, which uniquely identifies one device on a network segment. This connection allows for point-to-point communication with exactly one other device (unicast), ensuring that data sent from one end is received by only the intended recipient. While no specific tables are mentioned in this excerpt, it emphasizes the importance of addressing and routing at the data link layer to facilitate unicast communication over a network."
+            },
+            {
+              "title": "MAC multicast socket connection",
+              "node_id": "0005",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the concept of a \"MAC multicast socket connection,\" which involves communication through a socket interface at the data link layer (ISO OSI layer 2) using media access control (MAC) addresses. Key components include the socket provided by the operating system and the ability to reach multiple communication partners simultaneously via multicast. The section emphasizes that this type of connection is bound to the lower layers of the network protocol stack, facilitating efficient data transmission to a group of devices sharing the same network segment. While no specific tables are mentioned in the excerpt, these details provide foundational knowledge for understanding how multicast operations are implemented at the MAC level."
+            },
+            {
+              "title": "AVTPDU-common-header",
+              "node_id": "0006",
+              "start_index": 13,
+              "end_index": 14,
+              "summary": "This section of \"AVTPDU-common-header\" describes the initial 12 bits of an Audio/Video Transport Protocol Data Unit (AVTPDU) header as defined in IEEE1722. It consists of three main components: subtype (8 bits), which identifies the specific format of AVTP stream data; header specific (1 bit), indicating additional information within the header; and version (3 bits), specifying the protocol version. These fields are common across all subtypes of AVTP stream data, ensuring consistency in how different types of audio/video data are transmitted. While no tables are explicitly mentioned, these components form the foundational structure for understanding and implementing AVTPDU headers in various applications."
+            },
+            {
+              "title": "AVTPDU-common-stream-header",
+              "node_id": "0007",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the \"AVTPDU-common-stream-header,\" which is defined in IEEE1722 and extends the AVTPDU-common-header for specific types of AVTP stream data subtypes, such as 61883_IIDC, AAF, TSCF, and RVF. The key concept here involves expanding the header to accommodate these particular data subtypes, thereby enhancing their functionality within the AVTP (Audio Video Transport Protocol) framework. While no tables are explicitly mentioned in this excerpt, it is implied that there are detailed specifications for how these headers are structured and used, which would typically include fields such as stream identifiers, sequence numbers, and error correction mechanisms to ensure data integrity and efficient transmission."
+            },
+            {
+              "title": "AVTPDU-common-control-header",
+              "node_id": "0008",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "This section of \"AVTPDU-common-control-header\" discusses the definition and usage of an \"AVTPDU-common-stream-header,\" as specified in [1, IEEE1722]. This header is an extension of the AVTPDU-common-header used for a subset of AVTP stream data subtypes, such as Audio Data Packets (ADP). The section outlines how this header facilitates more specific control and management within audio/video transport protocols. While no tables are explicitly mentioned in the provided content, it implies that there are underlying technical details regarding the structure and function of these headers that would be detailed elsewhere in the document."
+            },
+            {
+              "title": "AVTPDU-alternative-header",
+              "node_id": "0009",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" discusses the AVTPDU-alternative-header, a specific header format defined in IEEE1722 for handling subtypes of AVTP stream data that do not share common characteristics with other formats using either the AVTPDU-common-stream-header or AVTPDU-common-controlheaders. Key examples include CRF and NTSCF subtypes, which utilize this alternative header structure. While no tables are explicitly mentioned in the provided content, it highlights the differentiation and application of this header format to ensure proper handling of diverse stream data types within the AVTP protocol framework."
+            },
+            {
+              "title": "AVTPDU-payload",
+              "node_id": "0010",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the definition and role of the AVTPDU-payload within the context of AVTP (Audio Video Transport Protocol) data units. Key concepts include that an AVTPDU-payload is defined by IEEE1722 and constitutes the second part of an AVTPDU, carrying data encoded according to the subtype specified in the AVTPDU-header. For instance, it can carry audio data such as audio samples encapsulated within an AAF (Audio Audio Frame) payload. While no specific tables are mentioned, this section establishes a foundational understanding of how different types of payloads are structured and utilized within AVTP for transporting multimedia content efficiently."
+            },
+            {
+              "title": "Stream data producer",
+              "node_id": "0011",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on defining and explaining the role of a \"stream data producer,\" which is an end node in an Ethernet network responsible for continuously generating data. This data is then transmitted via a stream and received by one or multiple \"stream data consumers.\" The term \"talker\" is used interchangeably with \"stream data producer,\" highlighting its active role in initiating the data transmission process. While no specific tables are mentioned, this section establishes foundational terminology that will likely be referenced throughout the document to describe the interactions between producers and consumers within the network architecture."
+            },
+            {
+              "title": "Stream data consumer",
+              "node_id": "0012",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on defining and explaining the concept of a \"stream data consumer,\" which is an essential component in Ethernet networks. It continuously consumes data received via streams, with this term being synonymous to \"listener.\" The definition highlights the role of these consumers as end nodes within the network architecture, emphasizing their continuous data intake process. While no specific tables are mentioned in the provided content, the section establishes foundational terminology and roles crucial for understanding how data flows and is processed in Ethernet networks."
+            },
+            {
+              "title": "AVTP presentation time",
+              "node_id": "0013",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" defines the concept of AVTP presentation time, a critical timing mechanism in audio/video transport protocol (AVTP) systems. It explains that this time is defined by IEEE1722 and represents the gPTP (Grandmaster Precision Time Protocol) timestamp at which designated data within an AVTPDU payload is transferred to a time-sensitive application of a stream data consumer. The presentation time is calculated as the sum of the current global time and the maximum transit time, denoted as \"TavtpPresentationTime\" = \"TcurrentGlobalTime\" + \"TmaxTransitTime\". Importantly, this definition excludes format conversion time and processing time by the receiving application, as illustrated in IEEE1722's Figure 6."
+            },
+            {
+              "title": "Max transit time",
+              "node_id": "0014",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document discusses the concept of \"Max transit time,\" which is defined according to IEEE1722 standards. It explains that this value is determined by identifying the worst-case transit time between a data producer (referred to as a talker) and a data consumer (known as a listener), then setting the max transit time to be at least equal to the longest of these worst-case times. This ensures reliable data transmission, with no delays exceeding the specified limit. While no tables are explicitly mentioned in this excerpt, the process described is crucial for ensuring consistent and timely data flow in networked systems."
+            },
+            {
+              "title": "Media clock",
+              "node_id": "0015",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the definition and role of a \"Media clock,\" which is defined in IEEE1722. The media clock generates a precise rate, such as 48kHz, typically through a hardware mechanism. It operates under the management of a media clock provider, highlighting its dependency and integration within the broader system architecture. While no specific tables are mentioned, this section emphasizes the importance of maintaining accurate timing for data streams, which is crucial for synchronization in multimedia applications."
+            },
+            {
+              "title": "Media clock provider",
+              "node_id": "0016",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document defines a \"media clock provider,\" which is an end node in the network responsible for hosting and transmitting an IEEE1722 CRF (clock reference format) stream to one or multiple media clock consumers. The key concept here involves the transmission of presentation timestamps within this stream, which are correlated to the media clock rate. This setup ensures synchronization between different nodes in a network by providing a consistent time reference for media content. While no specific tables are mentioned, the IEEE1722 standard and its CRF subtype play crucial roles in facilitating accurate timing and synchronization processes."
+            },
+            {
+              "title": "Media clock consumer",
+              "node_id": "0017",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document defines a key component in media streaming networks—the \"media clock consumer.\" It explains that this end node receives a CRF (clock reference format) stream from a media clock provider and uses it to recover its internal media clock, typically through a phase-locked loop (PLL). The process involves the media clock consumer interpreting encapsulated data sent by the provider to synchronize its operations. While no tables are explicitly mentioned in this excerpt, the section emphasizes the critical role of synchronization between different nodes in the network for maintaining consistent timing and ensuring smooth media delivery."
+            },
+            {
+              "title": "ACF-stream",
+              "node_id": "0018",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document defines an \"ACF-stream,\" which is a type of IEEE1722 stream that can be either time-synchronous (TSCF) or non-time-synchronous (NTSCF). It primarily transports encapsulated bus frames as ACF-messages, such as ACF_CAN, within its AVTPDU-payload. The key components include the stream subtype and the specific message formats it supports. This definition establishes a clear relationship between the stream type and the content it carries, emphasizing that the data is structured in ACF-messages for transmission."
+            },
+            {
+              "title": "ACF-message",
+              "node_id": "0019",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" explains the concept of an ACF-message, which is defined according to IEEE1722 and represents a bus frame encapsulated for specific types such as CAN. Key components include the ACF-message-header and payload, with multiple ACF-messages potentially forming an ACF-payload within an ACF-stream. The document outlines that these messages can vary in type but are unified under the broader concept of ACF-streams for data transport."
+            },
+            {
+              "title": "ACF-message-header",
+              "node_id": "0020",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the structure and components of an ACF-message-header. It explains that the header consists of two main parts: the first 7 bits define the type of ACF-message, which can include types such as ACF_CAN or ACF_LIN as specified in IEEE1722 [1]; the subsequent 9 bits indicate the length of the message payload that follows. This structure allows for a clear and standardized way to identify and process different types of messages within an ACF (Automotive Communication Framework) system, ensuring efficient data transmission and interpretation."
+            },
+            {
+              "title": "ACF-message-payload",
+              "node_id": "0021",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the definition and characteristics of the \"ACF-message-payload,\" which is a critical component of an ACF-message as per IEEE1722 standards. The payload carries encoded data specific to the type of ACF message indicated by the header, such as CAN2.0 frames for ACF_CANpayloads. This structure ensures that the appropriate data format and content are transmitted according to the message type, facilitating efficient and accurate communication in the specified technical context."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Related documentation",
+      "node_id": "0022",
+      "start_index": 17,
+      "end_index": 17,
+      "summary": "The \"Related Documentation\" section in the \"Specification of Raw Data Stream.pdf\" outlines additional resources and references that are pertinent to understanding the raw data stream specification. It introduces key concepts such as data formats, processing pipelines, and integration points with other systems. The section highlights important relationships between the current document and these related materials, emphasizing how they complement each other in providing a comprehensive view of the system architecture. While no specific tables are mentioned, it suggests that readers should consult these documents for detailed technical specifications and implementation guidelines to ensure seamless integration and usage of raw data streams within the broader system context.",
+      "nodes": [
+        {
+          "title": "Input documents & related standards and norms",
+          "node_id": "0023",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "This section of \"Specification of Raw Data Stream.pdf\" outlines the input documents and related standards and norms necessary for understanding the transport protocol for time-sensitive applications in bridged local area networks. Key concepts include the IEEE Standard 1722-2016, which is central to the discussion, along with various AUTOSAR (Automotive Open System Architecture) specifications that define requirements and explanations for different aspects of the adaptive platform's software architecture. The section also highlights specific documents related to communication management, execution management, and manifest specification, emphasizing their interdependencies and how they collectively support the implementation of time-sensitive data streams in automotive systems. While no tables are explicitly mentioned, these documents provide a comprehensive framework for ensuring that all components adhere to standardized practices and requirements."
+        },
+        {
+          "title": "Further applicable specification",
+          "node_id": "0024",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines additional specifications required for implementing the Raw Data Stream functional cluster within the AUTOSAR framework. It references core and general AUTOSAR specifications that must be considered, including Chapter 7.1 of the core specification [3] and the SWS General specification [4]. The specific requirements for this functional cluster are detailed in [5, RS Communication Management], highlighting the interdependencies between different parts of the AUTOSAR standard. While no tables are explicitly mentioned, these references provide a structured approach to ensuring compliance with the broader AUTOSAR standards during implementation."
+        }
+      ]
+    },
+    {
+      "title": "Constraints and assumptions",
+      "node_id": "0025",
+      "start_index": 18,
+      "end_index": 18,
+      "summary": "This section of \"Specification of Raw Data Stream.pdf\" titled \"Constraints and Assumptions\" outlines the limitations and underlying conditions that govern the handling and processing of raw data streams. It introduces key concepts such as data rate, latency requirements, and network bandwidth constraints. The document also describes important relationships between these constraints, emphasizing how they impact system design and performance. While no specific tables are mentioned in this excerpt, it is implied that detailed technical specifications related to these constraints would be found elsewhere in the document, possibly within tables or other sections dedicated to technical details.",
+      "nodes": [
+        {
+          "title": "Known limitations",
+          "node_id": "0026",
+          "start_index": 18,
+          "end_index": 18,
+          "summary": "This section of \"Known limitations\" in the document \"Specification of Raw Data Stream.pdf\" outlines several constraints and future enhancements for the current implementation of Raw Data Streams. Key concepts include static configuration requirements, safety protection responsibilities at the application level, multicast support limitations over Ethernet using IP-based protocols, and supported IEEE1722 subtypes for data transmission. The section emphasizes that dynamic network topology support and additional safety mechanisms are planned for future releases, while detailing specific constraints on multicast usage and supported transport protocols."
+        }
+      ]
+    },
+    {
+      "title": "Dependencies to other Functional Clusters",
+      "node_id": "0027",
+      "start_index": 19,
+      "end_index": 19,
+      "summary": "This section discusses the dependencies of one functional cluster on others within the AUTOSAR Adaptive Platform. It highlights that AUTOSAR does not standardize exclusive interfaces between clusters to enable efficient implementation tailored to specific operating systems. The chapter provides an informative guideline for interactions without detailing syntactical specifics, ensuring compatibility across different documents and supporting parallel development. While internal interface details are left to platform providers, additional parameters and return values can be defined as needed.",
+      "nodes": [
+        {
+          "title": "Provided Interfaces",
+          "node_id": "0028",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the public interfaces offered by a specific functional cluster to other clusters within the system. Notably, Table 5.1 lists these interfaces but indicates that no interfaces are currently provided. This absence suggests that the current implementation does not interact with any external functional clusters through defined APIs or communication channels at this stage. The table structure highlights the relationship between the interfaces and the functional clusters they connect to, though in this case, it conveys a lack of connectivity."
+        },
+        {
+          "title": "Required Interfaces",
+          "node_id": "0029",
+          "start_index": 19,
+          "end_index": 20,
+          "summary": "This section of \"Specification of Raw Data Stream.pdf\" outlines the public interfaces necessary for the Raw Data Stream functional cluster to interact with other clusters within the AUTOSAR Adaptive Platform. Key concepts include the use of a CryptoStack interface for establishing encrypted connections, a Logger interface for logging standardized messages, and a Synchronized Time Base Consumer interface for determining current synchronized global time. These interactions are crucial for ensuring secure communication, maintaining log integrity, and synchronizing timing across different functional clusters. Table 5.2 provides a comprehensive list of these required interfaces, detailing their purposes within the specified context."
+        }
+      ]
+    },
+    {
+      "title": "Requirements Tracing",
+      "node_id": "0030",
+      "start_index": 21,
+      "end_index": 25,
+      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the requirements tracing for handling raw data streams in an Adaptive Platform. It references specific requirements from documents such as IEEE1722, General Requirements on the Adaptive Platform, and Communication Management to ensure that all necessary functionalities are addressed. Key components include handling of IEEE1722 streams, method and function names, parameter and type names, and secure communication protocols. The document details how these requirements are fulfilled by various Software Work System (SWS) Requirement Definitions (RDS), establishing a clear linkage between the high-level requirements and their implementation in the software design."
+    },
+    {
+      "title": "Functional specification",
+      "node_id": "0031",
+      "start_index": 26,
+      "end_index": 26,
+      "summary": "The \"Functional Specification\" section of the \"Specification of Raw Data Stream.pdf\" document outlines the core functionalities and operations related to raw data streams. It introduces key concepts such as data ingestion methods, processing pipelines, and output formats. The section describes how these components interact within a defined workflow, emphasizing constraints on data quality and processing time. Additionally, it includes tables detailing specific parameters for data ingestion rates and permissible error margins, providing a structured overview of the operational requirements.",
+      "nodes": [
+        {
+          "title": "Raw Data Streaming using IP based protocols (network layer)",
+          "node_id": "0032",
+          "start_index": 26,
+          "end_index": 26,
+          "summary": "This section of \"Raw Data Stream using IP based protocols (network layer)\" focuses on the implementation and management of raw data streaming over Internet Protocol (IP) networks. Key concepts include the use of IP-based protocols to facilitate real-time data transmission, with an emphasis on ensuring data integrity and efficient delivery. The section outlines important relationships between different layers of the network stack and describes constraints related to packet loss and latency. While no specific tables are mentioned, it details the process of configuring and optimizing IP settings for optimal streaming performance.",
+          "nodes": [
+            {
+              "title": "Raw Data Streaming Interface",
+              "node_id": "0033",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "This section of \"Raw Data Stream.pdf\" outlines the Raw Data Streaming Interface, detailing its synchronous operations with optional blocking behavior and timeout handling. It introduces key concepts such as RawDataStreamMapping and EthernetRawDataStreamMapping for configuring socket connections, and discusses security measures like TLS, IPSec, and IAM that can be applied through the deployment and mapping model. The interface supports both client and server roles for applications, and Figure 7.1 illustrates its logical usage.",
+              "nodes": [
+                {
+                  "title": "Use cases",
+                  "node_id": "0034",
+                  "start_index": 27,
+                  "end_index": 28,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines various use cases for the RawDataStream interface. It describes scenarios where the interface can be used as a client or server in socket connections with external non-AUTOSAR sensors, and between AUTOSAR instances. The use cases support both TCP and UDP protocols, including unicast and multicast configurations. Key artifacts such as `EthernetRawDataStreamClientMapping` are mentioned for configuring these different setups, detailing local and remote port assignments and credentials. These configurations are illustrated in Figure 7.2, which maps the supported use cases to specific deployment model artifacts."
+                }
+              ]
+            },
+            {
+              "title": "Raw Data Streaming",
+              "node_id": "0035",
+              "start_index": 29,
+              "end_index": 30,
+              "summary": "This section of \"Raw Data Streaming\" describes the API for managing raw data streams in C++, focusing on the operations and behaviors associated with establishing and maintaining communication links. Key concepts include the `RawDataStream` class, which encapsulates socket-based connections for both client and server roles through methods like `Connect`, `Shutdown`, `ReadData`, and `WriteData`. The section also outlines timeout handling and the destructor's behavior when no explicit `Shutdown` is performed. Importantly, it specifies that operations such as `Connect` and `WaitForConnection` are only applicable to TCP connections, while UDP connections do not require these operations. Additionally, the summary notes that the `WriteData` operation does not guarantee data order for UDP connections, relying on underlying network protocols for proper transmission."
+            },
+            {
+              "title": "Security",
+              "node_id": "0036",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The \"Security\" section in the \"Specification of Raw Data Stream.pdf\" outlines the security measures and protocols designed to protect raw data streams. It introduces key concepts such as encryption methods, access control mechanisms, and secure transmission protocols. The section emphasizes the importance of ensuring that only authorized entities can access sensitive data by defining roles and permissions for different users. Additionally, it describes a process where encrypted data is transmitted over secure channels using specific algorithms and keys, as detailed in Table 7.1, which lists various encryption standards and their corresponding key lengths.",
+              "nodes": [
+                {
+                  "title": "Access Control via IAM",
+                  "node_id": "0037",
+                  "start_index": 30,
+                  "end_index": 31,
+                  "summary": "This section discusses access control mechanisms via Identity and Access Management (IAM) for the creation of `RawDataStream` clients and servers. It introduces key concepts such as `InstanceSpecifier`, `RPortPrototype`, and `RawDataStreamMapping`. The document outlines a specific constraint where creating a `RawDataStreamClient` or `RawDataStreamServer` with an `InstanceSpecifier` that does not match any `RPortPrototype` mapped to the requesting process is considered a violation. This ensures that only processes authorized through IAM can access specific data streams, thereby maintaining security and integrity in data processing systems.",
+                  "nodes": [
+                    {
+                      "title": "Secure Communication",
+                      "node_id": "0038",
+                      "start_index": 31,
+                      "end_index": 31,
+                      "summary": "This section discusses the security mechanisms available for securing Raw Data Stream communication over TCP and UDP. It introduces three key protocols: TLS 1.2, DTLS 1.2, and IPSec. The relationships between these protocols are highlighted, indicating that they can be used to ensure secure data transmission depending on the transport protocol (TCP or UDP). Technical details include references to relevant RFCs for TLS 1.2 ([RFC5246]) and DTLS 1.2 ([RFC6347]), providing a basis for understanding the implementation standards."
+                    },
+                    {
+                      "title": "Creation and use of secure channels for Raw Data Streaming",
+                      "node_id": "0039",
+                      "start_index": 31,
+                      "end_index": 31,
+                      "summary": "This section discusses the creation and use of secure channels for raw data streaming using TLS (Transport Layer Security) and DTLS (Datagram Transport Layer Security). Key concepts include the requirement that the Raw Data Stream software must establish secure UDP and TCP channels based on specified `TlsSecureComProps` as part of the `EthernetRawDataStreamMapping`. It also outlines that all communication initiated by a `RawDataStream` should be transmitted via these defined secure channels, with the appropriate channel being determined from the `TlsSecureComProps` associated with the `EthernetCommunicationConnector`. The section references upstream requirements RS_CM_00801 and RS_CM_00803 to ensure compliance."
+                    },
+                    {
+                      "title": "(D)TLS for Raw Data Streaming",
+                      "node_id": "0040",
+                      "start_index": 31,
+                      "end_index": 32,
+                      "summary": "This section of \"Specification of Raw Data Stream.pdf\" discusses the use of (D)TLS and DTLS for securing raw data streams in network communications. Key concepts include TLS and DTLS cipher suites such as `TLS_PSK_WITH_NULL_SHA256` for authenticity, and `TLS_PSK_WITH_AES_128_GCM_SHA256` for confidentiality. The section outlines requirements for creating secure channels based on the transport protocol used: TCP or UDP. For reliable transport over TCP, a TLS secure channel is mandated if an instance of `TlsSecureComProps` is configured in an `EthernetRawDataStreamMapping`. Conversely, for unreliable transport over UDP, a DTLS secure channel must be established under similar conditions. Additionally, it mentions the use of IPsec as another method to secure raw data streams, referencing specific requirements and constraints from other sections of the document."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Raw Data Stream Interfaces",
+              "node_id": "0041",
+              "start_index": 32,
+              "end_index": 32,
+              "summary": "This section of \"Raw Data Stream Interfaces\" in the \"Specification of Raw Data Stream.pdf\" document outlines the various interfaces used for handling raw data streams. It introduces key concepts such as interface types and their corresponding use cases, which are further detailed in Chapter 7.1.1.1. The summary highlights important relationships between different interfaces and their constraints, emphasizing how these interfaces facilitate efficient data processing. While no specific tables are mentioned, the section likely includes technical details on protocol specifications, data formats, and interaction protocols that define how raw data streams are managed across various systems.",
+              "nodes": [
+                {
+                  "title": "Creation of a RawDataStream",
+                  "node_id": "0042",
+                  "start_index": 32,
+                  "end_index": 33,
+                  "summary": "This section outlines the creation of both client and server instances for a `RawDataStream` in a technical document. It introduces key concepts such as `RawDataStreamClient`, `RawDataStreamServer`, and their respective constructors that handle network bindings and parameters. The summary describes how these instances are created based on specified credentials (unicast or multicast) and the use cases they support, detailing the processes for creating endpoints, binding to addresses, and handling read/write operations. Important relationships include the interaction between client and server endpoints in unicast and multicast scenarios, with specific constraints on when and how data is read from or written to these streams."
+                },
+                {
+                  "title": "Set up a RawDataStream connection",
+                  "node_id": "0043",
+                  "start_index": 33,
+                  "end_index": 34,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the setup process for establishing a connection with a `RawDataStream` client and server. Key concepts include the use of `RawDataStreamClient::Connect()` to set up a unicast socket connection, which is essential for TCP communication but not applicable in UDP scenarios where packets are restricted to specific addresses. Additionally, it describes how `RawDataStreamServer::WaitForConnection()` prepares the server instance to accept incoming connections, with specific behaviors for both TCP and UDP protocols. The setup process involves adherence to certain upstream requirements (RS_CM_00410, RS_CM_00411, RS_CM_00412) and may involve TLS/DTLS initialization for secure socket connections."
+                },
+                {
+                  "title": "Shutdown of a RawDataStream connection",
+                  "node_id": "0044",
+                  "start_index": 34,
+                  "end_index": 34,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" outlines the procedures for shutting down a connection in both `RawDataStreamClient` and `RawDataStreamServer`. Key concepts include the use of the `ShutDown()` function to close socket connections, which involves halting both receiving and transmitting activities before closing the TCP socket. Both client and server shutdown processes are described with identical requirements and constraints, ensuring full-duplex connection termination. The section references upstream requirements (RS_CM_00410, RS_CM_00411, RS_CM_00412) to ensure consistency in implementation across different components."
+                },
+                {
+                  "title": "Read data from a RawDataStream connection",
+                  "node_id": "0045",
+                  "start_index": 34,
+                  "end_index": 35,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the process and requirements for reading data from a `RawDataStream` connection using both client and server implementations. Key concepts include the use of `RawDataStreamClient::ReadData()` and `RawDataStreamServer::ReadData()`, which handle data reads based on whether multicast or unicast connections are established, as defined by the client's configuration. The document emphasizes efficiency through zero-copy semantics utilizing `std::unique_ptr` to transfer ownership of read data directly to the application. This process is constrained by specific upstream requirements and involves different socket types (multicast, TCP unicast, UDP unicast) depending on the use case."
+                },
+                {
+                  "title": "Write data to a RawDataStream connection",
+                  "node_id": "0046",
+                  "start_index": 35,
+                  "end_index": 35,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the process and requirements for writing data to a `RawDataStream` connection using both client and server implementations. Key concepts include the use of `RawDataStreamClient::WriteData()` and `RawDataStreamServer::WriteData()`, which facilitate writing bytes to the corresponding socket connections based on defined credentials. The document specifies that zero-copy semantics via `std::unique_ptr` are employed for efficiency, particularly in scenarios involving multicast and unicast communications. Additionally, it details how data is written differently depending on whether multicast or unicast protocols are used, ensuring compatibility with various network configurations."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Raw Data Streaming using IEEE1722 protocol (data link layer)",
+          "node_id": "0047",
+          "start_index": 36,
+          "end_index": 36,
+          "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the implementation and usage of the IEEE1722 protocol for raw data streaming at the data link layer. It introduces key concepts such as frame structure, error detection mechanisms, and flow control techniques specific to this protocol. The summary outlines how these components interact within the data link layer to ensure reliable data transmission. Additionally, it references relevant technical details from accompanying tables that detail the format of IEEE1722 frames and the parameters for error correction codes.",
+          "nodes": [
+            {
+              "title": "Raw Data Streaming Interface",
+              "node_id": "0048",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "This section describes the operations and configuration of the Raw Data Streaming interface using the IEEE1722 protocol. It introduces key elements such as RawDataStreamMapping and EthernetMacRawDataStreamMapping for configuring data link layer socket connections, and highlights secure communication through MACSec protocols and access control via IAM. The summary also notes that applications can use this API both as consumers and producers of IEEE1722 streams, with all security functions being configurable in the deployment model. While no tables are explicitly mentioned, these details provide a comprehensive overview of how the interface operates and is secured.",
+              "nodes": [
+                {
+                  "title": "Use cases",
+                  "node_id": "0049",
+                  "start_index": 37,
+                  "end_index": 37,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the use cases for an interface that supports IEEE1722 protocol. Key concepts include data link layer sockets and communication mappings between producers and consumers using this protocol. The document describes four types of communication mappings: 1:1, 1:n, n:1, and n:m, each representing different configurations of producers and consumers connected to an IEEE1722 stream. These mappings are illustrated through examples such as video streams, audio streams, sensor fusion, and CAN frame transfers across network zones, highlighting the versatility of the IEEE1722 protocol in various data transmission scenarios."
+                }
+              ]
+            },
+            {
+              "title": "Raw Data Streaming",
+              "node_id": "0050",
+              "start_index": 37,
+              "end_index": 44,
+              "summary": "This section of \"Raw Data Streaming\" in the document \"Specification of Raw Data Stream.pdf\" outlines the configuration and operation of IEEE1722 raw data streams within an AUTOSAR environment. Key concepts include the use of `IEEE1722RawDataStreamConsumer` and `IEEE1722RawDataStreamProducer`, which are instantiated using specific template classes to handle data consumption and production, respectively. The section details how these instances are configured via a Deployment model manifest, including setting up data link layer connections and handling IEEE1722 subtype classes for header creation and inspection. It also describes error handling mechanisms and the lifecycle operations (Connect, Shutdown) of these stream instances, ensuring proper management of communication connections."
+            },
+            {
+              "title": "Security",
+              "node_id": "0051",
+              "start_index": 44,
+              "end_index": 44,
+              "summary": "The \"Security\" section in the \"Specification of Raw Data Stream.pdf\" outlines the security measures and protocols designed to protect raw data streams. It introduces key concepts such as encryption methods, access control mechanisms, and data integrity checks. The section describes how these components work together to ensure secure transmission and storage of data. While no specific tables are mentioned, it emphasizes the importance of implementing robust security practices throughout the data lifecycle to prevent unauthorized access and ensure data confidentiality, integrity, and availability.",
+              "nodes": [
+                {
+                  "title": "Access Control via IAM",
+                  "node_id": "0052",
+                  "start_index": 44,
+                  "end_index": 45,
+                  "summary": "This section discusses access control mechanisms via Identity and Access Management (IAM) for the IEEE1722RawDataStream in a technical document. It introduces key concepts such as `IEEE1722RawDataStreamConsumer::Create()` and `IEEE1722RawDataStreamProducer::Create()`, constructors that are used to create instances of data stream consumers and producers, respectively. The section outlines a specific constraint: if an instance specifier provided in the call does not match any RPortPrototype referenced by a RawDataStreamMapping associated with the requesting process's role, it is considered a violation. This ensures that only authorized processes can access or produce raw data streams, maintaining security and integrity within the system."
+                },
+                {
+                  "title": "Secure Communication",
+                  "node_id": "0053",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "This section discusses how to secure communication in IEEE1722RawDataStream using the MACSec protocol at the data link layer. Although this security mechanism falls outside the scope of the Raw Data Stream functional cluster, it is essential for establishing a secure communication environment. The process involves setting up and configuring MACSec by the system, ensuring that sensitive raw data streams are protected during transmission. While no specific tables are mentioned in the provided content, the section emphasizes the importance of external security measures to complement the core functionality of the Raw Data Stream specification."
+                }
+              ]
+            },
+            {
+              "title": "Raw Data Streaming Interfaces",
+              "node_id": "0054",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "This section of \"Raw Data Streaming Interfaces\" in the document \"Specification of Raw Data Stream.pdf\" focuses on detailing the mechanisms and protocols used for streaming raw data. Key concepts include the definition of a raw data stream interface, which specifies how data is structured and transmitted in real-time. The section outlines important relationships between different components such as producers, consumers, and buffers, emphasizing constraints like latency requirements and buffer sizes to ensure efficient data flow. Technical details from tables describe the parameters for various streaming interfaces, including supported data formats, transmission rates, and error handling mechanisms.",
+              "nodes": [
+                {
+                  "title": "Consume IEEE1722 stream data",
+                  "node_id": "0055",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "This section describes the process of consuming data from an IEEE1722RawDataStream using a consumer instance. It outlines that each invocation of the `ReadData` operation requests a specified number of datagrams based on the `maxNumberOfDatagrams` argument, with only those successfully inspected for their AVTPDU-header being returned in a buffer. Key concepts include the `IEEE1722RawDataStreamConsumer`, the `ReadData` operation, and the `AVTPDU-header inspection`. The returned data is structured as an `ara::core::Vector` configured as IEEE1722 subtype, allowing access to properties such as the number of datagrams through public member functions.",
+                  "nodes": [
+                    {
+                      "title": "AVTPDU-header inspection",
+                      "node_id": "0056",
+                      "start_index": 45,
+                      "end_index": 47,
+                      "summary": "This section of \"AVTPDU-header inspection\" outlines the process and criteria for verifying the consistency of AVTP (Audio Video Transport Protocol) Data Unit (AVTPDU) headers in raw data streams. Key concepts include the AVTPDU-header formats specified by IEEE1722, with specific focus on the common and stream headers. The inspection is performed during the consumption of data via an IEEE1722RawDataStreamConsumer instance, ensuring that fields such as subtype, version, timestamp, sequence number, and stream ID match predefined configurations. Important relationships include the need for these fields to align with the consumer's settings to avoid discarding valid datagrams or logging mismatches. Technical details involve specific checks for each header type, including handling of sequence numbers and timestamps, which are crucial for maintaining data integrity in real-time audio-visual applications."
+                    }
+                  ]
+                },
+                {
+                  "title": "Produce IEEE1722 stream data",
+                  "node_id": "0057",
+                  "start_index": 47,
+                  "end_index": 49,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" explains how to produce IEEE1722 stream data using an `IEEE1722RawDataStreamProducer` instance. Key concepts include the instantiation of this producer via a template class and the requirement for applications to provide data as `ara::core::Vector`. The process involves checking header field values against configured settings, default values, or calculated values before constructing and sending IEEE1722 datagrams over a connected data link socket. Important constraints are that mandatory fields must be valid and within their value range; otherwise, the datagram is skipped. Technical details include the steps involved in creating an IEEE1722 header and payload for each datagram.",
+                  "nodes": [
+                    {
+                      "title": "AVTPDU-header creation",
+                      "node_id": "0058",
+                      "start_index": 49,
+                      "end_index": 49,
+                      "summary": "This section discusses the process of creating an AVTPDU-header when data is produced via an IEEE1722RawDataStreamProducer instance in AUTOSAR. Key concepts include the consistency checks performed between the application-provided header field values and the configuration settings, as well as the different formats specified by [1, IEEE1722] for the AVTPDU-header: common-header, stream-header, control-header, and alternative-header. The summary also notes that specific treatment is given to fields shared across these formats, such as the stream ID, while the control-header is not considered due to its non-use in supported streams.",
+                      "nodes": [
+                        {
+                          "title": "Treatment of shared AVTPDU-header fields",
+                          "node_id": "0059",
+                          "start_index": 49,
+                          "end_index": 51,
+                          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the treatment of shared AVTPDU-header fields for IEEE1722 streams. Key concepts include sequence numbers and stream IDs, which are managed differently based on whether a MAC address or unique ID is provided by the application. The time uncertain field in the header is determined by the synchronization state of the GlobalTimeDomain. Additionally, if the combined length of the AVTPDU-header and payload exceeds the maximum transmission unit (MTU) for the data link layer socket, the creation process is aborted. These rules ensure proper handling of IEEE1722 streams while respecting application-defined identifiers and network constraints."
+                        },
+                        {
+                          "title": "AVTPDU-common-header fields",
+                          "node_id": "0060",
+                          "start_index": 51,
+                          "end_index": 52,
+                          "summary": "This section of the \"AVTPDU-common-header fields\" describes how to determine and set specific values for common header fields in AVTP (Audio Video Transport Protocol) data units when they are created for IEEE1722 streams. Key concepts include the determination of the subtype field based on configured stream types such as CRF, AAF, IEC61883_IIDC, RVF, NTSCF, and TSCF, each with its corresponding AVTP stream data subtype value. The version field is also set according to the configured value of the IEEE1722 stream. These settings are crucial for ensuring proper handling and interpretation of the AVTPDU headers in accordance with IEEE1722 standards."
+                        },
+                        {
+                          "title": "AVTPDU-common-stream-header fields",
+                          "node_id": "0061",
+                          "start_index": 52,
+                          "end_index": 54,
+                          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the determination and setting of various fields within the AVTPDU-common-stream-header for IEEE1722 streams. Key concepts include the media clock restart (mr), stream id valid (sv), sequence number, timestamp uncertain (tu), stream id, avtp timestamp, and stream data length fields. The process involves setting these fields based on provided values or calculated values according to specific rules and dependencies. Importantly, it describes how the AVTPDU-header is created for IEEE1722 streams, with constraints such as validating input values and calculating timestamps when necessary. Technical details include equations for determining presentation time and references to other components like maxTransitTime."
+                        },
+                        {
+                          "title": "AVTPDU-alternative-header fields",
+                          "node_id": "0062",
+                          "start_index": 54,
+                          "end_index": 54,
+                          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document discusses the AVTPDU-alternative-header fields, which are specific to certain AVTP stream data subtypes. Key among these is the IEEE1722 stream subtype, with detailed descriptions provided for CRF (Continuous Real-time Frame) and NTSCF (Non-Transportable Continuous Stream Frame). These headers are integral to the structure of the specified AVTP streams, providing necessary information that is tailored to the real-time nature of the data being transmitted. While no specific tables are mentioned in this excerpt, the document implies a structured approach to defining these headers for different stream types, ensuring compatibility and efficient transmission of audio-visual data."
+                        },
+                        {
+                          "title": "61883_IIDC-header fields",
+                          "node_id": "0063",
+                          "start_index": 54,
+                          "end_index": 56,
+                          "summary": "This section describes the specific header field values for AVTP stream data subtype \"61883_IIDC\" according to IEEE1722 standards. Key concepts include the configured tag and SPH fields of the IEEE1722RawDataStreamProducer instance, which determine the values assigned to various header fields such as `tag`, `channel`, `tcode`, `sy`, `qi_1`, `SID`, `DBS`, `FN`, `QPC`, `SPH`, `DBC`, and `FMT`. The section outlines different configurations based on whether the tag field is set to 0 or 1, with further distinctions when SPH is also set to 1. Important relationships are established between these fields and their values, which must be configured according to specific standards to ensure correct data encapsulation for IEC 61883/IIDC streams. Technical details include the exact values that should be assigned to each field based on the configuration settings of the producer instance."
+                        },
+                        {
+                          "title": "AAF-header fields",
+                          "node_id": "0064",
+                          "start_index": 57,
+                          "end_index": 58,
+                          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines how to set specific header field values for AVTP stream data subtype \"AAF\" (AVTP Audio Format) according to IEEE1722 standards. Key components include the format, sp (sparse timestamp), and evt fields, which are configured based on settings from an instance of IEEE1722RawDataStreamProducer. The document also details additional header field values for AAF AVTP format PCM and AES3, such as nsr, channels_per_frame, bit_depth, nfr, streams_per_frame, aes3_data_type_h, aes3_dt_ref, and aes3_data_type_l fields. These configurations are crucial for proper encapsulation of audio data in AVTP packets, ensuring accurate transmission according to IEEE1722 specifications."
+                        },
+                        {
+                          "title": "ACF-header fields",
+                          "node_id": "0065",
+                          "start_index": 58,
+                          "end_index": 59,
+                          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes how to create ACF-header fields for AVTP stream data subtypes NTSCF and TSCF according to IEEE1722 standards. Key concepts include setting specific header field values such as `sv`, `ntscf_data_length`, and `acf_payload_data` for NTSCF, and `stream_data_length` and `acf_payload_data` for TSCF. The document emphasizes that ACF-message-payload creation is the responsibility of applications, not the Raw Data Stream functional cluster. It also references other chapters for details on common header fields and stream headers, highlighting the importance of adhering to IEEE1722 specifications while ensuring AUTOSAR compatibility by setting certain fields according to specific requirements."
+                        },
+                        {
+                          "title": "CRF-header fields",
+                          "node_id": "0066",
+                          "start_index": 60,
+                          "end_index": 61,
+                          "summary": "This section describes the process of setting specific header field values for an AVTP stream with a data subtype of CRF (Clock Reference Format) according to IEEE1722 standards. Key concepts include the sv, mr, fs, tu, sequence_num, type, stream_id, pull, base_frequency, crf_data_length, and timestamp_interval fields. The summary outlines that these values are determined based on application-provided data or specific configurations of the IEEE1722RawDataStreamProducer instance. Additionally, it notes that the crf_data field contains user-specified data and identifies several fields as out of scope for the Raw Data Stream functional cluster."
+                        },
+                        {
+                          "title": "RVF-header fields",
+                          "node_id": "0067",
+                          "start_index": 61,
+                          "end_index": 62,
+                          "summary": "This section describes the process of setting specific header field values for AVTP stream data subtype \"RVF\" (Raw Video Format) according to IEEE1722 standards. Key components include fields such as `active_pixels`, `total_lines`, and `pixel_format`, among others, which are set based on application-provided or configured values. The section outlines the relationship between these RVF-header fields and common AVTPDU header fields, emphasizing that certain fields must be initialized according to predefined rules and configurations. Importantly, if any value is not available or invalid, it should be set to 0, ensuring a default state for missing data."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Error handling for consuming or producing IEEE1722 stream data",
+                  "node_id": "0068",
+                  "start_index": 62,
+                  "end_index": 62,
+                  "summary": "This section outlines the error handling mechanisms for operations involving IEEE1722 stream data in both consumer and producer instances. It introduces two specific requirements: one addressing scenarios where a communication connection is lost (SWS_RDS_10570), and another dealing with system interrupts during data processing (SWS_RDS_10571). When the `ReadData` operation of an IEEE1722RawDataStreamConsumer or the `WriteData` operation of an IEEE1722RawDataStreamProducer encounters a disconnected communication link, it is instructed to take no action and return with a specific error code indicating that the stream has already been disconnected. Similarly, if these operations are interrupted by the system, they must reset their internal states, release any held resources, and return with another designated error code (kInterruptedBySignal). These requirements ensure robust handling of potential errors in data stream processing while maintaining consistency and resource management."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Functional cluster lifecycle",
+          "node_id": "0069",
+          "start_index": 63,
+          "end_index": 63,
+          "summary": "This section outlines the behavior of a functional cluster throughout its lifecycle. It builds upon general initialization and deinitialization behaviors defined in [SWS_CORE_15005] and [SWS_CORE_90022]. Key concepts include the stages and interactions within the cluster during both setup and teardown processes, emphasizing how these operations are managed to ensure system stability and resource efficiency. While no specific tables are mentioned, the section likely details the sequence of events and dependencies between different components at each lifecycle stage.",
+          "nodes": [
+            {
+              "title": "Startup",
+              "node_id": "0070",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the startup process for the Raw Data Stream functional cluster. It indicates that no special handling is required during startup, meaning there is no need to maintain any state across power cycles. This implies a straightforward and self-contained operation where the system does not rely on previous states or configurations upon rebooting. No specific technical details from tables are mentioned in this brief section, focusing instead on the simplicity of the startup procedure for this functional cluster."
+            },
+            {
+              "title": "Shutdown",
+              "node_id": "0071",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document discusses the shutdown process for the Raw Data Stream functional cluster. It indicates that no special handling is required during the shutdown procedure, implying a straightforward and standard approach to stopping the system without additional steps or configurations. While there are no tables provided in this excerpt, the absence of specific instructions suggests a default or pre-defined behavior for shutting down the cluster."
+            }
+          ]
+        },
+        {
+          "title": "Reporting",
+          "node_id": "0072",
+          "start_index": 63,
+          "end_index": 63,
+          "summary": "The \"Reporting\" section in the \"Specification of Raw Data Stream.pdf\" document outlines the mechanisms and formats for presenting processed data derived from raw streams. It introduces key concepts such as report templates, periodicity of reports, and the integration of real-time versus historical data. The section emphasizes the importance of consistency in reporting standards across different departments or systems. Additionally, it describes a table detailing the frequency of updates for various types of reports, ranging from daily summaries to quarterly analyses, ensuring that stakeholders receive timely and relevant information.",
+          "nodes": [
+            {
+              "title": "Security Events",
+              "node_id": "0073",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "This section of \"Security Events\" in the \"Specification of Raw Data Stream.pdf\" discusses a functional cluster that focuses on security events. Notably, it states that this particular cluster does not define any specific security events, indicating that either no predefined security incidents are covered within its scope or that such definitions are left to other sections of the document. This omission highlights the need for careful cross-referencing with other parts of the specification when dealing with security-related aspects. While there are no tables provided in this section, it underscores the importance of understanding how different functional clusters interact and contribute to overall data stream security management."
+            },
+            {
+              "title": "Log Messages",
+              "node_id": "0074",
+              "start_index": 63,
+              "end_index": 63,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document discusses the absence of non-verbose log messages within a specific functional cluster. It clarifies that no modelled Distributed Trace Language (DLT) messages are defined for this cluster, indicating a focus on concise or minimal logging practices. While there are no tables provided in the excerpt, this section sets the expectation for how logging should be handled within the specified cluster, emphasizing brevity and efficiency in log message communication."
+            },
+            {
+              "title": "Violation Messages",
+              "node_id": "0075",
+              "start_index": 63,
+              "end_index": 65,
+              "summary": "This section of \"Specification of Raw Data Stream.pdf\" outlines various violation messages that can occur during the execution of a system, specifically related to instance specifier mapping and process mapping. Key concepts include `InstanceSpecifierMappingIntegrityViolation`, `PortInterfaceMappingViolation`, `ProcessMappingViolation`, and `InstanceSpecifierAlreadyInUseViolation`. These violations are categorized as fatal errors (`DLT_LOG_FATAL`), indicating severe issues that can disrupt the system's operation. The document details specific arguments such as `modeledProcessId`, `location`, `instanceSpecifier`, and `className`, which provide context for where and why these violations occur, ensuring detailed traceability and debugging capabilities."
+            },
+            {
+              "title": "Production Errors",
+              "node_id": "0076",
+              "start_index": 65,
+              "end_index": 65,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document discusses the absence of defined production errors within a specific functional cluster. It indicates that there are no Diagnostic Events established for this particular area, which implies that any issues or anomalies in the data stream related to production processes will not be categorized under predefined error conditions. This omission could suggest a need for custom error handling mechanisms outside the scope of this specification. While no tables are present in the provided content, the focus is on understanding the current state and potential gaps in the error management framework for the described functional cluster."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "API specification",
+      "node_id": "0077",
+      "start_index": 66,
+      "end_index": 66,
+      "summary": "This section of the \"API specification\" in \"Specification of Raw Data Stream.pdf\" outlines the structure and content of API tables used to document various declarations within a C++ context. Key concepts include the kind of declaration (e.g., class, function), port interfaces, header files, scope, thread safety, parameters, return values, exception handling, error codes, and descriptions. The section emphasizes the importance of these components in defining APIs for a specific functional cluster, ensuring clarity and consistency across different parts of the system. Additionally, it highlights that APIs can be extended with vendor-specific error codes, which are not standardized by AUTOSAR, and provides detailed syntax and exception safety definitions to guide developers in implementing robust and thread-safe functions.",
+      "nodes": [
+        {
+          "title": "PortInterface to API class binding",
+          "node_id": "0078",
+          "start_index": 66,
+          "end_index": 67,
+          "summary": "This section outlines the binding between PortInterfaces and their corresponding API classes and functions within a functional cluster. It defines key interfaces such as IEEE1722RawDataStreamConsumerInterface, IEEE1722RawDataStreamProducerInterface, RawDataStreamClientInterface, and RawDataStreamServerInterface, along with their associated API classes (e.g., ara::rds::IEEE1722RawDataStreamConsumer) and constructor functions (e.g., Create). The relationships described include how each PortInterface is linked to a specific class and function that can instantiate it, providing a clear mapping for the construction of these interfaces. This ensures proper instantiation and usage within the system, adhering to specified standards like SWS_RDS_90311 through SWS_RDS_11312."
+        },
+        {
+          "title": "Header: ara/rds/raw_data_stream.h",
+          "node_id": "0079",
+          "start_index": 67,
+          "end_index": 67,
+          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on the header file `ara/rds/raw_data_stream.h`, which is crucial for defining and handling raw data streams in a specific application. It introduces key concepts such as data stream structures, headers, and metadata fields essential for processing raw data. The summary also outlines important relationships between different components of the data stream, including how they are structured and interrelated. While no tables are explicitly mentioned, the section likely details the format and organization of these data streams, providing a foundational understanding necessary for their implementation and manipulation in the application.",
+          "nodes": [
+            {
+              "title": "Class: RawDataStreamClient",
+              "node_id": "0080",
+              "start_index": 67,
+              "end_index": 68,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `RawDataStreamClient` class, which is part of the `ara::rds` namespace. It defines a client object for handling binary data streams over network connections and specifies that copying instances of this class is not allowed through its deleted copy constructor. The class adheres to certain upstream requirements and interfaces with specific header files, highlighting its role in reading and writing raw data streams. Key components include the class definition, scope, and syntax, along with associated API functions and their constraints.",
+              "nodes": [
+                {
+                  "title": "Move Constructor",
+                  "node_id": "0081",
+                  "start_index": 68,
+                  "end_index": 68,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the move constructor for the `RawDataStreamClient` class within the `ara::rds::RawDataStream` namespace. The key components introduced include the function definition, its parameters, and exception safety considerations. Specifically, it defines a move constructor with syntax `RawDataStreamClient (RawDataStreamClient &&other) noexcept`, which is used to transfer resources from one `RawDataStreamClient` object to another without copying data. This operation ensures that the moved-from object is left in a valid but unspecified state, while the moved-to object takes ownership of its resources. The move constructor is marked as exception safe and not thread-safe, adhering to specified upstream requirements such as RS_CM_00410 through RS_AP_00147."
+                },
+                {
+                  "title": "Copy Assignment Operator",
+                  "node_id": "0082",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" discusses the `Copy Assignment Operator` for the `RawDataStreamClient` class in the `ara::rds` namespace. The key concept introduced is that this operator is defined as deleted, meaning it cannot be used to copy assign one instance of `RawDataStreamClient` to another. This restriction aligns with specific upstream requirements related to client management and assignment semantics. No syntax or detailed implementation is provided; instead, the focus is on indicating that such an operation is not allowed for this class."
+                },
+                {
+                  "title": "Move Assignment Operator",
+                  "node_id": "0083",
+                  "start_index": 69,
+                  "end_index": 69,
+                  "summary": "This section describes the move assignment operator for the `RawDataStreamClient` class in the `ara::rds::RawDataStream` module. The key concept is that this operator allows transferring ownership of resources from one `RawDataStreamClient` object to another, facilitating efficient memory management and resource handling. It is defined as a non-throwing function (noexcept) that takes a rvalue reference parameter (`other`). Importantly, the operation is not thread-safe, indicating that it should be used in contexts where concurrent access is avoided. This move assignment operator adheres to specific upstream requirements related to client management and data stream operations, ensuring compliance with broader system specifications."
+                },
+                {
+                  "title": "Destructor",
+                  "node_id": "0084",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "This section describes the destructor for the `RawDataStreamClient` class in the \"Specification of Raw Data Stream.pdf\" document. The key concept is the lifecycle management of a client object that interacts with raw data streams. The destructor ensures proper cleanup by closing and shutting down any open connections before destroying the instance, thus maintaining resource integrity. It adheres to specific upstream requirements and is defined within the `ara::rds::RawDataStream` header file. Notably, this function is marked as exception safe but not thread-safe, indicating its behavior in error conditions and multi-threading scenarios."
+                },
+                {
+                  "title": "Member Functions",
+                  "node_id": "0085",
+                  "start_index": 70,
+                  "end_index": 70,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the member functions associated with handling raw data streams. It introduces key concepts such as function prototypes and their parameters, which are essential for interacting with the raw data stream objects. The summary outlines important relationships between these functions and the data structures they operate on, emphasizing how these functions facilitate the manipulation and processing of raw data. While no specific tables are mentioned in this excerpt, it is implied that detailed technical specifications and constraints related to function usage and parameter requirements are provided elsewhere in the document.",
+                  "nodes": [
+                    {
+                      "title": "Connect()",
+                      "node_id": "0086",
+                      "start_index": 70,
+                      "end_index": 71,
+                      "summary": "This section describes the `Connect()` function in the `ara::rds::RawDataStreamClient` class, which establishes a connection to a TCP server for a raw data stream. Key concepts include the function's syntax and return value, as well as the error codes that can be returned if the connection fails. The function is not thread-safe but is exception safe. It sets up a unicast socket connection for the `RawDataStream` instance, and in the case of UDP, it does not establish any connection. Important relationships include its association with upstream requirements such as RS_CM_00410, RS_CM_00411, and RS_CM_00412, and the specific error conditions that can occur during execution."
+                    },
+                    {
+                      "title": "Connect(std::chrono::milliseconds)",
+                      "node_id": "0087",
+                      "start_index": 71,
+                      "end_index": 71,
+                      "summary": "This section describes the `Connect(std::chrono::milliseconds)` function within the `ara::rds::RawDataStreamClient` class. It outlines the API definition and parameters required for establishing a connection to a TCP server with a specified timeout, while noting that no connection is established in the case of UDP. Key components include the function's syntax, return type, error handling, and exception safety. The section also specifies various error codes that can be returned, such as `kConnectionRefused`, `kAddressNotAvailable`, and `kCommunicationTimeout`, each associated with specific failure scenarios during the connection attempt."
+                    },
+                    {
+                      "title": "ReadData(std::size_t, std::chrono::milliseconds)",
+                      "node_id": "0088",
+                      "start_index": 72,
+                      "end_index": 72,
+                      "summary": "This section describes the `ReadData` function within the `ara::rds::RawDataStreamClient` class, which allows for reading a specified number of bytes from a raw data stream with an optional timeout. Key components include parameters such as `maxLength` and `timeout`, and return values encapsulated in `ara::core::Result<ReadDataResult>`. The function is marked as exception-safe but not thread-safe, and it can throw specific error codes like `RdsErrc::kStreamNotConnected` or `RdsErrc::kCommunicationTimeout` under certain conditions. This method supports non-blocking operations by incorporating a timeout value, ensuring that read requests are handled with appropriate error handling mechanisms."
+                    },
+                    {
+                      "title": "ReadData(std::size_t)",
+                      "node_id": "0089",
+                      "start_index": 72,
+                      "end_index": 73,
+                      "summary": "This section of \"Specification of Raw Data Stream.pdf\" describes the `ReadData(std::size_t)` function within the `ara::rds::RawDataStreamClient` class. It introduces key concepts such as the function's definition, parameters, return value, and error handling mechanisms. The function is designed to read a specified number of bytes from a socket connection associated with an instance of `RawDataStream`. Importantly, it outlines that the operation may be interrupted by system signals, leading to potential state inconsistencies if retried. Additionally, the section specifies that this function is exception-safe but not thread-safe, and provides error codes for specific failure scenarios like unconnected streams or signal interruptions."
+                    },
+                    {
+                      "title": "Shutdown",
+                      "node_id": "0090",
+                      "start_index": 73,
+                      "end_index": 73,
+                      "summary": "This section describes the `Shutdown` function of the `ara::rds::RawDataStreamClient` class in the \"Specification of Raw Data Stream.pdf\" document. The key concepts include an API function that closes the socket connection for a raw data stream, ensuring both sending and receiving parts are shut down. It introduces error conditions such as `RdsErrc::kStreamNotConnected` and `RdsErrc::kInterruptedBySignal`, detailing their implications on operation success and retryability. The function is marked as exception-safe but not thread-safe, with specific rollback semantics for certain errors."
+                    },
+                    {
+                      "title": "WriteData(std::unique_ptr<ara::core::Byte[]> , std::size_t)",
+                      "node_id": "0091",
+                      "start_index": 74,
+                      "end_index": 75,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `WriteData` function for the `ara::rds::RawDataStreamClient` class. It introduces two overloaded versions of this function, each taking a unique pointer to a byte array and the maximum length of bytes to write. The first version does not include a timeout parameter, while the second includes an additional `std::chrono::milliseconds` timeout value for non-blocking operations. Key errors such as connection issues and timeouts are described, along with their rollback semantics. The function is marked as exception-safe but not thread-safe, and it returns either the number of bytes written or an error code indicating failure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Named Constructors",
+                  "node_id": "0092",
+                  "start_index": 75,
+                  "end_index": 75,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the concept of named constructors within the context of raw data stream processing. It introduces key concepts such as how named constructors facilitate the creation and initialization of data structures, enabling more descriptive and readable code. The section outlines important relationships between different types of constructors and their usage in handling various data formats. While no specific tables are mentioned, it emphasizes that these constructors play a crucial role in ensuring consistency and clarity in the implementation of raw data stream specifications.",
+                  "nodes": [
+                    {
+                      "title": "Create",
+                      "node_id": "0093",
+                      "start_index": 75,
+                      "end_index": 76,
+                      "summary": "This section of \"Specification of Raw Data Stream.pdf\" outlines the `Create` function for the `ara::rds::RawDataStreamClient` class. The function is responsible for initializing a new instance of the `RawDataStreamClient` object, which requires an `InstanceSpecifier` to define the network binding and parameters. Key error conditions include connection creation failures due to permission issues or address unavailability, as well as violations related to instance specifier integrity and port interface mapping. The function returns either a successful `RawDataStreamClient` object or an error code indicating the specific failure condition, ensuring exception safety and thread safety in its operation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: RawDataStreamServer",
+              "node_id": "0094",
+              "start_index": 76,
+              "end_index": 77,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the definition and key aspects of the `RawDataStreamServer` class. It is defined within the `ara::rds` namespace and serves to manage binary data streams over network connections. The class includes a move constructor, which facilitates efficient object transfer without copying data. Importantly, this section also specifies upstream requirements (RS_CM_00410, RS_CM_00411, RS_CM_00412, RS_AP_00145, and RS_AP_00147) that guide its implementation and usage, ensuring adherence to specific standards. The class is marked as `final`, indicating it cannot be inherited from, and is designed for use with the provided header files, emphasizing its role in network data stream management.",
+              "nodes": [
+                {
+                  "title": "Copy Constructor",
+                  "node_id": "0095",
+                  "start_index": 77,
+                  "end_index": 77,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the copy constructor for the `RawDataStreamServer` class within the `ara::rds` namespace. The key concept introduced is that the copy constructor has been explicitly deleted, indicating it is not allowed to create a new instance by copying an existing one. This decision aligns with upstream requirements RS_CM_00410, RS_CM_00411, RS_CM_00412, and RS_AP_00145. The technical detail provided includes the function definition `RawDataStreamServer (const RawDataStreamServer &)=delete;`, which is specified in the header file `ara/rds/raw_data_stream.h`. This approach ensures that the class cannot be copied, potentially to prevent unintended state duplication or other issues related to deep copying of complex data structures."
+                },
+                {
+                  "title": "Move Assignment Operator",
+                  "node_id": "0096",
+                  "start_index": 78,
+                  "end_index": 78,
+                  "summary": "This section describes the move assignment operator for the `RawDataStreamServer` class in the `ara::rds` namespace. The key concept is that this operator allows one instance of `RawDataStreamServer` to take ownership of another's resources, effectively transferring all data and state from the source object (`other`) to the target object without constructing a new object. It is defined as an rvalue reference function and marked as exception safe but not thread-safe. The move assignment operator is essential for efficient resource management in scenarios where objects need to be reassigned or destroyed quickly, ensuring that memory and other resources are properly handled during the process."
+                },
+                {
+                  "title": "Copy Assignment Operator",
+                  "node_id": "0097",
+                  "start_index": 78,
+                  "end_index": 78,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the copy assignment operator for the `RawDataStreamServer` class. The key concept is that this operator has been explicitly deleted, meaning it cannot be used to assign one instance of `RawDataStreamServer` to another. This decision aligns with upstream requirements related to resource management and data integrity. The section specifies that the relevant header file is `ara/rds/raw_data_stream.h`, indicating where the class definition can be found. Importantly, this operator being deleted suggests a design choice aimed at preventing unintended copying of server instances, which could lead to issues such as dangling pointers or other concurrency problems in multi-threaded applications."
+                },
+                {
+                  "title": "Destructor",
+                  "node_id": "0098",
+                  "start_index": 79,
+                  "end_index": 79,
+                  "summary": "This section describes the destructor for the `RawDataStreamServer` class in the \"Specification of Raw Data Stream.pdf\" document. The key concept is the function definition and its role within the class hierarchy, specifically `ara::rds::RawDataStreamServer`. It outlines that this destructor ensures proper cleanup by first shutting down any open connections via a call to `Shutdown()` before proceeding with the destruction of the associated `RawDataStreamClient` object. This process adheres to specific upstream requirements and is designed to be exception-safe but not thread-safe, ensuring robust handling of resource management during object destruction."
+                },
+                {
+                  "title": "Member Functions",
+                  "node_id": "0099",
+                  "start_index": 79,
+                  "end_index": 79,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the member functions associated with handling raw data streams. It introduces key concepts such as function prototypes and their parameters, which are essential for interacting with the raw data stream objects. The summary outlines important relationships between these functions and the data structures they operate on, emphasizing how these functions facilitate the manipulation and processing of raw data. While no specific tables are mentioned in this excerpt, it is implied that detailed technical specifications and constraints related to function usage and interactions are provided elsewhere in the document.",
+                  "nodes": [
+                    {
+                      "title": "ReadData(std::size_t, std::chrono::milliseconds)",
+                      "node_id": "0100",
+                      "start_index": 79,
+                      "end_index": 80,
+                      "summary": "This section describes the `ReadData` function in the `ara::rds::RawDataStreamServer` class, which is responsible for reading a specified number of bytes from a raw data stream over an unicast socket connection. The function accepts two parameters: `maxLength`, indicating the maximum number of bytes to read, and `timeout`, setting a non-blocking operation timeout. It returns a result encapsulated in `ara::core::Result<ReadDataResult>`, handling various error conditions such as disconnection or timeouts. Key exceptions include those related to signal interruptions, which may require careful handling due to potential state inconsistencies."
+                    },
+                    {
+                      "title": "ReadData(std::size_t)",
+                      "node_id": "0101",
+                      "start_index": 80,
+                      "end_index": 80,
+                      "summary": "This section describes the `ReadData(std::size_t)` function within the `ara::rds::RawDataStreamServer` class. It defines an API that requests reading a specified number of bytes from a unicast socket connection associated with a raw data stream instance. The function returns either a successful result encapsulated in `ReadDataResult` or an error code indicating the failure reason, such as a disconnected stream or interruption by a system signal. Key components include the parameter `maxLength`, which specifies the maximum number of bytes to read, and the return type `ara::core:Result<ReadDataResult>`. The function is marked as exception safe but not thread-safe, with specific error handling for connection issues and signal interruptions."
+                    },
+                    {
+                      "title": "Shutdown",
+                      "node_id": "0102",
+                      "start_index": 81,
+                      "end_index": 81,
+                      "summary": "This section describes the `Shutdown` function of the `ara::rds::RawDataStreamServer` class in the \"Specification of Raw Data Stream.pdf\" document. The key concept introduced is an API function that closes the socket connection for a raw data stream, ensuring both sending and receiving parts are terminated. It outlines specific error conditions such as `RdsErrc:kStreamNotConnected` and `RdsErrc:kInterruptedBySignal`, detailing their implications on operation success and retryability. The function returns an `ara:core:Result<void>` type, indicating successful execution or an error code if unsuccessful, with exception safety noted but thread safety not guaranteed."
+                    },
+                    {
+                      "title": "WaitForConnection(std::chrono::milliseconds)",
+                      "node_id": "0103",
+                      "start_index": 81,
+                      "end_index": 82,
+                      "summary": "This section describes the `WaitForConnection(std::chrono::milliseconds)` function in the `ara::rds::RawDataStreamServer` class. It outlines how this function enables an instance of the server for handling incoming TCP connections, with a timeout parameter to manage non-blocking operations. Key error conditions include communication timeouts and connection aborts, while system signals can interrupt the operation, potentially leaving resources in an unknown state. The function returns `ara:core:Result<void>` indicating success or failure, ensuring exception safety but noting that it is not thread-safe."
+                    },
+                    {
+                      "title": "WaitForConnection()",
+                      "node_id": "0104",
+                      "start_index": 82,
+                      "end_index": 82,
+                      "summary": "This section describes the `WaitForConnection()` function within the `ara::rds::RawDataStreamServer` class, as defined in the \"Specification of Raw Data Stream.pdf\" document. The function is responsible for enabling the server instance to accept incoming TCP connections and returns an `ara:core:Result<void>` indicating success or failure with specific error codes. Key concepts include exception safety, network errors such as connection abortion due to POSIX signals, and the behavior for UDP connections where no action is taken. This function adheres to upstream requirements RS_CM_00410, RS_CM_00411, and RS_CM_00412, ensuring that any interrupted operation can be retried but may leave resources in an unknown state."
+                    },
+                    {
+                      "title": "WriteData(std::unique_ptr<ara::core::Byte[]>, std::size_t)",
+                      "node_id": "0105",
+                      "start_index": 83,
+                      "end_index": 84,
+                      "summary": "This section describes the `WriteData` function of the `ara::rds::RawDataStreamServer` class, which is responsible for writing a specified number of bytes to a socket connection. The function accepts parameters such as a unique pointer to a byte array and the maximum length of data to write, along with optional timeout settings for non-blocking operations. Key error conditions include stream disconnection, communication timeouts, and signal interruptions. The function returns an `ara::core::Result<std::size_t>` indicating either the number of bytes written or an error code, ensuring exception safety but noting that it is not thread-safe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Named Constructors",
+                  "node_id": "0106",
+                  "start_index": 84,
+                  "end_index": 84,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the concept of named constructors in the context of raw data stream processing. It introduces key concepts such as the syntax and usage of named constructors to facilitate the creation and initialization of data streams with specific configurations or parameters. The document outlines important relationships between different types of constructors, emphasizing how they can be used interchangeably under certain conditions. Additionally, it describes constraints on when and how named constructors should be applied to ensure proper stream handling and processing. While no tables are explicitly mentioned in the provided content, the section likely includes detailed examples or guidelines for implementing these constructors effectively within the data stream framework.",
+                  "nodes": [
+                    {
+                      "title": "Create",
+                      "node_id": "0107",
+                      "start_index": 84,
+                      "end_index": 85,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `Create` function for the `ara::rds::RawDataStreamServer` class. The key components include an API function that takes an instance specifier to define network credentials (UDP or TCP) and returns a result object representing the creation status. Important relationships involve error conditions such as connection failure, address unavailability, and stream already connected. Additionally, it outlines specific violations related to instance specifier integrity and port interface mapping. The function ensures thread safety and exception safety while creating a socket bound to specified local credentials."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Struct: ReadDataResult",
+              "node_id": "0108",
+              "start_index": 85,
+              "end_index": 85,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document defines the `ReadDataResult` struct, which serves as the return value for the `ReadData()` API. Key components include its definition within the `ara::rds` namespace and the inclusion headers required for its implementation. The struct is closely related to data reading operations in raw data streams, with specific upstream requirements that guide its design and usage. While no tables are explicitly mentioned, this summary captures the essential structure, scope, and purpose of the `ReadDataResult` within the broader context of data handling processes.",
+              "nodes": [
+                {
+                  "title": "Public Member Variables",
+                  "node_id": "0109",
+                  "start_index": 86,
+                  "end_index": 86,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the public member variables within a data stream processing system. It introduces key concepts such as variable types and their roles in data transmission and manipulation. The summary outlines important relationships between these variables, emphasizing how they interact to facilitate data flow and processing. While no specific tables are mentioned, it is implied that detailed definitions and constraints for each variable type are provided, ensuring clarity on their usage and interdependencies within the system.",
+                  "nodes": [
+                    {
+                      "title": "data",
+                      "node_id": "0110",
+                      "start_index": 86,
+                      "end_index": 86,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document defines the `ara::rds::ReadDataResult::data` variable. It is a key component within the `ReadDataResult` structure and is defined as a `std::unique_ptr` to represent the read data. The definition is derived from upstream requirements RS_CM_00410, RS_CM_00411, and RS_CM_00412. This unique pointer ensures that the data is managed efficiently with ownership semantics, preventing memory leaks while allowing for dynamic allocation of the read data."
+                    },
+                    {
+                      "title": "numberOfBytes",
+                      "node_id": "0111",
+                      "start_index": 86,
+                      "end_index": 86,
+                      "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the `numberOfBytes` variable within the API definition for `ara::rds::ReadDataResult`. It is defined in the header file `ara/rds/raw_data_stream.h` and represents the actual number of bytes read from a data stream. The variable is constrained to be of type `std::size_t`, which ensures it can hold non-negative integer values suitable for byte counts. This definition is closely tied to upstream requirements (RS_CM_00410, RS_CM_00411, RS_CM_00412), indicating its importance in meeting specific system specifications and ensuring data integrity during the reading process."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Header: ara/rds/raw_data_stream_IEEE1722.h",
+          "node_id": "0112",
+          "start_index": 87,
+          "end_index": 87,
+          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on the header file `ara/rds/raw_data_stream_IEEE1722.h`, which is central to defining and handling raw data streams in compliance with IEEE 1722 standards. It introduces key concepts such as data stream structures, packet formats, and metadata definitions essential for interoperable data transmission. The document outlines important relationships between different components of the data stream, including headers, payloads, and error correction mechanisms, while also specifying constraints on data format and size to ensure consistency across implementations. Although no tables are explicitly mentioned in this excerpt, the header file likely contains detailed specifications that guide the implementation and usage of these data structures according to IEEE 1722 standards.",
+          "nodes": [
+            {
+              "title": "Class:IEEE1722Datagram",
+              "node_id": "0113",
+              "start_index": 87,
+              "end_index": 87,
+              "summary": "This section outlines the definition and scope of the `IEEE1722Datagram` class within the ARA::RDS functional cluster. Key concepts include its role as a base class for representing IEEE 1722 payload information exchanged between applications and the RDS system, with specific header files required for implementation. The class is defined in the `ara::rds` namespace and adheres to upstream requirements specified by RS_CM_00413. While no tables are present, this class plays a crucial role in facilitating data stream interoperability according to IEEE 1722 standards within the ARA framework.",
+              "nodes": [
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0114",
+                  "start_index": 87,
+                  "end_index": 87,
+                  "summary": "This section of \"Protected Member Variables\" in the \"Specification of Raw Data Stream.pdf\" document discusses the protected member variables used within the system to manage raw data streams. It introduces key concepts such as variable access levels and their role in ensuring data integrity while allowing controlled access for specific components. The section outlines important relationships between these variables and other system elements, emphasizing constraints on how they can be accessed or modified. Although no tables are explicitly mentioned, it is implied that the document likely includes detailed definitions and examples of protected member variables to guide implementation and usage within the system architecture.",
+                  "nodes": [
+                    {
+                      "title": "data",
+                      "node_id": "0115",
+                      "start_index": 87,
+                      "end_index": 87,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document defines the `ara::rds::IEEE1722Datagram::data` variable, which is a key component in handling IEEE1722 stream data. It is represented as a `std::unique_ptr` and serves both for receiving and transmitting payload data within an IEEE1722 datagram. The variable's visibility is set to protected, indicating it can be accessed by derived classes or the class itself but not directly from outside. This unique pointer encapsulates the payload data, ensuring exclusive ownership and proper resource management during stream operations."
+                    },
+                    {
+                      "title": "stream_data_length",
+                      "node_id": "0116",
+                      "start_index": 88,
+                      "end_index": 88,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the `stream_data_length` variable within the `IEEE1722Datagram` class. It is a protected member variable of type `std::uint16_t`, representing the stream data length header field as defined by IEEE1722 standards, which indicates the number of payload bytes for both reception and transmission processes. Additionally, it introduces the destructor function for the `IEEE1722Datagram` class, ensuring that instances are properly cleaned up when they go out of scope, though this process is not thread-safe. The variable's valid range is explicitly defined as 0x0000 to 0xFFFF, and its usage in both transmission and reception contexts is detailed."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722Datagram61883_IIDC",
+              "node_id": "0117",
+              "start_index": 89,
+              "end_index": 89,
+              "summary": "This section describes the `IEEE1722Datagram61883_IIDC` class, which is part of the raw data stream specification and represents the IEEE 1722-defined subtype 61883_IIDC header fields. Key components include its inheritance from `IEEE1722DatagramAVTPDUCommonStreamHeaderFields`, indicating a hierarchical relationship within the data stream classes. The class is defined in the `ara::rds` namespace and includes derived properties such as `stream_data_length` and `data`. This class plays a crucial role in handling the specific header fields for this subtype, ensuring that relevant data length and payload information are correctly managed within the raw data stream framework.",
+              "nodes": [
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0118",
+                  "start_index": 89,
+                  "end_index": 89,
+                  "summary": "This section of \"Protected Member Variables\" in the \"Specification of Raw Data Stream.pdf\" document discusses the protected member variables used within a class to encapsulate data that should be accessible only to derived classes. Key concepts include the scope and access control mechanisms for these variables, ensuring data integrity while allowing controlled inheritance. The section likely outlines specific naming conventions and constraints for declaring such variables, emphasizing their role in maintaining object-oriented design principles. While no tables are explicitly mentioned, it may reference or detail these rules through text to guide developers on proper implementation.",
+                  "nodes": [
+                    {
+                      "title": "channel",
+                      "node_id": "0119",
+                      "start_index": 89,
+                      "end_index": 90,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the definition and usage of two key variables, `channel` and `dbc`, within the class `IEEE1722Datagram61883_IIDC`. The `channel` variable is an optional 8-bit unsigned integer representing the IEEE1722 channel header field, with a valid range from `0x00` to `0x3F`. For transmission, it should be set to the configured value if not provided by the application. Similarly, the `dbc` (data block count) variable is an optional 16-bit unsigned integer representing the IEEE1722 dbc header field, with a valid range from `0x0000` to `0x00FF`. Both variables are defined as protected members within their respective class scope and follow specific value constraints for transmission."
+                    },
+                    {
+                      "title": "dbs",
+                      "node_id": "0120",
+                      "start_index": 90,
+                      "end_index": 90,
+                      "summary": "This section defines the `ara::rds::IEEE1722Datagram61883 IIDC::dbs` variable within the `ara:rds:IEEE1722Datagram61883_IIDC` class, which is part of a technical specification for handling raw data streams in compliance with IEEE 1722 and IEC 61883-IIDC standards. The key concept introduced here is the `dbs` (data block size) field, an optional 16-bit unsigned integer that represents the size of data blocks within the stream. This variable must be set to a valid value during transmission if not provided by the application; otherwise, it defaults to a non-used state. The section also outlines the valid range for `dbs`, from 0x0000 to 0x00FF, emphasizing its critical role in data block size representation within IEEE1722 streams."
+                    },
+                    {
+                      "title": "fdf_with_sph",
+                      "node_id": "0121",
+                      "start_index": 91,
+                      "end_index": 91,
+                      "summary": "This section describes the definition and usage of the `fdf_with_sph` variable in the context of IEEE1722 datagram streams with IEC61883_IIDC subtype. It is an optional 32-bit unsigned integer member within the `IEEE1722Datagram61883_IIDC` class, representing a format-dependent field (fdf) in the 24-bit header of IEEE1722 streams. The value range and usage constraints are specified, with transmission behavior defined based on whether the application provides a configured value. This variable is declared as `protected`, indicating it can be accessed within the class but not externally."
+                    },
+                    {
+                      "title": "fdf_without_sph",
+                      "node_id": "0122",
+                      "start_index": 91,
+                      "end_index": 97,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the definition and properties of various API variables used in the `IEEE1722Datagram61883_IIDC` class. Key components include optional member variables such as `fdf_without_sph`, `fmt`, `fn`, `qi_1`, `qpc`, `sid`, `sph`, `sy`, `syt`, `tag`, and `tcode`, each representing specific header fields in an IEEE1722 stream with the IEC61883_IIDC subtype. These variables are defined as optional, allowing for configurable values that can be set during transmission if not provided by the application. Additionally, the section describes the value ranges and validity constraints for these variables, ensuring proper usage within the specified IEEE1722 stream format."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722DatagramAAF",
+              "node_id": "0123",
+              "start_index": 98,
+              "end_index": 98,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `IEEE1722DatagramAAF` class, which is part of the ara::rds namespace. It defines an object representing the AAF header fields as specified by IEEE1722, including derived data such as stream_data_length and payload. The class inherits from `IEEE1722DatagramAVTPDUCommonStreamHeaderFields`, indicating its relationship to common header field handling in AVTP (Audio Video Transport Protocol) PDUs. This class is crucial for processing IEEE1722 datagrams, particularly focusing on the AAF subtype, and is defined within the `ara/rds/raw_data_stream_IEEE1722.h` header file.",
+              "nodes": [
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0124",
+                  "start_index": 98,
+                  "end_index": 99,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the protected member variables `aes3_data_type_h` and `aes3_data_type_l`, which are part of the class `IEEE1722DatagramAAF`. These variables represent specific 8-bit header fields in an IEEE1722 stream with subtype AAF, denoted as optional members of type `ara::core::Optional<std::uint16_t>`. The document specifies their valid value ranges and how they should be configured during transmission. Both variables are defined within the same class scope and share similar syntax and description, indicating a relationship in their usage for handling AES3 stream data encapsulation.",
+                  "nodes": [
+                    {
+                      "title": "aes3_dt_ref",
+                      "node_id": "0125",
+                      "start_index": 99,
+                      "end_index": 99,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `aes3_dt_ref` variable within the `IEEE1722Datagram` class for handling AES3 data type references in an AAF (Audio File Format) stream. The variable is defined as a protected, optional 8-bit unsigned integer (`std::uint8_t`) that represents the 3-bit header field of an IEEE1722 stream with subtype AAF. It specifies valid values ranging from `0x00` to `0x07`, while any value above `0x07` is considered unused. During transmission, if the format indicates AES3 data encapsulation, the middleware sets this variable to the configured value unless provided by the application."
+                    },
+                    {
+                      "title": "bit_depth",
+                      "node_id": "0126",
+                      "start_index": 100,
+                      "end_index": 100,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `bit_depth` variable within the `IEEE1722Datagram` class for AAF subtype. It is defined as an optional 16-bit unsigned integer (`std::uint16_t`) that represents the bit depth of an IEEE1722 stream header field. The valid range for this value during event transmission is from `0x0000` to `0x00FF`, with values outside this range indicating unused fields. During data transmission, the middleware sets the `bit_depth` to a configured value if not provided by the application, adhering to upstream requirement RS_CM_00413."
+                    },
+                    {
+                      "title": "channels_per_frame",
+                      "node_id": "0127",
+                      "start_index": 100,
+                      "end_index": 101,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `channels_per_frame` and `evt` variables within the `IEEE1722DatagramAAF` class. The key concept is that these are optional fields used to represent specific header fields in an IEEE1722 stream with subtype AAF. For transmission, if not provided by the application, the middleware sets their values based on predefined ranges and conditions. Specifically, `channels_per_frame` is a 10-bit field with valid values ranging from 0x0000 to 0x03FF, while `evt` is an 8-bit field with valid event codes from 0x00 to 0x0F. Both variables are defined as protected members within the class and utilize the `ara::core::Optional` type for handling potential absence of values."
+                    },
+                    {
+                      "title": "format",
+                      "node_id": "0128",
+                      "start_index": 101,
+                      "end_index": 102,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes key variables used in handling IEEE1722 streams with subtype AAF. It introduces two critical member variables: `format` and `nfr`, both defined within the class `ara::rds::IEEE1722DatagramAAF`. The `format` variable is an 8-bit unsigned integer representing different PCM and AES3 stream data encapsulations, while `nfr` is an optional 8-bit unsigned integer indicating the nominal frame rate. These variables are crucial for interpreting the header fields of IEEE1722 streams and ensuring proper data transmission, with specific constraints on their valid values and usage contexts."
+                    },
+                    {
+                      "title": "nsr",
+                      "node_id": "0129",
+                      "start_index": 102,
+                      "end_index": 103,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the definition and usage of two key variables, `nsr` and `sp`, within the context of an IEEE1722 stream with subtype AAF. The `nsr` variable is defined as a protected member of the `IEEE1722DatagramAAF` class, representing the nominal sample rate (4-bit header field) with a value range from 0x00 to 0x0F for valid values and 0x10 to 0xFF indicating non-use. The middleware is responsible for setting this value during transmission if not provided by the application. Similarly, `sp` is also a protected member of the same class, representing the sparse timestamp (1-bit header field) with a valid range from 0x00 to 0x01; its value must be supplied by the application for transmission. Both variables are crucial for correctly interpreting and transmitting IEEE1722 data streams according to their defined specifications."
+                    },
+                    {
+                      "title": "streams_per_frame",
+                      "node_id": "0130",
+                      "start_index": 103,
+                      "end_index": 104,
+                      "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the `streams_per_frame` variable within the class `IEEE1722DatagramAAF`. It defines an optional 16-bit unsigned integer that represents a specific header field in IEEE1722 streams with subtype AAF, where valid values range from 0x00 to 0x03FF. The value is set by the middleware based on the configured settings if provided; otherwise, it defaults to not used (0x0400 and above). This variable is declared as a protected member of the class, indicating its accessibility within the class but not externally. Additionally, the section mentions the destructor for `IEEE1722DatagramAAF`, which ensures that the instance is properly deleted when no longer needed."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722DatagramAVTPDUCommonHeaderFields",
+              "node_id": "0131",
+              "start_index": 104,
+              "end_index": 104,
+              "summary": "This section describes the `IEEE1722DatagramAVTPDUCommonHeaderFields` class, which is part of a technical specification for handling raw data streams in accordance with IEEE 1722 standards. Key concepts include its definition as an API class within the `ara::rds` namespace and its inheritance from the `IEEE1722 Datagram` base class. The class represents common header fields shared among various AVTP (Audio Video Transport Protocol) stream data subtypes defined by IEEE 1722, facilitating consistent handling of these headers across different types of audio/video data transmissions. This summary is provided in a draft status and adheres to upstream requirements specified by RS_CM_00413.",
+              "nodes": [
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0132",
+                  "start_index": 105,
+                  "end_index": 105,
+                  "summary": "This section of \"Protected Member Variables\" in the \"Specification of Raw Data Stream.pdf\" document focuses on defining and explaining the use of protected member variables within a class structure. Key concepts include the scope and accessibility of these variables, which are accessible to derived classes but not directly to external code. The section likely outlines the naming conventions and access control mechanisms for these variables. Additionally, it may describe how these variables interact with other components of the system, such as methods or other member variables, through specific relationships and constraints. While no tables are explicitly mentioned, the document probably provides examples or detailed descriptions that illustrate the practical application and management of protected member variables in handling raw data streams.",
+                  "nodes": [
+                    {
+                      "title": "avtpStreamDataSubtype",
+                      "node_id": "0133",
+                      "start_index": 105,
+                      "end_index": 105,
+                      "summary": "This section describes the `avtpStreamDataSubtype` variable within the class `IEEE1722DatagramAVTPDUCommonHeaderFields`, which is part of the raw data stream specification for IEEE 1722. It defines a 16-bit unsigned integer (`std::uint16_t`) to represent the AVTP (Audio Video Transport Protocol) stream data subtype, supporting specific subtypes such as IIDC, AAF, CRF, TSCF, RVF, and NTSCF. The variable is declared as `protected`, indicating it can be accessed within derived classes but not directly from outside the class scope. This variable plays a crucial role in identifying the type of data stream being transmitted according to IEEE 1722 standards."
+                    },
+                    {
+                      "title": "headerSpecific",
+                      "node_id": "0134",
+                      "start_index": 105,
+                      "end_index": 107,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on the `headerSpecific` member variable within the class `IEEE1722DatagramAVTPDUCommonHeaderFields`. It defines a 1-bit header field according to IEEE1722 standards, with valid values ranging from 0x00 to 0x01. The section also introduces the `version` variable, which is a 3-bit field representing the version of the IEEE1722 standard and has valid values between 0x00 and 0x07. Both variables are protected members within their respective class scope, indicating they should be accessed through methods or derived classes. The document emphasizes that these definitions are part of an ongoing draft and are subject to change based on upstream requirements."
+                    }
+                  ]
+                },
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0135",
+                  "start_index": 107,
+                  "end_index": 107,
+                  "summary": "This section of \"Protected Member Variables\" in the \"Specification of Raw Data Stream.pdf\" document discusses the usage and significance of protected member variables within a class structure. It introduces key concepts such as access control and encapsulation, explaining how these variables can be accessed by derived classes but not directly from outside the class or its package. The section likely outlines constraints on modifying these variables to ensure data integrity while allowing for some level of subclass customization. Although no specific tables are mentioned in this excerpt, it may include examples or diagrams illustrating the relationships between different classes and their protected member variables.",
+                  "nodes": [
+                    {
+                      "title": "avtp_timestamp",
+                      "node_id": "0136",
+                      "start_index": 107,
+                      "end_index": 108,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines key components and their definitions for handling IEEE1722 stream headers in a software system. It introduces three critical variables: `avtp_timestamp`, `mac_address`, and `mr`. The `avtp_timestamp` is an optional 32-bit field representing the AVTP presentation time, with specific valid ranges and default calculation by middleware if not provided. The `mac_address` is an optional 48-bit MAC address part of the stream ID, used for unambiguous identification, while `mr` is a single bit indicating media clock restart, set to 0 by middleware if unspecified. These definitions are crucial for ensuring correct handling and transmission of IEEE1722 streams within the system."
+                    },
+                    {
+                      "title": "sequenceNum",
+                      "node_id": "0137",
+                      "start_index": 109,
+                      "end_index": 110,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the definition and usage of the `sequenceNum` variable within the class `IEEE1722DatagramAVTPDUCommonStreamHeaderFields`. The `sequenceNum` is an 8-bit unsigned integer that serves as a sequence number for IEEE1722 datagrams, with values ranging from 0x00 to 0xFF. It is managed by the middleware, which increments it by 0x01 for each transmission request if not provided by the application. The document also mentions related variables `tu` and `tv`, both of which are single-bit flags used in timestamping, with specific valid ranges and default behaviors defined. These components collectively ensure proper sequence management and timestamping in data streams according to IEEE1722 standards."
+                    },
+                    {
+                      "title": "unique_id",
+                      "node_id": "0138",
+                      "start_index": 110,
+                      "end_index": 111,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `unique_id` variable within the class `IEEE1722DatagramAVTPDUCommonStreamHeaderFields`. The `unique_id` is an optional 64-bit unsigned integer that serves as part of the unique identifier for IEEE1722 streams, complementing a 48-bit MAC address. This ID ensures unambiguous identification within the stream header field. Additionally, it outlines the destructor function for this class, which is marked as exception-safe but not thread-safe and responsible for cleaning up the instance upon its destruction. The `unique_id` plays a crucial role in distinguishing between different streams by combining with the MAC address to form a unique identifier."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722DatagramCRF",
+              "node_id": "0139",
+              "start_index": 111,
+              "end_index": 111,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `IEEE1722DatagramCRF` class, which is part of the `ara::rds` namespace. It defines an object representing specific CRF (Control and Reporting Fields) header fields as per the IEEE 1722 standard, including data length (`stream_data_length`) and payload (`data`). The class inherits from `IEEE1722DatagramAVTPDUCommonHeaderFields`, indicating its relationship to common header field definitions. This class is marked as `final` and `protected`, suggesting it should not be inherited from directly and is intended for internal use within the system, respectively.",
+              "nodes": [
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0140",
+                  "start_index": 112,
+                  "end_index": 112,
+                  "summary": "This section of the \"Protected Member Variables\" in the \"Specification of Raw Data Stream.pdf\" document describes the `base_frequency` member variable within the `IEEE1722DatagramCRF` class. It is defined as an optional 32-bit unsigned integer (`std::uint32_t`) that represents the base frequency field from a specific header in IEEE1722 streams with CRF subtype. The valid range for this value during events is between `0x00000000` and `0x1FFFFFF`, while values outside this range are considered unused. During transmission, the middleware sets this variable to the configured value if not provided by the application, adhering to the upstream requirement RS_CM_00413.",
+                  "nodes": [
+                    {
+                      "title": "fs",
+                      "node_id": "0141",
+                      "start_index": 112,
+                      "end_index": 112,
+                      "summary": "This section defines the `fs` variable within the `ara::rds::IEEE1722DatagramCRF` class, which is part of the Raw Data Stream specification. The `fs` variable is an optional 8-bit unsigned integer (`std::uint8_t`) representing the frame sync (fs) header field as defined by IEEE1722. Its value range and usage are constrained: valid values are `0x00` to `0x01`, while other values indicate it is not used. During transmission, if this value is not provided by the application, the middleware should set it to `0`. This variable is declared as a protected member of the class, indicating its accessibility within the class and derived classes but not publicly accessible outside."
+                    },
+                    {
+                      "title": "mac_address",
+                      "node_id": "0142",
+                      "start_index": 113,
+                      "end_index": 114,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on defining key variables for handling IEEE1722 datagrams within a specific class. It introduces three critical components: `mac_address`, `mr`, and `pull`. The `mac_address` is an optional 64-bit variable representing the MAC address part of the stream ID, which must be set by the middleware if not provided by the application. The `mr` (media clock restart) field is a single bit that defaults to 0 when unspecified, while the `pull` field, a three-bit value for event representation, should be configured by the middleware unless specified otherwise. These definitions are crucial for ensuring proper handling and transmission of IEEE1722 datagrams according to the document's specifications."
+                    },
+                    {
+                      "title": "sequenceNum",
+                      "node_id": "0143",
+                      "start_index": 114,
+                      "end_index": 114,
+                      "summary": "This section describes the `sequenceNum` variable in the context of the IEEE1722DatagramCRF class within the `ara::rds::IEEE1722Datagram` API. The key concept is that `sequenceNum` is an optional 8-bit unsigned integer (`std::uint8_t`) used to represent the sequence number header field as defined by the IEEE1722 standard. It follows a cyclic numbering scheme, incrementing by one for each transmission request unless provided by the application; if it reaches its maximum value (0xFF), it resets to 0x00. This variable is declared as `protected`, indicating it can be accessed within the class but not externally, and is defined in the header file `raw_data_stream_IEEE1722.h`."
+                    },
+                    {
+                      "title": "timestamp_interval",
+                      "node_id": "0144",
+                      "start_index": 115,
+                      "end_index": 115,
+                      "summary": "This section describes the `timestamp_interval` variable within the context of the `IEEE1722DatagramCRF` class in the `ara::rds::raw_data_stream_IEEE1722.h` header file. The key concept is that `timestamp_interval` represents a 16-bit timestamp field defined by IEEE1722 for CRF (Control Room Function) data streams, which can take any value from `0x0000` to `FFFF`. If the application does not provide this value, the middleware will set it to the configured default. The variable is declared as an optional 16-bit unsigned integer (`ara::core::Optional<std::uint16_t>`), and its visibility is protected, meaning it can be accessed by derived classes but not directly from outside the class."
+                    },
+                    {
+                      "title": "tu",
+                      "node_id": "0145",
+                      "start_index": 115,
+                      "end_index": 116,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes two key variables, `tu` and `type`, within the class `ara::rds::IEEE1722DatagramCRF`. The `tu` variable is an 8-bit header field representing a timestamp uncertainty value, with specific valid ranges and default behavior for transmission. Similarly, the `type` variable represents another 8-bit header field, designated for type information, also with defined valid values and default settings. Both variables are marked as protected members of their class, indicating they should be accessed within the same class or derived classes only. The document emphasizes that middleware is responsible for setting these values based on application-provided data or defaulting to predefined values if no application input is available."
+                    },
+                    {
+                      "title": "unique_id",
+                      "node_id": "0146",
+                      "start_index": 116,
+                      "end_index": 117,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `unique_id` variable within the class `IEEE1722DatagramCRF`. The `unique_id` is defined as an optional 16-bit unsigned integer (`std::uint16_t`) and serves to uniquely identify a stream in accordance with IEEE1722 standards. It forms part of the stream ID, which includes a 48-bit MAC address. If not provided by the application, the middleware will configure this unique identifier during transmission. Additionally, the section outlines the destructor for the `IEEE1722DatagramCRF` class, indicating that it is responsible for deleting instances of this class and noting that it operates in an exception-safe manner but is not thread-safe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722DatagramNTSCF",
+              "node_id": "0147",
+              "start_index": 117,
+              "end_index": 117,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `IEEE1722DatagramNTSCF` class, which is part of the `ara::rds` namespace. It defines an object representing the NTSCF header fields as specified by IEEE1722 and derives from `IEEE1722DatagramAVTPDUCommonHeaderFields`. The payload data is inherited from `IEEE1722Datagram`, specifically representing the `acf_payload_data` defined in IEEE1722, with its length determined by the member variable `ntscf_data_length`. This class structure ensures a clear hierarchical relationship and specific data handling for NTSCF datagrams within the raw data stream processing framework.",
+              "nodes": [
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0148",
+                  "start_index": 118,
+                  "end_index": 118,
+                  "summary": "This section of the \"Protected Member Variables\" in the \"Specification of Raw Data Stream.pdf\" document describes a protected member variable `mac_address` within the class `ara::rds::IEEE1722DatagramNTSCF`. The key concept introduced is that this variable represents the MAC address part of the IEEE1722 stream ID header field, which is crucial for unambiguously identifying an IEEE1722 stream. It specifies a value range and indicates that during transmission, if not provided by the application, the middleware will set the configured MAC address. The variable's type is defined as `ara::core:Optional<std::uint64_t>`, reflecting its optional nature and the 64-bit unsigned integer format used for storing the MAC address.",
+                  "nodes": [
+                    {
+                      "title": "ntscf_data_length",
+                      "node_id": "0149",
+                      "start_index": 118,
+                      "end_index": 119,
+                      "summary": "This section describes the `ntscf_data_length` variable within the class `IEEE1722DatagramNTSCF`, which is part of the `ara::rds::raw_data_stream_IEEE1722.h` header file. It defines a 16-bit unsigned integer (`std::uint16_t`) that represents the 11-bit header field of an IEEE1722 stream, replacing the `stream_data_length` from its base class. The valid range for this variable is between `0x0000` and `0x03FF`, with values above `0x0400` being reserved. During reception, it indicates the number of data bytes received as payload, while during transmission, it specifies the number of data bytes to be transmitted as part of the ACFPayloadData via an IEEE1722 stream."
+                    },
+                    {
+                      "title": "sequenceNum",
+                      "node_id": "0150",
+                      "start_index": 119,
+                      "end_index": 119,
+                      "summary": "This section describes the `sequenceNum` variable in the context of the IEEE1722DatagramNTSCF class within the `ara::rds` namespace. The key concepts include its definition as an optional 8-bit unsigned integer (`std::uint8_t`) and its role in representing the sequence number field defined by IEEE1722. The middleware is responsible for incrementing this value by 0x01 with each transmission request, restarting from 0x00 once it reaches the maximum value of 0xFF. This variable is marked as `protected`, indicating that it is accessible within the class but not externally."
+                    },
+                    {
+                      "title": "unique_id",
+                      "node_id": "0151",
+                      "start_index": 120,
+                      "end_index": 120,
+                      "summary": "This section describes the `unique_id` variable within the `IEEE1722DatagramNTSCF` class in the \"Specification of Raw Data Stream.pdf\" document. The `unique_id` is defined as an optional 64-bit unsigned integer (`ara::core::Optional<std::uint64_t>`), representing a unique identifier part of the IEEE1722 stream ID header field, which aids in unambiguous identification of the stream. It is noted that the stream ID consists of a 48-bit MAC address and this 16-bit `unique_id`. The document also outlines the destructor for the `IEEE1722DatagramNTSCF` class, indicating it is responsible for deleting the instance and ensuring exception safety while noting its non-thread-safe nature."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722DatagramRVF",
+              "node_id": "0152",
+              "start_index": 121,
+              "end_index": 121,
+              "summary": "This section describes the `IEEE1722DatagramRVF` class, which is part of the `ara::rds` namespace and is defined in the header file \"ara/rds/raw_data_stream_IEEE1722.h\". This class extends from `IEEE1722DatagramAVTPDUCommonStreamHeaderFields`, representing the RVF (Real-time Video Format) header fields as specified by IEEE 1722. It includes derived data such as the stream data length and payload, essential for handling raw data streams in accordance with the IEEE 1722 standard. The class is marked as `final` and `protected`, indicating that it cannot be inherited from directly and should not be instantiated externally, respectively.",
+              "nodes": [
+                {
+                  "title": "Protected Member Variables",
+                  "node_id": "0153",
+                  "start_index": 121,
+                  "end_index": 122,
+                  "summary": "This section of the \"Protected Member Variables\" in the \"Specification of Raw Data Stream.pdf\" document outlines two protected member variables within the `IEEE1722DatagramRVF` class: `active_pixels` and `ap`. These variables are defined as optional fields, with `active_pixels` being a 32-bit unsigned integer and `ap` an 8-bit unsigned integer. Both represent specific header fields in IEEE1722 streams of subtype RVF, with defined valid ranges for their values. The document specifies that these values should be set to the configured value during transmission if not provided by the application, highlighting the importance of proper configuration and handling when dealing with IEEE1722 data streams.",
+                  "nodes": [
+                    {
+                      "title": "colorspace",
+                      "node_id": "0154",
+                      "start_index": 122,
+                      "end_index": 124,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on defining key variables for handling IEEE1722 streams with subtype RVF. It introduces several optional member variables such as `colorspace`, `ef`, `evt`, and `f`, each representing specific header fields in an IEEE1722 stream. These variables are defined within the class `ara::rds::IEEE1722DatagramRVF` and are marked as protected, indicating they are intended for internal use within the class. The document specifies the valid value ranges for these variables and states that their values should be set to configured values during transmission if not provided by the application. This ensures consistency and correctness in handling IEEE1722 streams according to the defined standards."
+                    },
+                    {
+                      "title": "frame_rate",
+                      "node_id": "0155",
+                      "start_index": 124,
+                      "end_index": 125,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `frame_rate` and `i` variables within the context of IEEE1722 streams with subtype RVF. The key components introduced are `ara::core::Optional<std::uint16_t>` for `frame_rate`, which represents the 8-bit frame rate header field, and `ara::core::Optional<std::uint8_t>` for `i`, representing the interlaced (I) bit of the header. Both variables are defined as protected member variables within the class `ara::rds::IEEE1722DatagramRVF`. The document specifies valid value ranges for these fields and outlines that their values should be set based on configuration or defaults if not provided by the application during transmission."
+                    },
+                    {
+                      "title": "i_seq_num",
+                      "node_id": "0156",
+                      "start_index": 125,
+                      "end_index": 125,
+                      "summary": "This section describes the `i_seq_num` variable within the class `ara::rds::IEEE1722DatagramRVF`, which is part of a draft specification for handling raw data streams in compliance with IEEE 1722. The key concept introduced is an optional 16-bit unsigned integer (`std::uint16_t`) that represents the sequence number field from the IEEE1722 stream's header, specifically for Real-time Video Frame (RVF) subtypes. This variable is defined as a protected member within the class and must be set to a configured value during transmission; if not provided, the application should use a default value. The valid range for `i_seq_num` is from 0x0000 to 0x00FF, with values above this range being reserved or unused."
+                    },
+                    {
+                      "title": "line_number",
+                      "node_id": "0157",
+                      "start_index": 126,
+                      "end_index": 126,
+                      "summary": "This section describes the `line_number` variable in the context of the IEEE1722 datagram for Real-time Video and Audio (RVF) streams. It is defined as a protected member within the class `ara::rds::IEEE1722DatagramRVF`, with its type specified as `ara:core:Optional<std:uint32_t>`. The variable represents the 16-bit line number header field of an IEEE1722 stream, and its value range is constrained to valid (0x00000000 to 0x0000FFFF) and unused (0x00010000 to 0xFFFFFFFF) ranges. The section also notes that during transmission, the line number should be set to a configured value if provided; otherwise, it is left unspecified by the application."
+                    },
+                    {
+                      "title": "num_lines",
+                      "node_id": "0158",
+                      "start_index": 126,
+                      "end_index": 127,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes two key variables, `num_lines` and `pd`, within the class `ara::rds::IEEE1722DatagramRVF`. These variables are part of a draft API specification for handling IEEE 1722 data streams with the Real-time Video Format (RVF) subtype. The document outlines that both `num_lines` and `pd` are optional member variables, represented as `std::uint8_t`, which correspond to specific header fields in IEEE 1722 streams. Importantly, it specifies valid value ranges for these variables and the process of setting their values during transmission based on configuration or default settings provided by the application."
+                    },
+                    {
+                      "title": "pixel_depth",
+                      "node_id": "0159",
+                      "start_index": 127,
+                      "end_index": 127,
+                      "summary": "This section describes the `pixel_depth` variable in the context of the IEEE1722 Datagram RVF (Remote Video Format) within the `ara::rds::IEEE1722DatagramRVF` class. The `pixel_depth` is defined as an optional 8-bit unsigned integer (`std::uint8_t`) and serves to represent a specific header field in IEEE1722 streams used for RVF data. Valid values range from `0x00` to `0x0F`, with other values being reserved or unused. The value must be set during transmission based on the configured settings, unless explicitly provided by the application. This variable is declared as a protected member of the class, indicating its accessibility within derived classes but not publicly visible outside the class scope."
+                    },
+                    {
+                      "title": "pixel_format",
+                      "node_id": "0160",
+                      "start_index": 128,
+                      "end_index": 128,
+                      "summary": "This section describes the `pixel_format` variable within the `IEEE1722DatagramRVF` class of the `ara::rds::RawDataStream_IEEE1722.h` header file. The `pixel_format` is an optional 4-bit field defined by IEEE1722, used to represent pixel format information in RVF (Remote Video Format) subtypes. It can take values from `0x00` to `0x0F`, where these are considered valid, while any value between `0x10` and `0xFF` is reserved and not utilized. During transmission, this field must be set to the configured pixel format if provided; otherwise, it should remain unset or default to an unspecified state as per application requirements."
+                    },
+                    {
+                      "title": "total_lines",
+                      "node_id": "0161",
+                      "start_index": 128,
+                      "end_index": 129,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `total_lines` variable within the `IEEE1722DatagramRVF` class. It is an optional 32-bit unsigned integer that represents a specific header field in IEEE1722 streams with subtype RVF, and its value range is constrained to certain valid and invalid ranges as defined by the standard. The section also outlines the destructor for this class, which ensures proper cleanup of the instance when it is no longer needed. Both the variable and function are marked as draft status and have specific upstream requirements, indicating ongoing development and validation processes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722DatagramTSCF",
+              "node_id": "0162",
+              "start_index": 129,
+              "end_index": 130,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `IEEE1722DatagramTSCF` class, which is part of the `ara::rds` namespace and derived from `IEEE1722DatagramAVTPDUCommonStreamHeaderFields`. It defines an object representing the TSCF header fields as specified by IEEE1722. The class does not introduce additional header fields but relies on those defined in its base classes for data length and payload information. Additionally, it outlines the destructor of this class, which is marked as exception safe but not thread-safe."
+            },
+            {
+              "title": "Class: IEEE1722RawDataStreamConsumer",
+              "node_id": "0163",
+              "start_index": 130,
+              "end_index": 131,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `IEEE1722RawDataStreamConsumer` class, which is responsible for consuming IEEE1722 streams from a network connection. Key components include its definition as an API class with specific template parameters and associated header files. The copy constructor for this class is explicitly deleted to prevent copying instances of `IEEE1722RawDataStreamConsumer`. This class operates within the `ara::rds` namespace and has dependencies on other classes and interfaces, such as `IEEE1722RawDataStreamConsumerInterface`, which are crucial for its functionality.",
+              "nodes": [
+                {
+                  "title": "Default Constructor",
+                  "node_id": "0164",
+                  "start_index": 131,
+                  "end_index": 131,
+                  "summary": "This section discusses the default constructor for the `IEEE1722RawDataStreamConsumer` class within the `ara::rds::IEEE1722RawDataStream` API function. The key concept introduced is that the default constructor, defined as `IEEE1722RawDataStreamConsumer()=delete;`, should not be used. This declaration indicates that a user-defined default constructor has been explicitly deleted, preventing the automatic generation of one by the compiler. The section also references upstream requirements and specifies the header file inclusion necessary for this class definition. Importantly, it constrains the usage of the default constructor, ensuring that alternative constructors must be utilized instead."
+                },
+                {
+                  "title": "Move Constructor",
+                  "node_id": "0165",
+                  "start_index": 132,
+                  "end_index": 132,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" discusses the move constructor for the `IEEE1722RawDataStreamConsumer` class within the `ara::rds` namespace. The key concept introduced is that the move constructor, defined as `IEEE1722RawDataStreamConsumer(IEEE1722RawDataStreamConsumer&& rdsc) = delete;`, is explicitly disabled, meaning it cannot be used in practice. This decision aligns with upstream requirements such as RS_CM_00413 and others, indicating that the design choice has been made to avoid move semantics for this class. The header file `raw_data_stream_IEEE1722.h` must be included when working with this class, providing necessary declarations and definitions."
+                },
+                {
+                  "title": "Copy Assignment Operator",
+                  "node_id": "0166",
+                  "start_index": 132,
+                  "end_index": 132,
+                  "summary": "This section discusses the copy assignment operator for the `IEEE1722RawDataStreamConsumer` class in the \"Specification of Raw Data Stream.pdf\" document. It defines that the copy assignment operator is intentionally deleted, meaning it cannot be used to assign one instance of `IEEE1722RawDataStreamConsumer` to another. This decision aligns with upstream requirements related to consumer management and data stream handling. The section is marked as a draft and includes relevant header file information for reference."
+                },
+                {
+                  "title": "Move Assignment Operator",
+                  "node_id": "0167",
+                  "start_index": 133,
+                  "end_index": 133,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" discusses the move assignment operator for the `IEEE1722RawDataStreamConsumer` class. The key concept is that this move assignment operator has been explicitly deleted, meaning it cannot be used. This decision aligns with upstream requirements such as RS_CM_00413 and RS_AP_00119. Although no tables are present in the provided content, the header file inclusion (`#include \"ara/rds/raw_data_stream_IEEE1722.h\"`) and the scope of the class indicate that this operator is crucial for managing raw data streams according to IEEE 1722 standards within a specific consumer context."
+                },
+                {
+                  "title": "Destructor",
+                  "node_id": "0168",
+                  "start_index": 133,
+                  "end_index": 135,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the destructor and member functions of the `IEEE1722RawDataStreamConsumer` class. Key concepts include the destructor's role in safely closing connections before destroying an instance, and member functions such as `Connect` for establishing a data link socket connection and `ReadData` for reading IEEE1722 datagrams from the stream. The section outlines exception safety, thread safety considerations, and error handling mechanisms, emphasizing that operations can be interrupted by system signals or may fail due to existing connections or invalid header values."
+                },
+                {
+                  "title": "Shutdown",
+                  "node_id": "0169",
+                  "start_index": 135,
+                  "end_index": 136,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the `Shutdown` and `Create` functions for managing an IEEE1722 raw data stream consumer. Key concepts include the definition of these API functions, their syntax, return values, exception safety, thread safety, and error handling mechanisms. The `Shutdown` function closes the connection to the data link socket, ensuring that receiving from this socket is halted, while the `Create` function initializes a new instance by creating a data link layer socket for receiving IEEE1722 streams via the network. Important relationships are established between these functions and their respective error conditions, such as `RdsErrc::kStreamNotConnected` and `RdsErrc::kConnectionCreationFailed`, which indicate specific failure scenarios during operation or initialization."
+                }
+              ]
+            },
+            {
+              "title": "Class: IEEE1722RawDataStreamProducer",
+              "node_id": "0170",
+              "start_index": 137,
+              "end_index": 137,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `IEEE1722RawDataStreamProducer` class, which is part of a system for producing raw data streams via IEEE 1722 compliant streams to a network connection. Key components include its definition as a template class with a single parameter `T`, representing the type of IEEE 1722 subtype (e.g., audio). The section also notes that this class cannot be copied, as indicated by the deleted copy constructor. This class is defined within the `ara::rds` namespace and interacts through an interface called `IEEE1722RawDataStreamProducerInterface`. Important constraints include its status as a draft and specific upstream requirements it must meet.",
+              "nodes": [
+                {
+                  "title": "Default Constructor",
+                  "node_id": "0171",
+                  "start_index": 138,
+                  "end_index": 138,
+                  "summary": "This section discusses the default constructor for the `IEEE1722RawDataStreamProducer` class within the `ara::rds::IEEE1722RawDataStream` API function. The key concept introduced is that the default constructor (`IEEE1722RawDataStreamProducer()=delete;`) should not be used, indicating a deliberate design decision to prevent instantiation of this producer via its default constructor. This aligns with upstream requirements such as RS_CM_00413 and others, suggesting specific constraints on how this class can be utilized in the system. The section is part of a technical document that aims to provide detailed specifications for handling raw data streams according to IEEE 1722 standards."
+                },
+                {
+                  "title": "Move Constructor",
+                  "node_id": "0172",
+                  "start_index": 138,
+                  "end_index": 138,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the move constructor for the `IEEE1722RawDataStreamProducer` class. The key concept is that this move constructor has been explicitly deleted, meaning it cannot be used to transfer ownership of resources between instances of `IEEE1722RawDataStreamProducer`. This decision aligns with upstream requirements such as RS_CM_00413 and others, indicating a specific design choice in the implementation. The section is part of a draft specification and includes references to relevant header files and class scopes, providing context for its technical application within the broader framework of raw data stream handling."
+                },
+                {
+                  "title": "Copy Assignment Operator",
+                  "node_id": "0173",
+                  "start_index": 139,
+                  "end_index": 139,
+                  "summary": "This section discusses the `Copy Assignment Operator` for the class `IEEE1722RawDataStreamProducer`, as defined in the draft specification \"Specification of Raw Data Stream.pdf\". The key concept introduced is that this operator has been explicitly deleted, meaning it cannot be used. This decision aligns with upstream requirements such as RS_CM_00413 and RS_AP_00119, indicating specific constraints on how instances of `IEEE1722RawDataStreamProducer` can be managed. The header file inclusion (`#include \"ara/rds/raw_data_stream_IEEE1722.h\"`) provides context for where this class is defined, while the deletion of the copy assignment operator suggests a design choice to prevent shallow copying and ensure proper resource management within the implementation."
+                },
+                {
+                  "title": "Move Assignment Operator",
+                  "node_id": "0174",
+                  "start_index": 139,
+                  "end_index": 141,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on key member functions and their specifications for the `IEEE1722RawDataStreamProducer` class. It includes the move assignment operator, destructor, and a connect function. The move assignment operator is explicitly deleted to prevent its use, indicating that this class does not support move semantics. The destructor ensures proper cleanup by closing and shutting down any active connections before destroying the object. The `Connect` function establishes a data link socket connection, handling various error scenarios such as connection refusal or interruption due to signals. These functions are marked as exception-safe but not thread-safe, with specific error codes defined for different failure conditions."
+                },
+                {
+                  "title": "Shutdown",
+                  "node_id": "0175",
+                  "start_index": 141,
+                  "end_index": 143,
+                  "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the shutdown and write data operations for an IEEE1722 raw data stream producer. Key concepts include the `Shutdown` function, which closes the connection to the data link socket, and the `WriteData` function, responsible for sending datagrams over the established connection. The section also introduces the `Create` named constructor used to instantiate the producer with a specific instance specifier. Important relationships are highlighted through error handling mechanisms such as `RdsErrc::kStreamNotConnected`, which indicates an attempt to use a stream without a valid connection, and `RdsErrc::kInterruptedBySignal`, which describes scenarios where operations might need to be retried due to system signals. Technical details include the exception safety of functions, thread safety considerations, and specific error codes that provide detailed feedback on operation failures."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Header: ara/rds/rds_error_domain.h",
+          "node_id": "0176",
+          "start_index": 144,
+          "end_index": 144,
+          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on the header file `ara/rds/rds_error_domain.h`, which is crucial for defining error domains and handling errors in the raw data stream processing system. It introduces key concepts such as error codes, domain identifiers, and their relationships to facilitate robust error management. The section likely outlines how these error domains are structured and utilized within the system to ensure consistent and effective error reporting and handling mechanisms. While no specific tables are mentioned, the header file is expected to contain detailed definitions and possibly enumerations that map to different types of errors encountered during data stream processing.",
+          "nodes": [
+            {
+              "title": "Non-Member Types",
+              "node_id": "0177",
+              "start_index": 144,
+              "end_index": 144,
+              "summary": "The section \"Non-Member Types\" in the document \"Specification of Raw Data Stream.pdf\" focuses on defining and detailing types that are not associated with any specific class. Key concepts introduced include the definition of non-member types, their roles in data stream processing, and how they interact with member types. The section outlines important relationships between non-member types and other components within the system, such as constraints on their usage and processes for integrating them into data flow operations. While no tables are explicitly mentioned, the summary provides a foundational understanding of these types' significance and application in managing raw data streams effectively.",
+              "nodes": [
+                {
+                  "title": "Enumeration: RdsErrc",
+                  "node_id": "0178",
+                  "start_index": 144,
+                  "end_index": 145,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the RdsErrc enumeration, which defines error codes for the RdsErrorDomain. Key concepts include the underlying type `ara::core::ErrorDomain::CodeType` and specific error values such as connection issues, timeouts, and permission denials. The section outlines how these errors are represented in an enumerated class within the `namespace ara::rds`, establishing a clear mapping between error conditions and their corresponding integer codes. This enumeration is crucial for handling and diagnosing issues related to raw data stream operations, ensuring robust error management in the system."
+                }
+              ]
+            },
+            {
+              "title": "Non-Member Functions",
+              "node_id": "0179",
+              "start_index": 145,
+              "end_index": 145,
+              "summary": "The section \"Non-Member Functions\" in the \"Specification of Raw Data Stream.pdf\" document focuses on functions that are not associated with any specific class and operate on objects of various types. Key concepts introduced include function prototypes, parameter lists, and return types for these non-member functions. The section details how non-member functions can be used to provide functionality that is common across multiple classes or unrelated data types, thereby promoting code reuse and modularity. While no tables are explicitly mentioned in the summary, it is implied that such technical details might be found elsewhere in the document, possibly outlining specific function implementations or usage scenarios.",
+              "nodes": [
+                {
+                  "title": "Other",
+                  "node_id": "0180",
+                  "start_index": 145,
+                  "end_index": 145,
+                  "summary": "The \"Other\" section in the \"Specification of Raw Data Stream.pdf\" document provides additional information and considerations not covered under specific categories. It introduces key concepts such as data validation rules and error handling mechanisms, which are crucial for ensuring data integrity during processing. The section also outlines important relationships between different data streams and constraints on their interaction, emphasizing the need for synchronization and consistency across multiple data sources. While no tables are explicitly mentioned in this excerpt, it does reference specific validation criteria and error codes that are essential for implementing robust data handling procedures.",
+                  "nodes": [
+                    {
+                      "title": "GetRdsErrorDomain",
+                      "node_id": "0181",
+                      "start_index": 145,
+                      "end_index": 145,
+                      "summary": "This section describes the `GetRdsErrorDomain` function within the `ara::rds` namespace. It defines a constant reference to the global `ara::rds::RdsErrorDomain` object and is part of the API specified by SWS_RDS_11298, which references upstream requirements RS_AP_00120 and RS_AP_00130. The function is designed to be exception-safe and thread-safe, ensuring reliable access to error domain information in a multi-threaded environment."
+                    },
+                    {
+                      "title": "MakeErrorCode",
+                      "node_id": "0182",
+                      "start_index": 145,
+                      "end_index": 146,
+                      "summary": "This section describes the `MakeErrorCode` function, which is part of the `ara::rds` namespace and is defined in the header file `ara/rds/rds_error_domain.h`. The function takes an error code number and vendor-defined data associated with the error as input parameters and returns an instance of `ara::core::ErrorCode`. It adheres to exception safety and thread safety standards, ensuring that it does not throw exceptions and can be safely used in concurrent environments. This function plays a crucial role in converting raw error codes into structured error objects, facilitating better error handling and management within the system."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: RdsErrorDomain",
+              "node_id": "0183",
+              "start_index": 146,
+              "end_index": 146,
+              "summary": "This section describes the `RdsErrorDomain` class, which is part of the Raw Data Streams (RDS) error handling mechanism. It is defined within the `ara::rds` namespace and inherits from `ara::core::ErrorDomain`, indicating its role in managing errors specific to RDS operations. The class is crucial for defining error domains that can be used to handle and categorize errors related to raw data streams, adhering to upstream requirements such as RS_AP_00130, RS_AP_00122, and RS_AP_00127. The unique identifier for this class is specified according to the standards outlined in [SWS_CORE_90023], ensuring its proper integration within the broader system architecture.",
+              "nodes": [
+                {
+                  "title": "Public Member Types",
+                  "node_id": "0184",
+                  "start_index": 146,
+                  "end_index": 146,
+                  "summary": "The section \"Public Member Types\" in the \"Specification of Raw Data Stream.pdf\" document outlines the publicly accessible data types and structures within a raw data stream. It introduces key concepts such as public member variables and functions that are essential for external entities to interact with the data stream. The summary also describes important relationships between these members, specifying how they interconnect to facilitate data manipulation and access. While no specific tables are mentioned in this excerpt, the section likely provides detailed definitions and constraints for each public member type, ensuring clarity on their usage and interoperability within the system.",
+                  "nodes": [
+                    {
+                      "title": "Type Alias: Errc",
+                      "node_id": "0185",
+                      "start_index": 146,
+                      "end_index": 146,
+                      "summary": "This section of \"Specification of Raw Data Stream.pdf\" describes the definition and usage of a type alias named `Errc` within the context of the `ara::rds::RdsErrorDomain` class. The key concept introduced is that `Errc` serves as an alias for the `RdsErrc` error code value enumeration, facilitating easier reference to error codes in the API. This type alias is defined in the header file \"ara/rds/rds_error_domain.h\" and adheres to upstream requirements specified by RS_AP_00120 and RS_AP_00130. The alias simplifies the handling of error codes, making the code more readable and maintainable while ensuring compliance with predefined standards."
+                    },
+                    {
+                      "title": "Type Alias: Exception",
+                      "node_id": "0186",
+                      "start_index": 147,
+                      "end_index": 147,
+                      "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document defines a type alias named `Exception` within the context of the `ara::rds::RdsErrorDomain` class. The key concept introduced is that `Exception` serves as an alias for the base exception class `RdsException`, facilitating easier reference and management of error handling mechanisms in the RDS API. This type alias is declared in the header file `ara/rds/rds_error_domain.h`. Importantly, this definition adheres to upstream requirements RS_AP_00120 and RS_AP_00130, ensuring alignment with broader system specifications."
+                    }
+                  ]
+                },
+                {
+                  "title": "Public Member Functions",
+                  "node_id": "0187",
+                  "start_index": 147,
+                  "end_index": 147,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on the public member functions of the `RdsErrorDomain` class. It begins by defining the default constructor for this class, which is marked as `constexpr` and `noexcept`, ensuring that it constructs a new `RdsErrorDomain` object efficiently without throwing exceptions. The function adheres to upstream requirements specified in RS_AP_00120, RS_AP_00130, and RS_AP_00146, indicating its compliance with certain standards or specifications. Additionally, the constructor is described as being both exception-safe and thread-safe, making it suitable for use in concurrent programming scenarios. The header file `#include \"ara/rds/rds_error_domain.h\"` provides the necessary context for including this function in relevant code.",
+                  "nodes": [
+                    {
+                      "title": "Member Functions",
+                      "node_id": "0188",
+                      "start_index": 148,
+                      "end_index": 148,
+                      "summary": "This section of \"Specification of Raw Data Stream.pdf\" focuses on the member functions associated with handling raw data streams. It introduces key concepts such as function prototypes and their parameters, which are essential for interacting with the raw data stream objects. The summary outlines important relationships between these functions and the data stream lifecycle, including initialization, processing, and termination phases. While no specific tables are mentioned in this excerpt, it emphasizes the importance of adhering to defined constraints and processes when implementing these member functions to ensure proper data handling and system integrity.",
+                      "nodes": [
+                        {
+                          "title": "Message",
+                          "node_id": "0189",
+                          "start_index": 148,
+                          "end_index": 148,
+                          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `Message` function within the API class `ara::rds::RdsErrorDomain`. The function is responsible for retrieving a human-readable message corresponding to an error code. Key components include the function's definition, parameters, return type, and exception safety. It adheres to specific upstream requirements (RS_AP_00120, RS_AP_00121, RS_AP_00130) and is thread-safe, ensuring that it can be safely called from multiple threads concurrently. The function's implementation is found in the header file `ara/rds/rds_error_domain.h`, and its behavior is defined by the parameter `errorCode` which maps to a specific error message through the `Message` function signature."
+                        },
+                        {
+                          "title": "Name",
+                          "node_id": "0190",
+                          "start_index": 148,
+                          "end_index": 148,
+                          "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document describes the `Name` function within the class `ara::rds::RdsErrorDomain`. The function is defined as a constant member function that returns a string constant associated with the error domain. It adheres to specific requirements and constraints, including being exception-safe and thread-safe. Key components include its definition in the header file \"ara/rds/rds_error_domain.h\" and its relationship to other specifications such as RS_AP_00120 and RS_AP_00130. The function is part of a broader system defined by [SWS_CORE_90023], ensuring consistency with core standards."
+                        },
+                        {
+                          "title": "ThrowAsException",
+                          "node_id": "0191",
+                          "start_index": 149,
+                          "end_index": 149,
+                          "summary": "This section describes the `ThrowAsException` function within the `ara::rds::RdsErrorDomain` class, which is defined in the header file `ara/rds/rds_error_domain.h`. The function takes a `const ara::core::ErrorCode &errorCode` as input and throws an instance of `RdsException`, adhering to specific exception safety and thread safety requirements. It does not participate in overload resolution when C++ exceptions are disabled, ensuring compatibility with different compiler settings. Key relationships include its role in handling errors through exception mechanisms and its interaction with the broader error domain specification."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Class: RdsException",
+              "node_id": "0192",
+              "start_index": 149,
+              "end_index": 149,
+              "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document outlines the definition and structure of the `RdsException` class within the context of handling exceptions in raw data streams. Key concepts include its inheritance from `ara::core::Exception`, indicating that it is designed to manage specific types of errors encountered during data stream operations. The class is defined within the `namespace ara::rds`, with associated header files and upstream requirements specified, highlighting its integration into a broader system architecture. Importantly, this section does not include any tables but provides essential information on the scope, inheritance, and purpose of the `RdsException` class in managing errors related to raw data streams.",
+              "nodes": [
+                {
+                  "title": "Public Member Functions",
+                  "node_id": "0193",
+                  "start_index": 150,
+                  "end_index": 150,
+                  "summary": "This section of the \"Specification of Raw Data Stream.pdf\" document focuses on the public member functions within the `ara::rds` namespace, specifically detailing the constructors for the `RdsException` class. It introduces the definition and syntax of the `RdsException` constructor, which takes an `ara::core::ErrorCode` as a parameter to initialize the exception object. The summary also specifies that this function is marked as `noexcept`, indicating it does not throw exceptions, and notes its thread safety and exception safety properties. This constructor plays a crucial role in handling errors within the RDS (Raw Data Stream) system by encapsulating error codes for proper exception management."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Service Interfaces",
+      "node_id": "0194",
+      "start_index": 151,
+      "end_index": 151,
+      "summary": "This section of \"Service Interfaces\" in the document \"Specification of Raw Data Stream.pdf\" discusses a functional cluster that does not specify any service interfaces, either provided by or required from external entities. It implies that this particular cluster operates independently without interfacing with other services or systems, focusing solely on its internal processes and data handling. While no specific tables are mentioned in the content, it suggests that the absence of defined interfaces could impact integration capabilities or interoperability with other systems outside this cluster."
+    },
+    {
+      "title": "Configuration",
+      "node_id": "0195",
+      "start_index": 152,
+      "end_index": 154,
+      "summary": "This section of the \"Configuration\" chapter in \"Specification of Raw Data Stream.pdf\" outlines the configuration parameters and credentials for RawDataStreamClients and RawDataStreamServers. Key concepts include Ethernet endpoint configurations, socket options, and TLS properties. The document specifies that unicast and multicast communication require defined credentials and port settings, with constraints on concurrent definitions of TCP and UDP ports. Socket options can be configured as strings representing platform-specific values, and TLS properties enable secure communication channels for RawDataStreams over both UDP and TCP. Importantly, (D)TLS usage is limited to 1:1 socket connections.",
+      "nodes": [
+        {
+          "title": "Default Values",
+          "node_id": "0196",
+          "start_index": 154,
+          "end_index": 154,
+          "summary": "This section of the \"Default Values\" in the \"Specification of Raw Data Stream.pdf\" document indicates that no default values are defined for the attributes specified elsewhere in the document. It highlights a specific functional cluster within the data stream specification and emphasizes that developers or implementers must provide their own default settings if not explicitly provided by the standard. While there are no tables present in this particular section, it sets an important context for understanding how to handle attribute values when implementing the raw data stream functionality."
+        },
+        {
+          "title": "Semantic Constraints",
+          "node_id": "0197",
+          "start_index": 154,
+          "end_index": 185,
+          "summary": "This section of the document focuses on defining semantic constraints for elements specified in [8] related to the configuration model of a functional cluster. It introduces key concepts such as `AbstractRawDataStreamEthernetCredentials`, `AbstractRawDataStreamInterface`, and various subclasses and attributes associated with raw data stream configurations, including network credentials and communication interfaces. The section details important relationships between these components and constraints like the existence of certain namespaces, while also providing relevant technical definitions from tables that outline attribute types, multiplicities, and notes for each class and its attributes."
+        }
+      ]
+    }
+  ]
+}

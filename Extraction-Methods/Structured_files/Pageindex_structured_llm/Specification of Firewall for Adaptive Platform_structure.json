@@ -1,0 +1,575 @@
+{
+  "doc_name": "Specification of Firewall for Adaptive Platform.pdf",
+  "structure": [
+    {
+      "title": "Preface",
+      "node_id": "0000",
+      "start_index": 1,
+      "end_index": 5,
+      "summary": "The document is the official AUTOSAR specification (ID 1063, R25-11) for the Firewall Functional Cluster of the Adaptive Platform.  \nIt defines the architecture, packet-inspection capabilities (stateless, stateful, deep), filtering mechanisms (allow/block lists, rate-limiting, state-dependent rules), rule management, life-cycle states (startup/shutdown/crash), and security-event reporting.  \nIt provides normative API classes (FirewallStateSwitchInterface, error domains, exceptions), service interfaces, configuration constraints, manifest elements, and traceable change history from R22-11 to R25-11."
+    },
+    {
+      "title": "Introduction and functional overview",
+      "node_id": "0001",
+      "start_index": 6,
+      "end_index": 6,
+      "summary": "The partial document outlines the specification for the FC Firewall within the Adaptive Platform AUTOSAR AP R25-11. It introduces the FC Firewall's role in managing and configuring a host-based firewall on the ECU, detailing its functionality, API, and configuration. The FC Firewall operates based on firewall rules defined in deployment manifests and provides runtime interfaces to modify these rules, enabling adaptation to different vehicle contexts and support for Intrusion Prevention Systems."
+    },
+    {
+      "title": "Acronyms and Abbreviations",
+      "node_id": "0002",
+      "start_index": 7,
+      "end_index": 7,
+      "summary": "The excerpt is a glossary section that defines all acronyms and abbreviations specific to the AUTOSAR Adaptive Platform Firewall (FC Firewall) specification. It explains key firewall concepts\u2014Firewall, FC Firewall, Firewall Rule, Firewall State, Allowlist, Blocklist\u2014and lists domain-specific abbreviations such as DDS, DoIP, IDS, SOME/IP, TCP, UDP, etc., used throughout the document.",
+      "nodes": [
+        {
+          "title": "Acronyms :",
+          "node_id": "0003",
+          "start_index": 7,
+          "end_index": 7,
+          "summary": "The partial document is a glossary section from the AUTOSAR Adaptive Platform Firewall specification (R25-11). It defines key acronyms and abbreviations specific to the Functional Cluster (FC) Firewall, including terms like Firewall Rule, Firewall State, Allowlist, Blocklist, and OSI Layer, as well as networking and security-related abbreviations such as DDS, DoIP, IDS, IP, TCP, and UDP."
+        },
+        {
+          "title": "Abbreviations :",
+          "node_id": "0004",
+          "start_index": 7,
+          "end_index": 8,
+          "summary": "The excerpt is a terminology and reference section from the AUTOSAR Adaptive Platform Firewall specification (R25-11).  \nIt first defines key firewall-specific acronyms such as Firewall, FC Firewall, Firewall Rule, Firewall State, Allowlist, and Blocklist, and then lists relevant networking/security abbreviations (DDS, DoIP, IDS, SOME/IP, TCP/UDP, etc.).  \nFinally, it identifies the companion documents and external standards that form the normative basis for the firewall software specification, including requirement specs, manifest meta-model, core platform SWS, and protocol standards for Ethernet, SOME/IP, DDS-RTPS and DoIP."
+        }
+      ]
+    },
+    {
+      "title": "Related documentation",
+      "node_id": "0005",
+      "start_index": 8,
+      "end_index": 8,
+      "summary": "The excerpt lists the normative and informative references that underpin the AUTOSAR Adaptive Platform Firewall software specification (R25-11). It names the requirement spec (RS_Firewall) and manifest meta-model spec (TPS_ManifestSpecification) as primary complements, then catalogs nine additional input documents and standards\u2014ranging from core AUTOSAR specifications (Core, SWArchitecture, SOME/IP, Service Discovery) to external networking standards (IEEE 802.3 Ethernet, DDS-RTPS, ISO 13400-2 DoIP)\u2014that collectively supply requirements, architectural context, and protocol definitions for implementing the firewall functional cluster.",
+      "nodes": [
+        {
+          "title": "Input documents & related standards and norms :",
+          "node_id": "0006",
+          "start_index": 8,
+          "end_index": 8,
+          "summary": "The excerpt is the introductory \u201cRelated documentation\u201d section of the AUTOSAR Adaptive Platform Firewall software-specification document (AP R25-11).  \nIt states that the present document defines the functional-cluster (FC) Firewall software specification and lists the complementary specifications that complete the picture: the Foundation-level firewall requirements (RS_Firewall) and the Manifest Meta-model that models the FC Firewall (TPS_ManifestSpecification).  \nIt then catalogues the nine normative input documents and standards on which the firewall specification is based, covering AUTOSAR glossaries, core platform and software-architecture specs, Ethernet/IEEE, SOME/IP and its service-discovery, DDS-RTPS, and ISO DoIP."
+        },
+        {
+          "title": "Further applicable specification :",
+          "node_id": "0007",
+          "start_index": 9,
+          "end_index": 10,
+          "summary": "The excerpt states that the AUTOSAR core specification\u2019s \u201cGeneral requirements for all FunctionalClusters\u201d chapter is mandatory for implementing the Firewall FunctionalCluster, and it lists two explicit limitations for this release: runtime activation/de-activation of firewall rules and support for OEM-defined SEVs."
+        }
+      ]
+    },
+    {
+      "title": "Constraints and assumptions",
+      "node_id": "0008",
+      "start_index": 10,
+      "end_index": 10,
+      "summary": "The partial document outlines constraints and assumptions for the AUTOSAR Adaptive Platform Firewall specification (release R25-11), specifically noting that runtime activation or deactivation of firewall rules and support for OEM-defined Security Events (SEVs) are not supported in this release.",
+      "nodes": [
+        {
+          "title": "Known limitations :",
+          "node_id": "0009",
+          "start_index": 10,
+          "end_index": 10,
+          "summary": "The partial document outlines constraints and assumptions for the AUTOSAR Adaptive Platform Firewall specification (R25-11), specifically noting that runtime activation/deactivation of firewall rules and support for OEM-defined SEVs are not supported in this release."
+        }
+      ]
+    },
+    {
+      "title": "Dependencies to other Functional Clusters",
+      "node_id": "0010",
+      "start_index": 11,
+      "end_index": 11,
+      "summary": "The excerpt explains that the Firewall Functional Cluster in AUTOSAR Adaptive Platform R25-11 has no public interfaces to offer other clusters, but itself needs four internal ones: EventReporter::ReportEvent from the IDS Manager, ExecutionClient::Create and ::ReportExecutionState from Execution Management, plus implicit use of the TCP/IP stack and OS. It stresses that only inter-cluster public interfaces are listed, leaving all intra-cluster details to the implementer, to keep specifications modular and implementation-agnostic.",
+      "nodes": [
+        {
+          "title": "Provided Interfaces :",
+          "node_id": "0011",
+          "start_index": 11,
+          "end_index": 11,
+          "summary": "The excerpt explains how the AUTOSAR Adaptive Platform Firewall relates to other Functional Clusters. It states that AUTOSAR intentionally leaves platform-internal interfaces between clusters unspecified to permit OS-specific optimizations, and it clarifies that only public \u201cprovided\u201d and \u201crequired\u201d interfaces are discussed here to show cluster boundaries without syntactic detail. The Firewall currently offers no public interfaces to other clusters (Table 5.1), but it relies on four required interfaces (Figure 5.1): EventReporter::ReportEvent from the Event Reporter, ExecutionClient::Create and ExecutionClient::ReportExecutionState from Execution Management, plus internal access to the TCP/IP stack and OS. All other internal links are left to the platform implementer."
+        },
+        {
+          "title": "Required Interfaces :",
+          "node_id": "0012",
+          "start_index": 11,
+          "end_index": 12,
+          "summary": "The excerpt explains how the AUTOSAR Adaptive Platform Firewall relates to other Functional Clusters. It states that AUTOSAR intentionally leaves platform-internal interfaces between clusters unspecified so implementers can optimize them. The text then gives an informative view: the Firewall supplies no public interfaces to other clusters (\u00a75.1), while it requires three public interfaces from them (\u00a75.2/Figure 5.1/Table 5.2):  \n- ExecutionClient from Execution Management to create instances and report execution state  \n- EventReporter from Intrusion Detection System Manager to emit standardized security events  \n- Internal use of the TCP/IP stack and Operating System services  \n\nThese dependencies define the cluster boundary without dictating syntax, allowing parallel cluster implementations."
+        }
+      ]
+    },
+    {
+      "title": "Requirements Tracing",
+      "node_id": "0013",
+      "start_index": 13,
+      "end_index": 14,
+      "summary": "The excerpt is a requirements-traceability table from the AUTOSAR Adaptive Platform Firewall specification (R25-11).  \nIt maps each high-level firewall requirement to the specific software specification items (AP_SWS_Fw_*) that implement it.  \nCovered functional areas are: stateless & stateful traffic filtering, deep packet inspection, allow/block lists, rule-based filtering, rate limiting, state-dependent filtering, security-alert generation, and firewall initialization.  \nAdditional rows trace general AUTOSAR platform requirements (naming conventions, use of ara::core types, modern C++ features, noexcept usage) to their fulfilling specification items."
+    },
+    {
+      "title": "Functional specification",
+      "node_id": "0014",
+      "start_index": 15,
+      "end_index": 15,
+      "summary": "The excerpt outlines the AUTOSAR Adaptive Platform Firewall (FC Firewall) functional specification.  \nKey points:  \n- The FC Firewall is a management cluster that abstracts and configures an underlying firewall engine using filter rules from manifests.  \n- The firewall engine itself (not prescribed) can perform packet filtering at various levels\u2014OS TCP/IP stack, hardware, or deep-packet inspection near the application\u2014chosen by the implementer.  \n- Core behaviour: the firewall maintains a list of expected packet patterns; each pattern is paired with an action (allow/block) forming a FirewallRule.  \n- For every ingress/egress packet, the list is scanned; on pattern match the associated action is executed, otherwise a configurable default action is applied.",
+      "nodes": [
+        {
+          "title": "Architecture Overview :",
+          "node_id": "0015",
+          "start_index": 15,
+          "end_index": 16,
+          "summary": "The excerpt outlines the Functional-Cluster (FC) Firewall for AUTOSAR Adaptive Platform R25-11.  \nKey points:\n\n- **Role**: The FC Firewall is a management cluster that reads static filter rules from the Machine Manifest, configures an underlying firewall engine (OS, hardware, or deep-packet level), and can dynamically enable/disable rules at runtime via an API that sets the Firewall State according to vehicle mode (driving, parked, diagnostic, \u2026).\n\n- **Rule model**: Each FirewallRule pairs an expected network-packet pattern with an action (allow/block). Every ingress/egress packet is pattern-matched; on match the associated action is executed, otherwise a configurable default action is taken.\n\n- **Integration**: The FC Firewall raises security events for an intrusion-detection system and does not prescribe a specific engine implementation, leaving the choice to the integrator.\n\n- **Document roadmap**: Subsequent sections will detail lifecycle, pattern-matching logic, filtering actions (including rate-limiting and state-based filtering), runtime rule management, and security-event reporting."
+        },
+        {
+          "title": "Network packet inspection :",
+          "node_id": "0016",
+          "start_index": 17,
+          "end_index": 18,
+          "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall\u2019s network-packet-inspection engine.  \nIt explains that the firewall holds an ordered list of FirewallRule objects, each pairing an expected multi-protocol pattern with an action; for every ingress or egress packet the rules are scanned in sequence until the first full match, whose action is then executed.  \nMatching is performed across OSI layers: DataLink, Network, Transport, and application-specific parts (SOME/IP, DDS, DoIP, payload byte patterns); a rule matches only if every configured sub-rule for its protocols matches.  \nThree inspection modes are supported: stateless header-field comparison up to layer 4, stateful protocol-state checks, and deep packet/payload inspection.  \nOnly parameters explicitly configured in a rule are evaluated; unconfigured metamodel fields are ignored.",
+          "nodes": [
+            {
+              "title": "Stateless packet inspection :",
+              "node_id": "0017",
+              "start_index": 18,
+              "end_index": 20,
+              "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall\u2019s stateless and stateful packet-inspection rules.  \nKey points:  \n- Egress filtering uses only FirewallRules referenced by FirewallRuleProps.matchingEgressRule.  \n- A rule matches only if every aggregated sub-rule (DataLink, Network, Transport, SOME/IP, DDS, DoIP, payload-pattern) matches.  \n- Stateless inspection compares OSI layer-2\u20134 header fields against configured values; un-configured metamodel parameters are ignored.  \n- Matching can use exact values or ranges: MAC/IP subnets via address masks, IPv4 TTL or port ranges via min/max, with checksum verification optional.  \n- Non-modeled protocols can be handled by EtherType rules or generic byte-pattern inspection at arbitrary offsets.  \n- Stateful inspection adds TCP-specific checks: connection limits, timeouts, and state-machine validation.",
+              "nodes": [
+                {
+                  "title": "Inspection of not modeled protocols :",
+                  "node_id": "0018",
+                  "start_index": 20,
+                  "end_index": 20,
+                  "summary": "The excerpt specifies that the AUTOSAR Adaptive Platform firewall (FC Firewall) must verify checksums when the corresponding rule flags are set. It lists the natively supported protocols for stateless inspection (Ethernet, IPv4, IPv6, ICMP, TCP, UDP) and explains two ways to handle additional protocols: blocking by EtherType or matching arbitrary byte patterns. It also notes that stateful inspection is provided for TCP, covering connection-state, timeout and connection-limit checks."
+                }
+              ]
+            },
+            {
+              "title": "Stateful packet inspection :",
+              "node_id": "0019",
+              "start_index": 20,
+              "end_index": 21,
+              "summary": "The excerpt defines how the AUTOSAR Adaptive Platform firewall inspects packets at three levels.  \n- Stateless: it verifies IPv4/ICMP/transport checksums when requested, blocks or permits frames by EtherType, and can match arbitrary byte patterns.  \n- Stateful: for TCP it tracks per-peer timestamps to enforce timeouts, limits the number of simultaneous connections, and validates state transitions against RFC 793.  \n- Deep: it parses application headers of SOME/IP (Service-/Method-ID), DDS, DoIP and generic payloads, allowing service-granular access control even when multiple SOME/IP messages share one TCP frame."
+            },
+            {
+              "title": "Deep packet inspection :",
+              "node_id": "0020",
+              "start_index": 21,
+              "end_index": 21,
+              "summary": "The excerpt specifies three TCP-aware firewall rules for AUTOSAR Adaptive Platform R25-11:  \n1. timeoutCheck \u2013 a rule matches if the inter-packet time is below the configured threshold.  \n2. numberOfParallelTcpSessions \u2013 a rule matches if opening one more TCP connection would not exceed the configured limit.  \n3. stateManagementBasedOnTcpFlags \u2013 a rule matches if the packet\u2019s TCP flags represent a valid state transition per RFC 793.  \n\nIt also introduces deep-packet-inspection capabilities for application-layer protocols (SOME/IP, DDS, DoIP, and a generic inspector), detailing that SOME/IP inspection uses header fields (Service ID, Method ID, etc.) to enforce per-service access control and noting that one TCP frame may carry multiple SOME/IP messages, with each FirewallRule able to aggregate up to 21 SOME/IP-specific sub-rules.",
+              "nodes": [
+                {
+                  "title": "SOME/IP :",
+                  "node_id": "0021",
+                  "start_index": 21,
+                  "end_index": 23,
+                  "summary": "The excerpt defines three TCP-specific firewall-rule match conditions (timeoutCheck, numberOfParallelTcpSessions, stateManagementBasedOnTcpFlags) and then details the Adaptive Platform firewall\u2019s deep-packet-inspection capabilities for the application-layer protocols SOME/IP (including SOME/IP-SD), DDS-RTPS, DoIP and a generic inspector. For SOME/IP and SOME/IP-SD it specifies how the firewall locates candidate rules, compares every contained message\u2019s header fields against the rule\u2019s expected values (and, if configured, verifies total payload length), supports value ranges, and requires consistent rule actions. Parallel structure is provided for DDS-RTPS inspection, noting that multiple RTPS messages/sub-messages may coexist in one frame and each must be validated against its own rule."
+                },
+                {
+                  "title": "DDS :",
+                  "node_id": "0022",
+                  "start_index": 23,
+                  "end_index": 24,
+                  "summary": "The excerpt specifies how the Adaptive Platform firewall performs deep-packet inspection for SOME/IP-SD, DDS-RTPS, DoIP and generic payloads.  \nFor each protocol it defines the exact header/sub-message fields that must be matched, allows value-ranges (min/max) instead of single values, and states that a FirewallRule is considered a match only if every configured field equals the expected value (or lies inside the configured range) and all aggregated rules in the same packet yield the same FirewallRuleProps.action."
+                },
+                {
+                  "title": "DoIP :",
+                  "node_id": "0023",
+                  "start_index": 24,
+                  "end_index": 24,
+                  "summary": "The excerpt specifies how the Adaptive Platform AUTOSAR firewall inspects DDS-RTPS, DoIP and generic network packets.  \nFor DDS-RTPS it matches every field against expected values and only if all referenced FirewallRuleProps have the same action are the rules considered matched.  \nFor DoIP the firewall performs deep inspection of the DoIP header and selected payload elements (source/destination addresses, UDS service identifiers) but does not decode individual UDS DIDs/RIDs; instead it compares header fields against DoIpRule expectations, supports range matching for source/destination addresses, and treats a rule as matched only if every defined value or range is satisfied.  \nA generic inspection mechanism is also mentioned that allows payload or protocol checks beyond the natively supported ones."
+                },
+                {
+                  "title": "Generic inspection :",
+                  "node_id": "0024",
+                  "start_index": 24,
+                  "end_index": 25,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall\u2019s rule-based packet-inspection and filtering mechanisms.  \nKey points:\n\n1. DDS-RTPS inspection: FirewallRule s are matched by comparing expected values against DDS-RTPS message/sub-message fields; all rules in a subset must share the same FirewallRuleProps.action to be considered matching.\n\n2. DoIP inspection: The firewall performs deep inspection of DoIP headers and selected payload elements (source/destination addresses, UDS services) but not of individual UDS DIDs/RIDs.  \n   \u2013 DoIpRule matching: exact or range-based comparison of DoIP header fields; ranges defined by min/max source or destination addresses.\n\n3. Generic inspection: Unsupported protocols or custom payload checks are handled via PayloadBytePatternRule s that specify expected byte values at fixed packet offsets; all patterns must match for the rule to hit.\n\n4. Filtering actions:  \n   \u2013 Allowlist vs. Blocklist modes: allow-listed traffic is explicitly permitted, block-listed traffic is dropped; unmatched packets are respectively denied or permitted.  \n   \u2013 Rule action enforcement: if a FirewallRule matches, the firewall allows or drops the packet according to FirewallRuleProps.action (allow/block)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Network packet filtering :",
+          "node_id": "0025",
+          "start_index": 25,
+          "end_index": 25,
+          "summary": "The excerpt details the AUTOSAR Adaptive Platform firewall\u2019s packet-inspection and filtering logic.  \nIt explains that each FirewallRule can contain multiple PayloadBytePatternRules which fix expected byte values at specific offsets; a packet must match all of them for the rule to trigger.  \nAfter pattern matching, the firewall applies one of three filtering mechanisms:  \n1. Allowlist/Blocklist \u2013 an allow-rule (action=allow) lets the packet proceed, a block-rule (action=drop) discards it; absence of a match is handled according to the list type.  \n2. Rate limiting (mentioned but not elaborated).  \n3. State-dependent filtering based on configurable Firewall States (outline only).",
+          "nodes": [
+            {
+              "title": "Allowlists and Blocklists :",
+              "node_id": "0026",
+              "start_index": 25,
+              "end_index": 26,
+              "summary": "The excerpt details the AUTOSAR Adaptive Platform firewall\u2019s packet-filtering architecture.  \nIt explains that each FirewallRule can embed multiple PayloadBytePatternRules to match specific byte values at fixed offsets; if every pattern in a rule matches, the rule is considered matched.  \nFiltering is then performed in three ways:  \n1. Allowlist/Blocklist logic \u2013 rules explicitly allow or drop packets; if no rule matches, the configured defaultAction (allow/block) decides.  \n2. Rate-limiting \u2013 a leaky-bucket algorithm per rule throttles packets exceeding bucketSize/refillAmount.  \n3. State-dependent filtering \u2013 rule applicability changes with the vehicle\u2019s operational state (driving, parked, diagnostic, \u2026)."
+            },
+            {
+              "title": "Rate limiting :",
+              "node_id": "0027",
+              "start_index": 26,
+              "end_index": 26,
+              "summary": "The excerpt specifies three core capabilities of the AUTOSAR Adaptive Platform firewall (FC Firewall):\n\n1. Default-action handling: If no FirewallRule matches a packet, the packet is dropped when StateDependentFirewall.defaultAction = block and allowed when it = allow (requirement AP_SWS_Fw_40003).\n\n2. Mixed allow/block rule sets: Rules can explicitly allow or explicitly block specific patterns, enabling later correlation of packets with IDS security events.\n\n3. Rate limiting via leaky-bucket: When bucketSize and refillAmount are configured, the firewall counts pattern matches; if the counter exceeds bucketSize the packet is dropped, mitigating off-frequency or attack traffic (requirements AP_SWS_Fw_40004-40005).\n\nIt also notes that filtering can be made state-dependent to adapt to different vehicle situations (driving, parking, diagnostic, etc.)."
+            },
+            {
+              "title": "State dependent filtering :",
+              "node_id": "0028",
+              "start_index": 26,
+              "end_index": 28,
+              "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall\u2019s default-action behaviour when no rule matches, then details its three core traffic-control mechanisms:  \n1. Mixed allow-/block-list rules that explicitly tag packets for later IDS event mapping.  \n2. Rate-limiting via a per-rule leaky-bucket algorithm (configurable bucket size and refill rate) that drops packets when the counter exceeds the bucket size.  \n3. State-dependent filtering where only one pre-integrated StateDependentFirewall is active at a time, its aggregated ruleset alone is evaluated, and its defaultAction governs no-match packets; switching state is restricted to processes mapped through AdaptiveFirewallToPortPrototypeMapping and is validated against mode declarations and engine connectivity.  \nFinally, it notes that post-deployment rule management is intended to support OTA updates and (in future) runtime (de-)activation."
+            }
+          ]
+        },
+        {
+          "title": "Firewall Rule Management :",
+          "node_id": "0029",
+          "start_index": 28,
+          "end_index": 29,
+          "summary": "The excerpt specifies how the AUTOSAR Adaptive Platform Firewall (FC Firewall) selects and keeps an active StateDependentFirewall based on ModeDeclaration reports, and what error it returns if the requested firewall is empty or the firewall engine is unreachable. It then describes the two supported ways to manage FirewallRules after deployment: updating the whole configuration via an OTA/UCM update (preferred and currently supported) and, in future, toggling individual pre-configured rules at runtime through an IPS interface (not yet supported). Finally, it states that applications must initialize the FC Firewall with ara::core::Initialize (which reads the manifest and sets up access structures) and must not use its APIs outside the Initialize/Deinitialize life-cycle."
+        },
+        {
+          "title": "Functional cluster life-cycle :",
+          "node_id": "0030",
+          "start_index": 29,
+          "end_index": 29,
+          "summary": "The excerpt outlines how the AUTOSAR Adaptive Platform R25-11 Firewall (FC) is configured and managed. Firewall rules are delivered and updated exclusively through UCM-based OTA manifest updates; dynamic runtime activation/deactivation of existing rules is described as a future option and is not supported in this release. The Firewall exposes ara::core::Initialize/Deinitialize for life-cycle control\u2014applications must invoke these before/after using any Firewall API\u2014and on initialization the Firewall reads the manifest and sets up the internal resources needed for communication.",
+          "nodes": [
+            {
+              "title": "Startup :",
+              "node_id": "0031",
+              "start_index": 29,
+              "end_index": 29,
+              "summary": "The excerpt outlines how the AUTOSAR Adaptive Platform R25-11 Firewall (FC) is configured and managed. Firewall rules are delivered and updated exclusively through UCM-based OTA manifest updates; dynamic runtime activation/deactivation of existing rules is described as a future option and is not supported in this release. The Firewall exposes ara::core::Initialize/Deinitialize for life-cycle control, and upon initialization it reads the manifest and sets up the internal access structures needed for communication with applications."
+            },
+            {
+              "title": "Shutdown :",
+              "node_id": "0032",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The excerpt outlines the AUTOSAR Adaptive Platform firewall\u2019s shutdown behaviour (closing handles and freeing structures on ara::core::Deinitialize) and its role as an IDS sensor: it generates fine-grained Security Events (SEvs) tied to inspected protocols, forwards them to the IdsM for qualification/aggregation, and warns that aggregation may lose context so SEvs must be designed to minimise that loss."
+            },
+            {
+              "title": "Daemon crash :",
+              "node_id": "0033",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The excerpt specifies that, on ara::core::Deinitialize, the FC Firewall must release all handles and access structures. It then explains the firewall\u2019s role as an IDS sensor within AUTOSAR\u2019s IDS architecture: the firewall generates fine-grained Security Events (SEvs) for each inspected protocol and forwards them to the IdsM, which filters, aggregates, and routes them to a sink, while warning that IdsM aggregation can lose context data so SEvs must be designed to minimize this loss."
+            }
+          ]
+        },
+        {
+          "title": "Reporting :",
+          "node_id": "0034",
+          "start_index": 30,
+          "end_index": 30,
+          "summary": "The excerpt outlines the AUTOSAR Adaptive Platform Firewall specification (R25-11) covering:  \n1. Mandatory release of all handles and access structures on ara::core::Deinitialize (AP_SWS_Fw_00002).  \n2. The firewall\u2019s role as an IDS sensor that generates fine-grained Security Events (SEvs) for the IdsM, with each SEv containing a unique ID and context data to minimize information loss during IdsM filtering/aggregation.",
+          "nodes": [
+            {
+              "title": "Security Events :",
+              "node_id": "0035",
+              "start_index": 30,
+              "end_index": 30,
+              "summary": "The excerpt specifies how the AUTOSAR Adaptive Platform Firewall behaves at shutdown (it must release all handles and access structures when ara::core::Deinitialize is invoked) and defines its role as an IDS sensor: it generates fine-grained Security Events (SEvs) tied to inspected protocols, sends them with unique IDs and context data to the IdsM for filtering/aggregation, and cautions that overly broad events could cause information loss during IdsM\u2019s duplicate-event consolidation.",
+              "nodes": [
+                {
+                  "title": "SEvs raised by the firewall :",
+                  "node_id": "0036",
+                  "start_index": 30,
+                  "end_index": 39,
+                  "summary": "The excerpt specifies how the AUTOSAR Adaptive Platform Firewall behaves at shutdown, then concentrates on its role as an IDS sensor. It lists every security event (SEv) the firewall can raise\u2014each with a unique ID, concise description and a fixed 54-byte truncated Ethernet frame as context\u2014and explains that events are generated only when the default \u201cblock\u201d action is taken, using a \u201cleast-distance\u201d algorithm to decide which protocol-layer mismatch to report."
+                },
+                {
+                  "title": "Raising SEvs :",
+                  "node_id": "0037",
+                  "start_index": 39,
+                  "end_index": 43,
+                  "summary": "The excerpt defines how the Adaptive Platform Firewall (FC Firewall) raises Security Events (SEvs) when network packets are blocked. It specifies the single SEv for IAM-denied resource access (SEV_ACCESS_CONTROL_FIREWALL_IAM_ACCESS_DENIED) and a comprehensive set of SEVs triggered when the default \u201cblock\u201d action is taken because no FirewallRule matches. A deterministic algorithm identifies the highest OSI layer where the match failed, and a dedicated SEV (e.g., SEV_FW_PACKET_BLOCKED_*_MISMATCH) is reported to the IdsM for each protocol: Ethernet, IPv4/6, ICMP, TCP, UDP, SOME/IP, SOME/IP-SD, DDS, DoIP, plus a generic mismatch when no protocol can be pinpointed. Additional SEVs cover TCP stateful-filter violations (max connections, timeout, invalid state transition) and rate-limit drops. For every SEV the Firewall must supply the truncated Ethernet frame as context data. The section also notes that Log Messages, Violation Messages and Production Errors are currently undefined."
+                }
+              ]
+            },
+            {
+              "title": "Log Messages :",
+              "node_id": "0038",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "The excerpt lists three unimplemented diagnostic features in the AUTOSAR Adaptive Platform R25-11 Firewall functional cluster: no log messages are generated, no violation messages are defined, and no production errors are specified."
+            },
+            {
+              "title": "Violation Messages :",
+              "node_id": "0039",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "The excerpt lists three unimplemented diagnostic features of the Adaptive Platform Firewall: no log messages, no violation messages, and no production-error definitions."
+            },
+            {
+              "title": "Production Errors :",
+              "node_id": "0040",
+              "start_index": 43,
+              "end_index": 43,
+              "summary": "The excerpt lists three unimplemented diagnostic features of the AUTOSAR Adaptive Platform Firewall (R25-11): no log messages are generated, no violation messages are defined, and no production-error codes exist."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "API specification",
+      "node_id": "0041",
+      "start_index": 44,
+      "end_index": 44,
+      "summary": "The excerpt is a fragment of the AUTOSAR Adaptive Platform Firewall specification (R25-11) that introduces the layout and meaning of every field used in the API reference tables.  \nIt lists the column headings (Kind, Port Interfaces, Header File, Scope, Symbol, Thread Safety, Syntax, Template/Parameters, Return/Exceptions, Errors, Description, etc.) and explains what information each one conveys for every C++ API element (class, function, struct, enum, etc.).  \nA short follow-up table (8.1) then maps each modeled PortInterface to its corresponding C++ API class and notes which functions take an ara::core::InstanceSpecifier to \u201cconstruct\u201d that class.",
+      "nodes": [
+        {
+          "title": "PortInterface to API class binding :",
+          "node_id": "0042",
+          "start_index": 44,
+          "end_index": 45,
+          "summary": "The excerpt is a fragment of the AUTOSAR Adaptive Platform Firewall specification (R25-11) that defines how the Firewall functional cluster\u2019s C++ APIs are documented and structured.  \nIt presents:\n\n- The standardized layout of every API table (Kind, header files, symbol, thread-safety, parameters, return, exceptions, errors, description, etc.).  \n- The mapping between modeled PortInterfaces and their corresponding C++ API classes/functions, illustrated with the FirewallStateSwitchInterface.  \n- The naming and inclusion-guard conventions for the generated header files (ara/fw/states/<fwssi-sn>.h).  \n- The definition of a common enumeration type for firewall states, including its header, scope, underlying type, and value list."
+        },
+        {
+          "title": "API Header Files :",
+          "node_id": "0043",
+          "start_index": 45,
+          "end_index": 45,
+          "summary": "The excerpt specifies the AUTOSAR Adaptive Platform firewall-state-switch API: it defines the C++ class ara::fw::FirewallStateSwitchInterface and its constructor, mandates a per-interface header file \u201cara/fw/states/<fwssi-sn>.h\u201d with include-guard, and declares an enum class ara::fw::states::<fwssi-sn> (uint32_t) listing the firewall states."
+        },
+        {
+          "title": "API Common Data Types :",
+          "node_id": "0044",
+          "start_index": 45,
+          "end_index": 46,
+          "summary": "The excerpt specifies how the AUTOSAR Adaptive Platform firewall \u201cstate-switch\u201d API is generated from the model:\n\n- A C++ class ara::fw::FirewallStateSwitchInterface is created (AP_SWS_Fw_82001).  \n- For every modeled FirewallStateSwitchInterface a header ara/fw/states/<fwssi-sn>.h is produced, protected by a multiple-inclusion guard (AP_SWS_Fw_80001).  \n- An enum class ara::fw::states::<fwssi-sn> : std::uint32_t lists the firewall states declared in the model (AP_SWS_Fw_81001).  \n- Each enumerator is emitted as a C++ enumerator with its model-given symbol and optional explicit value (AP_SWS_Fw_81002)."
+        },
+        {
+          "title": "API Reference :",
+          "node_id": "0045",
+          "start_index": 46,
+          "end_index": 46,
+          "summary": "The partial document specifies how firewall states are defined and exposed in the Adaptive Platform AUTOSAR AP R25-11.  \nIt mandates that every entry in the firewall-state enumeration list ({<fw-state-list>}) must have a corresponding C++ enumerator variable declared under the namespace ara::fw::states, following rule AP_SWS_Fw_81002.  \nEach enumerator\u2019s symbol name and optional numeric value are taken from the model\u2019s ModeDeclaration attributes.  \nAn example enum class illustrates the expected syntax.  \nThe excerpt also introduces the FirewallStateSwitchInterface class (ara::fw::FirewallStateSwitchInterface) whose header is \u201cara/fw/firewall_state.h\u201d, fulfilling upstream requirement FO_RS_Fw_00007.",
+          "nodes": [
+            {
+              "title": "FirewallStateSwitchInterface :",
+              "node_id": "0046",
+              "start_index": 46,
+              "end_index": 49,
+              "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall state-switching mechanism.  \nIt specifies:\n\n- A list of firewall-state enumerators that must be declared in C++ under namespace ara::fw::states, each mapping a shortName and optional numeric value.  \n- The FirewallStateSwitchInterface class template (ara::fw::FirewallStateSwitchInterface<EnumT>) whose single purpose is to switch the active firewall state (i.e., the set of filter rules).  \n- The class is non-copyable, supports move semantics, is constructed from an ara::core::InstanceSpecifier, and provides one key operation: SwitchFirewallState(EnumT), returning an ara::core::Future<void> that signals success or specific errors (service unavailable, invalid state)."
+            },
+            {
+              "title": "FirewallErrorDomain :",
+              "node_id": "0047",
+              "start_index": 50,
+              "end_index": 49,
+              "summary": "The partial document outlines the main topics and key points discussed within the excerpt provided.",
+              "nodes": [
+                {
+                  "title": "ara::fw::FwErrc :",
+                  "node_id": "0048",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "The fragment defines the AUTOSAR Adaptive Platform firewall error-handling interface: it specifies the enumerated error codes (FwErrc) that identify \u201cservice not available\u201d and \u201cinvalid state-dependent firewall\u201d conditions, and it documents the constexpr noexcept function GetFwErrorDomain() that supplies a thread-safe, exception-safe reference to the firewall\u2019s ErrorDomain object."
+                },
+                {
+                  "title": "ara::fw::GetFwErrorDomain :",
+                  "node_id": "0049",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall error-handling interface.  \nIt specifies the enumeration ara::fw::FwErrc (two codes: kServiceNotAvailable and kInvalidStateDependent) that lists domain-specific error values, and the constexpr noexcept function ara::fw::GetFwErrorDomain() that supplies a thread-safe, exception-safe reference to the firewall\u2019s ErrorDomain object."
+                },
+                {
+                  "title": "ara::fw::MakeErrorCode overload for ara::fw::GetFwErrorDomain",
+                  "node_id": "0050",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "The excerpt specifies two AUTOSAR Adaptive Platform firewall error-handling components:  \n1. `ara::fw::MakeErrorCode` \u2013 a `constexpr noexcept` factory that converts an `ara::fw::FwErrc` value plus vendor-specific data into an `ara::core::ErrorCode` object; it is thread-safe and exception-safe.  \n2. `ara::fw::FwException` \u2013 an exception class derived from `ara::core::Exception` that is thrown by the firewall API, together with its constructor function."
+                },
+                {
+                  "title": "ara::fw::FwException :",
+                  "node_id": "0051",
+                  "start_index": 51,
+                  "end_index": 52,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall error-handling API:  \n- `ara::fw::MakeErrorCode` \u2013 constexpr factory that builds an `ara::core::ErrorCode` from a firewall error code and vendor data, noexcept and thread-safe.  \n- `ara::fw::FwException` \u2013 exception class (derived from `ara::core::Exception`) thrown by firewall APIs; its constructor takes an `ara::core::ErrorCode`, noexcept and thread-safe.  \n- `ara::fw::FwErrorDomain` \u2013 final singleton error-domain class (derived from `ara::core::ErrorDomain`) that owns firewall error codes; contains a nested type alias `Errc` mapped to `FwErrc`."
+                },
+                {
+                  "title": "ara::fw::FwErrorDomain :",
+                  "node_id": "0052",
+                  "start_index": 52,
+                  "end_index": 55,
+                  "summary": "The excerpt defines the AUTOSAR Adaptive Platform firewall error-handling framework.  \nIt specifies:\n\n- FwException \u2013 a noexcept, thread-safe exception class that wraps an ara::core::ErrorCode.  \n- FwErrorDomain \u2013 a final singleton class derived from ara::core::ErrorDomain that represents the firewall error domain; its constructor is deleted to enforce uniqueness.  \n- Nested type aliases: Errc (enumeration values) and Exception (FwException).  \n- Core member functions: Name() returns the domain\u2019s literal name; Message() maps an error code to a human-readable string; ThrowAsException() converts an ErrorCode into a thrown FwException (disabled when C++ exceptions are off).  \n\nAll APIs are header-exposed via \u201cara/fw/fw_error_domain.h\u201d, are thread-safe, and follow AUTOSAR core error-domain conventions."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Service Interfaces",
+      "node_id": "0053",
+      "start_index": 55,
+      "end_index": 56,
+      "summary": "The excerpt states that the Firewall Functional Cluster (FC) in AUTOSAR Adaptive Platform R25-11 has no service interfaces and carries no default configuration values. Its entire configuration is expressed through the TPS_Manifest via AdaptiveFirewallModuleInstantiation, and the only stated semantic rule is that the namespace FirewallStateSwitchInterface must not exist."
+    },
+    {
+      "title": "Configuration",
+      "node_id": "0054",
+      "start_index": 56,
+      "end_index": 56,
+      "summary": "The partial document outlines the configuration structure of the FC Firewall for the Adaptive Platform AUTOSAR AP R25-11, as specified in TPS_Manifest through AdaptiveFirewallModuleInstantiation. It states that no default values are defined for the FC Firewall and presents a semantic constraint that the namespace FirewallStateSwitchInterface must not exist.",
+      "nodes": [
+        {
+          "title": "Default Values :",
+          "node_id": "0055",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "The partial document outlines the configuration structure for the Firewall Functional Cluster (FC) in AUTOSAR Adaptive Platform R25-11. It specifies that the configuration is described in TPS_Manifest via AdaptiveFirewallModuleInstantiation. The document states that no default values are defined for the FC Firewall configuration. It also includes a semantic constraint: the namespace for FirewallStateSwitchInterface must not exist."
+        },
+        {
+          "title": "Semantic Constraints :",
+          "node_id": "0056",
+          "start_index": 56,
+          "end_index": 56,
+          "summary": "The partial document outlines the configuration structure of the FC Firewall for the Adaptive Platform AUTOSAR AP R25-11, as specified in TPS_Manifest through AdaptiveFirewallModuleInstantiation. It states that no default values are defined for the FC Firewall and presents a semantic constraint that the namespace FirewallStateSwitchInterface must not exist."
+        }
+      ]
+    },
+    {
+      "title": "Mentioned Manifest Elements",
+      "node_id": "0057",
+      "start_index": 57,
+      "end_index": 67,
+      "summary": "The excerpt is a machine-generated \u201cMentioned Manifest\u201d appendix from the AUTOSAR Adaptive Platform Firewall specification (R25-11).  \nIt contains normative meta-model class tables that define every firewall-related configuration element, grouped by network stack layer and protocol:\n\n- Core firewall structure  \n  \u2013 AdaptiveFirewallModuleInstantiation \u2013 binds a firewall configuration to a machine.  \n  \u2013 AdaptiveFirewallToPortPrototypeMapping \u2013 links that firewall instance to the RPortPrototype that carries the FirewallStateSwitchInterface.  \n  \u2013 FirewallStateSwitchInterface & ModeDeclarationGroup \u2013 provide the mode-switch API used to change firewall states at run-time.\n\n- Generic rule container  \n  \u2013 FirewallRule \u2013 top-level element that aggregates all layer-specific sub-rules and rate-limiting parameters (bucketSize, refillAmount).  \n  \u2013 FirewallRuleProps \u2013 pairs an action (allow/deny) with ordered lists of ingress/egress FirewallRules.\n\n- Layer- and protocol-specific rule classes  \n  \u2013 DataLinkLayerRule \u2013 Ethernet filters (MAC addresses, EtherType, VLAN).  \n  \u2013 NetworkLayerRule (abstract) \u2192 Ipv4Rule & Ipv6Rule \u2013 IP filters (addresses, DSCP, ECN, TTL/hop-limit, ICMP sub-rules).  \n  \u2013 TransportLayerRule (abstract) \u2192 TcpRule & UdpRule \u2013 port ranges, checksum verification, TCP session limits/time-outs.  \n  \u2013 Application/protocol-specific rules:  \n    \u2011 DdsRule \u2013 DDSI-RTPS header fields (hostId, appId, vendorId, entity IDs \u2026).  \n    \u2011 DoIpRule \u2013 Diagnostics-over-IP header fields (source/destination address ranges, payload type, UDS service).  \n    \u2011 SomeipProtocolRule \u2013 SOME/IP header fields (service/method IDs, client ID, version, message & return codes).  \n    \u2011 SomeipSdRule \u2013 SOME/IP Service Discovery entries (entryType, eventGroupId, version ranges, serviceInstanceId).  \n  \u2013 PayloadBytePatternRule \u2013 generic byte-level pattern matching inside packets.\n\n- State-dependent rule set  \n  \u2013 StateDependentFirewall \u2013 groups FirewallRuleProps and references the ModeDeclarations (firewall states) in which those rules are active; includes a defaultAction for undefined states.\n\nAll classes are tagged \u201ccandidate\u201d and are usable only within the AUTOSAR Adaptive Platform."
+    },
+    {
+      "title": "Demands and constraints on Base Software (normative)",
+      "node_id": "0058",
+      "start_index": 68,
+      "end_index": 69,
+      "summary": "The excerpt states that, for the Firewall functional cluster of AUTOSAR Adaptive Platform R25-11, the Base Software chapter imposes no normative demands or constraints, and the Platform Extension Interfaces chapter defines no additional interfaces."
+    },
+    {
+      "title": "Platform Extension Interfaces (normative)",
+      "node_id": "0059",
+      "start_index": 69,
+      "end_index": 70,
+      "summary": "The excerpt states that the Firewall functional cluster for AUTOSAR Adaptive Platform R25-11 defines no Platform Extension Interfaces and explicitly notes that runtime (de-)activation of firewall filter rules (requirement FO_RS_Fw_00009) is not covered by this specification."
+    },
+    {
+      "title": "Not implemented requirements",
+      "node_id": "0060",
+      "start_index": 70,
+      "end_index": 70,
+      "summary": "The partial document is a section of the AUTOSAR Adaptive Platform Firewall specification (R25-11) that identifies unimplemented or violated functional requirements. It specifically notes that the specification does not include support for runtime (de-)activation of firewall filter rules, referencing requirement FO_RS_Fw_00009, and provides a rationale for this omission."
+    },
+    {
+      "title": "Change history of AUTOSAR traceable items",
+      "node_id": "0061",
+      "start_index": 71,
+      "end_index": 71,
+      "summary": "The partial document is the change-history appendix for the AUTOSAR Adaptive Platform Firewall specification (Release R25-11). It lists, without detail, the traceable specification items that were added (four items) and changed (twenty-five items) in this release, while noting that no specification items or constraints were deleted.",
+      "nodes": [
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R25-11 :",
+          "node_id": "0062",
+          "start_index": 71,
+          "end_index": 71,
+          "summary": "The excerpt is a change-history appendix for the AUTOSAR Adaptive Platform Firewall specification (Release R25-11). It lists, without detail, the traceable specification items that were newly added or modified in this release, and explicitly states that no items or constraints were deleted.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R25-11 :",
+              "node_id": "0063",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The excerpt is the change-history appendix for the AUTOSAR Adaptive Platform Firewall specification (Release R25-11). It lists, in traceable-item form, every specification element that was added, modified or deleted in this release. For R25-11, four new specification items were introduced, 24 existing specification items were updated, and no items or constraints were removed."
+            },
+            {
+              "title": "Changed Specification Items in R25-11 :",
+              "node_id": "0064",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The excerpt is a change-history appendix for the AUTOSAR Adaptive Platform Firewall specification (Release R25-11). It lists every traceable specification item that was added, modified or deleted in this release, noting that no constraints were added, changed or removed and no items were deleted."
+            },
+            {
+              "title": "Deleted Specification Items in R25-11 :",
+              "node_id": "0065",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The partial document is the change-history appendix for the AUTOSAR Adaptive Platform Firewall specification (Release R25-11). It lists the traceable specification items that were added or modified in this release, noting that no items, constraints, additions, or deletions were removed."
+            },
+            {
+              "title": "Added Constraints in R25-11 :",
+              "node_id": "0066",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The excerpt is a change-history appendix for the AUTOSAR Adaptive Platform Firewall specification (Release R25-11). It lists, without detail, the traceable specification items that were newly added ([AP_SWS_Fw_40013], [AP_SWS_Fw_60032]\u2013[AP_SWS_Fw_60035]) and those that were modified ([AP_SWS_Fw_60001]\u2013[AP_SWS_Fw_60003], [AP_SWS_Fw_60020]\u2013[AP_SWS_Fw_60031], [AP_SWS_Fw_61000], [AP_SWS_Fw_82001], [AP_SWS_Fw_82006], [AP_SWS_Fw_83002]\u2013[AP_SWS_Fw_83011]) in this release, while noting that no items or constraints were deleted."
+            },
+            {
+              "title": "Changed Constraints in R25-11 :",
+              "node_id": "0067",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The partial document is an appendix (E) of the AUTOSAR Adaptive Platform Firewall Specification (Release R25-11) that records the change history of traceable specification items. It lists, for this release only, which firewall-related specification items were added, which were modified, and notes that no items or constraints were deleted."
+            },
+            {
+              "title": "Deleted Constraints in R25-11 :",
+              "node_id": "0068",
+              "start_index": 71,
+              "end_index": 71,
+              "summary": "The excerpt is the change-history appendix for the Firewall specification of AUTOSAR Adaptive Platform Release R25-11. It lists, without detail, the specification items that were newly added (four items) and those that were modified (25 items) in this release, while noting that no specification items or constraints were deleted."
+            }
+          ]
+        },
+        {
+          "title": "Traceable item history of this document according to AUTOSAR Release R24-11 :",
+          "node_id": "0069",
+          "start_index": 72,
+          "end_index": 72,
+          "summary": "The partial document is a traceability table that lists all changes made to the Firewall specification of the Adaptive Platform AUTOSAR between releases R24-11 and R25-11. It enumerates 12 newly added specification items (AP_SWS_Fw_61000 and AP_SWS_Fw_83001\u201383012), 24 modified specification items (AP_SWS_Fw_60001\u201360031 and AP_SWS_Fw_80001, 81001\u201381002, 82002\u201382008), one new constraint (AP_SWS_Fw_CONSTR_00001), and explicitly states that no specification items or constraints were deleted and no constraints were changed.",
+          "nodes": [
+            {
+              "title": "Added Specification Items in R24-11 :",
+              "node_id": "0070",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The excerpt is a fragment of the AUTOSAR Adaptive Platform Firewall specification (R25-11) that lists the traceable change history introduced in the previous release R24-11. It enumerates 12 newly added specification items (AP_SWS_Fw_61000 and AP_SWS_Fw_83001\u201383012), 24 modified specification items (AP_SWS_Fw_60001\u201360031 and AP_SWS_Fw_80001\u201382008), one new constraint (AP_SWS_Fw_CONSTR_00001), and explicitly states that no items or constraints were deleted in that release."
+            },
+            {
+              "title": "Changed Specification Items in R24-11 :",
+              "node_id": "0071",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The partial document is a traceability table that lists every Firewall specification item and constraint that was added, changed, or deleted when the Adaptive Platform AUTOSAR Firewall specification was updated from release R24-11 to R25-11."
+            },
+            {
+              "title": "Deleted Specification Items in R24-11 :",
+              "node_id": "0072",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The partial document is a traceability appendix (section E.2) of the AUTOSAR Adaptive Platform Firewall Specification for release R25-11. It lists the specification items and constraints that were added, changed, or deleted in the preceding R24-11 release, providing a concise change log for developers and reviewers."
+            },
+            {
+              "title": "Added Constraints in R24-11 :",
+              "node_id": "0073",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The excerpt is a fragment of the AUTOSAR Adaptive Platform Firewall specification (R25-11) that records the complete change log between releases R24-11 and R25-11. It lists, without any explanatory text, every specification item and constraint that was added, modified or deleted in R24-11, showing that 12 new specification items, 24 revised specification items, 1 new constraint and no deletions were introduced."
+            },
+            {
+              "title": "Changed Constraints in R24-11 :",
+              "node_id": "0074",
+              "start_index": 72,
+              "end_index": 72,
+              "summary": "The partial document is a traceability table that lists all specification items and constraints added, changed, or deleted in the AUTOSAR Adaptive Platform Firewall specification between releases R24-11 and R25-11."
+            },
+            {
+              "title": "Deleted Constraints in R24-11 :",
+              "node_id": "0075",
+              "start_index": 72,
+              "end_index": 74,
+              "summary": "The excerpt is a traceability table that lists every Firewall specification item added, changed or deleted across three consecutive AUTOSAR Adaptive Platform releases (R22-11 \u2192 R23-11 \u2192 R24-11). It shows that R22-11 introduced the initial set of requirements (no changes or deletions), R23-11 modified most of those items and added three new ones, and R24-11 left all prior items intact while adding twelve new specification items and one new constraint, with no items or constraints removed in any release."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

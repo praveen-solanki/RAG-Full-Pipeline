@@ -1,0 +1,4249 @@
+{
+  "doc_description": "Specification of Raw Data Stream.pdf",
+  "total_pages": 185,
+  "source_format": "granite_docling_vlm",
+  "structure": [
+    {
+      "node_id": "0001",
+      "title": "Disclaimer",
+      "start_index": 2,
+      "end_index": 3,
+      "summary": "Covers disclaimer and legal notices.",
+      "nodes": []
+    },
+    {
+      "node_id": "0002",
+      "title": "Table of Contents",
+      "start_index": 3,
+      "end_index": 11,
+      "summary": "",
+      "nodes": []
+    },
+    {
+      "node_id": "0003",
+      "title": "1 Introduction and functional overview",
+      "start_index": 11,
+      "end_index": 11,
+      "summary": "Covers introduction and functional overview.",
+      "nodes": []
+    },
+    {
+      "node_id": "0004",
+      "title": "Raw Data Streaming over Ethernet using IP based protocols (network layer)",
+      "start_index": 11,
+      "end_index": 11,
+      "summary": "Describes raw data streaming over Ethernet using IP-based protocols (network layer).",
+      "nodes": []
+    },
+    {
+      "node_id": "0005",
+      "title": "Raw Data Streaming over Ethernet using IEEE1722 protocol (data link layer)",
+      "start_index": 11,
+      "end_index": 13,
+      "summary": "Describes raw data streaming over Ethernet using IEEE1722 protocol (data link layer).",
+      "nodes": []
+    },
+    {
+      "node_id": "0006",
+      "title": "2 Acronyms and Abbreviations",
+      "start_index": 13,
+      "end_index": 17,
+      "summary": "Lists acronyms and abbreviations with definitions.",
+      "nodes": [
+        {
+          "node_id": "0007",
+          "title": "2.1 Definitions",
+          "start_index": 13,
+          "end_index": 17,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0008",
+              "title": "2.1.1 MAC unicast socket connection",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "Defines MAC unicast socket connection.",
+              "nodes": []
+            },
+            {
+              "node_id": "0009",
+              "title": "2.1.2 MAC multicast socket connection",
+              "start_index": 13,
+              "end_index": 13,
+              "summary": "Defines MAC multicast socket connection.",
+              "nodes": []
+            },
+            {
+              "node_id": "0010",
+              "title": "2.1.3 AVTPDU-common-header",
+              "start_index": 13,
+              "end_index": 14,
+              "summary": "Defines AVTPDU-common-header.",
+              "nodes": []
+            },
+            {
+              "node_id": "0011",
+              "title": "2.1.4 AVTPDU-common-stream-header",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "Defines AVTPDU-common-stream-header.",
+              "nodes": []
+            },
+            {
+              "node_id": "0012",
+              "title": "2.1.5 AVTPDU-common-control-header",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "Defines AVTPDU-common-control-header.",
+              "nodes": []
+            },
+            {
+              "node_id": "0013",
+              "title": "2.1.6 AVTPDU-alternative-header",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "Defines AVTPDU-alternative-header.",
+              "nodes": []
+            },
+            {
+              "node_id": "0014",
+              "title": "2.1.7 AVTPDU-payload",
+              "start_index": 14,
+              "end_index": 14,
+              "summary": "Defines AVTPDU-payload.",
+              "nodes": []
+            },
+            {
+              "node_id": "0015",
+              "title": "2.1.8 Stream data producer",
+              "start_index": 14,
+              "end_index": 15,
+              "summary": "Defines stream data producer.",
+              "nodes": []
+            },
+            {
+              "node_id": "0016",
+              "title": "2.1.9 Stream data consumer",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "Defines stream data consumer.",
+              "nodes": []
+            },
+            {
+              "node_id": "0017",
+              "title": "2.1.10 AVTP presentation time",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "Defines AVTP presentation time.",
+              "nodes": []
+            },
+            {
+              "node_id": "0018",
+              "title": "2.1.11 Max transit time",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "Defines max transit time.",
+              "nodes": []
+            },
+            {
+              "node_id": "0019",
+              "title": "2.1.12 Media clock",
+              "start_index": 15,
+              "end_index": 15,
+              "summary": "Defines media clock.",
+              "nodes": []
+            },
+            {
+              "node_id": "0020",
+              "title": "2.1.13 Media clock provider",
+              "start_index": 15,
+              "end_index": 16,
+              "summary": "Defines media clock provider.",
+              "nodes": []
+            },
+            {
+              "node_id": "0021",
+              "title": "2.1.14 Media clock consumer",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "Defines media clock consumer.",
+              "nodes": []
+            },
+            {
+              "node_id": "0022",
+              "title": "2.1.15 ACF-stream",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "Defines ACF-stream.",
+              "nodes": []
+            },
+            {
+              "node_id": "0023",
+              "title": "2.1.16 ACF-message",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "Defines ACF-message.",
+              "nodes": []
+            },
+            {
+              "node_id": "0024",
+              "title": "2.1.17 ACF-message-header",
+              "start_index": 16,
+              "end_index": 16,
+              "summary": "Defines ACF-message-header.",
+              "nodes": []
+            },
+            {
+              "node_id": "0025",
+              "title": "2.1.18 ACF-message-payload",
+              "start_index": 16,
+              "end_index": 17,
+              "summary": "Defines ACF-message-payload.",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0026",
+      "title": "3 Related documentation",
+      "start_index": 17,
+      "end_index": 18,
+      "summary": "",
+      "nodes": [
+        {
+          "node_id": "0027",
+          "title": "3.1 Input documents & related standards and norms",
+          "start_index": 17,
+          "end_index": 17,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "node_id": "0028",
+          "title": "3.2 Further applicable specification",
+          "start_index": 17,
+          "end_index": 18,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    },
+    {
+      "node_id": "0029",
+      "title": "4 Constraints and assumptions",
+      "start_index": 18,
+      "end_index": 19,
+      "summary": "Documents known limitations and constraints.",
+      "nodes": [
+        {
+          "node_id": "0030",
+          "title": "4.1 Known limitations",
+          "start_index": 18,
+          "end_index": 19,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0031",
+              "title": "Raw Data Streams over Ethernet using IP based protocols (network layer)",
+              "start_index": 18,
+              "end_index": 18,
+              "summary": "Describes raw data streams over Ethernet using IP-based protocols (network layer).",
+              "nodes": []
+            },
+            {
+              "node_id": "0032",
+              "title": "Raw Data Streams over Ethernet using IEEE1722 protocol (data link layer)",
+              "start_index": 18,
+              "end_index": 19,
+              "summary": "Describes raw data streams over Ethernet using IEEE1722 protocol (data link layer).",
+              "nodes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0033",
+      "title": "5 Dependencies to other Functional Clusters",
+      "start_index": 19,
+      "end_index": 21,
+      "summary": "Details dependencies on other functional clusters.",
+      "nodes": [
+        {
+          "node_id": "0034",
+          "title": "5.1 Provided Interfaces",
+          "start_index": 19,
+          "end_index": 19,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "node_id": "0035",
+          "title": "5.2 Required Interfaces",
+          "start_index": 19,
+          "end_index": 21,
+          "summary": "",
+          "nodes": []
+        }
+      ]
+    },
+    {
+      "node_id": "0036",
+      "title": "6 Requirements Tracing",
+      "start_index": 21,
+      "end_index": 26,
+      "summary": "Covers requirements tracing.",
+      "nodes": []
+    },
+    {
+      "node_id": "0037",
+      "title": "7 Functional specification",
+      "start_index": 26,
+      "end_index": 102,
+      "summary": "Describes the functional specification.",
+      "nodes": [
+        {
+          "node_id": "0038",
+          "title": "7.1 Raw Data Streaming using IP based protocols (network layer)",
+          "start_index": 26,
+          "end_index": 36,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0039",
+              "title": "7.1.1 Raw Data Streaming Interface",
+              "start_index": 26,
+              "end_index": 29,
+              "summary": "Describes raw data streaming interface.",
+              "nodes": [
+                {
+                  "node_id": "0040",
+                  "title": "7.1.1.1 Use cases",
+                  "start_index": 27,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0041",
+              "title": "7.1.2 Raw Data Streaming",
+              "start_index": 29,
+              "end_index": 36,
+              "summary": "Describes raw data streaming.",
+              "nodes": [
+                {
+                  "node_id": "0042",
+                  "title": "[SWS_RDS_10476] Defining a RawDataStream",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0043",
+                  "title": "[SWS_RDS_10477] Connect stream link",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0044",
+                  "title": "[SWS_RDS_99005] Wait for incoming connections",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0045",
+                  "title": "[SWS_RDS_10478] Shutdown stream link",
+                  "start_index": 29,
+                  "end_index": 29,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0046",
+                  "title": "[SWS_RDS_10508] Destructor behavior when Shutdown stream link",
+                  "start_index": 29,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0047",
+                  "title": "[SWS_RDS_10479] Read data from stream",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0048",
+                  "title": "[SWS_RDS_10480] Write data to stream",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0049",
+                  "title": "[SWS_RDS_99006] Timeout handling",
+                  "start_index": 30,
+                  "end_index": 30,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0050",
+                  "title": "7.1.3 Security",
+                  "start_index": 30,
+                  "end_index": 32,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0051",
+                      "title": "7.1.3.1 Access Control via IAM",
+                      "start_index": 30,
+                      "end_index": 30,
+                      "summary": "Describes access control via IAM.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0052",
+                      "title": "[SWS_RDS_90007] Restrictions on using RawDataStreams",
+                      "start_index": 30,
+                      "end_index": 31,
+                      "summary": "References SWS_RDS_90007.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0053",
+                      "title": "7.1.3.1.1 Secure Communication",
+                      "start_index": 31,
+                      "end_index": 31,
+                      "summary": "Describes secure communication.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0054",
+                      "title": "7.1.3.1.2 Creation and use of secure channels for Raw Data Streaming",
+                      "start_index": 31,
+                      "end_index": 31,
+                      "summary": "Describes creation and use of secure channels for Raw Data Streaming.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0055",
+                      "title": "[SWS_RDS_90211] Secure UDP and TCP channel creation for TLS and DTLS",
+                      "start_index": 31,
+                      "end_index": 31,
+                      "summary": "References SWS_RDS_90211.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0056",
+                      "title": "[SWS_RDS_90212] Using secure TLS, DTLS channels",
+                      "start_index": 31,
+                      "end_index": 31,
+                      "summary": "References SWS_RDS_90212.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0057",
+                      "title": "7.1.3.1.3 (D)TLS for Raw Data Streaming",
+                      "start_index": 31,
+                      "end_index": 32,
+                      "summary": "References SWS_RDS_90213.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0058",
+                      "title": "[SWS_RDS_90213] TLS secure channel for raw data streams using reliable transport",
+                      "start_index": 32,
+                      "end_index": 32,
+                      "summary": "References SWS_RDS_90214.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0059",
+                      "title": "[SWS_RDS_90214] DTLS secure channel for methods using unreliable transport",
+                      "start_index": 32,
+                      "end_index": 32,
+                      "summary": "References SWS_RDS_90215.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0060",
+                      "title": "[SWS_RDS_90215] IPsec secure channel between communication nodes and Transport of Raw Data Stream communication over an IPsec security association",
+                      "start_index": 32,
+                      "end_index": 32,
+                      "summary": "",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0061",
+                  "title": "7.1.4 Raw Data Stream Interfaces",
+                  "start_index": 32,
+                  "end_index": 36,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0062",
+                      "title": "7.1.4.1 Creation of a RawDataStream",
+                      "start_index": 32,
+                      "end_index": 33,
+                      "summary": "Describes creation of a RawDataStream.",
+                      "nodes": [
+                        {
+                          "node_id": "0063",
+                          "title": "[SWS_RDS_10511] Creation of RawDataStreamClient instance",
+                          "start_index": 32,
+                          "end_index": 33,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0064",
+                          "title": "[SWS_RDS_10512] Creation of RawDataStreamServer instance",
+                          "start_index": 33,
+                          "end_index": 33,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0065",
+                      "title": "7.1.4.2 Set up a RawDataStream connection",
+                      "start_index": 33,
+                      "end_index": 34,
+                      "summary": "Describes setup of a RawDataStream connection.",
+                      "nodes": [
+                        {
+                          "node_id": "0066",
+                          "title": "[SWS_RDS_10513] Setup RawDataStreamClient connection",
+                          "start_index": 33,
+                          "end_index": 34,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0067",
+                          "title": "[SWS_RDS_10514] Connect RawDataStreamServer to incoming connection",
+                          "start_index": 34,
+                          "end_index": 34,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0068",
+                      "title": "7.1.4.3 Shutdown of a RawDataStream connection",
+                      "start_index": 34,
+                      "end_index": 34,
+                      "summary": "Describes shutdown of a RawDataStream connection.",
+                      "nodes": [
+                        {
+                          "node_id": "0069",
+                          "title": "[SWS_RDS_10515] Shutdown RawDataStreamClient connection",
+                          "start_index": 34,
+                          "end_index": 34,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0070",
+                          "title": "[SWS_RDS_10516] Shutdown RawDataStreamServer connection",
+                          "start_index": 34,
+                          "end_index": 34,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0071",
+                      "title": "7.1.4.4 Read data from a RawDataStream connection",
+                      "start_index": 34,
+                      "end_index": 35,
+                      "summary": "Describes reading data from a RawDataStream connection.",
+                      "nodes": [
+                        {
+                          "node_id": "0072",
+                          "title": "[SWS_RDS_10517] Read data from a RawDataStreamClient connection",
+                          "start_index": 34,
+                          "end_index": 35,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0073",
+                          "title": "[SWS_RDS_10518] Read data from a RawDataStreamServer connection",
+                          "start_index": 35,
+                          "end_index": 35,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0074",
+                      "title": "7.1.4.5 Write data to a RawDataStream connection",
+                      "start_index": 35,
+                      "end_index": 36,
+                      "summary": "Describes writing data to a RawDataStream connection.",
+                      "nodes": [
+                        {
+                          "node_id": "0075",
+                          "title": "[SWS_RDS_10519] Write data to a RawDataStreamClient connection",
+                          "start_index": 35,
+                          "end_index": 35,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0076",
+                          "title": "[SWS_RDS_10520] Write data to a RawDataStreamServer connection",
+                          "start_index": 35,
+                          "end_index": 36,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "0077",
+              "title": "7.1.2 Raw Data Streaming",
+              "start_index": 36,
+              "end_index": 36,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0078",
+          "title": "7.1.1 Raw Data Streaming Interface",
+          "start_index": 36,
+          "end_index": 37,
+          "summary": "Describes raw data streaming interface.",
+          "nodes": [
+            {
+              "node_id": "0079",
+              "title": "7.1.1.1 Use cases",
+              "start_index": 37,
+              "end_index": 37,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0080",
+          "title": "7.1.2 Raw Data Streaming",
+          "start_index": 37,
+          "end_index": 40,
+          "summary": "Describes raw data streaming.",
+          "nodes": []
+        },
+        {
+          "node_id": "0081",
+          "title": "[SWS_RDS_10526] Prepare a local connection to an IEEE1723RawDataStream",
+          "start_index": 40,
+          "end_index": 40,
+          "summary": "Prepares a local connection to an IEEE1723RawDataStream.",
+          "nodes": []
+        },
+        {
+          "node_id": "0082",
+          "title": "[SWS_RDS_10527] Data link layer configuration of an IEEE1722RawDataStreamConsumer using IEEE1722 protocol",
+          "start_index": 40,
+          "end_index": 41,
+          "summary": "Configures data link layer of an IEEE1722RawDataStreamConsumer using IEEE1722 protocol.",
+          "nodes": []
+        },
+        {
+          "node_id": "0083",
+          "title": "[SWS_RDS_10528] Data link layer communication configuration of an IEEE1722RawDataStreamConsumer using IEEE1722 protocol",
+          "start_index": 41,
+          "end_index": 41,
+          "summary": "Configures data link layer communication of an IEEE1722RawDataStreamConsumer using IEEE1722 protocol.",
+          "nodes": []
+        },
+        {
+          "node_id": "0084",
+          "title": "[SWS_RDS_10529] Data link layer configuration of an IEEE1722RawDataStreamProducer using IEEE1722 protocol",
+          "start_index": 41,
+          "end_index": 42,
+          "summary": "Configures data link layer of an IEEE1722RawDataStreamProducer using IEEE1722 protocol.",
+          "nodes": []
+        },
+        {
+          "node_id": "0085",
+          "title": "[SWS_RDS_10531] Socket Options configuration",
+          "start_index": 42,
+          "end_index": 43,
+          "summary": "Configures socket options.",
+          "nodes": []
+        },
+        {
+          "node_id": "0086",
+          "title": "[SWS_RDS_10533] Derive IEEE1722 protocol configuration at creation of an",
+          "start_index": 43,
+          "end_index": 43,
+          "summary": "Derives IEEE1722 protocol configuration at creation of an.",
+          "nodes": []
+        },
+        {
+          "node_id": "0087",
+          "title": "[SWS_RDS_10534] Error handling if IEEE1722 protocol configuration is derived",
+          "start_index": 43,
+          "end_index": 43,
+          "summary": "Handles errors if IEEE1722 protocol configuration is derived.",
+          "nodes": []
+        },
+        {
+          "node_id": "0088",
+          "title": "[SWS_RDS_10535] Establish local communication connection to an",
+          "start_index": 43,
+          "end_index": 44,
+          "summary": "Establishes local communication connection to an.",
+          "nodes": []
+        },
+        {
+          "node_id": "0089",
+          "title": "7.2 Raw Data Streaming using IEEE1722 protocol (data link layer)",
+          "start_index": 44,
+          "end_index": 66,
+          "summary": "Describes raw data streaming using IEEE1722 protocol (data link layer).",
+          "nodes": [
+            {
+              "node_id": "0090",
+              "title": "7.2.1 Raw Data Streaming Interface",
+              "start_index": 44,
+              "end_index": 45,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0091",
+                  "title": "7.2.1.1 Use cases",
+                  "start_index": 45,
+                  "end_index": 45,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0092",
+              "title": "7.2.2 Raw Data Streaming",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0093",
+              "title": "[SWS_RDS_10526] Prepare a local connection to an IEEE1723RawDataStream",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0094",
+              "title": "[SWS_RDS_10527] Data link layer configuration of an IEEE1722RawDataStreamConsumer using IEEE1722 protocol",
+              "start_index": 45,
+              "end_index": 45,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0095",
+              "title": "[SWS_RDS_10528] Data link layer communication configuration of an IEEE1722RawDataStreamConsumer using IEEE1722 protocol",
+              "start_index": 45,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0096",
+              "title": "[SWS_RDS_10529] Data link layer configuration of an IEEE1722RawDataStreamProducer using IEEE1722 protocol",
+              "start_index": 46,
+              "end_index": 46,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0097",
+              "title": "[SWS_RDS_10531] Socket Options configuration",
+              "start_index": 46,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0098",
+              "title": "[SWS_RDS_10533] Derive IEEE1722 protocol configuration at creation of an",
+              "start_index": 47,
+              "end_index": 47,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0099",
+              "title": "[SWS_RDS_10534] Error handling if IEEE1722 protocol configuration is derived",
+              "start_index": 47,
+              "end_index": 48,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0100",
+              "title": "[SWS_RDS_10535] Establish local communication connection to an",
+              "start_index": 48,
+              "end_index": 49,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0101",
+              "title": "7.2.3 Security",
+              "start_index": 49,
+              "end_index": 50,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0102",
+                  "title": "7.2.3.1 Access Control via IAM",
+                  "start_index": 49,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                },
+                {
+                  "node_id": "0103",
+                  "title": "7.2.3.2 Secure Communication",
+                  "start_index": 50,
+                  "end_index": 50,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0104",
+              "title": "7.2.4 Raw Data Streaming Interfaces",
+              "start_index": 50,
+              "end_index": 66,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0105",
+                  "title": "7.2.4.1 Consume IEEE1722 stream data",
+                  "start_index": 51,
+                  "end_index": 51,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0106",
+                      "title": "[SWS_RDS_10541] Read data from an IEEE1722RawDataStream",
+                      "start_index": 51,
+                      "end_index": 51,
+                      "summary": "Reads data from an IEEE1722RawDataStream.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0107",
+                  "title": "7.2.4.1.1 AVTPDU-header inspection",
+                  "start_index": 51,
+                  "end_index": 52,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0108",
+                      "title": "[SWS_RDS_10542] Inspection of AVTPDU-common-header fields",
+                      "start_index": 52,
+                      "end_index": 52,
+                      "summary": "Inspects AVTPDU-common-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0109",
+                      "title": "[SWS_RDS_10543] Inspection of AVTPDU-common-stream-header fields",
+                      "start_index": 52,
+                      "end_index": 52,
+                      "summary": "Inspects AVTPDU-common-stream-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0110",
+                      "title": "[SWS_RDS_10544] Consistency checks for stream header field values of AVTP common-stream-header format, AVTP stream data subtype CRF and NTSCF",
+                      "start_index": 52,
+                      "end_index": 52,
+                      "summary": "Consistency checks for stream header field values.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0111",
+                  "title": "7.2.4.2 Produce IEEE1722 stream data",
+                  "start_index": 52,
+                  "end_index": 64,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0112",
+                      "title": "[SWS_RDS_10545] Write data to an IEEE1722RawDataStream",
+                      "start_index": 53,
+                      "end_index": 53,
+                      "summary": "Writes data to an IEEE1722RawDataStream.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0113",
+                      "title": "7.2.4.2.1 AVTPDU-header creation",
+                      "start_index": 53,
+                      "end_index": 60,
+                      "summary": "Describes AVTPDU-header creation.",
+                      "nodes": [
+                        {
+                          "node_id": "0114",
+                          "title": "7.2.4.2.1.1 Treatment of shared AVTPDU-header fields",
+                          "start_index": 53,
+                          "end_index": 53,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0115",
+                          "title": "[SWS_RDS_10547] Preparation of IEEE1722 header field value \"stream id\"",
+                          "start_index": 53,
+                          "end_index": 54,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0116",
+                          "title": "[SWS_RDS_10548] Determination of IEEE1722 header field value \"time uncertain\"",
+                          "start_index": 54,
+                          "end_index": 54,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0117",
+                          "title": "[SWS_RDS_10549] Handling if length of AVTPDU-header and AVTP-payload exceeds maxiumm transmission unit",
+                          "start_index": 54,
+                          "end_index": 54,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0118",
+                          "title": "7.2.4.2.1.2 AVTPDU-common-header fields",
+                          "start_index": 54,
+                          "end_index": 55,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0119",
+                          "title": "[SWS_RDS_10550] Determination of IEEE1722 header field value \"AVTP stream data subtype\"",
+                          "start_index": 55,
+                          "end_index": 57,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0120",
+                          "title": "[SWS_RDS_10551] Setting of IEEE1722 header field value \"version\"",
+                          "start_index": 57,
+                          "end_index": 57,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0121",
+                          "title": "7.2.4.2.1.3 AVTPDU-common-stream-header fields",
+                          "start_index": 57,
+                          "end_index": 57,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0122",
+                          "title": "[SWS_RDS_10552] Determination of IEEE1722 header field value \"media clock restart\"",
+                          "start_index": 57,
+                          "end_index": 58,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0123",
+                          "title": "[SWS_RDS_10553] Setting of IEEE1722 header field value \"stream id valid\"",
+                          "start_index": 58,
+                          "end_index": 58,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0124",
+                          "title": "[SWS_RDS_10554] Determination of IEEE1722 header field value \"sequence number\"",
+                          "start_index": 58,
+                          "end_index": 58,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0125",
+                          "title": "[SWS_RDS_10555] Setting of IEEE1722 header field value \"timestamp uncertain\"",
+                          "start_index": 58,
+                          "end_index": 59,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0126",
+                          "title": "[SWS_RDS_10556] Creation of IEEE1722 header field value \"stream id\"",
+                          "start_index": 59,
+                          "end_index": 59,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0127",
+                          "title": "[SWS_RDS_10557] Determination of IEEE1722 header field value \"avtp timestamp\"",
+                          "start_index": 59,
+                          "end_index": 60,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0128",
+                      "title": "7.2.4.2.1.4 AVTPDU-alternative-header fields",
+                      "start_index": 60,
+                      "end_index": 60,
+                      "summary": "Describes AVTPDU-alternative-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0129",
+                      "title": "7.2.4.2.1.5 61883_IIDC-header fields",
+                      "start_index": 60,
+                      "end_index": 61,
+                      "summary": "Describes 61883_IIDC-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0130",
+                      "title": "[SWS_RDS_10559] Setting of IEEE1722 subtype stream 61883_IIDC header field values if configured tag field is set to 0",
+                      "start_index": 61,
+                      "end_index": 61,
+                      "summary": "Sets IEEE1722 subtype stream 61883_IIDC header field values.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0131",
+                      "title": "[SWS_RDS_10560] Setting of IEEE1722 subtype stream 61883_IIDC header field values if configured tag field is set to 1",
+                      "start_index": 61,
+                      "end_index": 61,
+                      "summary": "Sets IEEE1722 subtype stream 61883_IIDC header field values when the tag field is set to 1.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0132",
+                      "title": "7.2.4.2.1.6 AAF-header fields",
+                      "start_index": 61,
+                      "end_index": 62,
+                      "summary": "Describes AAF-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0133",
+                      "title": "[SWS_RDS_10563] Setting of IEEE1722 subtype stream AAF header field values",
+                      "start_index": 62,
+                      "end_index": 62,
+                      "summary": "Describes setting IEEE1722 subtype stream AAF header field values.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0134",
+                      "title": "[SWS_RDS_10564] Setting of IEEE1722 subtype stream AAF header field values if AAF AVTP format PCM is indicated",
+                      "start_index": 62,
+                      "end_index": 63,
+                      "summary": "Describes setting IEEE1722 subtype stream AAF header field values for AAF AVTP format PCM.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0135",
+                      "title": "[SWS_RDS_10565] Setting of IEEE1722 subtype stream AAF header field values if AAF AVTP format AES3 is indicated",
+                      "start_index": 63,
+                      "end_index": 63,
+                      "summary": "Describes setting IEEE1722 subtype stream AAF header field values for AAF AVTP format AES3.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0136",
+                      "title": "7.2.4.2.1.7 ACF-header fields",
+                      "start_index": 63,
+                      "end_index": 63,
+                      "summary": "Describes ACF-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0137",
+                      "title": "[SWS_RDS_10566] Setting of IEEE1722 subtype stream NTSC header field values",
+                      "start_index": 63,
+                      "end_index": 63,
+                      "summary": "Describes setting IEEE1722 subtype stream NTSC header field values.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0138",
+                      "title": "[SWS_RDS_10567] Setting of IEEE1722 subtype stream TSCF header field values",
+                      "start_index": 63,
+                      "end_index": 63,
+                      "summary": "Describes setting IEEE1722 subtype stream TSCF header field values.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0139",
+                      "title": "7.2.4.2.1.8 CRF-header fields",
+                      "start_index": 63,
+                      "end_index": 63,
+                      "summary": "Describes CRF-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0140",
+                      "title": "[SWS_RDS_10568] Setting of IEEE1722 subtype stream CRF header field values",
+                      "start_index": 63,
+                      "end_index": 63,
+                      "summary": "Describes setting IEEE1722 subtype stream CRF header field values.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0141",
+                      "title": "Note to [SWS_RDS_10568]:",
+                      "start_index": 63,
+                      "end_index": 63,
+                      "summary": "",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0142",
+                      "title": "7.2.4.2.1.9 RVF-header fields",
+                      "start_index": 63,
+                      "end_index": 64,
+                      "summary": "Describes RVF-header fields.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0143",
+                      "title": "[SWS_RDS_10569] Setting of IEEE1722 subtype stream RVF header field values",
+                      "start_index": 64,
+                      "end_index": 64,
+                      "summary": "Describes setting IEEE1722 subtype stream RVF header field values.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0144",
+                  "title": "7.2.4.3 Error handling for consuming or producing IEEE1722 stream data",
+                  "start_index": 64,
+                  "end_index": 66,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0145",
+                      "title": "[SWS_RDS_10571] Error handling for read and write data processing with system interrupt",
+                      "start_index": 64,
+                      "end_index": 66,
+                      "summary": "Describes error handling for read and write data processing with system interrupt.",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0146",
+          "title": "7.3 Functional cluster lifecycle",
+          "start_index": 66,
+          "end_index": 67,
+          "summary": "Describes startup.",
+          "nodes": [
+            {
+              "node_id": "0147",
+              "title": "7.3.1 Startup",
+              "start_index": 66,
+              "end_index": 67,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0148",
+              "title": "7.3.2 Shutdown",
+              "start_index": 67,
+              "end_index": 67,
+              "summary": "Describes shutdown.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0149",
+          "title": "7.4 Reporting",
+          "start_index": 67,
+          "end_index": 69,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0150",
+              "title": "7.4.1 Security Events",
+              "start_index": 67,
+              "end_index": 68,
+              "summary": "Describes security events.",
+              "nodes": []
+            },
+            {
+              "node_id": "0151",
+              "title": "7.4.2 Log Messages",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "Describes log messages.",
+              "nodes": []
+            },
+            {
+              "node_id": "0152",
+              "title": "7.4.3 Violation Messages",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "Describes violation messages.",
+              "nodes": []
+            },
+            {
+              "node_id": "0153",
+              "title": "[SWS_CORE_13003]",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "References SWS_CORE_13003.",
+              "nodes": []
+            },
+            {
+              "node_id": "0154",
+              "title": "[SWS_CORE_13004]",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "References SWS_CORE_13004.",
+              "nodes": []
+            },
+            {
+              "node_id": "0155",
+              "title": "[SWS_CORE_13005]",
+              "start_index": 68,
+              "end_index": 68,
+              "summary": "References SWS_CORE_13005.",
+              "nodes": []
+            },
+            {
+              "node_id": "0156",
+              "title": "[SWS_CORE_13006]",
+              "start_index": 68,
+              "end_index": 69,
+              "summary": "References SWS_CORE_13006.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0157",
+          "title": "8 API specification",
+          "start_index": 69,
+          "end_index": 102,
+          "summary": "",
+          "nodes": [
+            {
+              "node_id": "0158",
+              "title": "8.1 PortInterface to API class binding",
+              "start_index": 69,
+              "end_index": 70,
+              "summary": "Describes port interface to API class binding.",
+              "nodes": []
+            },
+            {
+              "node_id": "0159",
+              "title": "8.2 Header: ara/rds/raw_data_stream.h",
+              "start_index": 70,
+              "end_index": 102,
+              "summary": "Describes header ara/rds/raw_data_stream.h.",
+              "nodes": [
+                {
+                  "node_id": "0160",
+                  "title": "8.2.1 Class: RawDataStreamClient",
+                  "start_index": 70,
+                  "end_index": 102,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0161",
+                      "title": "8.2.1.1 Public Member Functions",
+                      "start_index": 70,
+                      "end_index": 79,
+                      "summary": "Describes special member functions, member functions, and named constructors for public member functions.",
+                      "nodes": [
+                        {
+                          "node_id": "0162",
+                          "title": "8.2.1.1.1 Special Member Functions",
+                          "start_index": 70,
+                          "end_index": 75,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0163",
+                              "title": "8.2.1.1.1.1 Copy Constructor",
+                              "start_index": 71,
+                              "end_index": 72,
+                              "summary": "Describes the copy constructor for RawDataStreamClient.",
+                              "nodes": [
+                                {
+                                  "node_id": "0164",
+                                  "title": "[SWS_RDS_11303] Definition of API function ara::rds::RawDataStream Client::RawDataStreamClient",
+                                  "start_index": 71,
+                                  "end_index": 72,
+                                  "summary": "",
+                                  "nodes": []
+                                }
+                              ]
+                            },
+                            {
+                              "node_id": "0165",
+                              "title": "8.2.1.1.1.2 Move Constructor",
+                              "start_index": 72,
+                              "end_index": 73,
+                              "summary": "Describes the move constructor for RawDataStreamClient.",
+                              "nodes": [
+                                {
+                                  "node_id": "0166",
+                                  "title": "[SWS_RDS_11305] Definition of API function ara::rds::RawDataStream Client",
+                                  "start_index": 73,
+                                  "end_index": 73,
+                                  "summary": "",
+                                  "nodes": []
+                                }
+                              ]
+                            },
+                            {
+                              "node_id": "0167",
+                              "title": "8.2.1.1.1.3 Copy Assignment Operator",
+                              "start_index": 73,
+                              "end_index": 74,
+                              "summary": "Describes the copy assignment operator for RawDataStreamClient.",
+                              "nodes": []
+                            },
+                            {
+                              "node_id": "0168",
+                              "title": "8.2.1.1.1.4 Move Assignment Operator",
+                              "start_index": 74,
+                              "end_index": 75,
+                              "summary": "Describes the move assignment operator for RawDataStreamClient.",
+                              "nodes": []
+                            },
+                            {
+                              "node_id": "0169",
+                              "title": "8.2.1.1.1.5 Destructor",
+                              "start_index": 75,
+                              "end_index": 75,
+                              "summary": "Describes the destructor for RawDataStreamClient.",
+                              "nodes": []
+                            }
+                          ]
+                        },
+                        {
+                          "node_id": "0170",
+                          "title": "8.2.1.1.2 Member Functions",
+                          "start_index": 75,
+                          "end_index": 78,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0171",
+                              "title": "8.2.1.1.2.1 Connect()",
+                              "start_index": 76,
+                              "end_index": 78,
+                              "summary": "Describes the Connect function for RawDataStreamClient.",
+                              "nodes": [
+                                {
+                                  "node_id": "0172",
+                                  "title": "[SWS_RDS_10484] Definition of API function ara::rds::RawDataStream Client::Connect",
+                                  "start_index": 76,
+                                  "end_index": 77,
+                                  "summary": "",
+                                  "nodes": []
+                                },
+                                {
+                                  "node_id": "0173",
+                                  "title": "8.2.1.1.2.2 Connect(std::chrono::milliseconds)",
+                                  "start_index": 77,
+                                  "end_index": 77,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0174",
+                                      "title": "[SWS_RDS_11307] Definition of API function ara::rds::RawDataStream Client::Connect",
+                                      "start_index": 77,
+                                      "end_index": 77,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0175",
+                                  "title": "8.2.1.1.2.3 ReadData(std::size_t, std::chrono::milliseconds)",
+                                  "start_index": 77,
+                                  "end_index": 77,
+                                  "summary": "",
+                                  "nodes": []
+                                },
+                                {
+                                  "node_id": "0176",
+                                  "title": "8.2.1.1.2.5 Shutdown",
+                                  "start_index": 77,
+                                  "end_index": 77,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0177",
+                                      "title": "[SWS_RDS_10485] Definition of API function ara::rds::RawDataStream Client::Shutdown",
+                                      "start_index": 77,
+                                      "end_index": 77,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0178",
+                                  "title": "8.2.1.1.2.6 WriteData(std::unique_ptr, std::size_t)",
+                                  "start_index": 77,
+                                  "end_index": 78,
+                                  "summary": "",
+                                  "nodes": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "node_id": "0179",
+                          "title": "8.2.1.1.3 Named Constructors",
+                          "start_index": 78,
+                          "end_index": 79,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0180",
+                              "title": "8.2.1.1.3.1 Create",
+                              "start_index": 78,
+                              "end_index": 79,
+                              "summary": "Describes the Create function for RawDataStreamClient.",
+                              "nodes": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0181",
+                      "title": "8.2.2 Class: RawDataStreamServer",
+                      "start_index": 79,
+                      "end_index": 88,
+                      "summary": "Describes the API class ara::rds::RawDataStreamServer and its public member functions.",
+                      "nodes": [
+                        {
+                          "node_id": "0182",
+                          "title": "[SWS_RDS_11311] Definition of API class ara::rds::RawDataStreamServer",
+                          "start_index": 79,
+                          "end_index": 79,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0183",
+                          "title": "8.2.2.1 Public Member Functions",
+                          "start_index": 79,
+                          "end_index": 87,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0184",
+                              "title": "8.2.2.1.1 Special Member Functions",
+                              "start_index": 80,
+                              "end_index": 83,
+                              "summary": "Describes the special member functions for RawDataStreamServer.",
+                              "nodes": [
+                                {
+                                  "node_id": "0185",
+                                  "title": "8.2.2.1.1.1 Move Constructor",
+                                  "start_index": 80,
+                                  "end_index": 81,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0186",
+                                      "title": "[SWS_RDS_11316] Definition of API function ara::rds::RawDataStream Server::RawDataStreamServer",
+                                      "start_index": 81,
+                                      "end_index": 81,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0187",
+                                  "title": "8.2.2.1.1.2 Copy Constructor",
+                                  "start_index": 81,
+                                  "end_index": 81,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0188",
+                                      "title": "[SWS_RDS_11314] Definition of API function ara::rds::RawDataStream Server::RawDataStreamServer",
+                                      "start_index": 81,
+                                      "end_index": 81,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0189",
+                                  "title": "8.2.2.1.1.3 Move Assignment Operator",
+                                  "start_index": 81,
+                                  "end_index": 82,
+                                  "summary": "",
+                                  "nodes": []
+                                },
+                                {
+                                  "node_id": "0190",
+                                  "title": "8.2.2.1.1.4 Copy Assignment Operator",
+                                  "start_index": 82,
+                                  "end_index": 82,
+                                  "summary": "",
+                                  "nodes": []
+                                },
+                                {
+                                  "node_id": "0191",
+                                  "title": "8.2.2.1.1.5 Destructor",
+                                  "start_index": 82,
+                                  "end_index": 83,
+                                  "summary": "",
+                                  "nodes": []
+                                }
+                              ]
+                            },
+                            {
+                              "node_id": "0192",
+                              "title": "8.2.2.1.2 Member Functions",
+                              "start_index": 83,
+                              "end_index": 87,
+                              "summary": "Describes the ReadData function for RawDataStreamServer.",
+                              "nodes": [
+                                {
+                                  "node_id": "0193",
+                                  "title": "8.2.2.1.2.1 ReadData(std::size_t, std::chrono::milliseconds)",
+                                  "start_index": 84,
+                                  "end_index": 84,
+                                  "summary": "Describes the WaitForConnection function for RawDataStreamServer.",
+                                  "nodes": []
+                                },
+                                {
+                                  "node_id": "0194",
+                                  "title": "8.2.2.1.2.2 ReadData(std::size_t)",
+                                  "start_index": 84,
+                                  "end_index": 85,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0195",
+                                      "title": "[SWS_RDS_11322] Definition of API function ara::rds::RawDataStream Server::ReadData",
+                                      "start_index": 85,
+                                      "end_index": 85,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0196",
+                                  "title": "8.2.2.1.2.3 Shutdown",
+                                  "start_index": 85,
+                                  "end_index": 86,
+                                  "summary": "Describes the WriteData function for RawDataStreamServer.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0197",
+                                      "title": "[SWS_RDS_11320] Definition of API function ara::rds::RawDataStream Server::Shutdown",
+                                      "start_index": 86,
+                                      "end_index": 86,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0198",
+                                  "title": "8.2.2.1.2.4 WaitForConnection(std::chrono::milliseconds)",
+                                  "start_index": 86,
+                                  "end_index": 86,
+                                  "summary": "Describes the WaitForConnection function for RawDataStreamServer.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0199",
+                                      "title": "[SWS_RDS_11319] Definition of API function ara::rds::RawDataStream Server::WaitForConnection",
+                                      "start_index": 86,
+                                      "end_index": 86,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0200",
+                                  "title": "8.2.2.1.2.5 WaitForConnection()",
+                                  "start_index": 86,
+                                  "end_index": 87,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0201",
+                                      "title": "[SWS_RDS_11318] Definition of API function ara::rds::RawDataStream Server::WaitForConnection",
+                                      "start_index": 86,
+                                      "end_index": 87,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0202",
+                                  "title": "8.2.2.1.2.6 WriteData(std::unique_ptr, std::size_t)",
+                                  "start_index": 87,
+                                  "end_index": 87,
+                                  "summary": "Describes the Create function for RawDataStreamServer.",
+                                  "nodes": []
+                                }
+                              ]
+                            },
+                            {
+                              "node_id": "0203",
+                              "title": "8.2.2.1.3 Named Constructors",
+                              "start_index": 87,
+                              "end_index": 87,
+                              "summary": "",
+                              "nodes": [
+                                {
+                                  "node_id": "0204",
+                                  "title": "8.2.2.1.3.1 Create",
+                                  "start_index": 87,
+                                  "end_index": 87,
+                                  "summary": "",
+                                  "nodes": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "node_id": "0205",
+                          "title": "8.2.3 Struct: ReadDataResult",
+                          "start_index": 87,
+                          "end_index": 88,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0206",
+                              "title": "[SWS_RDS_11300] Definition of API class ara::rds::ReadDataResult",
+                              "start_index": 87,
+                              "end_index": 87,
+                              "summary": "Describes the data and numberOfBytes member variables for ReadDataResult.",
+                              "nodes": []
+                            },
+                            {
+                              "node_id": "0207",
+                              "title": "8.2.3.1 Public Member Variables",
+                              "start_index": 87,
+                              "end_index": 88,
+                              "summary": "",
+                              "nodes": [
+                                {
+                                  "node_id": "0208",
+                                  "title": "8.2.3.1.1 data",
+                                  "start_index": 88,
+                                  "end_index": 88,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0209",
+                                      "title": "[SWS_RDS_11301] Definition of API variable ara::rds::ReadDataResult::data",
+                                      "start_index": 88,
+                                      "end_index": 88,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0210",
+                                  "title": "8.2.3.1.2 numberOfBytes",
+                                  "start_index": 88,
+                                  "end_index": 88,
+                                  "summary": "",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0211",
+                                      "title": "[SWS_RDS_11302] Definition of API variable ara::rds::ReadDataResult::numberOfBytes",
+                                      "start_index": 88,
+                                      "end_index": 88,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0212",
+                      "title": "8.3 Header: ara/rds/raw_data_stream_IEEE1722.h",
+                      "start_index": 88,
+                      "end_index": 102,
+                      "summary": "Describes the header file ara/rds/raw_data_stream_IEEE1722.h and its classes.",
+                      "nodes": [
+                        {
+                          "node_id": "0213",
+                          "title": "8.3.1 Class: IEEE1722Datagram",
+                          "start_index": 88,
+                          "end_index": 91,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0214",
+                              "title": "[SWS_RDS_90225] Definition of API class ara::rds::IEEE1722Datagram",
+                              "start_index": 89,
+                              "end_index": 89,
+                              "summary": "Describes the IEEE1722Datagram class.",
+                              "nodes": []
+                            },
+                            {
+                              "node_id": "0215",
+                              "title": "8.3.1.1 Protected Member Variables",
+                              "start_index": 89,
+                              "end_index": 90,
+                              "summary": "Describes protected member variables for IEEE1722Datagram.",
+                              "nodes": [
+                                {
+                                  "node_id": "0216",
+                                  "title": "8.3.1.1.1 data",
+                                  "start_index": 89,
+                                  "end_index": 89,
+                                  "summary": "Describes the data member variable for IEEE1722Datagram.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0217",
+                                      "title": "[SWS_RDS_90226] Definition of API variable ara::rds::IEEE1722Datagram::data",
+                                      "start_index": 89,
+                                      "end_index": 89,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0218",
+                                  "title": "8.3.1.1.2 stream_data_length",
+                                  "start_index": 89,
+                                  "end_index": 90,
+                                  "summary": "Describes the stream_data_length member variable for IEEE1722Datagram.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0219",
+                                      "title": "[SWS_RDS_90227] Definition of API variable ara::rds::IEEE1722Datagram::stream_data_length",
+                                      "start_index": 90,
+                                      "end_index": 90,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "node_id": "0220",
+                              "title": "8.3.1.2 Public Member Functions",
+                              "start_index": 90,
+                              "end_index": 91,
+                              "summary": "",
+                              "nodes": [
+                                {
+                                  "node_id": "0221",
+                                  "title": "8.3.1.2.1 Special Member Functions",
+                                  "start_index": 90,
+                                  "end_index": 91,
+                                  "summary": "Describes special member functions for IEEE1722Datagram.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0222",
+                                      "title": "8.3.1.2.1.1 Destructor",
+                                      "start_index": 90,
+                                      "end_index": 91,
+                                      "summary": "",
+                                      "nodes": [
+                                        {
+                                          "node_id": "0223",
+                                          "title": "[SWS_RDS_90228] Definition of API function ara::rds::IEEE1722Datagram::~IEEE1722Datagram",
+                                          "start_index": 91,
+                                          "end_index": 91,
+                                          "summary": "Describes the destructor for IEEE1722Datagram.",
+                                          "nodes": []
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "node_id": "0224",
+                          "title": "8.3.2 Class: IEEE1722Datagram61883_IIDC",
+                          "start_index": 91,
+                          "end_index": 101,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0225",
+                              "title": "[SWS_RDS_90243] Definition of API class ara::rds::IEEE1722Datagram61883_ IIDC",
+                              "start_index": 91,
+                              "end_index": 91,
+                              "summary": "",
+                              "nodes": []
+                            },
+                            {
+                              "node_id": "0226",
+                              "title": "8.3.2.1 Protected Member Variables",
+                              "start_index": 91,
+                              "end_index": 100,
+                              "summary": "",
+                              "nodes": [
+                                {
+                                  "node_id": "0227",
+                                  "title": "8.3.2.1.1 channel",
+                                  "start_index": 92,
+                                  "end_index": 92,
+                                  "summary": "Describes the channel member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0228",
+                                      "title": "[SWS_RDS_90245] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::channel",
+                                      "start_index": 92,
+                                      "end_index": 92,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0229",
+                                  "title": "8.3.2.1.2 dbc",
+                                  "start_index": 92,
+                                  "end_index": 93,
+                                  "summary": "Describes the dbc member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0230",
+                                      "title": "[SWS_RDS_90254] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::dbc",
+                                      "start_index": 92,
+                                      "end_index": 93,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0231",
+                                  "title": "8.3.2.1.3 dbs",
+                                  "start_index": 93,
+                                  "end_index": 93,
+                                  "summary": "Describes the dbs member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0232",
+                                      "title": "[SWS_RDS_90250] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::dbs",
+                                      "start_index": 93,
+                                      "end_index": 93,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0233",
+                                  "title": "8.3.2.1.4 fdf_with_sph",
+                                  "start_index": 93,
+                                  "end_index": 94,
+                                  "summary": "Describes the fdf_with_sph member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0234",
+                                      "title": "[SWS_RDS_90259] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::fdf_with_sph",
+                                      "start_index": 93,
+                                      "end_index": 94,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0235",
+                                  "title": "8.3.2.1.5 fdf_without_sph",
+                                  "start_index": 94,
+                                  "end_index": 94,
+                                  "summary": "Describes the fdf_without_sph member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0236",
+                                      "title": "[SWS_RDS_90257] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::fdf_without_sph",
+                                      "start_index": 94,
+                                      "end_index": 94,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0237",
+                                  "title": "8.3.2.1.6 fmt",
+                                  "start_index": 94,
+                                  "end_index": 95,
+                                  "summary": "Describes the fmt member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0238",
+                                      "title": "[SWS_RDS_90256] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::fmt",
+                                      "start_index": 94,
+                                      "end_index": 95,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0239",
+                                  "title": "8.3.2.1.7 fn",
+                                  "start_index": 95,
+                                  "end_index": 95,
+                                  "summary": "Describes the fn member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0240",
+                                      "title": "[SWS_RDS_90251] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::fn",
+                                      "start_index": 95,
+                                      "end_index": 95,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0241",
+                                  "title": "8.3.2.1.8 qi_1",
+                                  "start_index": 95,
+                                  "end_index": 96,
+                                  "summary": "Describes the qi_1 member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0242",
+                                      "title": "[SWS_RDS_90248] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::qi_1",
+                                      "start_index": 95,
+                                      "end_index": 96,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0243",
+                                  "title": "8.3.2.1.9 qi_2",
+                                  "start_index": 96,
+                                  "end_index": 96,
+                                  "summary": "Describes the qi_2 member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0244",
+                                      "title": "[SWS_RDS_90255] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::qi_2",
+                                      "start_index": 96,
+                                      "end_index": 96,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0245",
+                                  "title": "8.3.2.1.10 qpc",
+                                  "start_index": 96,
+                                  "end_index": 97,
+                                  "summary": "Describes the qpc member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0246",
+                                      "title": "[SWS_RDS_90252] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::qpc",
+                                      "start_index": 96,
+                                      "end_index": 97,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0247",
+                                  "title": "8.3.2.1.11 sid",
+                                  "start_index": 97,
+                                  "end_index": 97,
+                                  "summary": "Describes the sid member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0248",
+                                      "title": "[SWS_RDS_90249] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::sid",
+                                      "start_index": 97,
+                                      "end_index": 97,
+                                      "summary": "Defines API variable ara::rds::IEEE1722Datagram61883_ IIDC::tcode.",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0249",
+                                  "title": "8.3.2.1.12 sph",
+                                  "start_index": 97,
+                                  "end_index": 97,
+                                  "summary": "Describes the sph member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0250",
+                                      "title": "[SWS_RDS_90253] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::sph",
+                                      "start_index": 97,
+                                      "end_index": 97,
+                                      "summary": "Describes special member functions.",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0251",
+                                  "title": "8.3.2.1.13 sy",
+                                  "start_index": 97,
+                                  "end_index": 98,
+                                  "summary": "Describes the sy member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0252",
+                                      "title": "[SWS_RDS_90247] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::sy",
+                                      "start_index": 97,
+                                      "end_index": 98,
+                                      "summary": "Defines API function ara::rds::IEEE1722Datagram61883_ IIDC::~IEEE1722Datagram61883_IIDC.",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0253",
+                                  "title": "8.3.2.1.14 syt",
+                                  "start_index": 98,
+                                  "end_index": 99,
+                                  "summary": "Describes the syt member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0254",
+                                      "title": "[SWS_RDS_90258] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::syt",
+                                      "start_index": 98,
+                                      "end_index": 99,
+                                      "summary": "Defines API class ara::rds::IEEE1722DatagramAAF.",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0255",
+                                  "title": "8.3.2.1.15 tag",
+                                  "start_index": 99,
+                                  "end_index": 100,
+                                  "summary": "Describes the tag member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0256",
+                                      "title": "[SWS_RDS_90244] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::tag",
+                                      "start_index": 99,
+                                      "end_index": 100,
+                                      "summary": "Defines aes3_dt_ref.",
+                                      "nodes": []
+                                    }
+                                  ]
+                                },
+                                {
+                                  "node_id": "0257",
+                                  "title": "8.3.2.1.16 tcode",
+                                  "start_index": 100,
+                                  "end_index": 100,
+                                  "summary": "Describes the tcode member variable for IEEE1722Datagram61883_IIDC.",
+                                  "nodes": [
+                                    {
+                                      "node_id": "0258",
+                                      "title": "[SWS_RDS_90247] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::tcode",
+                                      "start_index": 100,
+                                      "end_index": 100,
+                                      "summary": "",
+                                      "nodes": []
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "node_id": "0259",
+                              "title": "8.3.2.1.17 Note to [SWS_RDS_90244]:",
+                              "start_index": 100,
+                              "end_index": 100,
+                              "summary": "Defines channels_per_frame.",
+                              "nodes": []
+                            },
+                            {
+                              "node_id": "0260",
+                              "title": "8.3.2.1.18 tcode",
+                              "start_index": 100,
+                              "end_index": 101,
+                              "summary": "",
+                              "nodes": [
+                                {
+                                  "node_id": "0261",
+                                  "title": "[SWS_RDS_90247] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::tcode",
+                                  "start_index": 101,
+                                  "end_index": 101,
+                                  "summary": "Defines evt.",
+                                  "nodes": []
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "node_id": "0262",
+                          "title": "8.3.2.1.19 tcode",
+                          "start_index": 101,
+                          "end_index": 102,
+                          "summary": "Defines format.",
+                          "nodes": [
+                            {
+                              "node_id": "0263",
+                              "title": "[SWS_RDS_90247] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::tcode",
+                              "start_index": 102,
+                              "end_index": 102,
+                              "summary": "Defines nfr.",
+                              "nodes": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "0248",
+      "title": "[SWS_RDS_90246] Definition of API variable ara::rds::IEEE1722Datagram61883_ IIDC::tcode",
+      "start_index": 97,
+      "end_index": 97,
+      "summary": "Defines API variable ara::rds::IEEE1722Datagram61883_ IIDC::tcode.",
+      "nodes": []
+    },
+    {
+      "node_id": "0249",
+      "title": "8.3.2.2 Public Member Functions",
+      "start_index": 97,
+      "end_index": 97,
+      "summary": "Describes the sph member variable for IEEE1722Datagram61883_IIDC.",
+      "nodes": []
+    },
+    {
+      "node_id": "0250",
+      "title": "8.3.2.2.1 Special Member Functions",
+      "start_index": 97,
+      "end_index": 97,
+      "summary": "Describes special member functions.",
+      "nodes": []
+    },
+    {
+      "node_id": "0251",
+      "title": "8.3.2.2.1.1 Destructor",
+      "start_index": 97,
+      "end_index": 97,
+      "summary": "Describes the sy member variable for IEEE1722Datagram61883_IIDC.",
+      "nodes": []
+    },
+    {
+      "node_id": "0252",
+      "title": "[SWS_RDS_90260] Definition of API function ara::rds::IEEE1722Datagram61883_ IIDC::~IEEE1722Datagram61883_IIDC",
+      "start_index": 97,
+      "end_index": 98,
+      "summary": "Defines API function ara::rds::IEEE1722Datagram61883_ IIDC::~IEEE1722Datagram61883_IIDC.",
+      "nodes": []
+    },
+    {
+      "node_id": "0253",
+      "title": "8.3.3 Class: IEEE1722DatagramAAF",
+      "start_index": 98,
+      "end_index": 183,
+      "summary": "Describes the syt member variable for IEEE1722Datagram61883_IIDC.",
+      "nodes": [
+        {
+          "node_id": "0254",
+          "title": "[SWS_RDS_90261] Definition of API class ara::rds::IEEE1722DatagramAAF",
+          "start_index": 98,
+          "end_index": 104,
+          "summary": "Defines API class ara::rds::IEEE1722DatagramAAF.",
+          "nodes": [
+            {
+              "node_id": "0255",
+              "title": "8.3.3.1.2 aes3_data_type_I",
+              "start_index": 99,
+              "end_index": 99,
+              "summary": "Describes the tag member variable for IEEE1722Datagram61883_IIDC.",
+              "nodes": []
+            },
+            {
+              "node_id": "0256",
+              "title": "8.3.3.1.3 aes3_dt_ref",
+              "start_index": 99,
+              "end_index": 100,
+              "summary": "Defines aes3_dt_ref.",
+              "nodes": []
+            },
+            {
+              "node_id": "0257",
+              "title": "8.3.3.1.4 bit_depth",
+              "start_index": 100,
+              "end_index": 100,
+              "summary": "Describes the tcode member variable for IEEE1722Datagram61883_IIDC.",
+              "nodes": [
+                {
+                  "node_id": "0258",
+                  "title": "[SWS_RDS_90268] Definition of API variable ara::rds::IEEE1722Datagram AAF::bit_depth",
+                  "start_index": 100,
+                  "end_index": 100,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0259",
+              "title": "8.3.3.1.5 channels_per_frame",
+              "start_index": 100,
+              "end_index": 101,
+              "summary": "Defines channels_per_frame.",
+              "nodes": [
+                {
+                  "node_id": "0260",
+                  "title": "[SWS_RDS_90266] Definition of API variable ara::rds::IEEE1722Datagram AAF::channels_per_frame",
+                  "start_index": 100,
+                  "end_index": 101,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0261",
+              "title": "8.3.3.1.6 evt",
+              "start_index": 101,
+              "end_index": 101,
+              "summary": "Defines evt.",
+              "nodes": []
+            },
+            {
+              "node_id": "0262",
+              "title": "8.3.3.1.7 format",
+              "start_index": 101,
+              "end_index": 102,
+              "summary": "Defines format.",
+              "nodes": []
+            },
+            {
+              "node_id": "0263",
+              "title": "8.3.3.1.8 nfr",
+              "start_index": 102,
+              "end_index": 102,
+              "summary": "Defines nfr.",
+              "nodes": [
+                {
+                  "node_id": "0264",
+                  "title": "[SWS_RDS_90263] Definition of API variable ara::rds::IEEE1722Datagram AAF::nfr",
+                  "start_index": 102,
+                  "end_index": 102,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0265",
+              "title": "8.3.3.1.9 nsr",
+              "start_index": 102,
+              "end_index": 103,
+              "summary": "Defines nsr.",
+              "nodes": [
+                {
+                  "node_id": "0266",
+                  "title": "[SWS_RDS_90265] Definition of API variable ara::rds::IEEE1722Datagram AAF::nsr",
+                  "start_index": 102,
+                  "end_index": 103,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0267",
+              "title": "8.3.3.1.10 sp",
+              "start_index": 103,
+              "end_index": 104,
+              "summary": "Defines sp.",
+              "nodes": [
+                {
+                  "node_id": "0268",
+                  "title": "[SWS_RDS_90263] Definition of API variable ara::rds::IEEE1722Datagram AAF::sp",
+                  "start_index": 103,
+                  "end_index": 104,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0269",
+          "title": "8.3.3.2 Public Member Functions",
+          "start_index": 104,
+          "end_index": 105,
+          "summary": "Describes public member functions.",
+          "nodes": [
+            {
+              "node_id": "0270",
+              "title": "8.3.3.2.1 Special Member Functions",
+              "start_index": 104,
+              "end_index": 104,
+              "summary": "Describes special member functions.",
+              "nodes": [
+                {
+                  "node_id": "0271",
+                  "title": "8.3.3.2.1.1 Destructor",
+                  "start_index": 104,
+                  "end_index": 104,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0272",
+              "title": "[SWS_RDS_90273] Definition of API function ara::rds::IEEE1722Datagram AAF::~IEEE1722DatagramAAF",
+              "start_index": 104,
+              "end_index": 105,
+              "summary": "Defines ~IEEE1722DatagramAAF.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0273",
+          "title": "8.3.4.1 Protected Member Variables",
+          "start_index": 105,
+          "end_index": 106,
+          "summary": "Describes protected member variables.",
+          "nodes": [
+            {
+              "node_id": "0274",
+              "title": "8.3.4.1.1 avtpStreamDataSubtype",
+              "start_index": 105,
+              "end_index": 105,
+              "summary": "Defines avtpStreamDataSubtype.",
+              "nodes": []
+            },
+            {
+              "node_id": "0275",
+              "title": "8.3.4.1.2 headerSpecific",
+              "start_index": 105,
+              "end_index": 106,
+              "summary": "Defines headerSpecific.",
+              "nodes": []
+            },
+            {
+              "node_id": "0276",
+              "title": "8.3.4.1.3 version",
+              "start_index": 106,
+              "end_index": 106,
+              "summary": "Defines version.",
+              "nodes": [
+                {
+                  "node_id": "0277",
+                  "title": "[SWS_RDS_90232] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonHeaderFields::version",
+                  "start_index": 106,
+                  "end_index": 106,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0278",
+          "title": "8.3.4.2 Public Member Functions",
+          "start_index": 106,
+          "end_index": 107,
+          "summary": "Describes public member functions.",
+          "nodes": [
+            {
+              "node_id": "0279",
+              "title": "8.3.4.2.1 Special Member Functions",
+              "start_index": 106,
+              "end_index": 106,
+              "summary": "Describes special member functions.",
+              "nodes": [
+                {
+                  "node_id": "0280",
+                  "title": "8.3.4.2.1.1 Destructor",
+                  "start_index": 106,
+                  "end_index": 106,
+                  "summary": "",
+                  "nodes": []
+                }
+              ]
+            },
+            {
+              "node_id": "0281",
+              "title": "[SWS_RDS_90233] Definition of API function ara::rds::IEEE1722DatagramAVTPDUCommonHeaderFields DUACommonHeaderFields::~IEEE1722DatagramAVTPDUCommonHeaderFields",
+              "start_index": 106,
+              "end_index": 107,
+              "summary": "Defines ~IEEE1722DatagramAVTPDUCommonHeaderFields.",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0282",
+          "title": "8.3.5 Class: IEEE1722DatagramAVTPDUCommonStreamHeaderFields",
+          "start_index": 107,
+          "end_index": 111,
+          "summary": "Describes class IEEE1722DatagramAVTPDUCommonStreamHeaderFields.",
+          "nodes": [
+            {
+              "node_id": "0283",
+              "title": "8.3.5.1 Protected Member Variables",
+              "start_index": 107,
+              "end_index": 111,
+              "summary": "Defines avtp_timestamp.",
+              "nodes": [
+                {
+                  "node_id": "0284",
+                  "title": "8.3.5.1.1 avtp_timestamp",
+                  "start_index": 107,
+                  "end_index": 108,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0285",
+                      "title": "[SWS_RDS_90237] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::avtp_timestamp",
+                      "start_index": 107,
+                      "end_index": 108,
+                      "summary": "Defines the API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::avtp_timestamp.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0286",
+                  "title": "8.3.5.1.2 mac_address",
+                  "start_index": 108,
+                  "end_index": 108,
+                  "summary": "Defines mac_address.",
+                  "nodes": [
+                    {
+                      "node_id": "0287",
+                      "title": "[SWS_RDS_90235] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::mac_address",
+                      "start_index": 108,
+                      "end_index": 108,
+                      "summary": "Defines the API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::mac_address.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0288",
+                  "title": "8.3.5.1.3 mr",
+                  "start_index": 108,
+                  "end_index": 109,
+                  "summary": "Defines mr.",
+                  "nodes": [
+                    {
+                      "node_id": "0289",
+                      "title": "[SWS_RDS_90238] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::mr",
+                      "start_index": 108,
+                      "end_index": 109,
+                      "summary": "Defines the API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::mr.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0290",
+                  "title": "8.3.5.1.4 sequenceNum",
+                  "start_index": 109,
+                  "end_index": 109,
+                  "summary": "Defines sequenceNum.",
+                  "nodes": [
+                    {
+                      "node_id": "0291",
+                      "title": "[SWS_RDS_90240] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::sequenceNum",
+                      "start_index": 109,
+                      "end_index": 109,
+                      "summary": "Defines the API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::sequenceNum.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0292",
+                  "title": "8.3.5.1.5 tu",
+                  "start_index": 109,
+                  "end_index": 110,
+                  "summary": "Defines tu.",
+                  "nodes": [
+                    {
+                      "node_id": "0293",
+                      "title": "[SWS_RDS_90241] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::tu",
+                      "start_index": 109,
+                      "end_index": 110,
+                      "summary": "Defines the API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::tu.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0294",
+                  "title": "8.3.5.1.6 tv",
+                  "start_index": 110,
+                  "end_index": 110,
+                  "summary": "Defines tv.",
+                  "nodes": [
+                    {
+                      "node_id": "0295",
+                      "title": "[SWS_RDS_90239] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::tv",
+                      "start_index": 110,
+                      "end_index": 110,
+                      "summary": "Defines the API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::tv.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0296",
+                  "title": "8.3.5.1.7 unique_id",
+                  "start_index": 110,
+                  "end_index": 111,
+                  "summary": "Defines unique_id.",
+                  "nodes": [
+                    {
+                      "node_id": "0297",
+                      "title": "[SWS_RDS_90236] Definition of API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::unique_id",
+                      "start_index": 110,
+                      "end_index": 111,
+                      "summary": "Defines the API variable ara::rds::IEEE1722DatagramAVTPDUCommonStreamHeaderFields::unique_id.",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "0298",
+              "title": "8.3.5.2 Public Member Functions",
+              "start_index": 111,
+              "end_index": 111,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0299",
+                  "title": "8.3.5.2.1 Special Member Functions",
+                  "start_index": 111,
+                  "end_index": 111,
+                  "summary": "Describes special member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0300",
+                      "title": "8.3.5.2.1.1 Destructor",
+                      "start_index": 111,
+                      "end_index": 111,
+                      "summary": "Describes the destructor for IEEE1722Datagram.",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0301",
+          "title": "8.3.6 Class: IEEE1722DatagramCRF",
+          "start_index": 111,
+          "end_index": 117,
+          "summary": "Describes class IEEE1722DatagramCRF.",
+          "nodes": [
+            {
+              "node_id": "0302",
+              "title": "[SWS_RDS_90293] Definition of API class ara::rds::IEEE1722DatagramCRF",
+              "start_index": 111,
+              "end_index": 117,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0303",
+                  "title": "8.3.6.1 Protected Member Variables",
+                  "start_index": 112,
+                  "end_index": 117,
+                  "summary": "Defines protected member variables.",
+                  "nodes": [
+                    {
+                      "node_id": "0304",
+                      "title": "8.3.6.1.1 base_frequency",
+                      "start_index": 112,
+                      "end_index": 113,
+                      "summary": "Describes the base_frequency member function.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0305",
+                      "title": "8.3.6.1.3 mac_address",
+                      "start_index": 113,
+                      "end_index": 113,
+                      "summary": "Describes the mac_address member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0306",
+                          "title": "[SWS_RDS_90299] Definition of API variable ara::rds::IEEE1722Datagram CRF::mac_address",
+                          "start_index": 113,
+                          "end_index": 113,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0307",
+                      "title": "8.3.6.1.4 mr",
+                      "start_index": 113,
+                      "end_index": 114,
+                      "summary": "Describes the mr member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0308",
+                          "title": "[SWS_RDS_90294] Definition of API variable ara::rds::IEEE1722Datagram CRF::mr",
+                          "start_index": 113,
+                          "end_index": 114,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0309",
+                      "title": "8.3.6.1.5 pull",
+                      "start_index": 114,
+                      "end_index": 114,
+                      "summary": "Describes the pull member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0310",
+                          "title": "[SWS_RDS_90301] Definition of API variable ara::rds::IEEE1722Datagram CRF::pull",
+                          "start_index": 114,
+                          "end_index": 114,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0311",
+                      "title": "8.3.6.1.6 sequenceNum",
+                      "start_index": 114,
+                      "end_index": 115,
+                      "summary": "Describes the sequenceNum member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0312",
+                          "title": "[SWS_RDS_90297] Definition of API variable ara::rds::IEEE1722Datagram CRF::sequenceNum",
+                          "start_index": 114,
+                          "end_index": 115,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0313",
+                      "title": "8.3.6.1.7 timestamp_interval",
+                      "start_index": 115,
+                      "end_index": 115,
+                      "summary": "Describes the timestamp_interval member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0314",
+                          "title": "[SWS_RDS_90303] Definition of API variable ara::rds::IEEE1722Datagram CRF::timestamp_interval",
+                          "start_index": 115,
+                          "end_index": 115,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0315",
+                      "title": "8.3.6.1.8 tu",
+                      "start_index": 115,
+                      "end_index": 116,
+                      "summary": "Describes the tu member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0316",
+                          "title": "[SWS_RDS_90296] Definition of API variable ara::rds::IEEE1722Datagram CRF::tu",
+                          "start_index": 115,
+                          "end_index": 116,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0317",
+                      "title": "8.3.6.1.9 type",
+                      "start_index": 116,
+                      "end_index": 116,
+                      "summary": "Describes the type member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0318",
+                          "title": "[SWS_RDS_90298] Definition of API variable ara::rds::IEEE1722Datagram CRF::type",
+                          "start_index": 116,
+                          "end_index": 116,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0319",
+                      "title": "8.3.6.1.10 unique_id",
+                      "start_index": 116,
+                      "end_index": 117,
+                      "summary": "Describes the unique_id member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0320",
+                          "title": "[SWS_RDS_90300] Definition of API variable ara::rds::IEEE1722Datagram CRF::unique_id",
+                          "start_index": 116,
+                          "end_index": 117,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0321",
+                  "title": "8.3.6.2 Public Member Functions",
+                  "start_index": 117,
+                  "end_index": 117,
+                  "summary": "Describes public member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0322",
+                      "title": "8.3.6.2.1 Special Member Functions",
+                      "start_index": 117,
+                      "end_index": 117,
+                      "summary": "Describes special member functions for IEEE1722DatagramCRF.",
+                      "nodes": [
+                        {
+                          "node_id": "0323",
+                          "title": "8.3.6.2.1.1 Destructor",
+                          "start_index": 117,
+                          "end_index": 117,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0324",
+                      "title": "[SWS_RDS_90304] Definition of API function ara::rds::IEEE1722Datagram CRF::~IEEE1722DatagramCRF",
+                      "start_index": 117,
+                      "end_index": 117,
+                      "summary": "Defines the destructor for IEEE1722DatagramCRF.",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0325",
+          "title": "8.3.7 Class: IEEE1722DatagramNTSCF",
+          "start_index": 117,
+          "end_index": 120,
+          "summary": "Describes class IEEE1722DatagramNTSCF.",
+          "nodes": [
+            {
+              "node_id": "0326",
+              "title": "[SWS_RDS_90305] Definition of API class ara::rds::IEEE1722DatagramNTSCF",
+              "start_index": 117,
+              "end_index": 120,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0327",
+                  "title": "8.3.7.1 Protected Member Variables",
+                  "start_index": 118,
+                  "end_index": 120,
+                  "summary": "Defines protected member variables.",
+                  "nodes": [
+                    {
+                      "node_id": "0328",
+                      "title": "8.3.7.1.1 mac_address",
+                      "start_index": 118,
+                      "end_index": 119,
+                      "summary": "Describes the mac_address member function.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0329",
+                      "title": "8.3.7.1.3 sequenceNum",
+                      "start_index": 119,
+                      "end_index": 120,
+                      "summary": "Describes the sequenceNum member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0330",
+                          "title": "[SWS_RDS_90307] Definition of API variable ara::rds::IEEE1722Datagram NTSCF::sequenceNum",
+                          "start_index": 119,
+                          "end_index": 120,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0331",
+                  "title": "8.3.7.2 Public Member Functions",
+                  "start_index": 120,
+                  "end_index": 120,
+                  "summary": "Describes public member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0332",
+                      "title": "8.3.7.2.1 Special Member Functions",
+                      "start_index": 120,
+                      "end_index": 120,
+                      "summary": "Describes special member functions for IEEE1722DatagramNTSCF.",
+                      "nodes": [
+                        {
+                          "node_id": "0333",
+                          "title": "8.3.7.2.1.1 Destructor",
+                          "start_index": 120,
+                          "end_index": 120,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0334",
+          "title": "8.3.8 Class: IEEE1722DatagramRVF",
+          "start_index": 120,
+          "end_index": 129,
+          "summary": "Describes class IEEE1722DatagramRVF.",
+          "nodes": [
+            {
+              "node_id": "0335",
+              "title": "[SWS_RDS_90276] Definition of API class ara::rds::IEEE1722DatagramRVF",
+              "start_index": 121,
+              "end_index": 129,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0336",
+                  "title": "8.3.8.1 Protected Member Variables",
+                  "start_index": 121,
+                  "end_index": 128,
+                  "summary": "Defines protected member variables.",
+                  "nodes": [
+                    {
+                      "node_id": "0337",
+                      "title": "8.3.8.1.1 active_pixels",
+                      "start_index": 121,
+                      "end_index": 121,
+                      "summary": "Describes special member functions for IEEE1722DatagramCRF.",
+                      "nodes": [
+                        {
+                          "node_id": "0338",
+                          "title": "[SWS_RDS_90277] Definition of API variable ara::rds::IEEE1722Datagram RVF::active_pixels",
+                          "start_index": 121,
+                          "end_index": 121,
+                          "summary": "Describes the active_pixels member function and its definition.",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0339",
+                      "title": "8.3.8.1.2 ap",
+                      "start_index": 121,
+                      "end_index": 122,
+                      "summary": "",
+                      "nodes": [
+                        {
+                          "node_id": "0340",
+                          "title": "[SWS_RDS_90279] Definition of API variable ara::rds::IEEE1722Datagram RVF::ap",
+                          "start_index": 122,
+                          "end_index": 122,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0341",
+                      "title": "8.3.8.1.3 colorspace",
+                      "start_index": 122,
+                      "end_index": 122,
+                      "summary": "Describes the colorspace member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0342",
+                          "title": "[SWS_RDS_90288] Definition of API variable ara::rds::IEEE1722Datagram RVF::colorspace",
+                          "start_index": 122,
+                          "end_index": 122,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0343",
+                      "title": "8.3.8.1.4 ef",
+                      "start_index": 122,
+                      "end_index": 123,
+                      "summary": "Describes the ef member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0344",
+                          "title": "[SWS_RDS_90281] Definition of API variable ara::rds::IEEE1722DatagramRVF::ef",
+                          "start_index": 123,
+                          "end_index": 123,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0345",
+                      "title": "8.3.8.1.5 evt",
+                      "start_index": 123,
+                      "end_index": 123,
+                      "summary": "Describes the evt member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0346",
+                          "title": "[SWS_RDS_90282] Definition of API variable ara::rds::IEEE1722Datagram RVF::evt",
+                          "start_index": 123,
+                          "end_index": 123,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0347",
+                      "title": "8.3.8.1.6 f",
+                      "start_index": 123,
+                      "end_index": 124,
+                      "summary": "Describes the f member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0348",
+                          "title": "[SWS_RDS_90280] Definition of API variable ara::rds::IEEE1722DatagramRVF::f",
+                          "start_index": 124,
+                          "end_index": 124,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0349",
+                      "title": "8.3.8.1.7 frame_rate",
+                      "start_index": 124,
+                      "end_index": 124,
+                      "summary": "Describes the frame_rate member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0350",
+                          "title": "[SWS_RDS_90287] Definition of API variable ara::rds::IEEE1722Datagram RVF::frame_rate",
+                          "start_index": 124,
+                          "end_index": 124,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0351",
+                      "title": "8.3.8.1.8 i",
+                      "start_index": 124,
+                      "end_index": 125,
+                      "summary": "Describes the i member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0352",
+                          "title": "[SWS_RDS_90284] Definition of API variable ara::rds::IEEE1722DatagramRVF::i",
+                          "start_index": 125,
+                          "end_index": 125,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0353",
+                      "title": "8.3.8.1.9 i_seq_num",
+                      "start_index": 125,
+                      "end_index": 125,
+                      "summary": "Describes the i_seq_num member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0354",
+                          "title": "[SWS_RDS_90290] Definition of API variable ara::rds::IEEE1722DatagramRVF::i_ seq_num",
+                          "start_index": 125,
+                          "end_index": 125,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0355",
+                      "title": "8.3.8.1.10 line_number",
+                      "start_index": 125,
+                      "end_index": 126,
+                      "summary": "Describes the line_number member function.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0356",
+                      "title": "8.3.8.1.11 num_lines",
+                      "start_index": 126,
+                      "end_index": 126,
+                      "summary": "Describes the num_lines member function.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0357",
+                      "title": "8.3.8.1.12 pd",
+                      "start_index": 126,
+                      "end_index": 127,
+                      "summary": "Describes the pd member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0358",
+                          "title": "[SWS_RDS_90283] Definition of API variable ara::rds::IEEE1722Datagram RVF::pd",
+                          "start_index": 127,
+                          "end_index": 127,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0359",
+                      "title": "8.3.8.1.13 pixel_depth",
+                      "start_index": 127,
+                      "end_index": 127,
+                      "summary": "Describes the pixel_depth member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0360",
+                          "title": "[SWS_RDS_90285] Definition of API variable ara::rds::IEEE1722Datagram RVF::pixel_depth",
+                          "start_index": 127,
+                          "end_index": 127,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0361",
+                      "title": "8.3.8.1.14 pixel_format",
+                      "start_index": 127,
+                      "end_index": 128,
+                      "summary": "Describes the pixel_format member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0362",
+                          "title": "[SWS_RDS_90286] Definition of API variable ara::rds::IEEE1722Datagram RVF::pixel_format",
+                          "start_index": 128,
+                          "end_index": 128,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0363",
+                      "title": "8.3.8.1.15 total_lines",
+                      "start_index": 128,
+                      "end_index": 128,
+                      "summary": "Describes the total_lines member function and its definition.",
+                      "nodes": [
+                        {
+                          "node_id": "0364",
+                          "title": "[SWS_RDS_90278] Definition of API variable ara::rds::IEEE1722Datagram RVF::total_lines",
+                          "start_index": 128,
+                          "end_index": 128,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0365",
+                  "title": "8.3.8.2 Public Member Functions",
+                  "start_index": 128,
+                  "end_index": 129,
+                  "summary": "Describes public member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0366",
+                      "title": "8.3.8.2.1 Special Member Functions",
+                      "start_index": 129,
+                      "end_index": 129,
+                      "summary": "Describes special member functions for IEEE1722DatagramRVF.",
+                      "nodes": [
+                        {
+                          "node_id": "0367",
+                          "title": "8.3.8.2.1.1 Destructor",
+                          "start_index": 129,
+                          "end_index": 129,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0368",
+                      "title": "[SWS_RDS_90292] Definition of API function ara::rds::IEEE1722Datagram RVF::~IEEE1722DatagramRVF",
+                      "start_index": 129,
+                      "end_index": 129,
+                      "summary": "Defines the destructor for IEEE1722DatagramRVF.",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0369",
+          "title": "8.3.9 Class: IEEE1722DatagramTSCF",
+          "start_index": 129,
+          "end_index": 130,
+          "summary": "Describes class IEEE1722DatagramTSCF.",
+          "nodes": [
+            {
+              "node_id": "0370",
+              "title": "[SWS_RDS_90274] Definition of API class ara::rds::IEEE1722DatagramTSCF",
+              "start_index": 129,
+              "end_index": 130,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0371",
+                  "title": "8.3.9.1 Public Member Functions",
+                  "start_index": 129,
+                  "end_index": 130,
+                  "summary": "Describes public member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0372",
+                      "title": "8.3.9.1.1 Special Member Functions",
+                      "start_index": 130,
+                      "end_index": 130,
+                      "summary": "Describes special member functions for IEEE1722DatagramCRF.",
+                      "nodes": [
+                        {
+                          "node_id": "0373",
+                          "title": "8.3.9.1.1.1 Destructor",
+                          "start_index": 130,
+                          "end_index": 130,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0374",
+          "title": "8.3.10 Class: IEEE1722RawDataStreamConsumer",
+          "start_index": 130,
+          "end_index": 136,
+          "summary": "Describes class IEEE1722RawDataStreamConsumer.",
+          "nodes": [
+            {
+              "node_id": "0375",
+              "title": "8.3.10.1 Public Member Functions",
+              "start_index": 130,
+              "end_index": 136,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0376",
+                  "title": "8.3.10.1.1 Special Member Functions",
+                  "start_index": 131,
+                  "end_index": 133,
+                  "summary": "Describes special member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0377",
+                      "title": "8.3.10.1.1.1 Copy Constructor",
+                      "start_index": 131,
+                      "end_index": 131,
+                      "summary": "Describes copy constructor for IEEE1722RawDataStreamConsumer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0378",
+                      "title": "8.3.10.1.1.3 Move Constructor",
+                      "start_index": 131,
+                      "end_index": 132,
+                      "summary": "Describes move constructor for IEEE1722RawDataStreamConsumer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0379",
+                      "title": "8.3.10.1.1.4 Copy Assignment Operator",
+                      "start_index": 132,
+                      "end_index": 132,
+                      "summary": "Describes copy assignment operator for IEEE1722RawDataStreamConsumer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0380",
+                      "title": "8.3.10.1.1.5 Move Assignment Operator",
+                      "start_index": 132,
+                      "end_index": 133,
+                      "summary": "Describes move assignment operator for IEEE1722RawDataStreamConsumer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0381",
+                      "title": "[SWS_RDS_90311] Definition of API function ara::rds::IEEE1722RawDataStream Consumer::operator=",
+                      "start_index": 133,
+                      "end_index": 133,
+                      "summary": "Defines the operator= for IEEE1722RawDataStreamConsumer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0382",
+                      "title": "8.3.10.1.1.6 Destructor",
+                      "start_index": 133,
+                      "end_index": 133,
+                      "summary": "Describes destructor for IEEE1722RawDataStreamConsumer.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0383",
+                  "title": "8.3.10.1.2 Member Functions",
+                  "start_index": 133,
+                  "end_index": 135,
+                  "summary": "Describes special member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0384",
+                      "title": "8.3.10.1.2.1 Connect",
+                      "start_index": 133,
+                      "end_index": 134,
+                      "summary": "Describes the Connect function for IEEE1722RawDataStreamConsumer.",
+                      "nodes": [
+                        {
+                          "node_id": "0385",
+                          "title": "[SWS_RDS_90319] Definition of API function ara::rds::IEEE1722RawDataStream Consumer::Connect",
+                          "start_index": 134,
+                          "end_index": 134,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0386",
+                      "title": "8.3.10.1.2.2 ReadData",
+                      "start_index": 134,
+                      "end_index": 134,
+                      "summary": "Describes the ReadData function for IEEE1722RawDataStreamConsumer.",
+                      "nodes": [
+                        {
+                          "node_id": "0387",
+                          "title": "[SWS_RDS_90321] Definition of API function ara::rds::IEEE1722RawDataStream Consumer::ReadData",
+                          "start_index": 134,
+                          "end_index": 134,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0388",
+                      "title": "8.3.10.1.2.3 Shutdown",
+                      "start_index": 134,
+                      "end_index": 135,
+                      "summary": "Describes the Shutdown function for IEEE1722RawDataStreamConsumer.",
+                      "nodes": [
+                        {
+                          "node_id": "0389",
+                          "title": "[SWS_RDS_90320] Definition of API function ara::rds::IEEE1722RawDataStream Consumer::Shutdown",
+                          "start_index": 134,
+                          "end_index": 135,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0390",
+                  "title": "8.3.10.1.3 Named Constructors",
+                  "start_index": 135,
+                  "end_index": 136,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0391",
+                      "title": "8.3.10.1.3.1 Create",
+                      "start_index": 135,
+                      "end_index": 136,
+                      "summary": "Describes the Create function for IEEE1722RawDataStreamConsumer.",
+                      "nodes": [
+                        {
+                          "node_id": "0392",
+                          "title": "[SWS_RDS_90312] Definition of API function ara::rds::IEEE1722RawDataStream Consumer::Create",
+                          "start_index": 136,
+                          "end_index": 136,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0393",
+          "title": "8.3.11 Class: IEEE1722RawDataStreamProducer",
+          "start_index": 136,
+          "end_index": 143,
+          "summary": "Describes class IEEE1722RawDataStreamProducer.",
+          "nodes": [
+            {
+              "node_id": "0394",
+              "title": "8.3.11.1 Public Member Functions",
+              "start_index": 136,
+              "end_index": 143,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0395",
+                  "title": "8.3.11.1.1 Special Member Functions",
+                  "start_index": 137,
+                  "end_index": 139,
+                  "summary": "Describes special member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0396",
+                      "title": "8.3.11.1.1.1 Copy Constructor",
+                      "start_index": 137,
+                      "end_index": 137,
+                      "summary": "Describes copy constructor for IEEE1722RawDataStreamProducer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0397",
+                      "title": "8.3.11.1.1.2 Default Constructor",
+                      "start_index": 137,
+                      "end_index": 137,
+                      "summary": "Describes default constructor for IEEE1722RawDataStreamProducer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0398",
+                      "title": "8.3.11.1.1.3 Move Constructor",
+                      "start_index": 137,
+                      "end_index": 138,
+                      "summary": "Describes move constructor for IEEE1722RawDataStreamProducer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0399",
+                      "title": "8.3.11.1.1.4 Copy Assignment Operator",
+                      "start_index": 138,
+                      "end_index": 138,
+                      "summary": "Describes copy assignment operator for IEEE1722RawDataStreamProducer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0400",
+                      "title": "8.3.11.1.1.5 Move Assignment Operator",
+                      "start_index": 138,
+                      "end_index": 139,
+                      "summary": "Describes move assignment operator for IEEE1722RawDataStreamProducer.",
+                      "nodes": []
+                    },
+                    {
+                      "node_id": "0401",
+                      "title": "8.3.11.1.1.6 Destructor",
+                      "start_index": 139,
+                      "end_index": 139,
+                      "summary": "Describes destructor for IEEE1722RawDataStreamProducer.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0402",
+                  "title": "8.3.11.1.2 Member Functions",
+                  "start_index": 139,
+                  "end_index": 141,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0403",
+                      "title": "8.3.11.1.2.1 Connect",
+                      "start_index": 140,
+                      "end_index": 140,
+                      "summary": "Describes the Connect function for IEEE1722RawDataStreamProducer.",
+                      "nodes": [
+                        {
+                          "node_id": "0404",
+                          "title": "[SWS_RDS_90330] Definition of API function ara::rds::IEEE1722RawDataStream Producer::Connect",
+                          "start_index": 140,
+                          "end_index": 140,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0405",
+                      "title": "8.3.11.1.2.2 Shutdown",
+                      "start_index": 140,
+                      "end_index": 141,
+                      "summary": "Describes the Shutdown function for IEEE1722RawDataStreamProducer.",
+                      "nodes": [
+                        {
+                          "node_id": "0406",
+                          "title": "[SWS_RDS_90331] Definition of API function ara::rds::IEEE1722RawDataStream Producer::Shutdown",
+                          "start_index": 140,
+                          "end_index": 141,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0407",
+                      "title": "8.3.11.1.2.3 WriteData",
+                      "start_index": 141,
+                      "end_index": 141,
+                      "summary": "Describes the WriteData function for IEEE1722RawDataStreamProducer.",
+                      "nodes": []
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0408",
+                  "title": "8.3.11.1.3 Named Constructors",
+                  "start_index": 141,
+                  "end_index": 143,
+                  "summary": "",
+                  "nodes": [
+                    {
+                      "node_id": "0409",
+                      "title": "8.3.11.1.3.1 Create",
+                      "start_index": 142,
+                      "end_index": 143,
+                      "summary": "Describes the Create function for IEEE1722RawDataStreamProducer.",
+                      "nodes": [
+                        {
+                          "node_id": "0410",
+                          "title": "[SWS_RDS_90323] Definition of API function ara::rds::IEEE1722RawDataStream Producer::Create",
+                          "start_index": 143,
+                          "end_index": 143,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0411",
+          "title": "8.4 Header: ara/rds/rds_error_domain.h",
+          "start_index": 143,
+          "end_index": 148,
+          "summary": "Describes header ara/rds/rds_error_domain.h.",
+          "nodes": [
+            {
+              "node_id": "0412",
+              "title": "8.4.1 Non-Member Types",
+              "start_index": 143,
+              "end_index": 144,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0413",
+                  "title": "8.4.1.1 Enumeration: RdsErrc",
+                  "start_index": 144,
+                  "end_index": 144,
+                  "summary": "Defines RdsErrc.",
+                  "nodes": [
+                    {
+                      "node_id": "0414",
+                      "title": "[SWS_RDS_12367] Definition of API enum ara::rds::RdsErrc",
+                      "start_index": 144,
+                      "end_index": 144,
+                      "summary": "Defines the RdsErrc enum.",
+                      "nodes": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "0415",
+              "title": "8.4.2 Non-Member Functions",
+              "start_index": 144,
+              "end_index": 145,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0416",
+                  "title": "8.4.2.1 Other",
+                  "start_index": 144,
+                  "end_index": 145,
+                  "summary": "Describes other functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0417",
+                      "title": "8.4.2.1.1 GetRdsErrorDomain",
+                      "start_index": 145,
+                      "end_index": 145,
+                      "summary": "Describes the GetRdsErrorDomain function.",
+                      "nodes": [
+                        {
+                          "node_id": "0418",
+                          "title": "[SWS_RDS_11298] Definition of API function ara::rds::GetRdsErrorDomain",
+                          "start_index": 145,
+                          "end_index": 145,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0419",
+                      "title": "8.4.2.1.2 MakeErrorCode",
+                      "start_index": 145,
+                      "end_index": 145,
+                      "summary": "Describes the MakeErrorCode function.",
+                      "nodes": [
+                        {
+                          "node_id": "0420",
+                          "title": "[SWS_RDS_11299] Definition of API function ara::rds::MakeErrorCode",
+                          "start_index": 145,
+                          "end_index": 145,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "node_id": "0421",
+              "title": "8.4.3 Class: RdsErrorDomain",
+              "start_index": 145,
+              "end_index": 148,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0422",
+                  "title": "8.4.3.1 Public Member Types",
+                  "start_index": 145,
+                  "end_index": 146,
+                  "summary": "Describes public member types.",
+                  "nodes": [
+                    {
+                      "node_id": "0423",
+                      "title": "8.4.3.1.1 Type Alias: Errc",
+                      "start_index": 146,
+                      "end_index": 146,
+                      "summary": "Describes the Errc type alias.",
+                      "nodes": [
+                        {
+                          "node_id": "0424",
+                          "title": "[SWS_RDS_11326] Definition of API type ara::rds::RdsErrorDomain::Errc",
+                          "start_index": 146,
+                          "end_index": 146,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0425",
+                      "title": "8.4.3.1.2 Type Alias: Exception",
+                      "start_index": 146,
+                      "end_index": 146,
+                      "summary": "Describes the Exception type alias.",
+                      "nodes": [
+                        {
+                          "node_id": "0426",
+                          "title": "[SWS_RDS_11327] Definition of API type ara::rds::RdsErrorDomain::Exception",
+                          "start_index": 146,
+                          "end_index": 146,
+                          "summary": "",
+                          "nodes": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "node_id": "0427",
+                  "title": "8.4.3.2 Public Member Functions",
+                  "start_index": 146,
+                  "end_index": 148,
+                  "summary": "Describes public member functions.",
+                  "nodes": [
+                    {
+                      "node_id": "0428",
+                      "title": "8.4.3.2.1 Special Member Functions",
+                      "start_index": 147,
+                      "end_index": 147,
+                      "summary": "Describes special member functions for RdsErrorDomainException.",
+                      "nodes": [
+                        {
+                          "node_id": "0429",
+                          "title": "8.4.3.2.1.1 Default Constructor",
+                          "start_index": 147,
+                          "end_index": 147,
+                          "summary": "",
+                          "nodes": [
+                            {
+                              "node_id": "0430",
+                              "title": "[SWS_RDS_11294] Definition of API function ara::rds::RdsErrorDomain::RdsErrorDomain",
+                              "start_index": 147,
+                              "end_index": 147,
+                              "summary": "",
+                              "nodes": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "node_id": "0431",
+                      "title": "8.4.3.2.2 Member Functions",
+                      "start_index": 147,
+                      "end_index": 148,
+                      "summary": "Describes member functions for RdsErrorDomainException.",
+                      "nodes": [
+                        {
+                          "node_id": "0432",
+                          "title": "8.4.3.2.2.1 Message",
+                          "start_index": 147,
+                          "end_index": 147,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0433",
+                          "title": "8.4.3.2.2.2 Name",
+                          "start_index": 147,
+                          "end_index": 148,
+                          "summary": "",
+                          "nodes": []
+                        },
+                        {
+                          "node_id": "0434",
+                          "title": "8.4.3.2.2.3 ThrowAsException",
+                          "start_index": 148,
+                          "end_index": 148,
+                          "summary": "Describes the ThrowAsException function for RdsErrorDomainException.",
+                          "nodes": [
+                            {
+                              "node_id": "0435",
+                              "title": "[SWS_RDS_11297] Definition of API function ara::rds::RdsErrorDomain::Throw AsException",
+                              "start_index": 148,
+                              "end_index": 148,
+                              "summary": "",
+                              "nodes": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0436",
+          "title": "8.4.4.1 Public Member Functions",
+          "start_index": 148,
+          "end_index": 150,
+          "summary": "Describes constructors.",
+          "nodes": [
+            {
+              "node_id": "0437",
+              "title": "8.4.4.1.1 Constructors",
+              "start_index": 149,
+              "end_index": 150,
+              "summary": "",
+              "nodes": [
+                {
+                  "node_id": "0438",
+                  "title": "8.4.4.1.1.1 RdsException",
+                  "start_index": 149,
+                  "end_index": 150,
+                  "summary": "Describes RdsException.",
+                  "nodes": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "0439",
+          "title": "9 Service Interfaces",
+          "start_index": 150,
+          "end_index": 150,
+          "summary": "",
+          "nodes": []
+        },
+        {
+          "node_id": "0440",
+          "title": "10 Configuration",
+          "start_index": 150,
+          "end_index": 154,
+          "summary": "Describes service interfaces.",
+          "nodes": [
+            {
+              "node_id": "0441",
+              "title": "[SWS_RDS_99004] Ethernet endpoint configuration",
+              "start_index": 150,
+              "end_index": 151,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0442",
+              "title": "[SWS_RDS_90216] Socket Options configuration",
+              "start_index": 151,
+              "end_index": 152,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0443",
+              "title": "[SWS_RDS_90217] TLS properties configuration",
+              "start_index": 152,
+              "end_index": 152,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0444",
+              "title": "10.1 Default Values",
+              "start_index": 152,
+              "end_index": 154,
+              "summary": "",
+              "nodes": []
+            },
+            {
+              "node_id": "0445",
+              "title": "10.2 Semantic Constraints",
+              "start_index": 154,
+              "end_index": 154,
+              "summary": "",
+              "nodes": []
+            }
+          ]
+        },
+        {
+          "node_id": "0446",
+          "title": "A Mentioned Manifest Elements",
+          "start_index": 154,
+          "end_index": 154,
+          "summary": "Lists mentioned manifest elements.",
+          "nodes": []
+        },
+        {
+          "node_id": "0447",
+          "title": "Table A.5: EthernetCommunicationController",
+          "start_index": 154,
+          "end_index": 154,
+          "summary": "Documents EthernetCommunicationController.",
+          "nodes": []
+        },
+        {
+          "node_id": "0448",
+          "title": "Table A.10: EthernetRawDataStreamRemoteClientConfig",
+          "start_index": 154,
+          "end_index": 155,
+          "summary": "Documents EthernetRawDataStreamRemoteClientConfig.",
+          "nodes": []
+        },
+        {
+          "node_id": "0449",
+          "title": "Table A.11: EthernetRawDataStreamRemoteServerConfig",
+          "start_index": 155,
+          "end_index": 157,
+          "summary": "Documents EthernetRawDataStreamRemoteServerConfig.",
+          "nodes": []
+        },
+        {
+          "node_id": "0450",
+          "title": "Table A.12: EthernetRawDataStreamServerMapping",
+          "start_index": 157,
+          "end_index": 159,
+          "summary": "Documents EthernetRawDataStreamServerMapping.",
+          "nodes": []
+        },
+        {
+          "node_id": "0451",
+          "title": "Table A.16: IEEE1722RawDataStreamProducerInterface",
+          "start_index": 159,
+          "end_index": 159,
+          "summary": "Documents IEEE1722RawDataStreamProducerInterface.",
+          "nodes": []
+        },
+        {
+          "node_id": "0452",
+          "title": "Table A.17: IEEE1722RawDataStreamProducerMapping",
+          "start_index": 159,
+          "end_index": 160,
+          "summary": "Documents IEEE1722RawDataStreamProducerMapping.",
+          "nodes": []
+        },
+        {
+          "node_id": "0453",
+          "title": "Table A.18: IEEE1722TpAcfConnection",
+          "start_index": 160,
+          "end_index": 162,
+          "summary": "Documents IEEE1722TpAcfConnection.",
+          "nodes": []
+        },
+        {
+          "node_id": "0454",
+          "title": "Table A.19: IEEE1722TpAvConnection",
+          "start_index": 162,
+          "end_index": 162,
+          "summary": "Documents IEEE1722TpAvConnection.",
+          "nodes": []
+        },
+        {
+          "node_id": "0455",
+          "title": "Table A.21: IPSecConfig",
+          "start_index": 162,
+          "end_index": 163,
+          "summary": "Documents IPSecConfig.",
+          "nodes": []
+        },
+        {
+          "node_id": "0456",
+          "title": "Table A.22: NetworkEndpoint",
+          "start_index": 163,
+          "end_index": 163,
+          "summary": "Documents NetworkEndpoint.",
+          "nodes": []
+        },
+        {
+          "node_id": "0457",
+          "title": "Table A.23: PortInterface",
+          "start_index": 163,
+          "end_index": 164,
+          "summary": "Documents PortInterface.",
+          "nodes": []
+        },
+        {
+          "node_id": "0458",
+          "title": "Table A.26: RPortPrototype",
+          "start_index": 164,
+          "end_index": 165,
+          "summary": "Documents RPortPrototype.",
+          "nodes": []
+        },
+        {
+          "node_id": "0459",
+          "title": "Table A.27: RawDataStreamClientInterface",
+          "start_index": 165,
+          "end_index": 165,
+          "summary": "Documents RawDataStreamClientInterface.",
+          "nodes": []
+        },
+        {
+          "node_id": "0460",
+          "title": "Table A.28: RawDataStreamEthernetTcpUdpCredentials",
+          "start_index": 165,
+          "end_index": 167,
+          "summary": "Documents RawDataStreamEthernetTcpUdpCredentials.",
+          "nodes": []
+        },
+        {
+          "node_id": "0461",
+          "title": "Table A.29: RawDataStreamEthernetUdpCredentials",
+          "start_index": 167,
+          "end_index": 167,
+          "summary": "Documents RawDataStreamEthernetUdpCredentials.",
+          "nodes": []
+        },
+        {
+          "node_id": "0462",
+          "title": "Table A.30: RawDataStreamMapping",
+          "start_index": 167,
+          "end_index": 167,
+          "summary": "Documents RawDataStreamMapping.",
+          "nodes": []
+        },
+        {
+          "node_id": "0463",
+          "title": "Table A.31: RawDataStreamServerInterface",
+          "start_index": 167,
+          "end_index": 167,
+          "summary": "Documents RawDataStreamServerInterface.",
+          "nodes": []
+        },
+        {
+          "node_id": "0464",
+          "title": "Specification of Raw Data Stream AUTOSAR AP R25-11",
+          "start_index": 167,
+          "end_index": 168,
+          "summary": "Provides specifications for Raw Data Stream AUTOSAR AP R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0465",
+          "title": "B Demands and constraints on Base Software (normative)",
+          "start_index": 168,
+          "end_index": 168,
+          "summary": "Documents demands and constraints on Base Software (normative).",
+          "nodes": []
+        },
+        {
+          "node_id": "0466",
+          "title": "C Platform Extension Interfaces (normative)",
+          "start_index": 168,
+          "end_index": 169,
+          "summary": "Documents platform extension interfaces (normative).",
+          "nodes": []
+        },
+        {
+          "node_id": "0467",
+          "title": "D Not implemented requirements",
+          "start_index": 169,
+          "end_index": 170,
+          "summary": "Documents not implemented requirements.",
+          "nodes": []
+        },
+        {
+          "node_id": "0468",
+          "title": "E History of Constraints and Specification Items",
+          "start_index": 170,
+          "end_index": 171,
+          "summary": "Documents history of constraints and specification items.",
+          "nodes": []
+        },
+        {
+          "node_id": "0469",
+          "title": "E.1 Constraint and Specification Item Changes between AUTOSAR Release R24-11 and R25-11",
+          "start_index": 171,
+          "end_index": 172,
+          "summary": "Documents changes between AUTOSAR Release R24-11 and R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0470",
+          "title": "E.1.1 Added Specification Items in R25-11",
+          "start_index": 172,
+          "end_index": 173,
+          "summary": "Documents added specification items in R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0471",
+          "title": "E.1.2 Changed Specification Items in R25-11",
+          "start_index": 173,
+          "end_index": 173,
+          "summary": "Documents changed specification items in R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0472",
+          "title": "E.1.3 Deleted Specification Items in R25-11",
+          "start_index": 173,
+          "end_index": 173,
+          "summary": "Documents deleted specification items in R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0473",
+          "title": "E.1.4 Added Constraints in R25-11",
+          "start_index": 173,
+          "end_index": 173,
+          "summary": "Documents added constraints in R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0474",
+          "title": "E.1.5 Changed Constraints in R25-11",
+          "start_index": 173,
+          "end_index": 174,
+          "summary": "Documents changed constraints in R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0475",
+          "title": "E.1.6 Deleted Constraints in R25-11",
+          "start_index": 174,
+          "end_index": 174,
+          "summary": "Documents deleted constraints in R25-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0476",
+          "title": "E.2 Constraint and Specification Item Changes between AU-TOSAR Release R23-11 and R24-11",
+          "start_index": 174,
+          "end_index": 175,
+          "summary": "Documents changes between AU-TOSAR Release R23-11 and R24-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0477",
+          "title": "E.2.1 Added Specification Items in R24-11",
+          "start_index": 175,
+          "end_index": 175,
+          "summary": "Documents added specification items in R24-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0478",
+          "title": "E.2.2 Changed Specification Items in R24-11",
+          "start_index": 175,
+          "end_index": 175,
+          "summary": "Documents changed specification items in R24-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0479",
+          "title": "E.2.3 Deleted Specification Items in R24-11",
+          "start_index": 175,
+          "end_index": 175,
+          "summary": "Documents deleted specification items in R24-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0480",
+          "title": "E.2.4 Added Constraints in R24-11",
+          "start_index": 175,
+          "end_index": 181,
+          "summary": "Documents added constraints in R24-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0481",
+          "title": "E.2.5 Changed Constraints in R24-11",
+          "start_index": 181,
+          "end_index": 182,
+          "summary": "Documents changed constraints in R24-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0482",
+          "title": "E.2.6 Deleted Constraints in R24-11",
+          "start_index": 182,
+          "end_index": 182,
+          "summary": "Documents deleted constraints in R24-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0483",
+          "title": "E.2.7 Added Specification Items in R23-11",
+          "start_index": 182,
+          "end_index": 183,
+          "summary": "Documents added specification items in R23-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0484",
+          "title": "E.2.8 Changed Specification Items in R23-11",
+          "start_index": 183,
+          "end_index": 183,
+          "summary": "Documents changed specification items in R23-11.",
+          "nodes": []
+        },
+        {
+          "node_id": "0485",
+          "title": "E.2.9 Deleted Specification Items in R23-11",
+          "start_index": 183,
+          "end_index": 183,
+          "summary": "Documents deleted specification items in R23-11.",
+          "nodes": []
+        }
+      ]
+    },
+    {
+      "node_id": "0486",
+      "title": "Front Matter",
+      "start_index": 183,
+      "end_index": 185,
+      "summary": "",
+      "nodes": [
+        {
+          "node_id": "0487",
+          "title": "Disclaimer",
+          "start_index": 185,
+          "end_index": 185,
+          "summary": "Covers disclaimer.",
+          "nodes": []
+        },
+        {
+          "node_id": "0488",
+          "title": "Table of Contents",
+          "start_index": 185,
+          "end_index": 185,
+          "summary": "Documents table of contents.",
+          "nodes": []
+        },
+        {
+          "node_id": "0489",
+          "title": "References",
+          "start_index": 0,
+          "end_index": 0,
+          "summary": "Lists references.",
+          "nodes": []
+        },
+        {
+          "node_id": "0490",
+          "title": "Preface",
+          "start_index": 0,
+          "end_index": 0,
+          "summary": "Provides preface.",
+          "nodes": []
+        },
+        {
+          "node_id": "0491",
+          "title": "Scope",
+          "start_index": 0,
+          "end_index": 0,
+          "summary": "Describes scope.",
+          "nodes": []
+        }
+      ]
+    }
+  ]
+}
