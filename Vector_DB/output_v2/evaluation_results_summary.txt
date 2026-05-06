@@ -1,0 +1,104 @@
+
+====================================================================================================
+RETRIEVAL EVALUATION RESULTS  (chunk-level, QD+RR)
+====================================================================================================
+
+OVERVIEW
+  Mode:               CHUNK
+  Questions:          365
+  Total time:         38.44 min
+  Avg per question:   6.32 s
+  Timestamp:          2026-05-05 18:37:14
+
+----------------------------------------------------------------------------------------------------
+PERFORMANCE
+----------------------------------------------------------------------------------------------------
+
+  Strict success rate (all contexts found):  92.33%  (337/365)
+  MRR (first relevant):                      0.9378
+
+  Precision @ k:
+    P@ 1:  0.9123 ± 0.2828
+    P@ 3:  0.8584 ± 0.2653
+    P@ 5:  0.8263 ± 0.2568
+    P@10:  0.7570 ± 0.2666
+
+  Recall @ k:
+    R@ 1:  0.7082
+    R@ 3:  0.8589
+    R@ 5:  0.8986
+    R@10:  0.9315
+
+  All contexts found @ k  (strict multi-hop):
+    All@ 1: 0.5041  (50.41%)
+    All@ 3: 0.7589  (75.89%)
+    All@ 5: 0.8274  (82.74%)
+    All@10: 0.8795  (87.95%)
+
+  NDCG @ k:
+    NDCG@ 1: 0.9123
+    NDCG@ 3: 1.1385
+    NDCG@ 5: 1.5289
+    NDCG@10: 2.2032
+
+----------------------------------------------------------------------------------------------------
+LATENCY
+----------------------------------------------------------------------------------------------------
+  Mean:   5363.1 ms
+  Median: 3566.2 ms
+  P95:    11792.9 ms
+  P99:    12829.4 ms
+
+----------------------------------------------------------------------------------------------------
+FAILURE ANALYSIS
+----------------------------------------------------------------------------------------------------
+  Total failures:  28 (7.67%)
+
+  Missed-context taxonomy (32 total):
+    Wrong document (never retrieved)             :   29  (90.6%)
+    Right doc, wrong chunk                       :    3  (9.4%)
+    Below cutoff (in pool, ranked > top-k)       :    0  (0.0%)
+    Unknown                                      :    0  (0.0%)
+
+  Sample failures:
+
+  1. [4] How does the unconnected state of a sender's PPort affect the availability of data on the Virtual Functional Bus, and what are the implications for data conversion when connecting a sender component with a receiver component that has different resolution requirements?
+      ref: If a sender's PPort is unconnected, the data being published by the provider will not appear on the …
+      top-3 files: AUTOSAR_EXP_VFB.pdf, AUTOSAR_EXP_VFB.pdf, AUTOSAR_EXP_VFB.pdf
+      → [wrong_doc      ] Virtual Functional Bus 
+AUTOSAR CP Release 4.4.0   
+ 
+41 of 104 Docume
+
+  2. [5] How does the load balancing mechanism described in the SOME/IP specification impact the selection of service instances when using the ara::com API, particularly in scenarios where multiple service instances have the same priority?
+      ref: When multiple service instances have the same priority, the load balancing mechanism in the SOME/IP …
+      top-3 files: AUTOSAR_RS_SOMEIPServiceDiscoveryProtocol.pdf, AUTOSAR_PRS_SOMEIPServiceDiscoveryProtocol.pdf, AUTOSAR_RS_SOMEIPServiceDiscoveryProtocol.pdf
+      → [wrong_doc      ] Load Balancing Option
+The Load Balancing option is used to prioritize 
+      → [wrong_doc      ] Explanation of ara::com API
+AUTOSAR AP Release 18-10
+The method “LogCu
+
+  3. [20] Given the long product life cycles and short reaction times for updates in automotive systems as described in the project objectives, what implications does this have for the design and configuration of the Crypto Service Manager (CSM) in terms of its ability to support multiple cryptographic algorithms and manage concurrent access to cryptographic services?
+      ref: The long product life cycles and short reaction times for updates in automotive systems necessitate …
+      top-3 files: AUTOSAR_EXP_UtilizationOfCryptoServices.pdf, AUTOSAR_RS_Features.pdf, AUTOSAR_SRS_CryptoStack.pdf
+      → [wrong_doc      ] Project Objectives 
+AUTOSAR FO Release 1.5.0   
+9 of 11 Document ID 59
+
+  4. [30] Given the specific signal transfer properties and unique IPDU structure required for some test cases in the communication database, how would these requirements impact the transmission behavior of the FlexRay frame when it contains stopped PDUs at the point in time they are triggered to be sent by the FlexRay Interface?
+      ref: If the FlexRay frame layout contains only stopped PDUs at the point in time they are triggered to be…
+      top-3 files: AUTOSAR_ATS_CommunicationFlexRay.pdf, AUTOSAR_ATS_CommunicationFlexRay.pdf, AUTOSAR_ATS_CommunicationFlexRay.pdf
+      → [wrong_doc      ] Use Case 04.01: General features 
+ 
+The communication database is depi
+
+  5. [35] How do the safety extensions described in the 'Overview of Functional Safety Measures in AUTOSAR' document interact with the requirement RS_METH_00081, which mandates that the methodology explain the typical usage of these safety extensions?
+      ref: The safety extensions in the 'Overview of Functional Safety Measures in AUTOSAR' document provide a …
+      top-3 files: AUTOSAR_EXP_FunctionalSafetyMeasures.pdf, AUTOSAR_RS_Features.pdf, AUTOSAR_EXP_ApplicationLevelErrorHandling.pdf
+      → [wrong_doc      ] 3.3.3 Deleted Requirements in FO 1.3.0
+Id Heading
+RS_METH_00017 Method
+
+====================================================================================================
+
