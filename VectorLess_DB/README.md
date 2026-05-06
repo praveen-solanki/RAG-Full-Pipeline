@@ -43,7 +43,7 @@ VectorLess_DB/
 ├── Pageindex_retrival.py             # CLI entrypoint used by run_all.sh
 ├── run_rag.py                        # RAG pipeline v1
 ├── run_rag_v2.py                     # RAG pipeline v2 (structure-key bug fixed)
-├── run_rag_vbest.py                  # RAG pipeline v3 (PageIndex-aligned, recommended)
+├── run_rag_v3_best.py                  # RAG pipeline v3 (PageIndex-aligned, recommended)
 ├── run_pageindex.py                  # Standalone indexing runner
 ├── combine_results_structred_output.py # Metrics aggregator → CSV
 ├── run_all.sh                        # Batch evaluation script
@@ -227,7 +227,7 @@ pages     = client.get_page_content(doc_id, pages="5-7")
 ### 3. Run the standard RAG pipeline (eval mode)
 
 ```bash
-python run_rag_vbest.py \
+python run_rag_v3_best.py \
     --mode eval \
     --query /path/to/questions.json \
     --pdf_dir /path/to/pdfs/ \
